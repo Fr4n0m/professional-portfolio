@@ -1,20 +1,92 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import Badge from "../components/Badge.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import LinkedInIcon from "../icons/LinkedIn.astro";
+import CodeIcon from "../icons/Code.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../icons/GitHub.astro";
+import MailIcon from "../icons/Mail.astro";
+import Experience from "../components/Experience.astro";
+import Briefcase from "../icons/Briefcase.astro";
+import Projects from "../components/Projects.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main>
-    <h1 class="text-white">
-      Hey, soy Fran <Badge>Disponible para trabajar</Badge>
-    </h1>
-    <h2>
-      Desarrollador de Software, Full Stack y eterno Aprendiz apasionado de los
-      detalles. Málaga, España 🇪🇸. Especializado en crear y solucionar
-      problemas.
-    </h2>
+<Layout
+  title="Portfolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web"
+  description="Desarrollador web"
+>
+  <main class="px-4">
+    <SectionContainer class="py-44 pb-32">
+      <img
+        class="rounded-full size-20 mb-4"
+        src="/assets/images/Fr4n0m Photo.webp"
+        alt="Fr4n0m photo"
+      />
 
-    <ul></ul>
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+      >
+        Hey, soy Fran <div class="flex justify-center items-center">
+          <a
+            href="https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
+            target="_blank"
+            rel="noopener"
+            class="flex justify-center items-center"
+          >
+            <Badge>Disponible para trabajar</Badge>
+          </a>
+        </div>
+      </h1>
+
+      <h2 class="text-xl lg:text-2xl opacity-80 text-wrap max-w-[700px]">
+        <span class="text-yellow-200/95"
+          >Desarrollador de Software y Full Stack Web. <span
+            class="text-blue-200/95"
+          >
+            Eterno Aprendiz apasionado de los detalles.
+          </span>
+        </span>
+        <span class="text-red-200/95">Málaga, España 🇪🇸.</span>
+        <span class="opacity-80"
+          >Especializado en crear y solucionar problemas 🤓.
+        </span>
+      </h2>
+
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill
+          href="https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
+        >
+          <LinkedInIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+
+        <SocialPill href="https://github.com/Fr4n0m">
+          <GitHubIcon class="size-4 md:size-6" />
+          GitHub
+        </SocialPill>
+
+        <SocialPill href="mailto:Fran11799@outlook.com">
+          <MailIcon class="size-4 md:size-6" />
+          Fran11799@outlook.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experiencia">
+      <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+        <Briefcase class="size-7" />
+        Experiencia laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <h2 class="text-3xl font-semibold mb-6 -ml-1 flex gap-x-3 items-center">
+        <CodeIcon class="size-9" />
+        Proyectos
+      </h2>
+      <Projects />
+    </SectionContainer>
   </main>
 </Layout>

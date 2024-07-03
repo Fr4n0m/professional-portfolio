@@ -1,0 +1,33 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Desarrollador de software en Gubb Marketing®",
+    description: "Desarrollo de software y aplicaciones web.",
+  },
+  {
+    date: "Marzo 2023",
+    title: "Desarrollo de Agrooe-Cashback para Agrooe® y Gubb Marketing®",
+    description:
+      "Desarrollo desde 0 de una aplicación web centrada en la administración de un sistema de cashback para la empresa Agrooe®. Desarrollo de la base de datos, el backend y el frontend de la aplicación web.",
+  },
+  {
+    date: "Junio 2022",
+    title: "Freelancer",
+    description:
+      "Desarrollo de proyectos personales y profesionales de diferente tipo.",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200 ml-3.5">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-6">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

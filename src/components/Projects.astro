@@ -1,0 +1,84 @@
+---
+import HTMLIcon from "../icons/HTML.astro";
+import CSSIcon from "../icons/CSS.astro";
+import NextJSIcon from "../icons/NextJS.astro";
+import TailwindIcon from "../icons/Tailwind.astro";
+import AstroIcon from "../icons/Astro.astro";
+import JSIcon from "../icons/JavaScript.astro";
+
+const TAGS = {
+  HTML: {
+    name: "HTML",
+    class: "bg-[#e34f26]/20 border-[#e34f26] text-[#e34f26]",
+    icon: HTMLIcon,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#0c73b8]/20 border-[#0c73b8] text-[#0c73b8]",
+    icon: CSSIcon,
+  },
+  NEXTJS: {
+    name: "NextJS",
+    class: "bg-black text-white",
+    icon: NextJSIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#0ED7B5]/20 border-[#0ED7B5] text-[#0ED7B5]",
+    icon: TailwindIcon,
+  },
+  ASTRO: {
+    name: "Astro",
+    class: "bg-white text-[#FF5D01]",
+    icon: AstroIcon,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-[#f0db4f]/20 border-[#f0db4f] text-[#f0db4f]",
+    icon: JSIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Web Calculator",
+    description:
+      "Una calculadora sencilla para realizar operaciones aritméticas básicas.",
+    link: "https://web-calculator-snowy.vercel.app/",
+    github: "https://github.com/Fr4n0m/web_calculator",
+    images: [
+      "/assets/images/projects/WebCalculator_light.webp",
+      "/assets/images/projects/WebCalculator_dark.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.TAILWIND, TAGS.JAVASCRIPT],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ images, title, description, tags }) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-yellow-200/90 mb-2">{title}</h3>
+      <p class="text-lg mb-4 text-pretty text-gray-200/95">{description}</p>
+      <ul class="flex gap-x-2 flex-row">
+        {tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs items-center ${tag.class} px-3 py-1 border mb-6`}
+            >
+              <tag.icon class="size-5" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {images.map((image) => (
+        <img
+          class="rounded shadow-2xl mb-4 shadow-white/10"
+          src={image}
+          alt={`Captura de pantalla del proyecto ${title}`}
+        />
+      ))}
+    </article>
+  ))
+}
