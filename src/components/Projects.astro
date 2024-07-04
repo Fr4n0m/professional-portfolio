@@ -1,10 +1,16 @@
 ---
+import GithubIcon from "../icons/GitHub.astro";
+import LinkIcon from "../icons/Link.astro";
 import HTMLIcon from "../icons/HTML.astro";
 import CSSIcon from "../icons/CSS.astro";
 import NextJSIcon from "../icons/NextJS.astro";
 import TailwindIcon from "../icons/Tailwind.astro";
 import AstroIcon from "../icons/Astro.astro";
 import JSIcon from "../icons/JavaScript.astro";
+import ReactIcon from "../icons/React.astro";
+import MongoIcon from "../icons/Mongo.astro";
+import Carousel from "./Carousel.astro";
+import LinkButton from "./LinkButton.astro";
 
 const TAGS = {
   HTML: {
@@ -19,17 +25,17 @@ const TAGS = {
   },
   NEXTJS: {
     name: "NextJS",
-    class: "bg-black text-white",
+    class: "bg-[#fff]/20 border-[#fff] text-[#fff]",
     icon: NextJSIcon,
   },
   TAILWIND: {
     name: "Tailwind CSS",
-    class: "bg-[#0ED7B5]/20 border-[#0ED7B5] text-[#0ED7B5]",
+    class: "bg-[#21a9bc]/20 border-[#21a9bc] text-[#21a9bc]",
     icon: TailwindIcon,
   },
   ASTRO: {
     name: "Astro",
-    class: "bg-white text-[#FF5D01]",
+    class: "bg-[#FF5D01]/20 border-[#FF5D01] text-[#FF5D01]",
     icon: AstroIcon,
   },
   JAVASCRIPT: {
@@ -37,9 +43,79 @@ const TAGS = {
     class: "bg-[#f0db4f]/20 border-[#f0db4f] text-[#f0db4f]",
     icon: JSIcon,
   },
+  REACT: {
+    name: "React",
+    class: "bg-[#00D8FF]/20 border-[#00D8FF] text-[#00D8FF]",
+    icon: ReactIcon,
+  },
+  MONGODB: {
+    name: "MongoDB",
+    class: "bg-[#01EC64]/20 border-[#01EC64] text-[#01EC64]",
+    icon: MongoIcon,
+  },
 };
 
 const PROJECTS = [
+  {
+    title: "Agrooe Cashback",
+    description:
+      "En esta web trabajé junto a un equipo para desarrollar de cero una plataforma comprometida con la venta de productos de calidad y el desarrollo del comercio local. Trabajamos desde cero con el concepto hasta la práctica creando tanto el back end como el front end.",
+    link: "",
+    github: "",
+    images: [
+      "/assets/images/projects/agrooe_1.jpeg",
+      "/assets/images/projects/agrooe_2.jpeg",
+      "/assets/images/projects/agrooe_3.jpeg",
+    ],
+    tags: [
+      TAGS.HTML,
+      TAGS.CSS,
+      TAGS.TAILWIND,
+      TAGS.JAVASCRIPT,
+      TAGS.REACT,
+      TAGS.NEXTJS,
+      TAGS.MONGODB,
+    ],
+  },
+  {
+    title: "1er Porfolio web",
+    description:
+      "Primer porfolio web usando simplemente HTML, CSS y JavaScript. Más adelante lo implementé en Astro.",
+    link: "https://portfolio-fr4n0m-astro.vercel.app/",
+    github: "https://github.com/Fr4n0m/portfolio-astro",
+    images: [
+      "/assets/images/projects/1er_portfolio.webp",
+      "/assets/images/projects/1er_portfolio_2.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.ASTRO],
+  },
+  {
+    title: "Pokédex",
+    description:
+      "Pokédex para ver información de pokemons con la posibilidad de añadir favoritos, eliminar o incluso crear tu propio pokemon.",
+    link: "",
+    github: "https://github.com/Fr4n0m/YourOwnPokedex",
+    images: [
+      "/assets/images/projects/pokedex.webp",
+      "/assets/images/projects/pokedex_favorites.webp",
+      "/assets/images/projects/pokedex_create.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.NEXTJS],
+  },
+  {
+    title: "Filmax",
+    description:
+      "Web para ver información de películas y series. Fue de mis primeros proyectos y simplemente visual para prácticar HTML y CSS.",
+    link: "",
+    github: "https://github.com/Fr4n0m/filmax",
+    images: [
+      "/assets/images/projects/filmax_home_preview.webp",
+      "/assets/images/projects/filmax_home_preview_2.webp",
+      "/assets/images/projects/filmax_blog_preview.webp",
+      "/assets/images/projects/filmax_blog_preview_2.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+  },
   {
     title: "Web Calculator",
     description:
@@ -56,29 +132,44 @@ const PROJECTS = [
 ---
 
 {
-  PROJECTS.map(({ images, title, description, tags }) => (
+  PROJECTS.map(({ images, title, description, tags, link, github }) => (
     <article>
-      <h3 class="text-2xl font-semibold text-yellow-200/90 mb-2">{title}</h3>
-      <p class="text-lg mb-4 text-pretty text-gray-200/95">{description}</p>
-      <ul class="flex gap-x-2 flex-row">
+      <h3 class="text-2xl mt-12 font-semibold text-yellow-200/90 mb-2">
+        {title}
+      </h3>
+
+      <p class="text-lg mb-4 text-pretty dark:text-gray-200/95">
+        {description}
+      </p>
+      <ul class="flex gap-x-3 flex-row">
         {tags.map((tag) => (
           <li>
             <span
               class={`flex gap-x-2 rounded-full text-xs items-center ${tag.class} px-3 py-1 border mb-6`}
             >
-              <tag.icon class="size-5" />
+              <tag.icon class="size-3" />
               {tag.name}
             </span>
           </li>
         ))}
       </ul>
-      {images.map((image) => (
-        <img
-          class="rounded shadow-2xl mb-4 shadow-white/10"
-          src={image}
-          alt={`Captura de pantalla del proyecto ${title}`}
-        />
-      ))}
+
+      <Carousel images={images} />
+
+      <footer class="flex items-end justify-start mt-4 mb-16 gap-x-4">
+        {github && (
+          <LinkButton href={github}>
+            <GithubIcon class="size-5" />
+            Code
+          </LinkButton>
+        )}
+        {link && (
+          <LinkButton href={link}>
+            <LinkIcon class="size-4" />
+            Preview
+          </LinkButton>
+        )}
+      </footer>
     </article>
   ))
 }
