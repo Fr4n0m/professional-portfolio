@@ -18,36 +18,27 @@ import CopyIcon from "../icons/Copy.astro";
       const copyMessage = document.getElementById("copy-message");
 
       button?.addEventListener("click", () => {
-        navigator.clipboard
-          .writeText("fran11799@outlook.com")
-          .then(() => {
-            copyMessage.textContent = "Mail copiado!";
-            copyMessage?.classList.remove("hidden");
-            console.log("Mail copiado al portapapeles");
-            setTimeout(() => {
-              copyMessage?.classList.add("hidden");
-            }, 2000);
-          })
-          .catch((err) => {
-            copyMessage.textContent = "Error al copiar";
-            copyMessage?.classList.remove("hidden");
-            console.error("Error al copiar al portapapeles:", err);
-            setTimeout(() => {
-              copyMessage?.classList.add("hidden");
-            }, 2000);
-          });
+        if (copyMessage) {
+          navigator.clipboard
+            .writeText("fran11799@outlook.com")
+            .then(() => {
+              copyMessage.textContent = "Mail copiado!";
+              copyMessage.classList.remove("hidden");
+              console.log("Mail copiado al portapapeles");
+              setTimeout(() => {
+                copyMessage.classList.add("hidden");
+              }, 2000);
+            })
+            .catch((err) => {
+              copyMessage.textContent = "Error al copiar";
+              copyMessage.classList.remove("hidden");
+              console.error("Error al copiar al portapapeles:", err);
+              setTimeout(() => {
+                copyMessage.classList.add("hidden");
+              }, 2000);
+            });
+        }
       });
     });
-
-    /* function copyToClipboard() {
-      navigator.clipboard
-        .writeText("fran11799@outlook.com")
-        .then(() => {
-          console.log("Mail copiado al portapapeles");
-        })
-        .catch((err) => {
-          console.error("Error al copiar al portapapeles:", err);
-        });
-    } */
   </script>
 </button>
