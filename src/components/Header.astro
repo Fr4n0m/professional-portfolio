@@ -16,12 +16,18 @@ const navItems = [
     title: "Proyectos",
     label: "proyectos",
     url: "/#proyectos",
+    dropdown: [
+      {
+        title: "Todos los proyectos",
+        url: "/projects",
+      },
+    ],
   },
-  /* {
+  {
     title: "Sobre mí",
     label: "sobre-mi",
     url: "/#sobre-mi",
-  }, */
+  },
   {
     title: "Contacto",
     label: "contacto",
@@ -39,12 +45,12 @@ const navItems = [
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex px-3 text-sm font-medium rounded-full flex-wrap m-3 p-1 text-gray-200 justify-center items-center"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
+          class="block px-2 py-2 transition text-nowrap hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
           target={link.title === "CV" ? "_blank" : "_self"}
@@ -53,7 +59,8 @@ const navItems = [
         </a>
       ))
     }
-    <ThemeToggle />
+
+    <!--  <ThemeToggle /> -->
   </nav>
 </header>
 
