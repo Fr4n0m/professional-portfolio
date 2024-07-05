@@ -1,0 +1,53 @@
+---
+import CopyIcon from "../icons/Copy.astro";
+---
+
+<button
+  id="copy-button"
+  class="copy-button hover:scale-110 transition relative"
+>
+  <CopyIcon class="size-5 -ml-1" />
+  <span
+    id="copy-message"
+    class="absolute top-0 right-0 -mt-3 -mr-[90px] text-xs font-bold text-[#93c5fd] bg-[#1f3a8a] hidden p-1 rounded"
+  ></span>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const button = document.getElementById("copy-button");
+      const copyMessage = document.getElementById("copy-message");
+
+      button?.addEventListener("click", () => {
+        navigator.clipboard
+          .writeText("fran11799@outlook.com")
+          .then(() => {
+            copyMessage.textContent = "Mail copiado!";
+            copyMessage?.classList.remove("hidden");
+            console.log("Mail copiado al portapapeles");
+            setTimeout(() => {
+              copyMessage?.classList.add("hidden");
+            }, 2000);
+          })
+          .catch((err) => {
+            copyMessage.textContent = "Error al copiar";
+            copyMessage?.classList.remove("hidden");
+            console.error("Error al copiar al portapapeles:", err);
+            setTimeout(() => {
+              copyMessage?.classList.add("hidden");
+            }, 2000);
+          });
+      });
+    });
+
+    /* function copyToClipboard() {
+      navigator.clipboard
+        .writeText("fran11799@outlook.com")
+        .then(() => {
+          console.log("Mail copiado al portapapeles");
+        })
+        .catch((err) => {
+          console.error("Error al copiar al portapapeles:", err);
+        });
+    } */
+  </script>
+</button>
