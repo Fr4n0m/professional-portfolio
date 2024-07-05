@@ -27,6 +27,11 @@ const navItems = [
     label: "contacto",
     url: "mailto:Fran11799@outlook.com",
   },
+  {
+    title: "CV",
+    label: "cv",
+    url: "/src/pages/CV_Español_FranciscoJoséRodríguezMartínez.pdf",
+  },
 ];
 ---
 
@@ -42,6 +47,7 @@ const navItems = [
           class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
+          target={link.title === "CV" ? "_blank" : "_self"}
         >
           {link.title}
         </a>
