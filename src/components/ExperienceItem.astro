@@ -9,11 +9,13 @@ interface Props {
 const { title, description, link, date } = Astro.props;
 ---
 
+<!-- bg-blue-900 ring-gray-900 -->
 <span
-  class="absolute flex items-center justify-center mt-0.5 size-2.5 dark:bg-blue-100 rounded-full -start-1.5 ring-8 dark:ring-white ring-gray-900 bg-blue-900"
+  class="absolute flex items-center justify-center mt-0.5 size-2.5 bg-blue-100 rounded-full -start-1.5 ring-8 ring-white"
 >
+  <!-- text-blue-300 -->
   <svg
-    class="size-3.5 dark:text-blue-800 text-blue-300"
+    class="size-3.5 text-blue-800"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
