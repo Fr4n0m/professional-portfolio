@@ -63,18 +63,9 @@ const TAGS = {
 
 const PROJECTS = [
   {
-    title: "Atari Breakout Game",
-    description:
-      "Versión del legendario juego de Atari BreakOut con JavaScript.",
-    link: "https://breakout-game-jade.vercel.app/",
-    github: "https://github.com/Fr4n0m/breakout-game",
-    images: ["/assets/images/projects/breakout-game.webp"],
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
-  },
-  {
     title: "Agrooe Cashback",
     description:
-      "En esta web trabajé junto a un equipo para desarrollar de cero una plataforma comprometida con la venta de productos de calidad y el desarrollo del comercio local. Trabajamos desde cero con el concepto hasta la práctica creando tanto el back-end como el front-end.",
+      "En esta web trabajé junto a un equipo para desarrollar de cero una plataforma comprometida con la venta de productos de calidad y el desarrollo del comercio local. Trabajamos desde cero con el concepto hasta la práctica creando tanto el back-end como el front-end. A parte de diferentes tecnologías se incorporaron integraciones como jwt para el control de cuentas de usuario e inicio de sesión, un dashboard para el control de todos los datos... Funcionalidades como poder iniciar sesión con diferentes redes sociales, creación de cuenta como usuario para comprar productos o como empresa para añadirlos, mapas del lugar más cercano donde se podría encontrar el producto en cuestión, entre otras cosas.",
     link: "",
     github: "",
     images: [
@@ -92,6 +83,15 @@ const PROJECTS = [
       TAGS.MONGODB,
       TAGS.NODEJS,
     ],
+  },
+  {
+    title: "Atari Breakout Game",
+    description:
+      "Versión del legendario juego de Atari BreakOut con JavaScript.",
+    link: "https://breakout-game-jade.vercel.app/",
+    github: "https://github.com/Fr4n0m/breakout-game",
+    images: ["/assets/images/projects/breakout-game.webp"],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
   },
   /* {
     title: "1er Porfolio web",
@@ -120,8 +120,7 @@ const PROJECTS = [
   },
   {
     title: "Filmax",
-    description:
-      "Web para ver información de películas y series. Fue de mis primeros proyectos y simplemente visual para prácticar HTML y CSS.",
+    description: "Web para ver información de películas y series.",
     link: "",
     github: "https://github.com/Fr4n0m/filmax",
     images: [
@@ -149,14 +148,15 @@ const PROJECTS = [
 
 {
   PROJECTS.map(({ images, title, description, tags, link, github }) => (
-    <article>
-      <h3 class="text-2xl mt-12 font-semibold text-yellow-200/90 mb-2">
-        {title}
-      </h3>
-
-      <p class="text-lg mb-4 text-pretty dark:text-gray-200/95">
-        {description}
-      </p>
+    <>
+      <article>
+        <h3 class="text-2xl mt-12 font-semibold text-yellow-200/90 mb-2">
+          {title}
+        </h3>
+        <p class="text-lg mb-4 text-pretty dark:text-gray-200/95">
+          {description}
+        </p>
+      </article>
       <ul class="flex gap-x-3 flex-row text-nowrap flex-wrap">
         {tags.map((tag) => (
           <li>
@@ -169,9 +169,7 @@ const PROJECTS = [
           </li>
         ))}
       </ul>
-
       <Carousel images={images} />
-
       <footer class="flex items-end justify-start mt-4 mb-16 gap-x-4">
         {github && (
           <LinkButton href={github}>
@@ -186,6 +184,8 @@ const PROJECTS = [
           </LinkButton>
         )}
       </footer>
-    </article>
+    </>
   ))
 }
+<!-- 
+<a href="/projects">Todos los proyectos</a> -->
