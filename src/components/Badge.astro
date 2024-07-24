@@ -1,4 +1,35 @@
 <span
-  class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 hover:scale-105 pointer transition"
+  class="pulsating bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 hover:scale-105 pointer transition"
   ><slot />
 </span>
+
+<style>
+  @keyframes pulsate {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes pulsate-exaggerated {
+    0%,
+    100% {
+      transform: scale(1.02);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  .pulsating {
+    display: inline-block;
+    animation: pulsate 1.5s infinite ease-in-out;
+  }
+
+  .pulsating:hover {
+    animation: pulsate-exaggerated 1.5s infinite ease-in-out;
+  }
+</style>
