@@ -3,6 +3,7 @@ import GithubIcon from "../icons/GitHub.astro";
 import LinkIcon from "../icons/Link.astro";
 import HTMLIcon from "../icons/HTML.astro";
 import CSSIcon from "../icons/CSS.astro";
+import SupabaseIcon from "../icons/SupabaseIcon.astro";
 import NextJSIcon from "../icons/NextJS.astro";
 import TailwindIcon from "../icons/Tailwind.astro";
 import AstroIcon from "../icons/AstroIcon.astro";
@@ -10,6 +11,7 @@ import JSIcon from "../icons/JavaScript.astro";
 import ReactIcon from "../icons/React.astro";
 import MongoIcon from "../icons/Mongo.astro";
 import NodeIcon from "../icons/NodeJS.astro";
+import ViteIcon from "../icons/ViteIcon.astro";
 import Carousel from "./Carousel.astro";
 import LinkButton from "./LinkButton.astro";
 
@@ -54,10 +56,20 @@ const TAGS = {
     class: "bg-[#01EC64]/20 border-[#01EC64] text-[#01EC64]",
     icon: MongoIcon,
   },
+  SUPABASE: {
+    name: "Supabase",
+    class: "bg-[#249361]/20 border-[#3ECF8E] text-[#3ECF8E]",
+    icon: SupabaseIcon,
+  },
   NODEJS: {
     name: "NodeJS",
     class: "bg-[#3FAE2A]/20 border-[#3FAE2A] text-[#3FAE2A]",
     icon: NodeIcon,
+  },
+  VITE: {
+    name: "Vite",
+    class: "bg-[#BD34FE]/20 border-[#c436ff] text-[#c436ff]",
+    icon: ViteIcon,
   },
 };
 
@@ -80,8 +92,28 @@ const PROJECTS = [
       TAGS.JAVASCRIPT,
       TAGS.REACT,
       TAGS.NEXTJS,
-      TAGS.MONGODB,
       TAGS.NODEJS,
+      TAGS.MONGODB,
+    ],
+  },
+  {
+    title: "Clon de Tiktok",
+    description:
+      "Clon de la interfaz de Tiktok usando Vite y React con backend de Supabase.",
+    link: "https://tiktok-clone-five-phi.vercel.app/",
+    github: "https://github.com/Fr4n0m/tiktok-clone",
+    images: [
+      "/assets/images/projects/tiktok_2.webp",
+      "/assets/images/projects/tiktok_1.webp",
+    ],
+    tags: [
+      TAGS.HTML,
+      TAGS.CSS,
+      TAGS.JAVASCRIPT,
+      TAGS.VITE,
+      TAGS.REACT,
+      TAGS.NODEJS,
+      TAGS.SUPABASE,
     ],
   },
   {
@@ -169,7 +201,9 @@ const PROJECTS = [
           </li>
         ))}
       </ul>
+
       <Carousel images={images} />
+
       <footer class="flex items-end justify-start mt-4 mb-16 gap-x-4">
         {github && (
           <LinkButton href={github}>
