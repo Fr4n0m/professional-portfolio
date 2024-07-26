@@ -22,7 +22,7 @@ const ProjectsDescription = ({ description }) => {
             className="text-blue-500 underline text-sm"
             onClick={toggleExpand}
           >
-            {expanded ? "menos" : "más"}
+            {expanded ? "Ver menos" : "Ver más"}
           </button>
         )}
       </div>
