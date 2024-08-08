@@ -26,9 +26,13 @@ import CopyButton from "@components/CopyButton.astro";
       />
 
       <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+        class="text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-6 md:gap-x-20 pb-6 lg:pb-6"
       >
-        Hey, soy Fran <div class="flex justify-center items-center">
+        <div class="typewriter">
+          <h1>Hey, soy Fran</h1>
+        </div>
+
+        <div class="flex justify-center items-center text-nowrap">
           <a
             href="https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
             target="_blank"
@@ -93,3 +97,41 @@ import CopyButton from "@components/CopyButton.astro";
     </SectionContainer>
   </main>
 </Layout>
+
+<style>
+  .typewriter {
+    overflow-y: visible;
+  }
+
+  .typewriter h1 {
+    overflow-x: hidden;
+    padding-bottom: 0.07em;
+    border-right: 0.15em solid #1e42a0;
+    padding-right: 10px;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.05em;
+    animation:
+      typing 3.5s steps(30, end),
+      blink-caret 0.8s step-end infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #1e42a0;
+    }
+  }
+</style>
