@@ -15,7 +15,6 @@ import ViteIcon from "@icons/Vite";
 import Carousel from "@components/Carousel.astro";
 import LinkButton from "@components/LinkButton.astro";
 import ProjectsDescription from "@components/Projects/ProjectsDescription";
-import Arrow from "@icons/Arrow.astro";
 
 const TAGS = {
   HTML: {
@@ -139,6 +138,31 @@ const PROJECTS = [
     tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
   },
   {
+    title: "1er Porfolio web",
+    description:
+      "Primer porfolio web usando simplemente HTML, CSS y JavaScript. Más adelante lo implementé en Astro.",
+    link: "https://portfolio-fr4n0m-astro.vercel.app/",
+    github: "https://github.com/Fr4n0m/portfolio-astro",
+    images: [
+      "/assets/images/projects/1er_portfolio.webp",
+      "/assets/images/projects/1er_portfolio_2.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.ASTRO],
+  },
+  {
+    title: "Pokédex",
+    description:
+      "Pokédex para ver información de pokemons con la posibilidad de añadir favoritos, eliminar o incluso crear tu propio pokemon.",
+    link: "",
+    github: "https://github.com/Fr4n0m/YourOwnPokedex",
+    images: [
+      "/assets/images/projects/pokedex.webp",
+      "/assets/images/projects/pokedex_favorites.webp",
+      "/assets/images/projects/pokedex_create.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.NEXTJS],
+  },
+  {
     title: "Filmax",
     description: "Web para ver información de películas y series.",
     link: "",
@@ -150,6 +174,18 @@ const PROJECTS = [
       "/assets/images/projects/filmax_blog_preview_2.webp",
     ],
     tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+  },
+  {
+    title: "Web Calculator",
+    description:
+      "Una calculadora sencilla para realizar operaciones aritméticas básicas.",
+    link: "https://web-calculator-snowy.vercel.app/",
+    github: "https://github.com/Fr4n0m/web_calculator",
+    images: [
+      "/assets/images/projects/WebCalculator_light.webp",
+      "/assets/images/projects/WebCalculator_dark.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.TAILWIND, TAGS.JAVASCRIPT],
   },
 ];
 ---
@@ -199,11 +235,3 @@ const PROJECTS = [
     </>
   ))
 }
-
-<a
-  href="/projects"
-  class="mb-20 md:mb-0 flex justify-end items-center gap-[2px] group text-[#00091D] text-md bg-white/90 hover:bg-white/85 w-fit px-2 py-1 rounded"
-  >Todos los proyectos <Arrow
-    class="size-6 transition-translate duration-300 ease-in-out group-hover:translate-x-1"
-  /></a
->
