@@ -6,18 +6,18 @@ export interface Props {
 const { images } = Astro.props;
 ---
 
-<div class="relative w-full" data-carousel="slide">
+<div class="relative w-full overflow-hidden" data-carousel="slide">
   <!-- Carousel wrapper -->
-  <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+  <div
+    class="relative flex transition-transform duration-700 ease-in-out"
+    data-carousel-wrapper
+  >
     {
       images.map((image, index) => (
-        <div
-          class={`duration-700 ease-in-out ${index === 0 ? "" : "hidden"}`}
-          data-carousel-item
-        >
+        <div class="flex-shrink-0 w-full h-56 md:h-96" data-carousel-item>
           <img
             src={image}
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+            class="w-full h-full object-cover"
             alt={`Slide ${index + 1}`}
           />
         </div>
@@ -97,16 +97,18 @@ const { images } = Astro.props;
   document.addEventListener("DOMContentLoaded", () => {
     const carousels = document.querySelectorAll('[data-carousel="slide"]');
     carousels.forEach((carousel) => {
+      const wrapper = carousel.querySelector("[data-carousel-wrapper]");
       const items = carousel.querySelectorAll("[data-carousel-item]");
+      const indicators = carousel.querySelectorAll("[data-carousel-slide-to]");
       const totalItems = items.length;
       let currentIndex = 0;
 
       const updateCarousel = (newIndex: number) => {
-        items[currentIndex].classList.add("hidden");
+        const offset = -newIndex * 100;
+        wrapper.style.transform = `translateX(${offset}%)`;
+
         indicators[currentIndex].classList.remove("bg-white");
         indicators[currentIndex].classList.add("bg-gray-300");
-
-        items[newIndex].classList.remove("hidden");
         indicators[newIndex].classList.remove("bg-gray-300");
         indicators[newIndex].classList.add("bg-white");
 
@@ -126,12 +128,13 @@ const { images } = Astro.props;
         updateCarousel(newIndex);
       });
 
-      const indicators = carousel.querySelectorAll("[data-carousel-slide-to]");
       indicators.forEach((indicator, index) => {
         indicator.addEventListener("click", () => {
           updateCarousel(index);
         });
       });
+
+      updateCarousel(0);
     });
   });
 </script>
