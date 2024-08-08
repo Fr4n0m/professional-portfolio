@@ -18,18 +18,20 @@ import CopyButton from "@components/CopyButton.astro";
   description="Desarrollador Full Stack Web"
 >
   <main class="px-4">
-    <SectionContainer class="py-44 pb-32">
-      <img
-        class="rounded-full size-20 mb-4"
-        src="/assets/images/Fr4n0m Photo.webp"
-        alt="Fr4n0m photo"
-      />
+    <SectionContainer class="py-36 md:py-44 pb-32">
+      <div class="flex justify-center items-center md:justify-start">
+        <img
+          class="rounded-full size-24 md:size-22 mb-6"
+          src="/assets/images/Fr4n0m Photo.webp"
+          alt="Fr4n0m photo"
+        />
+      </div>
 
       <h1
-        class="text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-3 md:gap-x-20 pb-6 lg:pb-6"
+        class="text-3xl md:text-4xl lg:text-5xl font-bold flex flex-col-reverse gap-y-4 md:gap-y-0 md:flex-row md:gap-x-20 pb-6 lg:pb-6"
       >
-        <div class="typewriter">
-          <h1>Hey, soy Fran</h1>
+        <div class="typewriter text-center md:text-left">
+          <h1 class="w-fit">Hey, soy Fran</h1>
         </div>
 
         <div class="flex justify-center items-center text-nowrap">
@@ -99,10 +101,6 @@ import CopyButton from "@components/CopyButton.astro";
 </Layout>
 
 <style>
-  .typewriter {
-    overflow-y: visible;
-  }
-
   .typewriter h1 {
     overflow-x: hidden;
     padding-bottom: 0.07em;
