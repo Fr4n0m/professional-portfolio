@@ -97,26 +97,36 @@ const { images } = Astro.props;
   document.addEventListener("DOMContentLoaded", () => {
     const carousels = document.querySelectorAll('[data-carousel="slide"]');
     carousels.forEach((carousel) => {
-      const wrapper = carousel.querySelector("[data-carousel-wrapper]");
+      const wrapper = carousel.querySelector(
+        "[data-carousel-wrapper]"
+      ) as HTMLElement | null;
       const items = carousel.querySelectorAll("[data-carousel-item]");
       const indicators = carousel.querySelectorAll("[data-carousel-slide-to]");
       const totalItems = items.length;
       let currentIndex = 0;
 
       const updateCarousel = (newIndex: number) => {
-        const offset = -newIndex * 100;
-        wrapper.style.transform = `translateX(${offset}%)`;
+        if (wrapper) {
+          const offset = -newIndex * 100;
+          wrapper.style.transform = `translateX(${offset}%)`;
+        }
 
-        indicators[currentIndex].classList.remove("bg-white");
-        indicators[currentIndex].classList.add("bg-gray-300");
-        indicators[newIndex].classList.remove("bg-gray-300");
-        indicators[newIndex].classList.add("bg-white");
+        if (indicators.length > 0) {
+          indicators[currentIndex]?.classList.remove("bg-white");
+          indicators[currentIndex]?.classList.add("bg-gray-300");
+          indicators[newIndex]?.classList.remove("bg-gray-300");
+          indicators[newIndex]?.classList.add("bg-white");
 
-        currentIndex = newIndex;
+          currentIndex = newIndex;
+        }
       };
 
-      const prevButton = carousel.querySelector("[data-carousel-prev]");
-      const nextButton = carousel.querySelector("[data-carousel-next]");
+      const prevButton = carousel.querySelector(
+        "[data-carousel-prev]"
+      ) as HTMLElement | null;
+      const nextButton = carousel.querySelector(
+        "[data-carousel-next]"
+      ) as HTMLElement | null;
 
       prevButton?.addEventListener("click", () => {
         const newIndex = (currentIndex - 1 + totalItems) % totalItems;
