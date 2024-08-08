@@ -6,7 +6,7 @@ export interface Props {
 const { images } = Astro.props;
 ---
 
-<div class="relative w-full overflow-hidden" data-carousel="slide">
+<div class="rounded-lg relative w-full overflow-hidden" data-carousel="slide">
   <!-- Carousel wrapper -->
   <div
     class="relative flex transition-transform duration-700 ease-in-out"
@@ -17,7 +17,7 @@ const { images } = Astro.props;
         <div class="flex-shrink-0 w-full h-56 md:h-96" data-carousel-item>
           <img
             src={image}
-            class="w-full h-full object-cover"
+            class="rounded-lg w-full h-full object-cover"
             alt={`Slide ${index + 1}`}
           />
         </div>
