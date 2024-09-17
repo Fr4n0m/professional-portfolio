@@ -18,7 +18,7 @@ import CopyButton from "@components/CopyButton.astro";
   description="Desarrollador Full Stack Web"
 >
   <main class="px-4">
-    <SectionContainer class="py-36 md:py-44 pb-32">
+    <SectionContainer id="inicio" class="py-36 md:py-44 pb-32">
       <div class="flex justify-center items-center md:justify-start">
         <img
           class="rounded-full size-24 md:size-22 mb-6"
@@ -89,7 +89,7 @@ import CopyButton from "@components/CopyButton.astro";
       </h2>
       <Experience />
     </SectionContainer>
-
+    
     <SectionContainer id="proyectos">
       <h2 class="text-3xl font-semibold -ml-1 flex gap-x-3 items-center">
         <CodeIcon class="size-9" />
@@ -97,6 +97,8 @@ import CopyButton from "@components/CopyButton.astro";
       </h2>
       <Projects />
     </SectionContainer>
+
+    <SectionContainer id="sobre-mi"></SectionContainer>
   </main>
 </Layout>
 
