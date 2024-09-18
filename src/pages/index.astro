@@ -60,7 +60,7 @@ import CopyButton from "@components/CopyButton.astro";
         </span>
       </h2>
 
-      <nav class="flex gap-4 mt-8 flex-wrap">
+      <nav class="flex align-center justify-center sm:justify-start gap-4 mt-8 flex-wrap">
         <SocialPill
           href="https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
         >
@@ -73,12 +73,15 @@ import CopyButton from "@components/CopyButton.astro";
           GitHub
         </SocialPill>
 
-        <SocialPill href="mailto:Fran11799@outlook.com">
-          <MailIcon class="size-4 md:size-6" />
-          Fran11799@outlook.com
-        </SocialPill>
+        <div class="flex gap-4">
+          <SocialPill href="mailto:Fran11799@outlook.com">
+            <MailIcon class="size-4 md:size-6" />
+            Fran11799@outlook.com
+          </SocialPill>
+  
+          <CopyButton />
+        </div>
 
-        <CopyButton />
       </nav>
     </SectionContainer>
 
