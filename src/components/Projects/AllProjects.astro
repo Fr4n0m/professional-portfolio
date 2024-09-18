@@ -12,7 +12,7 @@ import ReactIcon from "@icons/React.astro";
 import MongoIcon from "@icons/Mongo.astro";
 import NodeIcon from "@icons/NodeJS.astro";
 import ViteIcon from "@icons/Vite";
-import Carousel from "@components/Carousel.astro";
+import Carousel from "@components/Carousel";
 import LinkButton from "@components/LinkButton.astro";
 import ProjectsDescription from "@components/Projects/ProjectsDescription";
 
@@ -193,48 +193,50 @@ const PROJECTS = [
 ];
 ---
 
-{
-  PROJECTS.map(({ images, title, description, tags, link, github }) => (
-    <>
-      <article>
-        <h3 class="text-2xl mt-12 font-semibold text-yellow-200/90 mb-2">
-          {title}
-        </h3>
+<div class="section scroll-m-28 w-full mx-auto md:-mt-[110px] container lg:w-[740px] md:pb-24">
+  {
+    PROJECTS.map(({ images, title, description, tags, link, github }) => (
+      <>
+        <article>
+          <h3 class="text-2xl mt-12 font-semibold text-yellow-200/90 mb-2">
+            {title}
+          </h3>
 
-        <ProjectsDescription client:load description={description} />
-      </article>
-      <ul class="flex gap-x-3 flex-row text-nowrap flex-wrap">
-        {tags.map((tag) => (
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={tag.link}
-              class={`flex gap-x-2 rounded-full text-xs items-center ${tag.class} px-3 py-1 border mb-6 hover:scale-110 active:scale-105 transition-all`}
-            >
-              <tag.icon class="size-3" />
-              {tag.name}
-            </a>
-          </li>
-        ))}
-      </ul>
+          <ProjectsDescription client:load description={description} />
+        </article>
+        <ul class="flex gap-x-3 flex-row text-nowrap flex-wrap">
+          {tags.map((tag) => (
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={tag.link}
+                class={`flex gap-x-2 rounded-full text-xs items-center ${tag.class} px-3 py-1 border mb-6 hover:scale-110 active:scale-105 transition-all`}
+              >
+                <tag.icon class="size-3" />
+                {tag.name}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      <Carousel images={images} />
+        <Carousel client:load images={images} />
 
-      <footer class="flex items-end justify-start mt-6 mb-16 gap-x-4">
-        {github && (
-          <LinkButton href={github}>
-            <GithubIcon class="size-4" />
-            Código
-          </LinkButton>
-        )}
-        {link && (
-          <LinkButton href={link}>
-            <LinkIcon class="size-4" />
-            Demo
-          </LinkButton>
-        )}
-      </footer>
-    </>
-  ))
-}
+        <footer class="flex items-end justify-start mt-6 mb-16 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GithubIcon class="size-4" />
+              Código
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <LinkIcon class="size-4" />
+              Demo
+            </LinkButton>
+          )}
+          </footer>
+      </>
+    ))
+  }
+</div>
