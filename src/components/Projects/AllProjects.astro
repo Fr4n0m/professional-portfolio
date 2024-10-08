@@ -1,275 +1,78 @@
 ---
-import GithubIcon from "@icons/GitHub.astro";
-import LinkIcon from "@icons/Link.astro";
-import HTMLIcon from "@icons/HTML.astro";
-import CSSIcon from "@icons/CSS.astro";
-import SupabaseIcon from "@icons/SupabaseIcon.astro";
-import NextJSIcon from "@icons/NextJS.astro";
-import TailwindIcon from "@icons/Tailwind.astro";
-import AstroIcon from "@icons/AstroIcon.astro";
-import JSIcon from "@icons/JavaScript.astro";
-import ReactIcon from "@icons/React.astro";
-import MongoIcon from "@icons/Mongo.astro";
-import NodeIcon from "@icons/NodeJS.astro";
-import ViteIcon from "@icons/Vite";
-import Carousel from "@components/Carousel";
-import LinkButton from "@components/LinkButton.astro";
-import ProjectsDescription from "@components/Projects/ProjectsDescription";
+import GithubIcon from '@icons/GitHub.astro';
+import LinkIcon from '@icons/Link.astro';
+import Carousel from '@components/Carousel';
+import LinkButton from '@components/LinkButton.astro';
+import ProjectsDescription from '@components/Projects/ProjectsDescription';
 
-const TAGS = {
-  HTML: {
-    name: "HTML",
-    class: "bg-[#e34f26]/20 border-[#e34f26] text-[#e34f26]",
-    link: "https://www.w3.org/html/",
-    icon: HTMLIcon,
-  },
-  CSS: {
-    name: "CSS",
-    class: "bg-[#0099f8]/20 border-[#0099f8] text-[#0099f8]",
-    link: "https://www.w3.org/Style/CSS/",
-    icon: CSSIcon,
-  },
-  NEXTJS: {
-    name: "NextJS",
-    class: "bg-[#fff]/20 border-[#fff] text-[#fff]",
-    link: "https://nextjs.org/",
-    icon: NextJSIcon,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#21a9bc]/20 border-[#21a9bc] text-[#21a9bc]",
-    link: "https://tailwindcss.com/",
-    icon: TailwindIcon,
-  },
-  ASTRO: {
-    name: "Astro",
-    class: "bg-[#FF5D01]/20 border-[#FF5D01] text-[#FF5D01]",
-    link: "https://astro.build/",
-    icon: AstroIcon,
-  },
-  JAVASCRIPT: {
-    name: "JavaScript",
-    class: "bg-[#f0db4f]/20 border-[#f0db4f] text-[#f0db4f]",
-    link: "https://developer.mozilla.org/es/docs/Web/JavaScript",
-    icon: JSIcon,
-  },
-  REACT: {
-    name: "React",
-    class: "bg-[#00D8FF]/20 border-[#00D8FF] text-[#00D8FF]",
-    link: "https://es.react.dev/",
-    icon: ReactIcon,
-  },
-  MONGODB: {
-    name: "MongoDB",
-    class: "bg-[#01EC64]/20 border-[#01EC64] text-[#01EC64]",
-    link: "https://www.mongodb.com/",
-    icon: MongoIcon,
-  },
-  SUPABASE: {
-    name: "Supabase",
-    class: "bg-[#249361]/20 border-[#3ECF8E] text-[#3ECF8E]",
-    link: "https://supabase.com/",
-    icon: SupabaseIcon,
-  },
-  NODEJS: {
-    name: "NodeJS",
-    class: "bg-[#3FAE2A]/20 border-[#3FAE2A] text-[#3FAE2A]",
-    link: "https://nodejs.org/",
-    icon: NodeIcon,
-  },
-  VITE: {
-    name: "Vite",
-    class: "bg-[#BD34FE]/20 border-[#c436ff] text-[#c436ff]",
-    link: "https://vitejs.dev/",
-    icon: ViteIcon,
-  },
-};
-
-const PROJECTS = [
-  {
-    title: "Agrooe Cashback",
-    description:
-      "En esta web trabajé junto a un equipo para desarrollar de cero una plataforma comprometida con la venta de productos de calidad y el desarrollo del comercio local. Trabajamos desde cero con el concepto hasta la práctica creando tanto el back-end como el front-end. A parte de diferentes tecnologías se incorporaron integraciones como jwt para el control de cuentas de usuario e inicio de sesión, un dashboard para el control de todos los datos... Funcionalidades como poder iniciar sesión con diferentes redes sociales, creación de cuenta como usuario para comprar productos o como empresa para añadirlos, mapas del lugar más cercano donde se podría encontrar el producto en cuestión, entre otras cosas. Por motivos de confidencialidad no se muestra el código.",
-    link: "",
-    github: "",
-    images: [
-      "/assets/images/projects/agrooe_1.jpeg",
-      "/assets/images/projects/agrooe_2.jpeg",
-      "/assets/images/projects/agrooe_3.jpeg",
-    ],
-    tags: [
-      TAGS.HTML,
-      TAGS.CSS,
-      TAGS.TAILWIND,
-      TAGS.JAVASCRIPT,
-      TAGS.REACT,
-      TAGS.NEXTJS,
-      TAGS.NODEJS,
-      TAGS.MONGODB,
-    ],
-  },
-  {
-    title: "Paint Windows 95",
-    description:
-      "Aplicación Paint inspirada en la era de Windows 95",
-    link: "https://paint-win-95-blond.vercel.app/",
-    github: "https://github.com/Fr4n0m/paint-win-95",
-    images: [
-      "/assets/images/projects/paint-95.webp",
-    ],
-    tags: [
-      TAGS.HTML,
-      TAGS.CSS,
-      TAGS.JAVASCRIPT,
-      TAGS.VITE
-    ],
-  },
-  {
-    title: "Bookshop view transitions demo",
-    description:
-      "Librería web para practicar view transitions.",
-    link: "https://bookshop-view-transitions.vercel.app/",
-    github: "https://github.com/Fr4n0m/bookshop-view-transitions",
-    images: [
-      "/assets/images/projects/bookshop_1.webp",
-      "/assets/images/projects/bookshop_2.webp",
-    ],
-    tags: [
-      TAGS.HTML,
-      TAGS.CSS,
-      TAGS.JAVASCRIPT,
-      TAGS.ASTRO
-    ],
-  },
-  {
-    title: "Clon de Tiktok",
-    description:
-      "Clon de la interfaz de Tiktok usando Vite y React con backend de Supabase.",
-    link: "https://tiktok-clone-five-phi.vercel.app/",
-    github: "https://github.com/Fr4n0m/tiktok-clone",
-    images: [
-      "/assets/images/projects/tiktok_2.webp",
-      "/assets/images/projects/tiktok_1.webp",
-    ],
-    tags: [
-      TAGS.HTML,
-      TAGS.CSS,
-      TAGS.JAVASCRIPT,
-      TAGS.VITE,
-      TAGS.REACT,
-      TAGS.NODEJS,
-      TAGS.SUPABASE,
-    ],
-  },
-  {
-    title: "Atari Breakout Game",
-    description:
-      "Versión del legendario juego de Atari BreakOut con JavaScript.",
-    link: "https://breakout-game-jade.vercel.app/",
-    github: "https://github.com/Fr4n0m/breakout-game",
-    images: [
-      "/assets/images/projects/breakout-game_2.webp",
-      "/assets/images/projects/breakout-game.webp",
-    ],
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
-  },
-  {
-    title: "Filmax",
-    description: "Web para ver información de películas y series.",
-    link: "",
-    github: "https://github.com/Fr4n0m/filmax",
-    images: [
-      "/assets/images/projects/filmax_home_preview.webp",
-      "/assets/images/projects/filmax_home_preview_2.webp",
-      "/assets/images/projects/filmax_blog_preview.webp",
-      "/assets/images/projects/filmax_blog_preview_2.webp",
-    ],
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
-  },
-  {
-    title: "Web Calculator",
-    description:
-      "Una calculadora sencilla para realizar operaciones aritméticas básicas.",
-    link: "https://web-calculator-snowy.vercel.app/",
-    github: "https://github.com/Fr4n0m/web_calculator",
-    images: [
-      "/assets/images/projects/WebCalculator_light.webp",
-      "/assets/images/projects/WebCalculator_dark.webp",
-    ],
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.TAILWIND, TAGS.JAVASCRIPT],
-  },
-  {
-    title: "Pokédex",
-    description:
-      "Pokédex para ver información de pokemons con la posibilidad de añadir favoritos, eliminar o incluso crear tu propio pokemon.",
-    link: "",
-    github: "https://github.com/Fr4n0m/YourOwnPokedex",
-    images: [
-      "/assets/images/projects/pokedex.webp",
-      "/assets/images/projects/pokedex_favorites.webp",
-      "/assets/images/projects/pokedex_create.webp",
-    ],
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.NEXTJS],
-  },
-  /* {
-    title: "1er Porfolio web",
-    description:
-      "Primer porfolio web usando simplemente HTML, CSS y JavaScript. Más adelante lo implementé en Astro.",
-    link: "https://portfolio-fr4n0m-astro.vercel.app/",
-    github: "https://github.com/Fr4n0m/portfolio-astro",
-    images: [
-      "/assets/images/projects/1er_portfolio.webp",
-      "/assets/images/projects/1er_portfolio_2.webp",
-    ],
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.ASTRO],
-  }, */
-];
+import { PROJECTS } from '@utils/projects';
 ---
 
-<div class="section scroll-m-28 w-full mx-auto md:-mt-[110px] container lg:w-[740px] md:pb-24">
-  {
-    PROJECTS.map(({ images, title, description, tags, link, github }) => (
-      <>
-        <article>
-          <h3 class="text-2xl mt-12 font-semibold text-yellow-200/90 mb-2">
-            {title}
-          </h3>
+<div
+	class='section scroll-m-28 w-full mx-auto md:-mt-[110px] container lg:w-[740px] md:pb-24'
+>
+	{
+		PROJECTS.map(
+			({
+				images,
+				title,
+				description,
+				tags,
+				link,
+				secondaryLink,
+				github,
+			}) => (
+				<>
+					<article>
+						<h3 class='text-2xl mt-12 font-semibold text-yellow-200/90 mb-2'>
+							{title}
+						</h3>
 
-          <ProjectsDescription client:load description={description} />
-        </article>
-        <ul class="flex gap-x-3 flex-row text-nowrap flex-wrap">
-          {tags.map((tag) => (
-            <li>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={tag.link}
-                class={`flex gap-x-2 rounded-full text-xs items-center ${tag.class} px-3 py-1 border mb-6 hover:scale-110 active:scale-105 transition-all`}
-              >
-                <tag.icon class="size-3" />
-                {tag.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+						<ProjectsDescription
+							client:load
+							description={description}
+						/>
+					</article>
+					<ul class='flex gap-x-3 flex-row text-nowrap flex-wrap'>
+						{tags.map(tag => (
+							<li>
+								<a
+									target='_blank'
+									rel='noopener noreferrer'
+									href={tag.link}
+									class={`flex gap-x-2 rounded-full text-xs items-center ${tag.class} px-3 py-1 border mb-6 hover:scale-110 active:scale-105 transition-all`}
+								>
+									<tag.icon class='size-3' />
+									{tag.name}
+								</a>
+							</li>
+						))}
+					</ul>
 
-        <Carousel client:load images={images} />
+					<Carousel client:load images={images} />
 
-        <footer class="flex items-end justify-start mt-6 mb-16 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GithubIcon class="size-4" />
-              Código
-            </LinkButton>
-          )}
-          {link && (
-            <LinkButton href={link}>
-              <LinkIcon class="size-4" />
-              Demo
-            </LinkButton>
-          )}
-          </footer>
-      </>
-    ))
-  }
+					<footer class='flex items-end justify-start mt-6 mb-16 gap-x-4'>
+						{github && (
+							<LinkButton href={github}>
+								<GithubIcon class='size-4' />
+								Código
+							</LinkButton>
+						)}
+						{link && (
+							<LinkButton href={link}>
+								<LinkIcon class='size-4' />
+								Demo
+							</LinkButton>
+						)}
+						{secondaryLink && (
+							<LinkButton href={secondaryLink}>
+								<LinkIcon class='size-4' />
+								Demo 2
+							</LinkButton>
+						)}
+					</footer>
+				</>
+			),
+		)
+	}
 </div>
