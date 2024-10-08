@@ -1,159 +1,162 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Badge from "@components/Badge.astro";
-import SectionContainer from "@components/SectionContainer.astro";
-import LinkedInIcon from "@icons/LinkedIn.astro";
-import CodeIcon from "@icons/Code.astro";
-import SocialPill from "@components/SocialPill.astro";
-import GitHubIcon from "@icons/GitHub.astro";
-import MailIcon from "@icons/Mail.astro";
-import Experience from "@components/Experience.astro";
-import Briefcase from "@icons/Briefcase.astro";
-import Projects from "@components/Projects/Projects.astro";
-import CopyButton from "@components/CopyButton.astro";
+import Layout from '@layouts/Layout.astro';
+import Badge from '@components/Badge.astro';
+import SectionContainer from '@components/SectionContainer.astro';
+import LinkedInIcon from '@icons/LinkedIn.astro';
+import CodeIcon from '@icons/Code.astro';
+import SocialPill from '@components/SocialPill.astro';
+import GitHubIcon from '@icons/GitHub.astro';
+import MailIcon from '@icons/Mail.astro';
+import Experience from '@components/Experience.astro';
+import Briefcase from '@icons/Briefcase.astro';
+import Projects from '@components/Projects/Projects.astro';
+import CopyButton from '@components/CopyButton.astro';
 ---
 
 <Layout
-  title="Portfolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web"
-  description="Desarrollador Full Stack Web"
+	title='Portfolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web'
+	description='Desarrollador Full Stack Web'
 >
-  <main class="px-4">
-    <SectionContainer id="inicio" class="py-36 md:py-44 pb-32">
-      <div class="flex justify-center items-center md:justify-start">
-        <img
-          class="rounded-full size-24 md:size-22 mb-6"
-          src="/assets/images/Fr4n0m Photo.webp"
-          alt="Fr4n0m photo"
-        />
-      </div>
+	<main class='px-4'>
+		<SectionContainer id='inicio' class='py-36 md:py-44 pb-32'>
+			<div class='flex justify-center items-center md:justify-start'>
+				<img
+					class='rounded-full size-24 md:size-22 mb-6'
+					src='/assets/images/Fr4n0m Photo.webp'
+					alt='Fr4n0m photo'
+				/>
+			</div>
 
-      <h1
-        class="text-3xl md:text-4xl lg:text-4xl font-bold flex flex-col-reverse gap-y-4 md:gap-y-0 md:flex-row md:gap-x-20 pb-6 lg:pb-6"
-      >
-        <div class="typing text-center md:text-left">
-          <h1 class="w-fit typewriter md:typewriter-mobile">Hey, soy Fran</h1>
-        </div>
+			<h1
+				class='text-3xl md:text-4xl lg:text-4xl font-bold flex flex-col-reverse gap-y-4 md:gap-y-0 md:flex-row md:gap-x-20 pb-6 lg:pb-6'
+			>
+				<div class='typing text-center md:text-left'>
+					<h1 class='w-fit typewriter md:typewriter-mobile'>
+						Hey, soy Fran
+					</h1>
+				</div>
 
-        <div class="flex justify-center items-center text-nowrap">
-          <a
-            href="https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
-            target="_blank"
-            rel="noopener"
-            class="flex justify-center items-center"
-          >
-            <Badge>Disponible para trabajar</Badge>
-          </a>
-        </div>
-      </h1>
+				<div class='flex justify-center items-center text-nowrap'>
+					<a
+						href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
+						target='_blank'
+						rel='noopener'
+						class='flex justify-center items-center'
+					>
+						<Badge>Disponible para trabajar</Badge>
+					</a>
+				</div>
+			</h1>
 
-      <h2 class="text-xl lg:text-2xl opacity-95 text-wrap max-w-[700px]">
-        <span class="text-yellow-200/95"
-          >Desarrollador de Software y Full Stack Web. <span
-            class="text-blue-200/95"
-          >
-            Eterno Aprendiz apasionado de los detalles.
-          </span>
-        </span>
-        <span class="text-red-200/95">Málaga, España 🇪🇸.</span>
-        <span class="opacity-95"
-          >Especializado en crear y solucionar problemas 🤓.
-        </span>
-      </h2>
+			<h2 class='text-xl lg:text-2xl opacity-95 text-wrap max-w-[700px]'>
+				<span class='text-yellow-200/95'
+					>Desarrollador de Software y Full Stack Web. <span
+						class='text-blue-200/95'
+					>
+						Eterno Aprendiz apasionado de los detalles.
+					</span>
+				</span>
+				<span class='text-red-200/95'>Málaga, España 🇪🇸.</span>
+				<span class='opacity-95'
+					>Especializado en crear y solucionar problemas 🤓.
+				</span>
+			</h2>
 
-      <nav class="flex align-center justify-center sm:justify-start gap-4 mt-8 flex-wrap">
-        <SocialPill
-          href="https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
-        >
-          <LinkedInIcon class="size-4 md:size-5" />
-          LinkedIn
-        </SocialPill>
+			<nav
+				class='flex align-center justify-center sm:justify-start gap-4 mt-8 flex-wrap'
+			>
+				<SocialPill
+					href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
+				>
+					<LinkedInIcon class='size-4 md:size-5' />
+					LinkedIn
+				</SocialPill>
 
-        <SocialPill href="https://github.com/Fr4n0m">
-          <GitHubIcon class="size-4 md:size-5" />
-          GitHub
-        </SocialPill>
+				<SocialPill href='https://github.com/Fr4n0m'>
+					<GitHubIcon class='size-4 md:size-5' />
+					GitHub
+				</SocialPill>
 
-        <div class="flex gap-4">
-          <SocialPill href="mailto:Fran11799@outlook.com">
-            <MailIcon class="size-4 md:size-6" />
-            Fran11799@outlook.com
-          </SocialPill>
-  
-          <CopyButton />
-        </div>
+				<div class='flex gap-4'>
+					<SocialPill href='mailto:Fran11799@outlook.com'>
+						<MailIcon class='size-4 md:size-6' />
+						Fran11799@outlook.com
+					</SocialPill>
 
-      </nav>
-    </SectionContainer>
+					<CopyButton />
+				</div>
+			</nav>
+		</SectionContainer>
 
-    <SectionContainer id="experiencia">
-      <h2 class="text-3xl font-semibold mb-12 flex gap-x-3 items-center">
-        <Briefcase class="size-7" />
-        Experiencia laboral
-      </h2>
-      <Experience />
-    </SectionContainer>
-    
-    <SectionContainer id="proyectos">
-      <h2 class="text-3xl font-semibold -ml-1 flex gap-x-3 items-center">
-        <CodeIcon class="size-9" />
-        Proyectos
-      </h2>
-    </SectionContainer>
-    <Projects />
+		<SectionContainer id='experiencia'>
+			<h2 class='text-3xl font-semibold mb-12 flex gap-x-3 items-center'>
+				<Briefcase class='size-7' />
+				Experiencia laboral
+			</h2>
+			<Experience />
+		</SectionContainer>
 
-    <!-- <SectionContainer id="sobre-mi"></SectionContainer> -->
-  </main>
+		<SectionContainer id='proyectos'>
+			<h2 class='text-3xl font-semibold -ml-1 flex gap-x-3 items-center'>
+				<CodeIcon class='size-9' />
+				Proyectos
+			</h2>
+		</SectionContainer>
+		<Projects />
+
+		<!-- <SectionContainer id="sobre-mi"></SectionContainer> -->
+	</main>
 </Layout>
 
 <style>
-  .typing h1 {
-    overflow: hidden;
-    overflow-x: hidden;
-    padding-bottom: 0.07em;
-    border-right: 0.15em solid #1e42a0;
-    padding-right: 10px;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: 0.05em;
-  }
+	.typing h1 {
+		overflow: hidden;
+		overflow-x: hidden;
+		padding-bottom: 0.07em;
+		border-right: 0.15em solid #1e42a0;
+		padding-right: 10px;
+		white-space: nowrap;
+		margin: 0 auto;
+		letter-spacing: 0.05em;
+	}
 
-  .typewriter {
-    animation:
-      typing 3.5s steps(30, end),
-      blink-caret 0.8s step-end infinite;
-  }
+	.typewriter {
+		animation:
+			typing 3.5s steps(30, end),
+			blink-caret 0.8s step-end infinite;
+	}
 
-  .typewriter-mobile {
-    animation:
-      typing-mobile 3.5s steps(30, end),
-      blink-caret 0.8s step-end infinite;
-  }
+	.typewriter-mobile {
+		animation:
+			typing-mobile 3.5s steps(30, end),
+			blink-caret 0.8s step-end infinite;
+	}
 
-  @keyframes typing-mobile {
-    from {
-      width: 0;
-    }
-    to {
-      width: 70%;
-    }
-  }
+	@keyframes typing-mobile {
+		from {
+			width: 0;
+		}
+		to {
+			width: 70%;
+		}
+	}
 
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
+	@keyframes typing {
+		from {
+			width: 0;
+		}
+		to {
+			width: 100%;
+		}
+	}
 
-  @keyframes blink-caret {
-    from,
-    to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: rgba(30, 67, 160, 0.619);
-    }
-  }
+	@keyframes blink-caret {
+		from,
+		to {
+			border-color: transparent;
+		}
+		50% {
+			border-color: rgba(30, 67, 160, 0.619);
+		}
+	}
 </style>
