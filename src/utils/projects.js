@@ -19,8 +19,29 @@ export const PROJECTS = [
 			TAGS.JAVASCRIPT,
 			TAGS.REACT,
 			TAGS.NEXTJS,
+			TAGS.EXPRESS,
 			TAGS.NODEJS,
 			TAGS.MONGODB,
+		],
+	},
+	{
+		title: 'Realtime Chat',
+		description:
+			'Aplicación de chat en tiempo real que utiliza Socket.IO para la comunicación en tiempo real y Supabase como base de datos.',
+		link: 'https://realtime-chat-ten-nu.vercel.app/',
+		github: 'https://github.com/Fr4n0m/realtime-chat',
+		images: [
+			'/assets/images/projects/realtime-chat_1.webp',
+			'/assets/images/projects/realtime-chat_2.webp',
+		],
+		tags: [
+			TAGS.HTML,
+			TAGS.CSS,
+			TAGS.JAVASCRIPT,
+			TAGS.VITE,
+			TAGS.EXPRESS,
+			TAGS.NODEJS,
+			TAGS.SUPABASE,
 		],
 	},
 	{
@@ -49,7 +70,7 @@ export const PROJECTS = [
 		tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.VITE],
 	},
 	{
-		title: 'Bookshop view transitions demo',
+		title: 'Bookshop View Transitions Demo',
 		description: 'Librería web para practicar view transitions.',
 		link: 'https://bookshop-view-transitions.vercel.app/',
 		secondaryLink: 'https://bookshop-view-transitions-vite.vercel.app/',
@@ -77,6 +98,7 @@ export const PROJECTS = [
 			TAGS.VITE,
 			TAGS.REACT,
 			TAGS.NODEJS,
+			TAGS.EXPRESS,
 			TAGS.SUPABASE,
 		],
 	},

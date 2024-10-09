@@ -10,6 +10,7 @@ import ReactIcon from '@icons/React.astro';
 import MongoIcon from '@icons/Mongo.astro';
 import NodeIcon from '@icons/NodeJS.astro';
 import ViteIcon from '@icons/Vite';
+import ExpressIcon from '@icons/Express.astro';
 
 export const TAGS = {
 	HTML: {
@@ -83,5 +84,11 @@ export const TAGS = {
 		class: 'bg-[#f71ec2]/20 border-[#f71ec2] text-[#f71ec2]',
 		link: 'https://phaser.io/',
 		icon: PhaserIcon,
+	},
+	EXPRESS: {
+		name: 'ExpressJS',
+		class: 'bg-[#dbdbdb]/20 border-[#dbdbdb] text-[#dbdbdb]',
+		link: 'https://expressjs.com/',
+		icon: ExpressIcon,
 	},
 };
