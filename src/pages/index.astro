@@ -11,6 +11,7 @@ import Experience from '@components/Experience.astro';
 import Briefcase from '@icons/Briefcase.astro';
 import Projects from '@components/Projects/Projects.astro';
 import CopyButton from '@components/CopyButton.astro';
+import Skills from '@components/Skills.astro';
 ---
 
 <Layout
@@ -21,7 +22,7 @@ import CopyButton from '@components/CopyButton.astro';
 		<SectionContainer id='inicio' class='py-20 md:py-44 pb-32'>
 			<div class='flex justify-center items-center md:justify-start'>
 				<img
-					class='rounded-3xl mb-6 w-32'
+					class='rounded-3xl mb-6 w-32 border-2 border-yellow-200/95 shadow-md shadow-yellow-300/50'
 					src='/assets/images/foto-carnet.webp'
 					alt='Fr4n0m photo'
 				/>
@@ -86,6 +87,14 @@ import CopyButton from '@components/CopyButton.astro';
 					<CopyButton />
 				</div>
 			</nav>
+		</SectionContainer>
+
+		<SectionContainer id='skills'>
+			<h2 class='text-3xl font-semibold mb-12 flex gap-x-3 items-center'>
+				<Briefcase class='size-7' />
+				Skills
+			</h2>
+			<Skills />
 		</SectionContainer>
 
 		<SectionContainer id='experiencia'>
