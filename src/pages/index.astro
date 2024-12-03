@@ -12,6 +12,7 @@ import Briefcase from '@icons/Briefcase.astro';
 import Projects from '@components/Projects/Projects.astro';
 import CopyButton from '@components/CopyButton.astro';
 import Skills from '@components/Skills.astro';
+import Fire from '@icons/Fire.astro';
 ---
 
 <Layout
@@ -19,7 +20,7 @@ import Skills from '@components/Skills.astro';
 	description='Desarrollador Full Stack Web'
 >
 	<main class='px-4'>
-		<SectionContainer id='inicio' class='py-20 md:py-44 pb-32'>
+		<SectionContainer id='inicio' class='py-32 md:py-44 pb-32'>
 			<div class='flex justify-center items-center md:justify-start'>
 				<img
 					class='rounded-3xl mb-6 w-32 border-2 border-yellow-200/95 shadow-md shadow-yellow-300/50'
@@ -91,13 +92,13 @@ import Skills from '@components/Skills.astro';
 
 		<SectionContainer id='skills'>
 			<h2 class='text-3xl font-semibold mb-12 flex gap-x-3 items-center'>
-				<Briefcase class='size-7' />
+				<Fire class='size-7' />
 				Skills
 			</h2>
 			<Skills />
 		</SectionContainer>
 
-		<SectionContainer id='experiencia'>
+		<SectionContainer id='experiencia' class='mt-24 md:mt-0'>
 			<h2 class='text-3xl font-semibold mb-12 flex gap-x-3 items-center'>
 				<Briefcase class='size-7' />
 				Experiencia laboral

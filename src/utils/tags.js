@@ -20,6 +20,14 @@ import MySQLIcon from '@icons/MySQL.astro';
 import StripeIcon from '@icons/Stripe.astro';
 import TypeScriptIcon from '@icons/TypeScript.astro';
 import CppIcon from '@icons/Cpp.astro';
+import NpmIcon from '@icons/Npm.astro';
+import PnpmIcon from '@icons/Pnpm.astro';
+import BunIcon from '@icons/Bun.astro';
+import VercelIcon from '@icons/Vercel.astro';
+import DebianIcon from '@icons/Debian.astro';
+import KaliIcon from '@icons/Kali.astro';
+import MacOSIcon from '@icons/MacOS.astro';
+import WindowsIcon from '@icons/Windows.astro';
 
 export const TAGS = {
 	HTML: {
@@ -34,23 +42,17 @@ export const TAGS = {
 		link: 'https://www.w3.org/Style/CSS/',
 		icon: CSSIcon,
 	},
-	NEXTJS: {
-		name: 'NextJS',
-		class: 'bg-[#fff]/20 border-[#fff] text-[#fff]',
-		link: 'https://nextjs.org/',
-		icon: NextJSIcon,
-	},
 	TAILWIND: {
 		name: 'Tailwind CSS',
-		class: 'bg-[#21a9bc]/20 border-[#21a9bc] text-[#21a9bc]',
+		class: 'bg-[#26c7df]/20 border-[#26c7df] text-[#26c7df]',
 		link: 'https://tailwindcss.com/',
 		icon: TailwindIcon,
 	},
-	ASTRO: {
-		name: 'Astro',
-		class: 'bg-[#FF5D01]/20 border-[#FF5D01] text-[#FF5D01]',
-		link: 'https://astro.build/',
-		icon: AstroIcon,
+	CPP: {
+		name: 'C++',
+		class: 'bg-[#0075d2]/20 border-[#0075d2] text-[#0075d2]',
+		link: 'https://isocpp.org/',
+		icon: CppIcon,
 	},
 	JAVASCRIPT: {
 		name: 'JavaScript',
@@ -64,23 +66,11 @@ export const TAGS = {
 		link: 'https://www.typescriptlang.org/',
 		icon: TypeScriptIcon,
 	},
-	REACT: {
-		name: 'React',
-		class: 'bg-[#00D8FF]/20 border-[#00D8FF] text-[#00D8FF]',
-		link: 'https://es.react.dev/',
-		icon: ReactIcon,
-	},
-	MONGODB: {
-		name: 'MongoDB',
-		class: 'bg-[#01EC64]/20 border-[#01EC64] text-[#01EC64]',
-		link: 'https://www.mongodb.com/',
-		icon: MongoIcon,
-	},
-	SUPABASE: {
-		name: 'Supabase',
-		class: 'bg-[#249361]/20 border-[#3ECF8E] text-[#3ECF8E]',
-		link: 'https://supabase.com/',
-		icon: SupabaseIcon,
+	EXPRESS: {
+		name: 'ExpressJS',
+		class: 'bg-[#dbdbdb]/20 border-[#dbdbdb] text-[#dbdbdb]',
+		link: 'https://expressjs.com/',
+		icon: ExpressIcon,
 	},
 	NODEJS: {
 		name: 'NodeJS',
@@ -94,41 +84,23 @@ export const TAGS = {
 		link: 'https://deno.com/',
 		icon: DenoIcon,
 	},
-	VITE: {
-		name: 'Vite',
-		class: 'bg-[#BD34FE]/20 border-[#c436ff] text-[#c436ff]',
-		link: 'https://vitejs.dev/',
-		icon: ViteIcon,
+	MONGODB: {
+		name: 'MongoDB',
+		class: 'bg-[#01EC64]/20 border-[#01EC64] text-[#01EC64]',
+		link: 'https://www.mongodb.com/',
+		icon: MongoIcon,
 	},
-	PHASER: {
-		name: 'Phaser',
-		class: 'bg-[#f71ec2]/20 border-[#f71ec2] text-[#f71ec2]',
-		link: 'https://phaser.io/',
-		icon: PhaserIcon,
+	SUPABASE: {
+		name: 'Supabase',
+		class: 'bg-[#249361]/20 border-[#3ECF8E] text-[#3ECF8E]',
+		link: 'https://supabase.com/',
+		icon: SupabaseIcon,
 	},
-	EXPRESS: {
-		name: 'ExpressJS',
-		class: 'bg-[#dbdbdb]/20 border-[#dbdbdb] text-[#dbdbdb]',
-		link: 'https://expressjs.com/',
-		icon: ExpressIcon,
-	},
-	DOCKER: {
-		name: 'Docker',
-		class: 'bg-[#008fe2]/20 border-[#008fe2] text-[#008fe2]',
-		link: 'https://www.docker.com/',
-		icon: DockerIcon,
-	},
-	GIT: {
-		name: 'Git',
-		class: 'bg-[#DE4C36]/20 border-[#DE4C36] text-[#DE4C36]',
-		link: 'https://git-scm.com/',
-		icon: GitIcon,
-	},
-	GITHUB: {
-		name: 'GitHub',
-		class: 'bg-[#fafbfc]/20 border-[#fafbfc] text-[#fafbfc]',
-		link: 'https://github.com/',
-		icon: GitHubIcon,
+	STRIPE: {
+		name: 'Stripe',
+		class: 'bg-[#635BFF]/20 border-[#635BFF] text-[#635BFF]',
+		link: 'https://stripe.com/',
+		icon: StripeIcon,
 	},
 	GRAPHQL: {
 		name: 'Graphql',
@@ -142,16 +114,100 @@ export const TAGS = {
 		link: 'https://www.mysql.com/',
 		icon: MySQLIcon,
 	},
-	STRIPE: {
-		name: 'Stripe',
-		class: 'bg-[#635BFF]/20 border-[#635BFF] text-[#635BFF]',
-		link: 'https://stripe.com/',
-		icon: StripeIcon,
+	REACT: {
+		name: 'React',
+		class: 'bg-[#00D8FF]/20 border-[#00D8FF] text-[#00D8FF]',
+		link: 'https://es.react.dev/',
+		icon: ReactIcon,
 	},
-	CPP: {
-		name: 'C++',
-		class: 'bg-[#0075d2]/20 border-[#0075d2] text-[#0075d2]',
-		link: 'https://isocpp.org/',
-		icon: CppIcon,
+	NEXTJS: {
+		name: 'NextJS',
+		class: 'bg-[#fff]/20 border-[#fff] text-[#fff]',
+		link: 'https://nextjs.org/',
+		icon: NextJSIcon,
+	},
+	ASTRO: {
+		name: 'Astro',
+		class: 'bg-[#FF5D01]/20 border-[#FF5D01] text-[#FF5D01]',
+		link: 'https://astro.build/',
+		icon: AstroIcon,
+	},
+	VITE: {
+		name: 'Vite',
+		class: 'bg-[#BD34FE]/20 border-[#c436ff] text-[#c436ff]',
+		link: 'https://vitejs.dev/',
+		icon: ViteIcon,
+	},
+	PHASER: {
+		name: 'Phaser',
+		class: 'bg-[#f71ec2]/20 border-[#f71ec2] text-[#f71ec2]',
+		link: 'https://phaser.io/',
+		icon: PhaserIcon,
+	},
+	DOCKER: {
+		name: 'Docker',
+		class: 'bg-[#008fe2]/20 border-[#008fe2] text-[#008fe2]',
+		link: 'https://www.docker.com/',
+		icon: DockerIcon,
+	},
+	VERCEL: {
+		name: 'Vercel',
+		class: 'bg-[#fff]/20 border-[#fff] text-[#fff]',
+		link: 'https://vercel.com/',
+		icon: VercelIcon,
+	},
+	GIT: {
+		name: 'Git',
+		class: 'bg-[#DE4C36]/20 border-[#DE4C36] text-[#DE4C36]',
+		link: 'https://git-scm.com/',
+		icon: GitIcon,
+	},
+	GITHUB: {
+		name: 'GitHub',
+		class: 'bg-[#fafbfc]/20 border-[#fafbfc] text-[#fafbfc]',
+		link: 'https://github.com/',
+		icon: GitHubIcon,
+	},
+	NPM: {
+		name: 'Npm',
+		class: 'bg-[#cb3837]/20 border-[#cb3837] text-[#cb3837]',
+		link: 'https://www.npmjs.com/',
+		icon: NpmIcon,
+	},
+	PNPM: {
+		name: 'Pnpm',
+		class: 'bg-[#f9ad00]/20 border-[#f9ad00] text-[#f9ad00]',
+		link: 'https://pnpm.io/',
+		icon: PnpmIcon,
+	},
+	BUN: {
+		name: 'Bun',
+		class: 'bg-[#f6dece]/20 border-[#f6dece] text-[#f6dece]',
+		link: 'https://bun.sh/',
+		icon: BunIcon,
+	},
+	WINDOWS: {
+		name: 'Windows',
+		class: 'bg-[#00adef]/20 border-[#00adef] text-[#00adef]',
+		link: 'https://www.microsoft.com/es-es/windows?r=1',
+		icon: WindowsIcon,
+	},
+	MACOS: {
+		name: 'MacOS',
+		class: 'bg-[#fff]/20 border-[#fff] text-[#fff]',
+		link: 'https://www.apple.com/es/macos/macos-sequoia/',
+		icon: MacOSIcon,
+	},
+	DEBIAN: {
+		name: 'Debian',
+		class: 'bg-[#d70751]/20 border-[#d70751] text-[#d70751]',
+		link: 'https://www.debian.org/index.es.html',
+		icon: DebianIcon,
+	},
+	KALI: {
+		name: 'Kali',
+		class: 'bg-[#fff]/20 border-[#fff] text-[#fff]',
+		link: 'https://www.kali.org/',
+		icon: KaliIcon,
 	},
 };
