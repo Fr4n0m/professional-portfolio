@@ -22,6 +22,11 @@ const navItems = [
 		label: 'proyectos',
 		url: '/#proyectos',
 	},
+	{
+		title: 'Certificaciones',
+		label: 'certificaciones',
+		url: '/certifications',
+	},
 	/*  {
     title: "Sobre mí",
     label: "sobre-mi",
@@ -74,12 +79,11 @@ const navItems = [
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		const sections = document.querySelectorAll('section[data-section]');
+
 		const navItems = document.querySelectorAll('header nav a');
 
 		if (sections.length === 0) {
-			console.error(
-				'No se encontraron secciones con data-section en el DOM',
-			);
+			console.error('No se encontraron secciones con ID en el DOM');
 			return;
 		}
 

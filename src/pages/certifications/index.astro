@@ -1,0 +1,25 @@
+---
+import Layout from '@layouts/Layout.astro';
+import SectionContainer from '@components/SectionContainer.astro';
+import CertificationsIcon from '@icons/CertificationsIcon.astro';
+import Certifications from '@components/Certifications.astro';
+---
+
+<Layout
+	title='Certificaciones - Portfolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web'
+	description='Certificaciones - Portfolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web'
+>
+	<main class='px-4'>
+		<SectionContainer
+			id='certificaciones'
+			data-section='certificaciones'
+			class='pt-36 md:py-28'
+		>
+			<h2 class='text-3xl font-semibold -ml-1 flex gap-x-3 items-center'>
+				<CertificationsIcon class='size-9' />
+				Certificaciones
+			</h2>
+		</SectionContainer>
+		<Certifications />
+	</main>
+</Layout>

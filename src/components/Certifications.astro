@@ -1,0 +1,33 @@
+---
+import { CERTIFICATIONS } from '@utils/certificates';
+import LinkButton from './LinkButton.astro';
+---
+
+<div class='section w-full mx-auto md:-mt-[110px] container lg:w-[740px]'>
+	{
+		CERTIFICATIONS.map(({ image, title, description, entity, url }) => (
+			<>
+				<article>
+					<h3 class='text-2xl mt-12 font-semibold text-yellow-200/90 mb-6'>
+						{title}
+					</h3>
+
+					<p class='mb-6'>{description}</p>
+
+					<a href={url}>
+						<img src={image} alt={title} />
+					</a>
+
+					<footer class='flex items-end justify-start mt-6 gap-x-4 mb-16'>
+						{entity && (
+							<LinkButton href={entity.url}>
+								<entity.icon />
+								{entity.name}
+							</LinkButton>
+						)}
+					</footer>
+				</article>
+			</>
+		))
+	}
+</div>
