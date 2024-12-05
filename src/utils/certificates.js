@@ -19,7 +19,8 @@ const CERTIFICATIONS = [
 		title: 'Certificación de Desarrollador Web Full Stack',
 		image: '/assets/images/certificates/images/Certificado-CodeSpace.webp',
 		url: '/assets/images/certificates/pdf/Certificado-CodeSpace.pdf',
-		description: '',
+		description:
+			'Formación en desarrollo web Full Stack, incluyendo creación de interfaces con HTML, CSS y React, desarrollo backend con Node.js, gestión de bases de datos y despliegue con herramientas DevOps entre otras muchas tecnologías.',
 		entity: ENTITIES.CODESPACE,
 	},
 	{
