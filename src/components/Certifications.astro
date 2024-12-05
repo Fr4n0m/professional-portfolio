@@ -15,7 +15,11 @@ import LinkButton from './LinkButton.astro';
 					<p class='mb-6'>{description}</p>
 
 					<a href={url}>
-						<img src={image} alt={title} />
+						<img
+							src={image}
+							alt={title}
+							class='hover:scale-[1.01] transition-all active:scale-[1] rounded-lg'
+						/>
 					</a>
 
 					<footer class='flex items-end justify-start mt-6 gap-x-4 mb-16'>
