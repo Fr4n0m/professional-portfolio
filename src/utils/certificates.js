@@ -17,7 +17,8 @@ const ENTITIES = {
 const CERTIFICATIONS = [
 	{
 		title: 'Certificación de Desarrollador Web Full Stack',
-		image: '',
+		image: '/assets/images/certificates/images/Certificado-CodeSpace.webp',
+		url: '/assets/images/certificates/pdf/Certificado-CodeSpace.pdf',
 		description: '',
 		entity: ENTITIES.CODESPACE,
 	},
