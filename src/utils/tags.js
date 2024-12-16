@@ -28,6 +28,7 @@ import DebianIcon from '@icons/Debian.astro';
 import KaliIcon from '@icons/Kali.astro';
 import MacOSIcon from '@icons/MacOS.astro';
 import WindowsIcon from '@icons/Windows.astro';
+import StrapiIcon from '@icons/Strapi.astro';
 
 export const TAGS = {
 	HTML: {
@@ -113,6 +114,12 @@ export const TAGS = {
 		class: 'bg-[#008fb6]/20 border-[#008fb6] text-[#008fb6]',
 		link: 'https://www.mysql.com/',
 		icon: MySQLIcon,
+	},
+	STRAPI: {
+		name: 'Strapi',
+		class: 'bg-[#6968ff]/20 border-[#6968ff] text-[#6968ff]',
+		link: 'https://strapi.io/',
+		icon: StrapiIcon,
 	},
 	REACT: {
 		name: 'React',

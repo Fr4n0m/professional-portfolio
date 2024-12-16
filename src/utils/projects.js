@@ -25,6 +25,28 @@ export const PROJECTS = [
 		],
 	},
 	{
+		title: 'Strapi Games Store',
+		description:
+			'Aplicación web diseñada para gestionar contenido relacionado con videojuegos utilizando Strapi como backend. Este proyecto permite a los usuarios explorar diversas categorías de juegos, leer artículos y conocer más sobre los autores.',
+		link: 'https://strapi-games-store.vercel.app/',
+		github: 'https://github.com/Fr4n0m/strapi-games-store',
+		images: [
+			'/assets/images/projects/strapi-games-web-1.webp',
+			'/assets/images/projects/strapi-games-web-2.webp',
+			'/assets/images/projects/strapi-games-web-3.webp',
+		],
+		tags: [
+			TAGS.HTML,
+			TAGS.CSS,
+			TAGS.TAILWIND,
+			TAGS.JAVASCRIPT,
+			TAGS.TYPESCRIPT,
+			TAGS.REACT,
+			TAGS.NEXTJS,
+			TAGS.STRAPI,
+		],
+	},
+	{
 		title: 'Realtime Chat',
 		description:
 			'Aplicación de chat en tiempo real que utiliza Socket.IO para la comunicación en tiempo real y Supabase como base de datos.',
