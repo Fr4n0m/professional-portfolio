@@ -119,7 +119,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	id='hotkeypad'
 	data-placeholder='Buscar comando'
 	data-info={JSON.stringify(profilesInfo)}
-	placeholder='Buscar comando'
+	placeholder='Buscar'
 	hideBreadcrumbs
 >
 </ninja-keys>
@@ -182,7 +182,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		);
 
 		ninja.data = [
-			{
+			/* {
 				id: 'print',
 				title: 'Imprimir',
 				icon: `<svg style="margin-right: 8px" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -193,7 +193,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 				handler: () => {
 					window.print();
 				},
-			},
+			}, */
 			...data,
 		];
 	}
