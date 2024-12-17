@@ -4,6 +4,7 @@ import '@fontsource-variable/onest';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import AlternativeFooter from '@components/AlternativeFooter.astro';
+import KeyboardManager from '@components/KeyboardManager.astro';
 
 interface Props {
 	title: string;
@@ -33,6 +34,8 @@ const { description, title } = Astro.props;
 			<slot />
 		</main>
 		<AlternativeFooter />
+
+		<KeyboardManager />
 		<!-- <Footer /> -->
 	</body>
 </html>
