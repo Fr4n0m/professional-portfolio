@@ -4,15 +4,7 @@ interface Profile {
 	username: string;
 	url: string;
 }
-interface Info {
-	id: string;
-	section: string;
-	title: string;
-	url: string;
-	icon: string;
-	hotkey: string;
-	handler?: () => void;
-}
+
 const profiles: Profile[] = [
 	{
 		network: 'LinkedIn',
@@ -140,10 +132,19 @@ const profilesInfo = profiles.map(({ network, url }) => {
 <script>
 	import 'ninja-keys';
 
+	interface Info {
+		id: string;
+		section: string;
+		title: string;
+		url: string;
+		icon: string;
+		hotkey: string;
+		handler?: () => void;
+	}
 	interface Item {
 		name: string;
 		hidden?: boolean;
-		[key: string]: any; // Si hay más propiedades dinámicas
+		[key: string]: any;
 	}
 
 	const ninja = document.getElementById('hotkeypad')!;
@@ -165,7 +166,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	});
 
 	const footer = document.getElementById('normal-footer');
-	footer?.addEventListener('click', () => hotkeypad.open());
+	footer?.addEventListener('click', () => ninja.open());
 
 	if (ninja != null) {
 		const info = ninja.getAttribute('data-info') ?? '[]';
