@@ -27,7 +27,7 @@ export const PROJECTS = [
 	{
 		title: 'Strapi Games Store',
 		description:
-			'Aplicación web diseñada para gestionar contenido relacionado con videojuegos utilizando Strapi como backend. Este proyecto permite a los usuarios explorar diversas categorías de juegos, leer artículos y conocer más sobre los autores.',
+			'Aplicación web diseñada para gestionar contenido relacionado con videojuegos utilizando Strapi como backend.',
 		link: 'https://strapi-games-store.vercel.app/',
 		github: 'https://github.com/Fr4n0m/strapi-games-store',
 		images: [
