@@ -1,32 +1,7 @@
 ---
-interface Profile {
-	network: string;
-	username: string;
-	url: string;
-}
+import 'hotkeypad/reset.css';
+import 'hotkeypad/index.css';
 
-const profiles: Profile[] = [
-	{
-		network: 'LinkedIn',
-		username: 'Francisco Rodríguez',
-		url: 'https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/',
-	},
-	/* {
-		network: 'InfoJobs',
-		username: 'Francisco Rodríguez',
-		url: '',
-	}, */
-	{
-		network: 'GitHub',
-		username: 'Fr4n0m',
-		url: 'https://github.com/Fr4n0m',
-	},
-	{
-		network: 'CV',
-		username: 'Francisco Rodríguez',
-		url: 'https://cv-web-smoky.vercel.app/',
-	},
-];
 type SocialIcon = Record<string, string | any>;
 const SOCIAL_ICONS: SocialIcon = {
 	GitHub: `<svg
@@ -76,6 +51,41 @@ const SOCIAL_ICONS: SocialIcon = {
 	CV: `<svg height="23"
   width="23" viewBox="0 0 24 24" fill="none" style="margin-right: 7px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13 9L15 15L17 9M10 15C9.06812 15 8.60218 15 8.23463 14.8478C7.74458 14.6448 7.35523 14.2554 7.15224 13.7654C7 13.3978 7 12.9319 7 12C7 11.0681 7 10.6022 7.15224 10.2346C7.35523 9.74458 7.74458 9.35523 8.23463 9.15224C8.60218 9 9.06812 9 10 9M7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.07989 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.07989 20 7.2 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`,
 };
+
+interface Profile {
+	network: string;
+	username: string;
+	url: string;
+}
+interface Item {
+	name: string;
+	hidden?: boolean;
+	[key: string]: any;
+}
+
+const profiles: Profile[] = [
+	{
+		network: 'LinkedIn',
+		username: 'Francisco Rodríguez',
+		url: 'https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/',
+	},
+	/* {
+		network: 'InfoJobs',
+		username: 'Francisco Rodríguez',
+		url: '',
+	}, */
+	{
+		network: 'GitHub',
+		username: 'Fr4n0m',
+		url: 'https://github.com/Fr4n0m',
+	},
+	{
+		network: 'CV',
+		username: 'Francisco Rodríguez',
+		url: 'https://cv-web-smoky.vercel.app/',
+	},
+];
+
 const profilesInfo = profiles.map(({ network, url }) => {
 	const icon = SOCIAL_ICONS[network];
 	const firstLetter = network[0].toUpperCase();
@@ -119,19 +129,15 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	</svg>
 </div>
 
-<ninja-keys
-	class='dark'
+<div
 	id='hotkeypad'
-	data-placeholder='Buscar comando'
+	data-placeholder='Buscar'
+	class='dark'
 	data-info={JSON.stringify(profilesInfo)}
-	placeholder='Buscar'
-	hideBreadcrumbs
 >
-</ninja-keys>
+</div>
 
 <script>
-	import 'ninja-keys';
-
 	interface Info {
 		id: string;
 		section: string;
@@ -141,53 +147,27 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		hotkey: string;
 		handler?: () => void;
 	}
-	interface Item {
-		name: string;
-		hidden?: boolean;
-		[key: string]: any;
-	}
 
-	const ninja = document.getElementById('hotkeypad')!;
-	const footerButton = document.getElementById('footer-button');
+	import HotKeyPad from 'hotkeypad';
 
-	footerButton?.addEventListener('click', () => {
-		var event = new KeyboardEvent('keydown', {
-			key: 'K',
-			code: 'KeyK',
-			keyCode: 75,
-			which: 75,
-			ctrlKey: true,
-			altKey: false,
-			shiftKey: false,
-			metaKey: false,
-		});
+	const hotkeypad = new HotKeyPad();
+	const info = hotkeypad.instance.getAttribute('data-info') ?? '[]';
+	const parsedInfo = JSON.parse(info) as Info[];
 
-		document.dispatchEvent(event);
-	});
-
-	const footer = document.getElementById('normal-footer');
-	footer?.addEventListener('click', () => ninja.open());
-
-	if (ninja != null) {
-		const info = ninja.getAttribute('data-info') ?? '[]';
-		const parsedInfo = JSON.parse(info);
-
-		const data = parsedInfo.map(
-			({ url, hotkey, icon, id, section, title }: Info) => {
-				return {
-					id,
-					title,
-					icon,
-					hotkey,
-					section,
-					handler: () => {
-						window.open(url, '_blank');
-					},
-				};
+	const data = parsedInfo.map(({ url, hotkey, icon, id, section, title }) => {
+		return {
+			id,
+			title,
+			icon,
+			hotkey,
+			section,
+			handler: () => {
+				window.open(url, '_blank');
 			},
-		);
-		const allData: Item[] = [
-			/* {
+		};
+	});
+	hotkeypad.setCommands([
+		/* {
 				id: 'print',
 				title: 'Imprimir',
 				icon: `<svg style="margin-right: 8px" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -199,7 +179,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 					window.print();
 				},
 			}, */
-			/* {
+		/* {
 				id: 'Theme',
 				title: 'Change theme...',
 				icon: 'desktop_windows',
@@ -232,20 +212,20 @@ const profilesInfo = profiles.map(({ network, url }) => {
 					document.documentElement.classList.add('dark');
 				},
 			}, */
-			{
-				id: 'inicio',
-				title: 'Ir a Inicio',
-				icon: `<svg {...Astro.props}  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2" style="margin-right: 8px"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>`,
-				hotkey: '⌘+H',
-				section: 'Navegación',
-				handler: () => {
-					window.location.href = '/#';
-				},
+		{
+			id: 'inicio',
+			title: 'Inicio',
+			icon: `<svg {...Astro.props}  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2" style="margin-right: 8px"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>`,
+			hotkey: '⌘+H',
+			section: 'Navegación',
+			handler: () => {
+				window.location.href = '/#';
 			},
-			{
-				id: 'certifications',
-				title: 'Ir a Certificaciones',
-				icon: `<svg
+		},
+		{
+			id: 'certifications',
+			title: 'Certificaciones',
+			icon: `<svg
 	{...Astro.props}
 	xmlns='http://www.w3.org/2000/svg'
 	width='22'
@@ -266,16 +246,16 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		d='M6 15l2 0'></path></svg
 >
 `,
-				hotkey: '⌘+S',
-				section: 'Navegación',
-				handler: () => {
-					window.location.href = '/certifications';
-				},
+			hotkey: '⌘+S',
+			section: 'Navegación',
+			handler: () => {
+				window.location.href = '/certifications';
 			},
-			{
-				id: 'projects',
-				title: 'Ir a Proyectos',
-				icon: `<svg
+		},
+		{
+			id: 'projects',
+			title: 'Proyectos',
+			icon: `<svg
 	{...Astro.props}
 	xmlns='http://www.w3.org/2000/svg'
 	width='24'
@@ -291,37 +271,33 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		d='M5 7l5 5l-5 5'></path><path d='M13 17l6 0'></path></svg
 >
 `,
-				hotkey: '⌘+P',
-				section: 'Navegación',
-				handler: () => {
-					window.location.href = '/projects';
-				},
+			hotkey: '⌘+P',
+			section: 'Navegación',
+			handler: () => {
+				window.location.href = '/projects';
 			},
+		},
+		...data,
+	]);
 
-			...data,
-		];
-
-		function updateNinjaData(searchQuery: string): void {
-			ninja.data = allData.filter(item => {
-				const matchesSearch = item.title
-					.toLowerCase()
-					.includes(searchQuery.toLowerCase());
-				if (searchQuery) {
-					return matchesSearch;
-				} else {
-					return !item.hidden;
-				}
-			});
-		}
-
-		ninja.addEventListener('input', (event: Event) => {
-			const target = event.target as HTMLInputElement;
-			const searchQuery = target.value.trim();
-			updateNinjaData(searchQuery);
+	const footerButton = document.getElementById('footer-button');
+	footerButton?.addEventListener('click', () => {
+		var event = new KeyboardEvent('keydown', {
+			key: 'K',
+			code: 'KeyK',
+			keyCode: 75,
+			which: 75,
+			ctrlKey: true,
+			altKey: false,
+			shiftKey: false,
+			metaKey: false,
 		});
 
-		updateNinjaData('');
-	}
+		document.dispatchEvent(event);
+	});
+
+	const footer = document.getElementById('normal-footer');
+	footer?.addEventListener('click', () => hotkeypad.open());
 </script>
 
 <style>
