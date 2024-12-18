@@ -174,16 +174,16 @@ export const PROJECTS = [
 		],
 		tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.NEXTJS],
 	},
-	/* {
-    title: "1er Porfolio web",
-    description:
-      "Primer porfolio web usando simplemente HTML, CSS y JavaScript. Más adelante lo implementé en Astro.",
-    link: "https://portfolio-fr4n0m-astro.vercel.app/",
-    github: "https://github.com/Fr4n0m/portfolio-astro",
-    images: [
-      "/assets/images/projects/1er_portfolio.webp",
-      "/assets/images/projects/1er_portfolio_2.webp",
-    ],
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.ASTRO],
-  }, */
+	{
+		title: '1er Porfolio web',
+		description:
+			'Primer porfolio web usando simplemente HTML, CSS y JavaScript. Más adelante lo implementé en Astro.',
+		link: 'https://portfolio-fr4n0m-astro.vercel.app/',
+		github: 'https://github.com/Fr4n0m/portfolio-astro',
+		images: [
+			'/assets/images/projects/1er_portfolio.webp',
+			'/assets/images/projects/1er_portfolio_2.webp',
+		],
+		tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.REACT, TAGS.ASTRO],
+	},
 ];
