@@ -57,7 +57,7 @@ const Carousel: React.FC<Props> = ({ images }) => {
 					</div>
 				))}
 			</div>
-			<div className='absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2'>
+			<div className='absolute z-1 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2'>
 				{images.map((_, index) => (
 					<button
 						type='button'
@@ -71,7 +71,7 @@ const Carousel: React.FC<Props> = ({ images }) => {
 			</div>
 			<button
 				type='button'
-				className='absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
+				className='absolute top-0 start-0 z-1 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
 				onClick={handlePrevClick}
 			>
 				<span className='inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none'>
@@ -95,7 +95,7 @@ const Carousel: React.FC<Props> = ({ images }) => {
 			</button>
 			<button
 				type='button'
-				className='absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
+				className='absolute top-0 end-0 z-1 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
 				onClick={handleNextClick}
 			>
 				<span className='inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none'>
