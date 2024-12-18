@@ -84,7 +84,7 @@ export const PROJECTS = [
 		tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.VITE, TAGS.PHASER],
 	},
 	{
-		title: 'Paint Windows 95',
+		title: "Paint Windows 95'",
 		description: 'Aplicación Paint inspirada en la era de Windows 95.',
 		link: 'https://paint-win-95-blond.vercel.app/',
 		github: 'https://github.com/Fr4n0m/paint-win-95',
