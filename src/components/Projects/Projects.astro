@@ -5,6 +5,7 @@ import Carousel from '@components/Carousel';
 import LinkButton from '@components/LinkButton.astro';
 import ProjectsDescription from '@components/Projects/ProjectsDescription';
 import Arrow from '@icons/Arrow.astro';
+import Tag from '@components/Tag.astro';
 
 import { PROJECTS } from '@utils/projects';
 
@@ -47,15 +48,7 @@ const selectedProjects = PROJECTS.filter(
 					<ul class='flex gap-x-3 flex-row text-nowrap flex-wrap'>
 						{tags.map(tag => (
 							<li>
-								<a
-									target='_blank'
-									rel='noopener noreferrer'
-									href={tag.link}
-									class={`flex gap-x-2 rounded-full text-xs items-center ${tag.class} px-3 py-1 border mb-6 hover:scale-110 active:scale-105 transition-all`}
-								>
-									<tag.icon class='size-3' />
-									{tag.name}
-								</a>
+								<Tag {...tag} />
 							</li>
 						))}
 					</ul>

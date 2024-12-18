@@ -1,0 +1,20 @@
+---
+interface Tag {
+	name: string;
+	link: string;
+	class: string;
+	icon: (_props: Record<string, any>) => any;
+}
+
+const props = Astro.props;
+---
+
+<a
+	target='_blank'
+	rel='noopener noreferrer'
+	href={props.link}
+	class={`flex gap-x-2 rounded-full text-xs items-center ${props.class} px-3 py-1 border mb-6 hover:scale-110 active:scale-105 transition-all`}
+>
+	<props.icon class='size-3' />
+	{props.name}
+</a>
