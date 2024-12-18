@@ -101,10 +101,10 @@ const profilesInfo = profiles.map(({ network, url }) => {
 
 <footer
 	id='normal-footer'
-	class='no-print active:scale-90 transition-all duration-300 ease-in-out'
+	class='key-footer no-print active:scale-90 transition-all duration-300 ease-in-out'
 >
-	<kbd id='kbd-2' class='-pt-2 pr-1 pl-1'>⌘</kbd><p>&nbsp;+&nbsp;</p><kbd
-		>K</kbd
+	<kbd id='kbd' class='-pt-2 pr-1 pl-1'>⌘</kbd><p>&nbsp;+&nbsp;</p><kbd
+		id='kbd'>K</kbd
 	>
 </footer>
 
@@ -339,7 +339,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			cursor: pointer;
 		}
 	}
-	footer {
+	.key-footer {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -365,17 +365,17 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		user-select: none;
 	}
 
-	footer:hover {
-		background: #616161;
+	.key-footer:hover {
+		background: #717171b4;
 		cursor: pointer;
 
 		kbd {
-			background: #b1b1b1;
+			background: rgb(145, 145, 145);
 		}
 	}
 
-	kbd {
-		background: #c3c3c3;
+	#kbd {
+		background: #8c8c8c;
 		border-radius: 4px;
 		padding-top: -5px;
 		padding-bottom: -5px;
