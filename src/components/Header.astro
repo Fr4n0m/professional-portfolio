@@ -49,7 +49,7 @@ const navItems = [
 	class='fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2'
 >
 	<nav
-		class='flex px-3 text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 xs:p-0 xs:px-1 lg:p-0 lg:px-2 md:p-0 md:px-2 xl:p-0 xl:px-2 text-gray-200 items-center justify-center'
+		class='flex px-3 text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 xs:p-0 xs:px-1 lg:p-0 lg:px-2 md:p-0 md:px-2 xl:p-0 xl:px-2 text-gray-500/90 dark:text-white/90 items-center justify-center'
 	>
 		<a href='/#' class='flex justify-center items-center mr-1'>
 			<img
@@ -62,7 +62,7 @@ const navItems = [
 		{
 			navItems.map(link => (
 				<a
-					class='block px-2 py-2 transition text-nowrap hover:text-yellow-300'
+					class='block px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
 					aria-label={link.label}
 					href={link.url}
 					target={link.title === 'CV' ? '_blank' : '_self'}
@@ -72,7 +72,7 @@ const navItems = [
 			))
 		}
 
-		<!--  <ThemeToggle /> -->
+		<ThemeToggle />
 	</nav>
 </header>
 
@@ -94,9 +94,11 @@ const navItems = [
 						if (
 							item.getAttribute('aria-label') === entry.target.id
 						) {
-							item.classList.add('text-yellow-300');
+							item.classList.add('dark:text-yellow-300');
+							item.classList.add('text-blue-800');
 						} else {
-							item.classList.remove('text-yellow-300');
+							item.classList.remove('dark:text-yellow-300');
+							item.classList.remove('text-blue-800');
 						}
 					});
 				}
@@ -128,9 +130,16 @@ const navItems = [
 		animation-range: 0 1000px;
 	}
 
+	nav {
+		@apply dark:bg-gray-800/90 bg-white/50;
+	}
+
 	@keyframes nav-shadown {
+		0% {
+			@apply dark:bg-gray-800/0 bg-white/0;
+		}
 		to {
-			@apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
+			@apply shadow-lg ring-1 backdrop-blur ring-white/10;
 		}
 	}
 </style>

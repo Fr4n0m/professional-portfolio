@@ -1,7 +1,7 @@
 ---
-/* import SunIcon from "@icons/Sun.astro";
-import MoonIcon from "@icons/Moon.astro";
-import SystemIcon from "@icons/System.astro"; */
+import SunIcon from '@icons/Sun.astro';
+import MoonIcon from '@icons/Moon.astro';
+import SystemIcon from '@icons/System.astro';
 
 const THEMES = ['Light', 'Dark', 'System'];
 ---
@@ -12,15 +12,15 @@ const THEMES = ['Light', 'Dark', 'System'];
 		class='appearance-none border-none flex hover:scale-125 transition'
 	>
 		<span class='sr-only'>Elige el tema</span>
-		<!-- <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
-    <MoonIcon
-      id="dark"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-    <SystemIcon
-      id="system"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    /> -->
+		<SunIcon id='light' class='theme-toggle-icon size-4 transition-all' />
+		<MoonIcon
+			id='dark'
+			class='theme-toggle-icon absolute size-4 transition-all'
+		/>
+		<SystemIcon
+			id='system'
+			class='theme-toggle-icon absolute size-4 transition-all'
+		/>
 	</button>
 	<div
 		id='themes-menu'

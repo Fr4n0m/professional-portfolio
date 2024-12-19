@@ -12,7 +12,7 @@ const ProjectsDescription = ({ description }) => {
 			<div
 				className={`${
 					expanded ? 'line-clamp-none' : 'line-clamp-3'
-				} overflow-hidden text-pretty`}
+				} overflow-hidden text-pretty text-gray-500/90 dark:text-white`}
 			>
 				{description}
 			</div>
