@@ -164,9 +164,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		hotkeypadElement.classList.toggle('light', !prefersDark);
 	}
 
-	// Actualizar el tema del sitio y de hotkeypad
 	const updateTheme = () => {
-		// Detectar la preferencia
 		const themePreference = getThemePreference();
 		const isDark =
 			themePreference === 'dark' ||
@@ -417,7 +415,13 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	}
 
 	/* #hotkeypad {
-		--hotkeypad-bg-container: red;
+		--hotkeypad-bg-kbd: #f9fafb;
+		--hotkeypad-bg-backdrop: #fff;
+		--hotkeypad-bg-container: #fff;
+		--hotkeypad-bg-item-hover: #f3f4f6;
+		--hotkeypad-border-container: #d1d5db;
+		--hotkeypad-border-container-hover: #9ca3af;
+		--hotkeypad-fg-muted: #4b5563;
 	} */
 	/* @media (prefers-color-scheme: dark) {
 		.key-footer {
