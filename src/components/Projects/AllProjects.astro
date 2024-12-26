@@ -4,14 +4,22 @@ import LinkIcon from '@icons/Link.astro';
 import Carousel from '@components/Carousel';
 import LinkButton from '@components/LinkButton.astro';
 import ProjectsDescription from '@components/Projects/ProjectsDescription';
-
-import { PROJECTS } from '@utils/projects';
 import Tag from '@components/Tag.astro';
+
+import type { Project } from '../../types/projects';
+import type { Translations } from '../../types/translations';
+import { TAGS } from '@utils/tags';
+
+const translations: Translations = Astro.props.translations;
+
+const projectsButtons = translations.projectsPage.projectsButtons;
+
+const projects: Project[] = translations.projectsPage.projects;
 ---
 
 <div class='section w-full mx-auto md:-mt-[110px] container lg:w-[740px]'>
 	{
-		PROJECTS.map(
+		projects.map(
 			({
 				images,
 				title,
@@ -35,7 +43,11 @@ import Tag from '@components/Tag.astro';
 					<ul class='flex gap-x-3 flex-row text-nowrap flex-wrap'>
 						{tags.map(tag => (
 							<li>
-								<Tag {...tag} />
+								{TAGS[tag] ? (
+									<Tag {...TAGS[tag]} />
+								) : (
+									<span>{tag}</span>
+								)}
 							</li>
 						))}
 					</ul>
@@ -46,19 +58,19 @@ import Tag from '@components/Tag.astro';
 						{github && (
 							<LinkButton href={github}>
 								<GithubIcon class='size-4' />
-								Código
+								{projectsButtons.textCodeButton}
 							</LinkButton>
 						)}
 						{link && (
 							<LinkButton href={link}>
 								<LinkIcon class='size-4' />
-								Demo
+								{projectsButtons.textDemoButton}
 							</LinkButton>
 						)}
 						{secondaryLink && (
 							<LinkButton href={secondaryLink}>
 								<LinkIcon class='size-4' />
-								Demo 2
+								{projectsButtons.textDemo2Button}
 							</LinkButton>
 						)}
 					</footer>

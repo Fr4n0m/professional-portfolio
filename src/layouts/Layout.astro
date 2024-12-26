@@ -6,16 +6,22 @@ import Footer from '@components/Footer.astro';
 import AlternativeFooter from '@components/AlternativeFooter.astro';
 import KeyboardManager from '@components/KeyboardManager.astro';
 
+import LanguageSelector from '@components/LanguageSelector.astro';
+import type { Translations } from '../types/translations';
+
 interface Props {
 	title: string;
 	description: string;
+	json: Translations;
 }
 
-const { description, title } = Astro.props;
+const { description, title, json } = Astro.props;
+
+const lang = Astro.request.url.includes('/es') ? 'es' : 'en';
 ---
 
 <!doctype html>
-<html lang='es'>
+<html lang={lang}>
 	<head>
 		<meta charset='UTF-8' />
 		<meta name='description' content={description} />
@@ -30,13 +36,17 @@ const { description, title } = Astro.props;
 			class='fixed top-0 z-[-2] h-screen w-screen bg-[#000000] dark:bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[radial-gradient(#dbdbdb_1px,#F5F5F7_1px)] bg-[size:20px_20px]'
 		>
 		</div>
-		<Header />
+		<Header translations={json} lang={lang} />
+
 		<main class='flex-1'>
 			<slot />
 		</main>
-		<AlternativeFooter />
+		<AlternativeFooter translations={json} />
 
-		<KeyboardManager />
+		<KeyboardManager translations={json} />
+
+		<LanguageSelector lang={lang} />
+
 		<!-- <Footer /> -->
 	</body>
 </html>

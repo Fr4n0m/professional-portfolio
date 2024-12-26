@@ -8,7 +8,7 @@ const ProjectsDescription = ({ description }) => {
 	};
 
 	return (
-		<div className='relative text-md lg:text-lg mb-4'>
+		<div className='relative mb-4'>
 			<div
 				className={`${
 					expanded ? 'line-clamp-none' : 'line-clamp-3'

@@ -1,5 +1,10 @@
 ---
 import ArrowUp from '@icons/ArrowUp.astro';
+import type { Translations } from '../types/translations';
+import type { FooterItem } from '../types/footerItem';
+
+const translations: Translations = Astro.props.translations;
+const footerItems: FooterItem[] = translations.footerItems;
 ---
 
 <footer class='shadow p-4 py-8 md:p-8 lg:p-10 backdrop-blur-[1px]'>
@@ -11,57 +16,67 @@ import ArrowUp from '@icons/ArrowUp.astro';
 			rel='noopener noreferrer'
 		>
 			<img src='/favicon.png' class='rounded-full w-10 h-10 mr-4' />
-			Fr4n0m
+			{translations.personalInfo.alias}
 		</a>
 		<p class='my-6 text-gray-500 dark:text-gray-400'>
-			Desarrollador de Software y Full Stack Web. <span
-				class='text-nowrap'>📍 Málaga, España.</span
+			{translations.personalInfo.role}
+			<span class='text-nowrap'>{translations.personalInfo.location}</span
 			>
 		</p>
 		<ul
 			class='flex flex-wrap gap-y-2 md:gap-y-0 justify-center items-center mb-6 text-gray-700 dark:text-white/80'
 		>
 			<li>
-				<a href='/about' class='mr-4 hover:underline md:mr-6'
-					>Sobre mí</a
-				>
-			</li>
-			<li>
-				<a href='/#proyectos' class='mr-4 hover:underline md:mr-6'>
-					Proyectos
-				</a>
-			</li>
-			<li>
-				<a href='/#experiencia' class='mr-4 hover:underline md:mr-6'>
-					Experiencia
-				</a>
-			</li>
-			<li>
-				<a href='#' class='mr-4 hover:underline md:mr-6'>Blog</a>
-			</li>
-			<li>
 				<a
-					href='mailto:Fran11799@outlook.com'
+					href={footerItems[0].url}
 					class='mr-4 hover:underline md:mr-6'
 				>
-					Contacto
+					{footerItems[0].title}
 				</a>
 			</li>
 			<li>
 				<a
-					href='https://cv-web-smoky.vercel.app/'
+					href={footerItems[1].url}
+					class='mr-4 hover:underline md:mr-6'
+				>
+					{footerItems[1].title}
+				</a>
+			</li>
+			<li>
+				<a
+					href={footerItems[2].url}
+					class='mr-4 hover:underline md:mr-6'
+				>
+					{footerItems[2].title}
+				</a>
+			</li>
+			<!-- <li>
+				<a href='#' class='mr-4 hover:underline md:mr-6'>Blog</a>
+			</li> -->
+			<li>
+				<a
+					href={footerItems[3].url}
+					class='mr-4 hover:underline md:mr-6'
+				>
+					{footerItems[3].title}
+				</a>
+			</li>
+			<li>
+				<a
+					href={footerItems[4].url}
 					target='_blank'
 					rel='noopener noreferrer'
 					class='hover:underline md:mr-6 mr-4'
 				>
-					CV
+					{footerItems[4].title}
 				</a>
 			</li>
 			<li>
 				<a
-					href='#'
+					href={footerItems[5].url}
 					class='hover:underline flex flex-row items-center justify-center group gap-[2px]'
-					>Subir <ArrowUp
+					>{footerItems[5].title}
+					<ArrowUp
 						class='size-4 group-hover:-translate-y-[1px] transition-all'
 					/></a
 				>
@@ -70,7 +85,7 @@ import ArrowUp from '@icons/ArrowUp.astro';
 		<span class='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
 			© 2024{' '}
 			<a href='#' class='hover:underline'>
-				Francisco José Rodríguez Martínez
+				{translations.personalInfo.name}
 			</a>
 		</span>
 	</div>

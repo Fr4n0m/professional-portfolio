@@ -1,9 +1,13 @@
 ---
-import { CERTIFICATIONS } from '@utils/certificates';
 import LinkButton from './LinkButton.astro';
+import type { Translations } from '../types/translations';
+import { ENTITIES } from '@utils/entities';
+
+const translations: Translations = Astro.props.translations;
+const CERTIFICATIONS = translations.certificationsPage.certificationsList;
 ---
 
-<div class='section w-full mx-auto md:-mt-[110px] container lg:w-[740px]'>
+<div class='section w-full mx-auto -mt-5 md:-mt-[110px] container lg:w-[740px]'>
 	{
 		CERTIFICATIONS.map(({ image, title, description, entity, url }) => (
 			<>
@@ -25,12 +29,12 @@ import LinkButton from './LinkButton.astro';
 					</a>
 
 					<footer class='flex items-end justify-start mt-6 gap-x-4 mb-16'>
-						{entity && (
-							<LinkButton href={entity.url}>
-								<entity.icon />
-								{entity.name}
+						{entity && ENTITIES[entity] && (
+							<LinkButton href={ENTITIES[entity].url}>
+								<ENTITIES[entity].icon />
+								{ENTITIES[entity].name}
 							</LinkButton>
-						)}
+	)}
 					</footer>
 				</article>
 			</>

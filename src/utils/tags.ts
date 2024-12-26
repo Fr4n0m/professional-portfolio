@@ -30,7 +30,9 @@ import MacOSIcon from '@icons/MacOS.astro';
 import WindowsIcon from '@icons/Windows.astro';
 import StrapiIcon from '@icons/Strapi.astro';
 
-export const TAGS = {
+import type { TagInfo } from '../types/projects';
+
+export const TAGS: Record<string, TagInfo> = {
 	HTML: {
 		name: 'HTML',
 		class: 'bg-[#E34F27]/20 border-[#E34F27] text-[#E34F27] dark:bg-[#e34f26]/20 dark:border-[#e34f26] dark:text-[#e34f26]',

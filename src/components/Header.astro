@@ -1,48 +1,11 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import type { HeaderItem } from '../types/headerItem';
+import type { Translations } from '../types/translations';
+import LanguageSelector from './LanguageSelector.astro';
 
-const navItems = [
-	{
-		title: 'Inicio',
-		label: 'inicio',
-		url: '/#',
-	},
-	{
-		title: 'Skills',
-		label: 'skills',
-		url: '/#skills',
-	},
-	{
-		title: 'Experiencia',
-		label: 'experiencia',
-		url: '/#experiencia',
-	},
-	{
-		title: 'Proyectos',
-		label: 'proyectos',
-		url: '/#proyectos',
-	},
-	{
-		title: 'Certificaciones',
-		label: 'certificaciones',
-		url: '/certifications',
-	},
-	/*  {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
-  }, */
-	{
-		title: 'Contacto',
-		label: 'contacto',
-		url: 'mailto:Fran11799@outlook.com',
-	},
-	{
-		title: 'CV',
-		label: 'cv',
-		url: 'https://cv-web-smoky.vercel.app/',
-	},
-];
+const translations: Translations = Astro.props.translations;
+const headerItems: HeaderItem[] = translations.headerItems;
 ---
 
 <header
@@ -60,14 +23,14 @@ const navItems = [
 		</a>
 
 		{
-			navItems.map(link => (
+			headerItems.map(item => (
 				<a
 					class='block px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
-					aria-label={link.label}
-					href={link.url}
-					target={link.title === 'CV' ? '_blank' : '_self'}
+					aria-label={item.label}
+					href={item.url}
+					target={item.title === 'CV' ? '_blank' : '_self'}
 				>
-					{link.title}
+					{item.title}
 				</a>
 			))
 		}

@@ -1,13 +1,20 @@
 ---
+import type { Experience } from '../types/experience';
+import type { Translations } from '../types/translations';
+
 import ExperienceItem from './ExperienceItem.astro';
-import { EXPERIENCE } from '@utils/experience';
+
+const translations: Translations = Astro.props.translations;
+const experience = translations.experience.experience;
 ---
 
-<ol class='relative border-s border-gray-200 ml-3.5 dark:border-gray-200'>
+<ol
+	class='-mt-3 md:-mt-0 relative border-s border-gray-200 ml-3.5 dark:border-gray-200'
+>
 	{
-		EXPERIENCE.map(experience => (
+		experience.map((item: Experience) => (
 			<li class='mb-10 ms-6'>
-				<ExperienceItem {...experience} />
+				<ExperienceItem {...item} />
 			</li>
 		))
 	}

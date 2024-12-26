@@ -1,4 +1,6 @@
 ---
+import type { Profile } from '../types/profile';
+import type { Translations } from '../types/translations';
 import 'hotkeypad/index.css';
 
 type SocialIcon = Record<string, string | any>;
@@ -51,52 +53,35 @@ const SOCIAL_ICONS: SocialIcon = {
   width="23" viewBox="0 0 24 24" fill="none" style="margin-right: 7px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13 9L15 15L17 9M10 15C9.06812 15 8.60218 15 8.23463 14.8478C7.74458 14.6448 7.35523 14.2554 7.15224 13.7654C7 13.3978 7 12.9319 7 12C7 11.0681 7 10.6022 7.15224 10.2346C7.35523 9.74458 7.74458 9.35523 8.23463 9.15224C8.60218 9 9.06812 9 10 9M7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.07989 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.07989 20 7.2 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`,
 };
 
-interface Profile {
-	network: string;
-	username: string;
-	url: string;
-}
-interface Item {
-	name: string;
-	hidden?: boolean;
-	[key: string]: any;
-}
+const translations: Translations = Astro.props.translations;
 
-const profiles: Profile[] = [
-	{
-		network: 'LinkedIn',
-		username: 'Francisco Rodríguez',
-		url: 'https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/',
-	},
-	/* {
-		network: 'InfoJobs',
-		username: 'Francisco Rodríguez',
-		url: '',
-	}, */
-	{
-		network: 'GitHub',
-		username: 'Fr4n0m',
-		url: 'https://github.com/Fr4n0m',
-	},
-	{
-		network: 'CV',
-		username: 'Francisco Rodríguez',
-		url: 'https://cv-web-smoky.vercel.app/',
-	},
-];
+const profiles: Profile[] = translations.personalInfo.profiles;
+
+const kbManagerTranslations = translations.keyboardManager;
 
 const profilesInfo = profiles.map(({ network, url }) => {
 	const icon = SOCIAL_ICONS[network];
 	const firstLetter = network[0].toUpperCase();
 	return {
 		id: network,
-		section: 'Social',
-		title: `Visitar ${network}`,
+		section: `${kbManagerTranslations.kmSocialSection}`,
+		title: `${kbManagerTranslations.kmTitle} ${network}`,
 		url,
 		icon,
 		hotkey: `⌘+${firstLetter}`,
 	};
 });
+
+const navigationCommands = kbManagerTranslations.kmCommands.map(command => ({
+	id: command.id,
+	section: command.section,
+	title: command.title,
+	url: command.handler,
+	icon: command.icon,
+	hotkey: command.hotkey,
+}));
+
+const allCommands = [...navigationCommands, ...profilesInfo];
 ---
 
 <footer
@@ -134,13 +119,21 @@ const profilesInfo = profiles.map(({ network, url }) => {
 
 <div
 	id='hotkeypad'
-	data-placeholder='Buscar'
+	data-placeholder=`${kbManagerTranslations.kmPlaceHolder}`
 	class='dark'
-	data-info={JSON.stringify(profilesInfo)}
+	data-info={JSON.stringify(allCommands)}
 >
 </div>
 
 <script>
+	import type { Info } from '../types/infoKeyManager';
+
+	import HotKeyPad from 'hotkeypad';
+
+	const hotkeypad = new HotKeyPad();
+	const info = hotkeypad.instance.getAttribute('data-info') ?? '[]';
+	const parsedInfo = JSON.parse(info) as Info[];
+
 	const getThemePreference = () => {
 		if (typeof localStorage !== 'undefined') {
 			return localStorage.getItem('theme') ?? 'system';
@@ -190,22 +183,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		}),
 	);
 
-	interface Info {
-		id: string;
-		section: string;
-		title: string;
-		url: string;
-		icon: string;
-		hotkey: string;
-		handler?: () => void;
-	}
-
-	import HotKeyPad from 'hotkeypad';
-
-	const hotkeypad = new HotKeyPad();
-	const info = hotkeypad.instance.getAttribute('data-info') ?? '[]';
-	const parsedInfo = JSON.parse(info) as Info[];
-
 	const data = parsedInfo.map(({ url, hotkey, icon, id, section, title }) => {
 		return {
 			id,
@@ -214,7 +191,15 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			hotkey,
 			section,
 			handler: () => {
-				window.open(url, '_blank');
+				if (section === 'Social') {
+					const link = document.createElement('a');
+					link.href = url;
+					link.target = '_blank';
+					link.rel = 'noopener noreferrer';
+					link.click();
+				} else {
+					window.open(url, '_self');
+				}
 			},
 		};
 	});
@@ -250,7 +235,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			handler: () => {
 				document.documentElement.classList.add('dark');
 			},
-		}, */
+		},
 		{
 			id: 'inicio',
 			title: 'Inicio',
@@ -316,7 +301,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			handler: () => {
 				window.location.href = '/projects';
 			},
-		},
+		},*/
 		...data,
 	]);
 
