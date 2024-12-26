@@ -3,7 +3,7 @@ import type { ENTITIES } from '@utils/entities';
 export interface Entity {
 	name: string;
 	url: string;
-	icon: any;
+	icon: Record<string, any>;
 }
 
 export interface Certification {
