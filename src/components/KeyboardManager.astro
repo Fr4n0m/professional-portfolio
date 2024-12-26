@@ -177,8 +177,11 @@ const allCommands = [...navigationCommands, ...profilesInfo];
 
 	document.querySelectorAll('.themes-menu-option').forEach(element =>
 		element.addEventListener('click', e => {
-			const newTheme = e.target.innerText.toLowerCase().trim();
-			localStorage.setItem('theme', newTheme);
+			const target = e.target as HTMLElement | null;
+			if (target) {
+				const newTheme = target.innerText.toLowerCase().trim();
+				localStorage.setItem('theme', newTheme);
+			}
 			updateTheme();
 		}),
 	);
