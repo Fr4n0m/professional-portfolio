@@ -31,10 +31,10 @@ const CERTIFICATIONS = translations.certificationsPage.certificationsList;
 					<footer class='flex items-end justify-start mt-6 gap-x-4 mb-16'>
 						{entity && ENTITIES[entity] && (
 							<LinkButton href={ENTITIES[entity].url}>
-								<ENTITIES[entity].icon />
+								{ENTITIES[entity].icon}
 								{ENTITIES[entity].name}
 							</LinkButton>
-	)}
+						)}
 					</footer>
 				</article>
 			</>
