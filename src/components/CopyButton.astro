@@ -23,9 +23,10 @@ const translations = Astro.props.translations;
 			const button = document.getElementById('copy-button');
 			const copyMessage = document.getElementById('copy-message');
 
-			const translations = JSON.parse(
-				button.getAttribute('data-translations'),
-			);
+			if (!button) return;
+			const dataTranslations = button.getAttribute('data-translations');
+			if (!dataTranslations) return;
+			const translations = JSON.parse(dataTranslations);
 
 			button?.addEventListener('click', () => {
 				if (copyMessage) {
