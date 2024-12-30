@@ -1,0 +1,13 @@
+---
+const props = Astro.props;
+---
+
+<a
+	target='_blank'
+	rel='noopener noreferrer'
+	href={props.url}
+	class='inline-flex items-center justify-center gap-2 px-3 py-1.5 space-x-2 text-sm md:text-md text-white border transition bg-gray-400 dark:bg-gray-800 dark:border-gray-600 hover:text-gray-200 border-white hover:bg-gray-600 text-md dark:hover:bg-gray-800 hover:border-white/50 group max-w-fit rounded-md dark:hover:border-white/50 active:border-white/90 dark:active:border-white/90 dark:hover:text-white'
+>
+	<props.icon class='size-5' />
+	{props.name}
+</a>

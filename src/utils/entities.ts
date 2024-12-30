@@ -1,5 +1,5 @@
-import Hack4uIcon from '@icons/Hack4u';
-import CodeSpaceIcon from '@icons/CodeSpace';
+import Hack4uIcon from '@icons/Hack4u.astro';
+import CodeSpaceIcon from '../icons/CodeSpace.astro';
 import type { Entity } from '../types/certification';
 
 export const ENTITIES: Record<string, Entity> = {
