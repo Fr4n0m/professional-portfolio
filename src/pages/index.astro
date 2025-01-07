@@ -18,6 +18,7 @@ import Fire from '@icons/Fire.astro';
 
 import { textsJson } from '@utils/const';
 import type { Translations } from '../types/translations';
+import Arrow from '@icons/Arrow.astro';
 const langJson = textsJson.es;
 
 const translations: Translations = langJson;
@@ -143,6 +144,15 @@ const selectedProjects = translations.mainPage.selectedProjects;
 			>
 				<CodeIcon class='size-9' />
 				{selectedProjects.projectsTitle}
+
+				<a
+					href={translations.projectsPage.allProjectsLink}
+					class='flex items-center ml-4'
+				>
+					<Badge class='flex items-center'>
+						{translations.projectsPage.allProjects}
+					</Badge>
+				</a>
 			</h2>
 		</SectionContainer>
 		<Projects translations={translations} />
