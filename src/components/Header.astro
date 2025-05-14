@@ -3,6 +3,7 @@ import ThemeToggle from './ThemeToggle.astro';
 import type { HeaderItem } from '../types/headerItem';
 import type { Translations } from '../types/translations';
 import LanguageSelector from './LanguageSelector.astro';
+import LanguageToggle from './LanguageToggle.astro';
 
 const translations: Translations = Astro.props.translations;
 const headerItems: HeaderItem[] = translations.headerItems;
@@ -36,6 +37,8 @@ const headerItems: HeaderItem[] = translations.headerItems;
 		}
 
 		<ThemeToggle />
+
+		<LanguageToggle />
 	</nav>
 </header>
 
