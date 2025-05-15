@@ -3,6 +3,7 @@ import CertificationsGrid from '@components/certifications/CertificationsGrid.as
 import Certificate from '@icons/Certificate.astro';
 import Arrow from '@icons/Arrow.astro';
 import SectionContainer from '@components/SectionContainer.astro';
+import Badge from '@components/ui/Badge.astro';
 import type { Certification } from '../../types/certification';
 import type { Translations } from '../../types/translations';
 import { commonClasses } from '@utils/cssClasses';
@@ -25,9 +26,9 @@ const limitedCertifications = certifications.slice(0, 2);
       href={translations.certificationsPage.allCertificationsLink || '/certifications'}
       class='flex items-center ml-4 text-nowrap'
     >
-      <span class='inline-flex items-center px-4 py-2 bg-white/10 text-black dark:text-white border border-gray-300 dark:border-gray-700 rounded-full text-xs'>
+      <Badge>
         {translations.certificationsPage.allCertifications || 'Todas las certificaciones'}
-      </span>
+      </Badge>
     </a>
   </h2>
   
