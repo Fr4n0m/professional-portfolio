@@ -1,32 +1,32 @@
 [
   {
     "title": "主页",
-    "label": "home",
-    "url": "/zh/#home"
+    "label": "inicio",
+    "url": "/zh/#inicio"
   },
   {
     "title": "技能",
-    "label": "skills",
-    "url": "/zh/#skills"
+    "label": "habilidades",
+    "url": "/zh/#habilidades"
   },
   {
     "title": "经验",
-    "label": "experience",
-    "url": "/zh/#experience"
+    "label": "experiencia",
+    "url": "/zh/#experiencia"
   },
   {
     "title": "项目",
-    "label": "projects",
-    "url": "/zh/#projects"
+    "label": "proyectos",
+    "url": "/zh/#proyectos"
   },
   {
     "title": "证书",
-    "label": "certifications",
+    "label": "certificaciones",
     "url": "/zh/certifications"
   },
   {
     "title": "联系",
-    "label": "contact",
+    "label": "contacto",
     "url": "mailto:Fran11799@outlook.com"
   },
   {

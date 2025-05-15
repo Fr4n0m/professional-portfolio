@@ -13,21 +13,21 @@ import keyboardManager from './keyboard-manager.json';
 import languageNames from './language-names.json';
 
 export default {
-	personalInfo,
-	headerItems,
-	layout,
-	mainPage,
-	projectsPage: {
-		...projectsPage,
-		projects
-	},
-	certificationsPage: {
-		...certificationsPage,
-		certificationsList
-	},
-	socialMedia,
-	experience,
-	footerItems,
-	keyboardManager,
-	languageNames
+  personalInfo,
+  headerItems,
+  layout,
+  mainPage,
+  projectsPage: {
+    ...projectsPage,
+    projects
+  },
+  certificationsPage: {
+    ...certificationsPage,
+    certificationsList: certificationsList
+  },
+  socialMedia,
+  experience,
+  footerItems,
+  keyboardManager,
+  languageNames
 };

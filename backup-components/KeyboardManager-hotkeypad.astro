@@ -1,0 +1,430 @@
+---
+import type { Profile } from '../types/profile';
+import type { Translations } from '../types/translations';
+import { languages } from '@i18n/config';
+import type { Language } from '@i18n/config';
+import 'hotkeypad/index.css';
+
+type SocialIcon = Record<string, string | any>;
+const SOCIAL_ICONS: SocialIcon = {
+	GitHub: `<svg
+  width="20"
+  height="20"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+  style="margin-right: 9px; margin-left: 1px"
+  ><path
+    fill="currentColor"
+    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+  ></path></svg
+>`,
+	LinkedIn: `<svg
+  height="17"
+  width="17"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+  style="margin-right: 11px; margin-left: 2px; margin-top: 2px"
+  ><title>LinkedIn</title><path
+    fill="currentColor"
+    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+  ></path></svg>`,
+	CV: `<svg height="23"
+  width="23" viewBox="0 0 24 24" fill="none" style="margin-right: 7px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13 9L15 15L17 9M10 15C9.06812 15 8.60218 15 8.23463 14.8478C7.74458 14.6448 7.35523 14.2554 7.15224 13.7654C7 13.3978 7 12.9319 7 12C7 11.0681 7 10.6022 7.15224 10.2346C7.35523 9.74458 7.74458 9.35523 8.23463 9.15224C8.60218 9 9.06812 9 10 9M7.2 20H16.8C17.9201 20 18.4802 20 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V7.2C20 6.0799 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.07989 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.07989 20 7.2 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`,
+};
+
+const translations: Translations = Astro.props.translations;
+
+const profiles: Profile[] = translations.personalInfo.profiles;
+
+const kbManagerTranslations = translations.keyboardManager;
+
+const profilesInfo = profiles.map(({ network, url }) => {
+	if (!network) return null; // Protección contra undefined
+	const icon = SOCIAL_ICONS[network];
+	const firstLetter = network[0]?.toUpperCase() || 'N';
+	return {
+		id: network,
+		section: `${kbManagerTranslations.kmSocialSection}`,
+		title: `${kbManagerTranslations.kmTitle} ${network}`,
+		url,
+		icon,
+		hotkey: `⌘+${firstLetter}`,
+	};
+}).filter(Boolean); // Filtrar nulls
+
+const navigationCommands = kbManagerTranslations.kmCommands.map(command => ({
+	id: command.id,
+	section: command.section,
+	title: command.title,
+	url: command.handler,
+	icon: command.icon,
+	hotkey: command.hotkey,
+}));
+
+// Detectar idioma actual
+const currentLang = Astro.url.pathname.match(/^\/([a-z]{2})(?:\/|$)/)?.[1] || 'en';
+
+// Función para cambiar URL de idioma
+function getLanguageUrl(targetLang: string): string {
+	const currentPath = Astro.url.pathname;
+	
+	if (currentLang === 'en') {
+		if (targetLang !== 'en') {
+			return `/${targetLang}${currentPath}`;
+		}
+		return currentPath;
+	}
+	
+	if (targetLang === 'en') {
+		return currentPath.replace(new RegExp(`^/${currentLang}`), '');
+	} else {
+		return currentPath.replace(new RegExp(`^/${currentLang}`), `/${targetLang}`);
+	}
+}
+
+// Crear comando principal de idiomas con submenú
+const languageParentCommand = {
+	id: 'languages',
+	section: 'Configuración / Settings',
+	title: 'Cambiar Idioma / Change Language',
+	icon: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; margin-right: 8px;">
+		<path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M12 20l4.5-9L21 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M16.5 15.5h-1m4 0h-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+		<path d="M5 9c0 5.523 4.477 10 10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+	</svg>`,
+	hotkey: '⌘+I',
+	children: Object.keys(languages),
+	handler: () => {
+		return { keepOpen: true };
+	}
+};
+
+// Crear comandos hijos para cada idioma
+const languageCommands = Object.entries(languages).map(([code, langInfo]) => ({
+	id: code,
+	parent: 'languages',
+	title: `${langInfo.flag} ${langInfo.nativeName}`,
+	icon: `<span style="font-size: 20px; margin-right: 8px;">${langInfo.flag}</span>`,
+	url: getLanguageUrl(code),
+	handler: () => {
+		window.location.href = getLanguageUrl(code);
+	}
+}));
+
+const allCommands = [...navigationCommands, ...profilesInfo, languageParentCommand, ...languageCommands];
+
+// Agregar un campo section a los comandos que no lo tienen
+const allCommandsWithSection = allCommands.map(cmd => ({
+	...cmd,
+	section: cmd.section || 'General'
+}));
+---
+
+<footer
+	id='normal-footer'
+	class='key-footer no-print active:scale-90 transition-all duration-300 ease-in-out'
+>
+	<kbd
+		class='bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium'
+		>⌘</kbd
+	><p class='px-1 text-gray-700 dark:text-gray-300'>+</p><kbd
+		class='bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium'
+		>K
+	</kbd>
+</footer>
+
+<div id='footer-button' class='no-print'>
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		class='icon icon-tabler icon-tabler-command'
+		width='28'
+		height='28'
+		viewBox='0 0 24 24'
+		stroke-width='1.5'
+		stroke='currentColor'
+		fill='none'
+		stroke-linecap='round'
+		stroke-linejoin='round'
+	>
+		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+		<path
+			d='M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10'
+		></path>
+	</svg>
+</div>
+
+<div
+	id='hotkeypad'
+	data-placeholder=`${kbManagerTranslations.kmPlaceHolder}`
+	class='dark'
+	data-info={JSON.stringify(allCommandsWithSection)}
+>
+</div>
+
+<script>
+	import type { Info } from '../types/infoKeyManager';
+	import HotKeyPad from 'hotkeypad';
+
+	const hotkeypad = new HotKeyPad();
+	const info = hotkeypad.instance.getAttribute('data-info') ?? '[]';
+	const parsedInfo = JSON.parse(info) as Info[];
+
+	const getThemePreference = () => {
+		if (typeof localStorage !== 'undefined') {
+			return localStorage.getItem('theme') ?? 'system';
+		}
+		return window.matchMedia('(prefers-color-scheme: dark)').matches
+			? 'dark'
+			: 'light';
+	};
+
+	function updateHotkeypadClass() {
+		const hotkeypadElement = document.getElementById('hotkeypad');
+		if (!hotkeypadElement) return;
+
+		const themePreference = getThemePreference();
+		const prefersDark =
+			themePreference === 'dark' ||
+			(themePreference === 'system' &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+		hotkeypadElement.classList.toggle('dark', prefersDark);
+		hotkeypadElement.classList.toggle('light', !prefersDark);
+	}
+
+	const updateTheme = () => {
+		const themePreference = getThemePreference();
+		const isDark =
+			themePreference === 'dark' ||
+			(themePreference === 'system' &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+		document.documentElement.classList.toggle('dark', isDark);
+
+		updateHotkeypadClass();
+	};
+
+	window
+		.matchMedia('(prefers-color-scheme: dark)')
+		.addEventListener('change', updateTheme);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		updateTheme();
+		
+		const data = parsedInfo.map((command: any) => {
+			const { url, hotkey, icon, id, section, title, parent, children, handler } = command;
+			
+			return {
+				id,
+				title,
+				icon,
+				hotkey,
+				section,
+				parent,
+				children,
+				handler: handler || (() => {
+					if (section?.includes('Social')) {
+						const link = document.createElement('a');
+						link.href = url;
+						link.target = '_blank';
+						link.rel = 'noopener noreferrer';
+						link.click();
+					} else if (url) {
+						window.location.href = url;
+					}
+				})
+			};
+		});
+		
+		// Configurar comandos en HotKeyPad
+		hotkeypad.setCommands(data);
+
+		// Registrar atajos de teclado globales
+		document.addEventListener('keydown', (e: KeyboardEvent) => {
+			// Atajo principal para abrir HotKeyPad (Cmd+K o Ctrl+K)
+			if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+				e.preventDefault();
+				hotkeypad.open();
+				return;
+			}
+
+			// Atajos individuales para cada comando
+			if (e.metaKey || e.ctrlKey) {
+				const pressedKey = e.key.toLowerCase();
+				
+				const matchingCommand = data.find((command) => {
+					if (!command.hotkey) return false;
+					const keys = command.hotkey.split('+');
+					const commandKey = keys[1]?.toLowerCase();
+					return commandKey === pressedKey;
+				});
+
+				if (matchingCommand) {
+					e.preventDefault();
+					if (matchingCommand.id === 'languages') {
+						// Para el comando de idiomas, abrimos el HotKeyPad con el comando seleccionado
+						hotkeypad.open();
+					} else {
+						// Para otros comandos, ejecutamos directamente
+						matchingCommand.handler();
+					}
+				}
+			}
+		});
+
+		// Event listeners para abrir el HotKeyPad
+		const footerButton = document.getElementById('footer-button');
+		footerButton?.addEventListener('click', () => {
+			hotkeypad.open();
+		});
+
+		const footer = document.getElementById('normal-footer');
+		footer?.addEventListener('click', () => {
+			hotkeypad.open();
+		});
+	});
+</script>
+
+<style>
+	/* Estilos para el scroll del hotkeypad */
+	:global(ninja-keys) {
+		--ninja-overflow-background: rgba(0, 0, 0, 0.4);
+		--ninja-z-index: 9999;
+	}
+
+	:global(ninja-keys .ninja-scroller) {
+		max-height: 60vh !important;
+		overflow-y: auto !important;
+		scrollbar-width: thin;
+		scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+	}
+
+	:global(ninja-keys .ninja-scroller::-webkit-scrollbar) {
+		width: 6px;
+	}
+
+	:global(ninja-keys .ninja-scroller::-webkit-scrollbar-track) {
+		background: transparent;
+	}
+
+	:global(ninja-keys .ninja-scroller::-webkit-scrollbar-thumb) {
+		background-color: rgba(0, 0, 0, 0.2);
+		border-radius: 3px;
+	}
+
+	:global(ninja-keys .ninja-scroller::-webkit-scrollbar-thumb:hover) {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+
+	@media print {
+		ninja-keys {
+			display: none !important;
+		}
+	}
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			pointer-events: none;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	@media (min-width: 601px) {
+		#footer-button {
+			display: none;
+		}
+	}
+	@media (max-width: 600px) {
+		#normal-footer {
+			display: none;
+		}
+		#footer-button {
+			background: rgba(98, 98, 98, 0.65);
+			backdrop-filter: blur(10px);
+			position: fixed;
+			border: 1px solid rgba(238, 238, 238, 0.2);
+			right: 20px;
+			bottom: 20px;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			z-index: 1000;
+			transition: all 0.3s ease;
+			color: #ffffff;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+		
+		#footer-button:hover {
+			background: rgba(113, 113, 113, 0.7);
+			transform: scale(1.05);
+		}
+		
+		:global(.dark) #footer-button {
+			background: rgba(98, 98, 98, 0.65);
+			border: 1px solid rgba(238, 238, 238, 0.2);
+			color: #ffffff;
+		}
+		
+		:global(.light) #footer-button {
+			background: rgba(255, 255, 255, 0.9);
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			color: #777777;
+		}
+		
+		:global(.light) #footer-button:hover {
+			background: rgba(240, 240, 240, 0.95);
+		}
+	}
+	/* Estilos modernos para el footer del teclado */
+	.key-footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		padding: 8px 16px;
+		border-radius: 12px;
+		font-size: 0.875rem;
+		view-timeline-name: --revealing;
+		view-timeline-axis: block;
+		animation: linear 0.3s fadeIn;
+		animation-timeline: --revealing;
+		animation-range: entry 100% cover 10%;
+		cursor: pointer;
+		user-select: none;
+		transition: all 0.2s ease;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		backdrop-filter: blur(10px);
+	}
+
+	.key-footer:hover {
+		transform: scale(1.05);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+	}
+	
+	kbd {
+		background: rgba(0, 0, 0, 0.05);
+		padding: 3px 8px;
+		border-radius: 6px;
+		font-family: 'SF Mono', monospace;
+		font-size: 0.875rem;
+		color: inherit;
+	}
+	
+	:global(.dark) .key-footer {
+		background: rgba(30, 30, 30, 0.9);
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+	
+	:global(.dark) kbd {
+		background: rgba(255, 255, 255, 0.1);
+	}
+</style>

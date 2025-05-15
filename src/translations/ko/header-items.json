@@ -1,37 +1,37 @@
 [
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "홈",
+    "label": "inicio",
+    "url": "/ko/#inicio"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "기술",
+    "label": "habilidades",
+    "url": "/ko/#habilidades"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "경험",
+    "label": "experiencia",
+    "url": "/ko/#experiencia"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "프로젝트",
+    "label": "proyectos",
+    "url": "/ko/#proyectos"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "인증",
+    "label": "certificaciones",
+    "url": "/ko/certifications"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "연락처",
+    "label": "contacto",
+    "url": "mailto:Fran11799@outlook.com"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "이력서",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
   }
 ]

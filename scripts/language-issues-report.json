@@ -1,0 +1,152 @@
+{
+  "totalFiles": 123,
+  "filesWithIssues": 15,
+  "details": [
+    {
+      "file": "components/Certifications.astro",
+      "issues": [
+        "Componente recibe translations pero no lang",
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente",
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/CopyButton.astro",
+      "issues": [
+        "Componente recibe translations pero no lang"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente"
+      ]
+    },
+    {
+      "file": "components/Experience.astro",
+      "issues": [
+        "Componente recibe translations pero no lang",
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente",
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/KeyboardManager.astro",
+      "issues": [
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/LanguageToggle.astro",
+      "issues": [
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/Projects/AllProjects.astro",
+      "issues": [
+        "Componente recibe translations pero no lang",
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente",
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/Projects/Projects.astro",
+      "issues": [
+        "Componente recibe translations pero no lang",
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente",
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/layout/AlternativeFooter.astro",
+      "issues": [
+        "Componente recibe translations pero no lang",
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente",
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/layout/Header.astro",
+      "issues": [
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/layout/Header_original.astro",
+      "issues": [
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "components/pages/HomePage.astro",
+      "issues": [
+        "Componente recibe translations pero no lang"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente"
+      ]
+    },
+    {
+      "file": "components/sections/Hero.astro",
+      "issues": [
+        "Componente recibe translations pero no lang"
+      ],
+      "fixes": [
+        "Agregar lang a las props del componente"
+      ]
+    },
+    {
+      "file": "i18n/translations.ts",
+      "issues": [
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    },
+    {
+      "file": "layouts/Layout.astro",
+      "issues": [
+        "URLs hardcodeadas encontradas: href='/"
+      ],
+      "fixes": [
+        "Usar rutas dinámicas con el idioma actual"
+      ]
+    },
+    {
+      "file": "pages/[lang]/certifications/index.astro",
+      "issues": [
+        "Componente usa traducciones pero no las pasa a subcomponentes"
+      ],
+      "fixes": [
+        "Pasar translations como prop a todos los subcomponentes"
+      ]
+    }
+  ],
+  "timestamp": "2025-05-15T02:34:58.847Z"
+}

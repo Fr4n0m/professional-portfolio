@@ -1,37 +1,37 @@
 [
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Start",
+    "label": "inicio",
+    "url": "/nl/#inicio"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Vaardigheden",
+    "label": "habilidades",
+    "url": "/nl/#habilidades"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Ervaring",
+    "label": "experiencia",
+    "url": "/nl/#experiencia"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Projecten",
+    "label": "proyectos",
+    "url": "/nl/#proyectos"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Certificaten",
+    "label": "certificaciones",
+    "url": "/nl/certifications"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Contact",
+    "label": "contacto",
+    "url": "mailto:fran11799@outlook.com"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "CV",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
   }
 ]

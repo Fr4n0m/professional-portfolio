@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from '@layouts/Layout.astro';
 import HomePage from '@components/pages/HomePage.astro';
 import { textsJson } from '@utils/const';
@@ -12,16 +14,59 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const langJson = textsJson[lang as keyof typeof textsJson];
-const translations: Translations = langJson;
 
+// Obtener las traducciones con validación
+let langJson: Translations;
+
+try {
+  langJson = textsJson[lang as keyof typeof textsJson];
+  
+  // Validar que existan las propiedades necesarias
+  if (!langJson || !langJson.layout) {
+    throw new Error(`Missing translations for ${lang}`);
+  }
+} catch (error) {
+  console.error(`Translation error for ${lang}:`, error);
+  
+  // Usar español como fallback
+  langJson = textsJson.es;
+  
+  // Si ni siquiera español está disponible, usar valores por defecto
+  if (!langJson || !langJson.layout) {
+    langJson = {
+      layout: {
+        title: 'Francisco José Rodríguez Martínez - Portfolio',
+        titleDescription: 'Full Stack Developer Portfolio'
+      },
+      mainPage: {
+        skills: { skillsTitle: 'Skills' },
+        selectedProjects: { projectsTitle: 'Projects' }
+      },
+      experience: { workExperience: 'Experience' },
+      projects: [],
+      projectsPage: {
+        allProjects: 'All Projects',
+        allProjectsLink: `/${lang}/projects`
+      },
+      headerItems: [],
+      personalInfo: {
+        name: 'Francisco José Rodríguez Martínez',
+        role: 'Full Stack Developer',
+        email: 'fran11799@outlook.com',
+        location: 'Málaga, España'
+      }
+    } as Translations;
+  }
+}
+
+const translations: Translations = langJson;
 const layout = translations.layout;
 ---
 
 <Layout
-	title={layout.title}
-	description={layout.titleDescription}
-	json={langJson}
+  title={layout.title}
+  description={layout.titleDescription}
+  json={langJson}
 >
-	<HomePage translations={translations} />
+  <HomePage translations={translations} />
 </Layout>

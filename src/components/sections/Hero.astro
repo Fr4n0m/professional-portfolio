@@ -10,9 +10,11 @@ import { commonClasses } from '@utils/cssClasses';
 
 interface Props {
   translations: Translations;
+
+	lang?: string;
 }
 
-const { translations } = Astro.props;
+const { translations , lang } = Astro.props;
 
 const hero = translations.mainPage.hero;
 const socialPill = translations.mainPage.socialPill;
@@ -89,6 +91,6 @@ const personalInfo = translations.personalInfo;
       {personalInfo.mail}
     </SocialPill>
 
-    <CopyButton translations={copyButton} />
+    <CopyButton translations={copyButton}  lang={lang}/>
   </div>
 </nav>

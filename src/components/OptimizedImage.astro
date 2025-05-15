@@ -27,13 +27,13 @@ const {
 // Si es externa, usamos img normal
 const isLocalImage = src.startsWith('/');
 
-// Para imágenes locales, importamos dinámicamente
+// Para imágenes locales, importamos dinámicamente con @vite-ignore
 let optimizedImage;
 if (isLocalImage) {
   try {
     // Remover la primera / para la importación
     const imagePath = src.slice(1);
-    optimizedImage = await import(`../../${imagePath}`);
+    optimizedImage = await import(/* @vite-ignore */ `../../${imagePath}`);
   } catch (e) {
     // Si falla la importación, usamos la ruta original
     optimizedImage = null;

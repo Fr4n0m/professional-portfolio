@@ -1,37 +1,37 @@
 [
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Главная",
+    "label": "inicio",
+    "url": "/ru/#inicio"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Навыки",
+    "label": "habilidades",
+    "url": "/ru/#habilidades"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Опыт",
+    "label": "experiencia",
+    "url": "/ru/#experiencia"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Проекты",
+    "label": "proyectos",
+    "url": "/ru/#proyectos"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Сертификаты",
+    "label": "certificaciones",
+    "url": "/ru/certifications"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Контакт",
+    "label": "contacto",
+    "url": "mailto:Fran11799@outlook.com"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Резюме",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
   }
 ]

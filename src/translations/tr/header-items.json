@@ -1,37 +1,37 @@
 [
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Ana Sayfa",
+    "label": "inicio",
+    "url": "/tr/#inicio"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Yetenekler",
+    "label": "habilidades",
+    "url": "/tr/#habilidades"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Deneyim",
+    "label": "experiencia",
+    "url": "/tr/#experiencia"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Projeler",
+    "label": "proyectos",
+    "url": "/tr/#proyectos"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Sertifikalar",
+    "label": "certificaciones",
+    "url": "/tr/certifications"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "İletişim",
+    "label": "contacto",
+    "url": "mailto:fran11799@outlook.com"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "CV",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
   }
 ]

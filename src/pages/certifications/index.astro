@@ -1,36 +1,28 @@
 ---
+export const prerender = true;
+
 import Layout from '@layouts/Layout.astro';
-import SectionContainer from '@components/SectionContainer.astro';
-import CertificationsIcon from '@icons/CertificationsIcon.astro';
 import Certifications from '@components/Certifications.astro';
+import { textsJson } from '@utils/const';
 import type { Translations } from '../../types/translations';
 
-import { textsJson } from '@utils/const';
+// Usar español como idioma por defecto
 const langJson = textsJson.es;
-
 const translations: Translations = langJson;
 
-const certificationsPage = translations.certificationsPage;
+const { certificationsTitle, certificationsDescription, certifications } = translations.certificationsPage || {
+  certificationsTitle: 'Certificaciones',
+  certificationsDescription: 'Mis certificaciones',
+  certifications: []
+};
 ---
 
 <Layout
-	title={certificationsPage.certificationsTitle}
-	description={certificationsPage.certificationsDescription}
-	json={langJson}
+  title={certificationsTitle}
+  description={certificationsDescription}
+  json={langJson}
 >
-	<main class='px-4'>
-		<SectionContainer
-			id='certificaciones'
-			data-section='certificaciones'
-			class='pt-36 md:py-28'
-		>
-			<h2
-				class='text-3xl font-semibold -ml-1 flex gap-x-3 items-center text-gray-700 dark:text-white'
-			>
-				<CertificationsIcon class='size-9' />
-				{certificationsPage.certifications}
-			</h2>
-		</SectionContainer>
-		<Certifications translations={translations} />
-	</main>
+  <section class='px-8'>
+    <Certifications translations={translations} />
+  </section>
 </Layout>

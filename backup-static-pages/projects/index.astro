@@ -1,0 +1,32 @@
+---
+import Layout from '@layouts/Layout.astro';
+import SectionContainer from '@components/SectionContainer.astro';
+import CodeIcon from '@icons/Code.astro';
+import AllProjects from '@components/Projects/AllProjects.astro';
+import type { Translations } from '../../types/translations';
+
+import { textsJson } from '@utils/const';
+const langJson = textsJson.es;
+
+const translations: Translations = langJson;
+
+const projectsPage = translations.projectsPage;
+---
+
+<Layout
+	title={projectsPage.allProjectsTitle}
+	description={projectsPage.allProjectsDescription}
+	json={langJson}
+>
+	<main class='px-4'>
+		<SectionContainer id='proyectos' class='pt-36 md:py-28'>
+			<h2
+				class='text-3xl font-semibold -ml-1 flex gap-x-3 items-center text-gray-700 dark:text-white'
+			>
+				<CodeIcon class='size-9' />
+				{projectsPage.allProjects}
+			</h2>
+		</SectionContainer>
+		<AllProjects translations={translations} />
+	</main>
+</Layout>

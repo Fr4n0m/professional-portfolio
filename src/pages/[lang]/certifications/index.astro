@@ -1,8 +1,10 @@
 ---
+export const prerender = true;
+
 import Layout from '@layouts/Layout.astro';
 import Certifications from '@components/Certifications.astro';
 import { textsJson } from '@utils/const';
-import type { Translations } from '../../../types/translations';
+import type { Translations } from '../../types/translations';
 import { languages } from '@i18n/config';
 
 export async function getStaticPaths() {
@@ -12,18 +14,36 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const langJson = textsJson[lang as keyof typeof textsJson];
-const translations: Translations = langJson;
 
-const { certifications, certificationsTitle, certificationsDescription } = translations.certificationsPage;
+// Obtener las traducciones con validación
+let langJson: Translations;
+
+try {
+  langJson = textsJson[lang as keyof typeof textsJson];
+  
+  if (!langJson || !langJson.layout) {
+    throw new Error(`Missing translations for ${lang}`);
+  }
+} catch (error) {
+  console.error(`Translation error for ${lang}:`, error);
+  langJson = textsJson.es;
+}
+
+const translations: Translations = langJson;
+const layout = translations.layout;
+const { certificationsTitle, certificationsDescription } = translations.certificationsPage || {
+  certificationsTitle: 'Certifications',
+  certificationsDescription: 'My certifications'
+};
 ---
 
 <Layout
-	title={certificationsTitle}
-	description={certificationsDescription}
-	json={langJson}
+  title={certificationsTitle}
+  description={certificationsDescription}
+  json={langJson}
 >
-	<section class='px-8'>
-		<Certifications certifications={certifications} />
-	</section>
+  <section class='px-8'>
+    <Certifications translations={translations} />
+    <!-- Agrega aquí el componente de certificaciones -->
+  </section>
 </Layout>

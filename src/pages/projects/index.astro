@@ -1,32 +1,27 @@
 ---
+export const prerender = true;
+
 import Layout from '@layouts/Layout.astro';
-import SectionContainer from '@components/SectionContainer.astro';
-import CodeIcon from '@icons/Code.astro';
-import AllProjects from '@components/Projects/AllProjects.astro';
+import Projects from '@components/Projects/Projects.astro';
+import { textsJson } from '@utils/const';
 import type { Translations } from '../../types/translations';
 
-import { textsJson } from '@utils/const';
+// Usar español como idioma por defecto
 const langJson = textsJson.es;
-
 const translations: Translations = langJson;
 
-const projectsPage = translations.projectsPage;
+const { projectsTitle, projectsDescription } = translations.projectsPage || {
+  projectsTitle: 'Proyectos',
+  projectsDescription: 'Mis proyectos'
+};
 ---
 
 <Layout
-	title={projectsPage.allProjectsTitle}
-	description={projectsPage.allProjectsDescription}
-	json={langJson}
+  title={projectsTitle}
+  description={projectsDescription}
+  json={langJson}
 >
-	<main class='px-4'>
-		<SectionContainer id='proyectos' class='pt-36 md:py-28'>
-			<h2
-				class='text-3xl font-semibold -ml-1 flex gap-x-3 items-center text-gray-700 dark:text-white'
-			>
-				<CodeIcon class='size-9' />
-				{projectsPage.allProjects}
-			</h2>
-		</SectionContainer>
-		<AllProjects translations={translations} />
-	</main>
+  <section class='px-8'>
+    <Projects translations={translations} />
+  </section>
 </Layout>

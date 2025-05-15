@@ -1,37 +1,37 @@
 [
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Pagina principale",
+    "label": "inicio",
+    "url": "/it/#inicio"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Competenze",
+    "label": "habilidades",
+    "url": "/it/#habilidades"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Esperienza",
+    "label": "experiencia",
+    "url": "/it/#experiencia"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Progetti",
+    "label": "proyectos",
+    "url": "/it/#proyectos"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Certificazioni",
+    "label": "certificaciones",
+    "url": "/it/certifications"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "Contatto",
+    "label": "contacto",
+    "url": "mailto:fran11799@outlook.com"
   },
   {
-    "title": "",
-    "label": "",
-    "url": ""
+    "title": "CV",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
   }
 ]
