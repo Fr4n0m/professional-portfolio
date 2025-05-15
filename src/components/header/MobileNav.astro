@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from '@components/ThemeToggle.astro';
 import LanguageToggle from '@components/LanguageToggle.astro';
+import ControlCenter from './mobile/ControlCenter.astro';
 import type { HeaderItem } from '../../types/headerItem';
 
 export interface Props {
@@ -11,59 +12,74 @@ export interface Props {
 const { headerItems, lang } = Astro.props;
 ---
 
-<!-- Header Mobile - Original -->
-<div class='md:hidden flex items-center justify-between w-full px-4 py-3'>
-  <!-- Logo + Menu Button -->
-  <div class='flex items-center space-x-2'>
-    <button
-      id='mobile-menu-button'
-      class='p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors'
-      aria-label='Toggle menu'
-    >
-      <svg id='menu-icon' class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'></path>
-      </svg>
-      <svg id='close-icon' class='w-6 h-6 hidden' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path>
-      </svg>
-    </button>
-    <a href={lang === 'es' ? '/' : `/${lang}/`} class='flex items-center'>
-      <img
-        src='/assets/images/Fr4n0m Photo.webp'
-        alt='Fr4n0m photo'
-        class='rounded-full w-8 h-8'
-      />
-    </a>
-  </div>
+<!-- Header Mobile - Nuevo diseño con Control Center -->
+<div class='md:hidden'>
+  <!-- Header móvil fijo con blur -->
+  <header class='fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 border-b border-gray-200/20 dark:border-gray-700/20'>
+    <div class='flex items-center justify-between px-4 py-3'>
+      <!-- Logo y botón de menú -->
+      <div class='flex items-center gap-3'>
+        <button
+          id='mobile-menu-button'
+          class='p-2 -ml-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 ease-out active:scale-95'
+          aria-label='Toggle menu'
+          type='button'
+        >
+          <svg id='menu-icon' class='w-6 h-6 transition-all duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'></path>
+          </svg>
+          <svg id='close-icon' class='w-6 h-6 hidden transition-all duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path>
+          </svg>
+        </button>
+        
+        <a href={lang === 'es' ? '/' : `/${lang}/`} class='flex items-center group'>
+          <img
+            src='/assets/images/Fr4n0m Photo.webp'
+            alt='Fr4n0m photo'
+            class='w-9 h-9 rounded-full object-cover ring-2 ring-transparent group-hover:ring-gray-300 dark:group-hover:ring-gray-600 transition-all duration-300'
+          />
+          <span class='ml-2 font-semibold text-gray-900 dark:text-white'>Portfolio</span>
+        </a>
+      </div>
 
-  <!-- Toggles -->
-  <div class='flex items-center -mr-1'>
-    <ThemeToggle />
-    <LanguageToggle />
+      <!-- Control Center a la derecha -->
+      <ControlCenter />
+    </div>
+  </header>
+
+  <!-- Mobile Menu - Estilo moderno -->
+  <div
+    id='mobile-menu'
+    class='fixed inset-x-0 top-[69px] bg-white dark:bg-gray-900 shadow-2xl overflow-hidden z-40 transition-all duration-500 ease-out transform -translate-y-full opacity-0'
+    data-open='false'
+  >
+    <nav class='px-4 py-6 max-h-[calc(100vh-69px)] overflow-y-auto'>
+      {headerItems.map((item, index) => (
+        <a
+          class='mobile-nav-link flex items-center gap-3 px-4 py-3 mb-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200 transform hover:translate-x-1'
+          data-section={item.label}
+          href={item.url}
+          target={item.title === 'CV' ? '_blank' : '_self'}
+          style={`animation-delay: ${index * 50}ms`}
+        >
+          <span class='text-lg font-medium'>{item.title}</span>
+          {item.title === 'CV' && (
+            <svg class='w-4 h-4 ml-auto opacity-50' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'></path>
+            </svg>
+          )}
+        </a>
+      ))}
+    </nav>
   </div>
 </div>
 
-<!-- Mobile Menu -->
-<div
-  id='mobile-menu'
-  class='hidden md:hidden fixed top-[60px] left-0 right-0 bg-white dark:bg-gray-800 shadow-lg overflow-y-auto max-h-[calc(100vh-60px)] z-50'
->
-  <nav class='px-4 py-4'>
-    {headerItems.map(item => (
-      <a
-        class='mobile-nav-link block px-3 py-3 mb-1 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors'
-        data-section={item.label}
-        href={item.url}
-        target={item.title === 'CV' ? '_blank' : '_self'}
-      >
-        {item.title}
-      </a>
-    ))}
-  </nav>
-</div>
+<!-- Spacer para que el contenido no quede bajo el header -->
+<div class='md:hidden h-[69px]'></div>
 
 <script>
-  // Mobile menu functionality with improved UX
+  // Mobile menu functionality
   function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -73,37 +89,64 @@ const { headerItems, lang } = Astro.props;
     
     if (!mobileMenuButton || !mobileMenu || !menuIcon || !closeIcon) return;
     
-    let isOpen = false;
-    
-    const toggleMenu = (open?: boolean) => {
-      isOpen = open !== undefined ? open : !isOpen;
+    const toggleMenu = (open) => {
+      const isOpen = open !== undefined ? open : mobileMenu.dataset.open !== 'true';
+      
+      mobileMenu.dataset.open = isOpen.toString();
       
       if (isOpen) {
-        mobileMenu.classList.remove('hidden');
-        menuIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
-        body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+        // Abrir menú
+        mobileMenu.classList.remove('-translate-y-full', 'opacity-0');
+        mobileMenu.classList.add('translate-y-0', 'opacity-100');
+        menuIcon.classList.add('rotate-90', 'opacity-0', 'pointer-events-none');
+        closeIcon.classList.remove('hidden', '-rotate-90');
+        closeIcon.classList.add('rotate-0');
+        body.style.overflow = 'hidden';
+        
+        // Animar items del menú
+        const items = mobileMenu.querySelectorAll('.mobile-nav-link');
+        items.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('animate-slide-in');
+          }, index * 50);
+        });
       } else {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        body.style.overflow = ''; // Restore body scroll
+        // Cerrar menú
+        mobileMenu.classList.add('-translate-y-full', 'opacity-0');
+        mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+        menuIcon.classList.remove('rotate-90', 'opacity-0', 'pointer-events-none');
+        closeIcon.classList.add('-rotate-90');
+        setTimeout(() => {
+          closeIcon.classList.add('hidden');
+          closeIcon.classList.remove('rotate-0');
+        }, 300);
+        body.style.overflow = '';
+        
+        // Reset animaciones
+        const items = mobileMenu.querySelectorAll('.mobile-nav-link');
+        items.forEach(item => {
+          item.classList.remove('animate-slide-in');
+        });
       }
     };
     
-    mobileMenuButton.addEventListener('click', () => toggleMenu());
+    mobileMenuButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
     
-    // Close menu when clicking outside
+    // Cerrar menú al hacer clic fuera
     document.addEventListener('click', (event) => {
-      const target = event.target as Node;
+      const target = event.target;
       if (!mobileMenuButton.contains(target) && 
           !mobileMenu.contains(target) && 
-          isOpen) {
+          mobileMenu.dataset.open === 'true') {
         toggleMenu(false);
       }
     });
     
-    // Handle navigation links with improved hash handling
+    // Manejar links del menú
     const menuLinks = mobileMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -112,16 +155,12 @@ const { headerItems, lang } = Astro.props;
         if (href && href.includes('#')) {
           e.preventDefault();
           
-          // Extract the hash from the URL
           const hashIndex = href.indexOf('#');
           const targetId = href.substring(hashIndex + 1);
-          
-          // Find the target section
           const targetSection = document.getElementById(targetId);
           
           if (targetSection) {
-            const header = document.querySelector('.md\\:hidden');
-            const headerHeight = header ? header.offsetHeight : 60;
+            const headerHeight = 69;
             const targetPosition = targetSection.offsetTop - headerHeight - 20;
             
             window.scrollTo({
@@ -131,21 +170,20 @@ const { headerItems, lang } = Astro.props;
           }
         }
         
-        // Always close the menu after clicking a link
         toggleMenu(false);
       });
     });
     
-    // Close menu on escape key
+    // Cerrar menú con Escape
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && isOpen) {
+      if (event.key === 'Escape' && mobileMenu.dataset.open === 'true') {
         toggleMenu(false);
       }
     });
     
-    // Handle window resize
+    // Manejar resize
     window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768 && isOpen) {
+      if (window.innerWidth >= 768 && mobileMenu.dataset.open === 'true') {
         toggleMenu(false);
       }
     });
@@ -162,20 +200,16 @@ const { headerItems, lang } = Astro.props;
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
+      const headerHeight = 69;
+      const offset = headerHeight + 40;
       
       let activeSection = '';
       
-      // Check if at bottom of page
       if (scrollPosition + windowHeight >= documentHeight - 10) {
         activeSection = sections[sections.length - 1].id;
       } else {
-        // Get the mobile header height for offset calculation
-        const header = document.querySelector('.md\\:hidden');
-        const headerHeight = header ? header.offsetHeight : 60;
-        const offset = headerHeight + 80; // Additional offset for better triggering
-        
         sections.forEach(section => {
-          const sectionElement = section as HTMLElement;
+          const sectionElement = section;
           const sectionTop = sectionElement.offsetTop - offset;
           const sectionHeight = sectionElement.offsetHeight;
           
@@ -184,7 +218,6 @@ const { headerItems, lang } = Astro.props;
           }
         });
         
-        // If no section is active and we're near the top, activate the first section
         if (!activeSection && scrollPosition < 100) {
           activeSection = sections[0].id;
         }
@@ -194,16 +227,17 @@ const { headerItems, lang } = Astro.props;
         const linkSection = link.getAttribute('data-section');
         
         if (linkSection === activeSection) {
-          link.classList.add('bg-gray-100', 'dark:bg-gray-700', 'font-semibold');
+          link.classList.add('bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-600', 'dark:text-blue-400', 'font-semibold');
+          link.classList.remove('text-gray-700', 'dark:text-gray-300');
         } else {
-          link.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'font-semibold');
+          link.classList.remove('bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-600', 'dark:text-blue-400', 'font-semibold');
+          link.classList.add('text-gray-700', 'dark:text-gray-300');
         }
       });
     };
     
-    // Throttle scroll events
     let isScrolling = false;
-    let scrollTimeout: number;
+    let scrollTimeout;
     
     const handleScroll = () => {
       if (!isScrolling) {
@@ -214,7 +248,6 @@ const { headerItems, lang } = Astro.props;
         isScrolling = true;
       }
       
-      // Clear and reset timeout for scroll end detection
       clearTimeout(scrollTimeout);
       scrollTimeout = window.setTimeout(() => {
         updateActiveLink();
@@ -224,11 +257,10 @@ const { headerItems, lang } = Astro.props;
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', updateActiveLink);
     
-    // Initial check
     updateActiveLink();
   }
 
-  // Initialize everything when DOM is ready
+  // Initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initMobileMenu();
@@ -241,18 +273,70 @@ const { headerItems, lang } = Astro.props;
 </script>
 
 <style>
-  /* Mobile menu animation */
-  #mobile-menu {
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  }
-
-  #mobile-menu.hidden {
-    transform: translateY(-10px);
-    opacity: 0;
+  /* Animación del header al hacer scroll */
+  header {
+    animation: header-shadow 0.5s linear;
   }
   
-  /* Prevent body scroll when menu is open */
-  :global(body.menu-open) {
-    overflow: hidden;
+  @keyframes header-shadow {
+    from {
+      box-shadow: none;
+    }
+    to {
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+  }
+  
+  /* Animaciones del menú */
+  #menu-icon,
+  #close-icon {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Slide in animation para los items */
+  @keyframes slide-in {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  /* Mejora el scroll del menú en móvil */
+  #mobile-menu nav {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(156 163 175) transparent;
+  }
+  
+  #mobile-menu nav::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  #mobile-menu nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  #mobile-menu nav::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175);
+    border-radius: 3px;
+  }
+  
+  .dark #mobile-menu nav::-webkit-scrollbar-thumb {
+    background-color: rgb(75 85 99);
+  }
+  
+  /* Efecto blur más pronunciado en móvil */
+  @supports (backdrop-filter: blur(12px)) {
+    header {
+      backdrop-filter: blur(12px);
+    }
   }
 </style>

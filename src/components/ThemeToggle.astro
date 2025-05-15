@@ -49,7 +49,15 @@ const themes = [
 	</div>
 </div>
 
-<script is:inline>
+<script>
+	// Apply initial theme
+	(function() {
+		const theme = localStorage.getItem('theme') || 'system';
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		const isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+		document.documentElement.classList.toggle('dark', isDark);
+	})();
+	
 	document.addEventListener('DOMContentLoaded', () => {
 		const themesMenu = document.getElementById('themes-menu');
 		const themeToggleBtn = document.getElementById('theme-toggle-btn');
@@ -57,7 +65,7 @@ const themes = [
 		
 		if (!themesMenu || !themeToggleBtn) return;
 		
-		// Función para obtener el tema actual
+		// Function to get current theme
 		const getThemePreference = () => {
 			if (typeof localStorage !== 'undefined') {
 				return localStorage.getItem('theme') ?? 'system';
@@ -67,21 +75,21 @@ const themes = [
 				: 'light';
 		};
 		
-		// Función para actualizar el icono visible
+		// Function to update icon visibility
 		const updateIcon = (theme) => {
 			document.querySelectorAll('.theme-toggle-icon').forEach(icon => {
 				icon.style.scale = icon.id === theme ? '1' : '0';
 			});
 		};
 		
-		// Función para actualizar el menú activo
+		// Function to update active theme in menu
 		const updateActiveTheme = (theme) => {
 			themeOptions.forEach(option => {
 				option.setAttribute('data-active', option.dataset.theme === theme);
 			});
 		};
 		
-		// Función para actualizar el tema
+		// Function to apply theme
 		const updateTheme = () => {
 			const theme = getThemePreference();
 			const isDark = theme === 'dark' || 
@@ -116,15 +124,24 @@ const themes = [
 			});
 		});
 		
-		// Escuchar cambios del sistema
+		// Listen to system theme changes
 		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
 		
-		// Inicializar tema
+		// Initialize theme
 		updateTheme();
 	});
 </script>
 
 <style>
+	#themes-menu {
+		transition: all 0.2s ease;
+		transform-origin: top right;
+	}
+	
+	#themes-menu:not(.open) {
+		display: none;
+	}
+	
 	#themes-menu.open {
 		display: block !important;
 		animation: scale-up-center 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
