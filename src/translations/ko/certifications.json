@@ -1,16 +1,16 @@
 [
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  },
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  }
+	{
+		"title": "풀스택 웹 개발자 인증",
+		"image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+		"description": "HTML, CSS 및 React를 사용한 인터페이스 생성, Node.js를 사용한 백엔드 개발, MongoDB, 데이터베이스 관리 및 DevOps 도구를 사용한 배포 등 다양한 기술을 포함한 풀스택 웹 개발 교육.",
+		"entity": "CODESPACE"
+	},
+	{
+		"title": "Linux 환경 개인화 인증",
+		"image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+		"description": "Debian, Kali 및 기타 Linux 기반 시스템에서 Linux 환경을 사용자 지정하는 기술. 소프트웨어 구성, 시스템 설정 및 성능 및 보안 최적화 포함.",
+		"entity": "HACK4U"
+	}
 ]

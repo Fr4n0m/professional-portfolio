@@ -1,16 +1,16 @@
 [
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  },
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  }
+	{
+		"title": "Full Stack Webontwikkelaar Certificering",
+		"image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+		"description": "Training in Full Stack webontwikkeling, inclusief het maken van interfaces met HTML, CSS en React, backend-ontwikkeling met Node.js, MongoDB, databasebeheer en deployment met DevOps-tools onder vele andere technologieën.",
+		"entity": "CODESPACE"
+	},
+	{
+		"title": "Linux Omgeving Personalisatie Certificering",
+		"image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+		"description": "Vaardigheden om Linux-omgevingen aan te passen in Debian, Kali en andere Linux-gebaseerde systemen, inclusief softwareconfiguratie, systeeminstellingen en optimalisatie van prestaties en beveiliging.",
+		"entity": "HACK4U"
+	}
 ]

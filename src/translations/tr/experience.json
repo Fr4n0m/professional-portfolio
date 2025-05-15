@@ -1,25 +1,25 @@
 {
-  "workExperience": "",
-  "experience": [
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    }
-  ]
+	"workExperience": "İş Deneyimi",
+	"experience": [
+		{
+			"date": "Eylül 2024",
+			"title": "Dimap®'da Yazılım ve Front-End Geliştirici",
+			"description": "Front-End geliştirme."
+		},
+		{
+			"date": "Mayıs 2024",
+			"title": "Gubb Marketing®'de Yazılım Geliştirici",
+			"description": "Yazılım ve web uygulamaları geliştirme."
+		},
+		{
+			"date": "Mart 2024",
+			"title": "Agrooe® ve Gubb Marketing® için Agrooe-Cashback Geliştirme",
+			"description": "Agrooe® şirketi için cashback sistemi yönetimine odaklanan bir web uygulamasının sıfırdan geliştirilmesi. Web uygulamasının veritabanı, backend ve frontend geliştirmesi."
+		},
+		{
+			"date": "Haziran 2021",
+			"title": "Serbest Çalışan",
+			"description": "Farklı türlerde kişisel ve profesyonel projelerin geliştirilmesi."
+		}
+	]
 }

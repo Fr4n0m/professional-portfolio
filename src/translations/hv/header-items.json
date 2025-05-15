@@ -1,32 +1,32 @@
 [
   {
     "title": "Glaeson",
-    "label": "glaeson",
-    "url": "/hv/#glaeson"
+    "label": "main",
+    "url": "/hv/#main"
   },
   {
     "title": "Ōdrikagon",
-    "label": "ōdrikagon",
-    "url": "/hv/#ōdrikagon"
+    "label": "skills",
+    "url": "/hv/#skills"
   },
   {
     "title": "Pāletilla",
-    "label": "pāletilla",
-    "url": "/hv/#pāletilla"
+    "label": "experience",
+    "url": "/hv/#experience"
   },
   {
     "title": "Dāeremagon",
-    "label": "dāeremagon",
-    "url": "/hv/#dāeremagon"
+    "label": "projects",
+    "url": "/hv/#projects"
   },
   {
     "title": "Kīsir",
-    "label": "kīsir",
+    "label": "certifications",
     "url": "/hv/certifications"
   },
   {
     "title": "Mīsagon",
-    "label": "mīsagon",
+    "label": "contact",
     "url": "mailto:Fran11799@outlook.com"
   },
   {

@@ -27,11 +27,11 @@ const selectedProjects = translations.mainPage.selectedProjects;
 ---
 
 <main class={commonClasses.section.base}>
-	<SectionContainer id='inicio' class={commonClasses.section.padding}>
+	<SectionContainer id='main' class={commonClasses.section.padding}>
 		<Hero translations={translations} />
 	</SectionContainer>
 
-	<SectionContainer id='habilidades'>
+	<SectionContainer id='skills'>
 		<h2 class={commonClasses.heading.h2 + ' mb-12'}>
 			<Fire class={commonClasses.iconSize.xl} />
 			{skills.skillsTitle}
@@ -39,7 +39,7 @@ const selectedProjects = translations.mainPage.selectedProjects;
 		<Skills />
 	</SectionContainer>
 
-	<SectionContainer id='experiencia' class={commonClasses.section.paddingAlt}>
+	<SectionContainer id='experience' class={commonClasses.section.paddingAlt}>
 		<h2 class={commonClasses.heading.h2 + ' mb-12'}>
 			<Briefcase class={commonClasses.iconSize.xl} />
 			{experience.workExperience}
@@ -47,7 +47,7 @@ const selectedProjects = translations.mainPage.selectedProjects;
 		<Experience translations={translations} />
 	</SectionContainer>
 
-	<SectionContainer id='proyectos' class={commonClasses.section.paddingAlt}>
+	<SectionContainer id='projects' class={commonClasses.section.paddingAlt}>
 		<h2 class={commonClasses.heading.h2 + ' -ml-1'}>
 			<CodeIcon class={commonClasses.iconSize.xxl} />
 			{selectedProjects.projectsTitle}

@@ -25,46 +25,125 @@ const info = {
 </header>
 
 <script>
-  // Navigation highlighting
-  document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[data-section]');
+  // Navigation highlighting with improved logic for all pages and sections
+  function initNavigation() {
     const navItems = document.querySelectorAll('header nav a');
-
-    if (sections.length === 0) {
-      console.error('No se encontraron secciones con ID en el DOM');
+    const currentPath = window.location.pathname;
+    const currentHash = window.location.hash;
+    
+    if (navItems.length === 0) {
+      console.warn('Navigation setup incomplete: nav items missing');
       return;
     }
-
-    const callback = (entries: any[]) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navItems.forEach(item => {
-            if (item.getAttribute('aria-label') === entry.target.id) {
-              item.classList.add('dark:text-yellow-300');
-              item.classList.add('text-blue-800');
-            } else {
-              item.classList.remove('dark:text-yellow-300');
-              item.classList.remove('text-blue-800');
-            }
-          });
+    
+    // Function to check if the current URL matches the nav item
+    const isCurrentPage = (itemHref: string) => {
+      // Handle home page special case
+      if (itemHref === '/' || itemHref === '/#main') {
+        return currentPath === '/' && (currentHash === '' || currentHash === '#main');
+      }
+      
+      // Handle language-specific home pages
+      if (itemHref.match(/^\/[a-z]{2}(-[a-z]{2})?\/?(#main)?$/)) {
+        const pathWithoutHash = itemHref.split('#')[0];
+        return currentPath === pathWithoutHash || currentPath === pathWithoutHash.slice(0, -1);
+      }
+      
+      // Handle hash navigation on the same page
+      if (itemHref.includes('#') && currentPath === itemHref.split('#')[0]) {
+        return currentHash === '#' + itemHref.split('#')[1];
+      }
+      
+      // Handle direct page matches (e.g., /certifications)
+      const itemPath = itemHref.split('#')[0];
+      return currentPath === itemPath || currentPath === itemPath + '/';
+    };
+    
+    // Function to update navigation highlighting
+    const updateNavHighlighting = () => {
+      navItems.forEach(item => {
+        const href = item.getAttribute('href');
+        const dataSection = item.getAttribute('data-section');
+        
+        // Skip external links
+        if (href && (href.startsWith('http') || href.startsWith('mailto:'))) {
+          return;
+        }
+        
+        let isActive = false;
+        
+        // Check if this is the current page
+        if (href && isCurrentPage(href)) {
+          isActive = true;
+        }
+        
+        // Apply or remove active classes
+        if (isActive) {
+          item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+        } else {
+          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         }
       });
     };
-
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.9,
-    });
-
-    sections.forEach(section => observer.observe(section));
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') {
+    
+    // Set initial active state
+    updateNavHighlighting();
+    
+    // Handle sections on the current page
+    const sections = document.querySelectorAll('section[data-section]');
+    
+    if (sections.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: 0
+      };
+      
+      const callback = (entries: IntersectionObserverEntry[]) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            
+            navItems.forEach(item => {
+              const dataSection = item.getAttribute('data-section');
+              
+              if (dataSection === sectionId) {
+                item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+              } else if (item.getAttribute('href')?.includes('#')) {
+                // Only remove classes from hash navigation items, not from page navigation
+                item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+              }
+            });
+          }
+        });
+      };
+      
+      const observer = new IntersectionObserver(callback, observerOptions);
+      sections.forEach(section => observer.observe(section));
+      
+      // Handle visibility changes to pause/resume observer
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          observer.disconnect();
+        } else {
+          sections.forEach(section => observer.observe(section));
+        }
+      });
+      
+      // Cleanup on page navigation
+      window.addEventListener('beforeunload', () => {
         observer.disconnect();
-      } else {
-        sections.forEach(section => observer.observe(section));
-      }
-    });
-  });
+      });
+    }
+    
+    // Update highlighting when hash changes
+    window.addEventListener('hashchange', updateNavHighlighting);
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavigation);
+  } else {
+    initNavigation();
+  }
 </script>

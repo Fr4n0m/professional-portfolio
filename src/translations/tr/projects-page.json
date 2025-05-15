@@ -1,11 +1,11 @@
 {
-  "allProjects": "",
-  "allProjectsTitle": "",
-  "allProjectsDescription": "",
-  "allProjectsLink": "",
+  "allProjects": "Tüm Projeler",
+  "allProjectsTitle": "\"Tüm Projeler\" sayfasına hoş geldiniz",
+  "allProjectsDescription": "Burada üzerinde çalıştığım tüm projeleri görebilirsiniz.",
+  "allProjectsLink": "Daha fazla proje gör",
   "projectsButtons": {
-    "textCodeButton": "",
-    "textDemoButton": "",
-    "textDemo2Button": ""
+    "textCodeButton": "Kodu gör",
+    "textDemoButton": "Demoyu gör",
+    "textDemo2Button": "Demoyu gör"
   }
 }

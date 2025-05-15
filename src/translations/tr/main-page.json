@@ -1,24 +1,24 @@
 {
   "hero": {
-    "heroTitle": "",
-    "heroBadge": "",
-    "heroDescription1": "",
-    "heroDescription2": "",
-    "heroDescription3": ""
+    "heroTitle": "Merhaba, ben Fran",
+    "heroBadge": "Çalışmaya hazır",
+    "heroDescription1": "Yazılım ve Full Stack Geliştirici.",
+    "heroDescription2": "Ayrıntılara tutkuyla bağlı sonsuz öğrenci.",
+    "heroDescription3": "Problem yaratma ve çözme konusunda uzman. 🤓"
   },
   "socialPill": {
-    "socialPillTitle": "",
-    "sendMailSocialPill": "",
+    "socialPillTitle": "Ziyaret et",
+    "sendMailSocialPill": "E-posta gönder",
     "copyButton": {
-      "copyTitle": "",
-      "copyMail": "",
-      "copyMailError": ""
+      "copyTitle": "E-postayı Kopyala",
+      "copyMail": "E-posta kopyalandı!",
+      "copyMailError": "Kopyalama hatası"
     }
   },
   "skills": {
-    "skillsTitle": ""
+    "skillsTitle": "Yetenekler"
   },
   "selectedProjects": {
-    "projectsTitle": ""
+    "projectsTitle": "Projeler"
   }
 }

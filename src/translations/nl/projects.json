@@ -1,218 +1,175 @@
 [
-  {
-    "title": "",
-    "description": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "secondaryLink": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  }
+	{
+		"title": "Agrooe Cashback",
+		"description": "Op deze website werkte ik samen met een team om vanaf nul een platform te ontwikkelen dat zich inzet voor de verkoop van kwaliteitsproducten en de ontwikkeling van lokale handel. We werkten vanaf het concept tot aan de praktijk door zowel de back-end als de front-end te creëren. Naast verschillende technologieën werden integraties zoals JWT voor accountbeheer en inloggen, een dashboard voor controle van alle gegevens geïmplementeerd... Functionaliteiten zoals inloggen met verschillende sociale netwerken, account aanmaken als gebruiker om producten te kopen of als bedrijf om ze toe te voegen, kaarten van de dichtstbijzijnde locatie waar het betreffende product te vinden is, onder andere. Om vertrouwelijkheidsredenen wordt de code niet getoond.",
+		"images": [
+			"/assets/images/projects/agrooe_1.jpeg",
+			"/assets/images/projects/agrooe_2.jpeg",
+			"/assets/images/projects/agrooe_3.jpeg"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"TAILWIND",
+			"JAVASCRIPT",
+			"REACT",
+			"NEXTJS",
+			"EXPRESS",
+			"NODEJS",
+			"MONGODB"
+		]
+	},
+	{
+		"title": "Strapi Games Store",
+		"description": "Webapplicatie ontworpen om content gerelateerd aan videogames te beheren met behulp van Strapi als backend en CMS.",
+		"link": "https://strapi-games-store.vercel.app/",
+		"github": "https://github.com/Fr4n0m/strapi-games-store",
+		"images": [
+			"/assets/images/projects/strapi-games-web-1.webp",
+			"/assets/images/projects/strapi-games-web-2.webp",
+			"/assets/images/projects/strapi-games-web-3.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"TAILWIND",
+			"JAVASCRIPT",
+			"TYPESCRIPT",
+			"REACT",
+			"NEXTJS",
+			"STRAPI"
+		]
+	},
+	{
+		"title": "Realtime Chat",
+		"description": "Real-time chatapplicatie die Socket.IO gebruikt voor real-time communicatie en Supabase als database.",
+		"link": "https://realtime-chat-ten-nu.vercel.app/",
+		"github": "https://github.com/Fr4n0m/realtime-chat",
+		"images": [
+			"/assets/images/projects/realtime-chat_1.webp",
+			"/assets/images/projects/realtime-chat_2.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"JAVASCRIPT",
+			"VITE",
+			"EXPRESS",
+			"NODEJS",
+			"SUPABASE"
+		]
+	},
+	{
+		"title": "Super Mario Bros 85'",
+		"description": "Kloon voor educatieve doeleinden van het mythische Nintendo-spel Super Mario Bros uit 1985.",
+		"github": "https://github.com/Fr4n0m/super-mario-bros-85",
+		"images": [
+			"/assets/images/projects/super-mario-bros-85.webp",
+			"/assets/images/projects/super-mario-bros-85_2.webp",
+			"/assets/images/projects/super-mario-bros-85_3.webp",
+			"/assets/images/projects/super-mario-bros-85_4.webp",
+			"/assets/images/projects/super-mario-bros-85_5.webp",
+			"/assets/images/projects/super-mario-bros-85_6.webp",
+			"/assets/images/projects/super-mario-bros-85_7.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE", "PHASER"]
+	},
+	{
+		"title": "Paint Windows 95'",
+		"description": "Paint-applicatie geïnspireerd op het Windows 95-tijdperk.",
+		"link": "https://paint-win-95-blond.vercel.app/",
+		"github": "https://github.com/Fr4n0m/paint-win-95",
+		"images": ["/assets/images/projects/paint-95.webp"],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE"]
+	},
+	{
+		"title": "Boekhandel View Transitions Demo",
+		"description": "Webboekhandel om view transitions te oefenen.",
+		"link": "https://bookshop-view-transitions.vercel.app/",
+		"secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
+		"github": "https://github.com/Fr4n0m/bookshop-view-transitions",
+		"images": [
+			"/assets/images/projects/bookshop_1.webp",
+			"/assets/images/projects/bookshop_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "ASTRO"]
+	},
+	{
+		"title": "TikTok Kloon",
+		"description": "Kloon van de TikTok-interface met behulp van Vite en React met Supabase backend.",
+		"link": "https://tiktok-clone-five-phi.vercel.app/",
+		"github": "https://github.com/Fr4n0m/tiktok-clone",
+		"images": [
+			"/assets/images/projects/tiktok_2.webp",
+			"/assets/images/projects/tiktok_1.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"JAVASCRIPT",
+			"VITE",
+			"REACT",
+			"NODEJS",
+			"EXPRESS",
+			"SUPABASE"
+		]
+	},
+	{
+		"title": "Atari Breakout Game",
+		"description": "Versie van het legendarische Atari BreakOut-spel met JavaScript.",
+		"link": "https://breakout-game-jade.vercel.app/",
+		"github": "https://github.com/Fr4n0m/breakout-game",
+		"images": [
+			"/assets/images/projects/breakout-game_2.webp",
+			"/assets/images/projects/breakout-game.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT"]
+	},
+	{
+		"title": "Filmax",
+		"description": "Website om informatie over films en series te bekijken.",
+		"link": "",
+		"github": "https://github.com/Fr4n0m/filmax",
+		"images": [
+			"/assets/images/projects/filmax_home_preview.webp",
+			"/assets/images/projects/filmax_home_preview_2.webp",
+			"/assets/images/projects/filmax_blog_preview.webp",
+			"/assets/images/projects/filmax_blog_preview_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT"]
+	},
+	{
+		"title": "Web Calculator",
+		"description": "Een eenvoudige rekenmachine voor het uitvoeren van basale rekenkundige bewerkingen.",
+		"link": "https://web-calculator-snowy.vercel.app/",
+		"github": "https://github.com/Fr4n0m/web_calculator",
+		"images": [
+			"/assets/images/projects/WebCalculator_light.webp",
+			"/assets/images/projects/WebCalculator_dark.webp"
+		],
+		"tags": ["HTML", "CSS", "TAILWIND", "JAVASCRIPT"]
+	},
+	{
+		"title": "Pokédex",
+		"description": "Pokédex om informatie over pokemons te bekijken met de mogelijkheid om favorieten toe te voegen, te verwijderen of zelfs je eigen pokemon te creëren.",
+		"link": "",
+		"github": "https://github.com/Fr4n0m/YourOwnPokedex",
+		"images": [
+			"/assets/images/projects/pokedex.webp",
+			"/assets/images/projects/pokedex_favorites.webp",
+			"/assets/images/projects/pokedex_create.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "NEXTJS"]
+	},
+	{
+		"title": "Eerste Web Portfolio",
+		"description": "Eerste web portfolio met alleen HTML, CSS en JavaScript. Later implementeerde ik het in Astro.",
+		"link": "https://portfolio-fr4n0m-astro.vercel.app/",
+		"github": "https://github.com/Fr4n0m/portfolio-astro",
+		"images": [
+			"/assets/images/projects/1er_portfolio.webp",
+			"/assets/images/projects/1er_portfolio_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "ASTRO"]
+	}
 ]

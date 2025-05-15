@@ -1,33 +1,33 @@
 [
   {
     "title": "Ana Sayfa",
-    "label": "inicio",
-    "url": "/tr/#inicio"
+    "label": "main",
+    "url": "/tr/#main"
   },
   {
     "title": "Yetenekler",
-    "label": "habilidades",
-    "url": "/tr/#habilidades"
+    "label": "skills",
+    "url": "/tr/#skills"
   },
   {
     "title": "Deneyim",
-    "label": "experiencia",
-    "url": "/tr/#experiencia"
+    "label": "experience",
+    "url": "/tr/#experience"
   },
   {
     "title": "Projeler",
-    "label": "proyectos",
-    "url": "/tr/#proyectos"
+    "label": "projects",
+    "url": "/tr/#projects"
   },
   {
     "title": "Sertifikalar",
-    "label": "certificaciones",
+    "label": "certifications",
     "url": "/tr/certifications"
   },
   {
     "title": "İletişim",
-    "label": "contacto",
-    "url": "mailto:fran11799@outlook.com"
+    "label": "contact",
+    "url": "mailto:Fran11799@outlook.com"
   },
   {
     "title": "CV",

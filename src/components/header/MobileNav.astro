@@ -46,13 +46,13 @@ const { headerItems, lang } = Astro.props;
 <!-- Mobile Menu -->
 <div
   id='mobile-menu'
-  class='hidden md:hidden fixed top-[60px] left-0 right-0 bg-white dark:bg-gray-800 shadow-lg overflow-y-auto max-h-[calc(100vh-60px)]'
+  class='hidden md:hidden fixed top-[60px] left-0 right-0 bg-white dark:bg-gray-800 shadow-lg overflow-y-auto max-h-[calc(100vh-60px)] z-50'
 >
   <nav class='px-4 py-4'>
     {headerItems.map(item => (
       <a
-        class='block px-3 py-3 mb-1 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors'
-        aria-label={item.label}
+        class='mobile-nav-link block px-3 py-3 mb-1 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors'
+        data-section={item.label}
         href={item.url}
         target={item.title === 'CV' ? '_blank' : '_self'}
       >
@@ -63,66 +63,196 @@ const { headerItems, lang } = Astro.props;
 </div>
 
 <script>
-  // Mobile menu functionality
+  // Mobile menu functionality with improved UX
   function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
     const closeIcon = document.getElementById('close-icon');
+    const body = document.body;
     
     if (!mobileMenuButton || !mobileMenu || !menuIcon || !closeIcon) return;
     
     let isOpen = false;
     
-    mobileMenuButton.addEventListener('click', () => {
-      isOpen = !isOpen;
+    const toggleMenu = (open?: boolean) => {
+      isOpen = open !== undefined ? open : !isOpen;
+      
       if (isOpen) {
         mobileMenu.classList.remove('hidden');
         menuIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
+        body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
       } else {
         mobileMenu.classList.add('hidden');
         menuIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
+        body.style.overflow = ''; // Restore body scroll
       }
-    });
+    };
+    
+    mobileMenuButton.addEventListener('click', () => toggleMenu());
     
     // Close menu when clicking outside
     document.addEventListener('click', (event) => {
-      if (!mobileMenuButton.contains(event.target as Node) && 
-        !mobileMenu.contains(event.target as Node) && isOpen) {
-        isOpen = false;
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
+      const target = event.target as Node;
+      if (!mobileMenuButton.contains(target) && 
+          !mobileMenu.contains(target) && 
+          isOpen) {
+        toggleMenu(false);
       }
     });
     
-    // Close menu when clicking on a link
+    // Handle navigation links with improved hash handling
     const menuLinks = mobileMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        isOpen = false;
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        
+        if (href && href.includes('#')) {
+          e.preventDefault();
+          
+          // Extract the hash from the URL
+          const hashIndex = href.indexOf('#');
+          const targetId = href.substring(hashIndex + 1);
+          
+          // Find the target section
+          const targetSection = document.getElementById(targetId);
+          
+          if (targetSection) {
+            const header = document.querySelector('.md\\:hidden');
+            const headerHeight = header ? header.offsetHeight : 60;
+            const targetPosition = targetSection.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+        
+        // Always close the menu after clicking a link
+        toggleMenu(false);
       });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen) {
+        toggleMenu(false);
+      }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && isOpen) {
+        toggleMenu(false);
+      }
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  // Mobile navigation highlighting
+  function setupMobileNavHighlighting() {
+    const sections = document.querySelectorAll('section[data-section]');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
+    
+    if (!sections.length || !navLinks.length) return;
+    
+    const updateActiveLink = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      let activeSection = '';
+      
+      // Check if at bottom of page
+      if (scrollPosition + windowHeight >= documentHeight - 10) {
+        activeSection = sections[sections.length - 1].id;
+      } else {
+        // Get the mobile header height for offset calculation
+        const header = document.querySelector('.md\\:hidden');
+        const headerHeight = header ? header.offsetHeight : 60;
+        const offset = headerHeight + 80; // Additional offset for better triggering
+        
+        sections.forEach(section => {
+          const sectionElement = section as HTMLElement;
+          const sectionTop = sectionElement.offsetTop - offset;
+          const sectionHeight = sectionElement.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            activeSection = section.id;
+          }
+        });
+        
+        // If no section is active and we're near the top, activate the first section
+        if (!activeSection && scrollPosition < 100) {
+          activeSection = sections[0].id;
+        }
+      }
+      
+      navLinks.forEach(link => {
+        const linkSection = link.getAttribute('data-section');
+        
+        if (linkSection === activeSection) {
+          link.classList.add('bg-gray-100', 'dark:bg-gray-700', 'font-semibold');
+        } else {
+          link.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'font-semibold');
+        }
+      });
+    };
+    
+    // Throttle scroll events
+    let isScrolling = false;
+    let scrollTimeout: number;
+    
+    const handleScroll = () => {
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          updateActiveLink();
+          isScrolling = false;
+        });
+        isScrolling = true;
+      }
+      
+      // Clear and reset timeout for scroll end detection
+      clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(() => {
+        updateActiveLink();
+      }, 100);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateActiveLink);
+    
+    // Initial check
+    updateActiveLink();
+  }
+
+  // Initialize everything when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      setupMobileNavHighlighting();
+    });
+  } else {
     initMobileMenu();
-  });
+    setupMobileNavHighlighting();
+  }
 </script>
 
 <style>
   /* Mobile menu animation */
   #mobile-menu {
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   #mobile-menu.hidden {
     transform: translateY(-10px);
     opacity: 0;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  :global(body.menu-open) {
+    overflow: hidden;
   }
 </style>

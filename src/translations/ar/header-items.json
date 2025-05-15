@@ -1,32 +1,32 @@
 [
   {
     "title": "الرئيسية",
-    "label": "inicio",
-    "url": "/ar/#inicio"
+    "label": "main",
+    "url": "/ar/#main"
   },
   {
     "title": "المهارات",
-    "label": "habilidades",
-    "url": "/ar/#habilidades"
+    "label": "skills",
+    "url": "/ar/#skills"
   },
   {
     "title": "الخبرة",
-    "label": "experiencia",
-    "url": "/ar/#experiencia"
+    "label": "experience",
+    "url": "/ar/#experience"
   },
   {
     "title": "المشاريع",
-    "label": "proyectos",
-    "url": "/ar/#proyectos"
+    "label": "projects",
+    "url": "/ar/#projects"
   },
   {
     "title": "الشهادات",
-    "label": "certificaciones",
+    "label": "certifications",
     "url": "/ar/certifications"
   },
   {
     "title": "اتصل",
-    "label": "contacto",
+    "label": "contact",
     "url": "mailto:Fran11799@outlook.com"
   },
   {

@@ -1,0 +1,40 @@
+---
+import CertificationsGrid from '@components/certifications/CertificationsGrid.astro';
+import Certificate from '@icons/Certificate.astro';
+import Arrow from '@icons/Arrow.astro';
+import SectionContainer from '@components/SectionContainer.astro';
+import type { Certification } from '../../types/certification';
+import type { Translations } from '../../types/translations';
+import { commonClasses } from '@utils/cssClasses';
+
+export interface Props {
+  translations: Translations;
+}
+
+const { translations } = Astro.props;
+const certifications: Certification[] = translations.certificationsPage.certificationsList || [];
+const limitedCertifications = certifications.slice(0, 2);
+---
+
+<SectionContainer id='certifications-preview' class={commonClasses.section.paddingAlt}>
+  <h2 class={commonClasses.heading.h2 + ' mb-12'}>
+    <Certificate class={commonClasses.iconSize.xl} />
+    {translations.mainPage.certificationsTitle || 'Certificaciones'}
+    
+    <a
+      href={translations.certificationsPage.allCertificationsLink || '/certifications'}
+      class='flex items-center ml-4 text-nowrap'
+    >
+      <Badge class='flex items-center'>
+        {translations.certificationsPage.allCertifications || 'Todas las certificaciones'}
+      </Badge>
+    </a>
+  </h2>
+  
+  <CertificationsGrid 
+    certifications={limitedCertifications}
+    limit={2}
+    viewMoreText={translations.certificationsPage.viewMore || 'Ver más certificaciones'}
+    viewMoreUrl={translations.certificationsPage.allCertificationsLink || '/certifications'}
+  />
+</SectionContainer>

@@ -1,24 +1,24 @@
 {
   "hero": {
-    "heroTitle": "",
-    "heroBadge": "",
-    "heroDescription1": "",
-    "heroDescription2": "",
-    "heroDescription3": ""
+    "heroTitle": "Hallo, ik ben Fran",
+    "heroBadge": "Beschikbaar voor werk",
+    "heroDescription1": "Software & Full Stack Ontwikkelaar.",
+    "heroDescription2": "Eeuwige leerling met passie voor details.",
+    "heroDescription3": "Gespecialiseerd in het creëren en oplossen van problemen. 🤓"
   },
   "socialPill": {
-    "socialPillTitle": "",
-    "sendMailSocialPill": "",
+    "socialPillTitle": "Bezoek",
+    "sendMailSocialPill": "Stuur e-mail naar",
     "copyButton": {
-      "copyTitle": "",
-      "copyMail": "",
-      "copyMailError": ""
+      "copyTitle": "Kopieer E-mail",
+      "copyMail": "E-mail gekopieerd!",
+      "copyMailError": "Fout bij kopiëren"
     }
   },
   "skills": {
-    "skillsTitle": ""
+    "skillsTitle": "Vaardigheden"
   },
   "selectedProjects": {
-    "projectsTitle": ""
+    "projectsTitle": "Projecten"
   }
 }

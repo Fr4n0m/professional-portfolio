@@ -1,26 +1,26 @@
 [
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  }
+	{
+		"title": "Hakkımda",
+		"url": "/tr/#"
+	},
+	{
+		"title": "Projeler",
+		"url": "/tr/#projects"
+	},
+	{
+		"title": "Deneyim",
+		"url": "/tr/#experience"
+	},
+	{
+		"title": "İletişim",
+		"url": "mailto:Fran11799@outlook.com"
+	},
+	{
+		"title": "CV",
+		"url": "https://cv-web-smoky.vercel.app/"
+	},
+	{
+		"title": "Yukarı çık",
+		"url": "/tr/#"
+	}
 ]

@@ -1,25 +1,25 @@
 {
-  "workExperience": "",
-  "experience": [
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    }
-  ]
+	"workExperience": "업무 경험",
+	"experience": [
+		{
+			"date": "2024년 9월",
+			"title": "Dimap®의 소프트웨어 및 프론트엔드 개발자",
+			"description": "프론트엔드 개발."
+		},
+		{
+			"date": "2024년 5월",
+			"title": "Gubb Marketing®의 소프트웨어 개발자",
+			"description": "소프트웨어 및 웹 애플리케이션 개발."
+		},
+		{
+			"date": "2024년 3월",
+			"title": "Agrooe® 및 Gubb Marketing®을 위한 Agrooe-Cashback 개발",
+			"description": "Agrooe® 회사를 위한 캐시백 시스템 관리에 중점을 둔 웹 애플리케이션을 처음부터 개발. 웹 애플리케이션의 데이터베이스, 백엔드 및 프론트엔드 개발."
+		},
+		{
+			"date": "2021년 6월",
+			"title": "프리랜서",
+			"description": "다양한 유형의 개인 및 전문 프로젝트 개발."
+		}
+	]
 }

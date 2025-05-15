@@ -1,218 +1,175 @@
 [
-  {
-    "title": "",
-    "description": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "secondaryLink": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  }
+	{
+		"title": "Agrooe 캐시백",
+		"description": "이 웹사이트에서 저는 팀과 함께 고품질 제품 판매와 지역 상업 발전에 전념하는 플랫폼을 처음부터 개발했습니다. 개념에서 실습까지 백엔드와 프론트엔드를 모두 만들며 작업했습니다. 다양한 기술 외에도 사용자 계정 관리 및 로그인을 위한 JWT, 모든 데이터 제어를 위한 대시보드 등의 통합을 구현했습니다. 다양한 소셜 네트워크로 로그인, 제품 구매를 위한 사용자 계정 생성 또는 제품 추가를 위한 회사 계정, 해당 제품을 찾을 수 있는 가장 가까운 위치의 지도 등의 기능이 있습니다. 기밀상의 이유로 코드는 표시되지 않습니다.",
+		"images": [
+			"/assets/images/projects/agrooe_1.jpeg",
+			"/assets/images/projects/agrooe_2.jpeg",
+			"/assets/images/projects/agrooe_3.jpeg"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"TAILWIND",
+			"JAVASCRIPT",
+			"REACT",
+			"NEXTJS",
+			"EXPRESS",
+			"NODEJS",
+			"MONGODB"
+		]
+	},
+	{
+		"title": "Strapi 게임 스토어",
+		"description": "Strapi를 백엔드 및 CMS로 사용하여 비디오 게임 관련 콘텐츠를 관리하도록 설계된 웹 애플리케이션.",
+		"link": "https://strapi-games-store.vercel.app/",
+		"github": "https://github.com/Fr4n0m/strapi-games-store",
+		"images": [
+			"/assets/images/projects/strapi-games-web-1.webp",
+			"/assets/images/projects/strapi-games-web-2.webp",
+			"/assets/images/projects/strapi-games-web-3.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"TAILWIND",
+			"JAVASCRIPT",
+			"TYPESCRIPT",
+			"REACT",
+			"NEXTJS",
+			"STRAPI"
+		]
+	},
+	{
+		"title": "실시간 채팅",
+		"description": "실시간 통신을 위해 Socket.IO를 사용하고 데이터베이스로 Supabase를 사용하는 실시간 채팅 애플리케이션.",
+		"link": "https://realtime-chat-ten-nu.vercel.app/",
+		"github": "https://github.com/Fr4n0m/realtime-chat",
+		"images": [
+			"/assets/images/projects/realtime-chat_1.webp",
+			"/assets/images/projects/realtime-chat_2.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"JAVASCRIPT",
+			"VITE",
+			"EXPRESS",
+			"NODEJS",
+			"SUPABASE"
+		]
+	},
+	{
+		"title": "슈퍼 마리오 브라더스 85'",
+		"description": "교육 목적으로 만든 1985년 닌텐도의 전설적인 게임 슈퍼 마리오 브라더스의 클론.",
+		"github": "https://github.com/Fr4n0m/super-mario-bros-85",
+		"images": [
+			"/assets/images/projects/super-mario-bros-85.webp",
+			"/assets/images/projects/super-mario-bros-85_2.webp",
+			"/assets/images/projects/super-mario-bros-85_3.webp",
+			"/assets/images/projects/super-mario-bros-85_4.webp",
+			"/assets/images/projects/super-mario-bros-85_5.webp",
+			"/assets/images/projects/super-mario-bros-85_6.webp",
+			"/assets/images/projects/super-mario-bros-85_7.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE", "PHASER"]
+	},
+	{
+		"title": "Paint Windows 95'",
+		"description": "Windows 95 시대에서 영감을 받은 페인트 애플리케이션.",
+		"link": "https://paint-win-95-blond.vercel.app/",
+		"github": "https://github.com/Fr4n0m/paint-win-95",
+		"images": ["/assets/images/projects/paint-95.webp"],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE"]
+	},
+	{
+		"title": "서점 뷰 트랜지션 데모",
+		"description": "뷰 트랜지션을 연습하기 위한 웹 서점.",
+		"link": "https://bookshop-view-transitions.vercel.app/",
+		"secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
+		"github": "https://github.com/Fr4n0m/bookshop-view-transitions",
+		"images": [
+			"/assets/images/projects/bookshop_1.webp",
+			"/assets/images/projects/bookshop_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "ASTRO"]
+	},
+	{
+		"title": "TikTok 클론",
+		"description": "Vite와 React를 사용한 TikTok 인터페이스 클론, Supabase 백엔드.",
+		"link": "https://tiktok-clone-five-phi.vercel.app/",
+		"github": "https://github.com/Fr4n0m/tiktok-clone",
+		"images": [
+			"/assets/images/projects/tiktok_2.webp",
+			"/assets/images/projects/tiktok_1.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"JAVASCRIPT",
+			"VITE",
+			"REACT",
+			"NODEJS",
+			"EXPRESS",
+			"SUPABASE"
+		]
+	},
+	{
+		"title": "아타리 브레이크아웃 게임",
+		"description": "JavaScript로 만든 전설적인 아타리 브레이크아웃 게임 버전.",
+		"link": "https://breakout-game-jade.vercel.app/",
+		"github": "https://github.com/Fr4n0m/breakout-game",
+		"images": [
+			"/assets/images/projects/breakout-game_2.webp",
+			"/assets/images/projects/breakout-game.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT"]
+	},
+	{
+		"title": "Filmax",
+		"description": "영화와 시리즈 정보를 보기 위한 웹사이트.",
+		"link": "",
+		"github": "https://github.com/Fr4n0m/filmax",
+		"images": [
+			"/assets/images/projects/filmax_home_preview.webp",
+			"/assets/images/projects/filmax_home_preview_2.webp",
+			"/assets/images/projects/filmax_blog_preview.webp",
+			"/assets/images/projects/filmax_blog_preview_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT"]
+	},
+	{
+		"title": "웹 계산기",
+		"description": "기본 산술 연산을 수행하는 간단한 계산기.",
+		"link": "https://web-calculator-snowy.vercel.app/",
+		"github": "https://github.com/Fr4n0m/web_calculator",
+		"images": [
+			"/assets/images/projects/WebCalculator_light.webp",
+			"/assets/images/projects/WebCalculator_dark.webp"
+		],
+		"tags": ["HTML", "CSS", "TAILWIND", "JAVASCRIPT"]
+	},
+	{
+		"title": "포켓몬 도감",
+		"description": "좋아하는 포켓몬 추가, 삭제 또는 자신만의 포켓몬 생성이 가능한 포켓몬 정보를 보기 위한 도감.",
+		"link": "",
+		"github": "https://github.com/Fr4n0m/YourOwnPokedex",
+		"images": [
+			"/assets/images/projects/pokedex.webp",
+			"/assets/images/projects/pokedex_favorites.webp",
+			"/assets/images/projects/pokedex_create.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "NEXTJS"]
+	},
+	{
+		"title": "첫 번째 웹 포트폴리오",
+		"description": "HTML, CSS, JavaScript만을 사용한 첫 번째 웹 포트폴리오. 나중에 Astro로 구현했습니다.",
+		"link": "https://portfolio-fr4n0m-astro.vercel.app/",
+		"github": "https://github.com/Fr4n0m/portfolio-astro",
+		"images": [
+			"/assets/images/projects/1er_portfolio.webp",
+			"/assets/images/projects/1er_portfolio_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "ASTRO"]
+	}
 ]

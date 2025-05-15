@@ -1,11 +1,11 @@
 {
-  "allProjects": "",
-  "allProjectsTitle": "",
-  "allProjectsDescription": "",
-  "allProjectsLink": "",
+  "allProjects": "Wszystkie projekty",
+  "allProjectsTitle": "Witaj na stronie \"Wszystkie projekty\"",
+  "allProjectsDescription": "Tutaj możesz zobaczyć wszystkie projekty, nad którymi pracowałem.",
+  "allProjectsLink": "Zobacz więcej projektów",
   "projectsButtons": {
-    "textCodeButton": "",
-    "textDemoButton": "",
-    "textDemo2Button": ""
+    "textCodeButton": "Zobacz kod",
+    "textDemoButton": "Zobacz demo",
+    "textDemo2Button": "Zobacz demo"
   }
 }

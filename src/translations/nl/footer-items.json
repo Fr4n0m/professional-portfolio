@@ -1,26 +1,26 @@
 [
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  }
+	{
+		"title": "Over mij",
+		"url": "/nl/#"
+	},
+	{
+		"title": "Projecten",
+		"url": "/nl/#projects"
+	},
+	{
+		"title": "Ervaring",
+		"url": "/nl/#experience"
+	},
+	{
+		"title": "Contact",
+		"url": "mailto:Fran11799@outlook.com"
+	},
+	{
+		"title": "CV",
+		"url": "https://cv-web-smoky.vercel.app/"
+	},
+	{
+		"title": "Naar boven",
+		"url": "/nl/#"
+	}
 ]

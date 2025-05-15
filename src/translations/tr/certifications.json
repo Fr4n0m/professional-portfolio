@@ -1,16 +1,16 @@
 [
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  },
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  }
+	{
+		"title": "Full Stack Web Geliştirici Sertifikası",
+		"image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+		"description": "HTML, CSS ve React ile arayüz oluşturma, Node.js ile backend geliştirme, MongoDB, veritabanı yönetimi ve DevOps araçlarıyla dağıtım dahil olmak üzere Full Stack web geliştirme eğitimi.",
+		"entity": "CODESPACE"
+	},
+	{
+		"title": "Linux Ortamı Kişiselleştirme Sertifikası",
+		"image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+		"description": "Debian, Kali ve diğer Linux tabanlı sistemlerde Linux ortamlarını özelleştirme becerileri. Yazılım yapılandırması, sistem ayarları ve performans ve güvenlik optimizasyonu dahil.",
+		"entity": "HACK4U"
+	}
 ]

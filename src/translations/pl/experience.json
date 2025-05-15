@@ -1,25 +1,25 @@
 {
-  "workExperience": "",
-  "experience": [
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    }
-  ]
+	"workExperience": "Doświadczenie zawodowe",
+	"experience": [
+		{
+			"date": "Wrzesień 2024",
+			"title": "Programista i Front-End Developer w Dimap®",
+			"description": "Rozwój Front-End."
+		},
+		{
+			"date": "Maj 2024",
+			"title": "Programista w Gubb Marketing®",
+			"description": "Rozwój oprogramowania i aplikacji internetowych."
+		},
+		{
+			"date": "Marzec 2024",
+			"title": "Rozwój Agrooe-Cashback dla Agrooe® i Gubb Marketing®",
+			"description": "Rozwój od podstaw aplikacji internetowej skoncentrowanej na zarządzaniu systemem cashback dla firmy Agrooe®. Rozwój bazy danych, backendu i frontendu aplikacji internetowej."
+		},
+		{
+			"date": "Czerwiec 2021",
+			"title": "Freelancer",
+			"description": "Rozwój osobistych i zawodowych projektów różnego typu."
+		}
+	]
 }

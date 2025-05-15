@@ -20,7 +20,8 @@ const { headerItems, info, lang } = Astro.props;
   
   {headerItems.map(item => (
     <a
-      class='block px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
+      class='nav-link block px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
+      data-section={item.label}
       aria-label={item.label}
       href={item.url}
       target={item.title === 'CV' ? '_blank' : '_self'}
@@ -48,4 +49,129 @@ const { headerItems, info, lang } = Astro.props;
       @apply shadow-lg ring-1 backdrop-blur ring-white/10;
     }
   }
+  
+  .nav-link.active {
+    @apply text-blue-800 dark:text-yellow-300 font-semibold;
+  }
 </style>
+
+<script>
+  function setupNavHighlighting() {
+    const sections = document.querySelectorAll('section[data-section]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    if (!sections.length || !navLinks.length) return;
+    
+    const updateActiveLink = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      let activeSection = '';
+      
+      // Check if at bottom of page
+      if (scrollPosition + windowHeight >= documentHeight - 10) {
+        activeSection = sections[sections.length - 1].id;
+      } else {
+        // Get the header height for offset calculation
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const offset = headerHeight + 80; // Additional offset for better triggering
+        
+        sections.forEach(section => {
+          const sectionElement = section as HTMLElement;
+          const sectionTop = sectionElement.offsetTop - offset;
+          const sectionHeight = sectionElement.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            activeSection = section.id;
+          }
+        });
+        
+        // If no section is active and we're near the top, activate the first section
+        if (!activeSection && scrollPosition < 100) {
+          activeSection = sections[0].id;
+        }
+      }
+      
+      navLinks.forEach(link => {
+        const linkSection = link.getAttribute('data-section');
+        
+        if (linkSection === activeSection) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    };
+    
+    // Handle all internal navigation links
+    const handleNavClick = (e: Event) => {
+      const link = e.currentTarget as HTMLAnchorElement;
+      const href = link.getAttribute('href');
+      
+      if (!href) return;
+      
+      // Only handle internal hash links
+      if (href.includes('#')) {
+        e.preventDefault();
+        
+        // Extract the hash from the URL
+        const hashIndex = href.indexOf('#');
+        const targetId = href.substring(hashIndex + 1);
+        
+        // Find the target section
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          const header = document.querySelector('header');
+          const headerHeight = header ? header.offsetHeight : 0;
+          const targetPosition = targetSection.offsetTop - headerHeight - 20;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+    
+    // Add click handlers to all nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', handleNavClick);
+    });
+    
+    // Throttle scroll events for performance
+    let isScrolling = false;
+    let scrollTimeout: number;
+    
+    const handleScroll = () => {
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          updateActiveLink();
+          isScrolling = false;
+        });
+        isScrolling = true;
+      }
+      
+      // Clear and reset timeout for scroll end detection
+      clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(() => {
+        updateActiveLink();
+      }, 100);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateActiveLink);
+    
+    // Initial check
+    updateActiveLink();
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupNavHighlighting);
+  } else {
+    setupNavHighlighting();
+  }
+</script>

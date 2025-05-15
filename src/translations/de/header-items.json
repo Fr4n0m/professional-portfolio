@@ -1,32 +1,32 @@
 [
   {
     "title": "Startseite",
-    "label": "inicio",
-    "url": "/de/#inicio"
+    "label": "main",
+    "url": "/de/#main"
   },
   {
     "title": "Fähigkeiten",
-    "label": "habilidades",
-    "url": "/de/#habilidades"
+    "label": "skills",
+    "url": "/de/#skills"
   },
   {
     "title": "Erfahrung",
-    "label": "experiencia",
-    "url": "/de/#experiencia"
+    "label": "experience",
+    "url": "/de/#experience"
   },
   {
     "title": "Projekte",
-    "label": "proyectos",
-    "url": "/de/#proyectos"
+    "label": "projects",
+    "url": "/de/#projects"
   },
   {
     "title": "Zertifikate",
-    "label": "certificaciones",
+    "label": "certifications",
     "url": "/de/certifications"
   },
   {
     "title": "Kontakt",
-    "label": "contacto",
+    "label": "contact",
     "url": "mailto:Fran11799@outlook.com"
   },
   {

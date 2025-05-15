@@ -1,33 +1,33 @@
 [
   {
     "title": "Start",
-    "label": "inicio",
-    "url": "/nl/#inicio"
+    "label": "main",
+    "url": "/nl/#main"
   },
   {
     "title": "Vaardigheden",
-    "label": "habilidades",
-    "url": "/nl/#habilidades"
+    "label": "skills",
+    "url": "/nl/#skills"
   },
   {
     "title": "Ervaring",
-    "label": "experiencia",
-    "url": "/nl/#experiencia"
+    "label": "experience",
+    "url": "/nl/#experience"
   },
   {
     "title": "Projecten",
-    "label": "proyectos",
-    "url": "/nl/#proyectos"
+    "label": "projects",
+    "url": "/nl/#projects"
   },
   {
     "title": "Certificaten",
-    "label": "certificaciones",
+    "label": "certifications",
     "url": "/nl/certifications"
   },
   {
     "title": "Contact",
-    "label": "contacto",
-    "url": "mailto:fran11799@outlook.com"
+    "label": "contact",
+    "url": "mailto:Fran11799@outlook.com"
   },
   {
     "title": "CV",

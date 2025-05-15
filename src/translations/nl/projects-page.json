@@ -1,11 +1,11 @@
 {
-  "allProjects": "",
-  "allProjectsTitle": "",
-  "allProjectsDescription": "",
-  "allProjectsLink": "",
+  "allProjects": "Alle projecten",
+  "allProjectsTitle": "Welkom op de pagina \"Alle projecten\"",
+  "allProjectsDescription": "Hier kunt u alle projecten zien waaraan ik heb gewerkt.",
+  "allProjectsLink": "Bekijk meer projecten",
   "projectsButtons": {
-    "textCodeButton": "",
-    "textDemoButton": "",
-    "textDemo2Button": ""
+    "textCodeButton": "Bekijk code",
+    "textDemoButton": "Bekijk demo",
+    "textDemo2Button": "Bekijk demo"
   }
 }

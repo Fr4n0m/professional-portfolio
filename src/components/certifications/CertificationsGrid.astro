@@ -1,0 +1,92 @@
+---
+import type { Certification } from '../../types/certification';
+import { Image } from 'astro:assets';
+import ExternalLink from '@icons/Link.astro';
+import Badge from '@components/ui/Badge.astro';
+import { commonClasses } from '@utils/cssClasses';
+
+export interface Props {
+  certifications: Certification[];
+  limit?: number;
+  viewMoreText?: string;
+  viewMoreUrl?: string;
+}
+
+const { certifications, limit = 2, viewMoreText, viewMoreUrl } = Astro.props;
+const certificationsToShow = limit ? certifications.slice(0, limit) : certifications;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {certificationsToShow.map((cert) => (
+    <article class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+      <a 
+        href={cert.url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="block"
+      >
+        <div class="aspect-[16/10] overflow-hidden">
+          <Image 
+            src={cert.image}
+            alt={cert.title}
+            width={400}
+            height={250}
+            loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-yellow-300 transition-colors">
+            {cert.title}
+          </h3>
+          
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-3">
+            {cert.description}
+          </p>
+          
+          <div class="flex items-center justify-between">
+            <Badge class="text-xs">
+              {cert.entity}
+            </Badge>
+            
+            <span class="flex items-center gap-1 text-sm text-blue-600 dark:text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity">
+              Ver certificado
+              <ExternalLink class="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+      </a>
+    </article>
+  ))}
+</div>
+
+{viewMoreText && viewMoreUrl && certifications.length > limit && (
+  <div class="mt-8 text-center">
+    <a 
+      href={viewMoreUrl}
+      class={`inline-flex items-center gap-2 px-6 py-3 ${commonClasses.button.primary} rounded-full transition-all duration-200 hover:scale-105`}
+    >
+      {viewMoreText}
+      <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+)}
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
