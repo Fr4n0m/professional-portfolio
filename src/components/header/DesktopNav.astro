@@ -20,7 +20,7 @@ const { headerItems, info, lang } = Astro.props;
   
   {headerItems.map(item => (
     <a
-      class='nav-link flex items-center px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
+      class='nav-link block px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
       data-section={item.label}
       aria-label={item.label}
       href={item.url}
