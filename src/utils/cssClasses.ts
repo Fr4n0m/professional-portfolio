@@ -1,9 +1,9 @@
 // Common CSS classes used throughout the application
 export const commonClasses = {
-  // Typography con estilo Apple
+  // Typography con fuente Apple pero tamaños originales
   heading: {
-    h1: 'text-4xl md:text-5xl lg:text-6xl font-bold text-gray-700 dark:text-white font-sf-pro tracking-tight',
-    h2: 'text-3xl md:text-4xl font-semibold text-gray-700 dark:text-white flex gap-x-3 items-center font-sf-pro tracking-tight',
+    h1: 'text-3xl md:text-4xl lg:text-4xl font-bold text-gray-700 dark:text-white font-sf-pro',
+    h2: 'text-3xl font-semibold text-gray-700 dark:text-white flex gap-x-3 items-center font-sf-pro',
     h3: 'text-2xl font-semibold text-blue-800/85 dark:text-yellow-200/90 font-sf-pro',
   },
   
@@ -30,13 +30,12 @@ export const commonClasses = {
     small: 'text-sm text-gray-600 dark:text-gray-400 font-sf-pro',
   },
   
-  // Buttons con estilo Apple
+  // Buttons - mantener estilos originales con fuente Apple
   button: {
-    primary: 'text-white bg-apple-blue hover:opacity-90 active:opacity-80 dark:text-white font-sf-pro font-medium transition-opacity',
-    rounded: 'rounded-3xl',
+    primary: 'text-white bg-gray-600/95 hover:bg-gray-600/85 active:bg-gray-600/75 dark:text-[#00091D] dark:bg-white/95 dark:hover:bg-white/85 dark:active:bg-white/75 font-sf-pro font-medium',
+    rounded: 'rounded-full',
     flex: 'flex items-center gap-2',
-    roundedPrimary: 'text-white bg-apple-blue hover:opacity-90 active:opacity-80 dark:text-white rounded-3xl flex items-center gap-2 font-sf-pro font-medium px-5 py-2 transition-opacity',
-    secondary: 'text-apple-blue border border-apple-blue hover:bg-apple-blue hover:text-white rounded-3xl font-sf-pro font-medium transition-colors',
+    roundedPrimary: 'text-white bg-gray-600/95 hover:bg-gray-600/85 active:bg-gray-600/75 dark:text-[#00091D] dark:bg-white/95 dark:hover:bg-white/85 dark:active:bg-white/75 rounded-full flex items-center gap-2 font-sf-pro font-medium',
   },
   
   // Layout

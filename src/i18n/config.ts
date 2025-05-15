@@ -1,15 +1,27 @@
 // Configuración del sistema i18n
 export const languages = {
   en: {
-    name: 'English',
-    nativeName: 'English',
+    name: 'English (UK)',
+    nativeName: 'English (UK)',
     flag: '🇬🇧',
     direction: 'ltr',
   },
+  'en-us': {
+    name: 'English (US)',
+    nativeName: 'English (US)',
+    flag: '🇺🇸',
+    direction: 'ltr',
+  },
   es: {
-    name: 'Spanish',
-    nativeName: 'Español',
+    name: 'Spanish (Spain)',
+    nativeName: 'Español (España)',
     flag: '🇪🇸',
+    direction: 'ltr',
+  },
+  'es-mx': {
+    name: 'Spanish (Mexico)',
+    nativeName: 'Español (México)',
+    flag: '🇲🇽',
     direction: 'ltr',
   },
   zh: {
@@ -102,7 +114,7 @@ export type Language = keyof typeof languages;
 
 // Prioridad de idiomas para mostrar en el selector
 export const languagePriority: Language[] = [
-  'en', 'es', 'zh', 'pt', 'fr', 'de', 'ja', 'ru', 'ar', 'hi', 'it', 'ko', 'nl', 'pl', 'tr', 'hv'
+  'es', 'es-mx', 'en', 'en-us', 'zh', 'pt', 'fr', 'de', 'ja', 'ru', 'ar', 'hi', 'it', 'ko', 'nl', 'pl', 'tr', 'hv'
 ];
 
 // Función para obtener el idioma actual

@@ -119,10 +119,10 @@ const allCommands = [...navigationCommands, ...profilesInfo, languageParentComma
 	class='key-footer no-print active:scale-90 transition-all duration-300 ease-in-out'
 >
 	<kbd
-		class='bg-[#8c8c8c] rounded-[4px] -pt-[5px] -pb-[5px] pl-[7px] pr-[7px] text-[15px]'
+		class='bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium'
 		>⌘</kbd
-	><p>&nbsp;+&nbsp;</p><kbd
-		class='bg-[#8c8c8c] rounded-[4px] pt-[-5px] pb-[-5px] pl-[7px] pr-[7px] text-[15px]'
+	><p class='px-1 text-gray-700 dark:text-gray-300'>+</p><kbd
+		class='bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium'
 		>K
 	</kbd>
 </footer>
@@ -336,38 +336,51 @@ const allCommands = [...navigationCommands, ...profilesInfo, languageParentComma
 			background: rgba(240, 240, 240, 0.95);
 		}
 	}
+	/* Estilos modernos para el footer del teclado */
 	.key-footer {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background: #626262a6;
-		border-top: 1px solid #eee;
+		background: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(0, 0, 0, 0.1);
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
-		width: 85px;
-		border-radius: 4px;
-		padding-block: 10px;
-		text-align: center;
-		font-size: 0.85rem;
-
+		padding: 8px 16px;
+		border-radius: 12px;
+		font-size: 0.875rem;
 		view-timeline-name: --revealing;
 		view-timeline-axis: block;
-
 		animation: linear 0.3s fadeIn;
 		animation-timeline: --revealing;
 		animation-range: entry 100% cover 10%;
-
 		cursor: pointer;
 		user-select: none;
+		transition: all 0.2s ease;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		backdrop-filter: blur(10px);
 	}
 
 	.key-footer:hover {
-		background: #717171b4;
-		cursor: pointer;
-
-		kbd {
-			background: rgb(145, 145, 145);
-		}
+		transform: scale(1.05);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+	}
+	
+	kbd {
+		background: rgba(0, 0, 0, 0.05);
+		padding: 3px 8px;
+		border-radius: 6px;
+		font-family: 'SF Mono', monospace;
+		font-size: 0.875rem;
+		color: inherit;
+	}
+	
+	:global(.dark) .key-footer {
+		background: rgba(30, 30, 30, 0.9);
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+	
+	:global(.dark) kbd {
+		background: rgba(255, 255, 255, 0.1);
 	}
 </style>
