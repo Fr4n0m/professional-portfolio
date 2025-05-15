@@ -14,7 +14,7 @@ interface TextPressureProps {
 const TextPressure: React.FC<TextPressureProps> = ({
     text = 'Hey, soy Fran',
     darkMode = false,
-    delay = 50, // Más rápido para mejor experiencia
+    delay = 70, // Un poco más lento para una animación más suave
     threshold = 0.1,
     rootMargin = "-100px",
     onAnimationComplete
@@ -58,8 +58,10 @@ const TextPressure: React.FC<TextPressureProps> = ({
                 : from,
             delay: i * delay,
             config: { 
-                tension: 300,
-                friction: 20
+                // Configuración más suave para que la animación se sienta más fluida
+                tension: 200,
+                friction: 25,
+                mass: 1.5
             }
         }))
     );
@@ -131,17 +133,17 @@ const TextPressure: React.FC<TextPressureProps> = ({
                     // Calcular intensidad (1 = cerca, 0 = lejos)
                     const intensity = 1 - (distance / radius);
                     
-                    // Aplicar transformación - mayor escala máxima para efecto más visible
-                    char.style.transform = `scale(${1 + intensity * 0.3})`;
-                    char.style.fontWeight = String(Math.min(900, 400 + intensity * 500));
-                    // Transición más rápida para mayor fluidez
-                    char.style.transition = 'transform 0.05s cubic-bezier(0.34, 1.56, 0.64, 1), font-weight 0.05s ease-out';
+                    // Aplicar transformación - efecto más suave
+                    char.style.transform = `scale(${1 + intensity * 0.25})`;
+                    char.style.fontWeight = String(Math.min(800, 400 + intensity * 400));
+                    // Transición más suave
+                    char.style.transition = 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), font-weight 0.15s ease-out';
                 } else {
                     // Resetear estilo si está fuera del radio
                     char.style.transform = 'scale(1)';
                     char.style.fontWeight = '400';
-                    // Transición de retorno más rápida
-                    char.style.transition = 'transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), font-weight 0.1s ease-out';
+                    // Transición de retorno más suave
+                    char.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), font-weight 0.2s ease-out';
                 }
             });
         };

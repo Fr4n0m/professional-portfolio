@@ -24,7 +24,7 @@ const { imageSrc, altText } = Astro.props;
 <!-- Versión desktop con tooltip -->
 <div class="hidden md:block">
   <div class="flex justify-start">
-    <div class="hero-profile-wrapper desktop-interactive">
+    <div class="hero-profile-wrapper">
       <div class="hero-profile-frame">
         <img
           class="w-full h-full object-cover object-center rounded-[19px]"
@@ -58,10 +58,7 @@ const { imageSrc, altText } = Astro.props;
   /* Versión desktop con hover */
   .hero-profile-wrapper {
     position: relative;
-    z-index: 20;
-  }
-  
-  .desktop-interactive {
+    z-index: 500;
     cursor: pointer;
   }
   
@@ -76,7 +73,7 @@ const { imageSrc, altText } = Astro.props;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
-  .desktop-interactive:hover .hero-profile-frame {
+  .hero-profile-wrapper:hover .hero-profile-frame {
     transform: scale(1.05);
     box-shadow: rgba(56, 189, 248, 0.25) 0px 8px 24px, 0 0 0 2px rgba(2, 132, 199, 0.3);
   }
@@ -87,7 +84,7 @@ const { imageSrc, altText } = Astro.props;
     box-shadow: rgba(250, 204, 21, 0.25) 0px 4px 12px, 0 0 0 2px rgba(250, 204, 21, 0.25);
   }
   
-  :global(.dark) .desktop-interactive:hover .hero-profile-frame {
+  :global(.dark) .hero-profile-wrapper:hover .hero-profile-frame {
     box-shadow: rgba(251, 191, 36, 0.35) 0px 8px 24px, 0 0 0 2px rgba(250, 204, 21, 0.35);
   }
   

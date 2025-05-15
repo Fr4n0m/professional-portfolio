@@ -1,0 +1,27 @@
+/* tooltip.css - Estilos globales para asegurar que los tooltips siempre estén por encima */
+
+/* Establece que los tooltips siempre están visibles por encima de otros elementos */
+.hero-tooltip-container {
+  z-index: 9999 !important; 
+  position: absolute;
+}
+
+/* Asegurarse de que el tooltip sea opaco */
+.hero-tooltip-container > div {
+  background: white !important;
+  backdrop-filter: none !important;
+}
+
+.dark .hero-tooltip-container > div {
+  background: rgb(31 41 55) !important;
+}
+
+/* Contenedor del header */
+header {
+  z-index: 400 !important;
+}
+
+/* El tooltip de la foto debe estar por encima del resto */
+.hero-profile-wrapper {
+  isolation: isolate;
+}
