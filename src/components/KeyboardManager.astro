@@ -39,21 +39,21 @@ const navigationCommands = kbManagerTranslations.kmCommands.map(command => ({
 	id: command.id,
 	title: command.title,
 	icon: command.icon,
-	shortcut: command.hotkey.replace('⌘', '⌘').toLowerCase(),
-	section: command.section,
+	shortcut: command.hotkey.replace('⌘', 'cmd+').toLowerCase(),
+	section: command.section || 'Navegación',
 	url: command.handler
 }));
 
 // Crear comandos sociales
 const profilesInfo = profiles.filter(p => p.network).map(({ network, url }) => {
 	const icon = SOCIAL_ICONS[network!];
-	const firstLetter = network![0]?.toUpperCase() || 'N';
+	const firstLetter = network![0]?.toLowerCase() || 'n';
 	return {
 		id: network!.toLowerCase(),
 		title: `${kbManagerTranslations.kmTitle} ${network}`,
 		icon,
-		shortcut: `⌘+${firstLetter}`,
-		section: kbManagerTranslations.kmSocialSection,
+		shortcut: `cmd+${firstLetter}`,
+		section: kbManagerTranslations.kmSocialSection || 'Social',
 		url
 	};
 });
@@ -90,284 +90,265 @@ const languageCommands = Object.entries(languages).map(([code, langInfo]) => ({
 
 // Combinar todos los comandos
 const allCommands = [...navigationCommands, ...profilesInfo, ...languageCommands];
+
+// Agrupar comandos por sección
+const groupedCommands = allCommands.reduce((acc, command) => {
+	const section = command.section;
+	if (!acc[section]) {
+		acc[section] = [];
+	}
+	acc[section].push(command);
+	return acc;
+}, {} as Record<string, typeof allCommands>);
 ---
 
 <footer
-	id='normal-footer'
-	class='key-footer no-print active:scale-90 transition-all duration-300 ease-in-out'
+	id="normal-footer"
+	class="key-footer no-print active:scale-90 transition-all duration-300 ease-in-out"
 >
-	<kbd class='bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium'>⌘</kbd>
-	<p class='px-1 text-gray-700 dark:text-gray-300'>+</p>
-	<kbd class='bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium'>K</kbd>
+	<kbd class="bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium">⌘</kbd>
+	<p class="px-1 text-gray-700 dark:text-gray-300">+</p>
+	<kbd class="bg-gray-100 dark:bg-gray-800 rounded-md pt-1 pb-1 pl-2 pr-2 text-sm font-medium">K</kbd>
 </footer>
 
-<div id='footer-button' class='no-print'>
+<div id="footer-button" class="no-print">
 	<svg
-		xmlns='http://www.w3.org/2000/svg'
-		class='icon icon-tabler icon-tabler-command'
-		width='28'
-		height='28'
-		viewBox='0 0 24 24'
-		stroke-width='1.5'
-		stroke='currentColor'
-		fill='none'
-		stroke-linecap='round'
-		stroke-linejoin='round'
+		xmlns="http://www.w3.org/2000/svg"
+		class="icon icon-tabler icon-tabler-command"
+		width="28"
+		height="28"
+		viewBox="0 0 24 24"
+		stroke-width="1.5"
+		stroke="currentColor"
+		fill="none"
+		stroke-linecap="round"
+		stroke-linejoin="round"
 	>
-		<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-		<path d='M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10'></path>
+		<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+		<path d="M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10"></path>
 	</svg>
 </div>
 
 <!-- Modal del Command Palette -->
-<div id='command-palette' class='command-palette'>
-	<div class='command-backdrop'></div>
-	<div class='command-modal'>
-		<div class='command-search'>
+<div id="command-palette" class="command-palette">
+	<div class="command-backdrop"></div>
+	<div class="command-modal">
+		<div class="command-search">
 			<input
-				type='text'
+				type="text"
 				placeholder={kbManagerTranslations.kmPlaceHolder}
-				class='command-input'
+				class="command-input"
 			/>
 		</div>
-		<div class='command-list'>
-			{allCommands.map(command => (
-				<div 
-					data-section={command.section}
-					class='command-section'
-				>
-					<div class='section-title'>{command.section}</div>
-					<div 
-						class='command-item'
-						data-command-id={command.id}
-						data-command-url={command.url}
-						data-command-title={command.title.toLowerCase()}
-					>
-						<div class='command-icon' set:html={command.icon} />
-						<span class='command-title'>{command.title}</span>
-						{command.shortcut && (
-							<kbd class='command-shortcut'>{command.shortcut}</kbd>
-						)}
-					</div>
+		<div class="command-list">
+			{Object.entries(groupedCommands).map(([section, commands]) => (
+				<div class="command-section" data-section={section}>
+					<div class="section-title">{section}</div>
+					{commands.map(command => (
+						<div 
+							class="command-item"
+							data-command-id={command.id}
+							data-command-url={command.url}
+							data-command-title={command.title.toLowerCase()}
+						>
+							<div class="command-icon" set:html={command.icon} />
+							<span class="command-title">{command.title}</span>
+							{command.shortcut && (
+								<kbd class="command-shortcut">{command.shortcut}</kbd>
+							)}
+						</div>
+					))}
 				</div>
 			))}
 		</div>
 	</div>
 </div>
 
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const modal = document.getElementById('command-palette');
-		const backdrop = modal?.querySelector('.command-backdrop');
-		const input = modal?.querySelector('.command-input') as HTMLInputElement;
-		const footerButton = document.getElementById('footer-button');
-		const footer = document.getElementById('normal-footer');
+<script is:inline>
+	const modal = document.getElementById('command-palette');
+	const backdrop = modal?.querySelector('.command-backdrop');
+	const input = modal?.querySelector('.command-input');
+	const footerButton = document.getElementById('footer-button');
+	const footer = document.getElementById('normal-footer');
 
-		let isOpen = false;
-		let selectedIndex = 0;
+	let isOpen = false;
+	let selectedIndex = 0;
 
-		function openCommandPalette() {
-			if (!modal || isOpen) return;
-			
-			isOpen = true;
-			modal.classList.add('open');
-			input?.focus();
-			
-			// Reset search and selection
-			if (input) input.value = '';
-			filterCommands('');
-			selectItem(0);
-		}
+	function openCommandPalette() {
+		if (!modal || isOpen) return;
+		
+		isOpen = true;
+		modal.classList.add('open');
+		input?.focus();
+		
+		// Reset search and selection
+		if (input) input.value = '';
+		filterCommands('');
+		selectItem(0);
+	}
 
-		function closeCommandPalette() {
-			if (!modal || !isOpen) return;
-			
-			isOpen = false;
-			modal.classList.remove('open');
-			input?.blur();
-		}
+	function closeCommandPalette() {
+		if (!modal || !isOpen) return;
+		
+		isOpen = false;
+		modal.classList.remove('open');
+		input?.blur();
+	}
 
-		function filterCommands(query: string) {
-			const sections = modal?.querySelectorAll('.command-section');
-			let hasVisibleItems = false;
+	function filterCommands(query) {
+		const sections = modal?.querySelectorAll('.command-section');
+		let hasVisibleItems = false;
 
-			sections?.forEach(section => {
-				const items = section.querySelectorAll('.command-item');
-				let sectionHasVisibleItems = false;
+		sections?.forEach(section => {
+			const items = section.querySelectorAll('.command-item');
+			let sectionHasVisibleItems = false;
 
-				items.forEach(item => {
-					const title = item.getAttribute('data-command-title') || '';
-					const isVisible = title.includes(query.toLowerCase());
-					
-					if (isVisible) {
-						item.classList.remove('hidden');
-						hasVisibleItems = true;
-						sectionHasVisibleItems = true;
-					} else {
-						item.classList.add('hidden');
-					}
-				});
-
-				// Hide section if no visible items
-				if (sectionHasVisibleItems) {
-					section.classList.remove('hidden');
+			items.forEach(item => {
+				const title = item.getAttribute('data-command-title') || '';
+				const isVisible = title.includes(query.toLowerCase());
+				
+				if (isVisible) {
+					item.classList.remove('hidden');
+					hasVisibleItems = true;
+					sectionHasVisibleItems = true;
 				} else {
-					section.classList.add('hidden');
+					item.classList.add('hidden');
 				}
 			});
 
-			// Update selected index
-			selectItem(0);
-		}
-
-		function selectItem(index: number) {
-			const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
-			if (!visibleItems || visibleItems.length === 0) return;
-
-			// Remove previous selection
-			modal?.querySelectorAll('.command-item.selected').forEach(item => {
-				item.classList.remove('selected');
-			});
-
-			// Add new selection
-			selectedIndex = Math.max(0, Math.min(index, visibleItems.length - 1));
-			visibleItems[selectedIndex]?.classList.add('selected');
-			visibleItems[selectedIndex]?.scrollIntoView({ block: 'nearest' });
-		}
-
-		function executeCommand(item: Element) {
-			const url = item.getAttribute('data-command-url');
-			if (url) {
-				if (url.startsWith('http')) {
-					window.open(url, '_blank');
-				} else {
-					window.location.href = url;
-				}
+			// Hide section if no visible items
+			if (sectionHasVisibleItems) {
+				section.classList.remove('hidden');
+			} else {
+				section.classList.add('hidden');
 			}
-			closeCommandPalette();
+		});
+
+		// Update selected index
+		selectItem(0);
+	}
+
+	function selectItem(index) {
+		const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
+		if (!visibleItems || visibleItems.length === 0) return;
+
+		// Remove previous selection
+		modal?.querySelectorAll('.command-item.selected').forEach(item => {
+			item.classList.remove('selected');
+		});
+
+		// Add new selection
+		selectedIndex = Math.max(0, Math.min(index, visibleItems.length - 1));
+		visibleItems[selectedIndex]?.classList.add('selected');
+		visibleItems[selectedIndex]?.scrollIntoView({ block: 'nearest' });
+	}
+
+	function executeCommand(item) {
+		const url = item.getAttribute('data-command-url');
+		if (url) {
+			if (url.startsWith('http')) {
+				window.open(url, '_blank');
+			} else {
+				window.location.href = url;
+			}
 		}
+		closeCommandPalette();
+	}
 
-		// Event listeners
-		document.addEventListener('keydown', (e) => {
-			// Open command palette with Cmd+K or Ctrl+K
-			if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-				e.preventDefault();
-				if (isOpen) {
-					closeCommandPalette();
-				} else {
-					openCommandPalette();
-				}
-			}
-
-			// Handle shortcuts for individual commands
-			if ((e.metaKey || e.ctrlKey) && !isOpen) {
-				const key = e.key.toLowerCase();
-				
-				// Navigation shortcuts
-				if (key === 'h') {
-					e.preventDefault();
-					window.location.href = '/#';
-				} else if (key === 'p') {
-					e.preventDefault();
-					window.location.href = '/projects';
-				} else if (key === 's') {
-					e.preventDefault();
-					window.location.href = '/certifications';
-				} else if (key === 'i') {
-					e.preventDefault();
-					openCommandPalette();
-					// Focus on language section
-					setTimeout(() => {
-						if (input) input.value = 'idioma language';
-						filterCommands('idioma language');
-					}, 100);
-				}
-				
-				// Social shortcuts
-				const socialItems = document.querySelectorAll('[data-command-id]');
-				socialItems.forEach(item => {
-					const id = item.getAttribute('data-command-id');
-					if (id && id.includes(key) && id.length < 10) { // Simple check for social items
-						const url = item.getAttribute('data-command-url');
-						if (url && url.startsWith('http')) {
-							e.preventDefault();
-							window.open(url, '_blank');
-						}
-					}
-				});
-			}
-
-			// Navigation inside command palette
+	// Event listeners
+	document.addEventListener('keydown', (e) => {
+		// Open command palette with Cmd+K or Ctrl+K
+		if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+			e.preventDefault();
 			if (isOpen) {
-				if (e.key === 'Escape') {
-					e.preventDefault();
-					closeCommandPalette();
-				} else if (e.key === 'ArrowDown') {
-					e.preventDefault();
-					const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
-					if (visibleItems) {
-						selectItem(selectedIndex + 1);
-					}
-				} else if (e.key === 'ArrowUp') {
-					e.preventDefault();
-					const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
-					if (visibleItems) {
-						selectItem(selectedIndex - 1);
-					}
-				} else if (e.key === 'Enter') {
-					e.preventDefault();
-					const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
-					if (visibleItems && visibleItems[selectedIndex]) {
-						executeCommand(visibleItems[selectedIndex]);
+				closeCommandPalette();
+			} else {
+				openCommandPalette();
+			}
+		}
+
+		// Handle shortcuts for individual commands
+		if ((e.metaKey || e.ctrlKey) && !isOpen) {
+			const key = e.key.toLowerCase();
+			
+			// Navigation shortcuts
+			if (key === 'h') {
+				e.preventDefault();
+				window.location.href = '/#';
+			} else if (key === 'p') {
+				e.preventDefault();
+				window.location.href = '/projects';
+			} else if (key === 's') {
+				e.preventDefault();
+				window.location.href = '/certifications';
+			} else if (key === 'i') {
+				e.preventDefault();
+				openCommandPalette();
+				// Focus on language section
+				setTimeout(() => {
+					if (input) input.value = 'idioma language';
+					filterCommands('idioma language');
+				}, 100);
+			}
+			
+			// Social shortcuts
+			const allItems = document.querySelectorAll('[data-command-id]');
+			allItems.forEach(item => {
+				const id = item.getAttribute('data-command-id');
+				if (id && (id === `${key}` || id === `${key}ithub` || id === `${key}inkedin`)) {
+					const url = item.getAttribute('data-command-url');
+					if (url && url.startsWith('http')) {
+						e.preventDefault();
+						window.open(url, '_blank');
 					}
 				}
-			}
-		});
+			});
+		}
 
-		// Search functionality
-		input?.addEventListener('input', (e) => {
-			const target = e.target as HTMLInputElement;
-			filterCommands(target.value);
-		});
-
-		// Click handlers
-		footerButton?.addEventListener('click', openCommandPalette);
-		footer?.addEventListener('click', openCommandPalette);
-		backdrop?.addEventListener('click', closeCommandPalette);
-
-		// Click on command items
-		modal?.addEventListener('click', (e) => {
-			const item = (e.target as HTMLElement).closest('.command-item');
-			if (item) {
-				executeCommand(item);
-			}
-		});
-
-		// Group sections
-		const sectionGroups = new Map();
-		modal?.querySelectorAll('.command-section').forEach(section => {
-			const sectionName = section.getAttribute('data-section');
-			if (!sectionGroups.has(sectionName)) {
-				sectionGroups.set(sectionName, []);
-			}
-			sectionGroups.get(sectionName).push(section);
-		});
-
-		// Merge sections with same name
-		sectionGroups.forEach((sections, name) => {
-			if (sections.length > 1) {
-				const firstSection = sections[0];
-				const firstSectionItems = firstSection.querySelector('.command-item')?.parentElement;
-				
-				for (let i = 1; i < sections.length; i++) {
-					const items = sections[i].querySelectorAll('.command-item');
-					items.forEach(item => {
-						firstSectionItems?.appendChild(item);
-					});
-					sections[i].remove();
+		// Navigation inside command palette
+		if (isOpen) {
+			if (e.key === 'Escape') {
+				e.preventDefault();
+				closeCommandPalette();
+			} else if (e.key === 'ArrowDown') {
+				e.preventDefault();
+				const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
+				if (visibleItems) {
+					selectItem(selectedIndex + 1);
+				}
+			} else if (e.key === 'ArrowUp') {
+				e.preventDefault();
+				const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
+				if (visibleItems) {
+					selectItem(selectedIndex - 1);
+				}
+			} else if (e.key === 'Enter') {
+				e.preventDefault();
+				const visibleItems = modal?.querySelectorAll('.command-item:not(.hidden)');
+				if (visibleItems && visibleItems[selectedIndex]) {
+					executeCommand(visibleItems[selectedIndex]);
 				}
 			}
-		});
+		}
+	});
+
+	// Search functionality
+	input?.addEventListener('input', (e) => {
+		const value = e.target.value;
+		filterCommands(value);
+	});
+
+	// Click handlers
+	footerButton?.addEventListener('click', openCommandPalette);
+	footer?.addEventListener('click', openCommandPalette);
+	backdrop?.addEventListener('click', closeCommandPalette);
+
+	// Click on command items
+	modal?.addEventListener('click', (e) => {
+		const item = e.target.closest('.command-item');
+		if (item) {
+			executeCommand(item);
+		}
 	});
 </script>
 
