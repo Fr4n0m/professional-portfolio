@@ -1,0 +1,197 @@
+{
+  "personalInfo": {
+    "name": "Francisco José Rodríguez Martínez",
+    "role": "软件和全栈开发人员",
+    "alias": "Fr4n0m",
+    "location": "📍 西班牙马拉加",
+    "mail": "Fran11799@outlook.com",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "Francisco Rodríguez",
+        "url": "https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
+      },
+      {
+        "network": "GitHub",
+        "username": "Fr4n0m",
+        "url": "https://github.com/Fr4n0m"
+      },
+      {
+        "network": "CV",
+        "username": "Francisco Rodríguez",
+        "url": "https://cv-web-smoky.vercel.app/"
+      }
+    ]
+  },
+  "headerItems": [
+    {
+      "title": "主页",
+      "label": "home",
+      "url": "/zh/#"
+    },
+    {
+      "title": "技能",
+      "label": "skills",
+      "url": "/zh/#skills"
+    },
+    {
+      "title": "经验",
+      "label": "experience",
+      "url": "/zh/#experience"
+    },
+    {
+      "title": "项目",
+      "label": "projects",
+      "url": "/zh/#projects"
+    },
+    {
+      "title": "证书",
+      "label": "certifications",
+      "url": "/zh/certifications"
+    },
+    {
+      "title": "联系",
+      "label": "contact",
+      "url": "mailto:Fran11799@outlook.com"
+    },
+    {
+      "title": "简历",
+      "label": "cv",
+      "url": "https://cv-web-smoky.vercel.app/"
+    }
+  ],
+  "layout": {
+    "title": "Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
+    "titleDescription": "全栈网页开发人员"
+  },
+  "mainPage": {
+    "hero": {
+      "heroTitle": "嗨，我是Fran",
+      "heroBadge": "可以工作",
+      "heroDescription1": "软件和全栈网页开发人员。",
+      "heroDescription2": "热衷于细节的永恒学习者。",
+      "heroDescription3": "专门创建和解决问题。🤓"
+    },
+    "socialPill": {
+      "socialPillTitle": "访问",
+      "sendMailSocialPill": "发送邮件到",
+      "copyButton": {
+        "copyTitle": "复制邮件",
+        "copyMail": "邮件已复制！",
+        "copyMailError": "复制错误"
+      }
+    },
+    "skills": {
+      "skillsTitle": "技能"
+    },
+    "selectedProjects": {
+      "projectsTitle": "项目"
+    }
+  },
+  "projectsPage": {
+    "allProjects": "所有项目",
+    "allProjectsTitle": "项目 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
+    "allProjectsDescription": "所有项目 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
+    "allProjectsLink": "/zh/projects",
+    "projects": [
+      {
+        "title": "Agrooe Cashback",
+        "description": "致力于销售优质产品和发展当地商业的平台。",
+        "images": [
+          "/assets/images/projects/agrooe_1.jpeg",
+          "/assets/images/projects/agrooe_2.jpeg",
+          "/assets/images/projects/agrooe_3.jpeg"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "TAILWIND",
+          "JAVASCRIPT",
+          "REACT",
+          "NEXTJS",
+          "EXPRESS",
+          "NODEJS",
+          "MONGODB"
+        ]
+      }
+    ],
+    "projectsButtons": {
+      "textCodeButton": "代码",
+      "textDemoButton": "演示",
+      "textDemo2Button": "演示 2"
+    }
+  },
+  "certificationsPage": {
+    "certifications": "证书",
+    "certificationsTitle": "证书 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
+    "certificationsDescription": "证书 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
+    "certificationsList": []
+  },
+  "socialMedia": {
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "电子邮件"
+  },
+  "experience": {
+    "workExperience": "工作经验",
+    "experience": []
+  },
+  "footerItems": [
+    {
+      "title": "关于我",
+      "url": "/zh/about"
+    },
+    {
+      "title": "项目",
+      "url": "/zh/#projects"
+    },
+    {
+      "title": "经验",
+      "url": "/zh/#experience"
+    },
+    {
+      "title": "联系",
+      "url": "mailto:Fran11799@outlook.com"
+    },
+    {
+      "title": "简历",
+      "url": "https://cv-web-smoky.vercel.app/"
+    },
+    {
+      "title": "返回顶部",
+      "url": "/zh/#"
+    }
+  ],
+  "keyboardManager": {
+    "kmPlaceHolder": "搜索",
+    "kmTitle": "访问",
+    "kmSocialSection": "社交",
+    "kmNavigationSection": "导航",
+    "kmCommands": [
+      {
+        "id": "home",
+        "title": "主页",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" style=\"margin-right: 8px\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon icon-tabler icons-tabler-outline icon-tabler-home\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /><path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /><path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" /></svg>",
+        "hotkey": "⌘+H",
+        "section": "导航",
+        "handler": "/zh/#"
+      },
+      {
+        "id": "certifications",
+        "title": "证书",
+        "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' style='margin-right: 8px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-certificate'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'></path><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'></path><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'></path><path d='M6 9l12 0'></path><path d='M6 12l3 0'></path><path d='M6 15l2 0'></path></svg>",
+        "hotkey": "⌘+S",
+        "section": "导航",
+        "handler": "/zh/certifications"
+      },
+      {
+        "id": "projects",
+        "title": "项目",
+        "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='margin-right: 6px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M5 7l5 5l-5 5'></path><path d='M13 17l6 0'></path></svg>",
+        "hotkey": "⌘+P",
+        "section": "导航",
+        "handler": "/zh/projects"
+      }
+    ]
+  }
+}

@@ -2,14 +2,15 @@
 import GithubIcon from '@icons/GitHub.astro';
 import LinkIcon from '@icons/Link.astro';
 import Carousel from '@components/Carousel';
-import LinkButton from '@components/LinkButton.astro';
+import LinkButton from '@components/ui/LinkButton.astro';
 import ProjectsDescription from '@components/Projects/ProjectsDescription';
 import Arrow from '@icons/Arrow.astro';
-import Tag from '@components/Tag.astro';
+import Tag from '@components/ui/Tag.astro';
 
 import type { Project } from '../../types/projects';
 import type { Translations } from '../../types/translations';
 import { TAGS } from '@utils/tags';
+import { commonClasses } from '@utils/cssClasses';
 
 const translations: Translations = Astro.props.translations;
 
@@ -28,9 +29,7 @@ const selectedProjects = projects.filter(
 );
 ---
 
-<div
-	class='section scroll-m-28 w-full mx-auto -mt-5 md:-mt-[110px] container lg:w-[740px] md:pb-24'
->
+<div class={commonClasses.section.projectsContainer}>
 	{
 		selectedProjects.map(
 			({
@@ -44,7 +43,7 @@ const selectedProjects = projects.filter(
 			}) => (
 				<>
 					<article>
-						<h3 class='text-2xl mt-12 font-semibold text-blue-800/85  dark:text-yellow-200/90 mb-2'>
+						<h3 class={commonClasses.heading.h3 + ' mt-12 mb-2'}>
 							{title}
 						</h3>
 
@@ -70,19 +69,19 @@ const selectedProjects = projects.filter(
 					<footer class='flex items-end justify-start mt-6 mb-16 gap-x-4'>
 						{github && (
 							<LinkButton href={github}>
-								<GithubIcon class='size-4' />
+								<GithubIcon class={commonClasses.iconSize.small} />
 								{projectsButtons.textCodeButton}
 							</LinkButton>
 						)}
 						{link && (
 							<LinkButton href={link}>
-								<LinkIcon class='size-4' />
+								<LinkIcon class={commonClasses.iconSize.small} />
 								{projectsButtons.textDemoButton}
 							</LinkButton>
 						)}
 						{secondaryLink && (
 							<LinkButton href={secondaryLink}>
-								<LinkIcon class='size-4' />
+								<LinkIcon class={commonClasses.iconSize.small} />
 								{projectsButtons.textDemo2Button}
 							</LinkButton>
 						)}
@@ -94,10 +93,10 @@ const selectedProjects = projects.filter(
 
 	<a
 		href={translations.projectsPage.allProjectsLink}
-		class='mb-20 md:mb-0 flex justify-end items-center gap-[2px] group text-md w-fit px-2 py-1 rounded text-white bg-gray-600/95 hover:bg-gray-600/85 active:bg-gray-600/75 dark:text-[#00091D] dark:bg-white/95 dark:hover:bg-white/85 dark:active:bg-white/75'
+		class={'mb-20 md:mb-0 flex justify-end items-center gap-[2px] group text-md w-fit px-2 py-1 rounded ' + commonClasses.button.primary}
 		>{translations.projectsPage.allProjects}
 		<Arrow
-			class='size-6 transition-translate duration-300 ease-in-out group-hover:translate-x-1'
+			class={commonClasses.iconSize.large + ' transition-translate duration-300 ease-in-out group-hover:translate-x-1'}
 		/>
 	</a>
 </div>

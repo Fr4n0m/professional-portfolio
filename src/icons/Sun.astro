@@ -1,17 +1,18 @@
-<svg
-	{...Astro.props}
-	width='20'
-	height='20'
-	viewBox='0 0 24 24'
-	stroke-width='2'
-	stroke='currentColor'
-	fill='none'
-	stroke-linecap='round'
-	stroke-linejoin='round'
->
-	<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-	<path d='M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0'></path>
-	<path
-		d='M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7'
-	></path>
+---
+const { class: className = 'size-5' } = Astro.props;
+---
+
+<svg {...Astro.props} class={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sol con estilo flat y colores vibrantes -->
+  <circle cx="12" cy="12" r="5" fill="#FFB900"/>
+  <circle cx="12" cy="12" r="4" fill="#FF8C00"/>
+  <!-- Rayos con estilo único -->
+  <rect x="11" y="1" width="2" height="4" fill="#FFA500" rx="1"/>
+  <rect x="11" y="19" width="2" height="4" fill="#FFA500" rx="1"/>
+  <rect x="1" y="11" width="4" height="2" fill="#FFA500" rx="1"/>
+  <rect x="19" y="11" width="4" height="2" fill="#FFA500" rx="1"/>
+  <rect x="4.93" y="4.93" width="2" height="4" fill="#FFB900" rx="1" transform="rotate(45 4.93 4.93)"/>
+  <rect x="17.07" y="17.07" width="2" height="4" fill="#FFB900" rx="1" transform="rotate(45 17.07 17.07)"/>
+  <rect x="4.93" y="19.07" width="4" height="2" fill="#FFB900" rx="1" transform="rotate(-45 4.93 19.07)"/>
+  <rect x="17.07" y="6.93" width="4" height="2" fill="#FFB900" rx="1" transform="rotate(-45 17.07 6.93)"/>
 </svg>

@@ -1,6 +1,9 @@
 ---
 import CopyIcon from '@icons/Copy.astro';
-const translations = Astro.props.translations;
+import { siteConfig } from '@config/site';
+
+const { translations } = Astro.props;
+const { email } = siteConfig.personalInfo;
 ---
 
 <button
@@ -31,7 +34,7 @@ const translations = Astro.props.translations;
 			button?.addEventListener('click', () => {
 				if (copyMessage) {
 					navigator.clipboard
-						.writeText('fran11799@outlook.com')
+						.writeText('${email}')
 						.then(() => {
 							copyMessage.textContent = translations.copyMail;
 							copyMessage.classList.remove('hidden');

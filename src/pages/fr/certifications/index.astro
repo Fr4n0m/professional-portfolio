@@ -1,0 +1,22 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Certifications from '@components/Certifications.astro';
+
+import { textsJson } from '@utils/const';
+import type { Translations } from '../../../types/translations';
+
+const langJson = textsJson.fr;
+const translations: Translations = langJson;
+
+const { certifications, certificationsTitle, certificationsDescription } = translations.certificationsPage;
+---
+
+<Layout
+	title={certificationsTitle}
+	description={certificationsDescription}
+	json={langJson}
+>
+	<section class='px-8'>
+		<Certifications certifications={certifications} />
+	</section>
+</Layout>

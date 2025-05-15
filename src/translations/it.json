@@ -1,0 +1,437 @@
+{
+  "personalInfo": {
+    "name": "",
+    "role": "",
+    "alias": "",
+    "location": "",
+    "mail": "",
+    "profiles": [
+      {
+        "network": "",
+        "username": "",
+        "url": ""
+      },
+      {
+        "network": "",
+        "username": "",
+        "url": ""
+      },
+      {
+        "network": "",
+        "username": "",
+        "url": ""
+      }
+    ]
+  },
+  "headerItems": [
+    {
+      "title": "",
+      "label": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "label": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "label": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "label": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "label": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "label": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "label": "",
+      "url": ""
+    }
+  ],
+  "layout": {
+    "title": "",
+    "titleDescription": ""
+  },
+  "mainPage": {
+    "hero": {
+      "heroTitle": "",
+      "heroBadge": "",
+      "heroDescription1": "",
+      "heroDescription2": "",
+      "heroDescription3": ""
+    },
+    "socialPill": {
+      "socialPillTitle": "",
+      "sendMailSocialPill": "",
+      "copyButton": {
+        "copyTitle": "",
+        "copyMail": "",
+        "copyMailError": ""
+      }
+    },
+    "skills": {
+      "skillsTitle": ""
+    },
+    "selectedProjects": {
+      "projectsTitle": ""
+    }
+  },
+  "projectsPage": {
+    "allProjects": "",
+    "allProjectsTitle": "",
+    "allProjectsDescription": "",
+    "allProjectsLink": "",
+    "projects": [
+      {
+        "title": "",
+        "description": "",
+        "images": [
+          "",
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "github": "",
+        "images": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "secondaryLink": "",
+        "github": "",
+        "images": [
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "",
+        "description": "",
+        "link": "",
+        "github": "",
+        "images": [
+          "",
+          ""
+        ],
+        "tags": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ],
+    "projectsButtons": {
+      "textCodeButton": "",
+      "textDemoButton": "",
+      "textDemo2Button": ""
+    }
+  },
+  "certificationsPage": {
+    "certifications": "",
+    "certificationsTitle": "",
+    "certificationsDescription": "",
+    "certificationsList": [
+      {
+        "title": "",
+        "image": "",
+        "url": "",
+        "description": "",
+        "entity": ""
+      },
+      {
+        "title": "",
+        "image": "",
+        "url": "",
+        "description": "",
+        "entity": ""
+      }
+    ]
+  },
+  "socialMedia": {
+    "linkedin": "",
+    "github": "",
+    "email": ""
+  },
+  "experience": {
+    "workExperience": "",
+    "experience": [
+      {
+        "date": "",
+        "title": "",
+        "description": ""
+      },
+      {
+        "date": "",
+        "title": "",
+        "description": ""
+      },
+      {
+        "date": "",
+        "title": "",
+        "description": ""
+      },
+      {
+        "date": "",
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  "footerItems": [
+    {
+      "title": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "url": ""
+    },
+    {
+      "title": "",
+      "url": ""
+    }
+  ],
+  "keyboardManager": {
+    "kmPlaceHolder": "",
+    "kmTitle": "",
+    "kmSocialSection": "",
+    "kmNavigationSection": "",
+    "kmCommands": [
+      {
+        "id": "",
+        "title": "",
+        "icon": "",
+        "hotkey": "",
+        "section": "",
+        "handler": ""
+      },
+      {
+        "id": "",
+        "title": "",
+        "icon": "",
+        "hotkey": "",
+        "section": "",
+        "handler": ""
+      },
+      {
+        "id": "",
+        "title": "",
+        "icon": "",
+        "hotkey": "",
+        "section": "",
+        "handler": ""
+      }
+    ]
+  },
+  "_metadata": {
+    "language": "it",
+    "languageName": "Italian",
+    "nativeName": "Italiano",
+    "direction": "ltr",
+    "lastUpdated": "2025-05-14T23:00:13.341Z",
+    "translationProgress": 0
+  }
+}

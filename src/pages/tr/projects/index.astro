@@ -1,0 +1,22 @@
+---
+import Layout from '@layouts/Layout.astro';
+import AllProjects from '@components/Projects/AllProjects.astro';
+
+import { textsJson } from '@utils/const';
+import type { Translations } from '../../../types/translations';
+
+const langJson = textsJson.tr;
+const translations: Translations = langJson;
+
+const { allProjectsTitle, allProjectsDescription } = translations.projectsPage;
+---
+
+<Layout
+	title={allProjectsTitle}
+	description={allProjectsDescription}
+	json={langJson}
+>
+	<section class='px-8'>
+		<AllProjects translations={translations} />
+	</section>
+</Layout>

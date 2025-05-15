@@ -1,9 +1,10 @@
 ---
-const { lang } = Astro.props;
+// Por ahora usar el sistema anterior mientras migramos
+const { lang } = Astro.props || {};
 
+// Sistema temporal compatible con el actual
 const languages = ['es', 'en'] as const;
-
-type Language = (typeof languages)[number];
+type Language = typeof languages[number];
 
 function updateLanguageUrl(
 	currentLang: Language,
@@ -17,20 +18,38 @@ function updateLanguageUrl(
 	}
 	return currentLang === 'es' ? '/' : '/en';
 }
+
+const currentLang = (lang || 'es') as Language;
 ---
 
-<section class='dark:bg-gray-800'>
-	<nav>
+<div class='relative ml-1 mr-1'>
+	<button
+		id='language-toggle-btn'
+		class='appearance-none border-none flex hover:scale-125 transition'
+	>
+		<span class='sr-only'>Elige el idioma</span>
+		<svg class='language-toggle-icon size-4 transition-all' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+			<path d='m5 8 6 6'></path>
+			<path d='m4 14 6-6 2-3'></path>
+			<path d='M2 5h12'></path>
+			<path d='M7 2h1'></path>
+			<path d='m22 22-5-10-5 10'></path>
+			<path d='m14 18 6 0'></path>
+		</svg>
+	</button>
+	<div
+		id='language-menu'
+		class='absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md'
+	>
 		<ul>
 			{
 				languages.map(l => {
-					const url = updateLanguageUrl(lang as Language, l);
+					const url = updateLanguageUrl(currentLang, l);
 					return (
-						<li>
+						<li class='language-menu-option'>
 							<a
-								class='dark:border-gray-700 dark:hover:bg-gray-900 dark:hover:border-gray-500'
 								href={url}
-								class={l === lang ? 'active' : ''}
+								class={`block px-2 py-1.5 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm ${l === currentLang ? 'bg-neutral-200/50 dark:bg-gray-600/50' : ''}`}
 							>
 								{l.toUpperCase()}
 							</a>
@@ -39,46 +58,50 @@ function updateLanguageUrl(
 				})
 			}
 		</ul>
-	</nav>
-</section>
+	</div>
+</div>
+
+<script>
+	const languageMenu = document.getElementById('language-menu');
+	const languageToggleBtn = document.getElementById('language-toggle-btn');
+	
+	// Close menu when clicking outside
+	document.addEventListener('click', () => {
+		languageMenu?.classList.remove('open');
+	});
+	
+	// Toggle menu when clicking button
+	languageToggleBtn?.addEventListener('click', (e) => {
+		e.stopPropagation();
+		const isClosed = !languageMenu?.classList.contains('open');
+		languageMenu?.classList[isClosed ? 'add' : 'remove']('open');
+	});
+	
+	// Prevent menu close when clicking inside
+	languageMenu?.addEventListener('click', (e) => {
+		e.stopPropagation();
+	});
+</script>
 
 <style>
-	section {
-		position: fixed;
-		top: 10px;
-		right: 10px;
-		font-size: 0.8rem;
-		padding: 0.5em;
-		background-color: #f1f1f1;
-		border-radius: 5px;
-		z-index: 1000;
+	#language-menu.open {
+		display: inline;
+		animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 	}
 
-	ul {
-		display: flex;
-		gap: 0.5em;
+	@keyframes scale-up-center {
+		from {
+			transform: scale(0.8);
+			opacity: 0;
+		}
+		to {
+			transform: scale(1);
+			opacity: 1;
+		}
 	}
-
-	a {
-		color: #777;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border: 1px solid #eee;
-		padding: 4px;
-		height: 32px;
-		width: 32px;
-		border-radius: 6px;
-		transition: all 0.3s ease;
-	}
-
-	a:hover {
-		background: #ddd;
-		border: 1px solid #ddd;
-		cursor: pointer;
-	}
-
-	a:active {
-		transform: scale(0.9);
+	
+	.language-menu-option a {
+		text-decoration: none;
+		color: inherit;
 	}
 </style>

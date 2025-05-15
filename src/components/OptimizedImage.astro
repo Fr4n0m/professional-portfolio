@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png' | 'avif';
+  quality?: number;
+}
+
+const { 
+  src, 
+  alt, 
+  class: className = '', 
+  width = 800,
+  height = 600,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 80,
+} = Astro.props;
+
+// Si la imagen es local (empieza con /), la procesamos
+// Si es externa, usamos img normal
+const isLocalImage = src.startsWith('/');
+
+// Para imágenes locales, importamos dinámicamente
+let optimizedImage;
+if (isLocalImage) {
+  try {
+    // Remover la primera / para la importación
+    const imagePath = src.slice(1);
+    optimizedImage = await import(`../../${imagePath}`);
+  } catch (e) {
+    // Si falla la importación, usamos la ruta original
+    optimizedImage = null;
+  }
+}
+---
+
+{isLocalImage && optimizedImage ? (
+  <Image
+    src={optimizedImage.default || optimizedImage}
+    alt={alt}
+    class={className}
+    width={width}
+    height={height}
+    loading={loading}
+    format={format}
+    quality={quality}
+  />
+) : (
+  <img
+    src={src}
+    alt={alt}
+    class={className}
+    width={width}
+    height={height}
+    loading={loading}
+  />
+)}

@@ -1,0 +1,58 @@
+---
+import ThemeToggle from '@components/ThemeToggle.astro';
+import type { HeaderItem } from '../../types/headerItem';
+import type { Translations } from '../../types/translations';
+import LanguageToggle from '@components/LanguageToggle.astro';
+import { commonClasses } from '@utils/cssClasses';
+
+const translations: Translations = Astro.props.translations;
+const headerItems: HeaderItem[] = translations.headerItems;
+const lang = Astro.props.lang;
+---
+
+<header
+	class='fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2'
+>
+	<nav
+		class='flex px-3 text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 xs:p-0 xs:px-1 lg:p-0 lg:px-2 md:p-0 md:px-2 xl:p-0 xl:px-2 text-gray-500/90 dark:text-white/90 items-center justify-center'
+	>
+		<a href='/#' class='flex justify-center items-center mr-1'>
+			<img
+				src='/assets/images/Fr4n0m Photo.webp'
+				alt='Fr4n0m photo'
+				class='rounded-full w-5 h-5'
+			/>
+		</a>
+
+		{
+			headerItems.map(item => (
+				<a
+					class='block px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
+					aria-label={item.label}
+					href={item.url}
+					target={item.title === 'CV' ? '_blank' : '_self'}
+				>
+					{item.title}
+				</a>
+			))
+		}
+
+		<ThemeToggle />
+
+		<LanguageToggle lang={lang} />
+	</nav>
+</header>
+
+<script>
+	import { initHeaderNavigation } from '@scripts/headerNav';
+	
+	document.addEventListener('DOMContentLoaded', () => {
+		initHeaderNavigation();
+	});
+</script>
+
+<style>
+	nav {
+		@apply dark:bg-gray-800/90 bg-white/50;
+	}
+</style>

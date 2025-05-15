@@ -92,4 +92,8 @@ export interface Translations {
 		kmNavigationSection: string;
 		kmCommands: Command[];
 	};
+
+	languageNames?: {
+		[key: string]: string;
+	};
 }

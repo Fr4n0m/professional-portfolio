@@ -1,0 +1,94 @@
+---
+import Badge from '@components/ui/Badge.astro';
+import LinkedInIcon from '@icons/LinkedIn.astro';
+import SocialPill from '@components/ui/SocialPill.astro';
+import GitHubIcon from '@icons/GitHub.astro';
+import MailIcon from '@icons/Mail.astro';
+import CopyButton from '@components/CopyButton.astro';
+import type { Translations } from '../../types/translations';
+import { commonClasses } from '@utils/cssClasses';
+
+interface Props {
+  translations: Translations;
+}
+
+const { translations } = Astro.props;
+
+const hero = translations.mainPage.hero;
+const socialPill = translations.mainPage.socialPill;
+const copyButton = translations.mainPage.socialPill.copyButton;
+const socialMedia = translations.socialMedia;
+const personalInfo = translations.personalInfo;
+---
+
+<div class={commonClasses.flexCenter + ' md:justify-start'}>
+  <img
+    class={commonClasses.profileImage}
+    src='/assets/images/foto-carnet.webp'
+    alt='Fr4n0m photo'
+  />
+</div>
+
+<h1 class={commonClasses.heading.h1 + ' flex flex-col-reverse gap-y-4 md:gap-y-0 md:flex-row md:gap-x-20 pb-6 lg:pb-6'}>
+  <div class='typing text-center md:text-left'>
+    <h1 class='w-fit typewriter md:typewriter-mobile'>
+      {hero.heroTitle}
+    </h1>
+  </div>
+
+  <div class='flex justify-center items-center text-nowrap'>
+    <a
+      href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
+      target='_blank'
+      rel='noopener'
+      class='flex justify-center items-center'
+    >
+      <Badge>{hero.heroBadge}</Badge>
+    </a>
+  </div>
+</h1>
+
+<h2 class='text-xl lg:text-2xl opacity-95 text-wrap max-w-[700px]'>
+  <span class={commonClasses.textColors.secondary}>
+    {hero.heroDescription1}
+    <span class={commonClasses.textColors.tertiary}>
+      {hero.heroDescription2}
+    </span>
+  </span>
+  <span class={commonClasses.textColors.muted}>
+    {hero.heroDescription3}
+  </span>
+  <span class={commonClasses.textColors.accent + ' text-lg lg:text-xl'}>
+    <br />{personalInfo.location}
+  </span>
+</h2>
+
+<nav class='flex align-center justify-center sm:justify-start gap-4 mt-8 flex-wrap'>
+  <SocialPill
+    title={`${socialPill.socialPillTitle} ${socialMedia.linkedin}`}
+    href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
+  >
+    <LinkedInIcon class={commonClasses.iconSize.small + ' md:' + commonClasses.iconSize.medium} />
+    {socialMedia.linkedin}
+  </SocialPill>
+
+  <SocialPill
+    title={`${socialPill.socialPillTitle} ${socialMedia.github}`}
+    href='https://github.com/Fr4n0m'
+  >
+    <GitHubIcon class={commonClasses.iconSize.small + ' md:' + commonClasses.iconSize.medium} />
+    {socialMedia.github}
+  </SocialPill>
+
+  <div class='flex gap-4'>
+    <SocialPill
+      title={`${socialPill.sendMailSocialPill} ${personalInfo.mail}`}
+      href='mailto:Fran11799@outlook.com'
+    >
+      <MailIcon class={commonClasses.iconSize.small + ' md:' + commonClasses.iconSize.large} />
+      {personalInfo.mail}
+    </SocialPill>
+
+    <CopyButton translations={copyButton} />
+  </div>
+</nav>

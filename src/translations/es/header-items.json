@@ -1,0 +1,37 @@
+[
+	{
+		"title": "Inicio",
+		"label": "inicio",
+		"url": "/#"
+	},
+	{
+		"title": "Habilidades",
+		"label": "habilidades",
+		"url": "/#habilidades"
+	},
+	{
+		"title": "Experiencia",
+		"label": "experiencia",
+		"url": "/#experiencia"
+	},
+	{
+		"title": "Proyectos",
+		"label": "proyectos",
+		"url": "/#proyectos"
+	},
+	{
+		"title": "Certificaciones",
+		"label": "certificaciones",
+		"url": "/certifications"
+	},
+	{
+		"title": "Contacto",
+		"label": "contacto",
+		"url": "mailto:Fran11799@outlook.com"
+	},
+	{
+		"title": "CV",
+		"label": "cv",
+		"url": "https://cv-web-smoky.vercel.app/"
+	}
+]

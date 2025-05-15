@@ -1,19 +1,17 @@
-<svg
-	{...Astro.props}
-	width='20'
-	height='20'
-	viewBox='0 0 24 24'
-	stroke-width='2'
-	stroke='currentColor'
-	fill='none'
-	stroke-linecap='round'
-	stroke-linejoin='round'
->
-	<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-	<path
-		d='M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z'
-	></path>
-	<path d='M7 20h10'></path>
-	<path d='M9 16v4'></path>
-	<path d='M15 16v4'></path>
+---
+const { class: className = 'size-5' } = Astro.props;
+---
+
+<svg {...Astro.props} class={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Monitor/Sistema con diseño flat colorido -->
+  <rect x="2" y="3" width="20" height="14" rx="2" fill="#3B82F6"/>
+  <rect x="4" y="5" width="16" height="10" rx="1" fill="#1D4ED8"/>
+  <rect x="5" y="6" width="14" height="8" rx="0.5" fill="#EFF6FF"/>
+  <!-- Base -->
+  <rect x="9" y="17" width="6" height="2" fill="#10B981"/>
+  <rect x="7" y="19" width="10" height="2" rx="1" fill="#059669"/>
+  <!-- Detalles en pantalla -->
+  <rect x="7" y="8" width="6" height="1" fill="#3B82F6" rx="0.5"/>
+  <rect x="7" y="10" width="8" height="1" fill="#60A5FA" rx="0.5"/>
+  <rect x="7" y="12" width="4" height="1" fill="#93C5FD" rx="0.5"/>
 </svg>

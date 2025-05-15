@@ -1,16 +1,15 @@
-<svg
-	{...Astro.props}
-	width='20'
-	height='20'
-	viewBox='0 0 24 24'
-	stroke-width='2'
-	stroke='currentColor'
-	fill='none'
-	stroke-linecap='round'
-	stroke-linejoin='round'
->
-	<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-	<path
-		d='M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z'
-	></path>
+---
+const { class: className = 'size-5' } = Astro.props;
+---
+
+<svg {...Astro.props} class={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Luna con estilo flat y colores más brillantes -->
+  <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" fill="#60A5FA"/>
+  <path d="M20.5 14.5A8.718 8.718 0 0117.5 15c-4.385 0-8.75-3.365-8.75-8.75 0-1.2.24-2.35.68-3.4A8.753 8.753 0 004 10.5C4 15.194 7.806 19 12.5 19a8.753 8.753 0 008-4.5z" fill="#93C5FD"/>
+  <!-- Estrellas amarillas brillantes -->
+  <circle cx="16" cy="5" r="1.2" fill="#FDE047"/>
+  <circle cx="18.5" cy="8.5" r="0.8" fill="#FEF08A"/>
+  <circle cx="14" cy="8" r="0.6" fill="#FEF3C7"/>
+  <circle cx="19" cy="12" r="0.7" fill="#FDE68A"/>
+  <circle cx="15.5" cy="11" r="0.5" fill="#FEF9C3"/>
 </svg>

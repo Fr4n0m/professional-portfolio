@@ -1,11 +1,10 @@
 ---
 import '@fontsource-variable/onest';
 
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import AlternativeFooter from '@components/AlternativeFooter.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import AlternativeFooter from '@components/layout/AlternativeFooter.astro';
 import KeyboardManager from '@components/KeyboardManager.astro';
-
 import LanguageSelector from '@components/LanguageSelector.astro';
 import type { Translations } from '../types/translations';
 
@@ -17,7 +16,8 @@ interface Props {
 
 const { description, title, json } = Astro.props;
 
-const lang = Astro.request.url.includes('/es') ? 'es' : 'en';
+// Detectar idioma actual (compatible con sistema actual)
+const lang = Astro.request.url.includes('/en') ? 'en' : 'es';
 ---
 
 <!doctype html>
@@ -46,8 +46,6 @@ const lang = Astro.request.url.includes('/es') ? 'es' : 'en';
 		<KeyboardManager translations={json} />
 
 		<LanguageSelector lang={lang} />
-
-		<!-- <Footer /> -->
 	</body>
 </html>
 <style is:global>
