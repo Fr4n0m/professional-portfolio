@@ -23,10 +23,13 @@ export default {
   },
   certificationsPage: {
     ...certificationsPage,
-    certificationsList: certificationsList
+    certificationsList
   },
   socialMedia,
-  experience,
+  experience: {
+    ...experience,
+    experience: experience.experience || []
+  },
   footerItems,
   keyboardManager,
   languageNames
