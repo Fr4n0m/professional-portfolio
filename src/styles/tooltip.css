@@ -1,20 +1,31 @@
 /* tooltip.css - Estilos globales para asegurar que los tooltips siempre estén por encima */
 
 /* Establece que los tooltips siempre están visibles por encima de otros elementos */
-.hero-tooltip-container {
+.hero-tooltip-container,
+.tooltip-container {
   z-index: 9999 !important; 
   position: absolute;
 }
 
-/* Asegurarse de que el tooltip sea opaco */
-.hero-tooltip-container > div {
+/* Asegurarse de que no hay elementos que puedan superponerse */
+.tooltip-container > div {
+  z-index: 9999 !important;
+}
+
+/* Efectos visuales para todos los tooltips */
+.hero-tooltip-container > div,
+.tooltip-container > div {
   background: white !important;
   backdrop-filter: none !important;
 }
 
-.dark .hero-tooltip-container > div {
+.dark .hero-tooltip-container > div,
+.dark .tooltip-container > div {
   background: rgb(31 41 55) !important;
 }
+
+/* Estilos específicos para el tooltip del header */
+/* Estos estilos se han eliminado porque ahora usamos clases de Tailwind */
 
 /* Contenedor del header */
 header {
