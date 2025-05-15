@@ -1,0 +1,13 @@
+/* Main entry point for all CSS styles
+ * This file imports all necessary styles and sets up global styles
+ */
+
+/* Import Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import our modular CSS structure */
+@import './styles/main.css';
+
+/* Any global styles that need to override Tailwind can go here */

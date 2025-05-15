@@ -79,6 +79,85 @@ console.log('Detected language:', lang);
 		<KeyboardManager translations={json} />
 	</body>
 </html>
+
+<script>
+  // Inicializador de animaciones globales con GSAP
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  // Registramos ScrollTrigger para animaciones de scroll
+  gsap.registerPlugin(ScrollTrigger);
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Elementos con clase para animaciones de entrada
+    const fadeElements = document.querySelectorAll('.gsap-fade-in');
+    
+    if (fadeElements.length > 0) {
+      // Aplicar animación de fade in a elementos con la clase
+      fadeElements.forEach(element => {
+        gsap.from(element, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top bottom-=100",
+            toggleActions: "play none none none"
+          }
+        });
+      });
+    }
+    
+    // Elementos que aparecen en secuencia
+    const staggerContainers = document.querySelectorAll('.gsap-stagger');
+    
+    staggerContainers.forEach(container => {
+      const children = container.querySelectorAll('.gsap-stagger-item');
+      
+      if (children.length > 0) {
+        gsap.from(children, {
+          opacity: 0,
+          y: 20,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: container,
+            start: "top bottom-=120",
+            toggleActions: "play none none none"
+          }
+        });
+      }
+    });
+    
+    // Elementos con efecto de escala
+    const scaleElements = document.querySelectorAll('.gsap-scale');
+    
+    if (scaleElements.length > 0) {
+      scaleElements.forEach(element => {
+        gsap.from(element, {
+          scale: 0.95,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top bottom-=80",
+            toggleActions: "play none none none"
+          }
+        });
+      });
+    }
+    
+    // Evitar animaciones para usuarios que prefieren reducir el movimiento
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Detener todas las animaciones
+      gsap.globalTimeline.clear();
+    }
+  });
+</script>
+
 <style is:global>
 	:root {
 		color-scheme: light dark;

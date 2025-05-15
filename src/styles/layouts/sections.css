@@ -1,0 +1,90 @@
+/* Section Layouts */
+
+/* Base Section */
+.section {
+  width: 100%;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Section with container */
+.section-container {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section with padding */
+.section-padding {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+/* Section with alternative padding */
+.section-padding-alt {
+  margin-top: var(--space-xl);
+}
+
+/* Projects section */
+.section-projects {
+  margin-top: -var(--space-xl);
+}
+
+/* Section with scroll margin */
+.section-scroll {
+  scroll-margin-top: var(--space-2xl);
+}
+
+/* Section with background */
+.section-bg {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+/* Section header */
+.section-header {
+  margin-bottom: var(--space-xl);
+}
+
+.section-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .section {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  
+  .section-padding {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+  
+  .section-projects {
+    margin-top: -var(--space-2xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+  
+  .section-title {
+    font-size: var(--font-size-4xl);
+  }
+}

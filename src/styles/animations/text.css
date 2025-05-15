@@ -1,0 +1,146 @@
+/* Text Effects and Animations
+ * Specialized animations for text elements
+ */
+
+/* Typing Animation */
+.typing {
+  position: relative;
+  display: inline-block;
+}
+
+.typing .typing-text {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  letter-spacing: 0.02em;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary); /* Fallback color */
+  background-image: linear-gradient(135deg, 
+    var(--color-primary) 0%, 
+    var(--color-primary-light) 60%, 
+    var(--color-primary-lighter) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-family-sans);
+}
+
+/* Typing cursor */
+.typing .cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.4em;
+  background-color: var(--color-primary);
+  position: absolute;
+  top: 0.05em;
+  transform: translateY(-7%);
+  left: 0;
+  border-radius: 2px;
+  opacity: 1;
+  z-index: var(--z-layer-1);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Container for typing animation */
+.typing-container {
+  min-height: 4.5rem;
+  align-items: center;
+  padding-top: var(--space-sm);
+}
+
+/* TextPressure Component Styles */
+.text-pressure-wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 70px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .text-pressure-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+/* Text highlight effect */
+@keyframes highlightText {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+.text-highlight {
+  display: inline;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary-lighter) 0%,
+    var(--color-primary-lighter) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 12%;
+  animation: highlightText 1s 0.3s forwards;
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+/* Text reveal animation */
+@keyframes revealText {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.text-reveal {
+  display: inline-block;
+  animation: revealText 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .typing {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .typing .typing-text {
+    font-size: var(--font-size-3xl);
+    text-align: center;
+  }
+  
+  .typing .cursor {
+    height: 1.3em;
+    top: 0;
+    transform: translateY(-7%);
+  }
+}
+
+@media (max-width: 640px) {
+  .typing .typing-text {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 475px) {
+  .typing .typing-text {
+    font-size: var(--font-size-xl);
+  }
+  
+  .typing .cursor {
+    height: 1.2em;
+    width: 3px;
+  }
+}

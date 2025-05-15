@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCurrentLanguage } from '@i18n/config';
+import { textsJson } from '@utils/const';
+
+// Obtener el idioma actual
+const currentLang = getCurrentLanguage(Astro.url);
+const translations = textsJson[currentLang];
+
+// Metadatos legales
+const meta = {
+  companyName: "Francisco José Romero",
+  domain: "fr4n0m-portfolio.dev",
+  email: "Fran11799@outlook.com",
+  lastUpdate: "15 de mayo de 2025"
+};
+---
+
+<Layout 
+  title="Política de Privacidad | Portfolio Fr4n0m" 
+  description="Política de privacidad del sitio web de Francisco José Romero"
+  json={translations}
+>
+  <main class="container max-w-4xl mx-auto px-4 py-10 pt-24 pb-16">
+    <article class="prose dark:prose-invert prose-lg max-w-none">
+      <h1>Política de Privacidad</h1>
+      
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-8">
+        Última actualización: {meta.lastUpdate}
+      </p>
+      
+      <section>
+        <h2>1. Introducción</h2>
+        <p>
+          Bienvenido a la Política de Privacidad del sitio web {meta.domain} ("el Sitio"), operado por {meta.companyName} ("nosotros", "nuestro" o "nos"). Respetamos tu privacidad y estamos comprometidos con la protección de tus datos personales.
+        </p>
+        <p>
+          Esta política de privacidad tiene como objetivo informarte sobre cómo recopilamos, usamos, compartimos y protegemos tu información personal cuando visitas nuestro Sitio o interactúas con nuestros servicios, así como tus derechos de privacidad y cómo la ley te protege.
+        </p>
+        <p>
+          Por favor, lee esta política detenidamente para entender nuestras prácticas con respecto a tus datos personales. Al utilizar nuestro Sitio, aceptas las prácticas descritas en esta política.
+        </p>
+      </section>
+      
+      <section>
+        <h2>2. Responsable del tratamiento</h2>
+        <p>
+          {meta.companyName} es el responsable del tratamiento de los datos personales que nos proporciones a través del Sitio.
+        </p>
+        <p>
+          <strong>Datos de contacto:</strong>
+        </p>
+        <ul>
+          <li>Nombre: {meta.companyName}</li>
+          <li>Correo electrónico: <a href={`mailto:${meta.email}`}>{meta.email}</a></li>
+          <li>Sitio web: <a href={`https://${meta.domain}`} target="_blank" rel="noopener">{meta.domain}</a></li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>3. Datos que recopilamos</h2>
+        <p>
+          Según la forma en que interactúes con nuestro Sitio, podemos recopilar los siguientes tipos de información:
+        </p>
+        
+        <h3>3.1 Información que nos proporcionas</h3>
+        <ul>
+          <li><strong>Datos de contacto:</strong> Cuando te comunicas con nosotros a través del formulario de contacto, podemos recopilar tu nombre, dirección de correo electrónico y cualquier otra información que nos proporciones voluntariamente.</li>
+          <li><strong>Datos profesionales:</strong> Si nos envías tu currículum o solicitas una posición laboral, podemos recopilar información sobre tu educación, experiencia laboral y habilidades.</li>
+          <li><strong>Comentarios y opiniones:</strong> Cualquier comentario, sugerencia o feedback que decidas compartir con nosotros.</li>
+        </ul>
+        
+        <h3>3.2 Información que recopilamos automáticamente</h3>
+        <ul>
+          <li><strong>Datos técnicos:</strong> Dirección IP, tipo y versión del navegador, configuración de zona horaria, tipos y versiones de plugins del navegador, sistema operativo y plataforma.</li>
+          <li><strong>Datos de uso:</strong> Información sobre cómo utilizas nuestro Sitio, incluyendo el tiempo de permanencia en las páginas, rutas de navegación, términos de búsqueda utilizados y cualquier dificultad que puedas experimentar.</li>
+          <li><strong>Cookies y tecnologías similares:</strong> Utilizamos cookies y tecnologías similares para mejorar tu experiencia en nuestro Sitio. Para más información, consulta nuestra <a href={`/${currentLang !== 'es' ? currentLang + '/' : ''}cookies-policy`}>Política de Cookies</a>.</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>4. Finalidades del tratamiento</h2>
+        <p>
+          Utilizamos tu información personal para los siguientes propósitos:
+        </p>
+        
+        <h3>4.1 Propósitos con base en el interés legítimo</h3>
+        <ul>
+          <li>Administrar y operar nuestro Sitio</li>
+          <li>Mejorar y personalizar tu experiencia como usuario</li>
+          <li>Realizar análisis de datos para mejorar nuestros servicios</li>
+          <li>Garantizar la seguridad de nuestro Sitio y prevenir el fraude</li>
+          <li>Resolver disputas y solucionar problemas</li>
+        </ul>
+        
+        <h3>4.2 Propósitos con base en el consentimiento</h3>
+        <ul>
+          <li>Comunicarnos contigo y responder a tus consultas</li>
+          <li>Enviar información sobre nuestros servicios y novedades (marketing)</li>
+          <li>Permitir tu participación en funciones interactivas</li>
+          <li>Recopilar opiniones sobre nuestros servicios</li>
+        </ul>
+        
+        <h3>4.3 Propósitos con base en obligaciones legales</h3>
+        <ul>
+          <li>Cumplir con obligaciones legales, reglamentarias o fiscales</li>
+          <li>Responder a solicitudes de autoridades públicas o judiciales</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>5. Base legal para el tratamiento</h2>
+        <p>
+          Procesamos tus datos personales bajo las siguientes bases legales:
+        </p>
+        
+        <ul>
+          <li><strong>Consentimiento:</strong> Cuando has dado tu consentimiento explícito para un propósito específico.</li>
+          <li><strong>Interés legítimo:</strong> Cuando el procesamiento es necesario para nuestros intereses legítimos y tus derechos fundamentales no prevalecen sobre esos intereses.</li>
+          <li><strong>Obligación legal:</strong> Cuando necesitamos procesar tus datos para cumplir con una obligación legal.</li>
+          <li><strong>Ejecución de un contrato:</strong> Cuando el procesamiento es necesario para cumplir con nuestras obligaciones contractuales contigo.</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>6. Destinatarios de los datos</h2>
+        <p>
+          Podemos compartir tu información personal con las siguientes categorías de destinatarios:
+        </p>
+        
+        <ul>
+          <li><strong>Proveedores de servicios:</strong> Empresas que nos proporcionan servicios necesarios para el funcionamiento de nuestro Sitio (como hosting, análisis web, procesamiento de pagos, etc.).</li>
+          <li><strong>Asesores profesionales:</strong> Abogados, contadores, consultores y otros profesionales que nos prestan servicios de asesoría.</li>
+          <li><strong>Autoridades públicas:</strong> Cuando estamos obligados por ley o en respuesta a procesos legales.</li>
+          <li><strong>Terceros en caso de reorganización empresarial:</strong> Si participamos en una fusión, adquisición o venta de activos, tus datos pueden ser transferidos como parte de esa transacción.</li>
+        </ul>
+        
+        <p>
+          Todos los terceros con los que compartimos tus datos están obligados a proteger tu información personal y a utilizarla únicamente de acuerdo con nuestras instrucciones y esta política de privacidad.
+        </p>
+      </section>
+      
+      <section>
+        <h2>7. Transferencias internacionales de datos</h2>
+        <p>
+          Algunos de nuestros proveedores de servicios pueden estar ubicados fuera del Espacio Económico Europeo (EEE), lo que implica una transferencia internacional de tus datos.
+        </p>
+        <p>
+          Cuando realizamos estas transferencias, implementamos garantías adecuadas para asegurar que tus datos reciban un nivel de protección equivalente al que tendrían en el EEE, incluyendo:
+        </p>
+        
+        <ul>
+          <li>Transferencias a países con una decisión de adecuación de la Comisión Europea.</li>
+          <li>Uso de cláusulas contractuales tipo aprobadas por la Comisión Europea.</li>
+          <li>Adhesión a mecanismos certificados como el Privacy Shield (para transferencias a EE.UU., cuando sea aplicable).</li>
+        </ul>
+        
+        <p>
+          Puedes solicitar más información sobre estas salvaguardias contactándonos a través de los datos proporcionados en la sección 2.
+        </p>
+      </section>
+      
+      <section>
+        <h2>8. Conservación de datos</h2>
+        <p>
+          Solo conservaremos tus datos personales durante el tiempo necesario para cumplir con los fines para los que los recopilamos, incluyendo el cumplimiento de requisitos legales, contables o de informes.
+        </p>
+        <p>
+          Para determinar el período de retención adecuado, consideramos:
+        </p>
+        
+        <ul>
+          <li>La cantidad, naturaleza y sensibilidad de los datos personales.</li>
+          <li>El riesgo potencial de daño por uso o divulgación no autorizados.</li>
+          <li>Los fines para los que procesamos los datos y si podemos lograr esos fines por otros medios.</li>
+          <li>Los requisitos legales aplicables.</li>
+        </ul>
+        
+        <p>
+          En algunas circunstancias, podemos anonimizar tus datos personales para que ya no puedan asociarse contigo, en cuyo caso podemos usar dicha información sin previo aviso.
+        </p>
+      </section>
+      
+      <section>
+        <h2>9. Tus derechos</h2>
+        <p>
+          Bajo ciertas circunstancias, tienes los siguientes derechos en relación con tus datos personales:
+        </p>
+        
+        <ul>
+          <li><strong>Derecho de acceso:</strong> Derecho a obtener confirmación de si estamos procesando tus datos personales y, en tal caso, acceder a dichos datos.</li>
+          <li><strong>Derecho de rectificación:</strong> Derecho a solicitar la corrección de datos personales inexactos o incompletos.</li>
+          <li><strong>Derecho de supresión:</strong> Derecho a solicitar la eliminación de tus datos personales en determinadas circunstancias.</li>
+          <li><strong>Derecho a la limitación del tratamiento:</strong> Derecho a solicitar la restricción del procesamiento de tus datos personales en ciertas circunstancias.</li>
+          <li><strong>Derecho a la portabilidad de los datos:</strong> Derecho a recibir tus datos personales en un formato estructurado, de uso común y legible por máquina, y a transmitirlos a otro responsable del tratamiento.</li>
+          <li><strong>Derecho de oposición:</strong> Derecho a oponerte al procesamiento de tus datos personales en ciertas circunstancias, especialmente para marketing directo.</li>
+          <li><strong>Derecho a retirar el consentimiento:</strong> Derecho a retirar tu consentimiento en cualquier momento cuando el procesamiento se base en tu consentimiento.</li>
+          <li><strong>Derecho a presentar una reclamación:</strong> Derecho a presentar una reclamación ante una autoridad de control si consideras que el procesamiento de tus datos personales infringe la normativa aplicable.</li>
+        </ul>
+        
+        <p>
+          Para ejercer cualquiera de estos derechos, por favor contáctanos a través de los datos proporcionados en la sección 2.
+        </p>
+      </section>
+      
+      <section>
+        <h2>10. Seguridad de los datos</h2>
+        <p>
+          Hemos implementado medidas de seguridad técnicas y organizativas apropiadas para proteger tus datos personales contra pérdida accidental, uso no autorizado, alteración, divulgación o acceso.
+        </p>
+        <p>
+          Estas medidas incluyen, entre otras:
+        </p>
+        
+        <ul>
+          <li>Encriptación de datos sensibles</li>
+          <li>Firewalls y sistemas de protección de redes</li>
+          <li>Acceso limitado a tus datos personales</li>
+          <li>Procedimientos para manejar cualquier sospecha de violación de datos personales</li>
+        </ul>
+        
+        <p>
+          Sin embargo, ninguna transmisión de datos por Internet o sistema de almacenamiento es completamente seguro. Si tienes motivos para creer que tu interacción con nosotros ya no es segura, notifícanoslo inmediatamente.
+        </p>
+      </section>
+      
+      <section>
+        <h2>11. Enlaces a terceros</h2>
+        <p>
+          Nuestro Sitio puede incluir enlaces a sitios web, plugins y aplicaciones de terceros. Hacer clic en esos enlaces o habilitar esas conexiones puede permitir a terceros recopilar o compartir datos sobre ti.
+        </p>
+        <p>
+          No controlamos estos sitios web de terceros y no somos responsables de sus declaraciones de privacidad. Te recomendamos que leas la política de privacidad de cada sitio web que visites.
+        </p>
+      </section>
+      
+      <section>
+        <h2>12. Menores</h2>
+        <p>
+          Nuestro Sitio no está destinado a menores de 16 años y no recopilamos conscientemente datos personales de menores de 16 años. Si eres padre/madre o tutor y crees que tu hijo nos ha proporcionado datos personales, contáctanos para que podamos tomar las medidas necesarias.
+        </p>
+      </section>
+      
+      <section>
+        <h2>13. Cambios a esta política</h2>
+        <p>
+          Podemos actualizar esta política de privacidad periódicamente. La versión más reciente estará siempre disponible en nuestro Sitio con la fecha de la última actualización.
+        </p>
+        <p>
+          Te recomendamos que revises esta política regularmente para estar informado sobre cómo protegemos tu información.
+        </p>
+      </section>
+      
+      <section>
+        <h2>14. Contacto</h2>
+        <p>
+          Si tienes preguntas sobre esta política de privacidad o sobre cómo tratamos tus datos personales, puedes contactarnos a través de:
+        </p>
+        
+        <ul>
+          <li>Correo electrónico: <a href={`mailto:${meta.email}`}>{meta.email}</a></li>
+        </ul>
+        
+        <p>
+          Haremos todo lo posible para responder a tus consultas con prontitud y ayudarte con cualquier duda que puedas tener.
+        </p>
+      </section>
+    </article>
+  </main>
+</Layout>

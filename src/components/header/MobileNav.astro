@@ -45,10 +45,93 @@ const { headerItems, lang, translations } = Astro.props;
         </a>
       </div>
 
-      <!-- Control Center a la derecha -->
-      <ControlCenter translations={Astro.props.translations} />
+      <!-- Rediseño de los botones de tema e idioma -->
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle-mobile" class="theme-toggle-button relative w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors">
+          <span class="light-icon absolute transition-opacity duration-300" style="opacity: 1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="dark-icon absolute transition-opacity duration-300" style="opacity: 0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+        
+        <button id="lang-toggle-mobile" class="lang-toggle-button relative w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors">
+          <span class="text-xl">{translations.languageFlag || '🌐'}</span>
+        </button>
+      </div>
     </div>
   </header>
+
+  <!-- Menú de idiomas (oculto inicialmente) -->
+  <div id="language-dropdown" class="fixed top-16 right-4 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 opacity-0 scale-95 pointer-events-none transition-all duration-200 transform origin-top-right">
+    <div class="p-2">
+      {Object.entries(translations.languages || {}).map(([code, name]) => (
+        <a 
+          href={code === 'es' ? '/' : `/${code}/`} 
+          class={`flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${code === lang ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'}`}
+        >
+          <span class="text-lg">{translations.languageFlags?.[code] || '🌐'}</span>
+          <span>{name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Menú de temas (oculto inicialmente) -->
+  <div id="theme-dropdown" class="fixed top-16 right-4 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 opacity-0 scale-95 pointer-events-none transition-all duration-200 transform origin-top-right">
+    <div class="p-2">
+      <button 
+        class="theme-option flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left"
+        data-theme="light"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <span class="text-gray-700 dark:text-gray-300">Claro</span>
+      </button>
+      <button 
+        class="theme-option flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left"
+        data-theme="dark"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <span class="text-gray-700 dark:text-gray-300">Oscuro</span>
+      </button>
+      <button 
+        class="theme-option flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left"
+        data-theme="system"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        <span class="text-gray-700 dark:text-gray-300">Sistema</span>
+      </button>
+    </div>
+  </div>
 
   <!-- Mobile Menu - Estilo moderno -->
   <div
@@ -73,6 +156,18 @@ const { headerItems, lang, translations } = Astro.props;
           )}
         </a>
       ))}
+      
+      <!-- Link de configuración avanzada -->
+      <a
+        class='mobile-nav-link flex items-center gap-3 px-4 py-3 mb-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200 transform hover:translate-x-1 mt-4 border-t border-gray-200 dark:border-gray-700 pt-4'
+        href="/settings"
+      >
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+        <span class='text-lg font-medium'>{translations.settings?.title || 'Configuración avanzada'}</span>
+      </a>
     </nav>
   </div>
 </div>
@@ -81,6 +176,8 @@ const { headerItems, lang, translations } = Astro.props;
 <div class='md:hidden h-[69px]'></div>
 
 <script>
+  import { gsap } from 'gsap';
+  
   // Mobile menu functionality
   function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -262,15 +359,189 @@ const { headerItems, lang, translations } = Astro.props;
     updateActiveLink();
   }
 
+  // Theme & Language Toggles
+  function setupHeaderToggles() {
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle-mobile');
+    const themeDropdown = document.getElementById('theme-dropdown');
+    const themeOptions = document.querySelectorAll('.theme-option');
+    const lightIcon = document.querySelector('.light-icon');
+    const darkIcon = document.querySelector('.dark-icon');
+    
+    if (themeToggle && themeDropdown && lightIcon && darkIcon) {
+      // Inicializar icono correcto
+      const theme = localStorage.getItem('theme') || 'system';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+      
+      if (isDark) {
+        lightIcon.style.opacity = '0';
+        darkIcon.style.opacity = '1';
+      } else {
+        lightIcon.style.opacity = '1';
+        darkIcon.style.opacity = '0';
+      }
+      
+      // Toggle dropdown
+      let themeDropdownOpen = false;
+      
+      themeToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        if (themeDropdownOpen) {
+          gsap.to(themeDropdown, {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.2,
+            onComplete: () => {
+              themeDropdown.classList.add('pointer-events-none');
+            }
+          });
+        } else {
+          themeDropdown.classList.remove('pointer-events-none');
+          gsap.to(themeDropdown, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.3,
+            ease: 'back.out(1.7)'
+          });
+          
+          // Cerrar language dropdown si está abierto
+          if (langDropdownOpen) {
+            gsap.to(langDropdown, {
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.2,
+              onComplete: () => {
+                langDropdown.classList.add('pointer-events-none');
+              }
+            });
+            langDropdownOpen = false;
+          }
+        }
+        
+        themeDropdownOpen = !themeDropdownOpen;
+      });
+      
+      // Theme options
+      themeOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const newTheme = option.dataset.theme;
+          localStorage.setItem('theme', newTheme);
+          
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const isDark = newTheme === 'dark' || (newTheme === 'system' && prefersDark);
+          
+          document.documentElement.classList.toggle('dark', isDark);
+          
+          if (isDark) {
+            gsap.to(lightIcon, { opacity: 0, duration: 0.2 });
+            gsap.to(darkIcon, { opacity: 1, duration: 0.2 });
+          } else {
+            gsap.to(lightIcon, { opacity: 1, duration: 0.2 });
+            gsap.to(darkIcon, { opacity: 0, duration: 0.2 });
+          }
+          
+          // Cerrar dropdown
+          gsap.to(themeDropdown, {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.2,
+            onComplete: () => {
+              themeDropdown.classList.add('pointer-events-none');
+            }
+          });
+          
+          themeDropdownOpen = false;
+        });
+      });
+    }
+    
+    // Language toggle
+    const langToggle = document.getElementById('lang-toggle-mobile');
+    const langDropdown = document.getElementById('language-dropdown');
+    
+    if (langToggle && langDropdown) {
+      let langDropdownOpen = false;
+      
+      langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        if (langDropdownOpen) {
+          gsap.to(langDropdown, {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.2,
+            onComplete: () => {
+              langDropdown.classList.add('pointer-events-none');
+            }
+          });
+        } else {
+          langDropdown.classList.remove('pointer-events-none');
+          gsap.to(langDropdown, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.3,
+            ease: 'back.out(1.7)'
+          });
+          
+          // Cerrar theme dropdown si está abierto
+          if (themeDropdownOpen) {
+            gsap.to(themeDropdown, {
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.2,
+              onComplete: () => {
+                themeDropdown.classList.add('pointer-events-none');
+              }
+            });
+            themeDropdownOpen = false;
+          }
+        }
+        
+        langDropdownOpen = !langDropdownOpen;
+      });
+    }
+    
+    // Cerrar dropdowns al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (themeDropdown && !themeToggle.contains(e.target) && !themeDropdown.contains(e.target)) {
+        gsap.to(themeDropdown, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.2,
+          onComplete: () => {
+            themeDropdown.classList.add('pointer-events-none');
+          }
+        });
+        themeDropdownOpen = false;
+      }
+      
+      if (langDropdown && !langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
+        gsap.to(langDropdown, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.2,
+          onComplete: () => {
+            langDropdown.classList.add('pointer-events-none');
+          }
+        });
+        langDropdownOpen = false;
+      }
+    });
+  }
+
   // Initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initMobileMenu();
       setupMobileNavHighlighting();
+      setupHeaderToggles();
     });
   } else {
     initMobileMenu();
     setupMobileNavHighlighting();
+    setupHeaderToggles();
   }
 </script>
 
@@ -340,5 +611,24 @@ const { headerItems, lang, translations } = Astro.props;
     header {
       backdrop-filter: blur(12px);
     }
+  }
+  
+  /* Nuevos estilos para botones de tema e idioma */
+  .theme-toggle-button, .lang-toggle-button {
+    transition: all 0.2s ease;
+  }
+  
+  .theme-toggle-button:hover, .lang-toggle-button:hover {
+    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .theme-toggle-button:active, .lang-toggle-button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Asegurar que los dropdowns estén ocultos inicialmente */
+  #theme-dropdown, #language-dropdown {
+    pointer-events: none;
   }
 </style>

@@ -1,0 +1,140 @@
+/* Button Component Styles */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Button Variants */
+.button-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: var(--color-primary-light);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.button-secondary:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.button-tertiary {
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+
+.button-tertiary:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+}
+
+/* Button Sizes */
+.button-sm {
+  padding: calc(var(--space-xs) * 0.75) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.button-lg {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-lg);
+}
+
+/* Button with Icon */
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.button-icon-only {
+  padding: var(--space-sm);
+  border-radius: var(--radius-full);
+}
+
+/* Button Rounded */
+.button-rounded {
+  border-radius: var(--radius-full);
+}
+
+/* Dark mode adjustments */
+.dark .button-primary {
+  background-color: var(--color-primary);
+  color: var(--bg-primary);
+}
+
+.dark .button-secondary {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.dark .button-tertiary {
+  color: var(--text-secondary);
+}
+
+.dark .button-tertiary:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+}
+
+/* Social Pill Component */
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  gap: var(--space-sm);
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast) ease;
+  text-decoration: none;
+}
+
+.social-pill:hover {
+  background-color: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+.social-pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark mode social pill */
+.dark .social-pill {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.dark .social-pill:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}

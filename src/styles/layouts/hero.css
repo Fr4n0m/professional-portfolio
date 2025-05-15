@@ -1,0 +1,130 @@
+/* Hero Section Styles */
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+/* Main content container */
+.hero-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Text and badge container */
+.text-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  width: 100%;
+}
+
+/* Text Pressure Block */
+.text-pressure-block {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Badge Container */
+.badge-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Hero Description */
+.hero-description {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-xl);
+  max-width: 90%;
+  text-align: center;
+}
+
+/* Location Text */
+.location-text {
+  display: block;
+  margin-top: var(--space-md);
+  font-size: var(--font-size-base);
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  width: 100%;
+  margin-top: var(--space-md);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .hero-section {
+    align-items: flex-start;
+    text-align: left;
+    padding-top: var(--space-2xl);
+  }
+  
+  .hero-main-content {
+    align-items: flex-start;
+  }
+  
+  .text-badge-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2xl);
+  }
+  
+  .text-pressure-block {
+    justify-content: flex-start;
+    min-width: 320px;
+    width: auto;
+  }
+  
+  .badge-container {
+    justify-content: flex-start;
+  }
+  
+  .hero-description {
+    text-align: left;
+    max-width: 700px;
+  }
+  
+  .social-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    padding-top: var(--space-3xl);
+  }
+  
+  .text-badge-container {
+    gap: var(--space-3xl);
+  }
+  
+  .text-pressure-block {
+    min-width: 350px;
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-xl);
+  }
+  
+  .location-text {
+    font-size: var(--font-size-lg);
+  }
+}

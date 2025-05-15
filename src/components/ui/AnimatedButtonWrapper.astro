@@ -1,0 +1,37 @@
+---
+// Componente Astro que envuelve el componente React AnimatedButton
+import AnimatedButton from './AnimatedButton';
+
+interface Props {
+  text: string;
+  href?: string;
+  onClick?: string;
+  primary?: boolean;
+  className?: string;
+}
+
+const { 
+  text, 
+  href, 
+  onClick, 
+  primary = true, 
+  className = "" 
+} = Astro.props;
+---
+
+{href ? (
+  <a href={href} class={`inline-block ${className}`}>
+    <AnimatedButton
+      text={text}
+      primary={primary}
+      client:visible
+    />
+  </a>
+) : (
+  <AnimatedButton
+    text={text}
+    primary={primary}
+    className={className}
+    client:visible
+  />
+)}

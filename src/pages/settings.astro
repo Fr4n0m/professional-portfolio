@@ -1,0 +1,444 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { textsJson } from '@utils/const';
+
+// Get translations based on the current URL
+const currentLang = Astro.url.pathname.split('/')[1] || 'es';
+const lang = ['es', 'en', 'pt'].includes(currentLang) ? currentLang : 'es';
+const translations = textsJson[lang];
+---
+
+<Layout 
+  title="Configuración Avanzada | Portfolio Fr4n0m" 
+  description="Personaliza tu experiencia con las opciones de configuración avanzada"
+  json={translations}
+>
+  <main class="container max-w-4xl mx-auto px-4 py-10 pt-24">
+    <h1 class="text-3xl font-bold mb-8 text-center">Configuración Avanzada</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Sección de Accesibilidad -->
+      <section class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500">
+            <circle cx="12" cy="12" r="10"></circle>
+            <rect x="9" y="9" width="6" height="6"></rect>
+          </svg>
+          Accesibilidad
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Tamaño de Texto -->
+          <div class="flex items-center justify-between">
+            <span>Tamaño de Texto</span>
+            <div class="flex items-center gap-2">
+              <button id="decrease-font" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+              <span id="font-size-value">100%</span>
+              <button id="increase-font" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Movimiento Reducido -->
+          <div class="flex items-center justify-between">
+            <span>Movimiento Reducido</span>
+            <button id="toggle-motion" class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700" role="switch" aria-checked="false">
+              <span class="sr-only">Toggle reduced motion</span>
+              <span id="motion-toggle-handle" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span>
+            </button>
+          </div>
+          
+          <!-- Alto Contraste -->
+          <div class="flex items-center justify-between">
+            <span>Alto Contraste</span>
+            <button id="toggle-contrast" class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700" role="switch" aria-checked="false">
+              <span class="sr-only">Toggle high contrast</span>
+              <span id="contrast-toggle-handle" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Sección de Apariencia -->
+      <section class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+          Apariencia
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Tema -->
+          <div>
+            <span class="block mb-2">Tema</span>
+            <div class="grid grid-cols-3 gap-2">
+              <button class="theme-option p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex flex-col items-center gap-1" data-theme="light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path>
+                </svg>
+                <span class="text-sm">Claro</span>
+              </button>
+              <button class="theme-option p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex flex-col items-center gap-1" data-theme="dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <span class="text-sm">Oscuro</span>
+              </button>
+              <button class="theme-option p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex flex-col items-center gap-1" data-theme="system">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span class="text-sm">Sistema</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Idioma -->
+          <div>
+            <span class="block mb-2">Idioma</span>
+            <div class="grid grid-cols-3 gap-2">
+              <a href="/" class={`p-3 rounded-lg border hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex flex-col items-center gap-1 ${lang === 'es' ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-500/30' : 'border-gray-200 dark:border-gray-700'}`}>
+                <span class="text-xl">🇪🇸</span>
+                <span class="text-sm">Español</span>
+              </a>
+              <a href="/en" class={`p-3 rounded-lg border hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex flex-col items-center gap-1 ${lang === 'en' ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-500/30' : 'border-gray-200 dark:border-gray-700'}`}>
+                <span class="text-xl">🇺🇸</span>
+                <span class="text-sm">English</span>
+              </a>
+              <a href="/pt" class={`p-3 rounded-lg border hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex flex-col items-center gap-1 ${lang === 'pt' ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-500/30' : 'border-gray-200 dark:border-gray-700'}`}>
+                <span class="text-xl">🇧🇷</span>
+                <span class="text-sm">Português</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Sección de Notificaciones -->
+      <section class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-500">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          Notificaciones
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span>Novedades del Portfolio</span>
+            <button id="toggle-updates" class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700" role="switch" aria-checked="false">
+              <span class="sr-only">Toggle updates</span>
+              <span id="updates-toggle-handle" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span>
+            </button>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span>Proyectos Nuevos</span>
+            <button id="toggle-projects" class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700" role="switch" aria-checked="false">
+              <span class="sr-only">Toggle projects</span>
+              <span id="projects-toggle-handle" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Sección de Datos y Privacidad -->
+      <section class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Datos y Privacidad
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span>Cookies</span>
+            <button id="toggle-cookies" class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700" role="switch" aria-checked="false">
+              <span class="sr-only">Toggle cookies</span>
+              <span id="cookies-toggle-handle" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span>
+            </button>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <span>Analíticas</span>
+            <button id="toggle-analytics" class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700" role="switch" aria-checked="false">
+              <span class="sr-only">Toggle analytics</span>
+              <span id="analytics-toggle-handle" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span>
+            </button>
+          </div>
+          
+          <div class="pt-2">
+            <button id="reset-settings" class="w-full py-2 px-4 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">
+              Restablecer ajustes
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <div class="mt-8 text-center">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        La página de Configuración Avanzada te permite personalizar tu experiencia en el portfolio.
+        <br />Todos los ajustes se guardan localmente en tu navegador.
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Theme settings
+    const themeButtons = document.querySelectorAll('.theme-option');
+    const currentTheme = localStorage.getItem('theme') || 'system';
+    
+    // Toggle switches
+    const toggles = {
+      motion: document.getElementById('toggle-motion'),
+      contrast: document.getElementById('toggle-contrast'),
+      updates: document.getElementById('toggle-updates'),
+      projects: document.getElementById('toggle-projects'),
+      cookies: document.getElementById('toggle-cookies'),
+      analytics: document.getElementById('toggle-analytics')
+    };
+    
+    const handles = {
+      motion: document.getElementById('motion-toggle-handle'),
+      contrast: document.getElementById('contrast-toggle-handle'),
+      updates: document.getElementById('updates-toggle-handle'),
+      projects: document.getElementById('projects-toggle-handle'),
+      cookies: document.getElementById('cookies-toggle-handle'),
+      analytics: document.getElementById('analytics-toggle-handle')
+    };
+    
+    // Highlight current theme
+    themeButtons.forEach(button => {
+      if (button.dataset.theme === currentTheme) {
+        button.classList.add('bg-blue-50', 'dark:bg-blue-900/20', 'border-blue-200', 'dark:border-blue-500/30');
+      }
+      
+      button.addEventListener('click', () => {
+        const theme = button.dataset.theme;
+        localStorage.setItem('theme', theme);
+        
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+        
+        document.documentElement.classList.toggle('dark', isDark);
+        
+        // Update UI
+        themeButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-50', 'dark:bg-blue-900/20', 'border-blue-200', 'dark:border-blue-500/30');
+        });
+        
+        button.classList.add('bg-blue-50', 'dark:bg-blue-900/20', 'border-blue-200', 'dark:border-blue-500/30');
+        
+        // Animation feedback
+        gsap.from(button, {
+          scale: 0.95,
+          duration: 0.2,
+          ease: 'back.out(1.7)'
+        });
+      });
+    });
+    
+    // Font size controls
+    let fontSize = parseInt(localStorage.getItem('fontSize') || '100');
+    const fontSizeSpan = document.getElementById('font-size-value');
+    const decreaseFont = document.getElementById('decrease-font');
+    const increaseFont = document.getElementById('increase-font');
+    
+    if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+    
+    // Apply saved font size
+    document.documentElement.style.fontSize = `${fontSize}%`;
+    
+    if (decreaseFont) {
+      decreaseFont.addEventListener('click', () => {
+        if (fontSize > 85) {
+          fontSize -= 5;
+          localStorage.setItem('fontSize', fontSize.toString());
+          document.documentElement.style.fontSize = `${fontSize}%`;
+          fontSizeSpan.textContent = `${fontSize}%`;
+          
+          gsap.from(fontSizeSpan, {
+            scale: 0.8,
+            duration: 0.2,
+            ease: 'back.out(1.7)'
+          });
+        }
+      });
+    }
+    
+    if (increaseFont) {
+      increaseFont.addEventListener('click', () => {
+        if (fontSize < 120) {
+          fontSize += 5;
+          localStorage.setItem('fontSize', fontSize.toString());
+          document.documentElement.style.fontSize = `${fontSize}%`;
+          fontSizeSpan.textContent = `${fontSize}%`;
+          
+          gsap.from(fontSizeSpan, {
+            scale: 1.2,
+            duration: 0.2,
+            ease: 'back.out(1.7)'
+          });
+        }
+      });
+    }
+    
+    // Setup toggles
+    Object.entries(toggles).forEach(([key, toggle]) => {
+      if (!toggle || !handles[key]) return;
+      
+      // Initialize toggle state
+      let isOn = false;
+      
+      // Special cases for certain toggles
+      if (key === 'motion') {
+        isOn = localStorage.getItem('enable-animations') !== 'false';
+        document.documentElement.classList.toggle('reduce-motion', !isOn);
+      } else if (key === 'contrast') {
+        isOn = localStorage.getItem('high-contrast') === 'true';
+        document.documentElement.classList.toggle('high-contrast', isOn);
+      } else {
+        // Default state for other toggles: off
+        isOn = localStorage.getItem(`setting-${key}`) === 'true';
+      }
+      
+      // Update toggle appearance
+      toggle.setAttribute('aria-checked', isOn.toString());
+      toggle.classList.toggle('bg-blue-500', isOn);
+      toggle.classList.toggle('dark:bg-blue-600', isOn);
+      
+      // Position handle
+      if (isOn) {
+        handles[key].classList.add('translate-x-5');
+        handles[key].classList.remove('translate-x-1');
+      } else {
+        handles[key].classList.add('translate-x-1');
+        handles[key].classList.remove('translate-x-5');
+      }
+      
+      // Add click handler
+      toggle.addEventListener('click', () => {
+        isOn = !isOn;
+        
+        // Update setting in localStorage
+        if (key === 'motion') {
+          localStorage.setItem('enable-animations', isOn.toString());
+          document.documentElement.classList.toggle('reduce-motion', !isOn);
+          
+          // Apply to GSAP animations
+          if (!isOn && window.gsap) {
+            gsap.globalTimeline.timeScale(0.0001);
+          } else if (window.gsap) {
+            gsap.globalTimeline.timeScale(1);
+          }
+        } else if (key === 'contrast') {
+          localStorage.setItem('high-contrast', isOn.toString());
+          document.documentElement.classList.toggle('high-contrast', isOn);
+        } else {
+          localStorage.setItem(`setting-${key}`, isOn.toString());
+        }
+        
+        // Update UI
+        toggle.setAttribute('aria-checked', isOn.toString());
+        toggle.classList.toggle('bg-blue-500', isOn);
+        toggle.classList.toggle('dark:bg-blue-600', isOn);
+        
+        // Animate handle
+        if (isOn) {
+          gsap.to(handles[key], {
+            x: '16px',
+            duration: 0.2,
+            ease: 'power1.out'
+          });
+        } else {
+          gsap.to(handles[key], {
+            x: '0px',
+            duration: 0.2,
+            ease: 'power1.out'
+          });
+        }
+      });
+    });
+    
+    // Reset all settings
+    const resetButton = document.getElementById('reset-settings');
+    if (resetButton) {
+      resetButton.addEventListener('click', () => {
+        // Confirm reset
+        if (confirm('¿Estás seguro de que deseas restablecer todos los ajustes a sus valores predeterminados?')) {
+          // Clear all settings from localStorage
+          localStorage.removeItem('theme');
+          localStorage.removeItem('fontSize');
+          localStorage.removeItem('enable-animations');
+          localStorage.removeItem('high-contrast');
+          
+          Object.keys(toggles).forEach(key => {
+            localStorage.removeItem(`setting-${key}`);
+          });
+          
+          // Show confirmation
+          alert('Todos los ajustes han sido restablecidos. La página se recargará para aplicar los cambios.');
+          
+          // Reload the page
+          window.location.reload();
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Estilos específicos para la página de configuración */
+  #motion-toggle-handle,
+  #contrast-toggle-handle,
+  #updates-toggle-handle,
+  #projects-toggle-handle,
+  #cookies-toggle-handle,
+  #analytics-toggle-handle {
+    transform: translateX(0.25rem);
+    transition: transform 0.2s ease;
+  }
+  
+  .translate-x-5 {
+    transform: translateX(1.25rem) !important;
+  }
+  
+  .translate-x-1 {
+    transform: translateX(0.25rem) !important;
+  }
+  
+  /* High contrast mode */
+  html.high-contrast {
+    filter: contrast(1.3) saturate(1.2);
+  }
+  
+  /* Reduce motion */
+  html.reduce-motion * {
+    animation-duration: 0.0001s !important;
+    transition-duration: 0.0001s !important;
+    scroll-behavior: auto !important;
+  }
+</style>

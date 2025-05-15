@@ -1,0 +1,31 @@
+---
+// Componente Astro que envuelve el componente React HeroAnimation
+import HeroAnimation from './HeroAnimation';
+import type { Translations } from '../types/translations';
+
+interface Props {
+  translations: Translations;
+  darkMode?: boolean;
+}
+
+const { translations, darkMode = false } = Astro.props;
+
+const hero = translations.mainPage.hero;
+---
+
+<div class="hero-animation-wrapper py-8 md:py-16 relative overflow-hidden">
+  <HeroAnimation
+    title={hero.heroTitle}
+    subtitle={hero.heroDescription1 + " " + hero.heroDescription2}
+    primaryButtonText={translations.buttons.projects}
+    secondaryButtonText={translations.buttons.contact}
+    darkMode={darkMode}
+    client:visible
+  />
+</div>
+
+<style>
+  .hero-animation-wrapper {
+    min-height: 300px;
+  }
+</style>

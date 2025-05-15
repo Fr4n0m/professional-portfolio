@@ -1,51 +1,101 @@
-/* Typing Animation Styles */
-.typing h1 {
-	overflow: hidden;
-	overflow-x: hidden;
-	padding-bottom: 0.07em;
-	border-right: 0.15em solid #1e42a0;
-	padding-right: 10px;
-	white-space: nowrap;
-	margin: 0 auto;
-	letter-spacing: 0.05em;
+/* Estilos para el efecto de escritura con GSAP */
+.typing {
+	position: relative;
+	display: inline-block;
 }
 
-.typewriter {
-	animation:
-		typing 3.5s steps(30, end),
-		blink-caret 0.8s step-end infinite;
+.typing .typing-text {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	letter-spacing: 0.02em;
+	font-size: 3.25rem;
+	font-weight: 800;
+	line-height: 1.1;
+	color: #1F429F; /* Color base por si falla el gradiente */
+	background-image: linear-gradient(135deg, #1F429F 0%, #3563bd 60%, #4a8efa 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
 }
 
-.typewriter-mobile {
-	animation:
-		typing-mobile 3.5s steps(30, end),
-		blink-caret 0.8s step-end infinite;
+/* Dark mode text */
+.dark .typing .typing-text {
+	background-image: linear-gradient(135deg, #facc15 0%, #fde047 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: #facc15; /* Fallback color */
 }
 
-@keyframes typing-mobile {
-	from {
-		width: 0;
-	}
-	to {
-		width: 70%;
-	}
+/* Cursor styles */
+.typing .cursor {
+	display: inline-block;
+	width: 3px;
+	height: 1.4em;
+	background-color: #1F429F; /* Blue from profile image border */
+	position: absolute;
+	top: 0.05em;
+	transform: translateY(-7%); /* Ajustado para mover el cursor hacia arriba */
+	left: 0; /* Posición inicial del cursor */
+	border-radius: 2px;
+	opacity: 1;
+	z-index: 10; /* Asegura que esté por encima de las letras */
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Sombra sutil para mejorar visibilidad */
 }
 
-@keyframes typing {
-	from {
-		width: 0;
-	}
-	to {
+/* Dark mode cursor */
+.dark .typing .cursor {
+	background-color: #facc15; /* Yellow from the theme */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+	.typing {
+		display: flex;
+		justify-content: center;
 		width: 100%;
 	}
+	
+	.typing .typing-text {
+		font-size: 2.5rem;
+		text-align: center;
+	}
+	
+	.typing .cursor {
+		height: 1.3em;
+		top: 0;
+		transform: translateY(-7%); /* Consistente con el cursor principal */
+	}
 }
 
-@keyframes blink-caret {
-	from,
-	to {
-		border-color: transparent;
+@media (max-width: 640px) {
+	.typing .typing-text {
+		font-size: 2.4rem; /* Ligeramente aumentado para pantallas medianas */
 	}
-	50% {
-		border-color: rgba(30, 67, 160, 0.619);
+}
+
+@media (max-width: 475px) {
+	.typing .typing-text {
+		font-size: 2.1rem; /* Aumentado el tamaño del texto en dispositivos móviles */
 	}
+	
+	.typing .cursor {
+		height: 1.2em;
+		width: 3px;
+		transform: translateY(-7%); /* Consistente con el cursor principal */
+	}
+}
+
+/* Container setup */
+.typing-container {
+	min-height: 4.5rem;
+	align-items: center;
+	padding-top: 0.5rem;
+}
+
+/* Badge styling for animation */
+.pulsating {
+	opacity: 0; /* Inicialmente oculto, GSAP lo mostrará */
 }

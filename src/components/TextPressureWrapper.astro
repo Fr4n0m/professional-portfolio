@@ -1,0 +1,53 @@
+---
+// Componente Astro que envuelve el componente React TextPressure
+import TextPressure from './TextPressure';
+
+interface Props {
+  text?: string;
+  darkMode?: boolean;
+  className?: string;
+}
+
+const { text = "Hey, soy Fran", darkMode = false, className = "" } = Astro.props;
+---
+
+<div class={`text-pressure-wrapper ${className}`}>
+  <TextPressure
+    text={text}
+    darkMode={darkMode}
+    client:only="react"
+  />
+</div>
+
+<style>
+  .text-pressure-wrapper {
+    width: 100%;
+    position: relative;
+    min-height: 70px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center; /* Centrado en todos los tamaños */
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Aseguramos que el contenido dentro también esté centrado en móvil */
+  :global(.text-pressure-wrapper > div) {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  @media (min-width: 768px) {
+    .text-pressure-wrapper {
+      justify-content: flex-start; /* Alineación izquierda en tablets y desktop */
+      text-align: left;
+    }
+    
+    :global(.text-pressure-wrapper > div) {
+      justify-content: flex-start !important;
+      text-align: left !important;
+    }
+  }
+</style>

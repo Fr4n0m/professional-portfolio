@@ -1,0 +1,283 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCurrentLanguage } from '@i18n/config';
+import { textsJson } from '@utils/const';
+
+// Obtener el idioma actual
+const currentLang = getCurrentLanguage(Astro.url);
+const translations = textsJson[currentLang];
+
+// Metadatos legales
+const meta = {
+  companyName: "Francisco José Romero",
+  domain: "fr4n0m-portfolio.dev",
+  email: "Fran11799@outlook.com",
+  lastUpdate: "15 de mayo de 2025"
+};
+---
+
+<Layout 
+  title="Política de Cookies | Portfolio Fr4n0m" 
+  description="Política de cookies del sitio web de Francisco José Romero"
+  json={translations}
+>
+  <main class="container max-w-4xl mx-auto px-4 py-10 pt-24 pb-16">
+    <article class="prose dark:prose-invert prose-lg max-w-none">
+      <h1>Política de Cookies</h1>
+      
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-8">
+        Última actualización: {meta.lastUpdate}
+      </p>
+      
+      <section>
+        <h2>1. ¿Qué son las cookies?</h2>
+        <p>
+          Las cookies son pequeños archivos de texto que los sitios web que visitas colocan en tu ordenador, móvil u otro dispositivo para almacenar información sobre tu navegación en ese sitio. Las cookies son ampliamente utilizadas para hacer que los sitios web funcionen de manera más eficiente, así como para proporcionar información a los propietarios del sitio.
+        </p>
+        <p>
+          Este sitio web, {meta.domain} ("el Sitio"), utiliza cookies y tecnologías similares para distinguirte de otros usuarios de nuestro sitio y para ayudarnos a brindarte una mejor experiencia cuando navegas por él.
+        </p>
+      </section>
+      
+      <section>
+        <h2>2. ¿Quién es el responsable del uso de cookies?</h2>
+        <p>
+          {meta.companyName} es el responsable del uso de las cookies y del tratamiento de los datos obtenidos a través de ellas en el Sitio.
+        </p>
+        <p>
+          <strong>Datos de contacto:</strong>
+        </p>
+        <ul>
+          <li>Nombre: {meta.companyName}</li>
+          <li>Correo electrónico: <a href={`mailto:${meta.email}`}>{meta.email}</a></li>
+          <li>Sitio web: <a href={`https://${meta.domain}`} target="_blank" rel="noopener">{meta.domain}</a></li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>3. Tipos de cookies que utilizamos</h2>
+        <p>
+          Clasificamos las cookies en función de su origen, finalidad y duración:
+        </p>
+        
+        <h3>Según su origen</h3>
+        <ul>
+          <li><strong>Cookies propias:</strong> Son aquellas gestionadas por nosotros mismos desde nuestros servidores web.</li>
+          <li><strong>Cookies de terceros:</strong> Son aquellas establecidas y gestionadas por terceros, como Google Analytics, que nos proporcionan análisis sobre el uso de nuestro sitio web.</li>
+        </ul>
+        
+        <h3>Según su finalidad</h3>
+        <ul>
+          <li>
+            <strong>Cookies técnicas o esenciales:</strong> Son necesarias para el correcto funcionamiento del sitio web y la utilización de sus diferentes opciones y servicios. Por ejemplo, las que sirven para mantener la sesión, gestionar el tiempo de respuesta, rendimiento o validación de opciones, utilizar elementos de seguridad, compartir contenido con redes sociales, etc.
+          </li>
+          <li>
+            <strong>Cookies analíticas:</strong> Permiten cuantificar el número de usuarios y así realizar la medición y análisis estadístico de la utilización que hacen los usuarios del servicio. Para ello se analiza su navegación en nuestro sitio web con el fin de mejorar la oferta de productos o servicios que ofrecemos.
+          </li>
+          <li>
+            <strong>Cookies funcionales:</strong> Permiten recordar información para que el usuario acceda al servicio con determinadas características que pueden diferenciar su experiencia de la de otros usuarios, como, por ejemplo, el idioma, el número de resultados a mostrar cuando el usuario realiza una búsqueda, el aspecto o contenido del servicio en función del tipo de navegador o de la región desde la que accede al servicio, etc.
+          </li>
+          <li>
+            <strong>Cookies de publicidad:</strong> Son aquéllas que permiten la gestión, de la forma más eficaz posible, de los espacios publicitarios que, en su caso, se hayan incluido en nuestro sitio web, aplicación o plataforma desde la que prestamos el servicio solicitado en base a criterios como el contenido editado o la frecuencia en la que se muestran los anuncios.
+          </li>
+          <li>
+            <strong>Cookies de publicidad comportamental:</strong> Almacenan información del comportamiento de los usuarios obtenida a través de la observación continuada de sus hábitos de navegación, lo que permite desarrollar un perfil específico para mostrar publicidad en función del mismo.
+          </li>
+        </ul>
+        
+        <h3>Según su duración</h3>
+        <ul>
+          <li><strong>Cookies de sesión:</strong> Diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se suelen emplear para almacenar información que solo interesa conservar para la prestación del servicio solicitado por el usuario en una sola ocasión y desaparecen al terminar la sesión.</li>
+          <li><strong>Cookies persistentes:</strong> Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, y que puede ir de unos minutos a varios años.</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>4. Cookies específicas utilizadas en este sitio</h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm">
+            <thead>
+              <tr class="bg-gray-100 dark:bg-gray-700">
+                <th class="px-4 py-2 border">Nombre</th>
+                <th class="px-4 py-2 border">Proveedor</th>
+                <th class="px-4 py-2 border">Finalidad</th>
+                <th class="px-4 py-2 border">Duración</th>
+                <th class="px-4 py-2 border">Tipo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Cookies esenciales -->
+              <tr>
+                <td class="px-4 py-2 border">cookie_consent</td>
+                <td class="px-4 py-2 border">Propia</td>
+                <td class="px-4 py-2 border">Almacena las preferencias de consentimiento de cookies del usuario</td>
+                <td class="px-4 py-2 border">1 año</td>
+                <td class="px-4 py-2 border">Esencial</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">theme</td>
+                <td class="px-4 py-2 border">Propia</td>
+                <td class="px-4 py-2 border">Guarda la preferencia de tema (claro/oscuro)</td>
+                <td class="px-4 py-2 border">1 año</td>
+                <td class="px-4 py-2 border">Funcional</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">language</td>
+                <td class="px-4 py-2 border">Propia</td>
+                <td class="px-4 py-2 border">Guarda la preferencia de idioma del usuario</td>
+                <td class="px-4 py-2 border">1 año</td>
+                <td class="px-4 py-2 border">Funcional</td>
+              </tr>
+              
+              <!-- Cookies analíticas -->
+              <tr>
+                <td class="px-4 py-2 border">_ga</td>
+                <td class="px-4 py-2 border">Google Analytics</td>
+                <td class="px-4 py-2 border">Registra un ID único que se utiliza para generar datos estadísticos sobre cómo utiliza el visitante el sitio web</td>
+                <td class="px-4 py-2 border">2 años</td>
+                <td class="px-4 py-2 border">Analítica</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">_gid</td>
+                <td class="px-4 py-2 border">Google Analytics</td>
+                <td class="px-4 py-2 border">Registra un ID único que se utiliza para generar datos estadísticos sobre cómo utiliza el visitante el sitio web</td>
+                <td class="px-4 py-2 border">24 horas</td>
+                <td class="px-4 py-2 border">Analítica</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border">_gat</td>
+                <td class="px-4 py-2 border">Google Analytics</td>
+                <td class="px-4 py-2 border">Se utiliza para limitar la velocidad de solicitud</td>
+                <td class="px-4 py-2 border">1 minuto</td>
+                <td class="px-4 py-2 border">Analítica</td>
+              </tr>
+              
+              <!-- Cookies de marketing -->
+              <tr>
+                <td class="px-4 py-2 border">_fbp</td>
+                <td class="px-4 py-2 border">Facebook</td>
+                <td class="px-4 py-2 border">Utilizada por Facebook para ofrecer una serie de productos publicitarios</td>
+                <td class="px-4 py-2 border">3 meses</td>
+                <td class="px-4 py-2 border">Marketing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+      <section>
+        <h2>5. ¿Cómo gestionamos el consentimiento?</h2>
+        <p>
+          Cuando accedes por primera vez a nuestro sitio web, se te mostrará un banner de cookies que te informará sobre el uso de cookies en nuestro sitio y te dará la opción de aceptar todas, personalizar tu elección o rechazar todas excepto las esenciales.
+        </p>
+        <p>
+          Puedes modificar tus preferencias en cualquier momento haciendo clic en el enlace "Preferencias de cookies" ubicado en el pie de página de nuestro sitio web.
+        </p>
+      </section>
+      
+      <section>
+        <h2>6. ¿Cómo puedes gestionar las cookies?</h2>
+        <p>
+          Además de utilizar nuestro panel de preferencias de cookies, puedes controlar y/o eliminar las cookies según tus preferencias:
+        </p>
+        
+        <h3>A través de la configuración de tu navegador</h3>
+        <p>
+          Puedes gestionar las cookies directamente desde tu navegador. A continuación te proporcionamos enlaces a las instrucciones para los navegadores más comunes:
+        </p>
+        <ul>
+          <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+          <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+          <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+          <li><a href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Microsoft Edge</a></li>
+          <li><a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener">Opera</a></li>
+        </ul>
+        
+        <h3>A través de herramientas de terceros</h3>
+        <p>
+          También puedes gestionar tus preferencias de cookies publicitarias a través de plataformas como:
+        </p>
+        <ul>
+          <li><a href="https://optout.aboutads.info/" target="_blank" rel="noopener">Digital Advertising Alliance (DAA)</a></li>
+          <li><a href="https://www.youronlinechoices.com/" target="_blank" rel="noopener">European Interactive Digital Advertising Alliance (EDAA)</a></li>
+          <li><a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener">Network Advertising Initiative (NAI)</a></li>
+        </ul>
+        
+        <p>
+          Ten en cuenta que si desactivas o eliminas las cookies técnicas o esenciales, es posible que algunas funcionalidades del sitio no estén disponibles y tu experiencia de navegación podría verse afectada.
+        </p>
+      </section>
+      
+      <section>
+        <h2>7. Uso específico de cookies de terceros</h2>
+        
+        <h3>Google Analytics</h3>
+        <p>
+          Este sitio web utiliza Google Analytics, un servicio de análisis web proporcionado por Google, Inc. ("Google"). Google Analytics utiliza cookies para ayudarnos a analizar cómo los usuarios utilizan nuestro sitio. La información generada por la cookie acerca de tu uso del sitio web (incluyendo tu dirección IP) será transmitida y almacenada por Google en servidores en Estados Unidos.
+        </p>
+        <p>
+          Hemos activado la anonimización de IP, por lo que Google truncará/anonimizará el último octeto de la dirección IP antes de almacenarla. Google utilizará esta información por nuestra cuenta con el propósito de evaluar tu uso del sitio web, compilar informes sobre la actividad del sitio para nosotros y brindarnos otros servicios relacionados con la actividad del sitio web y el uso de Internet.
+        </p>
+        <p>
+          Puedes rechazar el uso de cookies seleccionando la configuración apropiada en tu navegador o a través de nuestra herramienta de gestión de consentimiento. También puedes optar por no ser rastreado por Google Analytics descargando e instalando <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.
+        </p>
+        
+        <h3>Redes sociales</h3>
+        <p>
+          Nuestro sitio web incluye botones y/o plugins que permiten compartir contenido en redes sociales como LinkedIn, Twitter y GitHub. Estos elementos pueden establecer cookies de terceros que pueden ser utilizadas para rastrear tu actividad. No tenemos control directo sobre la información recopilada por estas cookies, por lo que te recomendamos revisar las políticas de privacidad de estas redes sociales para más información.
+        </p>
+      </section>
+      
+      <section>
+        <h2>8. Actualizaciones de la política de cookies</h2>
+        <p>
+          Podemos actualizar esta política de cookies periódicamente para reflejar, por ejemplo, cambios en las cookies que utilizamos o por otros motivos operativos, legales o regulatorios. Por lo tanto, te recomendamos que visites regularmente esta política para estar informado sobre nuestro uso de cookies y tecnologías relacionadas.
+        </p>
+        <p>
+          La fecha en la parte superior de esta política indica cuándo se actualizó por última vez.
+        </p>
+      </section>
+      
+      <section>
+        <h2>9. Más información</h2>
+        <p>
+          Si tienes alguna pregunta sobre nuestro uso de cookies o esta política, no dudes en contactarnos a través de:
+        </p>
+        
+        <ul>
+          <li>Correo electrónico: <a href={`mailto:${meta.email}`}>{meta.email}</a></li>
+        </ul>
+      </section>
+      
+      <div class="mt-12 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
+        <button id="open-cookie-settings" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium">
+          Gestionar preferencias de cookies
+        </button>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<script>
+  // Botón para abrir las preferencias de cookies
+  document.getElementById('open-cookie-settings')?.addEventListener('click', () => {
+    // Buscar el banner de cookies
+    const cookieBanner = document.getElementById('cookie-consent-banner');
+    const simpleBanner = document.getElementById('cookie-banner-simple');
+    const detailedBanner = document.getElementById('cookie-banner-detailed');
+    
+    if (cookieBanner && simpleBanner && detailedBanner) {
+      // Mostrar el banner y el panel detallado
+      cookieBanner.classList.remove('translate-y-full');
+      simpleBanner.classList.add('hidden');
+      detailedBanner.classList.remove('hidden');
+      
+      // Scroll hacia el banner
+      cookieBanner.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Si el banner no existe, recargamos la página para que aparezca
+      localStorage.removeItem('cookie_consent');
+      window.location.reload();
+    }
+  });
+</script>

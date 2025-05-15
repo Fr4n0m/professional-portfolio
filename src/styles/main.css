@@ -1,0 +1,32 @@
+/* Main CSS file that imports all modular CSS components */
+
+/* Base Styles */
+@import './base/reset.css';
+@import './base/variables.css';
+@import './base/typography.css';
+
+/* Animations */
+@import './animations/base.css';
+@import './animations/text.css';
+
+/* Components */
+@import './components/badge.css';
+@import './components/buttons.css';
+@import './components/profile.css';
+/* Add more component imports as needed */
+
+/* Layouts */
+@import './layouts/hero.css';
+@import './layouts/sections.css';
+/* Add more layout imports as needed */
+
+/* Utilities */
+/* @import './utilities/spacing.css'; */
+/* @import './utilities/display.css'; */
+/* Add more utility imports as needed */
+
+/* Themes */
+/* @import './themes/dark.css'; */
+/* Add more theme imports as needed */
+
+/* Note: Some utility styles are handled by Tailwind CSS */

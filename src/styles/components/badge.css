@@ -1,0 +1,78 @@
+/* Badge Component Styles */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-none);
+  white-space: nowrap;
+  transition: all var(--transition-normal) ease;
+}
+
+.badge:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+/* Badge Animation */
+.pulsating {
+  opacity: 0; /* Initially hidden, will be shown with GSAP */
+}
+
+/* Badge Variants */
+.badge-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.badge-success {
+  background-color: #10b981; /* Emerald-500 */
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--color-accent);
+  color: black;
+}
+
+.badge-danger {
+  background-color: var(--text-accent);
+  color: white;
+}
+
+.badge-info {
+  background-color: #3b82f6; /* Blue-500 */
+  color: white;
+}
+
+/* Badge Sizes */
+.badge-sm {
+  padding: calc(var(--space-xs) / 2) var(--space-xs);
+  font-size: var(--font-size-xs);
+}
+
+.badge-lg {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-base);
+}
+
+/* Dark mode adjustments */
+.dark .badge-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.dark .badge-warning {
+  color: var(--bg-primary);
+}

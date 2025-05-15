@@ -91,16 +91,18 @@ const t = translations.controlCenter;
         <!-- Contrast -->
         <div class='flex items-center justify-between'>
           <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.contrast.label}</span>
-          <button class='contrast-toggle relative w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300' data-action='contrast'>
-            <span class='absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300'></span>
+          <button class='contrast-toggle relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/30 bg-gray-200 dark:bg-gray-700' aria-pressed="false" data-action='contrast'>
+            <span class='sr-only'>{t.accessibility.contrast.toggle}</span>
+            <span class='contrast-toggle-handle absolute bg-white rounded-full h-5 w-5 transition-transform translate-x-0.5 transform duration-200 ease-in-out shadow-sm'></span>
           </button>
         </div>
         
         <!-- Animations -->
         <div class='flex items-center justify-between'>
           <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.animations.label}</span>
-          <button class='animations-toggle relative w-11 h-6 bg-blue-500 rounded-full transition-colors duration-300' data-action='animations' data-enabled='true'>
-            <span class='absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300'></span>
+          <button class='animations-toggle relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/30 bg-blue-500 dark:bg-blue-600' aria-pressed="true" data-action='animations' data-enabled='true'>
+            <span class='sr-only'>{t.accessibility.animations.toggle}</span>
+            <span class='animations-toggle-handle absolute bg-white rounded-full h-5 w-5 transition-transform translate-x-5 transform duration-200 ease-in-out shadow-sm'></span>
           </button>
         </div>
       </div>
@@ -149,6 +151,8 @@ const t = translations.controlCenter;
 </div>
 
 <script>
+  import { gsap } from 'gsap';
+
   document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.querySelector('.control-center-toggle');
     const menu = document.querySelector('.control-center-menu');
@@ -159,33 +163,51 @@ const t = translations.controlCenter;
     
     let isOpen = false;
     
+    // Animar apertura/cierre del menú con GSAP
+    const animateMenu = (open) => {
+      if (open) {
+        // Mostrar primero para animación
+        menu.classList.remove('pointer-events-none');
+        gsap.to(menu, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.3,
+          ease: 'back.out(1.7)',
+          onStart: () => {
+            // Necesario para que la animación sea visible
+            menu.style.display = 'block';
+          }
+        });
+      } else {
+        gsap.to(menu, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.2,
+          ease: 'power3.in',
+          onComplete: () => {
+            menu.classList.add('pointer-events-none');
+            // Reset to main panel when closing
+            mainPanel.classList.remove('hidden');
+            languagePanel.classList.add('hidden');
+          }
+        });
+      }
+    };
+    
     // Toggle menu
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       
       isOpen = !isOpen;
-      
-      if (isOpen) {
-        menu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
-        menu.classList.add('opacity-100', 'scale-100');
-      } else {
-        menu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-        menu.classList.remove('opacity-100', 'scale-100');
-        // Reset to main panel when closing
-        mainPanel.classList.remove('hidden');
-        languagePanel.classList.add('hidden');
-      }
+      animateMenu(isOpen);
     });
     
     // Close on outside click
     document.addEventListener('click', (e) => {
       if (!toggle.contains(e.target) && !menu.contains(e.target) && isOpen) {
         isOpen = false;
-        menu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-        menu.classList.remove('opacity-100', 'scale-100');
-        mainPanel.classList.remove('hidden');
-        languagePanel.classList.add('hidden');
+        animateMenu(false);
       }
     });
     
@@ -220,15 +242,35 @@ const t = translations.controlCenter;
     
     if (langBtn) {
       langBtn.addEventListener('click', () => {
-        mainPanel.classList.add('hidden');
-        languagePanel.classList.remove('hidden');
+        gsap.to(mainPanel, {
+          opacity: 0,
+          duration: 0.2,
+          onComplete: () => {
+            mainPanel.classList.add('hidden');
+            languagePanel.classList.remove('hidden');
+            gsap.fromTo(languagePanel, 
+              { opacity: 0, x: 20 },
+              { opacity: 1, x: 0, duration: 0.3 }
+            );
+          }
+        });
       });
     }
     
     if (backBtn) {
       backBtn.addEventListener('click', () => {
-        mainPanel.classList.remove('hidden');
-        languagePanel.classList.add('hidden');
+        gsap.to(languagePanel, {
+          opacity: 0,
+          duration: 0.2,
+          onComplete: () => {
+            languagePanel.classList.add('hidden');
+            mainPanel.classList.remove('hidden');
+            gsap.fromTo(mainPanel, 
+              { opacity: 0, x: -20 },
+              { opacity: 1, x: 0, duration: 0.3 }
+            );
+          }
+        });
       });
     }
     
@@ -255,6 +297,12 @@ const t = translations.controlCenter;
       if (fontSize > 85) {
         fontSize -= 5;
         applyFontSize(fontSize);
+        
+        // Animación de feedback
+        gsap.fromTo(fontSizeSpan, 
+          { scale: 0.8 },
+          { scale: 1, duration: 0.3, ease: 'back.out(1.7)' }
+        );
       }
     });
     
@@ -262,35 +310,181 @@ const t = translations.controlCenter;
       if (fontSize < 120) {
         fontSize += 5;
         applyFontSize(fontSize);
+        
+        // Animación de feedback
+        gsap.fromTo(fontSizeSpan, 
+          { scale: 1.2 },
+          { scale: 1, duration: 0.3, ease: 'back.out(1.7)' }
+        );
       }
     });
     
-    // Contrast toggle
+    // Contrast toggle - mejorado y accesible
     const contrastToggle = menu.querySelector('[data-action="contrast"]');
-    if (contrastToggle) {
+    const contrastHandle = contrastToggle?.querySelector('.contrast-toggle-handle');
+    
+    // Cargar estado de alto contraste guardado
+    const loadContrastState = () => {
+      const contrastEnabled = localStorage.getItem('high-contrast') === 'true';
+      document.documentElement.classList.toggle('high-contrast', contrastEnabled);
+      
+      if (contrastToggle && contrastHandle) {
+        contrastToggle.setAttribute('aria-pressed', contrastEnabled.toString());
+        contrastToggle.classList.toggle('bg-blue-500', contrastEnabled);
+        contrastToggle.classList.toggle('dark:bg-blue-600', contrastEnabled);
+        
+        // Actualizamos la posición del handle
+        if (contrastEnabled) {
+          contrastHandle.classList.remove('translate-x-0.5');
+          contrastHandle.classList.add('translate-x-5');
+        } else {
+          contrastHandle.classList.add('translate-x-0.5');
+          contrastHandle.classList.remove('translate-x-5');
+        }
+      }
+    };
+    
+    // Inicializar estado
+    loadContrastState();
+    
+    if (contrastToggle && contrastHandle) {
       contrastToggle.addEventListener('click', () => {
-        document.documentElement.classList.toggle('high-contrast');
-        const span = contrastToggle.querySelector('span');
-        span?.classList.toggle('translate-x-5');
-        contrastToggle.classList.toggle('bg-blue-500');
+        const isPressed = contrastToggle.getAttribute('aria-pressed') === 'true';
+        const nextState = !isPressed;
+        
+        // Guardar preferencia
+        localStorage.setItem('high-contrast', nextState.toString());
+        
+        // Actualizar UI
+        contrastToggle.setAttribute('aria-pressed', nextState.toString());
+        document.documentElement.classList.toggle('high-contrast', nextState);
+        
+        // Actualizar estilos visualmente
+        contrastToggle.classList.toggle('bg-blue-500', nextState);
+        contrastToggle.classList.toggle('dark:bg-blue-600', nextState);
+        
+        // Animar el handle
+        if (nextState) {
+          gsap.to(contrastHandle, {
+            x: '20px',
+            duration: 0.2,
+            ease: 'power2.out'
+          });
+        } else {
+          gsap.to(contrastHandle, {
+            x: '0px',
+            duration: 0.2,
+            ease: 'power2.out'
+          });
+        }
       });
     }
     
-    // Animations toggle
+    // Animations toggle - mejorado y con integración GSAP
     const animationsToggle = menu.querySelector('[data-action="animations"]');
-    if (animationsToggle) {
-      animationsToggle.addEventListener('click', () => {
-        const isEnabled = animationsToggle.dataset.enabled === 'true';
-        animationsToggle.dataset.enabled = (!isEnabled).toString();
+    const animationsHandle = animationsToggle?.querySelector('.animations-toggle-handle');
+    
+    // Cargar estado de animaciones guardado
+    const loadAnimationsState = () => {
+      const animationsEnabled = localStorage.getItem('enable-animations') !== 'false'; // Por defecto activado
+      document.documentElement.classList.toggle('reduce-motion', !animationsEnabled);
+      
+      if (animationsToggle && animationsHandle) {
+        animationsToggle.setAttribute('aria-pressed', animationsEnabled.toString());
+        animationsToggle.dataset.enabled = animationsEnabled.toString();
+        animationsToggle.classList.toggle('bg-blue-500', animationsEnabled);
+        animationsToggle.classList.toggle('dark:bg-blue-600', animationsEnabled);
+        animationsToggle.classList.toggle('bg-gray-200', !animationsEnabled);
+        animationsToggle.classList.toggle('dark:bg-gray-700', !animationsEnabled);
         
-        if (!isEnabled) {
-          document.documentElement.classList.add('reduce-motion');
-          animationsToggle.classList.add('bg-blue-500');
-          animationsToggle.querySelector('span')?.classList.add('translate-x-5');
+        // Actualizamos la posición del handle
+        if (animationsEnabled) {
+          animationsHandle.classList.add('translate-x-5');
+          animationsHandle.classList.remove('translate-x-0.5');
         } else {
-          document.documentElement.classList.remove('reduce-motion');
-          animationsToggle.classList.remove('bg-blue-500');
-          animationsToggle.querySelector('span')?.classList.remove('translate-x-5');
+          animationsHandle.classList.remove('translate-x-5');
+          animationsHandle.classList.add('translate-x-0.5');
+        }
+      }
+      
+      // Desactivar animaciones GSAP si es necesario
+      if (!animationsEnabled && window.gsap) {
+        gsap.globalTimeline.timeScale(0.0001); // Prácticamente congelamos las animaciones
+      } else if (window.gsap) {
+        gsap.globalTimeline.timeScale(1); // Restauramos la velocidad normal
+      }
+    };
+    
+    // Inicializar estado de animaciones
+    loadAnimationsState();
+    
+    if (animationsToggle && animationsHandle) {
+      animationsToggle.addEventListener('click', () => {
+        const isPressed = animationsToggle.getAttribute('aria-pressed') === 'true';
+        const nextState = !isPressed;
+        
+        // Guardar preferencia
+        localStorage.setItem('enable-animations', nextState.toString());
+        
+        // Actualizar UI
+        animationsToggle.setAttribute('aria-pressed', nextState.toString());
+        animationsToggle.dataset.enabled = nextState.toString();
+        document.documentElement.classList.toggle('reduce-motion', !nextState);
+        
+        // Actualizar estilos visualmente
+        animationsToggle.classList.toggle('bg-blue-500', nextState);
+        animationsToggle.classList.toggle('dark:bg-blue-600', nextState);
+        animationsToggle.classList.toggle('bg-gray-200', !nextState);
+        animationsToggle.classList.toggle('dark:bg-gray-700', !nextState);
+        
+        // Animar el handle
+        if (nextState) {
+          gsap.to(animationsHandle, {
+            x: '20px',
+            duration: 0.2,
+            ease: 'power2.out'
+          });
+        } else {
+          gsap.to(animationsHandle, {
+            x: '0px',
+            duration: 0.2,
+            ease: 'power2.out'
+          });
+        }
+        
+        // Activar/desactivar animaciones GSAP
+        if (!nextState && window.gsap) {
+          gsap.globalTimeline.timeScale(0.0001); // Prácticamente congelamos las animaciones
+          
+          // Notificamos al usuario que se han desactivado las animaciones
+          const notification = document.createElement('div');
+          notification.className = 'fixed bottom-4 right-4 bg-blue-500 text-white py-2 px-4 rounded-lg shadow-lg';
+          notification.style.zIndex = '9999';
+          notification.textContent = 'Animaciones desactivadas';
+          document.body.appendChild(notification);
+          
+          // Removemos la notificación después de 2 segundos
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 2000);
+        } else if (window.gsap) {
+          gsap.globalTimeline.timeScale(1); // Restauramos la velocidad normal
+          
+          // Notificamos al usuario que se han activado las animaciones
+          const notification = document.createElement('div');
+          notification.className = 'fixed bottom-4 right-4 bg-blue-500 text-white py-2 px-4 rounded-lg shadow-lg';
+          notification.style.zIndex = '9999';
+          notification.textContent = 'Animaciones activadas';
+          document.body.appendChild(notification);
+          
+          // Removemos la notificación después de 2 segundos
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 2000);
         }
       });
     }
@@ -304,22 +498,42 @@ const t = translations.controlCenter;
   }
   
   /* High contrast mode */
-  .high-contrast {
-    filter: contrast(1.2);
+  html.high-contrast {
+    filter: contrast(1.3) saturate(1.2);
   }
   
-  .high-contrast .control-center-menu {
+  html.high-contrast img,
+  html.high-contrast video {
+    filter: contrast(1.1) saturate(1.2);
+  }
+  
+  html.high-contrast .control-center-menu {
     background-color: rgb(255 255 255 / 0.98);
   }
   
-  .dark .high-contrast .control-center-menu {
+  html.dark.high-contrast .control-center-menu {
     background-color: rgb(17 24 39 / 0.98);
   }
   
+  html.high-contrast button,
+  html.high-contrast a {
+    outline: 1px solid transparent;
+  }
+  
+  html.high-contrast button:focus,
+  html.high-contrast a:focus {
+    outline-color: #1F429F;
+  }
+  
+  html.dark.high-contrast button:focus,
+  html.dark.high-contrast a:focus {
+    outline-color: #facc15;
+  }
+  
   /* Smooth transitions for toggles */
-  .contrast-toggle span,
-  .animations-toggle span {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  .contrast-toggle-handle,
+  .animations-toggle-handle {
+    will-change: transform;
   }
   
   .translate-x-5 {
@@ -327,9 +541,25 @@ const t = translations.controlCenter;
   }
   
   /* Reduce motion */
-  .reduce-motion * {
-    animation-duration: 0s !important;
-    transition-duration: 0s !important;
+  html.reduce-motion * {
+    animation-duration: 0.0001s !important;
+    transition-duration: 0.0001s !important;
+    scroll-behavior: auto !important;
+  }
+  
+  html.reduce-motion .gsap-fade-in,
+  html.reduce-motion .gsap-stagger,
+  html.reduce-motion .gsap-stagger-item,
+  html.reduce-motion .gsap-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  /* Fixes for toggle components appearance */
+  .contrast-toggle,
+  .animations-toggle {
+    transition: background-color 0.3s ease;
   }
   
   /* Scrollbar for language panel */
@@ -348,5 +578,10 @@ const t = translations.controlCenter;
   
   .language-panel .grid::-webkit-scrollbar-thumb:hover {
     background: rgba(128, 128, 128, 0.5);
+  }
+  
+  /* Pequeña animación de feedback para los botones */
+  button:active:not(.contrast-toggle):not(.animations-toggle) {
+    transform: scale(0.97);
   }
 </style>

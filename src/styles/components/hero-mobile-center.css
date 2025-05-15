@@ -1,0 +1,33 @@
+/* Estilos para el hero centrado en móvil */
+.hero-mobile-centered {
+  text-align: center;
+}
+
+/* Descripción del hero centrada en móvil */
+.hero-description-mobile-centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Social links centrados en móvil */
+.social-links-mobile-centered {
+  justify-content: center;
+}
+
+/* Media query para restaurar estilos originales en tablets y desktop */
+@media (min-width: 768px) {
+  .hero-mobile-centered {
+    text-align: left;
+  }
+  
+  .hero-description-mobile-centered {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+  
+  .social-links-mobile-centered {
+    justify-content: flex-start;
+  }
+}

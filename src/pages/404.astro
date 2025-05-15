@@ -1,0 +1,236 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { commonClasses } from '@utils/cssClasses';
+import SocialPill from '@components/ui/SocialPill.astro';
+import { textsJson } from '@utils/const';
+
+const translations = textsJson.es;
+const layout = translations.layout;
+---
+
+<Layout
+	title="404 - Página no encontrada"
+	description="La página que buscas no existe."
+	json={textsJson.es}
+>
+  <main class="min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden relative">
+    <!-- Partículas de fondo (serán animadas con GSAP) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div id="particles" class="w-full h-full">
+        <!-- Partículas generadas por JS -->
+      </div>
+    </div>
+    
+    <!-- Contenido principal -->
+    <div class="text-center relative z-10 max-w-4xl w-full gsap-stagger">
+      <!-- Número 404 animado -->
+      <h1 class="text-9xl font-extrabold mb-6 tracking-tighter gsap-split-text">
+        <span class="inline-block">4</span>
+        <span class="inline-block">0</span>
+        <span class="inline-block">4</span>
+      </h1>
+      
+      <!-- Mensaje de error -->
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 gsap-stagger-item">
+        ¡Ups! Página no encontrada
+      </h2>
+      
+      <!-- Imágenes decorativas con Motion -->
+      <div class="mb-8 max-w-md mx-auto gsap-scale">
+        <div id="motion-container" class="relative w-full h-64 overflow-hidden">
+          <img 
+            src="/assets/images/404-robot.svg" 
+            alt="Robot confundido - Página no encontrada" 
+            class="w-full max-w-xs mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            id="robot-image"
+          />
+        </div>
+      </div>
+      
+      <!-- Mensaje descriptivo -->
+      <p class="text-xl opacity-80 mb-8 max-w-lg mx-auto gsap-stagger-item">
+        La página que buscas parece haberse perdido en el ciberespacio.
+      </p>
+      
+      <!-- Botones de acción -->
+      <div class="flex flex-wrap justify-center gap-4 gsap-stagger">
+        <SocialPill 
+          href="/" 
+          title="Volver al inicio"
+          class="gsap-stagger-item interactive"
+        >
+          Volver al inicio
+        </SocialPill>
+        
+        <SocialPill 
+          href="/projects" 
+          title="Ver proyectos"
+          class="gsap-stagger-item interactive"
+        >
+          Ver proyectos
+        </SocialPill>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { SplitText } from 'gsap/SplitText';
+  import { animate, stagger, inView } from 'motion';
+  
+  gsap.registerPlugin(SplitText);
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Inicializa las animaciones globales
+    initGlobalAnimations();
+    
+    // Anima el texto 404
+    const title = document.querySelector('.gsap-split-text');
+    if (title) {
+      const chars = new SplitText(title, { type: "chars" });
+      
+      gsap.from(chars.chars, {
+        opacity: 0,
+        y: 100,
+        rotationX: -90,
+        stagger: 0.1,
+        duration: 1,
+        ease: "back.out(1.7)",
+        onComplete: () => {
+          // Animación sutil continua para los números
+          gsap.to(chars.chars, {
+            y: -5,
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            stagger: 0.1
+          });
+        }
+      });
+    }
+    
+    // Animación Motion para el robot
+    const motionContainer = document.getElementById('motion-container');
+    const robot = document.getElementById('robot-image');
+    
+    if (robot && motionContainer) {
+      // Crear partículas como elementos del DOM
+      for (let i = 0; i < 10; i++) {
+        const particle = document.createElement('div');
+        const size = Math.random() * 10 + 4;
+        particle.className = 'motion-particle absolute rounded-full';
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.backgroundColor = i % 2 === 0 ? '#1F429F' : '#facc15';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.opacity = '0';
+        motionContainer.appendChild(particle);
+      }
+      
+      // Animar las partículas con Motion
+      animate('.motion-particle', 
+        { 
+          opacity: [0, 0.7, 0],
+          y: (i) => [0, i % 2 === 0 ? -30 : 30],
+          x: (i) => [0, i % 2 === 0 ? 20 : -20],
+          scale: [0.7, 1.2, 0.1]
+        }, 
+        { 
+          delay: stagger(0.2),
+          duration: 3,
+          repeat: Infinity,
+          easing: 'ease-in-out'
+        }
+      );
+      
+      // Animación del robot con Motion
+      animate(robot, 
+        { 
+          rotate: [0, 5, -5, 0],
+          scale: [0.95, 1.05, 0.95]
+        }, 
+        { 
+          duration: 6,
+          repeat: Infinity,
+          easing: 'ease-in-out'
+        }
+      );
+      
+      // Animación de entrada del robot con inView
+      inView('#robot-image', ({ target }) => {
+        animate(target, 
+          { 
+            opacity: [0, 1],
+            scale: [0.5, 1],
+            rotate: [45, 0]
+          }, 
+          { 
+            duration: 1.2,
+            easing: [0.22, 1, 0.36, 1] // cubic-bezier equivalente a power2.out
+          }
+        );
+      });
+    }
+    
+    // Crea y anima partículas en el fondo con GSAP
+    createParticles();
+  });
+  
+  function createParticles() {
+    const container = document.getElementById('particles');
+    if (!container) return;
+    
+    const colors = ['#1F429F', '#3563bd', '#4a8efa', '#63a4ff'];
+    const particleCount = 30;
+    
+    // Crea partículas
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      const size = Math.random() * 20 + 5;
+      
+      // Estilo de partícula
+      particle.style.position = 'absolute';
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.borderRadius = '50%';
+      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.opacity = Math.random() * 0.5 + 0.1;
+      
+      // Posición inicial
+      const startX = Math.random() * 100;
+      const startY = Math.random() * 100;
+      
+      particle.style.left = `${startX}%`;
+      particle.style.top = `${startY}%`;
+      
+      container.appendChild(particle);
+      
+      // Animación de flotación con GSAP
+      gsap.to(particle, {
+        x: Math.random() * 200 - 100,
+        y: Math.random() * 200 - 100,
+        duration: Math.random() * 20 + 10,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: Math.random() * 5
+      });
+    }
+  }
+</script>
+
+<style>
+  /* Estilos para tema oscuro */
+  :global(.dark) #particles div {
+    background-color: rgba(250, 204, 21, 0.3) !important; /* Yellow in dark mode */
+  }
+  
+  /* Estilos para las partículas de Motion */
+  .motion-particle {
+    filter: blur(1px);
+    box-shadow: 0 0 8px currentColor;
+  }
+</style>
