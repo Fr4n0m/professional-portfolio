@@ -1,16 +1,16 @@
 [
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  },
-  {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
-  }
+	{
+		"title": "Сертификат Full Stack веб-разработчика",
+		"image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+		"description": "Обучение Full Stack веб-разработке, включая создание интерфейсов с HTML, CSS и React, бэкенд-разработку с Node.js, MongoDB, управление базами данных и развертывание с помощью инструментов DevOps среди многих других технологий.",
+		"entity": "CODESPACE"
+	},
+	{
+		"title": "Сертификат настройки среды Linux",
+		"image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+		"url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+		"description": "Навыки настройки среды Linux в Debian, Kali и других системах на базе Linux, включая настройку программного обеспечения, системные настройки и оптимизацию производительности и безопасности.",
+		"entity": "HACK4U"
+	}
 ]

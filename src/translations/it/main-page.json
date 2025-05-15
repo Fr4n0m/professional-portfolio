@@ -1,24 +1,24 @@
 {
   "hero": {
-    "heroTitle": "",
-    "heroBadge": "",
-    "heroDescription1": "",
-    "heroDescription2": "",
-    "heroDescription3": ""
+    "heroTitle": "Ciao, sono Fran",
+    "heroBadge": "Disponibile per lavorare",
+    "heroDescription1": "Sviluppatore Software e Full Stack.",
+    "heroDescription2": "Eterno apprendista appassionato dei dettagli.",
+    "heroDescription3": "Specializzato nel creare e risolvere problemi. 🤓"
   },
   "socialPill": {
-    "socialPillTitle": "",
-    "sendMailSocialPill": "",
+    "socialPillTitle": "Visita",
+    "sendMailSocialPill": "Invia email a",
     "copyButton": {
-      "copyTitle": "",
-      "copyMail": "",
-      "copyMailError": ""
+      "copyTitle": "Copia Email",
+      "copyMail": "Email copiata!",
+      "copyMailError": "Errore nella copia"
     }
   },
   "skills": {
-    "skillsTitle": ""
+    "skillsTitle": "Competenze"
   },
   "selectedProjects": {
-    "projectsTitle": ""
+    "projectsTitle": "Progetti"
   }
 }

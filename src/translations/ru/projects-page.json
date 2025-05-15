@@ -1,11 +1,11 @@
 {
-  "allProjects": "",
-  "allProjectsTitle": "",
-  "allProjectsDescription": "",
-  "allProjectsLink": "",
+  "allProjects": "Все проекты",
+  "allProjectsTitle": "Добро пожаловать на страницу «Все проекты»",
+  "allProjectsDescription": "Здесь вы можете увидеть все проекты, над которыми я работал.",
+  "allProjectsLink": "Посмотреть больше проектов",
   "projectsButtons": {
-    "textCodeButton": "",
-    "textDemoButton": "",
-    "textDemo2Button": ""
+    "textCodeButton": "Посмотреть код",
+    "textDemoButton": "Посмотреть демо",
+    "textDemo2Button": "Посмотреть демо"
   }
 }

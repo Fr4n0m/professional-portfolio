@@ -1,26 +1,26 @@
 [
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  }
+	{
+		"title": "Обо мне",
+		"url": "/ru/#"
+	},
+	{
+		"title": "Проекты",
+		"url": "/ru/#projects"
+	},
+	{
+		"title": "Опыт",
+		"url": "/ru/#experience"
+	},
+	{
+		"title": "Контакт",
+		"url": "mailto:Fran11799@outlook.com"
+	},
+	{
+		"title": "Резюме",
+		"url": "https://cv-web-smoky.vercel.app/"
+	},
+	{
+		"title": "Наверх",
+		"url": "/ru/#"
+	}
 ]

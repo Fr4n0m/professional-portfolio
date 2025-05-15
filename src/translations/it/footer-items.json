@@ -1,26 +1,26 @@
 [
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  }
+	{
+		"title": "Su di me",
+		"url": "/it/#"
+	},
+	{
+		"title": "Progetti",
+		"url": "/it/#projects"
+	},
+	{
+		"title": "Esperienza",
+		"url": "/it/#experience"
+	},
+	{
+		"title": "Contatto",
+		"url": "mailto:Fran11799@outlook.com"
+	},
+	{
+		"title": "CV",
+		"url": "https://cv-web-smoky.vercel.app/"
+	},
+	{
+		"title": "Torna su",
+		"url": "/it/#"
+	}
 ]

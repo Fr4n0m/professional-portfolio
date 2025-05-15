@@ -1,24 +1,24 @@
 {
   "hero": {
-    "heroTitle": "",
-    "heroBadge": "",
-    "heroDescription1": "",
-    "heroDescription2": "",
-    "heroDescription3": ""
+    "heroTitle": "안녕하세요, 저는 프란입니다",
+    "heroBadge": "근무 가능",
+    "heroDescription1": "소프트웨어 및 풀스택 개발자",
+    "heroDescription2": "세부 사항에 열정적인 영원한 학습자",
+    "heroDescription3": "문제 해결과 창작에 특화되어 있습니다. 🤓"
   },
   "socialPill": {
-    "socialPillTitle": "",
-    "sendMailSocialPill": "",
+    "socialPillTitle": "방문",
+    "sendMailSocialPill": "이메일 보내기",
     "copyButton": {
-      "copyTitle": "",
-      "copyMail": "",
-      "copyMailError": ""
+      "copyTitle": "이메일 복사",
+      "copyMail": "이메일이 복사되었습니다!",
+      "copyMailError": "복사 오류"
     }
   },
   "skills": {
-    "skillsTitle": ""
+    "skillsTitle": "기술"
   },
   "selectedProjects": {
-    "projectsTitle": ""
+    "projectsTitle": "프로젝트"
   }
 }

@@ -1,218 +1,175 @@
 [
-  {
-    "title": "",
-    "description": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "secondaryLink": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "link": "",
-    "github": "",
-    "images": [
-      "",
-      ""
-    ],
-    "tags": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  }
+	{
+		"title": "Agrooe キャッシュバック",
+		"description": "このウェブサイトでは、チームと協力してゼロから品質の高い製品の販売と地域商業の発展を目的としたプラットフォームを開発しました。コンセプトから実装まで、バックエンドとフロントエンドの両方を作成しました。様々な技術に加えて、ユーザーアカウント管理とログイン制御のためのJWT、全データ管理のためのダッシュボード等の統合を実装しました。ソーシャルネットワークでのログイン、商品購入のためのユーザーアカウント作成、企業として商品を追加する機能、商品が見つかる最寄りの場所のマップ表示など、多数の機能を実装しました。機密保持のため、コードは表示されません。",
+		"images": [
+			"/assets/images/projects/agrooe_1.jpeg",
+			"/assets/images/projects/agrooe_2.jpeg",
+			"/assets/images/projects/agrooe_3.jpeg"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"TAILWIND",
+			"JAVASCRIPT",
+			"REACT",
+			"NEXTJS",
+			"EXPRESS",
+			"NODEJS",
+			"MONGODB"
+		]
+	},
+	{
+		"title": "Strapi ゲームストア",
+		"description": "StrapiをバックエンドとCMSとして使用し、ビデオゲーム関連のコンテンツを管理するために設計されたWebアプリケーション。",
+		"link": "https://strapi-games-store.vercel.app/",
+		"github": "https://github.com/Fr4n0m/strapi-games-store",
+		"images": [
+			"/assets/images/projects/strapi-games-web-1.webp",
+			"/assets/images/projects/strapi-games-web-2.webp",
+			"/assets/images/projects/strapi-games-web-3.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"TAILWIND",
+			"JAVASCRIPT",
+			"TYPESCRIPT",
+			"REACT",
+			"NEXTJS",
+			"STRAPI"
+		]
+	},
+	{
+		"title": "リアルタイムチャット",
+		"description": "Socket.IOを使用したリアルタイム通信とSupabaseをデータベースとして使用するリアルタイムチャットアプリケーション。",
+		"link": "https://realtime-chat-ten-nu.vercel.app/",
+		"github": "https://github.com/Fr4n0m/realtime-chat",
+		"images": [
+			"/assets/images/projects/realtime-chat_1.webp",
+			"/assets/images/projects/realtime-chat_2.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"JAVASCRIPT",
+			"VITE",
+			"EXPRESS",
+			"NODEJS",
+			"SUPABASE"
+		]
+	},
+	{
+		"title": "スーパーマリオブラザーズ 85'",
+		"description": "1985年の任天堂の伝説的なゲーム、スーパーマリオブラザーズの教育目的のクローン。",
+		"github": "https://github.com/Fr4n0m/super-mario-bros-85",
+		"images": [
+			"/assets/images/projects/super-mario-bros-85.webp",
+			"/assets/images/projects/super-mario-bros-85_2.webp",
+			"/assets/images/projects/super-mario-bros-85_3.webp",
+			"/assets/images/projects/super-mario-bros-85_4.webp",
+			"/assets/images/projects/super-mario-bros-85_5.webp",
+			"/assets/images/projects/super-mario-bros-85_6.webp",
+			"/assets/images/projects/super-mario-bros-85_7.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE", "PHASER"]
+	},
+	{
+		"title": "Paint Windows 95'",
+		"description": "Windows 95時代にインスパイアされたペイントアプリケーション。",
+		"link": "https://paint-win-95-blond.vercel.app/",
+		"github": "https://github.com/Fr4n0m/paint-win-95",
+		"images": ["/assets/images/projects/paint-95.webp"],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE"]
+	},
+	{
+		"title": "書店ビュートランジションデモ",
+		"description": "ビュートランジションを練習するための書店Webサイト。",
+		"link": "https://bookshop-view-transitions.vercel.app/",
+		"secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
+		"github": "https://github.com/Fr4n0m/bookshop-view-transitions",
+		"images": [
+			"/assets/images/projects/bookshop_1.webp",
+			"/assets/images/projects/bookshop_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "ASTRO"]
+	},
+	{
+		"title": "TikTokクローン",
+		"description": "ViteとReactを使用したTikTokインターフェースのクローン、バックエンドはSupabase。",
+		"link": "https://tiktok-clone-five-phi.vercel.app/",
+		"github": "https://github.com/Fr4n0m/tiktok-clone",
+		"images": [
+			"/assets/images/projects/tiktok_2.webp",
+			"/assets/images/projects/tiktok_1.webp"
+		],
+		"tags": [
+			"HTML",
+			"CSS",
+			"JAVASCRIPT",
+			"VITE",
+			"REACT",
+			"NODEJS",
+			"EXPRESS",
+			"SUPABASE"
+		]
+	},
+	{
+		"title": "アタリブレイクアウトゲーム",
+		"description": "JavaScriptで作成された伝説的なアタリのブレイクアウトゲームのバージョン。",
+		"link": "https://breakout-game-jade.vercel.app/",
+		"github": "https://github.com/Fr4n0m/breakout-game",
+		"images": [
+			"/assets/images/projects/breakout-game_2.webp",
+			"/assets/images/projects/breakout-game.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT"]
+	},
+	{
+		"title": "Filmax",
+		"description": "映画やシリーズの情報を見るためのWebサイト。",
+		"link": "",
+		"github": "https://github.com/Fr4n0m/filmax",
+		"images": [
+			"/assets/images/projects/filmax_home_preview.webp",
+			"/assets/images/projects/filmax_home_preview_2.webp",
+			"/assets/images/projects/filmax_blog_preview.webp",
+			"/assets/images/projects/filmax_blog_preview_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT"]
+	},
+	{
+		"title": "Web電卓",
+		"description": "基本的な算術演算を実行するシンプルな電卓。",
+		"link": "https://web-calculator-snowy.vercel.app/",
+		"github": "https://github.com/Fr4n0m/web_calculator",
+		"images": [
+			"/assets/images/projects/WebCalculator_light.webp",
+			"/assets/images/projects/WebCalculator_dark.webp"
+		],
+		"tags": ["HTML", "CSS", "TAILWIND", "JAVASCRIPT"]
+	},
+	{
+		"title": "ポケモン図鑑",
+		"description": "ポケモンの情報を見るための図鑑。お気に入りの追加、削除、独自のポケモン作成機能付き。",
+		"link": "",
+		"github": "https://github.com/Fr4n0m/YourOwnPokedex",
+		"images": [
+			"/assets/images/projects/pokedex.webp",
+			"/assets/images/projects/pokedex_favorites.webp",
+			"/assets/images/projects/pokedex_create.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "NEXTJS"]
+	},
+	{
+		"title": "初のWebポートフォリオ",
+		"description": "HTML、CSS、JavaScriptのみを使用した最初のWebポートフォリオ。後にAstroで実装。",
+		"link": "https://portfolio-fr4n0m-astro.vercel.app/",
+		"github": "https://github.com/Fr4n0m/portfolio-astro",
+		"images": [
+			"/assets/images/projects/1er_portfolio.webp",
+			"/assets/images/projects/1er_portfolio_2.webp"
+		],
+		"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "ASTRO"]
+	}
 ]

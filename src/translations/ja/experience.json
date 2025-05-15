@@ -1,25 +1,25 @@
 {
-  "workExperience": "",
-  "experience": [
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    },
-    {
-      "date": "",
-      "title": "",
-      "description": ""
-    }
-  ]
+	"workExperience": "職務経歴",
+	"experience": [
+		{
+			"date": "2024年9月",
+			"title": "Dimap®でのソフトウェア・フロントエンド開発者",
+			"description": "フロントエンド開発。"
+		},
+		{
+			"date": "2024年5月",
+			"title": "Gubb Marketing®でのソフトウェア開発者",
+			"description": "ソフトウェアおよびWebアプリケーションの開発。"
+		},
+		{
+			"date": "2024年3月",
+			"title": "Agrooe®およびGubb Marketing®向けのAgrooe-Cashback開発",
+			"description": "Agrooe®企業向けのキャッシュバックシステム管理に特化したWebアプリケーションのゼロからの開発。Webアプリケーションのデータベース、バックエンド、フロントエンドの開発。"
+		},
+		{
+			"date": "2021年6月",
+			"title": "フリーランサー",
+			"description": "様々なタイプの個人および専門プロジェクトの開発。"
+		}
+	]
 }

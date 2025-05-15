@@ -1,11 +1,11 @@
 {
-  "allProjects": "",
-  "allProjectsTitle": "",
-  "allProjectsDescription": "",
-  "allProjectsLink": "",
+  "allProjects": "모든 프로젝트",
+  "allProjectsTitle": "\"모든 프로젝트\" 페이지에 오신 것을 환영합니다",
+  "allProjectsDescription": "여기서 제가 작업한 모든 프로젝트를 볼 수 있습니다.",
+  "allProjectsLink": "더 많은 프로젝트 보기",
   "projectsButtons": {
-    "textCodeButton": "",
-    "textDemoButton": "",
-    "textDemo2Button": ""
+    "textCodeButton": "코드 보기",
+    "textDemoButton": "데모 보기",
+    "textDemo2Button": "데모 보기"
   }
 }

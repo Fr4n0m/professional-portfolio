@@ -1,32 +1,32 @@
 [
   {
     "title": "Главная",
-    "label": "inicio",
-    "url": "/ru/#inicio"
+    "label": "main",
+    "url": "/ru/#main"
   },
   {
     "title": "Навыки",
-    "label": "habilidades",
-    "url": "/ru/#habilidades"
+    "label": "skills",
+    "url": "/ru/#skills"
   },
   {
     "title": "Опыт",
-    "label": "experiencia",
-    "url": "/ru/#experiencia"
+    "label": "experience",
+    "url": "/ru/#experience"
   },
   {
     "title": "Проекты",
-    "label": "proyectos",
-    "url": "/ru/#proyectos"
+    "label": "projects",
+    "url": "/ru/#projects"
   },
   {
     "title": "Сертификаты",
-    "label": "certificaciones",
+    "label": "certifications",
     "url": "/ru/certifications"
   },
   {
     "title": "Контакт",
-    "label": "contacto",
+    "label": "contact",
     "url": "mailto:Fran11799@outlook.com"
   },
   {

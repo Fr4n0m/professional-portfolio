@@ -1,32 +1,32 @@
 [
   {
     "title": "홈",
-    "label": "inicio",
-    "url": "/ko/#inicio"
+    "label": "main",
+    "url": "/ko/#main"
   },
   {
     "title": "기술",
-    "label": "habilidades",
-    "url": "/ko/#habilidades"
+    "label": "skills",
+    "url": "/ko/#skills"
   },
   {
     "title": "경험",
-    "label": "experiencia",
-    "url": "/ko/#experiencia"
+    "label": "experience",
+    "url": "/ko/#experience"
   },
   {
     "title": "프로젝트",
-    "label": "proyectos",
-    "url": "/ko/#proyectos"
+    "label": "projects",
+    "url": "/ko/#projects"
   },
   {
-    "title": "인증",
-    "label": "certificaciones",
+    "title": "자격증",
+    "label": "certifications",
     "url": "/ko/certifications"
   },
   {
     "title": "연락처",
-    "label": "contacto",
+    "label": "contact",
     "url": "mailto:Fran11799@outlook.com"
   },
   {

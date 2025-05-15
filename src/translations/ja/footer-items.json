@@ -1,26 +1,26 @@
 [
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  },
-  {
-    "title": "",
-    "url": ""
-  }
+	{
+		"title": "私について",
+		"url": "/ja/#"
+	},
+	{
+		"title": "プロジェクト",
+		"url": "/ja/#projects"
+	},
+	{
+		"title": "経験",
+		"url": "/ja/#experience"
+	},
+	{
+		"title": "連絡先",
+		"url": "mailto:Fran11799@outlook.com"
+	},
+	{
+		"title": "履歴書",
+		"url": "https://cv-web-smoky.vercel.app/"
+	},
+	{
+		"title": "トップへ",
+		"url": "/ja/#"
+	}
 ]
