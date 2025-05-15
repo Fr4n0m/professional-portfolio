@@ -7,6 +7,22 @@ const minimalTranslations: Translations = {
     titleDescription: "Full Stack Developer Portfolio"
   },
   mainPage: {
+    hero: {
+      heroTitle: "Hi, I'm Fran",
+      heroBadge: "Available to work",
+      heroDescription1: "Software and Full Stack web developer.",
+      heroDescription2: "Dedicated to the detail eternal learner.",
+      heroDescription3: "Specialized in creating and solving problems. 🤓"
+    },
+    socialPill: {
+      socialPillTitle: "Visit",
+      sendMailSocialPill: "Send mail to",
+      copyButton: {
+        copyTitle: "Copy mail",
+        copyMail: "Mail copied!",
+        copyMailError: "Error copying"
+      }
+    },
     skills: {
       skillsTitle: "Skills"
     },
@@ -15,30 +31,43 @@ const minimalTranslations: Translations = {
     }
   },
   experience: {
-    workExperience: "Experience"
+    workExperience: "Experience",
+    experience: []
   },
-  projects: [],
   projectsPage: {
     allProjects: "All Projects",
+    allProjectsTitle: "Projects",
+    allProjectsDescription: "All my projects",
     allProjectsLink: "/projects",
-    projectsTitle: "Projects",
-    projectsList: []
+    projectsButtons: {
+      textCodeButton: "Code",
+      textDemoButton: "Demo",
+      textDemo2Button: "Demo 2"
+    },
+    projects: []
   },
   headerItems: [],
   personalInfo: {
-    name: "Francisco José Rodríguez Martínez", 
+    name: "Francisco José Rodríguez Martínez",
     role: "Full Stack Developer",
-    email: "fran11799@outlook.com",
+    alias: "Fr4n0m",
     location: "Málaga, Spain",
+    mail: "fran11799@outlook.com",
     profiles: []
   },
   certificationsPage: {
+    certifications: "Certifications",
     certificationsTitle: "Certifications",
     certificationsDescription: "My certifications",
-    certifications: "Certifications",
+    pdfBadge: "PDF",
+    downloadButton: "Download",
     certificationsList: []
   },
-  socialMedia: [],
+  socialMedia: {
+    linkedin: "LinkedIn",
+    github: "GitHub",
+    email: "Email"
+  },
   footerItems: [],
   keyboardManager: {
     kmPlaceHolder: "Search",
@@ -47,8 +76,7 @@ const minimalTranslations: Translations = {
     kmNavigationSection: "Navigation",
     kmCommands: []
   },
-  languageNames: {},
-  certifications: [] // Añadido por compatibilidad
+  languageNames: {}
 };
 
 export default minimalTranslations;

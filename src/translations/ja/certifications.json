@@ -1,16 +1,18 @@
 [
   {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
+    "id": "fullstack-codespace",
+    "title": "フルスタックWeb開発者認定",
+    "description": "フルスタックWeb開発トレーニング。HTML、CSS、Reactを使用したインターフェース作成、Node.jsを使用したバックエンド開発、MongoDB、データベース管理、DevOpsツールを使用したデプロイメントなど、多くのテクノロジーを含む。",
+    "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+    "entity": "CODESPACE"
   },
   {
-    "title": "",
-    "image": "",
-    "url": "",
-    "description": "",
-    "entity": ""
+    "id": "linux-hack4u",
+    "title": "Linux環境カスタマイズ認定",
+    "description": "Debian、Kali、その他のLinuxベースのシステムでLinux環境をカスタマイズするスキル。ソフトウェア設定、システム設定、パフォーマンスとセキュリティの最適化を含む。",
+    "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+    "entity": "HACK4U"
   }
 ]

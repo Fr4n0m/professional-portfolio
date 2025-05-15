@@ -1,0 +1,51 @@
+---
+import ThemeToggle from '@components/ThemeToggle.astro';
+import LanguageToggle from '@components/LanguageToggle.astro';
+import ProfileTooltip from './ProfileTooltip.astro';
+import type { HeaderItem } from '../../types/headerItem';
+
+export interface Props {
+  headerItems: HeaderItem[];
+  info: any;
+  lang: string;
+}
+
+const { headerItems, info, lang } = Astro.props;
+---
+
+<nav
+  class='hidden md:flex px-3 text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-gray-500/90 dark:text-white/90 items-center justify-center bg-white/50 dark:bg-gray-800/90'
+>
+  <ProfileTooltip info={info} lang={lang} />
+  
+  {headerItems.map(item => (
+    <a
+      class='block px-2 py-2 transition text-nowrap dark:hover:text-yellow-300 hover:text-blue-800'
+      aria-label={item.label}
+      href={item.url}
+      target={item.title === 'CV' ? '_blank' : '_self'}
+    >
+      {item.title}
+    </a>
+  ))}
+  
+  <ThemeToggle />
+  <LanguageToggle />
+</nav>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 1000px;
+  }
+
+  @keyframes nav-shadown {
+    0% {
+      box-shadow: none;
+    }
+    to {
+      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
+    }
+  }
+</style>

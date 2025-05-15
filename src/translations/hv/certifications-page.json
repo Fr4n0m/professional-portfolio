@@ -1,5 +1,7 @@
 {
-  "certifications": "Kīsir",
-  "certificationsTitle": "Kīsir - Portfolio Francisco José Rodríguez Martínez - Vaoredrys se Tolikos Stack",
-  "certificationsDescription": "Kīsir - Portfolio Francisco José Rodríguez Martínez - Vaoredrys se Tolikos Stack"
+	"certifications": "Certifications",
+	"certificationsTitle": "Certifications - Portfolio Francisco José Rodríguez Martínez - Software Developer and Web Programmer",
+	"certificationsDescription": "Certifications - Portfolio Francisco José Rodríguez Martínez - Software Developer and Web Programmer",
+	"pdfBadge": "PDF",
+	"downloadButton": "Download"
 }

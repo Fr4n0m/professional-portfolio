@@ -1,4 +1,7 @@
 {
+  "certifications": "Certifications",
   "certificationsTitle": "Certifications",
-  "certificationsDescription": "My certifications"
+  "certificationsDescription": "My certifications",
+  "pdfBadge": "PDF",
+  "downloadButton": "Download"
 }

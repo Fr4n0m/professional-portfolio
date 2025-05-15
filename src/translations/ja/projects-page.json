@@ -1,11 +1,11 @@
 {
-  "allProjects": "",
-  "allProjectsTitle": "",
-  "allProjectsDescription": "",
-  "allProjectsLink": "",
+  "allProjects": "すべてのプロジェクト",
+  "allProjectsTitle": "「すべてのプロジェクト」ページへようこそ",
+  "allProjectsDescription": "こちらで今まで制作したすべてのプロジェクトをご覧いただけます。",
+  "allProjectsLink": "プロジェクトをもっと見る",
   "projectsButtons": {
-    "textCodeButton": "",
-    "textDemoButton": "",
-    "textDemo2Button": ""
+    "textCodeButton": "コードを見る",
+    "textDemoButton": "デモを見る",
+    "textDemo2Button": "デモを見る"
   }
 }

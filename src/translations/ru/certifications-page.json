@@ -1,5 +1,7 @@
 {
-  "certifications": "",
-  "certificationsTitle": "",
-  "certificationsDescription": ""
+	"certifications": "Сертификаты",
+	"certificationsTitle": "Сертификаты - Портфолио Francisco José Rodríguez Martínez - Разработчик программного обеспечения и веб-программист",
+	"certificationsDescription": "Сертификаты - Портфолио Francisco José Rodríguez Martínez - Разработчик программного обеспечения и веб-программист",
+	"pdfBadge": "PDF",
+	"downloadButton": "Скачать"
 }

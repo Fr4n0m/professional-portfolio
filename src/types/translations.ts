@@ -69,6 +69,8 @@ export interface Translations {
 		certifications: string;
 		certificationsTitle: string;
 		certificationsDescription: string;
+		pdfBadge: string;
+		downloadButton: string;
 		certificationsList: Certification[];
 	};
 

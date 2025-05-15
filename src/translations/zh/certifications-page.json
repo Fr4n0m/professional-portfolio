@@ -1,5 +1,7 @@
 {
-  "certifications": "证书",
-  "certificationsTitle": "证书 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
-  "certificationsDescription": "证书 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员"
+	"certifications": "认证",
+	"certificationsTitle": "认证 - Francisco José Rodríguez Martínez作品集 - 软件开发人员和网络程序员",
+	"certificationsDescription": "认证 - Francisco José Rodríguez Martínez作品集 - 软件开发人员和网络程序员",
+	"pdfBadge": "PDF",
+	"downloadButton": "下载"
 }

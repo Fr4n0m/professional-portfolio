@@ -26,10 +26,7 @@ export default {
     certificationsList
   },
   socialMedia,
-  experience: {
-    ...experience,
-    experience: experience.experience || []
-  },
+  experience: experience,
   footerItems,
   keyboardManager,
   languageNames

@@ -1,5 +1,7 @@
 {
-  "certifications": "Zertifikate",
-  "certificationsTitle": "Zertifikate - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
-  "certificationsDescription": "Zertifikate - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer"
+	"certifications": "Zertifizierungen",
+	"certificationsTitle": "Zertifizierungen - Portfolio Francisco José Rodríguez Martínez - Softwareentwickler und Webprogrammierer",
+	"certificationsDescription": "Zertifizierungen - Portfolio Francisco José Rodríguez Martínez - Softwareentwickler und Webprogrammierer",
+	"pdfBadge": "PDF",
+	"downloadButton": "Herunterladen"
 }

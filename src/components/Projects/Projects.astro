@@ -1,102 +1,41 @@
 ---
-import GithubIcon from '@icons/GitHub.astro';
-import LinkIcon from '@icons/Link.astro';
-import Carousel from '@components/Carousel';
-import LinkButton from '@components/ui/LinkButton.astro';
-import ProjectsDescription from '@components/Projects/ProjectsDescription';
+import ProjectItem from './ProjectItem.astro';
 import Arrow from '@icons/Arrow.astro';
-import Tag from '@components/ui/Tag.astro';
-
 import type { Project } from '../../types/projects';
 import type { Translations } from '../../types/translations';
-import { TAGS } from '@utils/tags';
 import { commonClasses } from '@utils/cssClasses';
 
 const translations: Translations = Astro.props.translations;
-
 const projects: Project[] = translations.projectsPage.projects;
-
 const projectsButtons = translations.projectsPage.projectsButtons;
 
-const selectedProjects = projects.filter(
-	project =>
-		project.title === 'Agrooe Cashback' ||
-		project.title === 'Strapi Games Store' ||
-		project.title === 'Paint Windows 95' ||
-		project.title === 'Bookshop View Transitions Demo' ||
-		project.title === 'Clon de Tiktok' ||
-		project.title === 'Atari Breakout Game',
+// Lista de proyectos seleccionados
+const SELECTED_PROJECT_TITLES = [
+  'Agrooe Cashback',
+  'Strapi Games Store',
+  'Paint Windows 95',
+  'Bookshop View Transitions Demo',
+  'Clon de Tiktok',
+  'Atari Breakout Game'
+];
+
+const selectedProjects = projects.filter(project => 
+  SELECTED_PROJECT_TITLES.includes(project.title)
 );
 ---
 
 <div class={commonClasses.section.projectsContainer}>
-	{
-		selectedProjects.map(
-			({
-				images,
-				title,
-				description,
-				tags,
-				link,
-				secondaryLink,
-				github,
-			}) => (
-				<>
-					<article>
-						<h3 class={commonClasses.heading.h3 + ' mt-12 mb-2'}>
-							{title}
-						</h3>
+  {selectedProjects.map((project) => (
+    <ProjectItem project={project} buttons={projectsButtons} />
+  ))}
 
-						<ProjectsDescription
-							client:load
-							description={description}
-						/>
-					</article>
-					<ul class='flex gap-x-3 flex-row text-nowrap flex-wrap'>
-						{tags.map(tag => (
-							<li>
-								{TAGS[tag] ? (
-									<Tag {...TAGS[tag]} />
-								) : (
-									<span>{tag}</span>
-								)}
-							</li>
-						))}
-					</ul>
-
-					<Carousel client:load images={images} />
-
-					<footer class='flex items-end justify-start mt-6 mb-16 gap-x-4'>
-						{github && (
-							<LinkButton href={github}>
-								<GithubIcon class={commonClasses.iconSize.small} />
-								{projectsButtons.textCodeButton}
-							</LinkButton>
-						)}
-						{link && (
-							<LinkButton href={link}>
-								<LinkIcon class={commonClasses.iconSize.small} />
-								{projectsButtons.textDemoButton}
-							</LinkButton>
-						)}
-						{secondaryLink && (
-							<LinkButton href={secondaryLink}>
-								<LinkIcon class={commonClasses.iconSize.small} />
-								{projectsButtons.textDemo2Button}
-							</LinkButton>
-						)}
-					</footer>
-				</>
-			),
-		)
-	}
-
-	<a
-		href={translations.projectsPage.allProjectsLink}
-		class={'mb-20 md:mb-0 flex justify-end items-center gap-[2px] group text-md w-fit px-2 py-1 rounded ' + commonClasses.button.primary}
-		>{translations.projectsPage.allProjects}
-		<Arrow
-			class={commonClasses.iconSize.large + ' transition-translate duration-300 ease-in-out group-hover:translate-x-1'}
-		/>
-	</a>
+  <a
+    href={translations.projectsPage.allProjectsLink}
+    class={`mb-20 md:mb-0 flex justify-end items-center gap-[2px] group text-md w-fit px-2 py-1 rounded ${commonClasses.button.primary}`}
+  >
+    {translations.projectsPage.allProjects}
+    <Arrow
+      class={`${commonClasses.iconSize.large} transition-translate duration-300 ease-in-out group-hover:translate-x-1`}
+    />
+  </a>
 </div>

@@ -1,5 +1,7 @@
 {
-  "certifications": "الشهادات",
-  "certificationsTitle": "الشهادات - Portfolio Francisco José Rodríguez Martínez - مطور ومبرمج ويب",
-  "certificationsDescription": "الشهادات - Portfolio Francisco José Rodríguez Martínez - مطور ومبرمج ويب"
+	"certifications": "الشهادات",
+	"certificationsTitle": "الشهادات - محفظة Francisco José Rodríguez Martínez - مطور برمجيات ومبرمج ويب",
+	"certificationsDescription": "الشهادات - محفظة Francisco José Rodríguez Martínez - مطور برمجيات ومبرمج ويب",
+	"pdfBadge": "PDF",
+	"downloadButton": "تحميل"
 }

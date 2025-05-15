@@ -1,5 +1,7 @@
 {
-  "certifications": "प्रमाणपत्र",
-  "certificationsTitle": "प्रमाणपत्र - Portfolio Francisco José Rodríguez Martínez - डेवलपर और वेब प्रोग्रामर",
-  "certificationsDescription": "प्रमाणपत्र - Portfolio Francisco José Rodríguez Martínez - डेवलपर और वेब प्रोग्रामर"
+	"certifications": "प्रमाण पत्र",
+	"certificationsTitle": "प्रमाण पत्र - Francisco José Rodríguez Martínez पोर्टफोलियो - सॉफ्टवेयर डेवलपर और वेब प्रोग्रामर",
+	"certificationsDescription": "प्रमाण पत्र - Francisco José Rodríguez Martínez पोर्टफोलियो - सॉफ्टवेयर डेवलपर और वेब प्रोग्रामर",
+	"pdfBadge": "PDF",
+	"downloadButton": "डाउनलोड"
 }

@@ -1,32 +1,32 @@
 [
   {
     "title": "メイン",
-    "label": "inicio",
-    "url": "/ja/#inicio"
+    "label": "main",
+    "url": "/ja/#main"
   },
   {
     "title": "スキル",
-    "label": "habilidades",
-    "url": "/ja/#habilidades"
+    "label": "skills",
+    "url": "/ja/#skills"
   },
   {
     "title": "経験",
-    "label": "experiencia",
-    "url": "/ja/#experiencia"
+    "label": "experience",
+    "url": "/ja/#experience"
   },
   {
     "title": "プロジェクト",
-    "label": "proyectos",
-    "url": "/ja/#proyectos"
+    "label": "projects",
+    "url": "/ja/#projects"
   },
   {
     "title": "認定",
-    "label": "certificaciones",
+    "label": "certifications",
     "url": "/ja/certifications"
   },
   {
     "title": "連絡",
-    "label": "contacto",
+    "label": "contact",
     "url": "mailto:Fran11799@outlook.com"
   },
   {

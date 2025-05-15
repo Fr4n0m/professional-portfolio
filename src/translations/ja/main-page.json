@@ -1,24 +1,24 @@
 {
   "hero": {
-    "heroTitle": "",
-    "heroBadge": "",
-    "heroDescription1": "",
-    "heroDescription2": "",
-    "heroDescription3": ""
+    "heroTitle": "やあ、フランです",
+    "heroBadge": "仕事受付中",
+    "heroDescription1": "ソフトウェア＆フルスタック開発者",
+    "heroDescription2": "細部にこだわる永遠の学習者",
+    "heroDescription3": "問題の作成と解決を専門としています。🤓"
   },
   "socialPill": {
-    "socialPillTitle": "",
-    "sendMailSocialPill": "",
+    "socialPillTitle": "訪問",
+    "sendMailSocialPill": "メールを送る",
     "copyButton": {
-      "copyTitle": "",
-      "copyMail": "",
-      "copyMailError": ""
+      "copyTitle": "メールをコピー",
+      "copyMail": "メールをコピーしました！",
+      "copyMailError": "コピーエラー"
     }
   },
   "skills": {
-    "skillsTitle": ""
+    "skillsTitle": "スキル"
   },
   "selectedProjects": {
-    "projectsTitle": ""
+    "projectsTitle": "プロジェクト"
   }
 }
