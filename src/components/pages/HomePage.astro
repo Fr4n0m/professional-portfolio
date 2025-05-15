@@ -11,6 +11,7 @@ import Projects from '@components/Projects/Projects.astro';
 import Skills from '@components/Skills.astro';
 import Fire from '@icons/Fire.astro';
 import Badge from '@components/ui/Badge.astro';
+import CertificationsPreview from '@components/sections/CertificationsPreview.astro';
 
 import { commonClasses } from '@utils/cssClasses';
 import type { Translations } from '../../types/translations';
@@ -63,4 +64,6 @@ const selectedProjects = translations.mainPage.selectedProjects;
 		</h2>
 	</SectionContainer>
 	<Projects translations={translations} />
+
+	<CertificationsPreview translations={translations} />
 </main>

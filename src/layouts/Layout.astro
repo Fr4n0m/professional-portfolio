@@ -5,7 +5,6 @@ import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
 import AlternativeFooter from '@components/layout/AlternativeFooter.astro';
 import KeyboardManager from '@components/KeyboardManager.astro';
-import LanguageSelector from '@components/LanguageSelector.astro';
 import type { Translations } from '../types/translations';
 import { getCurrentLanguage } from '@i18n/config';
 
@@ -57,8 +56,6 @@ console.log('Detected language:', lang);
 		<AlternativeFooter translations={json} />
 
 		<KeyboardManager translations={json} />
-
-		<LanguageSelector lang={lang} />
 	</body>
 </html>
 <style is:global>

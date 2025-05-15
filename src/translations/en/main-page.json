@@ -19,6 +19,7 @@
     "skillsTitle": "Skills"
   },
   "selectedProjects": {
-    "projectsTitle": "Projects"
-  }
+  "projectsTitle": "Projects"
+  },
+	"certificationsTitle": "Certifications"
 }
