@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "heroTitle": "Hallo, ich bin Fran",
+    "heroBadge": "Verfügbar für Arbeit",
+    "heroDescription1": "Softwareentwickler und Full Stack Webentwickler.",
+    "heroDescription2": "Ewiger Lernender mit Leidenschaft für Details.",
+    "heroDescription3": "Spezialisiert auf das Erstellen und Lösen von Problemen. 🤓"
+  },
+  "socialPill": {
+    "socialPillTitle": "Besuchen",
+    "sendMailSocialPill": "E-Mail senden an",
+    "copyButton": {
+      "copyTitle": "E-Mail kopieren",
+      "copyMail": "E-Mail kopiert!",
+      "copyMailError": "Fehler beim Kopieren"
+    }
+  },
+  "skills": {
+    "skillsTitle": "Fähigkeiten"
+  },
+  "selectedProjects": {
+    "projectsTitle": "Projekte"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "kmPlaceHolder": "",
+  "kmTitle": "",
+  "kmSocialSection": "",
+  "kmNavigationSection": "",
+  "kmCommands": [
+    {
+      "id": "",
+      "title": "",
+      "icon": "",
+      "hotkey": "",
+      "section": "",
+      "handler": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "icon": "",
+      "hotkey": "",
+      "section": "",
+      "handler": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "icon": "",
+      "hotkey": "",
+      "section": "",
+      "handler": ""
+    }
+  ]
+}

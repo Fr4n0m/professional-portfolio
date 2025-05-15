@@ -1,0 +1,37 @@
+[
+  {
+    "title": "होम",
+    "label": "home",
+    "url": "/hi/#home"
+  },
+  {
+    "title": "कौशल",
+    "label": "skills",
+    "url": "/hi/#skills"
+  },
+  {
+    "title": "अनुभव",
+    "label": "experience",
+    "url": "/hi/#experience"
+  },
+  {
+    "title": "प्रोजेक्ट्स",
+    "label": "projects",
+    "url": "/hi/#projects"
+  },
+  {
+    "title": "प्रमाणपत्र",
+    "label": "certifications",
+    "url": "/hi/certifications"
+  },
+  {
+    "title": "संपर्क",
+    "label": "contact",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "सीवी",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
+  }
+]

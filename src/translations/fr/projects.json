@@ -1,0 +1,218 @@
+[
+  {
+    "title": "Agrooe Cashback",
+    "description": "Sur ce site web, j'ai travaillé avec une équipe pour développer de zéro une plateforme engagée dans la vente de produits de qualité et le développement du commerce local. Nous avons travaillé depuis le concept jusqu'à la pratique en créant à la fois le back-end et le front-end. En plus de différentes technologies, des intégrations comme jwt pour le contrôle des comptes utilisateurs et la connexion ont été incorporées, un tableau de bord pour le contrôle de toutes les données... Des fonctionnalités comme pouvoir se connecter avec différents réseaux sociaux, créer un compte en tant qu'utilisateur pour acheter des produits ou en tant qu'entreprise pour les ajouter, des cartes de l'endroit le plus proche où le produit pourrait être trouvé, entre autres. Pour des raisons de confidentialité, le code n'est pas affiché.",
+    "images": [
+      "/assets/images/projects/agrooe_1.jpeg",
+      "/assets/images/projects/agrooe_2.jpeg",
+      "/assets/images/projects/agrooe_3.jpeg"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT",
+      "REACT",
+      "NEXTJS",
+      "EXPRESS",
+      "NODEJS",
+      "MONGODB"
+    ]
+  },
+  {
+    "title": "Strapi Games Store",
+    "description": "Application web conçue pour gérer du contenu lié aux jeux vidéo en utilisant Strapi comme backend et CMS.",
+    "link": "https://strapi-games-store.vercel.app/",
+    "github": "https://github.com/Fr4n0m/strapi-games-store",
+    "images": [
+      "/assets/images/projects/strapi-games-web-1.webp",
+      "/assets/images/projects/strapi-games-web-2.webp",
+      "/assets/images/projects/strapi-games-web-3.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT",
+      "TYPESCRIPT",
+      "REACT",
+      "NEXTJS",
+      "STRAPI"
+    ]
+  },
+  {
+    "title": "Chat en temps réel",
+    "description": "Application de chat en temps réel utilisant Socket.IO pour la communication en temps réel et Supabase comme base de données.",
+    "link": "https://realtime-chat-ten-nu.vercel.app/",
+    "github": "https://github.com/Fr4n0m/realtime-chat",
+    "images": [
+      "/assets/images/projects/realtime-chat_1.webp",
+      "/assets/images/projects/realtime-chat_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "EXPRESS",
+      "NODEJS",
+      "SUPABASE"
+    ]
+  },
+  {
+    "title": "Super Mario Bros 85'",
+    "description": "Clone à des fins éducatives du légendaire jeu Nintendo Super Mario Bros de 1985.",
+    "github": "https://github.com/Fr4n0m/super-mario-bros-85",
+    "images": [
+      "/assets/images/projects/super-mario-bros-85.webp",
+      "/assets/images/projects/super-mario-bros-85_2.webp",
+      "/assets/images/projects/super-mario-bros-85_3.webp",
+      "/assets/images/projects/super-mario-bros-85_4.webp",
+      "/assets/images/projects/super-mario-bros-85_5.webp",
+      "/assets/images/projects/super-mario-bros-85_6.webp",
+      "/assets/images/projects/super-mario-bros-85_7.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "PHASER"
+    ]
+  },
+  {
+    "title": "Paint Windows 95'",
+    "description": "Application Paint inspirée de l'ère Windows 95.",
+    "link": "https://paint-win-95-blond.vercel.app/",
+    "github": "https://github.com/Fr4n0m/paint-win-95",
+    "images": [
+      "/assets/images/projects/paint-95.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE"
+    ]
+  },
+  {
+    "title": "Démo View Transitions Bookshop",
+    "description": "Bibliothèque web pour pratiquer les transitions de vue.",
+    "link": "https://bookshop-view-transitions.vercel.app/",
+    "secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
+    "github": "https://github.com/Fr4n0m/bookshop-view-transitions",
+    "images": [
+      "/assets/images/projects/bookshop_1.webp",
+      "/assets/images/projects/bookshop_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "ASTRO"
+    ]
+  },
+  {
+    "title": "Clone de TikTok",
+    "description": "Clone de l'interface TikTok utilisant Vite et React avec backend Supabase.",
+    "link": "https://tiktok-clone-five-phi.vercel.app/",
+    "github": "https://github.com/Fr4n0m/tiktok-clone",
+    "images": [
+      "/assets/images/projects/tiktok_2.webp",
+      "/assets/images/projects/tiktok_1.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "REACT",
+      "NODEJS",
+      "EXPRESS",
+      "SUPABASE"
+    ]
+  },
+  {
+    "title": "Jeu Atari Breakout",
+    "description": "Version du légendaire jeu Atari BreakOut avec JavaScript.",
+    "link": "https://breakout-game-jade.vercel.app/",
+    "github": "https://github.com/Fr4n0m/breakout-game",
+    "images": [
+      "/assets/images/projects/breakout-game_2.webp",
+      "/assets/images/projects/breakout-game.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "Filmax",
+    "description": "Site web pour voir des informations sur les films et séries.",
+    "link": "",
+    "github": "https://github.com/Fr4n0m/filmax",
+    "images": [
+      "/assets/images/projects/filmax_home_preview.webp",
+      "/assets/images/projects/filmax_home_preview_2.webp",
+      "/assets/images/projects/filmax_blog_preview.webp",
+      "/assets/images/projects/filmax_blog_preview_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "Calculatrice Web",
+    "description": "Une calculatrice simple pour effectuer des opérations arithmétiques de base.",
+    "link": "https://web-calculator-snowy.vercel.app/",
+    "github": "https://github.com/Fr4n0m/web_calculator",
+    "images": [
+      "/assets/images/projects/WebCalculator_light.webp",
+      "/assets/images/projects/WebCalculator_dark.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "Pokédex",
+    "description": "Pokédex pour voir des informations sur les pokémons avec la possibilité d'ajouter des favoris, supprimer ou même créer votre propre pokémon.",
+    "link": "",
+    "github": "https://github.com/Fr4n0m/YourOwnPokedex",
+    "images": [
+      "/assets/images/projects/pokedex.webp",
+      "/assets/images/projects/pokedex_favorites.webp",
+      "/assets/images/projects/pokedex_create.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "REACT",
+      "NEXTJS"
+    ]
+  },
+  {
+    "title": "1er Portfolio web",
+    "description": "Premier portfolio web utilisant simplement HTML, CSS et JavaScript. Plus tard, je l'ai implémenté dans Astro.",
+    "link": "https://portfolio-fr4n0m-astro.vercel.app/",
+    "github": "https://github.com/Fr4n0m/portfolio-astro",
+    "images": [
+      "/assets/images/projects/1er_portfolio.webp",
+      "/assets/images/projects/1er_portfolio_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "REACT",
+      "ASTRO"
+    ]
+  }
+]

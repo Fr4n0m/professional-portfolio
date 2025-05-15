@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "heroTitle": "مرحباً، أنا فران",
+    "heroBadge": "متاح للعمل",
+    "heroDescription1": "مطور البرامج و Full Stack Web.",
+    "heroDescription2": "متعلم دائم شغوف بالتفاصيل.",
+    "heroDescription3": "متخصص في إنشاء وحل المشاكل. 🤓"
+  },
+  "socialPill": {
+    "socialPillTitle": "زيارة",
+    "sendMailSocialPill": "إرسال بريد إلى",
+    "copyButton": {
+      "copyTitle": "نسخ البريد",
+      "copyMail": "تم نسخ البريد!",
+      "copyMailError": "خطأ في النسخ"
+    }
+  },
+  "skills": {
+    "skillsTitle": "المهارات"
+  },
+  "selectedProjects": {
+    "projectsTitle": "المشاريع"
+  }
+}

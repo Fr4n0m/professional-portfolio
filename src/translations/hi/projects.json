@@ -1,0 +1,218 @@
+[
+  {
+    "title": "Agrooe Cashback",
+    "description": "गुणवत्ता वाले उत्पादों की बिक्री और स्थानीय व्यापार के विकास के लिए प्रतिबद्ध प्लेटफॉर्म।",
+    "images": [
+      "/assets/images/projects/agrooe_1.jpeg",
+      "/assets/images/projects/agrooe_2.jpeg",
+      "/assets/images/projects/agrooe_3.jpeg"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT",
+      "REACT",
+      "NEXTJS",
+      "EXPRESS",
+      "NODEJS",
+      "MONGODB"
+    ]
+  },
+  {
+    "title": "Strapi गेम्स स्टोर",
+    "description": "Strapi को बैकएंड और CMS के रूप में उपयोग करते हुए गेम सामग्री प्रबंधित करने के लिए डिज़ाइन किया गया वेब ऐप।",
+    "link": "https://strapi-games-store.vercel.app/",
+    "github": "https://github.com/Fr4n0m/strapi-games-store",
+    "images": [
+      "/assets/images/projects/strapi-games-web-1.webp",
+      "/assets/images/projects/strapi-games-web-2.webp",
+      "/assets/images/projects/strapi-games-web-3.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT",
+      "TYPESCRIPT",
+      "REACT",
+      "NEXTJS",
+      "STRAPI"
+    ]
+  },
+  {
+    "title": "रियलटाइम चैट",
+    "description": "रियल-टाइम संचार के लिए Socket.IO और डेटाबेस के रूप में Supabase का उपयोग करने वाली चैट ऐप।",
+    "link": "https://realtime-chat-ten-nu.vercel.app/",
+    "github": "https://github.com/Fr4n0m/realtime-chat",
+    "images": [
+      "/assets/images/projects/realtime-chat_1.webp",
+      "/assets/images/projects/realtime-chat_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "EXPRESS",
+      "NODEJS",
+      "SUPABASE"
+    ]
+  },
+  {
+    "title": "सुपर मारियो ब्रदर्स 85'",
+    "description": "1985 के प्रसिद्ध निन्टेंडो गेम सुपर मारियो ब्रदर्स का शैक्षणिक उद्देश्यों के लिए क्लोन।",
+    "github": "https://github.com/Fr4n0m/super-mario-bros-85",
+    "images": [
+      "/assets/images/projects/super-mario-bros-85.webp",
+      "/assets/images/projects/super-mario-bros-85_2.webp",
+      "/assets/images/projects/super-mario-bros-85_3.webp",
+      "/assets/images/projects/super-mario-bros-85_4.webp",
+      "/assets/images/projects/super-mario-bros-85_5.webp",
+      "/assets/images/projects/super-mario-bros-85_6.webp",
+      "/assets/images/projects/super-mario-bros-85_7.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "PHASER"
+    ]
+  },
+  {
+    "title": "पेंट विंडोज 95'",
+    "description": "विंडोज 95 युग से प्रेरित पेंट एप्लिकेशन।",
+    "link": "https://paint-win-95-blond.vercel.app/",
+    "github": "https://github.com/Fr4n0m/paint-win-95",
+    "images": [
+      "/assets/images/projects/paint-95.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE"
+    ]
+  },
+  {
+    "title": "बुकशॉप व्यू ट्रांज़िशन डेमो",
+    "description": "व्यू ट्रांज़िशन का अभ्यास करने के लिए वेब लाइब्रेरी।",
+    "link": "https://bookshop-view-transitions.vercel.app/",
+    "secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
+    "github": "https://github.com/Fr4n0m/bookshop-view-transitions",
+    "images": [
+      "/assets/images/projects/bookshop_1.webp",
+      "/assets/images/projects/bookshop_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "ASTRO"
+    ]
+  },
+  {
+    "title": "टिकटॉक क्लोन",
+    "description": "Vite और React तथा Supabase बैकएंड का उपयोग करते हुए टिकटॉक इंटरफ़ेस क्लोन।",
+    "link": "https://tiktok-clone-five-phi.vercel.app/",
+    "github": "https://github.com/Fr4n0m/tiktok-clone",
+    "images": [
+      "/assets/images/projects/tiktok_2.webp",
+      "/assets/images/projects/tiktok_1.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "REACT",
+      "NODEJS",
+      "EXPRESS",
+      "SUPABASE"
+    ]
+  },
+  {
+    "title": "अटारी ब्रेकआउट गेम",
+    "description": "JavaScript के साथ निर्मित प्रसिद्ध अटारी ब्रेकआउट गेम का संस्करण।",
+    "link": "https://breakout-game-jade.vercel.app/",
+    "github": "https://github.com/Fr4n0m/breakout-game",
+    "images": [
+      "/assets/images/projects/breakout-game_2.webp",
+      "/assets/images/projects/breakout-game.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "फिल्ममैक्स",
+    "description": "फिल्मों और टीवी शो के बारे में जानकारी देखने के लिए वेबसाइट।",
+    "link": "",
+    "github": "https://github.com/Fr4n0m/filmax",
+    "images": [
+      "/assets/images/projects/filmax_home_preview.webp",
+      "/assets/images/projects/filmax_home_preview_2.webp",
+      "/assets/images/projects/filmax_blog_preview.webp",
+      "/assets/images/projects/filmax_blog_preview_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "वेब कैलकुलेटर",
+    "description": "बुनियादी अंकगणितीय संचालन करने के लिए सरल कैलकुलेटर।",
+    "link": "https://web-calculator-snowy.vercel.app/",
+    "github": "https://github.com/Fr4n0m/web_calculator",
+    "images": [
+      "/assets/images/projects/WebCalculator_light.webp",
+      "/assets/images/projects/WebCalculator_dark.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "पोकेडेक्स",
+    "description": "पोकेमॉन के बारे में जानकारी देखने के लिए पोकेडेक्स, पसंदीदा जोड़ने, हटाने या अपना खुद का पोकेमॉन बनाने की क्षमता के साथ।",
+    "link": "",
+    "github": "https://github.com/Fr4n0m/YourOwnPokedex",
+    "images": [
+      "/assets/images/projects/pokedex.webp",
+      "/assets/images/projects/pokedex_favorites.webp",
+      "/assets/images/projects/pokedex_create.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "REACT",
+      "NEXTJS"
+    ]
+  },
+  {
+    "title": "पहला पोर्टफोलियो",
+    "description": "केवल HTML, CSS और JavaScript का उपयोग करके पहला वेब पोर्टफोलियो। बाद में मैंने इसे Astro में लागू किया।",
+    "link": "https://portfolio-fr4n0m-astro.vercel.app/",
+    "github": "https://github.com/Fr4n0m/portfolio-astro",
+    "images": [
+      "/assets/images/projects/1er_portfolio.webp",
+      "/assets/images/projects/1er_portfolio_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "REACT",
+      "ASTRO"
+    ]
+  }
+]

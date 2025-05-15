@@ -1,0 +1,26 @@
+[
+  {
+    "title": "मेरे बारे में",
+    "url": "/hi/about"
+  },
+  {
+    "title": "प्रोजेक्ट्स",
+    "url": "/hi/#projects"
+  },
+  {
+    "title": "अनुभव",
+    "url": "/hi/#experience"
+  },
+  {
+    "title": "संपर्क",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "सीवी",
+    "url": "https://cv-web-smoky.vercel.app/"
+  },
+  {
+    "title": "ऊपर जाएं",
+    "url": "/hi/#"
+  }
+]

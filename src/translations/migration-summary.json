@@ -1,0 +1,21 @@
+{
+  "migrateLanguages": "Todos los idiomas han sido estructurados modularmente",
+  "languages": [
+    "es", "es-mx", "en", "en-us", 
+    "zh", "hi", "ar", "pt", 
+    "fr", "de", "ja", "ru", 
+    "it", "ko", "nl", "pl", 
+    "tr", "hv"
+  ],
+  "benefits": [
+    "Los archivos de traducción son más pequeños y manejables",
+    "Es más fácil mantener y actualizar traducciones específicas",
+    "Se evita la duplicación de datos comunes (URLs, imágenes, etc.)",
+    "Mejor organización del código"
+  ],
+  "next_steps": [
+    "Actualizar el sistema de carga de traducciones para usar la estructura modular",
+    "Hacer pruebas para asegurar que todas las traducciones funcionan correctamente",
+    "Opcional: Eliminar los archivos JSON únicos cuando todo esté funcionando con la estructura modular"
+  ]
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Full Stack Webentwickler-Zertifikat",
+    "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+    "description": "Ausbildung in Full Stack Webentwicklung, einschließlich der Erstellung von Benutzeroberflächen mit HTML, CSS und React, Backend-Entwicklung mit Node.js, MongoDB, Datenbankverwaltung und Bereitstellung mit DevOps-Tools unter vielen anderen Technologien.",
+    "entity": "CODESPACE"
+  },
+  {
+    "title": "Linux-Umgebungsanpassungs-Zertifikat",
+    "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+    "description": "Fähigkeiten zur Anpassung von Linux-Umgebungen auf Debian, Kali und anderen Linux-basierten Systemen, einschließlich Softwarekonfiguration, Systemanpassungen und Leistungs- und Sicherheitsoptimierung.",
+    "entity": "HACK4U"
+  }
+]

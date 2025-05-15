@@ -1,0 +1,11 @@
+{
+  "allProjects": "جميع المشاريع",
+  "allProjectsTitle": "المشاريع - Portfolio Francisco José Rodríguez Martínez - مطور ومبرمج ويب",
+  "allProjectsDescription": "جميع المشاريع - Portfolio Francisco José Rodríguez Martínez - مطور ومبرمج ويب",
+  "allProjectsLink": "/ar/projects",
+  "projectsButtons": {
+    "textCodeButton": "الكود",
+    "textDemoButton": "عرض",
+    "textDemo2Button": "عرض 2"
+  }
+}

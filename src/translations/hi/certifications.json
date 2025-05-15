@@ -1,0 +1,16 @@
+[
+  {
+    "title": "फुल स्टैक वेब डेवलपर प्रमाणपत्र",
+    "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+    "description": "फुल स्टैक वेब विकास प्रशिक्षण, जिसमें HTML, CSS और React के साथ इंटरफेस बनाना, Node.js के साथ बैकएंड विकास, MongoDB, डेटाबेस प्रबंधन और कई अन्य तकनीकों के साथ DevOps टूल के साथ परिनियोजन शामिल है।",
+    "entity": "CODESPACE"
+  },
+  {
+    "title": "Linux वातावरण अनुकूलन प्रमाणपत्र",
+    "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+    "description": "Debian, Kali और अन्य Linux-आधारित सिस्टम में Linux वातावरण को अनुकूलित करने के कौशल, जिसमें सॉफ्टवेयर कॉन्फ़िगरेशन, सिस्टम सेटिंग्स और प्रदर्शन और सुरक्षा अनुकूलन शामिल हैं।",
+    "entity": "HACK4U"
+  }
+]

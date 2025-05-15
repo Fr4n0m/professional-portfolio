@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Kīsir hen Vaoredrys Web Tolikos Stack",
+    "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+    "description": "Rhēdan lo vaoredrys web Tolikos Stack, keskydoso skaeragon hen māzīgon lenton HTML, CSS se React, vaoredrys backend lenton Node.js, MongoDB, gaomar hen database se deploy lenton DevOps līriar keskydoso mirre zaldrīzo teknologiār.",
+    "entity": "CODESPACE"
+  },
+  {
+    "title": "Kīsir hen Gaomilaksir hen entornos lo Linux",
+    "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+    "description": "Ōdrikagon naejot gaomilaksir entornos Linux lo Debian, Kali se mirre systems ziry lo Linux keskydoso configuration hen software, system mittys se optimización hen rhaedar se ōdrikty.",
+    "entity": "HACK4U"
+  }
+]

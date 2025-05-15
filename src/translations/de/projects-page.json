@@ -1,0 +1,11 @@
+{
+  "allProjects": "Alle Projekte",
+  "allProjectsTitle": "Projekte - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
+  "allProjectsDescription": "Alle Projekte - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
+  "allProjectsLink": "/projects",
+  "projectsButtons": {
+    "textCodeButton": "Code",
+    "textDemoButton": "Demo",
+    "textDemo2Button": "Demo 2"
+  }
+}

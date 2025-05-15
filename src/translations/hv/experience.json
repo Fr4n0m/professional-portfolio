@@ -1,0 +1,25 @@
+{
+  "workExperience": "Uēpa pāletilla",
+  "experience": [
+    {
+      "date": "Sȳz tȳs 2024",
+      "title": "Vaoredrys hen Software se Front-End lo Dimap®",
+      "description": "Vaoredrys Front-End."
+    },
+    {
+      "date": "Morghon tȳs 2024",
+      "title": "Vaoredrys hen Software lo Gubb Marketing®",
+      "description": "Vaoredrys hen Software se applications web."
+    },
+    {
+      "date": "Kirine tȳs 2024",
+      "title": "Vaoredrys hen Agrooe-Cashback naejot Agrooe® se Gubb Marketing®",
+      "description": "Vaoredrys hen 0 hen kessa application web gaomar lo va administration hen kessa system hen cashback naejot va negon Agrooe®. Vaoredrys hen va database, va backend se va frontend hen va application web."
+    },
+    {
+      "date": "Vȳs tȳs 2021",
+      "title": "Freelancer",
+      "description": "Vaoredrys hen dāeremagon personal se professional hen mirrī type."
+    }
+  ]
+}

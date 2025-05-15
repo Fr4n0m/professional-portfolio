@@ -16,12 +16,13 @@ export const baseData = {
         url: "https://github.com/Fr4n0m"
       },
       {
+        network: "CV",
+        username: "Francisco Rodríguez",
         url: "https://cv-web-smoky.vercel.app/"
       }
     ]
   },
   projectsData: {
-    // Imágenes y tags que son iguales en todos los idiomas
     projects: [
       {
         id: "agrooe-cashback",
@@ -250,10 +251,9 @@ export const baseData = {
     certifications: "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='22' height='22' style='margin-right: 8px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-certificate'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'></path><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'></path><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'></path><path d='M6 9l12 0'></path><path d='M6 12l3 0'></path><path d='M6 15l2 0'></path></svg>",
     projects: "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='margin-right: 6px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M5 7l5 5l-5 5'></path><path d='M13 17l6 0'></path></svg>"
   },
-  experienceDates: {
-    september2024: "September 2024",
-    may2024: "May 2024", 
-    march2024: "March 2024",
-    june2021: "June 2021"
+  experienceCompanies: {
+    dimap: "Dimap®",
+    gubb: "Gubb Marketing®", 
+    agrooe: "Agrooe®"
   }
 };

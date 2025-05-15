@@ -1,0 +1,16 @@
+[
+  {
+    "title": "شهادة مطور ويب Full Stack",
+    "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+    "description": "تدريب في تطوير الويب Full Stack، بما في ذلك إنشاء واجهات باستخدام HTML و CSS و React، وتطوير الخلفية باستخدام Node.js و MongoDB، وإدارة قواعد البيانات والنشر باستخدام أدوات DevOps بين العديد من التقنيات الأخرى.",
+    "entity": "CODESPACE"
+  },
+  {
+    "title": "شهادة تخصيص بيئة Linux",
+    "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+    "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+    "description": "مهارات لتخصيص بيئات Linux في Debian و Kali والأنظمة الأخرى المبنية على Linux بما في ذلك تكوين البرامج وإعدادات النظام وتحسين الأداء والأمان.",
+    "entity": "HACK4U"
+  }
+]

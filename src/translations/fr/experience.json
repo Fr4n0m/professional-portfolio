@@ -1,0 +1,25 @@
+{
+  "workExperience": "Expérience professionnelle",
+  "experience": [
+    {
+      "date": "Septembre 2024",
+      "title": "Développeur de logiciels et Front-End chez Dimap®",
+      "description": "Développement Front-End."
+    },
+    {
+      "date": "Mai 2024",
+      "title": "Développeur de logiciels chez Gubb Marketing®",
+      "description": "Développement de logiciels et d'applications web."
+    },
+    {
+      "date": "Mars 2024",
+      "title": "Développement d'Agrooe-Cashback pour Agrooe® et Gubb Marketing®",
+      "description": "Développement de zéro d'une application web centrée sur l'administration d'un système de cashback pour l'entreprise Agrooe®. Développement de la base de données, du backend et du frontend de l'application web."
+    },
+    {
+      "date": "Juin 2021",
+      "title": "Freelance",
+      "description": "Développement de projets personnels et professionnels de différents types."
+    }
+  ]
+}

@@ -1,6 +1,5 @@
 import type { Language } from './config';
 import { getCurrentLanguage } from './config';
-import { mergeTranslations } from '../translations/base/merge-helper';
 
 // Cache para traducciones cargadas
 const translationsCache: Partial<Record<Language, any>> = {};
@@ -15,19 +14,13 @@ export async function loadTranslations(lang: Language) {
   try {
     // Primero intentar cargar la estructura modular (carpeta con index.ts)
     const modularTranslations = await import(`../translations/${lang}/index.ts`);
-    const translations = modularTranslations.default || modularTranslations;
-    
-    // Combinar con datos base usando el helper
-    translationsCache[lang] = mergeTranslations(translations, lang);
+    translationsCache[lang] = modularTranslations.default || modularTranslations;
     return translationsCache[lang];
   } catch (modularError) {
     try {
       // Si falla, intentar cargar el archivo JSON único
       const translations = await import(`../translations/${lang}.json`);
-      const langTranslations = translations.default || translations;
-      
-      // Combinar con datos base usando el helper
-      translationsCache[lang] = mergeTranslations(langTranslations, lang);
+      translationsCache[lang] = translations.default || translations;
       return translationsCache[lang];
     } catch (jsonError) {
       console.warn(`Translations for ${lang} not found, falling back to English`);

@@ -1,0 +1,37 @@
+[
+  {
+    "title": "الرئيسية",
+    "label": "home",
+    "url": "/ar/#home"
+  },
+  {
+    "title": "المهارات",
+    "label": "skills",
+    "url": "/ar/#skills"
+  },
+  {
+    "title": "الخبرة",
+    "label": "experience",
+    "url": "/ar/#experience"
+  },
+  {
+    "title": "المشاريع",
+    "label": "projects",
+    "url": "/ar/#projects"
+  },
+  {
+    "title": "الشهادات",
+    "label": "certifications",
+    "url": "/ar/certifications"
+  },
+  {
+    "title": "اتصل",
+    "label": "contact",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "السيرة الذاتية",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
+  }
+]

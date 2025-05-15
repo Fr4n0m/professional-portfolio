@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "heroTitle": "Rytsas, iksan Fran",
+    "heroBadge": "Botagon naejot uēpagon",
+    "heroDescription1": "Software se Tolikos Stack Web Vaoredrys.",
+    "heroDescription2": "Morghot rhēdan hegnīr hen dedot.",
+    "heroDescription3": "Qrīdragon ao skaeragon se dāezty. 🤓"
+  },
+  "socialPill": {
+    "socialPillTitle": "Jūlirt",
+    "sendMailSocialPill": "Zūgagon mail naejot",
+    "copyButton": {
+      "copyTitle": "Iōrībir Mail",
+      "copyMail": "Mail iōrigon!",
+      "copyMailError": "'Quba naejot iōrībir'"
+    }
+  },
+  "skills": {
+    "skillsTitle": "Ōdrikagon"
+  },
+  "selectedProjects": {
+    "projectsTitle": "Dāeremagon"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "allProjects": "सभी प्रोजेक्ट्स",
+  "allProjectsTitle": "प्रोजेक्ट्स - Portfolio Francisco José Rodríguez Martínez - डेवलपर और वेब प्रोग्रामर",
+  "allProjectsDescription": "सभी प्रोजेक्ट्स - Portfolio Francisco José Rodríguez Martínez - डेवलपर और वेब प्रोग्रामर",
+  "allProjectsLink": "/hi/projects",
+  "projectsButtons": {
+    "textCodeButton": "कोड",
+    "textDemoButton": "डेमो",
+    "textDemo2Button": "डेमो 2"
+  }
+}

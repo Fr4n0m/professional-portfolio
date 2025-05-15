@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "heroTitle": "",
+    "heroBadge": "",
+    "heroDescription1": "",
+    "heroDescription2": "",
+    "heroDescription3": ""
+  },
+  "socialPill": {
+    "socialPillTitle": "",
+    "sendMailSocialPill": "",
+    "copyButton": {
+      "copyTitle": "",
+      "copyMail": "",
+      "copyMailError": ""
+    }
+  },
+  "skills": {
+    "skillsTitle": ""
+  },
+  "selectedProjects": {
+    "projectsTitle": ""
+  }
+}

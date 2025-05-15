@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Startseite",
+    "label": "inicio",
+    "url": "/de/#inicio"
+  },
+  {
+    "title": "Fähigkeiten",
+    "label": "habilidades",
+    "url": "/de/#habilidades"
+  },
+  {
+    "title": "Erfahrung",
+    "label": "experiencia",
+    "url": "/de/#experiencia"
+  },
+  {
+    "title": "Projekte",
+    "label": "proyectos",
+    "url": "/de/#proyectos"
+  },
+  {
+    "title": "Zertifikate",
+    "label": "certificaciones",
+    "url": "/de/certifications"
+  },
+  {
+    "title": "Kontakt",
+    "label": "contacto",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "Lebenslauf",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Über mich",
+    "url": "/deabout"
+  },
+  {
+    "title": "Projekte",
+    "url": "/de#projekte"
+  },
+  {
+    "title": "Erfahrung",
+    "url": "/de#erfahrung"
+  },
+  {
+    "title": "Kontakt",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "Lebenslauf",
+    "url": "https://cv-web-smoky.vercel.app/"
+  },
+  {
+    "title": "Nach oben",
+    "url": "/de#"
+  }
+]
