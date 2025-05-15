@@ -1,0 +1,113 @@
+/* Accessibility-related CSS variables and utility classes */
+
+/* High contrast mode */
+html.high-contrast {
+  filter: contrast(1.3) saturate(1.2);
+}
+
+html.high-contrast img,
+html.high-contrast video {
+  filter: contrast(1.1);
+}
+
+html.high-contrast button:focus,
+html.high-contrast a:focus {
+  outline: 2px solid #1F429F;
+  outline-offset: 2px;
+}
+
+html.dark.high-contrast button:focus,
+html.dark.high-contrast a:focus {
+  outline-color: #facc15;
+}
+
+/* Reduce motion */
+html.reduce-motion * {
+  animation-duration: 0.0001s !important;
+  transition-duration: 0.0001s !important;
+  scroll-behavior: auto !important;
+  transition-delay: 0s !important;
+}
+
+html.reduce-motion .gsap-fade-in,
+html.reduce-motion .gsap-stagger,
+html.reduce-motion .gsap-stagger-item,
+html.reduce-motion .gsap-scale {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Increased spacing */
+html.increased-spacing {
+  letter-spacing: 0.025em !important;
+  word-spacing: 0.05em !important;
+  line-height: 1.6 !important;
+}
+
+html.increased-spacing p,
+html.increased-spacing li,
+html.increased-spacing h1,
+html.increased-spacing h2,
+html.increased-spacing h3,
+html.increased-spacing h4 {
+  margin-bottom: 1.2em !important;
+}
+
+html.increased-spacing button:not(.motion-toggle):not(.spacing-toggle),
+html.increased-spacing a:not(.mobile-nav-link) {
+  padding: 0.4em 0.7em !important;
+}
+
+html.increased-spacing nav a,
+html.increased-spacing .mobile-nav-link {
+  margin-bottom: 0.8em !important;
+}
+
+/* Font size controls */
+html[data-font-size="85"] {
+  font-size: 85% !important;
+}
+
+html[data-font-size="90"] {
+  font-size: 90% !important;
+}
+
+html[data-font-size="95"] {
+  font-size: 95% !important;
+}
+
+html[data-font-size="100"] {
+  font-size: 100% !important;
+}
+
+html[data-font-size="105"] {
+  font-size: 105% !important;
+}
+
+html[data-font-size="110"] {
+  font-size: 110% !important;
+}
+
+html[data-font-size="115"] {
+  font-size: 115% !important;
+}
+
+html[data-font-size="120"] {
+  font-size: 120% !important;
+}
+
+/* Focus styles for better keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+html.dark *:focus-visible {
+  outline-color: #60A5FA;
+}
+
+html.high-contrast *:focus-visible {
+  outline-width: 3px;
+  outline-offset: 3px;
+}

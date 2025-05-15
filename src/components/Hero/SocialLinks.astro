@@ -1,0 +1,74 @@
+---
+// SocialLinks.astro - Componente para los enlaces sociales del hero
+import SocialPill from '@components/ui/SocialPill.astro';
+import LinkedInIcon from '@icons/LinkedIn.astro';
+import GitHubIcon from '@icons/GitHub.astro';
+import MailIcon from '@icons/Mail.astro';
+import CopyButton from '@components/CopyButton.astro';
+import { commonClasses } from '@utils/cssClasses';
+
+interface Props {
+  linkedinText: string;
+  githubText: string;
+  mailText: string;
+  pillTitle: string;
+  mailPillTitle: string;
+  email: string;
+  copyButton: any;
+  lang?: string;
+}
+
+const { 
+  linkedinText, 
+  githubText, 
+  mailText, 
+  pillTitle, 
+  mailPillTitle, 
+  email, 
+  copyButton, 
+  lang 
+} = Astro.props;
+---
+
+<nav class='flex align-center gap-4 mt-6 md:mt-5 flex-wrap social-links-mobile-centered'>
+  <SocialPill
+    title={`${pillTitle} ${linkedinText}`}
+    href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
+  >
+    <LinkedInIcon class={commonClasses.iconSize.small + ' md:' + commonClasses.iconSize.medium} />
+    {linkedinText}
+  </SocialPill>
+
+  <SocialPill
+    title={`${pillTitle} ${githubText}`}
+    href='https://github.com/Fr4n0m'
+  >
+    <GitHubIcon class={commonClasses.iconSize.small + ' md:' + commonClasses.iconSize.medium} />
+    {githubText}
+  </SocialPill>
+
+  <div class='flex gap-4'>
+    <SocialPill
+      title={`${mailPillTitle} ${email}`}
+      href={`mailto:${email}`}
+    >
+      <MailIcon class={commonClasses.iconSize.small + ' md:' + commonClasses.iconSize.large} />
+      {email}
+    </SocialPill>
+
+    <CopyButton translations={copyButton} lang={lang}/>
+  </div>
+</nav>
+
+<style>
+  .social-links-mobile-centered {
+    justify-content: center;
+  }
+  
+  /* Responsive design */
+  @media (min-width: 768px) {
+    .social-links-mobile-centered {
+      justify-content: flex-start;
+    }
+  }
+</style>

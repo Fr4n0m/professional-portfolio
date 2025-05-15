@@ -1,8 +1,10 @@
 ---
-import ThemeToggle from '@components/ThemeToggle.astro';
-import LanguageToggle from '@components/LanguageToggle.astro';
 import ProfileTooltip from './ProfileTooltip.astro';
 import type { HeaderItem } from '../../types/headerItem';
+import SunIcon from '@icons/Sun.astro';
+import MoonIcon from '@icons/Moon.astro';
+import SystemIcon from '@icons/System.astro';
+import { languages } from '@i18n/config';
 
 export interface Props {
   headerItems: HeaderItem[];
@@ -11,6 +13,13 @@ export interface Props {
 }
 
 const { headerItems, info, lang } = Astro.props;
+
+// Temas para el selector de tema
+const themes = [
+  { id: 'light', name: 'Claro', icon: SunIcon },
+  { id: 'dark', name: 'Oscuro', icon: MoonIcon },
+  { id: 'system', name: 'Sistema', icon: SystemIcon }
+];
 ---
 
 <nav
@@ -30,8 +39,178 @@ const { headerItems, info, lang } = Astro.props;
     </a>
   ))}
   
-  <ThemeToggle />
-  <LanguageToggle />
+  <!-- Control de tema estilo Apple -->
+  <div class='relative -mr-1'>
+    <button
+      id='theme-toggle-btn'
+      class='appearance-none border-none flex hover:scale-110 transition-transform duration-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800'
+      aria-label='Cambiar tema'
+    >
+      <span class='sr-only'>Elige el tema</span>
+      <SunIcon id='light' class='theme-toggle-icon size-5 transition-all text-amber-500' />
+      <MoonIcon
+        id='dark'
+        class='theme-toggle-icon absolute size-5 transition-all text-indigo-500'
+      />
+      <SystemIcon
+        id='system'
+        class='theme-toggle-icon absolute size-5 transition-all text-gray-600 dark:text-gray-400'
+      />
+    </button>
+    <div
+      id='themes-menu'
+      class='absolute hidden scale-95 top-10 right-0 text-sm p-2 min-w-[10rem] rounded-lg border border-gray-200 bg-white/95 dark:bg-gray-900/95 dark:border-gray-700/50 shadow-lg backdrop-blur-xl'
+    >
+      <ul>
+        {
+          themes.map(theme => {
+            const Icon = theme.icon;
+            return (
+              <li class='themes-menu-option px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors duration-150' data-theme={theme.id}>
+                <span class='flex items-center gap-3'>
+                  <Icon class={`size-4 ${theme.id === 'light' ? 'text-amber-500' : theme.id === 'dark' ? 'text-indigo-500' : 'text-gray-600 dark:text-gray-400'}`} />
+                  <span class='font-medium text-gray-700 dark:text-gray-200'>{theme.name}</span>
+                </span>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Selector de idioma estilo Apple -->
+  <div class='relative ml-0'>
+    <button
+      id='language-toggle-btn'
+      class='appearance-none border-none flex hover:scale-110 transition-transform duration-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800'
+      aria-label='Cambiar idioma'
+      type='button'
+    >
+      <span class='sr-only'>Elige el idioma</span>
+      <span class='text-xl'>{languages[lang]?.flag || '🌐'}</span>
+    </button>
+    <div
+      id='language-menu'
+      class='absolute hidden scale-95 top-10 right-0 text-sm p-2 min-w-[12rem] w-[12rem] max-h-[400px] overflow-y-auto rounded-lg border border-gray-200 bg-white/95 dark:bg-gray-900/95 dark:border-gray-700/50 shadow-lg backdrop-blur-xl'
+    >
+      <ul class='grid grid-cols-1 gap-1'>
+        {
+          Object.entries(languages).map(([code, langInfo]) => {
+            const isActive = code === lang;
+            const langUrl = code === 'es' ? '/' : `/${code}/`;
+            return (
+              <li class='language-menu-option px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors duration-150' data-lang={code} data-active={isActive}>
+                <a
+                  href={langUrl}
+                  class='flex items-center gap-3'
+                >
+                  <span class='text-xl'>{langInfo.flag}</span>
+                  <span class='flex-1 font-medium text-gray-700 dark:text-gray-200'>{langInfo.nativeName}</span>
+                  {isActive && (
+                    <span class='text-blue-600 dark:text-blue-400'>✓</span>
+                  )}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Control Center (Settings) estilo Apple -->
+  <div class="relative ml-1">
+    <button 
+      id="desktop-accessibility-toggle" 
+      class="appearance-none border-none flex hover:scale-110 transition-transform duration-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+      aria-label='Control Center'
+    >
+      <span class='sr-only'>Control Center</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600 dark:text-gray-300">
+        <rect x="3" y="4" width="18" height="6" rx="3"></rect>
+        <circle cx="16" cy="7" r="2" fill="currentColor"></circle>
+        <rect x="3" y="14" width="18" height="6" rx="3"></rect>
+        <circle cx="8" cy="17" r="2" fill="currentColor"></circle>
+      </svg>
+    </button>
+    <!-- Panel de control para desktop -->
+    <div
+      id="desktop-accessibility-panel"
+      class="absolute hidden scale-95 top-10 right-0 p-2 min-w-[20rem] w-80 max-h-[calc(100vh-100px)] overflow-y-auto rounded-lg border border-gray-200 bg-white/95 dark:bg-gray-900/95 dark:border-gray-700/50 shadow-lg backdrop-blur-xl"
+    >
+      <!-- Usuario -->
+      <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center gap-3">
+          <img
+            src="/assets/images/Fr4n0m Photo.webp"
+            alt="User photo"
+            class="w-12 h-12 rounded-full object-cover"
+          />
+          <div>
+            <p class="font-semibold text-gray-900 dark:text-white">Francisco José Rodríguez</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Frontend Developer</p>
+          </div>
+        </div>
+      </div>
+      <!-- Acciones rápidas -->
+      <div class="p-4 grid grid-cols-2 gap-3 border-b border-gray-200 dark:border-gray-700">
+        <!-- Theme Toggle -->
+        <button class="desktop-theme-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center" data-action="theme">
+          <svg class="w-6 h-6 mx-auto mb-2 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          <span class="text-xs text-gray-700 dark:text-gray-300">Tema</span>
+        </button>
+        <!-- Language Toggle -->
+        <button class="desktop-lang-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center" data-action="language">
+          <span class="text-2xl mb-2 block">{languages[lang]?.flag || '🌐'}</span>
+          <span class="text-xs text-gray-700 dark:text-gray-300">Idioma</span>
+        </button>
+      </div>
+      <!-- Accesibilidad -->
+      <div class="p-4 space-y-3">
+        <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-3">Accesibilidad</h3>
+        <!-- Font Size -->
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700 dark:text-gray-300">Tamaño de texto</span>
+          <div class="flex items-center gap-2">
+            <button class="desktop-font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800" data-action="font-decrease">
+              <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path>
+              </svg>
+            </button>
+            <span class="desktop-font-size-value text-sm font-medium px-2 text-gray-900 dark:text-gray-100">100%</span>
+            <button class="desktop-font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800" data-action="font-increase">
+              <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Contrast -->
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700 dark:text-gray-300">Contraste</span>
+          <button class="desktop-contrast-toggle relative w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300" data-action="contrast">
+            <span class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300"></span>
+          </button>
+        </div>
+        <!-- Animations -->
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700 dark:text-gray-300">Animaciones</span>
+          <button class="desktop-animations-toggle relative w-11 h-6 bg-blue-500 rounded-full transition-colors duration-300" data-action="animations" data-enabled="true">
+            <span class="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300"></span>
+          </button>
+        </div>
+      </div>
+      <!-- Configuración avanzada -->
+      <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+        <a href="/settings" class="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 block">
+          <span class="text-sm text-gray-700 dark:text-gray-300">Configuración avanzada</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <style>
@@ -53,9 +232,400 @@ const { headerItems, info, lang } = Astro.props;
   .nav-link.active {
     @apply text-blue-800 dark:text-yellow-300 font-semibold;
   }
+  
+  /* Estilo Apple para los toggles */
+  .theme-toggle-icon {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #theme-toggle-btn {
+    position: relative;
+  }
+
+  #light {
+    scale: 1;
+  }
+
+  #dark, #system {
+    scale: 0;
+  }
+
+  :global(.dark) #light {
+    scale: 0;
+  }
+
+  :global(.dark) #dark {
+    scale: 1;
+  }
+
+  :global(.system) #light, :global(.system) #dark {
+    scale: 0;
+  }
+
+  :global(.system) #system {
+    scale: 1;
+  }
+  
+  /* Estilo Apple para los menus */
+  #themes-menu, #language-menu, #desktop-accessibility-panel {
+    transition: all 0.2s ease;
+    transform-origin: top right;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 
+                0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  #themes-menu.open, #language-menu.open, #desktop-accessibility-panel.open {
+    display: block !important;
+    animation: scale-up-center 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  
+  @keyframes scale-up-center {
+    from {
+      transform: scale(0.95) translateY(-5px);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .themes-menu-option {
+    transition: all 150ms ease;
+  }
+  
+  .themes-menu-option:hover {
+    transform: translateX(2px);
+  }
+  
+  /* Indicador activo */
+  .themes-menu-option[data-active="true"] {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  .themes-menu-option[data-active="true"] span {
+    color: rgb(59, 130, 246);
+  }
+  
+  /* Estilos para el botón de accesibilidad */
+  .accessibility-toggle {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  /* Estilos para el menú de idiomas */
+  #language-menu.open {
+    display: block !important;
+    animation: scale-up-center 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  
+  .language-menu-option {
+    transition: all 150ms ease;
+  }
+  
+  .language-menu-option:hover {
+    transform: translateX(2px);
+  }
+  
+  .language-menu-option a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Indicador activo */
+  .language-menu-option[data-active="true"] {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  .language-menu-option[data-active="true"] span:not(:first-child) {
+    color: rgb(59, 130, 246);
+  }
+  
+  /* Estilos del scrollbar */
+  #language-menu::-webkit-scrollbar, #desktop-accessibility-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  #language-menu::-webkit-scrollbar-track, #desktop-accessibility-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  #language-menu::-webkit-scrollbar-thumb, #desktop-accessibility-panel::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 3px;
+  }
+  
+  #language-menu::-webkit-scrollbar-thumb:hover, #desktop-accessibility-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.5);
+  }
+  
+  /* Estilo para el panel de accesibilidad */
+  .translate-x-5 {
+    transform: translateX(1.25rem) !important;
+  }
 </style>
 
 <script>
+  // Inicializar el control de tema
+  document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar control de idioma
+    const languageMenu = document.getElementById('language-menu');
+    const languageToggleBtn = document.getElementById('language-toggle-btn');
+    
+    if (languageToggleBtn && languageMenu) {
+      let isLangMenuOpen = false;
+      
+      // Toggle menu when clicking button
+      languageToggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        isLangMenuOpen = !isLangMenuOpen;
+        
+        if (isLangMenuOpen) {
+          languageMenu.classList.remove('hidden');
+          languageMenu.classList.add('open');
+        } else {
+          languageMenu.classList.add('hidden');
+          languageMenu.classList.remove('open');
+        }
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!languageMenu.contains(e.target) && !languageToggleBtn.contains(e.target) && isLangMenuOpen) {
+          isLangMenuOpen = false;
+          languageMenu.classList.add('hidden');
+          languageMenu.classList.remove('open');
+        }
+      });
+    }
+    const themesMenu = document.getElementById('themes-menu');
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const themeOptions = document.querySelectorAll('.themes-menu-option');
+    
+    if (!themesMenu || !themeToggleBtn) return;
+    
+    // Function to get current theme
+    const getThemePreference = () => {
+      if (typeof localStorage !== 'undefined') {
+        return localStorage.getItem('theme') ?? 'system';
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    };
+    
+    // Function to update icon visibility
+    const updateIcon = (theme) => {
+      document.documentElement.classList.remove('light', 'dark', 'system');
+      document.documentElement.classList.add(theme);
+      
+      const isDark = theme === 'dark' || 
+        (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+    
+    // Function to update active theme in menu
+    const updateActiveTheme = (theme) => {
+      themeOptions.forEach(option => {
+        option.setAttribute('data-active', option.dataset.theme === theme);
+      });
+    };
+    
+    // Function to apply theme
+    const updateTheme = () => {
+      const theme = getThemePreference();
+      updateIcon(theme);
+      updateActiveTheme(theme);
+    };
+    
+    // Toggle menu when clicking button
+    themeToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      themesMenu.classList.toggle('open');
+      themesMenu.classList.toggle('hidden');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!themesMenu.contains(e.target) && !themeToggleBtn.contains(e.target)) {
+        themesMenu.classList.remove('open');
+        themesMenu.classList.add('hidden');
+      }
+    });
+    
+    // Handle theme selection
+    themeOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const theme = option.dataset.theme;
+        localStorage.setItem('theme', theme);
+        updateTheme();
+        themesMenu.classList.remove('open');
+        themesMenu.classList.add('hidden');
+      });
+    });
+    
+    // Listen to system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
+    
+    // Initialize theme
+    updateTheme();
+    
+    // Conectar con el botón de accesibilidad para desktop
+    const desktopAccessibilityToggle = document.getElementById('desktop-accessibility-toggle');
+    const desktopAccessibilityPanel = document.getElementById('desktop-accessibility-panel');
+    
+    if (desktopAccessibilityToggle && desktopAccessibilityPanel) {
+      let isAccessibilityPanelOpen = false;
+      
+      // Toggle menu when clicking button
+      desktopAccessibilityToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        isAccessibilityPanelOpen = !isAccessibilityPanelOpen;
+        
+        if (isAccessibilityPanelOpen) {
+          desktopAccessibilityPanel.classList.remove('hidden');
+          desktopAccessibilityPanel.classList.add('open');
+        } else {
+          desktopAccessibilityPanel.classList.add('hidden');
+          desktopAccessibilityPanel.classList.remove('open');
+        }
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!desktopAccessibilityPanel.contains(e.target) && !desktopAccessibilityToggle.contains(e.target) && isAccessibilityPanelOpen) {
+          isAccessibilityPanelOpen = false;
+          desktopAccessibilityPanel.classList.add('hidden');
+          desktopAccessibilityPanel.classList.remove('open');
+        }
+      });
+      
+      // Inicializar controles de desktop
+      initDesktopAccessibilityControls();
+    }
+  });
+  
+  // Función para inicializar controles de accesibilidad en desktop
+  function initDesktopAccessibilityControls() {
+    // Theme control
+    const themeBtn = document.querySelector('.desktop-theme-control-btn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || 'system';
+        const nextTheme = currentTheme === 'light' ? 'dark' : currentTheme === 'dark' ? 'system' : 'light';
+        localStorage.setItem('theme', nextTheme);
+
+        const isDark = nextTheme === 'dark' || (nextTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', isDark);
+      });
+    }
+    
+    // Language control
+    const langBtn = document.querySelector('.desktop-lang-control-btn');
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        // Abrir el menú de idiomas normal al hacer clic
+        const languageToggleBtn = document.getElementById('language-toggle-btn');
+        if (languageToggleBtn) {
+          languageToggleBtn.click();
+        }
+      });
+    }
+    
+    // Font size controls
+    let fontSize = parseInt(localStorage.getItem('fontSize') || '100');
+    const fontSizeSpan = document.querySelector('.desktop-font-size-value');
+    
+    // Initialize font size display
+    if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+    
+    document.querySelector('[data-action="font-decrease"]')?.addEventListener('click', () => {
+      if (fontSize > 85) {
+        fontSize -= 5;
+        localStorage.setItem('fontSize', fontSize.toString());
+        document.documentElement.style.fontSize = `${fontSize}%`;
+        if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+      }
+    });
+    
+    document.querySelector('[data-action="font-increase"]')?.addEventListener('click', () => {
+      if (fontSize < 120) {
+        fontSize += 5;
+        localStorage.setItem('fontSize', fontSize.toString());
+        document.documentElement.style.fontSize = `${fontSize}%`;
+        if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+      }
+    });
+    
+    // Contrast toggle
+    const contrastToggle = document.querySelector('.desktop-contrast-toggle');
+    if (contrastToggle) {
+      const isHighContrast = localStorage.getItem('high-contrast') === 'true';
+      if (isHighContrast) {
+        contrastToggle.classList.add('bg-blue-500');
+        const span = contrastToggle.querySelector('span');
+        if (span) span.classList.add('translate-x-5');
+        document.documentElement.classList.add('high-contrast');
+      }
+      
+      contrastToggle.addEventListener('click', () => {
+        const isCurrentlyHighContrast = document.documentElement.classList.contains('high-contrast');
+        localStorage.setItem('high-contrast', (!isCurrentlyHighContrast).toString());
+        document.documentElement.classList.toggle('high-contrast');
+        contrastToggle.classList.toggle('bg-blue-500');
+        const span = contrastToggle.querySelector('span');
+        if (span) span.classList.toggle('translate-x-5');
+      });
+    }
+    
+    // Animations toggle
+    const animationsToggle = document.querySelector('.desktop-animations-toggle');
+    if (animationsToggle) {
+      const hasReducedMotion = localStorage.getItem('enable-animations') === 'false';
+      if (hasReducedMotion) {
+        animationsToggle.classList.remove('bg-blue-500');
+        const span = animationsToggle.querySelector('span');
+        if (span) {
+          span.classList.remove('right-0.5');
+          span.classList.add('left-0.5');
+        }
+        document.documentElement.classList.add('reduce-motion');
+        animationsToggle.setAttribute('data-enabled', 'false');
+      }
+      
+      animationsToggle.addEventListener('click', () => {
+        const isEnabled = animationsToggle.getAttribute('data-enabled') === 'true';
+        const nextState = !isEnabled;
+        localStorage.setItem('enable-animations', nextState.toString());
+        animationsToggle.setAttribute('data-enabled', nextState.toString());
+        
+        document.documentElement.classList.toggle('reduce-motion', !nextState);
+        animationsToggle.classList.toggle('bg-blue-500', nextState);
+        
+        const span = animationsToggle.querySelector('span');
+        if (span) {
+          if (nextState) {
+            span.classList.remove('left-0.5');
+            span.classList.add('right-0.5');
+          } else {
+            span.classList.remove('right-0.5');
+            span.classList.add('left-0.5');
+          }
+        }
+      });
+    }
+  }
+  
   function setupNavHighlighting() {
     const sections = document.querySelectorAll('section[data-section]');
     const navLinks = document.querySelectorAll('.nav-link');

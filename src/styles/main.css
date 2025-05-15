@@ -9,6 +9,9 @@
 @import './animations/base.css';
 @import './animations/text.css';
 
+/* Accessibility */
+@import './accessibility.css';
+
 /* Components */
 @import './components/badge.css';
 @import './components/buttons.css';

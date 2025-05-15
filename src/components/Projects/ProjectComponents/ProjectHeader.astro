@@ -1,0 +1,24 @@
+---
+// ProjectHeader.astro - Componente para el encabezado del proyecto
+import type { Project } from '../../../types/projects';
+import { commonClasses } from '@utils/cssClasses';
+import ProjectsDescription from '@components/Projects/ProjectsDescription';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { title, description } = project;
+---
+
+<article>
+  <h3 class={commonClasses.heading.h3 + ' mt-12 mb-2'}>
+    {title}
+  </h3>
+
+  <ProjectsDescription
+    client:load
+    description={description}
+  />
+</article>

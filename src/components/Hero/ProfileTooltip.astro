@@ -1,0 +1,101 @@
+---
+// ProfileTooltip.astro - Componente para el tooltip del perfil
+interface Props {
+  name: string;
+  role: string;
+  email: string;
+  location: string;
+  specialties: string;
+  additionalTech: string;
+}
+
+const { name, role, email, location, specialties, additionalTech } = Astro.props;
+---
+
+<div class="absolute hero-tooltip-container left-1/2 bottom-0 transform -translate-x-1/2 translate-y-full invisible opacity-0 desktop-tooltip transition-all duration-300 ease-out z-50">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 min-w-[280px] md:min-w-[320px] mt-4">
+    <div class="flex items-center space-x-4 mb-3">
+      <div class="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 ring-2 ring-primary/20 animate-scale-up">
+        <img
+          src='/assets/images/Fr4n0m Photo.webp'
+          alt='Fr4n0m photo'
+          class="w-full h-full object-cover"
+          style="aspect-ratio: 1/1; object-position: center;"
+        />
+      </div>
+      <div>
+        <h3 class="font-bold text-lg dark:text-white">{name}</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">{role}</p>
+      </div>
+    </div>
+    <div class="space-y-2 text-sm">
+      <div class="flex items-center space-x-2">
+        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+        <span class="text-gray-700 dark:text-gray-300">{email}</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+        <span class="text-gray-700 dark:text-gray-300">{location}</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        </svg>
+        <span class="text-gray-700 dark:text-gray-300">{specialties}</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+        </svg>
+        <span class="text-gray-700 dark:text-gray-300">{additionalTech}</span>
+      </div>
+    </div>
+    <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 border-l border-t border-gray-200 dark:border-gray-700 transform rotate-45"></div>
+  </div>
+</div>
+
+<style>
+  .hero-tooltip-container {
+    top: 100%;
+    margin-top: 1rem;
+  }
+  
+  @keyframes scale-up {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-scale-up {
+    animation: scale-up 0.3s ease-out forwards;
+  }
+  
+  /* Tooltip */
+  .desktop-tooltip {
+    display: none;
+    pointer-events: none;
+  }
+  
+  @media (hover: hover) and (pointer: fine) {
+    .desktop-tooltip {
+      display: block;
+    }
+    
+    .desktop-interactive:hover .desktop-tooltip {
+      visibility: visible !important;
+      opacity: 1 !important;
+      z-index: 50;
+      pointer-events: auto;
+    }
+  }
+</style>

@@ -29,6 +29,12 @@ const { text = "Hey, soy Fran", darkMode = false, className = "" } = Astro.props
     justify-content: center; /* Centrado en todos los tamaños */
     align-items: center;
     text-align: center;
+    color: #1F429F; /* Color para tema claro */
+  }
+  
+  /* Color para tema oscuro */
+  :global(.dark) .text-pressure-wrapper {
+    color: #ffffff;
   }
   
   /* Aseguramos que el contenido dentro también esté centrado en móvil */
@@ -37,6 +43,14 @@ const { text = "Hey, soy Fran", darkMode = false, className = "" } = Astro.props
     display: flex !important;
     justify-content: center !important;
     text-align: center !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Aseguramos que el texto dentro del componente esté centrado en móvil */
+  :global(.text-pressure-wrapper > div > h1) {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
   }
   
   @media (min-width: 768px) {
@@ -48,6 +62,12 @@ const { text = "Hey, soy Fran", darkMode = false, className = "" } = Astro.props
     :global(.text-pressure-wrapper > div) {
       justify-content: flex-start !important;
       text-align: left !important;
+      margin: 0 !important;
+    }
+    
+    :global(.text-pressure-wrapper > div > h1) {
+      text-align: left !important;
+      margin: 0 !important;
     }
   }
 </style>

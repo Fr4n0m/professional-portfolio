@@ -1,7 +1,7 @@
 ---
 import ThemeToggle from '@components/ThemeToggle.astro';
 import LanguageToggle from '@components/LanguageToggle.astro';
-import ControlCenter from './mobile/ControlCenter.astro';
+import AccessibilityPanel from './mobile/AccessibilityPanel.astro';
 import type { HeaderItem } from '../../types/headerItem';
 import type { Translations } from '../../types/translations';
 
@@ -14,7 +14,7 @@ export interface Props {
 const { headerItems, lang, translations } = Astro.props;
 ---
 
-<!-- Header Mobile - Nuevo diseño con Control Center -->
+<!-- Header Mobile - Nuevo diseño con Accessibility Panel -->
 <div class='md:hidden'>
   <!-- Header móvil fijo con blur -->
   <header class='fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 border-b border-gray-200/20 dark:border-gray-700/20'>
@@ -45,93 +45,23 @@ const { headerItems, lang, translations } = Astro.props;
         </a>
       </div>
 
-      <!-- Rediseño de los botones de tema e idioma -->
+      <!-- Botón de Control Center -->
       <div class="flex items-center gap-2">
-        <button id="theme-toggle-mobile" class="theme-toggle-button relative w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors">
-          <span class="light-icon absolute transition-opacity duration-300" style="opacity: 1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </span>
-          <span class="dark-icon absolute transition-opacity duration-300" style="opacity: 0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </span>
-        </button>
-        
-        <button id="lang-toggle-mobile" class="lang-toggle-button relative w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors">
-          <span class="text-xl">{translations.languageFlag || '🌐'}</span>
+        <button id="accessibility-toggle" class="accessibility-toggle relative w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 active:scale-95">
+          <!-- Icono de control center al estilo iOS / SF Symbols -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 dark:text-gray-300 ios-icon">
+            <rect x="3" y="4" width="18" height="6" rx="3"></rect>
+            <circle cx="16" cy="7" r="2" fill="currentColor"></circle>
+            <rect x="3" y="14" width="18" height="6" rx="3"></rect>
+            <circle cx="8" cy="17" r="2" fill="currentColor"></circle>
+          </svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Menú de idiomas (oculto inicialmente) -->
-  <div id="language-dropdown" class="fixed top-16 right-4 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 opacity-0 scale-95 pointer-events-none transition-all duration-200 transform origin-top-right">
-    <div class="p-2">
-      {Object.entries(translations.languages || {}).map(([code, name]) => (
-        <a 
-          href={code === 'es' ? '/' : `/${code}/`} 
-          class={`flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${code === lang ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'}`}
-        >
-          <span class="text-lg">{translations.languageFlags?.[code] || '🌐'}</span>
-          <span>{name}</span>
-        </a>
-      ))}
-    </div>
-  </div>
-
-  <!-- Menú de temas (oculto inicialmente) -->
-  <div id="theme-dropdown" class="fixed top-16 right-4 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 opacity-0 scale-95 pointer-events-none transition-all duration-200 transform origin-top-right">
-    <div class="p-2">
-      <button 
-        class="theme-option flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left"
-        data-theme="light"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <span class="text-gray-700 dark:text-gray-300">Claro</span>
-      </button>
-      <button 
-        class="theme-option flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left"
-        data-theme="dark"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-        <span class="text-gray-700 dark:text-gray-300">Oscuro</span>
-      </button>
-      <button 
-        class="theme-option flex items-center gap-2 p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 w-full text-left"
-        data-theme="system"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-          <line x1="8" y1="21" x2="16" y2="21"></line>
-          <line x1="12" y1="17" x2="12" y2="21"></line>
-        </svg>
-        <span class="text-gray-700 dark:text-gray-300">Sistema</span>
-      </button>
-    </div>
-  </div>
+  <!-- Panel de Accesibilidad al estilo macOS -->
+  <AccessibilityPanel />
 
   <!-- Mobile Menu - Estilo moderno -->
   <div
@@ -159,6 +89,7 @@ const { headerItems, lang, translations } = Astro.props;
       
       <!-- Link de configuración avanzada -->
       <a
+        id="settings-link"
         class='mobile-nav-link flex items-center gap-3 px-4 py-3 mb-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200 transform hover:translate-x-1 mt-4 border-t border-gray-200 dark:border-gray-700 pt-4'
         href="/settings"
       >
@@ -359,189 +290,332 @@ const { headerItems, lang, translations } = Astro.props;
     updateActiveLink();
   }
 
-  // Theme & Language Toggles
+  // Header toggles function
   function setupHeaderToggles() {
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle-mobile');
-    const themeDropdown = document.getElementById('theme-dropdown');
-    const themeOptions = document.querySelectorAll('.theme-option');
-    const lightIcon = document.querySelector('.light-icon');
-    const darkIcon = document.querySelector('.dark-icon');
     
-    if (themeToggle && themeDropdown && lightIcon && darkIcon) {
-      // Inicializar icono correcto
-      const theme = localStorage.getItem('theme') || 'system';
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+    // Accessibility panel toggle
+    const accessibilityToggle = document.getElementById('accessibility-toggle');
+    const accessibilityPanel = document.getElementById('accessibility-panel');
+    
+    if (accessibilityToggle && accessibilityPanel) {
+      let accessibilityPanelOpen = false;
       
-      if (isDark) {
-        lightIcon.style.opacity = '0';
-        darkIcon.style.opacity = '1';
-      } else {
-        lightIcon.style.opacity = '1';
-        darkIcon.style.opacity = '0';
-      }
-      
-      // Toggle dropdown
-      let themeDropdownOpen = false;
-      
-      themeToggle.addEventListener('click', (e) => {
+      accessibilityToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         
-        if (themeDropdownOpen) {
-          gsap.to(themeDropdown, {
+        if (accessibilityPanelOpen) {
+          gsap.to(accessibilityPanel, {
             opacity: 0,
             scale: 0.95,
             duration: 0.2,
             onComplete: () => {
-              themeDropdown.classList.add('pointer-events-none');
+              accessibilityPanel.classList.add('pointer-events-none');
             }
           });
         } else {
-          themeDropdown.classList.remove('pointer-events-none');
-          gsap.to(themeDropdown, {
+          accessibilityPanel.classList.remove('pointer-events-none');
+          gsap.to(accessibilityPanel, {
             opacity: 1,
             scale: 1,
             duration: 0.3,
             ease: 'back.out(1.7)'
           });
-          
-          // Cerrar language dropdown si está abierto
-          if (langDropdownOpen) {
-            gsap.to(langDropdown, {
-              opacity: 0,
-              scale: 0.95,
-              duration: 0.2,
-              onComplete: () => {
-                langDropdown.classList.add('pointer-events-none');
-              }
-            });
-            langDropdownOpen = false;
-          }
         }
         
-        themeDropdownOpen = !themeDropdownOpen;
+        accessibilityPanelOpen = !accessibilityPanelOpen;
       });
       
-      // Theme options
-      themeOptions.forEach(option => {
-        option.addEventListener('click', () => {
-          const newTheme = option.dataset.theme;
-          localStorage.setItem('theme', newTheme);
-          
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          const isDark = newTheme === 'dark' || (newTheme === 'system' && prefersDark);
-          
-          document.documentElement.classList.toggle('dark', isDark);
-          
-          if (isDark) {
-            gsap.to(lightIcon, { opacity: 0, duration: 0.2 });
-            gsap.to(darkIcon, { opacity: 1, duration: 0.2 });
-          } else {
-            gsap.to(lightIcon, { opacity: 1, duration: 0.2 });
-            gsap.to(darkIcon, { opacity: 0, duration: 0.2 });
-          }
-          
-          // Cerrar dropdown
-          gsap.to(themeDropdown, {
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.2,
-            onComplete: () => {
-              themeDropdown.classList.add('pointer-events-none');
-            }
-          });
-          
-          themeDropdownOpen = false;
-        });
-      });
-    }
-    
-    // Language toggle
-    const langToggle = document.getElementById('lang-toggle-mobile');
-    const langDropdown = document.getElementById('language-dropdown');
-    
-    if (langToggle && langDropdown) {
-      let langDropdownOpen = false;
-      
-      langToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        
-        if (langDropdownOpen) {
-          gsap.to(langDropdown, {
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.2,
-            onComplete: () => {
-              langDropdown.classList.add('pointer-events-none');
-            }
-          });
-        } else {
-          langDropdown.classList.remove('pointer-events-none');
-          gsap.to(langDropdown, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.3,
-            ease: 'back.out(1.7)'
-          });
-          
-          // Cerrar theme dropdown si está abierto
-          if (themeDropdownOpen) {
-            gsap.to(themeDropdown, {
-              opacity: 0,
-              scale: 0.95,
-              duration: 0.2,
-              onComplete: () => {
-                themeDropdown.classList.add('pointer-events-none');
-              }
-            });
-            themeDropdownOpen = false;
-          }
-        }
-        
-        langDropdownOpen = !langDropdownOpen;
-      });
+      // Inicializar controles de accesibilidad
+      initAccessibilityControls();
     }
     
     // Cerrar dropdowns al hacer clic fuera
-    document.addEventListener('click', (e) => {
-      if (themeDropdown && !themeToggle.contains(e.target) && !themeDropdown.contains(e.target)) {
-        gsap.to(themeDropdown, {
+    document.addEventListener('click', (e) => {      
+      if (accessibilityPanel && !accessibilityToggle.contains(e.target) && !accessibilityPanel.contains(e.target)) {
+        gsap.to(accessibilityPanel, {
           opacity: 0,
           scale: 0.95,
           duration: 0.2,
           onComplete: () => {
-            themeDropdown.classList.add('pointer-events-none');
+            accessibilityPanel.classList.add('pointer-events-none');
           }
         });
-        themeDropdownOpen = false;
-      }
-      
-      if (langDropdown && !langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
-        gsap.to(langDropdown, {
-          opacity: 0,
-          scale: 0.95,
-          duration: 0.2,
-          onComplete: () => {
-            langDropdown.classList.add('pointer-events-none');
-          }
-        });
-        langDropdownOpen = false;
+        accessibilityPanelOpen = false;
       }
     });
   }
 
+  // Función para inicializar controles de accesibilidad
+  function initAccessibilityControls() {
+    // Elementos del panel
+    const themeModeToggle = document.querySelector('.theme-mode-toggle');
+    const contrastToggle = document.querySelector('.contrast-toggle');
+    const fontSizeValue = document.querySelector('.font-size-value');
+    const fontSizeDecrease = document.querySelector('.font-size-decrease');
+    const fontSizeIncrease = document.querySelector('.font-size-increase');
+    const fontSizeSlider = document.querySelector('.font-size-slider');
+    const motionToggle = document.querySelector('.motion-toggle');
+    const motionToggleHandle = document.querySelector('.motion-toggle-handle');
+    const spacingToggle = document.querySelector('.spacing-toggle');
+    const spacingToggleHandle = document.querySelector('.spacing-toggle-handle');
+    const themeModeIndicator = document.querySelector('.theme-mode-indicator');
+    const contrastIndicator = document.querySelector('.contrast-indicator');
+    
+    // Inicializar estados guardados
+    const theme = localStorage.getItem('theme') || 'system';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+    const highContrast = localStorage.getItem('high-contrast') === 'true';
+    // Asegurar que el tamaño de fuente sea en incrementos de 5 comenzando desde 100
+    let fontSize = parseInt(localStorage.getItem('fontSize') || '100');
+    // Redondear al incremento de 5 más cercano y asegurar que esté entre 85 y 120
+    fontSize = Math.max(85, Math.min(120, Math.round(fontSize/5)*5));
+    localStorage.setItem('fontSize', fontSize.toString());
+    const reduceMotion = localStorage.getItem('enable-animations') === 'false';
+    const increasedSpacing = localStorage.getItem('increased-spacing') === 'true';
+    
+    // Aplicar estados iniciales
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('high-contrast', highContrast);
+    document.documentElement.classList.toggle('reduce-motion', reduceMotion);
+    document.documentElement.classList.toggle('increased-spacing', increasedSpacing);
+    document.documentElement.style.fontSize = `${fontSize}%`;
+    
+    // Actualizar UI basado en estados guardados
+    if (themeModeToggle && themeModeIndicator) {
+      themeModeIndicator.style.width = isDark ? '100%' : '0%';
+    }
+    
+    if (contrastToggle && contrastIndicator) {
+      contrastIndicator.style.width = highContrast ? '100%' : '0%';
+    }
+    
+    if (fontSizeValue && fontSizeSlider) {
+      fontSizeValue.textContent = `${fontSize}%`;
+      const sliderWidth = ((fontSize - 85) / (120 - 85)) * 100;
+      fontSizeSlider.style.width = `${sliderWidth}%`;
+    }
+    
+    if (motionToggle && motionToggleHandle) {
+      motionToggle.setAttribute('aria-checked', (!reduceMotion).toString());
+      motionToggle.classList.toggle('bg-blue-500', !reduceMotion);
+      motionToggle.classList.toggle('dark:bg-blue-600', !reduceMotion);
+      motionToggle.classList.toggle('bg-gray-200', reduceMotion);
+      motionToggle.classList.toggle('dark:bg-gray-700', reduceMotion);
+      
+      if (!reduceMotion) {
+        motionToggleHandle.classList.add('translate-x-5');
+        motionToggleHandle.classList.remove('translate-x-1');
+      }
+    }
+    
+    if (spacingToggle && spacingToggleHandle) {
+      spacingToggle.setAttribute('aria-checked', increasedSpacing.toString());
+      spacingToggle.classList.toggle('bg-blue-500', increasedSpacing);
+      spacingToggle.classList.toggle('dark:bg-blue-600', increasedSpacing);
+      spacingToggle.classList.toggle('bg-gray-200', !increasedSpacing);
+      spacingToggle.classList.toggle('dark:bg-gray-700', !increasedSpacing);
+      
+      if (increasedSpacing) {
+        spacingToggleHandle.classList.add('translate-x-5');
+        spacingToggleHandle.classList.remove('translate-x-1');
+      }
+    }
+    
+    // Event listeners
+    if (themeModeToggle) {
+      themeModeToggle.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || 'system';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = currentTheme === 'dark' || (currentTheme === 'system' && prefersDark);
+        
+        // Cambiar al siguiente tema
+        const nextTheme = isDark ? 'light' : 'dark';
+        localStorage.setItem('theme', nextTheme);
+        
+        // Actualizar clases
+        document.documentElement.classList.toggle('dark', !isDark);
+        
+        // Animar indicador
+        gsap.to(themeModeIndicator, {
+          width: isDark ? '0%' : '100%',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    }
+    
+    if (contrastToggle) {
+      contrastToggle.addEventListener('click', () => {
+        const currentContrast = localStorage.getItem('high-contrast') === 'true';
+        localStorage.setItem('high-contrast', (!currentContrast).toString());
+        document.documentElement.classList.toggle('high-contrast', !currentContrast);
+        
+        // Animar indicador
+        gsap.to(contrastIndicator, {
+          width: currentContrast ? '0%' : '100%',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    }
+    
+    if (fontSizeDecrease) {
+      fontSizeDecrease.addEventListener('click', () => {
+        if (fontSize > 85) {
+          const newSize = fontSize - 5;
+          updateFontSize(newSize);
+        }
+      });
+    }
+    
+    if (fontSizeIncrease) {
+      fontSizeIncrease.addEventListener('click', () => {
+        if (fontSize < 120) {
+          const newSize = fontSize + 5;
+          updateFontSize(newSize);
+        }
+      });
+    }
+    
+    function updateFontSize(newSize) {
+      localStorage.setItem('fontSize', newSize.toString());
+      document.documentElement.style.fontSize = `${newSize}%`;
+      fontSizeValue.textContent = `${newSize}%`;
+      
+      // Actualizar slider
+      const sliderWidth = ((newSize - 85) / (120 - 85)) * 100;
+      gsap.to(fontSizeSlider, {
+        width: `${sliderWidth}%`,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    }
+    
+    if (motionToggle) {
+      motionToggle.addEventListener('click', () => {
+        const currentMotion = localStorage.getItem('enable-animations') !== 'false';
+        localStorage.setItem('enable-animations', (!currentMotion).toString());
+        document.documentElement.classList.toggle('reduce-motion', currentMotion);
+        
+        // Actualizar UI
+        motionToggle.setAttribute('aria-checked', (!currentMotion).toString());
+        motionToggle.classList.toggle('bg-blue-500', !currentMotion);
+        motionToggle.classList.toggle('dark:bg-blue-600', !currentMotion);
+        motionToggle.classList.toggle('bg-gray-200', currentMotion);
+        motionToggle.classList.toggle('dark:bg-gray-700', currentMotion);
+        
+        // Animar handle
+        if (!currentMotion) {
+          gsap.to(motionToggleHandle, {
+            x: '16px',
+            duration: 0.2,
+            ease: 'power1.out'
+          });
+        } else {
+          gsap.to(motionToggleHandle, {
+            x: '0px',
+            duration: 0.2,
+            ease: 'power1.out'
+          });
+        }
+        
+        // Actualizar GSAP
+        if (currentMotion && window.gsap) {
+          gsap.globalTimeline.timeScale(0.0001);
+        } else if (window.gsap) {
+          gsap.globalTimeline.timeScale(1);
+        }
+      });
+    }
+    
+    if (spacingToggle) {
+      spacingToggle.addEventListener('click', () => {
+        const currentSpacing = localStorage.getItem('increased-spacing') === 'true';
+        localStorage.setItem('increased-spacing', (!currentSpacing).toString());
+        document.documentElement.classList.toggle('increased-spacing', !currentSpacing);
+        
+        // Actualizar UI
+        spacingToggle.setAttribute('aria-checked', (!currentSpacing).toString());
+        spacingToggle.classList.toggle('bg-blue-500', !currentSpacing);
+        spacingToggle.classList.toggle('dark:bg-blue-600', !currentSpacing);
+        spacingToggle.classList.toggle('bg-gray-200', currentSpacing);
+        spacingToggle.classList.toggle('dark:bg-gray-700', currentSpacing);
+        
+        // Animar handle
+        if (!currentSpacing) {
+          gsap.to(spacingToggleHandle, {
+            x: '16px',
+            duration: 0.2,
+            ease: 'power1.out'
+          });
+        } else {
+          gsap.to(spacingToggleHandle, {
+            x: '0px',
+            duration: 0.2,
+            ease: 'power1.out'
+          });
+        }
+      });
+    }
+  }
+  
+  // Función para mejorar la interacción con el enlace de configuración
+  function enhanceSettingsLink() {
+    const settingsLink = document.getElementById('settings-link');
+    
+    if (settingsLink) {
+      // Añadir animación al hover
+      settingsLink.addEventListener('mouseenter', () => {
+        gsap.to(settingsLink, {
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          x: 5,
+          duration: 0.3,
+          ease: 'power3.out'
+        });
+      });
+      
+      settingsLink.addEventListener('mouseleave', () => {
+        gsap.to(settingsLink, {
+          backgroundColor: 'transparent',
+          x: 0,
+          duration: 0.3,
+          ease: 'power3.out'
+        });
+      });
+      
+      // Efecto de click
+      settingsLink.addEventListener('click', (e) => {
+        // Aplicar efecto de pulsación
+        gsap.to(settingsLink, {
+          scale: 0.97,
+          duration: 0.1,
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.to(settingsLink, {
+              scale: 1,
+              duration: 0.2,
+              ease: 'back.out(2)'
+            });
+          }
+        });
+      });
+    }
+  }
+  
   // Initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initMobileMenu();
       setupMobileNavHighlighting();
       setupHeaderToggles();
+      enhanceSettingsLink();
     });
   } else {
     initMobileMenu();
     setupMobileNavHighlighting();
     setupHeaderToggles();
+    enhanceSettingsLink();
   }
 </script>
 
@@ -613,22 +687,67 @@ const { headerItems, lang, translations } = Astro.props;
     }
   }
   
-  /* Nuevos estilos para botones de tema e idioma */
-  .theme-toggle-button, .lang-toggle-button {
+  /* Theme and accessibility toggle buttons */
+  .theme-toggle-button, .accessibility-toggle {
     transition: all 0.2s ease;
   }
   
-  .theme-toggle-button:hover, .lang-toggle-button:hover {
+  .theme-toggle-button:hover, .accessibility-toggle:hover {
     transform: scale(1.05);
     background-color: rgba(0, 0, 0, 0.05);
   }
   
-  .theme-toggle-button:active, .lang-toggle-button:active {
+  .theme-toggle-button:active, .accessibility-toggle:active {
     transform: scale(0.95);
   }
   
   /* Asegurar que los dropdowns estén ocultos inicialmente */
-  #theme-dropdown, #language-dropdown {
+  #theme-dropdown, #accessibility-panel {
     pointer-events: none;
+  }
+  
+  /* Estilos para el panel de accesibilidad */
+  .motion-toggle-handle,
+  .spacing-toggle-handle {
+    transform: translateX(0.25rem);
+    transition: transform 0.2s ease;
+  }
+  
+  .translate-x-5 {
+    transform: translateX(1.25rem) !important;
+  }
+  
+  .translate-x-1 {
+    transform: translateX(0.25rem) !important;
+  }
+  
+  /* High contrast mode */
+  html.high-contrast {
+    filter: contrast(1.3) saturate(1.2);
+  }
+  
+  /* Reduce motion */
+  html.reduce-motion * {
+    animation-duration: 0.0001s !important;
+    transition-duration: 0.0001s !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Increased spacing */
+  html.increased-spacing {
+    letter-spacing: 0.025em;
+    word-spacing: 0.05em;
+    line-height: 1.5;
+  }
+  
+  html.increased-spacing p,
+  html.increased-spacing li,
+  html.increased-spacing span {
+    margin-bottom: 1.2em;
+  }
+  
+  html.increased-spacing button,
+  html.increased-spacing a {
+    padding: 0.25em 0.5em;
   }
 </style>

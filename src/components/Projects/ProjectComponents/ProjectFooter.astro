@@ -1,0 +1,41 @@
+---
+// ProjectFooter.astro - Componente para los enlaces del proyecto
+import type { Project } from '../../../types/projects';
+import GithubIcon from '@icons/GitHub.astro';
+import LinkIcon from '@icons/Link.astro';
+import LinkButton from '@components/ui/LinkButton.astro';
+import { commonClasses } from '@utils/cssClasses';
+
+interface Props {
+  project: Project;
+  buttons: {
+    textCodeButton: string;
+    textDemoButton: string;
+    textDemo2Button: string;
+  };
+}
+
+const { project, buttons } = Astro.props;
+const { link, secondaryLink, github } = project;
+---
+
+<footer class='flex items-end justify-start mt-6 mb-16 gap-x-4'>
+  {github && (
+    <LinkButton href={github}>
+      <GithubIcon class={commonClasses.iconSize.small} />
+      {buttons.textCodeButton}
+    </LinkButton>
+  )}
+  {link && (
+    <LinkButton href={link}>
+      <LinkIcon class={commonClasses.iconSize.small} />
+      {buttons.textDemoButton}
+    </LinkButton>
+  )}
+  {secondaryLink && (
+    <LinkButton href={secondaryLink}>
+      <LinkIcon class={commonClasses.iconSize.small} />
+      {buttons.textDemo2Button}
+    </LinkButton>
+  )}
+</footer>

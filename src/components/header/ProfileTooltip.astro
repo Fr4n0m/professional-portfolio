@@ -14,9 +14,9 @@ export interface Props {
 const { info, lang } = Astro.props;
 ---
 
-<div class='relative group flex items-center'>
+<div class={`relative group flex items-center ${Astro.props.class || ''}`}>
   <a href={lang === 'es' ? '/' : `/${lang}/`} class='flex items-center hover:scale-110 transition-transform duration-200 p-2 mr-1'>
-    <div class='w-6 h-6 rounded-full overflow-hidden'>
+    <div class='w-6 h-6 rounded-full overflow-hidden hero-profile-img'>
       <img
         src='/assets/images/Fr4n0m Photo.webp'
         alt='Fr4n0m photo'
@@ -25,7 +25,7 @@ const { info, lang } = Astro.props;
     </div>
   </a>
   <!-- Tooltip con información personal -->
-  <div class='absolute left-[-10.5px] top-12 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-50'>
+  <div class='absolute tooltip-container left-[-10.5px] top-12 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-50'>
     <div class='bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 min-w-[320px]'>
       <!-- Imagen grande -->
       <div class='flex items-center space-x-4 mb-3'>
@@ -95,5 +95,28 @@ const { info, lang } = Astro.props;
   /* Asegurar que el tooltip se muestra sobre otros elementos */
   .group:hover .group-hover\:visible {
     z-index: 50;
+  }
+  
+  /* Estilos específicos para cuando el tooltip está en el header vs en el hero */
+  .hero-tooltip .tooltip-container {
+    left: 50%;
+    top: auto;
+    bottom: -260px;
+    transform: translateX(-50%) translateY(20px);
+  }
+  
+  .hero-tooltip .group-hover\:translate-y-0 {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .hero-tooltip .tooltip-container .absolute.-top-2 {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+  
+  /* Ocultar el ícono de perfil pequeño en el hero */
+  .hero-tooltip .hero-profile-img {
+    display: none;
   }
 </style>

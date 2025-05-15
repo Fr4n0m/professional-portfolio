@@ -2,22 +2,25 @@
 const { class: className = 'size-5' } = Astro.props;
 ---
 
-<!-- SF Symbol moon.fill style con detección de navegador -->
-<svg {...Astro.props} class={`moon-icon ${className}`} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" 
-        fill="currentColor"/>
+<!-- SF Symbol moon.fill oficial de Apple -->
+<svg {...Astro.props} class={`moon-icon ${className}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path 
+    d="M21.53 15.93c-.16-.27-.61-.69-1.73-.49a8.46 8.46 0 01-1.88.13 8.409 8.409 0 01-5.91-2.82 8.068 8.068 0 01-1.44-8.66c.44-1.01.13-1.54-.09-1.76s-.77-.55-1.83-.11a10.318 10.318 0 00-6.32 10.21 10.475 10.475 0 007.04 8.99 10 10 0 002.89.55c.16.01.32.02.48.02a10.5 10.5 0 008.47-4.27c.67-.93.49-1.519.32-1.79z" 
+    fill="currentColor" 
+    stroke="none"
+  />
 </svg>
 
 <style>
-  /* Estilo adaptativo para Safari/Apple */
-  @supports (-webkit-backdrop-filter: none) {
-    .moon-icon {
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
-    }
+  /* Estilo para reflejar mejor SF Symbols */
+  .moon-icon {
+    fill-rule: evenodd;
   }
   
-  /* Estilo para modo claro */
-  :global(.light) .moon-icon {
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+  /* Ajustes específicos para dispositivos Apple */
+  @supports (-webkit-backdrop-filter: none) {
+    .moon-icon {
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+    }
   }
 </style>

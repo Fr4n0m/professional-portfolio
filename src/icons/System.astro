@@ -2,26 +2,30 @@
 const { class: className = 'size-5' } = Astro.props;
 ---
 
-<!-- SF Symbol desktopcomputer style con detección de navegador -->
-<svg {...Astro.props} class={`system-icon ${className}`} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <!-- Monitor -->
-  <rect x="3" y="3" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
-  <rect x="5" y="5" width="14" height="8" fill="currentColor" opacity="0.2"/>
+<!-- SF Symbol display oficial de Apple (equivalente a 'computer' en SF Symbols) -->
+<svg {...Astro.props} class={`system-icon ${className}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pantalla del ordenador -->
+  <rect x="2" y="4" width="20" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
   
-  <!-- Base del monitor -->
-  <path d="M8 15v3M16 15v3M7 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <!-- Base del ordenador -->
+  <path d="M8 19.5h8M12 16v3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
   
-  <!-- Pantalla con contenido -->
-  <rect x="7" y="7" width="4" height="1" fill="currentColor" rx="0.5"/>
-  <rect x="7" y="9" width="6" height="1" fill="currentColor" rx="0.5" opacity="0.7"/>
-  <rect x="14" y="7" width="3" height="4" fill="currentColor" rx="0.5" opacity="0.5"/>
+  <!-- Detalle de la pantalla (al estilo Apple) -->
+  <rect x="4" y="6" width="16" height="8" fill="currentColor" opacity="0.12"/>
 </svg>
 
 <style>
-  /* Estilo adaptativo para Safari/Apple */
+  /* Estilo para reflejar mejor SF Symbols */
+  .system-icon {
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Ajustes específicos para dispositivos Apple */
   @supports (-webkit-backdrop-filter: none) {
     .system-icon {
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+      stroke-width: 2.5;
     }
   }
 </style>

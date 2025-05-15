@@ -31,8 +31,8 @@ const TextPressure: React.FC<TextPressureProps> = ({
     // Dividir el texto en caracteres individuales
     const chars = text.split('');
     
-    // Color del texto según el tema
-    const textColor = darkMode ? '#facc15' : '#1F429F';
+    // Color del texto según el tema (adaptado para theme switching)
+    const textColor = 'currentColor';
     
     // Configuración para la animación de entrada
     const from = { opacity: 0, transform: 'translate3d(0,40px,0)' };

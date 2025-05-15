@@ -1,0 +1,30 @@
+---
+const { class: className = 'size-5' } = Astro.props;
+---
+
+<!-- SF Symbol toggles.button oficial de Apple -->
+<svg {...Astro.props} class={`cc-icon ${className}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Primer interruptor -->
+  <rect x="3" y="4" width="18" height="6" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+  <circle cx="16" cy="7" r="2" fill="currentColor"/>
+  
+  <!-- Segundo interruptor -->
+  <rect x="3" y="14" width="18" height="6" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+  <circle cx="8" cy="17" r="2" fill="currentColor"/>
+</svg>
+
+<style>
+  /* Estilo para reflejar mejor SF Symbols */
+  .cc-icon {
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Ajustes específicos para dispositivos Apple */
+  @supports (-webkit-backdrop-filter: none) {
+    .cc-icon {
+      stroke-width: 2.5;
+    }
+  }
+</style>

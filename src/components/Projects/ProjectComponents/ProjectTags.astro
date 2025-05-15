@@ -1,0 +1,25 @@
+---
+// ProjectTags.astro - Componente para las etiquetas del proyecto
+import type { Project } from '../../../types/projects';
+import Tag from '@components/ui/Tag.astro';
+import { TAGS } from '@utils/tags';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { tags } = project;
+---
+
+<ul class='flex gap-x-3 flex-row text-nowrap flex-wrap'>
+  {tags.map(tag => (
+    <li>
+      {TAGS[tag] ? (
+        <Tag {...TAGS[tag]} />
+      ) : (
+        <span>{tag}</span>
+      )}
+    </li>
+  ))}
+</ul>

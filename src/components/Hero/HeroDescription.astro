@@ -1,0 +1,46 @@
+---
+// HeroDescription.astro - Componente para la descripción del hero
+import { commonClasses } from '@utils/cssClasses';
+
+interface Props {
+  description1: string;
+  description2: string;
+  description3: string;
+  location: string;
+}
+
+const { description1, description2, description3, location } = Astro.props;
+---
+
+<h2 class='text-xl lg:text-2xl opacity-95 text-wrap max-w-[700px] hero-description-mobile-centered mt-2 md:mt-1'>
+  <span class={commonClasses.textColors.secondary}>
+    {description1}
+    <span class={commonClasses.textColors.tertiary}>
+      {description2}
+    </span>
+  </span>
+  <span class={commonClasses.textColors.muted}>
+    {description3}
+  </span>
+  <span class={commonClasses.textColors.accent + ' text-lg lg:text-xl'}>
+    <br />{location}
+  </span>
+</h2>
+
+<style>
+  /* Estilos móviles */
+  .hero-description-mobile-centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  /* Responsive design */
+  @media (min-width: 768px) {    
+    .hero-description-mobile-centered {
+      margin-left: 0;
+      margin-right: 0;
+      text-align: left;
+    }
+  }
+</style>

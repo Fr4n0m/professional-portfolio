@@ -1,0 +1,134 @@
+---
+// ProfileImage.astro - Componente para manejar la imagen de perfil en ambas versiones (móvil y desktop)
+interface Props {
+  imageSrc: string;
+  altText: string;
+}
+
+const { imageSrc, altText } = Astro.props;
+---
+
+<!-- Versión móvil sin tooltip -->
+<div class="block md:hidden mb-5">
+  <div class="flex justify-center">
+    <div class="hero-profile-frame-mobile">
+      <img
+        class="w-full h-full object-cover object-center rounded-[19px]"
+        src={imageSrc}
+        alt={altText}
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Versión desktop con tooltip -->
+<div class="hidden md:block">
+  <div class="flex justify-start">
+    <div class="hero-profile-wrapper desktop-interactive">
+      <div class="hero-profile-frame">
+        <img
+          class="w-full h-full object-cover object-center rounded-[19px]"
+          src={imageSrc}
+          alt={altText}
+        />
+      </div>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Estilos para la imagen en móvil */
+  .hero-profile-frame-mobile {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    overflow: hidden;
+    border-radius: 25px;
+    background: linear-gradient(to bottom right, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.1));
+    box-shadow: rgba(14, 165, 233, 0.15) 0px 3px 8px, 0 0 0 1px rgba(56, 189, 248, 0.15);
+  }
+  
+  /* Versión oscura para móvil */
+  :global(.dark) .hero-profile-frame-mobile {
+    background: linear-gradient(to bottom right, rgba(250, 204, 21, 0.2), rgba(234, 179, 8, 0.15));
+    box-shadow: rgba(250, 204, 21, 0.15) 0px 3px 8px, 0 0 0 1px rgba(250, 204, 21, 0.15);
+  }
+
+  /* Versión desktop con hover */
+  .hero-profile-wrapper {
+    position: relative;
+    z-index: 20;
+  }
+  
+  .desktop-interactive {
+    cursor: pointer;
+  }
+  
+  .hero-profile-frame {
+    position: relative;
+    width: 8.5rem;
+    height: 8.5rem;
+    overflow: hidden;
+    border-radius: 25px;
+    background: linear-gradient(to bottom right, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.1));
+    box-shadow: rgba(14, 165, 233, 0.2) 0px 4px 12px, 0 0 0 2px rgba(56, 189, 248, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .desktop-interactive:hover .hero-profile-frame {
+    transform: scale(1.05);
+    box-shadow: rgba(56, 189, 248, 0.25) 0px 8px 24px, 0 0 0 2px rgba(2, 132, 199, 0.3);
+  }
+  
+  /* Versión oscura */
+  :global(.dark) .hero-profile-frame {
+    background: linear-gradient(to bottom right, rgba(250, 204, 21, 0.2), rgba(234, 179, 8, 0.15));
+    box-shadow: rgba(250, 204, 21, 0.25) 0px 4px 12px, 0 0 0 2px rgba(250, 204, 21, 0.25);
+  }
+  
+  :global(.dark) .desktop-interactive:hover .hero-profile-frame {
+    box-shadow: rgba(251, 191, 36, 0.35) 0px 8px 24px, 0 0 0 2px rgba(250, 204, 21, 0.35);
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-profile-frame {
+      width: 9rem;
+      height: 9rem;
+    }
+  }
+  
+  /* Estilo para pantallas extra grandes */
+  @media (min-width: 1280px) {
+    .hero-profile-frame {
+      width: 9.5rem;
+      height: 9.5rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Detectar si el dispositivo soporta hover (probablemente desktop)
+    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    
+    // Solo aplicamos animaciones en desktop
+    if (supportsHover) {
+      // Animación para la imagen en desktop
+      const profileFrame = document.querySelector('.hero-profile-frame');
+      if (profileFrame) {
+        profileFrame.style.opacity = "1";
+        
+        gsap.from(profileFrame, {
+          scale: 0.9,
+          opacity: 0,
+          duration: 0.4,
+          ease: "back.out(1.4)",
+          clearProps: "all"
+        });
+      }
+    }
+  });
+</script>

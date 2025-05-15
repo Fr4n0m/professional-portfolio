@@ -2,38 +2,36 @@
 const { class: className = 'size-5' } = Astro.props;
 ---
 
-<!-- SF Symbol sun.max.fill style con detección de navegador -->
-<svg {...Astro.props} class={`sun-icon ${className}`} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <!-- Sol central -->
-  <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+<!-- SF Symbol sun.max.fill oficial de Apple -->
+<svg {...Astro.props} class={`sun-icon ${className}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Círculo central del sol -->
+  <circle cx="12" cy="12" r="5" fill="currentColor"/>
   
   <!-- Rayos principales -->
-  <path class="sun-rays" d="M12 1v5M12 18v5M23 12h-5M6 12H1" 
-        stroke="currentColor" 
-        stroke-width="2" 
-        stroke-linecap="round"/>
+  <line x1="12" y1="2" x2="12" y2="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <line x1="12" y1="20" x2="12" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <line x1="4" y1="12" x2="2" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <line x1="22" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
   
   <!-- Rayos diagonales -->
-  <path class="sun-rays-diagonal" d="M19.07 4.93l-3.54 3.54M8.47 15.53l-3.54 3.54M19.07 19.07l-3.54-3.54M8.47 8.47L4.93 4.93" 
-        stroke="currentColor" 
-        stroke-width="2" 
-        stroke-linecap="round"/>
+  <line x1="19.78" y1="4.22" x2="18.36" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <line x1="19.78" y1="19.78" x2="18.36" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 </svg>
 
 <style>
-  /* Estilo adaptativo para Safari/Apple */
+  /* Estilo para reflejar mejor SF Symbols */
+  .sun-icon {
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Ajustes específicos para dispositivos Apple */
   @supports (-webkit-backdrop-filter: none) {
     .sun-icon {
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-    }
-    
-    .sun-rays {
-      stroke-width: 1.5;
-    }
-    
-    .sun-rays-diagonal {
-      stroke-width: 1.5;
-      opacity: 0.9;
+      stroke-width: 2.5;
     }
   }
 </style>
