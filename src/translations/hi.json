@@ -193,5 +193,23 @@
         "handler": "/hi/projects"
       }
     ]
+  },
+  "languageNames": {
+    "es": "Español",
+    "en": "Inglés",
+    "zh": "Chino",
+    "hi": "Hindi",
+    "ar": "Árabe",
+    "pt": "Portugués",
+    "fr": "Francés",
+    "de": "Alemán",
+    "ja": "Japonés",
+    "ru": "Ruso",
+    "it": "Italiano",
+    "ko": "Coreano",
+    "nl": "Holandés",
+    "pl": "Polaco",
+    "tr": "Turco",
+    "hv": "Alto Valyrio"
   }
 }

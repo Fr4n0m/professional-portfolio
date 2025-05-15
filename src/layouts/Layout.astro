@@ -1,5 +1,5 @@
 ---
-import '@fontsource-variable/onest';
+import '@styles/apple-fonts.css';
 
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
@@ -51,11 +51,47 @@ const lang = Astro.request.url.includes('/en') ? 'en' : 'es';
 <style is:global>
 	:root {
 		color-scheme: dark;
+		
+		/* Definición de fuentes del sistema estilo Apple */
+		--font-sf-pro: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+		--font-sf-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+		
+		/* Tamaños de fuente estilo Apple */
+		--text-xs: 0.75rem;    /* 12px */
+		--text-sm: 0.875rem;   /* 14px */
+		--text-base: 1rem;     /* 16px */
+		--text-lg: 1.125rem;   /* 18px */
+		--text-xl: 1.25rem;    /* 20px */
+		--text-2xl: 1.5rem;    /* 24px */
+		--text-3xl: 1.875rem;  /* 30px */
+		--text-4xl: 2.25rem;   /* 36px */
+		--text-5xl: 3rem;      /* 48px */
+		--text-6xl: 3.75rem;   /* 60px */
+		
+		/* Pesos de fuente estilo Apple */
+		--font-light: 300;
+		--font-regular: 400;
+		--font-medium: 500;
+		--font-semibold: 600;
+		--font-bold: 700;
+		
+		/* Interlineado estilo Apple */
+		--leading-tight: 1.25;
+		--leading-normal: 1.5;
+		--leading-relaxed: 1.625;
+		
+		/* Espaciado de letras estilo Apple */
+		--tracking-tight: -0.025em;
+		--tracking-normal: 0;
+		--tracking-wide: 0.025em;
 	}
 
 	html {
-		font-family: 'Onest Variable', system-ui, sans-serif;
+		font-family: var(--font-sf-pro);
 		scroll-behavior: smooth;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 
 	body {
@@ -63,6 +99,107 @@ const lang = Astro.request.url.includes('/en') ? 'en' : 'es';
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		font-weight: var(--font-regular);
+		line-height: var(--leading-normal);
+		color: rgba(255, 255, 255, 0.86);
+	}
+	
+	/* Títulos con estilo Apple */
+	h1 {
+		font-size: var(--text-6xl);
+		font-weight: var(--font-bold);
+		letter-spacing: var(--tracking-tight);
+		line-height: var(--leading-tight);
+	}
+	
+	h2 {
+		font-size: var(--text-4xl);
+		font-weight: var(--font-semibold);
+		letter-spacing: var(--tracking-tight);
+		line-height: var(--leading-tight);
+	}
+	
+	h3 {
+		font-size: var(--text-2xl);
+		font-weight: var(--font-semibold);
+		line-height: var(--leading-tight);
+	}
+	
+	h4 {
+		font-size: var(--text-xl);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-tight);
+	}
+	
+	h5 {
+		font-size: var(--text-lg);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-normal);
+	}
+	
+	h6 {
+		font-size: var(--text-base);
+		font-weight: var(--font-medium);
+		line-height: var(--leading-normal);
+	}
+	
+	/* Párrafos con estilo Apple */
+	p {
+		font-size: var(--text-base);
+		font-weight: var(--font-regular);
+		line-height: var(--leading-relaxed);
+		letter-spacing: var(--tracking-normal);
+	}
+	
+	/* Enlaces con estilo Apple */
+	a {
+		color: #2997ff;
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+		font-family: var(--font-sf-pro);
+		font-weight: var(--font-regular);
+	}
+	
+	a:hover {
+		opacity: 0.8;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+	
+	/* Enlaces sin subrayado en hover */
+	a.no-underline:hover {
+		text-decoration: none;
+	}
+	
+	/* Texto pequeño */
+	.text-sm {
+		font-size: var(--text-sm);
+		line-height: var(--leading-normal);
+	}
+	
+	.text-xs {
+		font-size: var(--text-xs);
+		line-height: var(--leading-normal);
+	}
+	
+	/* Código con estilo Apple */
+	code, pre {
+		font-family: var(--font-sf-mono);
+		font-size: 0.9em;
+	}
+	
+	/* Botones con estilo Apple */
+	button {
+		font-family: var(--font-sf-pro);
+		font-weight: var(--font-medium);
+		letter-spacing: var(--tracking-normal);
+	}
+	
+	/* Ajustes responsivos */
+	@media (max-width: 768px) {
+		h1 { font-size: var(--text-4xl); }
+		h2 { font-size: var(--text-3xl); }
+		h3 { font-size: var(--text-xl); }
 	}
 
 	@media (prefers-reduce-motion: reduce) {

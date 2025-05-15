@@ -1,417 +1,447 @@
 {
-	"personalInfo": {
-		"name": "Francisco José Rodríguez Martínez",
-		"role": "Softwareentwickler und Full Stack.",
-		"alias": "Fr4n0m",
-		"location": "📍 Málaga, Spanien",
-		"mail": "Fran11799@outlook.com",
-		"profiles": [
-			{
-				"network": "LinkedIn",
-				"username": "Francisco Rodríguez",
-				"url": "https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
-			},
-			{
-				"network": "GitHub",
-				"username": "Fr4n0m",
-				"url": "https://github.com/Fr4n0m"
-			},
-			{
-				"network": "CV",
-				"username": "Francisco Rodríguez",
-				"url": "https://cv-web-smoky.vercel.app/"
-			}
-		]
-	},
-
-	"headerItems": [
-		{
-			"title": "Startseite",
-			"label": "startseite",
-			"url": "/#"
-		},
-		{
-			"title": "Fähigkeiten",
-			"label": "fähigkeiten",
-			"url": "/#fähigkeiten"
-		},
-		{
-			"title": "Erfahrung",
-			"label": "erfahrung",
-			"url": "/#erfahrung"
-		},
-		{
-			"title": "Projekte",
-			"label": "projekte",
-			"url": "/#projekte"
-		},
-		{
-			"title": "Zertifikate",
-			"label": "zertifikate",
-			"url": "/certifications"
-		},
-		{
-			"title": "Kontakt",
-			"label": "kontakt",
-			"url": "mailto:Fran11799@outlook.com"
-		},
-		{
-			"title": "Lebenslauf",
-			"label": "lebenslauf",
-			"url": "https://cv-web-smoky.vercel.app/"
-		}
-	],
-
-	"layout": {
-		"title": "Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
-		"titleDescription": "Full Stack Webentwickler"
-	},
-
-	"mainPage": {
-		"hero": {
-			"heroTitle": "Hallo, ich bin Fran",
-			"heroBadge": "Verfügbar für Arbeit",
-			"heroDescription1": "Softwareentwickler und Full Stack Webentwickler.",
-			"heroDescription2": "Ewiger Lernender mit Leidenschaft für Details.",
-			"heroDescription3": "Spezialisiert auf das Erstellen und Lösen von Problemen. 🤓"
-		},
-
-		"socialPill": {
-			"socialPillTitle": "Besuchen",
-			"sendMailSocialPill": "E-Mail senden an",
-
-			"copyButton": {
-				"copyTitle": "E-Mail kopieren",
-				"copyMail": "E-Mail kopiert!",
-				"copyMailError": "Fehler beim Kopieren"
-			}
-		},
-
-		"skills": {
-			"skillsTitle": "Fähigkeiten"
-		},
-
-		"selectedProjects": {
-			"projectsTitle": "Projekte"
-		}
-	},
-
-	"projectsPage": {
-		"allProjects": "Alle Projekte",
-		"allProjectsTitle": "Projekte - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
-		"allProjectsDescription": "Alle Projekte - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
-		"allProjectsLink": "/projects",
-		"projects": [
-			{
-				"title": "Agrooe Cashback",
-				"description": "An diesem Web habe ich mit einem Team zusammengearbeitet, um eine Plattform von Grund auf zu entwickeln, die sich dem Verkauf von Qualitätsprodukten und der Entwicklung des lokalen Handels widmet. Wir haben vom Konzept bis zur Praxis gearbeitet und sowohl das Backend als auch das Frontend erstellt. Neben verschiedenen Technologien wurden Integrationen wie JWT für die Kontrolle von Benutzerkonten und Anmeldungen, ein Dashboard für die Kontrolle aller Daten implementiert... Funktionen wie die Möglichkeit, sich mit verschiedenen sozialen Netzwerken anzumelden, ein Konto als Benutzer zu erstellen, um Produkte zu kaufen, oder als Unternehmen, um sie hinzuzufügen, Karten des nächstgelegenen Ortes, an dem das Produkt gefunden werden könnte, unter anderem. Aus Vertraulichkeitsgründen wird der Code nicht angezeigt.",
-				"images": [
-					"/assets/images/projects/agrooe_1.jpeg",
-					"/assets/images/projects/agrooe_2.jpeg",
-					"/assets/images/projects/agrooe_3.jpeg"
-				],
-				"tags": [
-					"HTML",
-					"CSS",
-					"TAILWIND",
-					"JAVASCRIPT",
-					"REACT",
-					"NEXTJS",
-					"EXPRESS",
-					"NODEJS",
-					"MONGODB"
-				]
-			},
-			{
-				"title": "Strapi Games Store",
-				"description": "Webanwendung zur Verwaltung von videospielbezogenen Inhalten mit Strapi als Backend und CMS.",
-				"link": "https://strapi-games-store.vercel.app/",
-				"github": "https://github.com/Fr4n0m/strapi-games-store",
-				"images": [
-					"/assets/images/projects/strapi-games-web-1.webp",
-					"/assets/images/projects/strapi-games-web-2.webp",
-					"/assets/images/projects/strapi-games-web-3.webp"
-				],
-				"tags": [
-					"HTML",
-					"CSS",
-					"TAILWIND",
-					"JAVASCRIPT",
-					"TYPESCRIPT",
-					"REACT",
-					"NEXTJS",
-					"STRAPI"
-				]
-			},
-			{
-				"title": "Echtzeit-Chat",
-				"description": "Echtzeit-Chat-Anwendung mit Socket.IO für Echtzeitkommunikation und Supabase als Datenbank.",
-				"link": "https://realtime-chat-ten-nu.vercel.app/",
-				"github": "https://github.com/Fr4n0m/realtime-chat",
-				"images": [
-					"/assets/images/projects/realtime-chat_1.webp",
-					"/assets/images/projects/realtime-chat_2.webp"
-				],
-				"tags": [
-					"HTML",
-					"CSS",
-					"JAVASCRIPT",
-					"VITE",
-					"EXPRESS",
-					"NODEJS",
-					"SUPABASE"
-				]
-			},
-			{
-				"title": "Super Mario Bros 85'",
-				"description": "Klon des legendären Nintendo-Spiels Super Mario Bros von 1985 zu Bildungszwecken.",
-				"github": "https://github.com/Fr4n0m/super-mario-bros-85",
-				"images": [
-					"/assets/images/projects/super-mario-bros-85.webp",
-					"/assets/images/projects/super-mario-bros-85_2.webp",
-					"/assets/images/projects/super-mario-bros-85_3.webp",
-					"/assets/images/projects/super-mario-bros-85_4.webp",
-					"/assets/images/projects/super-mario-bros-85_5.webp",
-					"/assets/images/projects/super-mario-bros-85_6.webp",
-					"/assets/images/projects/super-mario-bros-85_7.webp"
-				],
-				"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE", "PHASER"]
-			},
-			{
-				"title": "Paint Windows 95'",
-				"description": "Paint-Anwendung inspiriert von der Windows 95-Ära.",
-				"link": "https://paint-win-95-blond.vercel.app/",
-				"github": "https://github.com/Fr4n0m/paint-win-95",
-				"images": ["/assets/images/projects/paint-95.webp"],
-				"tags": ["HTML", "CSS", "JAVASCRIPT", "VITE"]
-			},
-			{
-				"title": "Bookshop View Transitions Demo",
-				"description": "Web-Bibliothek zum Üben von View Transitions.",
-				"link": "https://bookshop-view-transitions.vercel.app/",
-				"secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
-				"github": "https://github.com/Fr4n0m/bookshop-view-transitions",
-				"images": [
-					"/assets/images/projects/bookshop_1.webp",
-					"/assets/images/projects/bookshop_2.webp"
-				],
-				"tags": ["HTML", "CSS", "JAVASCRIPT", "ASTRO"]
-			},
-			{
-				"title": "TikTok-Klon",
-				"description": "Klon der TikTok-Benutzeroberfläche mit Vite und React mit Supabase-Backend.",
-				"link": "https://tiktok-clone-five-phi.vercel.app/",
-				"github": "https://github.com/Fr4n0m/tiktok-clone",
-				"images": [
-					"/assets/images/projects/tiktok_2.webp",
-					"/assets/images/projects/tiktok_1.webp"
-				],
-				"tags": [
-					"HTML",
-					"CSS",
-					"JAVASCRIPT",
-					"VITE",
-					"REACT",
-					"NODEJS",
-					"EXPRESS",
-					"SUPABASE"
-				]
-			},
-			{
-				"title": "Atari Breakout Spiel",
-				"description": "Version des legendären Atari BreakOut-Spiels mit JavaScript.",
-				"link": "https://breakout-game-jade.vercel.app/",
-				"github": "https://github.com/Fr4n0m/breakout-game",
-				"images": [
-					"/assets/images/projects/breakout-game_2.webp",
-					"/assets/images/projects/breakout-game.webp"
-				],
-				"tags": ["HTML", "CSS", "JAVASCRIPT"]
-			},
-			{
-				"title": "Filmax",
-				"description": "Website zur Anzeige von Informationen über Filme und Serien.",
-				"link": "",
-				"github": "https://github.com/Fr4n0m/filmax",
-				"images": [
-					"/assets/images/projects/filmax_home_preview.webp",
-					"/assets/images/projects/filmax_home_preview_2.webp",
-					"/assets/images/projects/filmax_blog_preview.webp",
-					"/assets/images/projects/filmax_blog_preview_2.webp"
-				],
-				"tags": ["HTML", "CSS", "JAVASCRIPT"]
-			},
-			{
-				"title": "Web-Rechner",
-				"description": "Ein einfacher Taschenrechner zur Durchführung grundlegender arithmetischer Operationen.",
-				"link": "https://web-calculator-snowy.vercel.app/",
-				"github": "https://github.com/Fr4n0m/web_calculator",
-				"images": [
-					"/assets/images/projects/WebCalculator_light.webp",
-					"/assets/images/projects/WebCalculator_dark.webp"
-				],
-				"tags": ["HTML", "CSS", "TAILWIND", "JAVASCRIPT"]
-			},
-			{
-				"title": "Pokédex",
-				"description": "Pokédex um Informationen über Pokémon anzuzeigen mit der Möglichkeit, Favoriten hinzuzufügen, zu löschen oder sogar eigene Pokémon zu erstellen.",
-				"link": "",
-				"github": "https://github.com/Fr4n0m/YourOwnPokedex",
-				"images": [
-					"/assets/images/projects/pokedex.webp",
-					"/assets/images/projects/pokedex_favorites.webp",
-					"/assets/images/projects/pokedex_create.webp"
-				],
-				"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "NEXTJS"]
-			},
-			{
-				"title": "1. Web-Portfolio",
-				"description": "Erstes Web-Portfolio nur mit HTML, CSS und JavaScript. Später habe ich es in Astro implementiert.",
-				"link": "https://portfolio-fr4n0m-astro.vercel.app/",
-				"github": "https://github.com/Fr4n0m/portfolio-astro",
-				"images": [
-					"/assets/images/projects/1er_portfolio.webp",
-					"/assets/images/projects/1er_portfolio_2.webp"
-				],
-				"tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "ASTRO"]
-			}
-		],
-		"projectsButtons": {
-			"textCodeButton": "Code",
-			"textDemoButton": "Demo",
-			"textDemo2Button": "Demo 2"
-		}
-	},
-
-	"certificationsPage": {
-		"certifications": "Zertifikate",
-		"certificationsTitle": "Zertifikate - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
-		"certificationsDescription": "Zertifikate - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
-		"certificationsList": [
-			{
-				"title": "Full Stack Webentwickler-Zertifikat",
-				"image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
-				"url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
-				"description": "Ausbildung in Full Stack Webentwicklung, einschließlich der Erstellung von Benutzeroberflächen mit HTML, CSS und React, Backend-Entwicklung mit Node.js, MongoDB, Datenbankverwaltung und Bereitstellung mit DevOps-Tools unter vielen anderen Technologien.",
-				"entity": "CODESPACE"
-			},
-			{
-				"title": "Linux-Umgebungsanpassungs-Zertifikat",
-				"image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
-				"url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
-				"description": "Fähigkeiten zur Anpassung von Linux-Umgebungen auf Debian, Kali und anderen Linux-basierten Systemen, einschließlich Softwarekonfiguration, Systemanpassungen und Leistungs- und Sicherheitsoptimierung.",
-				"entity": "HACK4U"
-			}
-		]
-	},
-
-	"socialMedia": {
-		"linkedin": "LinkedIn",
-		"github": "GitHub",
-		"email": "E-Mail"
-	},
-
-	"experience": {
-		"workExperience": "Berufserfahrung",
-		"experience": [
-			{
-				"date": "September 2024",
-				"title": "Software- und Frontend-Entwickler bei Dimap®",
-				"description": "Frontend-Entwicklung."
-			},
-			{
-				"date": "Mai 2024",
-				"title": "Softwareentwickler bei Gubb Marketing®",
-				"description": "Entwicklung von Software und Webanwendungen."
-			},
-			{
-				"date": "März 2024",
-				"title": "Entwicklung von Agrooe-Cashback für Agrooe® und Gubb Marketing®",
-				"description": "Entwicklung einer Webanwendung von Grund auf für die Verwaltung eines Cashback-Systems für das Unternehmen Agrooe®. Entwicklung der Datenbank, des Backends und des Frontends der Webanwendung."
-			},
-			{
-				"date": "Juni 2021",
-				"title": "Freiberufler",
-				"description": "Entwicklung persönlicher und professioneller Projekte verschiedener Art."
-			}
-		]
-	},
-
-	"footerItems": [
-		{
-			"title": "Über mich",
-			"url": "/about"
-		},
-		{
-			"title": "Projekte",
-			"url": "/#projekte"
-		},
-		{
-			"title": "Erfahrung",
-			"url": "/#erfahrung"
-		},
-		{
-			"title": "Kontakt",
-			"url": "mailto:Fran11799@outlook.com"
-		},
-		{
-			"title": "Lebenslauf",
-			"url": "https://cv-web-smoky.vercel.app/"
-		},
-		{
-			"title": "Nach oben",
-			"url": "/#"
-		}
-	],
-
-	"keyboardManager": {
-		"kmPlaceHolder": "Suchen",
-		"kmTitle": "Besuchen",
-		"kmSocialSection": "Sozial",
-		"kmNavigationSection": "Navigation",
-		"kmCommands": [
-			{
-				"id": "startseite",
-				"title": "Startseite",
-				"icon": "<svg {...Astro.props}  xmlns=\"http://www.w3.org/2000/svg\"  width=\"22\"  height=\"22\"  viewBox=\"0 0 24 24\"  fill=\"none\"  stroke=\"currentColor\"  stroke-width=\"2\" style=\"margin-right: 8px\"  stroke-linecap=\"round\"  stroke-linejoin=\"round\"  class=\"icon icon-tabler icons-tabler-outline icon-tabler-home\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /><path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /><path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" /></svg>",
-				"hotkey": "⌘+H",
-				"section": "Navigation",
-				"handler": "/#"
-			},
-			{
-				"id": "zertifikate",
-				"title": "Zertifikate",
-				"icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='22' height='22' style='margin-right: 8px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-certificate'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'></path><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'></path><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'></path><path d='M6 9l12 0'></path><path d='M6 12l3 0'></path><path d='M6 15l2 0'></path></svg>",
-				"hotkey": "⌘+S",
-				"section": "Navigation",
-				"handler": "/certifications"
-			},
-			{
-				"id": "projekte",
-				"title": "Projekte",
-				"icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='margin-right: 6px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M5 7l5 5l-5 5'></path><path d='M13 17l6 0'></path></svg>",
-				"hotkey": "⌘+P",
-				"section": "Navigation",
-				"handler": "/projects"
-			}
-		]
-	},
-	"languageNames": {
-		"es": "Spanisch",
-		"en": "Englisch",
-		"zh": "Chinesisch",
-		"hi": "Hindi",
-		"ar": "Arabisch",
-		"pt": "Portugiesisch",
-		"fr": "Französisch",
-		"de": "Deutsch",
-		"ja": "Japanisch",
-		"ru": "Russisch",
-		"it": "Italienisch",
-		"ko": "Koreanisch",
-		"nl": "Niederländisch",
-		"pl": "Polnisch",
-		"tr": "Türkisch",
-		"hv": "Hochvalyrisch"
-	}
+  "personalInfo": {
+    "name": "Francisco José Rodríguez Martínez",
+    "role": "Softwareentwickler und Full Stack.",
+    "alias": "Fr4n0m",
+    "location": "📍 Málaga, Spanien",
+    "mail": "Fran11799@outlook.com",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "Francisco Rodríguez",
+        "url": "https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
+      },
+      {
+        "network": "GitHub",
+        "username": "Fr4n0m",
+        "url": "https://github.com/Fr4n0m"
+      },
+      {
+        "network": "CV",
+        "username": "Francisco Rodríguez",
+        "url": "https://cv-web-smoky.vercel.app/"
+      }
+    ]
+  },
+  "headerItems": [
+    {
+      "title": "Startseite",
+      "label": "startseite",
+      "url": "/de#"
+    },
+    {
+      "title": "Fähigkeiten",
+      "label": "fähigkeiten",
+      "url": "/de#fähigkeiten"
+    },
+    {
+      "title": "Erfahrung",
+      "label": "erfahrung",
+      "url": "/de#erfahrung"
+    },
+    {
+      "title": "Projekte",
+      "label": "projekte",
+      "url": "/de#projekte"
+    },
+    {
+      "title": "Zertifikate",
+      "label": "zertifikate",
+      "url": "/decertifications"
+    },
+    {
+      "title": "Kontakt",
+      "label": "kontakt",
+      "url": "mailto:Fran11799@outlook.com"
+    },
+    {
+      "title": "Lebenslauf",
+      "label": "lebenslauf",
+      "url": "https://cv-web-smoky.vercel.app/"
+    }
+  ],
+  "layout": {
+    "title": "Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
+    "titleDescription": "Full Stack Webentwickler"
+  },
+  "mainPage": {
+    "hero": {
+      "heroTitle": "Hallo, ich bin Fran",
+      "heroBadge": "Verfügbar für Arbeit",
+      "heroDescription1": "Softwareentwickler und Full Stack Webentwickler.",
+      "heroDescription2": "Ewiger Lernender mit Leidenschaft für Details.",
+      "heroDescription3": "Spezialisiert auf das Erstellen und Lösen von Problemen. 🤓"
+    },
+    "socialPill": {
+      "socialPillTitle": "Besuchen",
+      "sendMailSocialPill": "E-Mail senden an",
+      "copyButton": {
+        "copyTitle": "E-Mail kopieren",
+        "copyMail": "E-Mail kopiert!",
+        "copyMailError": "Fehler beim Kopieren"
+      }
+    },
+    "skills": {
+      "skillsTitle": "Fähigkeiten"
+    },
+    "selectedProjects": {
+      "projectsTitle": "Projekte"
+    }
+  },
+  "projectsPage": {
+    "allProjects": "Alle Projekte",
+    "allProjectsTitle": "Projekte - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
+    "allProjectsDescription": "Alle Projekte - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
+    "allProjectsLink": "/projects",
+    "projects": [
+      {
+        "title": "Agrooe Cashback",
+        "description": "An diesem Web habe ich mit einem Team zusammengearbeitet, um eine Plattform von Grund auf zu entwickeln, die sich dem Verkauf von Qualitätsprodukten und der Entwicklung des lokalen Handels widmet. Wir haben vom Konzept bis zur Praxis gearbeitet und sowohl das Backend als auch das Frontend erstellt. Neben verschiedenen Technologien wurden Integrationen wie JWT für die Kontrolle von Benutzerkonten und Anmeldungen, ein Dashboard für die Kontrolle aller Daten implementiert... Funktionen wie die Möglichkeit, sich mit verschiedenen sozialen Netzwerken anzumelden, ein Konto als Benutzer zu erstellen, um Produkte zu kaufen, oder als Unternehmen, um sie hinzuzufügen, Karten des nächstgelegenen Ortes, an dem das Produkt gefunden werden könnte, unter anderem. Aus Vertraulichkeitsgründen wird der Code nicht angezeigt.",
+        "images": [
+          "/assets/images/projects/agrooe_1.jpeg",
+          "/assets/images/projects/agrooe_2.jpeg",
+          "/assets/images/projects/agrooe_3.jpeg"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "TAILWIND",
+          "JAVASCRIPT",
+          "REACT",
+          "NEXTJS",
+          "EXPRESS",
+          "NODEJS",
+          "MONGODB"
+        ]
+      },
+      {
+        "title": "Strapi Games Store",
+        "description": "Webanwendung zur Verwaltung von videospielbezogenen Inhalten mit Strapi als Backend und CMS.",
+        "link": "https://strapi-games-store.vercel.app/",
+        "github": "https://github.com/Fr4n0m/strapi-games-store",
+        "images": [
+          "/assets/images/projects/strapi-games-web-1.webp",
+          "/assets/images/projects/strapi-games-web-2.webp",
+          "/assets/images/projects/strapi-games-web-3.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "TAILWIND",
+          "JAVASCRIPT",
+          "TYPESCRIPT",
+          "REACT",
+          "NEXTJS",
+          "STRAPI"
+        ]
+      },
+      {
+        "title": "Echtzeit-Chat",
+        "description": "Echtzeit-Chat-Anwendung mit Socket.IO für Echtzeitkommunikation und Supabase als Datenbank.",
+        "link": "https://realtime-chat-ten-nu.vercel.app/",
+        "github": "https://github.com/Fr4n0m/realtime-chat",
+        "images": [
+          "/assets/images/projects/realtime-chat_1.webp",
+          "/assets/images/projects/realtime-chat_2.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "VITE",
+          "EXPRESS",
+          "NODEJS",
+          "SUPABASE"
+        ]
+      },
+      {
+        "title": "Super Mario Bros 85'",
+        "description": "Klon des legendären Nintendo-Spiels Super Mario Bros von 1985 zu Bildungszwecken.",
+        "github": "https://github.com/Fr4n0m/super-mario-bros-85",
+        "images": [
+          "/assets/images/projects/super-mario-bros-85.webp",
+          "/assets/images/projects/super-mario-bros-85_2.webp",
+          "/assets/images/projects/super-mario-bros-85_3.webp",
+          "/assets/images/projects/super-mario-bros-85_4.webp",
+          "/assets/images/projects/super-mario-bros-85_5.webp",
+          "/assets/images/projects/super-mario-bros-85_6.webp",
+          "/assets/images/projects/super-mario-bros-85_7.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "VITE",
+          "PHASER"
+        ]
+      },
+      {
+        "title": "Paint Windows 95'",
+        "description": "Paint-Anwendung inspiriert von der Windows 95-Ära.",
+        "link": "https://paint-win-95-blond.vercel.app/",
+        "github": "https://github.com/Fr4n0m/paint-win-95",
+        "images": [
+          "/assets/images/projects/paint-95.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "VITE"
+        ]
+      },
+      {
+        "title": "Bookshop View Transitions Demo",
+        "description": "Web-Bibliothek zum Üben von View Transitions.",
+        "link": "https://bookshop-view-transitions.vercel.app/",
+        "secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
+        "github": "https://github.com/Fr4n0m/bookshop-view-transitions",
+        "images": [
+          "/assets/images/projects/bookshop_1.webp",
+          "/assets/images/projects/bookshop_2.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "ASTRO"
+        ]
+      },
+      {
+        "title": "TikTok-Klon",
+        "description": "Klon der TikTok-Benutzeroberfläche mit Vite und React mit Supabase-Backend.",
+        "link": "https://tiktok-clone-five-phi.vercel.app/",
+        "github": "https://github.com/Fr4n0m/tiktok-clone",
+        "images": [
+          "/assets/images/projects/tiktok_2.webp",
+          "/assets/images/projects/tiktok_1.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "VITE",
+          "REACT",
+          "NODEJS",
+          "EXPRESS",
+          "SUPABASE"
+        ]
+      },
+      {
+        "title": "Atari Breakout Spiel",
+        "description": "Version des legendären Atari BreakOut-Spiels mit JavaScript.",
+        "link": "https://breakout-game-jade.vercel.app/",
+        "github": "https://github.com/Fr4n0m/breakout-game",
+        "images": [
+          "/assets/images/projects/breakout-game_2.webp",
+          "/assets/images/projects/breakout-game.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT"
+        ]
+      },
+      {
+        "title": "Filmax",
+        "description": "Website zur Anzeige von Informationen über Filme und Serien.",
+        "link": "",
+        "github": "https://github.com/Fr4n0m/filmax",
+        "images": [
+          "/assets/images/projects/filmax_home_preview.webp",
+          "/assets/images/projects/filmax_home_preview_2.webp",
+          "/assets/images/projects/filmax_blog_preview.webp",
+          "/assets/images/projects/filmax_blog_preview_2.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT"
+        ]
+      },
+      {
+        "title": "Web-Rechner",
+        "description": "Ein einfacher Taschenrechner zur Durchführung grundlegender arithmetischer Operationen.",
+        "link": "https://web-calculator-snowy.vercel.app/",
+        "github": "https://github.com/Fr4n0m/web_calculator",
+        "images": [
+          "/assets/images/projects/WebCalculator_light.webp",
+          "/assets/images/projects/WebCalculator_dark.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "TAILWIND",
+          "JAVASCRIPT"
+        ]
+      },
+      {
+        "title": "Pokédex",
+        "description": "Pokédex um Informationen über Pokémon anzuzeigen mit der Möglichkeit, Favoriten hinzuzufügen, zu löschen oder sogar eigene Pokémon zu erstellen.",
+        "link": "",
+        "github": "https://github.com/Fr4n0m/YourOwnPokedex",
+        "images": [
+          "/assets/images/projects/pokedex.webp",
+          "/assets/images/projects/pokedex_favorites.webp",
+          "/assets/images/projects/pokedex_create.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "REACT",
+          "NEXTJS"
+        ]
+      },
+      {
+        "title": "1. Web-Portfolio",
+        "description": "Erstes Web-Portfolio nur mit HTML, CSS und JavaScript. Später habe ich es in Astro implementiert.",
+        "link": "https://portfolio-fr4n0m-astro.vercel.app/",
+        "github": "https://github.com/Fr4n0m/portfolio-astro",
+        "images": [
+          "/assets/images/projects/1er_portfolio.webp",
+          "/assets/images/projects/1er_portfolio_2.webp"
+        ],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "REACT",
+          "ASTRO"
+        ]
+      }
+    ],
+    "projectsButtons": {
+      "textCodeButton": "Code",
+      "textDemoButton": "Demo",
+      "textDemo2Button": "Demo 2"
+    }
+  },
+  "certificationsPage": {
+    "certifications": "Zertifikate",
+    "certificationsTitle": "Zertifikate - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
+    "certificationsDescription": "Zertifikate - Portfolio Francisco José Rodríguez Martínez - Entwickler und Web-Programmierer",
+    "certificationsList": [
+      {
+        "title": "Full Stack Webentwickler-Zertifikat",
+        "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
+        "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
+        "description": "Ausbildung in Full Stack Webentwicklung, einschließlich der Erstellung von Benutzeroberflächen mit HTML, CSS und React, Backend-Entwicklung mit Node.js, MongoDB, Datenbankverwaltung und Bereitstellung mit DevOps-Tools unter vielen anderen Technologien.",
+        "entity": "CODESPACE"
+      },
+      {
+        "title": "Linux-Umgebungsanpassungs-Zertifikat",
+        "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
+        "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
+        "description": "Fähigkeiten zur Anpassung von Linux-Umgebungen auf Debian, Kali und anderen Linux-basierten Systemen, einschließlich Softwarekonfiguration, Systemanpassungen und Leistungs- und Sicherheitsoptimierung.",
+        "entity": "HACK4U"
+      }
+    ]
+  },
+  "socialMedia": {
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "E-Mail"
+  },
+  "experience": {
+    "workExperience": "Berufserfahrung",
+    "experience": [
+      {
+        "date": "September 2024",
+        "title": "Software- und Frontend-Entwickler bei Dimap®",
+        "description": "Frontend-Entwicklung."
+      },
+      {
+        "date": "Mai 2024",
+        "title": "Softwareentwickler bei Gubb Marketing®",
+        "description": "Entwicklung von Software und Webanwendungen."
+      },
+      {
+        "date": "März 2024",
+        "title": "Entwicklung von Agrooe-Cashback für Agrooe® und Gubb Marketing®",
+        "description": "Entwicklung einer Webanwendung von Grund auf für die Verwaltung eines Cashback-Systems für das Unternehmen Agrooe®. Entwicklung der Datenbank, des Backends und des Frontends der Webanwendung."
+      },
+      {
+        "date": "Juni 2021",
+        "title": "Freiberufler",
+        "description": "Entwicklung persönlicher und professioneller Projekte verschiedener Art."
+      }
+    ]
+  },
+  "footerItems": [
+    {
+      "title": "Über mich",
+      "url": "/deabout"
+    },
+    {
+      "title": "Projekte",
+      "url": "/de#projekte"
+    },
+    {
+      "title": "Erfahrung",
+      "url": "/de#erfahrung"
+    },
+    {
+      "title": "Kontakt",
+      "url": "mailto:Fran11799@outlook.com"
+    },
+    {
+      "title": "Lebenslauf",
+      "url": "https://cv-web-smoky.vercel.app/"
+    },
+    {
+      "title": "Nach oben",
+      "url": "/de#"
+    }
+  ],
+  "keyboardManager": {
+    "kmPlaceHolder": "Suchen",
+    "kmTitle": "Besuchen",
+    "kmSocialSection": "Sozial",
+    "kmNavigationSection": "Navigation",
+    "kmCommands": [
+      {
+        "id": "startseite",
+        "title": "Startseite",
+        "icon": "<svg {...Astro.props}  xmlns=\"http://www.w3.org/2000/svg\"  width=\"22\"  height=\"22\"  viewBox=\"0 0 24 24\"  fill=\"none\"  stroke=\"currentColor\"  stroke-width=\"2\" style=\"margin-right: 8px\"  stroke-linecap=\"round\"  stroke-linejoin=\"round\"  class=\"icon icon-tabler icons-tabler-outline icon-tabler-home\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /><path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /><path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" /></svg>",
+        "hotkey": "⌘+H",
+        "section": "Navigation",
+        "handler": "/de#"
+      },
+      {
+        "id": "zertifikate",
+        "title": "Zertifikate",
+        "icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='22' height='22' style='margin-right: 8px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-certificate'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'></path><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'></path><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'></path><path d='M6 9l12 0'></path><path d='M6 12l3 0'></path><path d='M6 15l2 0'></path></svg>",
+        "hotkey": "⌘+S",
+        "section": "Navigation",
+        "handler": "/decertifications"
+      },
+      {
+        "id": "projekte",
+        "title": "Projekte",
+        "icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='margin-right: 6px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M5 7l5 5l-5 5'></path><path d='M13 17l6 0'></path></svg>",
+        "hotkey": "⌘+P",
+        "section": "Navigation",
+        "handler": "/deprojects"
+      }
+    ]
+  },
+  "languageNames": {
+    "es": "Spanisch",
+    "en": "Englisch",
+    "zh": "Chinesisch",
+    "hi": "Hindi",
+    "ar": "Arabisch",
+    "pt": "Portugiesisch",
+    "fr": "Französisch",
+    "de": "Deutsch",
+    "ja": "Japanisch",
+    "ru": "Russisch",
+    "it": "Italienisch",
+    "ko": "Koreanisch",
+    "nl": "Niederländisch",
+    "pl": "Polnisch",
+    "tr": "Türkisch",
+    "hv": "Hochvalyrisch"
+  }
 }

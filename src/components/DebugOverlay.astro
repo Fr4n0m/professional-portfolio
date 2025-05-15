@@ -1,0 +1,47 @@
+---
+// Componente de depuración para encontrar elementos sueltos
+---
+
+<div id="debug-overlay" class="fixed inset-0 pointer-events-none z-50 hidden">
+  <div class="fixed bottom-0 left-0 right-0 h-40 bg-red-500 opacity-20"></div>
+  <div class="fixed bottom-4 left-4 bg-black text-white p-2 rounded pointer-events-auto">
+    <button id="toggle-debug" class="text-sm">Toggle Debug Overlay</button>
+  </div>
+</div>
+
+<script>
+  const debugOverlay = document.getElementById('debug-overlay');
+  const toggleButton = document.getElementById('toggle-debug');
+  
+  toggleButton?.addEventListener('click', () => {
+    debugOverlay?.classList.toggle('hidden');
+  });
+  
+  // Buscar elementos que podrían estar mal posicionados
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('*');
+    let suspiciousElements = [];
+    
+    elements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const styles = window.getComputedStyle(el);
+      
+      // Detectar elementos en la parte inferior de la pantalla
+      if (rect.bottom > window.innerHeight - 100 && 
+          rect.top > window.innerHeight - 200 &&
+          styles.position === 'fixed' &&
+          el.id !== 'debug-overlay') {
+        suspiciousElements.push({
+          element: el,
+          tag: el.tagName,
+          id: el.id,
+          class: el.className
+        });
+      }
+    });
+    
+    if (suspiciousElements.length > 0) {
+      console.log('Elementos sospechosos encontrados:', suspiciousElements);
+    }
+  });
+</script>

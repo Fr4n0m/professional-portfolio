@@ -2,17 +2,38 @@
 const { class: className = 'size-5' } = Astro.props;
 ---
 
-<svg {...Astro.props} class={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Sol con estilo flat y colores vibrantes -->
-  <circle cx="12" cy="12" r="5" fill="#FFB900"/>
-  <circle cx="12" cy="12" r="4" fill="#FF8C00"/>
-  <!-- Rayos con estilo único -->
-  <rect x="11" y="1" width="2" height="4" fill="#FFA500" rx="1"/>
-  <rect x="11" y="19" width="2" height="4" fill="#FFA500" rx="1"/>
-  <rect x="1" y="11" width="4" height="2" fill="#FFA500" rx="1"/>
-  <rect x="19" y="11" width="4" height="2" fill="#FFA500" rx="1"/>
-  <rect x="4.93" y="4.93" width="2" height="4" fill="#FFB900" rx="1" transform="rotate(45 4.93 4.93)"/>
-  <rect x="17.07" y="17.07" width="2" height="4" fill="#FFB900" rx="1" transform="rotate(45 17.07 17.07)"/>
-  <rect x="4.93" y="19.07" width="4" height="2" fill="#FFB900" rx="1" transform="rotate(-45 4.93 19.07)"/>
-  <rect x="17.07" y="6.93" width="4" height="2" fill="#FFB900" rx="1" transform="rotate(-45 17.07 6.93)"/>
+<!-- SF Symbol sun.max.fill style con detección de navegador -->
+<svg {...Astro.props} class={`sun-icon ${className}`} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sol central -->
+  <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+  
+  <!-- Rayos principales -->
+  <path class="sun-rays" d="M12 1v5M12 18v5M23 12h-5M6 12H1" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round"/>
+  
+  <!-- Rayos diagonales -->
+  <path class="sun-rays-diagonal" d="M19.07 4.93l-3.54 3.54M8.47 15.53l-3.54 3.54M19.07 19.07l-3.54-3.54M8.47 8.47L4.93 4.93" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round"/>
 </svg>
+
+<style>
+  /* Estilo adaptativo para Safari/Apple */
+  @supports (-webkit-backdrop-filter: none) {
+    .sun-icon {
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    }
+    
+    .sun-rays {
+      stroke-width: 1.5;
+    }
+    
+    .sun-rays-diagonal {
+      stroke-width: 1.5;
+      opacity: 0.9;
+    }
+  }
+</style>
