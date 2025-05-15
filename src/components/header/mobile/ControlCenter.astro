@@ -1,8 +1,13 @@
 ---
 import { languages, getCurrentLanguage, getLanguageSwitchUrl } from '@i18n/config';
+import type { Translations } from '../../../types/translations';
 
 // Obtener el idioma actual
 const currentLang = getCurrentLanguage(Astro.url);
+
+// Obtener traducciones
+const translations: Translations = Astro.props.translations;
+const t = translations.controlCenter;
 
 // Control Center para móvil - Estilo macOS
 ---
@@ -14,9 +19,12 @@ const currentLang = getCurrentLanguage(Astro.url);
     class='control-center-toggle p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200'
     aria-label='Control Center'
   >
-    <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z'></path>
-      <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'></path>
+    <svg class='w-5 h-5 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+      <!-- Toggle switches icon similar to macOS -->
+      <rect x='3' y='4' width='18' height='6' rx='3' stroke-width='2' />
+      <circle cx='16' cy='7' r='2' fill='currentColor' />
+      <rect x='3' y='14' width='18' height='6' rx='3' stroke-width='2' />
+      <circle cx='8' cy='17' r='2' fill='currentColor' />
     </svg>
   </button>
   
@@ -33,8 +41,8 @@ const currentLang = getCurrentLanguage(Astro.url);
           class='w-12 h-12 rounded-full object-cover'
         />
         <div>
-          <p class='font-semibold text-gray-900 dark:text-white'>Francisco José</p>
-          <p class='text-sm text-gray-600 dark:text-gray-400'>Full Stack Developer</p>
+          <p class='font-semibold text-gray-900 dark:text-white'>{t.profile.name}</p>
+          <p class='text-sm text-gray-600 dark:text-gray-400'>{t.profile.role}</p>
         </div>
       </div>
     </div>
@@ -45,35 +53,35 @@ const currentLang = getCurrentLanguage(Astro.url);
       <div class='p-4 grid grid-cols-2 gap-3 border-b border-gray-200 dark:border-gray-700'>
         <!-- Theme Toggle -->
         <button class='theme-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='theme'>
-          <svg class='w-6 h-6 mx-auto mb-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <svg class='w-6 h-6 mx-auto mb-2 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
             <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z'></path>
           </svg>
-          <span class='text-xs text-gray-700 dark:text-gray-300'>Tema</span>
+          <span class='text-xs text-gray-700 dark:text-gray-300'>{t.quickActions.theme.label}</span>
         </button>
         
         <!-- Language Toggle -->
         <button class='lang-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='language'>
           <span class='text-2xl mb-2 block'>{languages[currentLang]?.flag || '🌐'}</span>
-          <span class='text-xs text-gray-700 dark:text-gray-300'>Idioma</span>
+          <span class='text-xs text-gray-700 dark:text-gray-300'>{t.quickActions.language.label}</span>
         </button>
       </div>
       
       <!-- Accessibility Settings -->
       <div class='p-4 space-y-3'>
-        <h3 class='text-sm font-semibold text-gray-900 dark:text-white mb-3'>Accesibilidad</h3>
+        <h3 class='text-sm font-semibold text-gray-900 dark:text-white mb-3'>{t.accessibility.title}</h3>
         
         <!-- Font Size -->
         <div class='flex items-center justify-between'>
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Tamaño de texto</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.fontSize.label}</span>
           <div class='flex items-center gap-2'>
             <button class='font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800' data-action='font-decrease'>
-              <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <svg class='w-4 h-4 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                 <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18 12H6'></path>
               </svg>
             </button>
-            <span class='font-size-value text-sm font-medium px-2'>100%</span>
+            <span class='font-size-value text-sm font-medium px-2 text-gray-900 dark:text-gray-100'>100%</span>
             <button class='font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800' data-action='font-increase'>
-              <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <svg class='w-4 h-4 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                 <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 6v12m6-6H6'></path>
               </svg>
             </button>
@@ -82,7 +90,7 @@ const currentLang = getCurrentLanguage(Astro.url);
         
         <!-- Contrast -->
         <div class='flex items-center justify-between'>
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Alto contraste</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.contrast.label}</span>
           <button class='contrast-toggle relative w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300' data-action='contrast'>
             <span class='absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300'></span>
           </button>
@@ -90,7 +98,7 @@ const currentLang = getCurrentLanguage(Astro.url);
         
         <!-- Animations -->
         <div class='flex items-center justify-between'>
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Animaciones</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.animations.label}</span>
           <button class='animations-toggle relative w-11 h-6 bg-blue-500 rounded-full transition-colors duration-300' data-action='animations' data-enabled='true'>
             <span class='absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300'></span>
           </button>
@@ -100,7 +108,7 @@ const currentLang = getCurrentLanguage(Astro.url);
       <!-- Additional Settings -->
       <div class='p-4 border-t border-gray-200 dark:border-gray-700'>
         <button class='w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200'>
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Configuración avanzada</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{t.settings.advanced}</span>
         </button>
       </div>
     </div>
@@ -109,9 +117,9 @@ const currentLang = getCurrentLanguage(Astro.url);
     <div class='language-panel hidden'>
       <div class='p-4 border-b border-gray-200 dark:border-gray-700'>
         <div class='flex items-center justify-between'>
-          <h3 class='text-sm font-semibold text-gray-900 dark:text-white'>Seleccionar idioma</h3>
+          <h3 class='text-sm font-semibold text-gray-900 dark:text-white'>{t.quickActions.language.title}</h3>
           <button class='back-btn p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800'>
-            <svg class='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <svg class='w-5 h-5 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
               <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
             </svg>
           </button>
@@ -131,7 +139,7 @@ const currentLang = getCurrentLanguage(Astro.url);
               }`}
             >
               <span class='text-2xl block mb-1'>{langInfo.flag}</span>
-              <span class='text-xs'>{langInfo.nativeName}</span>
+              <span class='text-xs text-gray-700 dark:text-gray-300'>{langInfo.nativeName}</span>
             </a>
           );
         })}
@@ -225,22 +233,35 @@ const currentLang = getCurrentLanguage(Astro.url);
     }
     
     // Font size controls
-    let fontSize = 100;
+    let fontSize = parseInt(localStorage.getItem('fontSize') || '100');
     const fontSizeSpan = menu.querySelector('.font-size-value');
+    
+    // Apply saved font size on load
+    const applyFontSize = (size) => {
+      // Update HTML root font size
+      document.documentElement.style.fontSize = `${size}%`;
+      // Update data attribute for CSS classes
+      document.documentElement.setAttribute('data-font-size', size.toString());
+      // Update display
+      if (fontSizeSpan) fontSizeSpan.textContent = `${size}%`;
+      // Save preference
+      localStorage.setItem('fontSize', size.toString());
+    };
+    
+    // Initialize font size
+    applyFontSize(fontSize);
     
     menu.querySelector('[data-action="font-decrease"]')?.addEventListener('click', () => {
       if (fontSize > 85) {
         fontSize -= 5;
-        document.documentElement.style.fontSize = `${fontSize}%`;
-        if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+        applyFontSize(fontSize);
       }
     });
     
     menu.querySelector('[data-action="font-increase"]')?.addEventListener('click', () => {
       if (fontSize < 120) {
         fontSize += 5;
-        document.documentElement.style.fontSize = `${fontSize}%`;
-        if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+        applyFontSize(fontSize);
       }
     });
     

@@ -44,8 +44,9 @@ console.log('Detected language:', lang);
 		<title>{title}</title>
 		
 		<script is:inline>
-			// Aplicar tema antes de que se renderice la página para evitar parpadeo
+			// Aplicar tema y tamaño de fuente antes de que se renderice la página para evitar parpadeo
 			(function() {
+				// Tema
 				const getStoredTheme = () => localStorage.getItem('theme');
 				const storedTheme = getStoredTheme();
 				const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -55,12 +56,17 @@ console.log('Detected language:', lang);
 				} else {
 					document.documentElement.classList.remove('dark');
 				}
+				
+				// Tamaño de fuente
+				const fontSize = localStorage.getItem('fontSize') || '100';
+				document.documentElement.style.fontSize = fontSize + '%';
+				document.documentElement.setAttribute('data-font-size', fontSize);
 			})();
 		</script>
 	</head>
 	<body class='flex flex-col min-h-screen'>
 		<div
-			class='fixed top-0 z-[-2] h-screen w-screen bg-[#000000] dark:bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[radial-gradient(#dbdbdb_1px,#F5F5F7_1px)] bg-[size:20px_20px]'
+			class='fixed top-0 z-[-2] h-screen w-screen bg-[#F5F5F7] dark:bg-[#000000] dark:bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[radial-gradient(#dbdbdb_1px,#F5F5F7_1px)] bg-[size:20px_20px]'
 		>
 		</div>
 		<Header translations={json} lang={lang} />
@@ -75,15 +81,27 @@ console.log('Detected language:', lang);
 </html>
 <style is:global>
 	:root {
-		color-scheme: dark;
+		color-scheme: light dark;
 	}
-
+	
 	html {
 		font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 		scroll-behavior: smooth;
 		text-rendering: optimizeLegibility;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		background-color: #F5F5F7;
+		color: #1d1d1f;
+	}
+	
+	/* Asegurar que todos los elementos hereden la fuente */
+	* {
+		font-family: inherit;
+	}
+	
+	html.dark {
+		background-color: #000000;
+		color: #f5f5f7;
 	}
 	
 	/* Fuentes específicas para japonés */
@@ -104,7 +122,7 @@ console.log('Detected language:', lang);
 	}
 
 	body {
-		background: #050505;
+		background: transparent;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
@@ -134,4 +152,124 @@ console.log('Detected language:', lang);
 	html[dir="rtl"] .flex-row {
 		flex-direction: row-reverse;
 	}
+	/* Estilos responsivos para tamaños de fuente variables */
+	
+	/* Tamaño de fuente 85% */
+	html[data-font-size="85"] {
+		--text-base: 0.875rem;
+		--text-sm: 0.813rem;
+		--text-xs: 0.75rem;
+		--text-lg: 1rem;
+		--text-xl: 1.125rem;
+		--text-2xl: 1.375rem;
+		--text-3xl: 1.75rem;
+		--text-4xl: 2.125rem;
+	}
+	
+	/* Tamaño de fuente 90% */
+	html[data-font-size="90"] {
+		--text-base: 0.9rem;
+		--text-sm: 0.838rem;
+		--text-xs: 0.775rem;
+		--text-lg: 1.063rem;
+		--text-xl: 1.188rem;
+		--text-2xl: 1.438rem;
+		--text-3xl: 1.875rem;
+		--text-4xl: 2.25rem;
+	}
+	
+	/* Tamaño de fuente 95% */
+	html[data-font-size="95"] {
+		--text-base: 0.95rem;
+		--text-sm: 0.863rem;
+		--text-xs: 0.813rem;
+		--text-lg: 1.125rem;
+		--text-xl: 1.25rem;
+		--text-2xl: 1.5rem;
+		--text-3xl: 2rem;
+		--text-4xl: 2.375rem;
+	}
+	
+	/* Tamaño de fuente 100% (default) */
+	html[data-font-size="100"] {
+		--text-base: 1rem;
+		--text-sm: 0.875rem;
+		--text-xs: 0.75rem;
+		--text-lg: 1.125rem;
+		--text-xl: 1.25rem;
+		--text-2xl: 1.5rem;
+		--text-3xl: 1.875rem;
+		--text-4xl: 2.25rem;
+	}
+	
+	/* Tamaño de fuente 105% */
+	html[data-font-size="105"] {
+		--text-base: 1.05rem;
+		--text-sm: 0.919rem;
+		--text-xs: 0.788rem;
+		--text-lg: 1.181rem;
+		--text-xl: 1.313rem;
+		--text-2xl: 1.575rem;
+		--text-3xl: 1.969rem;
+		--text-4xl: 2.363rem;
+	}
+	
+	/* Tamaño de fuente 110% */
+	html[data-font-size="110"] {
+		--text-base: 1.1rem;
+		--text-sm: 0.963rem;
+		--text-xs: 0.825rem;
+		--text-lg: 1.238rem;
+		--text-xl: 1.375rem;
+		--text-2xl: 1.65rem;
+		--text-3xl: 2.063rem;
+		--text-4xl: 2.475rem;
+	}
+	
+	/* Tamaño de fuente 115% */
+	html[data-font-size="115"] {
+		--text-base: 1.15rem;
+		--text-sm: 1.006rem;
+		--text-xs: 0.863rem;
+		--text-lg: 1.294rem;
+		--text-xl: 1.438rem;
+		--text-2xl: 1.725rem;
+		--text-3xl: 2.156rem;
+		--text-4xl: 2.588rem;
+	}
+	
+	/* Tamaño de fuente 120% */
+	html[data-font-size="120"] {
+		--text-base: 1.2rem;
+		--text-sm: 1.05rem;
+		--text-xs: 0.9rem;
+		--text-lg: 1.35rem;
+		--text-xl: 1.5rem;
+		--text-2xl: 1.8rem;
+		--text-3xl: 2.25rem;
+		--text-4xl: 2.7rem;
+	}
+	
+	/* Aplicar variables CSS a las clases de Tailwind */
+	.text-base { font-size: var(--text-base); }
+	.text-sm { font-size: var(--text-sm); }
+	.text-xs { font-size: var(--text-xs); }
+	.text-lg { font-size: var(--text-lg); }
+	.text-xl { font-size: var(--text-xl); }
+	.text-2xl { font-size: var(--text-2xl); }
+	.text-3xl { font-size: var(--text-3xl); }
+	.text-4xl { font-size: var(--text-4xl); }
+	
+	/* Ajustes de espaciado proporcionales */
+	html[data-font-size="85"] .p-4 { padding: 0.875rem; }
+	html[data-font-size="85"] .py-3 { padding-top: 0.656rem; padding-bottom: 0.656rem; }
+	html[data-font-size="85"] .px-4 { padding-left: 0.875rem; padding-right: 0.875rem; }
+	
+	html[data-font-size="120"] .p-4 { padding: 1.2rem; }
+	html[data-font-size="120"] .py-3 { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+	html[data-font-size="120"] .px-4 { padding-left: 1.2rem; padding-right: 1.2rem; }
+	
+	/* Ajustar altura de línea para mejor legibilidad */
+	html[data-font-size="85"] { line-height: 1.4; }
+	html[data-font-size="120"] { line-height: 1.6; }
 </style>

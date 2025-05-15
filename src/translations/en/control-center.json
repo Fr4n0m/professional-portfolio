@@ -1,0 +1,40 @@
+{
+  "title": "Control Center",
+  "profile": {
+    "name": "Francisco José",
+    "role": "Full Stack Developer"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Theme",
+      "options": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    },
+    "language": {
+      "label": "Language",
+      "title": "Select language"
+    }
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "fontSize": {
+      "label": "Text size",
+      "decrease": "Decrease text size",
+      "increase": "Increase text size"
+    },
+    "contrast": {
+      "label": "High contrast",
+      "toggle": "Toggle high contrast"
+    },
+    "animations": {
+      "label": "Animations",
+      "toggle": "Toggle animations"
+    }
+  },
+  "settings": {
+    "advanced": "Advanced settings"
+  }
+}

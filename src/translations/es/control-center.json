@@ -1,0 +1,40 @@
+{
+  "title": "Centro de Control",
+  "profile": {
+    "name": "Francisco José",
+    "role": "Full Stack Developer"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Tema",
+      "options": {
+        "light": "Claro",
+        "dark": "Oscuro",
+        "system": "Sistema"
+      }
+    },
+    "language": {
+      "label": "Idioma",
+      "title": "Seleccionar idioma"
+    }
+  },
+  "accessibility": {
+    "title": "Accesibilidad",
+    "fontSize": {
+      "label": "Tamaño de texto",
+      "decrease": "Disminuir tamaño de texto",
+      "increase": "Aumentar tamaño de texto"
+    },
+    "contrast": {
+      "label": "Alto contraste",
+      "toggle": "Activar/desactivar alto contraste"
+    },
+    "animations": {
+      "label": "Animaciones",
+      "toggle": "Activar/desactivar animaciones"
+    }
+  },
+  "settings": {
+    "advanced": "Configuración avanzada"
+  }
+}

@@ -98,4 +98,45 @@ export interface Translations {
 	languageNames?: {
 		[key: string]: string;
 	};
+
+	controlCenter: {
+		title: string;
+		profile: {
+			name: string;
+			role: string;
+		};
+		quickActions: {
+			theme: {
+				label: string;
+				options: {
+					light: string;
+					dark: string;
+					system: string;
+				};
+			};
+			language: {
+				label: string;
+				title: string;
+			};
+		};
+		accessibility: {
+			title: string;
+			fontSize: {
+				label: string;
+				decrease: string;
+				increase: string;
+			};
+			contrast: {
+				label: string;
+				toggle: string;
+			};
+			animations: {
+				label: string;
+				toggle: string;
+			};
+		};
+		settings: {
+			advanced: string;
+		};
+	};
 }

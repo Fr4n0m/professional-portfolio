@@ -3,13 +3,15 @@ import ThemeToggle from '@components/ThemeToggle.astro';
 import LanguageToggle from '@components/LanguageToggle.astro';
 import ControlCenter from './mobile/ControlCenter.astro';
 import type { HeaderItem } from '../../types/headerItem';
+import type { Translations } from '../../types/translations';
 
 export interface Props {
   headerItems: HeaderItem[];
   lang: string;
+  translations: Translations;
 }
 
-const { headerItems, lang } = Astro.props;
+const { headerItems, lang, translations } = Astro.props;
 ---
 
 <!-- Header Mobile - Nuevo diseño con Control Center -->
@@ -25,10 +27,10 @@ const { headerItems, lang } = Astro.props;
           aria-label='Toggle menu'
           type='button'
         >
-          <svg id='menu-icon' class='w-6 h-6 transition-all duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <svg id='menu-icon' class='w-6 h-6 text-gray-700 dark:text-gray-300 transition-all duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
             <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'></path>
           </svg>
-          <svg id='close-icon' class='w-6 h-6 hidden transition-all duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <svg id='close-icon' class='w-6 h-6 text-gray-700 dark:text-gray-300 hidden transition-all duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
             <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path>
           </svg>
         </button>
@@ -44,7 +46,7 @@ const { headerItems, lang } = Astro.props;
       </div>
 
       <!-- Control Center a la derecha -->
-      <ControlCenter />
+      <ControlCenter translations={Astro.props.translations} />
     </div>
   </header>
 
@@ -65,7 +67,7 @@ const { headerItems, lang } = Astro.props;
         >
           <span class='text-lg font-medium'>{item.title}</span>
           {item.title === 'CV' && (
-            <svg class='w-4 h-4 ml-auto opacity-50' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <svg class='w-4 h-4 ml-auto opacity-50 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
               <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'></path>
             </svg>
           )}
