@@ -1,0 +1,218 @@
+[
+  {
+    "title": "Agrooe Cashback",
+    "description": "On this website, I worked with a team to develop a platform from scratch, committed to selling quality products and promoting local commerce. We worked from the concept to the implementation, creating both the back-end and front-end. In addition to various technologies, we implemented integrations like JWT for user account control and login, a dashboard to manage all the data, and features like logging in with different social networks, account creation as a user to purchase products or as a company to add them, maps showing the nearest locations where products could be found, among other things. Due to confidentiality reasons, the code is not displayed.",
+    "images": [
+      "/assets/images/projects/agrooe_1.jpeg",
+      "/assets/images/projects/agrooe_2.jpeg",
+      "/assets/images/projects/agrooe_3.jpeg"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT",
+      "REACT",
+      "NEXTJS",
+      "EXPRESS",
+      "NODEJS",
+      "MONGODB"
+    ]
+  },
+  {
+    "title": "Strapi Games Store",
+    "description": "Web app designed to manage video game content using Strapi as backend and CMS.",
+    "link": "https://strapi-games-store.vercel.app/",
+    "github": "https://github.com/Fr4n0m/strapi-games-store",
+    "images": [
+      "/assets/images/projects/strapi-games-web-1.webp",
+      "/assets/images/projects/strapi-games-web-2.webp",
+      "/assets/images/projects/strapi-games-web-3.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT",
+      "TYPESCRIPT",
+      "REACT",
+      "NEXTJS",
+      "STRAPI"
+    ]
+  },
+  {
+    "title": "Realtime Chat",
+    "description": "Real-time chat application using Socket.IO for live communication and Supabase as the database.",
+    "link": "https://realtime-chat-ten-nu.vercel.app/",
+    "github": "https://github.com/Fr4n0m/realtime-chat",
+    "images": [
+      "/assets/images/projects/realtime-chat_1.webp",
+      "/assets/images/projects/realtime-chat_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "EXPRESS",
+      "NODEJS",
+      "SUPABASE"
+    ]
+  },
+  {
+    "title": "Super Mario Bros 85'",
+    "description": "Educational clone of the legendary Nintendo game Super Mario Bros from 1985.",
+    "github": "https://github.com/Fr4n0m/super-mario-bros-85",
+    "images": [
+      "/assets/images/projects/super-mario-bros-85.webp",
+      "/assets/images/projects/super-mario-bros-85_2.webp",
+      "/assets/images/projects/super-mario-bros-85_3.webp",
+      "/assets/images/projects/super-mario-bros-85_4.webp",
+      "/assets/images/projects/super-mario-bros-85_5.webp",
+      "/assets/images/projects/super-mario-bros-85_6.webp",
+      "/assets/images/projects/super-mario-bros-85_7.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "PHASER"
+    ]
+  },
+  {
+    "title": "Paint Windows 95'",
+    "description": "Paint application inspired by the Windows 95 era.",
+    "link": "https://paint-win-95-blond.vercel.app/",
+    "github": "https://github.com/Fr4n0m/paint-win-95",
+    "images": [
+      "/assets/images/projects/paint-95.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE"
+    ]
+  },
+  {
+    "title": "Bookshop View Transitions Demo",
+    "description": "Web bookstore for practicing view transitions.",
+    "link": "https://bookshop-view-transitions.vercel.app/",
+    "secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
+    "github": "https://github.com/Fr4n0m/bookshop-view-transitions",
+    "images": [
+      "/assets/images/projects/bookshop_1.webp",
+      "/assets/images/projects/bookshop_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "ASTRO"
+    ]
+  },
+  {
+    "title": "TikTok Clone",
+    "description": "TikTok interface clone using Vite and React with Supabase backend.",
+    "link": "https://tiktok-clone-five-phi.vercel.app/",
+    "github": "https://github.com/Fr4n0m/tiktok-clone",
+    "images": [
+      "/assets/images/projects/tiktok_2.webp",
+      "/assets/images/projects/tiktok_1.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "VITE",
+      "REACT",
+      "NODEJS",
+      "EXPRESS",
+      "SUPABASE"
+    ]
+  },
+  {
+    "title": "Atari Breakout Game",
+    "description": "Version of the legendary Atari Breakout game built with JavaScript.",
+    "link": "https://breakout-game-jade.vercel.app/",
+    "github": "https://github.com/Fr4n0m/breakout-game",
+    "images": [
+      "/assets/images/projects/breakout-game_2.webp",
+      "/assets/images/projects/breakout-game.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "Filmax",
+    "description": "Website to view information about movies and TV shows.",
+    "link": "",
+    "github": "https://github.com/Fr4n0m/filmax",
+    "images": [
+      "/assets/images/projects/filmax_home_preview.webp",
+      "/assets/images/projects/filmax_home_preview_2.webp",
+      "/assets/images/projects/filmax_blog_preview.webp",
+      "/assets/images/projects/filmax_blog_preview_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "Web Calculator",
+    "description": "Simple calculator to perform basic arithmetic operations.",
+    "link": "https://web-calculator-snowy.vercel.app/",
+    "github": "https://github.com/Fr4n0m/web_calculator",
+    "images": [
+      "/assets/images/projects/WebCalculator_light.webp",
+      "/assets/images/projects/WebCalculator_dark.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "TAILWIND",
+      "JAVASCRIPT"
+    ]
+  },
+  {
+    "title": "Pokédex",
+    "description": "Pokédex to view information about Pokémon with the ability to add favorites, delete, or even create your own Pokémon.",
+    "link": "",
+    "github": "https://github.com/Fr4n0m/YourOwnPokedex",
+    "images": [
+      "/assets/images/projects/pokedex.webp",
+      "/assets/images/projects/pokedex_favorites.webp",
+      "/assets/images/projects/pokedex_create.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "REACT",
+      "NEXTJS"
+    ]
+  },
+  {
+    "title": "First Portfolio Website",
+    "description": "First web portfolio using only HTML, CSS, and JavaScript. Later implemented it in Astro.",
+    "link": "https://portfolio-fr4n0m-astro.vercel.app/",
+    "github": "https://github.com/Fr4n0m/portfolio-astro",
+    "images": [
+      "/assets/images/projects/1er_portfolio.webp",
+      "/assets/images/projects/1er_portfolio_2.webp"
+    ],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "REACT",
+      "ASTRO"
+    ]
+  }
+]

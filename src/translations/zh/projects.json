@@ -1,0 +1,62 @@
+[
+  {
+    "id": "agrooe-cashback",
+    "title": "Agrooe Cashback",
+    "description": "致力于销售优质产品和发展当地商业的平台。"
+  },
+  {
+    "id": "strapi-games-store",
+    "title": "Strapi游戏商店",
+    "description": "使用Strapi作为后端和CMS的游戏内容管理网络应用程序。"
+  },
+  {
+    "id": "realtime-chat",
+    "title": "实时聊天",
+    "description": "使用Socket.IO进行实时通信和Supabase作为数据库的聊天应用程序。"
+  },
+  {
+    "id": "super-mario-bros-85",
+    "title": "超级马里奥兄弟85'",
+    "description": "1985年传奇任天堂游戏超级马里奥兄弟的教育克隆。"
+  },
+  {
+    "id": "paint-windows-95",
+    "title": "Paint Windows 95'",
+    "description": "受Windows 95时代启发的Paint应用程序。"
+  },
+  {
+    "id": "bookshop-view-transitions",
+    "title": "书店视图过渡演示",
+    "description": "用于练习视图过渡的网络书店。"
+  },
+  {
+    "id": "tiktok-clone",
+    "title": "TikTok克隆",
+    "description": "使用Vite和React以及Supabase后端的TikTok界面克隆。"
+  },
+  {
+    "id": "atari-breakout",
+    "title": "Atari Breakout游戏",
+    "description": "使用JavaScript构建的传奇Atari Breakout游戏版本。"
+  },
+  {
+    "id": "filmax",
+    "title": "Filmax",
+    "description": "查看电影和电视节目信息的网站。"
+  },
+  {
+    "id": "web-calculator",
+    "title": "网络计算器",
+    "description": "执行基本算术运算的简单计算器。"
+  },
+  {
+    "id": "pokedex",
+    "title": "宝可梦图鉴",
+    "description": "查看宝可梦信息的图鉴，可以添加收藏、删除甚至创建自己的宝可梦。"
+  },
+  {
+    "id": "first-portfolio",
+    "title": "第一个作品集",
+    "description": "仅使用HTML、CSS和JavaScript的第一个网络作品集。后来我在Astro中实现了它。"
+  }
+]

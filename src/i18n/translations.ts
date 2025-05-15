@@ -1,5 +1,6 @@
 import type { Language } from './config';
 import { getCurrentLanguage } from './config';
+import { mergeTranslations } from '../translations/base/merge-helper';
 
 // Cache para traducciones cargadas
 const translationsCache: Partial<Record<Language, any>> = {};
@@ -12,21 +13,34 @@ export async function loadTranslations(lang: Language) {
   }
 
   try {
-    // Cargar traducciones dinámicamente
-    const translations = await import(`../translations/${lang}.json`);
-    translationsCache[lang] = translations.default || translations;
+    // Primero intentar cargar la estructura modular (carpeta con index.ts)
+    const modularTranslations = await import(`../translations/${lang}/index.ts`);
+    const translations = modularTranslations.default || modularTranslations;
+    
+    // Combinar con datos base usando el helper
+    translationsCache[lang] = mergeTranslations(translations, lang);
     return translationsCache[lang];
-  } catch (error) {
-    console.warn(`Translations for ${lang} not found, falling back to English`);
-    
-    // Si no existe el archivo, usar inglés como fallback
-    if (lang !== 'en') {
-      return loadTranslations('en');
+  } catch (modularError) {
+    try {
+      // Si falla, intentar cargar el archivo JSON único
+      const translations = await import(`../translations/${lang}.json`);
+      const langTranslations = translations.default || translations;
+      
+      // Combinar con datos base usando el helper
+      translationsCache[lang] = mergeTranslations(langTranslations, lang);
+      return translationsCache[lang];
+    } catch (jsonError) {
+      console.warn(`Translations for ${lang} not found, falling back to English`);
+      
+      // Si no existe el archivo, usar inglés como fallback
+      if (lang !== 'en') {
+        return loadTranslations('en');
+      }
+      
+      // Si incluso el inglés falla, devolver objeto vacío
+      console.error('English translations not found!');
+      return {};
     }
-    
-    // Si incluso el inglés falla, devolver objeto vacío
-    console.error('English translations not found!');
-    return {};
   }
 }
 

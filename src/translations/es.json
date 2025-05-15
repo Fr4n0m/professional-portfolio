@@ -428,7 +428,9 @@
   },
   "languageNames": {
     "es": "Español",
-    "en": "Inglés",
+    "es-mx": "Español (México)",
+    "en": "Inglés (Reino Unido)",
+    "en-us": "Inglés (Estados Unidos)",
     "zh": "Chino",
     "hi": "Hindi",
     "ar": "Árabe",

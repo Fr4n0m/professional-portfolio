@@ -1,0 +1,24 @@
+{
+  "name": "Francisco José Rodríguez Martínez",
+  "role": "Software & Full Stack Developer.",
+  "alias": "Fr4n0m",
+  "location": "📍 Málaga, Spain",
+  "mail": "Fran11799@outlook.com",
+  "profiles": [
+    {
+      "network": "LinkedIn",
+      "username": "Francisco Rodríguez",
+      "url": "https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/"
+    },
+    {
+      "network": "GitHub",
+      "username": "Fr4n0m",
+      "url": "https://github.com/Fr4n0m"
+    },
+    {
+      "network": "Resume",
+      "username": "Francisco Rodríguez",
+      "url": "https://cv-web-smoky.vercel.app/"
+    }
+  ]
+}

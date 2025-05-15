@@ -1,9 +1,9 @@
 {
   "personalInfo": {
     "name": "Francisco José Rodríguez Martínez",
-    "role": "Software & Full Stack Developer.",
+    "role": "Desarrollador de Software y Full Stack.",
     "alias": "Fr4n0m",
-    "location": "📍 Malaga, Spain",
+    "location": "📍 Málaga, España",
     "mail": "Fran11799@outlook.com",
     "profiles": [
       {
@@ -25,33 +25,33 @@
   },
   "headerItems": [
     {
-      "title": "Home",
-      "label": "home",
-      "url": "/en/#"
+      "title": "Inicio",
+      "label": "inicio",
+      "url": "/es-mx/#"
     },
     {
-      "title": "Skills",
-      "label": "skills",
-      "url": "/en/#skills"
+      "title": "Habilidades",
+      "label": "habilidades",
+      "url": "/es-mx/#habilidades"
     },
     {
-      "title": "Experience",
-      "label": "experience",
-      "url": "/en/#experience"
+      "title": "Experiencia",
+      "label": "experiencia",
+      "url": "/es-mx/#experiencia"
     },
     {
-      "title": "Projects",
-      "label": "projects",
-      "url": "/en/#projects"
+      "title": "Proyectos",
+      "label": "proyectos",
+      "url": "/es-mx/#proyectos"
     },
     {
-      "title": "Certifications",
-      "label": "certifications",
-      "url": "/en/certifications"
+      "title": "Certificaciones",
+      "label": "certificaciones",
+      "url": "/es-mx/certifications"
     },
     {
-      "title": "Contact",
-      "label": "contact",
+      "title": "Contacto",
+      "label": "contacto",
       "url": "mailto:Fran11799@outlook.com"
     },
     {
@@ -61,42 +61,42 @@
     }
   ],
   "layout": {
-    "title": "Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack Web",
-    "titleDescription": "Full Stack Web Developer"
+    "title": "Portafolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web",
+    "titleDescription": "Desarrollador Full Stack Web"
   },
   "mainPage": {
     "hero": {
-      "heroTitle": "Hey, I'm Fran",
-      "heroBadge": "Available to work",
-      "heroDescription1": "Software & Full Stack Developer.",
-      "heroDescription2": "Eternal learner passionate about details.",
-      "heroDescription3": "Specialized creating and solving problems. 🤓"
+      "heroTitle": "¡Órale! Soy Fran",
+      "heroBadge": "Disponible para chambear",
+      "heroDescription1": "Desarrollador de Software y Full Stack Web.",
+      "heroDescription2": "Aprendiz de toda la vida apasionado por los detalles.",
+      "heroDescription3": "Especializado en crear y resolver problemas. 🤓"
     },
     "socialPill": {
-      "socialPillTitle": "Visit",
-      "sendMailSocialPill": "Send mail to",
+      "socialPillTitle": "Visitar",
+      "sendMailSocialPill": "Enviar correo a",
       "copyButton": {
-        "copyTitle": "Copy Mail",
-        "copyMail": "Mail copy!",
-        "copyMailError": "'Error copying'"
+        "copyTitle": "Copiar Correo",
+        "copyMail": "¡Correo copiado!",
+        "copyMailError": "Error al copiar"
       }
     },
     "skills": {
-      "skillsTitle": "Skills"
+      "skillsTitle": "Habilidades"
     },
     "selectedProjects": {
-      "projectsTitle": "Projects"
+      "projectsTitle": "Proyectos"
     }
   },
   "projectsPage": {
-    "allProjects": "All projects",
-    "allProjectsTitle": "Projects - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
-    "allProjectsDescription": "All projects - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
-    "allProjectsLink": "/en/projects",
+    "allProjects": "Todos los proyectos",
+    "allProjectsTitle": "Proyectos - Portafolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web",
+    "allProjectsDescription": "Todos los proyectos - Portafolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web",
+    "allProjectsLink": "/es-mx/projects",
     "projects": [
       {
         "title": "Agrooe Cashback",
-        "description": "On this website, I worked with a team to develop a platform from scratch, committed to selling quality products and promoting local commerce. We worked from the concept to the implementation, creating both the back-end and front-end. In addition to various technologies, integrations were added, such as JWT for user account control and login, a dashboard to manage all the data... Features included the ability to log in with different social networks, account creation as a user to purchase products or as a company to add them, maps showing the nearest locations where the product could be found, among other things. Due to confidentiality reasons, the code is not displayed.",
+        "description": "En este sitio web trabajé junto con un equipo para desarrollar desde cero una plataforma comprometida con la venta de productos de calidad y el desarrollo del comercio local. Trabajamos desde cero con el concepto hasta la práctica creando tanto el back-end como el front-end. Además de diferentes tecnologías, se incorporaron integraciones como JWT para el control de cuentas de usuario e inicio de sesión, un dashboard para el control de todos los datos... Funcionalidades como poder iniciar sesión con diferentes redes sociales, creación de cuenta como usuario para comprar productos o como empresa para agregarlos, mapas del lugar más cercano donde se podría encontrar el producto en cuestión, entre otras cosas. Por motivos de confidencialidad no se muestra el código.",
         "images": [
           "/assets/images/projects/agrooe_1.jpeg",
           "/assets/images/projects/agrooe_2.jpeg",
@@ -116,7 +116,7 @@
       },
       {
         "title": "Strapi Games Store",
-        "description": "Web app designed to manage games content using Strapi as backend and CMS.",
+        "description": "Aplicación web diseñada para gestionar contenido relacionado con videojuegos utilizando Strapi como backend y CMS.",
         "link": "https://strapi-games-store.vercel.app/",
         "github": "https://github.com/Fr4n0m/strapi-games-store",
         "images": [
@@ -136,8 +136,8 @@
         ]
       },
       {
-        "title": "Realtime Chat",
-        "description": "Chat app using Socket.IO for real-time communication and Supabase as database.",
+        "title": "Chat en Tiempo Real",
+        "description": "Aplicación de chat en tiempo real que utiliza Socket.IO para la comunicación en vivo y Supabase como base de datos.",
         "link": "https://realtime-chat-ten-nu.vercel.app/",
         "github": "https://github.com/Fr4n0m/realtime-chat",
         "images": [
@@ -156,7 +156,7 @@
       },
       {
         "title": "Super Mario Bros 85'",
-        "description": "Clon for educational purposes of the legendary Nintendo game Super Mario Bros from 1985.",
+        "description": "Clon con fines educativos del legendario juego de Nintendo Super Mario Bros de 1985.",
         "github": "https://github.com/Fr4n0m/super-mario-bros-85",
         "images": [
           "/assets/images/projects/super-mario-bros-85.webp",
@@ -177,7 +177,7 @@
       },
       {
         "title": "Paint Windows 95'",
-        "description": "A Paint-inspired application from the Windows 95 era.",
+        "description": "Aplicación Paint inspirada en la era de Windows 95.",
         "link": "https://paint-win-95-blond.vercel.app/",
         "github": "https://github.com/Fr4n0m/paint-win-95",
         "images": [
@@ -191,8 +191,8 @@
         ]
       },
       {
-        "title": "Bookshop View Transitions Demo",
-        "description": "Web library to practice view transitions.",
+        "title": "Librería con View Transitions",
+        "description": "Librería web para practicar view transitions.",
         "link": "https://bookshop-view-transitions.vercel.app/",
         "secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
         "github": "https://github.com/Fr4n0m/bookshop-view-transitions",
@@ -208,8 +208,8 @@
         ]
       },
       {
-        "title": "Tiktok clone",
-        "description": "Tiktok interface clone using Vite and React with Supabase backend.",
+        "title": "Clon de TikTok",
+        "description": "Clon de la interfaz de TikTok usando Vite y React con backend de Supabase.",
         "link": "https://tiktok-clone-five-phi.vercel.app/",
         "github": "https://github.com/Fr4n0m/tiktok-clone",
         "images": [
@@ -228,8 +228,8 @@
         ]
       },
       {
-        "title": "Atari Breakout Game",
-        "description": "Legendary Atari BreakOut game version with JavaScript.",
+        "title": "Juego Atari Breakout",
+        "description": "Versión del legendario juego de Atari Breakout con JavaScript.",
         "link": "https://breakout-game-jade.vercel.app/",
         "github": "https://github.com/Fr4n0m/breakout-game",
         "images": [
@@ -244,7 +244,7 @@
       },
       {
         "title": "Filmax",
-        "description": "Web to see information about movies and series.",
+        "description": "Web para ver información de películas y series.",
         "link": "",
         "github": "https://github.com/Fr4n0m/filmax",
         "images": [
@@ -260,8 +260,8 @@
         ]
       },
       {
-        "title": "Web Calculator",
-        "description": "Simple calculator to perform basic arithmetic operations.",
+        "title": "Calculadora Web",
+        "description": "Una calculadora sencilla para realizar operaciones aritméticas básicas.",
         "link": "https://web-calculator-snowy.vercel.app/",
         "github": "https://github.com/Fr4n0m/web_calculator",
         "images": [
@@ -276,8 +276,8 @@
         ]
       },
       {
-        "title": "Pokedex",
-        "description": "Pokedex to view information about pokemons with the possibility of adding favorites, deleting or even creating your own pokemon.",
+        "title": "Pokédex",
+        "description": "Pokédex para ver información de pokemones con la posibilidad de agregar favoritos, eliminar o incluso crear tu propio pokemon.",
         "link": "",
         "github": "https://github.com/Fr4n0m/YourOwnPokedex",
         "images": [
@@ -294,8 +294,8 @@
         ]
       },
       {
-        "title": "First portfolio",
-        "description": "First web portfolio using only HTML, CSS and JavaScript. Later I implemented it in Astro.",
+        "title": "Primer Portafolio Web",
+        "description": "Primer portafolio web usando solo HTML, CSS y JavaScript. Más adelante lo implementé en Astro.",
         "link": "https://portfolio-fr4n0m-astro.vercel.app/",
         "github": "https://github.com/Fr4n0m/portfolio-astro",
         "images": [
@@ -312,28 +312,28 @@
       }
     ],
     "projectsButtons": {
-      "textCodeButton": "Code",
+      "textCodeButton": "Código",
       "textDemoButton": "Demo",
       "textDemo2Button": "Demo 2"
     }
   },
   "certificationsPage": {
-    "certifications": "Certifications",
-    "certificationsTitle": "Certifications - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
-    "certificationsDescription": "Certifications - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
+    "certifications": "Certificaciones",
+    "certificationsTitle": "Certificaciones - Portafolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web",
+    "certificationsDescription": "Certificaciones - Portafolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web",
     "certificationsList": [
       {
-        "title": "Full Stack Web Developer Certification",
+        "title": "Certificación de Desarrollador Web Full Stack",
         "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
         "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
-        "description": "Full Stack Web Developer formation including creating interfaces with HTML, CSS and React, backend development with Node.js, MongoDB, database management and deployment with DevOps tools among many other technologies.",
+        "description": "Formación en desarrollo web Full Stack, incluyendo creación de interfaces con HTML, CSS y React, desarrollo backend con Node.js, MongoDB, gestión de bases de datos y despliegue con herramientas DevOps entre otras muchas tecnologías.",
         "entity": "CODESPACE"
       },
       {
-        "title": "Linux Personalization Environment Certification",
+        "title": "Certificación de Personalización de entorno en Linux",
         "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
         "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
-        "description": "Skills to personalize Linux environments in Debian, Kali and other Linux-based systems including software configuration, system settings and performance and security optimization.",
+        "description": "Habilidades para personalizar entornos Linux en Debian, Kali y demás sistemas basados en Linux incluyendo configuración de software, ajustes de sistema y optimización de rendimiento y seguridad.",
         "entity": "HACK4U"
       }
     ]
@@ -341,48 +341,48 @@
   "socialMedia": {
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "email": "Mail"
+    "email": "Correo"
   },
   "experience": {
-    "workExperience": "Work Experience",
+    "workExperience": "Experiencia laboral",
     "experience": [
       {
-        "date": "September 2024",
-        "title": "Software Developer & Front-End Developer for Dimap®",
-        "description": "Front-End Developer."
+        "date": "Septiembre 2024",
+        "title": "Desarrollador de Software y Front-End en Dimap®",
+        "description": "Desarrollo Front-End."
       },
       {
-        "date": "May 2024",
-        "title": "Software Developer for Gubb Marketing®",
-        "description": "Software development and web applications."
+        "date": "Mayo 2024",
+        "title": "Desarrollador de Software en Gubb Marketing®",
+        "description": "Desarrollo de Software y aplicaciones web."
       },
       {
-        "date": "March 2024",
-        "title": "Development of Agrooe-Cashback for Agrooe® and Gubb Marketing®.",
-        "description": "Development from 0 of a web application focused on the administration of a cashback system for the company Agrooe®. Development of the database, backend and frontend of the web application."
+        "date": "Marzo 2024",
+        "title": "Desarrollo de Agrooe-Cashback para Agrooe® y Gubb Marketing®",
+        "description": "Desarrollo desde cero de una aplicación web centrada en la administración de un sistema de cashback para la empresa Agrooe®. Desarrollo de la base de datos, el backend y el frontend de la aplicación web."
       },
       {
-        "date": "June 2021",
+        "date": "Junio 2021",
         "title": "Freelancer",
-        "description": "Development of personal and professional projects of different kinds."
+        "description": "Desarrollo de proyectos personales y profesionales de diferente tipo."
       }
     ]
   },
   "footerItems": [
     {
-      "title": "About me",
-      "url": "/en/about"
+      "title": "Acerca de mí",
+      "url": "/es-mx/about"
     },
     {
-      "title": "Projects",
-      "url": "/en/#projects"
+      "title": "Proyectos",
+      "url": "/es-mx/#proyectos"
     },
     {
-      "title": "Experience",
-      "url": "/en/#experience"
+      "title": "Experiencia",
+      "url": "/es-mx/#experiencia"
     },
     {
-      "title": "Contact",
+      "title": "Contacto",
       "url": "mailto:Fran11799@outlook.com"
     },
     {
@@ -390,60 +390,60 @@
       "url": "https://cv-web-smoky.vercel.app/"
     },
     {
-      "title": "Go up",
-      "url": "/en/#"
+      "title": "Subir",
+      "url": "/es-mx/#"
     }
   ],
   "keyboardManager": {
-    "kmPlaceHolder": "Find",
-    "kmTitle": "Visit",
+    "kmPlaceHolder": "Buscar",
+    "kmTitle": "Visitar",
     "kmSocialSection": "Social",
-    "kmNavigationSection": "Navigation",
+    "kmNavigationSection": "Navegación",
     "kmCommands": [
       {
-        "id": "home",
-        "title": "Home",
+        "id": "inicio",
+        "title": "Inicio",
         "icon": "<svg {...Astro.props}  xmlns=\"http://www.w3.org/2000/svg\"  width=\"22\"  height=\"22\"  viewBox=\"0 0 24 24\"  fill=\"none\"  stroke=\"currentColor\"  stroke-width=\"2\" style=\"margin-right: 8px\"  stroke-linecap=\"round\"  stroke-linejoin=\"round\"  class=\"icon icon-tabler icons-tabler-outline icon-tabler-home\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /><path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /><path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" /></svg>",
         "hotkey": "⌘+H",
-        "section": "Navigation",
-        "handler": "/en/#"
+        "section": "Navegación",
+        "handler": "/es-mx/#"
       },
       {
         "id": "certifications",
-        "title": "Certifications",
+        "title": "Certificaciones",
         "icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='22' height='22' style='margin-right: 8px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-certificate'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'></path><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'></path><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'></path><path d='M6 9l12 0'></path><path d='M6 12l3 0'></path><path d='M6 15l2 0'></path></svg>",
         "hotkey": "⌘+S",
-        "section": "Navigation",
-        "handler": "/en/certifications"
+        "section": "Navegación",
+        "handler": "/es-mx/certifications"
       },
       {
         "id": "projects",
-        "title": "Projects",
+        "title": "Proyectos",
         "icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='margin-right: 6px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M5 7l5 5l-5 5'></path><path d='M13 17l6 0'></path></svg>",
         "hotkey": "⌘+P",
-        "section": "Navigation",
-        "handler": "/en/projects"
+        "section": "Navegación",
+        "handler": "/es-mx/projects"
       }
     ]
   },
   "languageNames": {
-    "es": "Spanish",
-    "es-mx": "Spanish (Mexico)",
-    "en": "English (UK)",
-    "en-us": "English (US)",
-    "zh": "Chinese",
+    "es": "Español",
+    "es-mx": "Español (México)",
+    "en": "Inglés (Reino Unido)",
+    "en-us": "Inglés (Estados Unidos)",
+    "zh": "Chino",
     "hi": "Hindi",
-    "ar": "Arabic",
-    "pt": "Portuguese",
-    "fr": "French",
-    "de": "German",
-    "ja": "Japanese",
-    "ru": "Russian",
-    "it": "Italian",
-    "ko": "Korean",
-    "nl": "Dutch",
-    "pl": "Polish",
-    "tr": "Turkish",
-    "hv": "High Valyrian"
+    "ar": "Árabe",
+    "pt": "Portugués",
+    "fr": "Francés",
+    "de": "Alemán",
+    "ja": "Japonés",
+    "ru": "Ruso",
+    "it": "Italiano",
+    "ko": "Coreano",
+    "nl": "Holandés",
+    "pl": "Polaco",
+    "tr": "Turco",
+    "hv": "Alto Valyrio"
   }
 }

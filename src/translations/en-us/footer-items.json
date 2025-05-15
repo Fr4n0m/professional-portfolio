@@ -1,0 +1,26 @@
+[
+  {
+    "title": "About Me",
+    "url": "/en-us/about"
+  },
+  {
+    "title": "Projects",
+    "url": "/en-us/#projects"
+  },
+  {
+    "title": "Experience",
+    "url": "/en-us/#experience"
+  },
+  {
+    "title": "Contact",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "Resume",
+    "url": "https://cv-web-smoky.vercel.app/"
+  },
+  {
+    "title": "Back to Top",
+    "url": "/en-us/#"
+  }
+]

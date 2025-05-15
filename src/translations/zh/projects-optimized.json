@@ -1,0 +1,15 @@
+// En lugar de repetir imágenes, tags, links, etc., solo incluimos las traducciones de texto
+[
+  {
+    "id": "agrooe-cashback",
+    "title": "Agrooe Cashback",
+    "description": "致力于销售优质产品和发展当地商业的平台。"
+  },
+  {
+    "id": "strapi-games-store", 
+    "title": "Strapi游戏商店",
+    "description": "使用Strapi作为后端和CMS的游戏内容管理网络应用程序。"
+  }
+  // Solo necesitamos el ID, título y descripción para cada proyecto
+  // Las imágenes, tags, links, etc. se toman de baseData
+]

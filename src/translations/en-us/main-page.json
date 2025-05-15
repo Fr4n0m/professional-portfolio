@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "heroTitle": "Hey, I'm Fran",
+    "heroBadge": "Available for work",
+    "heroDescription1": "Software & Full Stack Developer.",
+    "heroDescription2": "Lifelong learner passionate about details.",
+    "heroDescription3": "Specializing in creating and solving problems. 🤓"
+  },
+  "socialPill": {
+    "socialPillTitle": "Visit",
+    "sendMailSocialPill": "Send email to",
+    "copyButton": {
+      "copyTitle": "Copy Email",
+      "copyMail": "Email copied!",
+      "copyMailError": "Error copying"
+    }
+  },
+  "skills": {
+    "skillsTitle": "Skills"
+  },
+  "selectedProjects": {
+    "projectsTitle": "Projects"
+  }
+}

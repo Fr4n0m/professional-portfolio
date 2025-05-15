@@ -1,0 +1,11 @@
+{
+  "allProjects": "All projects",
+  "allProjectsTitle": "Projects - Portfolio Francisco José Rodríguez Martínez - Software Developer & Full Stack",
+  "allProjectsDescription": "All projects - Portfolio Francisco José Rodríguez Martínez - Software Developer & Full Stack",
+  "allProjectsLink": "/en-us/projects",
+  "projectsButtons": {
+    "textCodeButton": "Code",
+    "textDemoButton": "Demo",
+    "textDemo2Button": "Demo 2"
+  }
+}

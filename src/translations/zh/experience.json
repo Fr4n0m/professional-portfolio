@@ -1,0 +1,25 @@
+{
+  "workExperience": "工作经验",
+  "experience": [
+    {
+      "date": "2024年9月",
+      "title": "Dimap®的软件开发人员和前端开发人员",
+      "description": "前端开发。"
+    },
+    {
+      "date": "2024年5月",
+      "title": "Gubb Marketing®的软件开发人员",
+      "description": "软件开发和Web应用程序。"
+    },
+    {
+      "date": "2024年3月",
+      "title": "为Agrooe®和Gubb Marketing®开发Agrooe-Cashback",
+      "description": "从零开始开发专注于管理Agrooe®公司返现系统的Web应用程序。开发Web应用程序的数据库、后端和前端。"
+    },
+    {
+      "date": "2021年6月",
+      "title": "自由职业者",
+      "description": "开发各种类型的个人和专业项目。"
+    }
+  ]
+}

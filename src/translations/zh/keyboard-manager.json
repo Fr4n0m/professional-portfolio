@@ -1,0 +1,29 @@
+{
+  "kmPlaceHolder": "搜索",
+  "kmTitle": "访问",
+  "kmSocialSection": "社交",
+  "kmNavigationSection": "导航",
+  "kmCommands": [
+    {
+      "id": "home",
+      "title": "主页",
+      "hotkey": "⌘+H",
+      "section": "导航",
+      "handler": "/zh/#"
+    },
+    {
+      "id": "certifications",
+      "title": "证书",
+      "hotkey": "⌘+S",
+      "section": "导航",
+      "handler": "/zh/certifications"
+    },
+    {
+      "id": "projects",
+      "title": "项目",
+      "hotkey": "⌘+P",
+      "section": "导航",
+      "handler": "/zh/projects"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "title": "主页",
+    "label": "home",
+    "url": "/zh/#"
+  },
+  {
+    "title": "技能",
+    "label": "skills",
+    "url": "/zh/#skills"
+  },
+  {
+    "title": "经验",
+    "label": "experience",
+    "url": "/zh/#experience"
+  },
+  {
+    "title": "项目",
+    "label": "projects",
+    "url": "/zh/#projects"
+  },
+  {
+    "title": "证书",
+    "label": "certifications",
+    "url": "/zh/certifications"
+  },
+  {
+    "title": "联系",
+    "label": "contact",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "简历",
+    "label": "cv",
+    "url": "https://cv-web-smoky.vercel.app/"
+  }
+]

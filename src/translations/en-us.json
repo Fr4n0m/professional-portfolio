@@ -3,7 +3,7 @@
     "name": "Francisco José Rodríguez Martínez",
     "role": "Software & Full Stack Developer.",
     "alias": "Fr4n0m",
-    "location": "📍 Malaga, Spain",
+    "location": "📍 Málaga, Spain",
     "mail": "Fran11799@outlook.com",
     "profiles": [
       {
@@ -17,7 +17,7 @@
         "url": "https://github.com/Fr4n0m"
       },
       {
-        "network": "CV",
+        "network": "Resume",
         "username": "Francisco Rodríguez",
         "url": "https://cv-web-smoky.vercel.app/"
       }
@@ -27,27 +27,27 @@
     {
       "title": "Home",
       "label": "home",
-      "url": "/en/#"
+      "url": "/en-us/#"
     },
     {
       "title": "Skills",
       "label": "skills",
-      "url": "/en/#skills"
+      "url": "/en-us/#skills"
     },
     {
       "title": "Experience",
       "label": "experience",
-      "url": "/en/#experience"
+      "url": "/en-us/#experience"
     },
     {
       "title": "Projects",
       "label": "projects",
-      "url": "/en/#projects"
+      "url": "/en-us/#projects"
     },
     {
       "title": "Certifications",
       "label": "certifications",
-      "url": "/en/certifications"
+      "url": "/en-us/certifications"
     },
     {
       "title": "Contact",
@@ -55,30 +55,30 @@
       "url": "mailto:Fran11799@outlook.com"
     },
     {
-      "title": "CV",
-      "label": "cv",
+      "title": "Resume",
+      "label": "resume",
       "url": "https://cv-web-smoky.vercel.app/"
     }
   ],
   "layout": {
-    "title": "Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack Web",
+    "title": "Portfolio Francisco José Rodríguez Martínez - Software Developer & Full Stack",
     "titleDescription": "Full Stack Web Developer"
   },
   "mainPage": {
     "hero": {
       "heroTitle": "Hey, I'm Fran",
-      "heroBadge": "Available to work",
+      "heroBadge": "Available for work",
       "heroDescription1": "Software & Full Stack Developer.",
-      "heroDescription2": "Eternal learner passionate about details.",
-      "heroDescription3": "Specialized creating and solving problems. 🤓"
+      "heroDescription2": "Lifelong learner passionate about details.",
+      "heroDescription3": "Specializing in creating and solving problems. 🤓"
     },
     "socialPill": {
       "socialPillTitle": "Visit",
-      "sendMailSocialPill": "Send mail to",
+      "sendMailSocialPill": "Send email to",
       "copyButton": {
-        "copyTitle": "Copy Mail",
-        "copyMail": "Mail copy!",
-        "copyMailError": "'Error copying'"
+        "copyTitle": "Copy Email",
+        "copyMail": "Email copied!",
+        "copyMailError": "Error copying"
       }
     },
     "skills": {
@@ -90,13 +90,13 @@
   },
   "projectsPage": {
     "allProjects": "All projects",
-    "allProjectsTitle": "Projects - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
-    "allProjectsDescription": "All projects - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
-    "allProjectsLink": "/en/projects",
+    "allProjectsTitle": "Projects - Portfolio Francisco José Rodríguez Martínez - Software Developer & Full Stack",
+    "allProjectsDescription": "All projects - Portfolio Francisco José Rodríguez Martínez - Software Developer & Full Stack",
+    "allProjectsLink": "/en-us/projects",
     "projects": [
       {
         "title": "Agrooe Cashback",
-        "description": "On this website, I worked with a team to develop a platform from scratch, committed to selling quality products and promoting local commerce. We worked from the concept to the implementation, creating both the back-end and front-end. In addition to various technologies, integrations were added, such as JWT for user account control and login, a dashboard to manage all the data... Features included the ability to log in with different social networks, account creation as a user to purchase products or as a company to add them, maps showing the nearest locations where the product could be found, among other things. Due to confidentiality reasons, the code is not displayed.",
+        "description": "On this website, I worked with a team to develop a platform from scratch, committed to selling quality products and promoting local commerce. We worked from the concept to the implementation, creating both the back-end and front-end. In addition to various technologies, we implemented integrations like JWT for user account control and login, a dashboard to manage all the data, and features like logging in with different social networks, account creation as a user to purchase products or as a company to add them, maps showing the nearest locations where products could be found, among other things. Due to confidentiality reasons, the code is not displayed.",
         "images": [
           "/assets/images/projects/agrooe_1.jpeg",
           "/assets/images/projects/agrooe_2.jpeg",
@@ -116,7 +116,7 @@
       },
       {
         "title": "Strapi Games Store",
-        "description": "Web app designed to manage games content using Strapi as backend and CMS.",
+        "description": "Web app designed to manage video game content using Strapi as backend and CMS.",
         "link": "https://strapi-games-store.vercel.app/",
         "github": "https://github.com/Fr4n0m/strapi-games-store",
         "images": [
@@ -137,7 +137,7 @@
       },
       {
         "title": "Realtime Chat",
-        "description": "Chat app using Socket.IO for real-time communication and Supabase as database.",
+        "description": "Real-time chat application using Socket.IO for live communication and Supabase as the database.",
         "link": "https://realtime-chat-ten-nu.vercel.app/",
         "github": "https://github.com/Fr4n0m/realtime-chat",
         "images": [
@@ -156,7 +156,7 @@
       },
       {
         "title": "Super Mario Bros 85'",
-        "description": "Clon for educational purposes of the legendary Nintendo game Super Mario Bros from 1985.",
+        "description": "Educational clone of the legendary Nintendo game Super Mario Bros from 1985.",
         "github": "https://github.com/Fr4n0m/super-mario-bros-85",
         "images": [
           "/assets/images/projects/super-mario-bros-85.webp",
@@ -177,7 +177,7 @@
       },
       {
         "title": "Paint Windows 95'",
-        "description": "A Paint-inspired application from the Windows 95 era.",
+        "description": "Paint application inspired by the Windows 95 era.",
         "link": "https://paint-win-95-blond.vercel.app/",
         "github": "https://github.com/Fr4n0m/paint-win-95",
         "images": [
@@ -192,7 +192,7 @@
       },
       {
         "title": "Bookshop View Transitions Demo",
-        "description": "Web library to practice view transitions.",
+        "description": "Web bookstore for practicing view transitions.",
         "link": "https://bookshop-view-transitions.vercel.app/",
         "secondaryLink": "https://bookshop-view-transitions-vite.vercel.app/",
         "github": "https://github.com/Fr4n0m/bookshop-view-transitions",
@@ -208,8 +208,8 @@
         ]
       },
       {
-        "title": "Tiktok clone",
-        "description": "Tiktok interface clone using Vite and React with Supabase backend.",
+        "title": "TikTok Clone",
+        "description": "TikTok interface clone using Vite and React with Supabase backend.",
         "link": "https://tiktok-clone-five-phi.vercel.app/",
         "github": "https://github.com/Fr4n0m/tiktok-clone",
         "images": [
@@ -229,7 +229,7 @@
       },
       {
         "title": "Atari Breakout Game",
-        "description": "Legendary Atari BreakOut game version with JavaScript.",
+        "description": "Version of the legendary Atari Breakout game built with JavaScript.",
         "link": "https://breakout-game-jade.vercel.app/",
         "github": "https://github.com/Fr4n0m/breakout-game",
         "images": [
@@ -244,7 +244,7 @@
       },
       {
         "title": "Filmax",
-        "description": "Web to see information about movies and series.",
+        "description": "Website to view information about movies and TV shows.",
         "link": "",
         "github": "https://github.com/Fr4n0m/filmax",
         "images": [
@@ -276,8 +276,8 @@
         ]
       },
       {
-        "title": "Pokedex",
-        "description": "Pokedex to view information about pokemons with the possibility of adding favorites, deleting or even creating your own pokemon.",
+        "title": "Pokédex",
+        "description": "Pokédex to view information about Pokémon with the ability to add favorites, delete, or even create your own Pokémon.",
         "link": "",
         "github": "https://github.com/Fr4n0m/YourOwnPokedex",
         "images": [
@@ -294,8 +294,8 @@
         ]
       },
       {
-        "title": "First portfolio",
-        "description": "First web portfolio using only HTML, CSS and JavaScript. Later I implemented it in Astro.",
+        "title": "First Portfolio Website",
+        "description": "First web portfolio using only HTML, CSS, and JavaScript. Later implemented it in Astro.",
         "link": "https://portfolio-fr4n0m-astro.vercel.app/",
         "github": "https://github.com/Fr4n0m/portfolio-astro",
         "images": [
@@ -319,21 +319,21 @@
   },
   "certificationsPage": {
     "certifications": "Certifications",
-    "certificationsTitle": "Certifications - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
-    "certificationsDescription": "Certifications - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
+    "certificationsTitle": "Certifications - Portfolio Francisco José Rodríguez Martínez - Software Developer & Full Stack",
+    "certificationsDescription": "Certifications - Portfolio Francisco José Rodríguez Martínez - Software Developer & Full Stack",
     "certificationsList": [
       {
         "title": "Full Stack Web Developer Certification",
         "image": "/assets/images/certificates/images/Certificado-CodeSpace.webp",
         "url": "/assets/images/certificates/pdf/Certificado-CodeSpace.pdf",
-        "description": "Full Stack Web Developer formation including creating interfaces with HTML, CSS and React, backend development with Node.js, MongoDB, database management and deployment with DevOps tools among many other technologies.",
+        "description": "Full Stack web development training, including interface creation with HTML, CSS, and React, backend development with Node.js, MongoDB, database management, and deployment with DevOps tools among many other technologies.",
         "entity": "CODESPACE"
       },
       {
-        "title": "Linux Personalization Environment Certification",
+        "title": "Linux Environment Customization Certification",
         "image": "/assets/images/certificates/images/Certificado-Hack4u-PersonalizaciónLinux.webp",
         "url": "/assets/images/certificates/pdf/Certificado-Hack4u-PersonalizacionLinux.pdf",
-        "description": "Skills to personalize Linux environments in Debian, Kali and other Linux-based systems including software configuration, system settings and performance and security optimization.",
+        "description": "Skills to customize Linux environments in Debian, Kali, and other Linux-based systems including software configuration, system settings, and performance and security optimization.",
         "entity": "HACK4U"
       }
     ]
@@ -341,61 +341,61 @@
   "socialMedia": {
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "email": "Mail"
+    "email": "Email"
   },
   "experience": {
     "workExperience": "Work Experience",
     "experience": [
       {
         "date": "September 2024",
-        "title": "Software Developer & Front-End Developer for Dimap®",
-        "description": "Front-End Developer."
+        "title": "Software Developer & Front-End Developer at Dimap®",
+        "description": "Front-End Development."
       },
       {
         "date": "May 2024",
-        "title": "Software Developer for Gubb Marketing®",
+        "title": "Software Developer at Gubb Marketing®",
         "description": "Software development and web applications."
       },
       {
         "date": "March 2024",
-        "title": "Development of Agrooe-Cashback for Agrooe® and Gubb Marketing®.",
-        "description": "Development from 0 of a web application focused on the administration of a cashback system for the company Agrooe®. Development of the database, backend and frontend of the web application."
+        "title": "Agrooe-Cashback Development for Agrooe® and Gubb Marketing®",
+        "description": "Development from scratch of a web application focused on managing a cashback system for Agrooe®. Development of the database, backend, and frontend of the web application."
       },
       {
         "date": "June 2021",
         "title": "Freelancer",
-        "description": "Development of personal and professional projects of different kinds."
+        "description": "Development of personal and professional projects of various types."
       }
     ]
   },
   "footerItems": [
     {
-      "title": "About me",
-      "url": "/en/about"
+      "title": "About Me",
+      "url": "/en-us/about"
     },
     {
       "title": "Projects",
-      "url": "/en/#projects"
+      "url": "/en-us/#projects"
     },
     {
       "title": "Experience",
-      "url": "/en/#experience"
+      "url": "/en-us/#experience"
     },
     {
       "title": "Contact",
       "url": "mailto:Fran11799@outlook.com"
     },
     {
-      "title": "CV",
+      "title": "Resume",
       "url": "https://cv-web-smoky.vercel.app/"
     },
     {
-      "title": "Go up",
-      "url": "/en/#"
+      "title": "Back to Top",
+      "url": "/en-us/#"
     }
   ],
   "keyboardManager": {
-    "kmPlaceHolder": "Find",
+    "kmPlaceHolder": "Search",
     "kmTitle": "Visit",
     "kmSocialSection": "Social",
     "kmNavigationSection": "Navigation",
@@ -406,7 +406,7 @@
         "icon": "<svg {...Astro.props}  xmlns=\"http://www.w3.org/2000/svg\"  width=\"22\"  height=\"22\"  viewBox=\"0 0 24 24\"  fill=\"none\"  stroke=\"currentColor\"  stroke-width=\"2\" style=\"margin-right: 8px\"  stroke-linecap=\"round\"  stroke-linejoin=\"round\"  class=\"icon icon-tabler icons-tabler-outline icon-tabler-home\"><path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /><path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /><path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" /></svg>",
         "hotkey": "⌘+H",
         "section": "Navigation",
-        "handler": "/en/#"
+        "handler": "/en-us/#"
       },
       {
         "id": "certifications",
@@ -414,7 +414,7 @@
         "icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='22' height='22' style='margin-right: 8px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-certificate'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0'></path><path d='M13 17.5v4.5l2 -1.5l2 1.5v-4.5'></path><path d='M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73'></path><path d='M6 9l12 0'></path><path d='M6 12l3 0'></path><path d='M6 15l2 0'></path></svg>",
         "hotkey": "⌘+S",
         "section": "Navigation",
-        "handler": "/en/certifications"
+        "handler": "/en-us/certifications"
       },
       {
         "id": "projects",
@@ -422,7 +422,7 @@
         "icon": "<svg {...Astro.props} xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='margin-right: 6px' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path d='M5 7l5 5l-5 5'></path><path d='M13 17l6 0'></path></svg>",
         "hotkey": "⌘+P",
         "section": "Navigation",
-        "handler": "/en/projects"
+        "handler": "/en-us/projects"
       }
     ]
   },

@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "heroTitle": "嗨，我是Fran",
+    "heroBadge": "可以工作",
+    "heroDescription1": "软件和全栈网页开发人员。",
+    "heroDescription2": "热衷于细节的永恒学习者。",
+    "heroDescription3": "专门创建和解决问题。🤓"
+  },
+  "socialPill": {
+    "socialPillTitle": "访问",
+    "sendMailSocialPill": "发送邮件到",
+    "copyButton": {
+      "copyTitle": "复制邮件",
+      "copyMail": "邮件已复制！",
+      "copyMailError": "复制错误"
+    }
+  },
+  "skills": {
+    "skillsTitle": "技能"
+  },
+  "selectedProjects": {
+    "projectsTitle": "项目"
+  }
+}

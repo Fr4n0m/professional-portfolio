@@ -1,0 +1,12 @@
+[
+  {
+    "id": "fullstack-codespace",
+    "title": "全栈Web开发人员认证",
+    "description": "全栈Web开发培训，包括使用HTML、CSS和React创建界面、使用Node.js开发后端、MongoDB、数据库管理以及使用DevOps工具进行部署等多种技术。"
+  },
+  {
+    "id": "linux-hack4u",
+    "title": "Linux环境定制认证",
+    "description": "在Debian、Kali和其他基于Linux的系统中定制Linux环境的技能，包括软件配置、系统设置以及性能和安全优化。"
+  }
+]

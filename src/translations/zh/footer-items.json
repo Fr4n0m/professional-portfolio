@@ -1,0 +1,26 @@
+[
+  {
+    "title": "关于我",
+    "url": "/zh/about"
+  },
+  {
+    "title": "项目",
+    "url": "/zh/#projects"
+  },
+  {
+    "title": "经验",
+    "url": "/zh/#experience"
+  },
+  {
+    "title": "联系",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "简历",
+    "url": "https://cv-web-smoky.vercel.app/"
+  },
+  {
+    "title": "返回顶部",
+    "url": "/zh/#"
+  }
+]

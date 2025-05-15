@@ -1,0 +1,11 @@
+{
+  "allProjects": "Todos los proyectos",
+  "allProjectsTitle": "Proyectos - Portafolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web",
+  "allProjectsDescription": "Todos los proyectos - Portafolio Francisco José Rodríguez Martínez - Desarrollador y Programador Web",
+  "allProjectsLink": "/es-mx/projects",
+  "projectsButtons": {
+    "textCodeButton": "Código",
+    "textDemoButton": "Demo",
+    "textDemo2Button": "Demo 2"
+  }
+}

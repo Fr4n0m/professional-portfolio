@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Acerca de mí",
+    "url": "/es-mx/about"
+  },
+  {
+    "title": "Proyectos",
+    "url": "/es-mx/#proyectos"
+  },
+  {
+    "title": "Experiencia",
+    "url": "/es-mx/#experiencia"
+  },
+  {
+    "title": "Contacto",
+    "url": "mailto:Fran11799@outlook.com"
+  },
+  {
+    "title": "CV",
+    "url": "https://cv-web-smoky.vercel.app/"
+  },
+  {
+    "title": "Subir",
+    "url": "/es-mx/#"
+  }
+]
