@@ -1,0 +1,76 @@
+---
+// Componente para el menú desplegable de navegación
+interface Props {
+  title: string;
+  dataSection: string;
+  ariaLabel: string;
+  items: {
+    title: string;
+    url: string;
+    isExternal?: boolean;
+  }[];
+}
+
+const { title, dataSection, ariaLabel, items } = Astro.props;
+---
+
+<div class="dropdown-nav-item relative group">
+  <button 
+    class="nav-link dropdown-toggle block px-3 py-2 transition text-nowrap relative hover-effect" 
+    data-section={dataSection}
+    aria-label={ariaLabel}
+    aria-haspopup="true" 
+    aria-expanded="false"
+  >
+    <span class="relative z-10 flex items-center">
+      {title}
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </span>
+    <span class="nav-hover-background"></span>
+  </button>
+  
+  <div class="dropdown-menu absolute z-40 left-0 hidden pt-2 group-hover:block min-w-[180px]">
+    <div class="bg-white/90 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 py-1 transition-all duration-300 origin-top scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100">
+      {items.map(item => (
+        <a 
+          href={item.url} 
+          class="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors"
+          target={item.isExternal ? "_blank" : "_self"}
+          rel={item.isExternal ? "noopener noreferrer" : ""}
+        >
+          {item.title}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Estilos para el menú desplegable */
+  .dropdown-menu {
+    transform-origin: top center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Evitar que el menú desaparezca inmediatamente */
+  .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+  
+  /* Estilo para la flecha */
+  .dropdown-toggle svg {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Rotación de la flecha en hover */
+  .dropdown-nav-item:hover .dropdown-toggle svg {
+    transform: rotate(180deg);
+  }
+</style>

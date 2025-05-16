@@ -2,9 +2,20 @@
 import ArrowUp from '@icons/ArrowUp.astro';
 import type { Translations } from '../types/translations';
 import type { FooterItem } from '../types/footerItem';
+import LocationTextFooter from '@components/ui/Map/LocationTextFooter.astro';
 
 const translations: Translations = Astro.props.translations;
 const footerItems: FooterItem[] = translations.footerItems;
+
+// Configuración para la ubicación tal como está en el Hero
+const currentUrl = Astro.url.pathname;
+const isEnglish = currentUrl.includes('/en');
+const visibleLocationText = "📍 Málaga, España";
+const visibleLocationTextEN = "📍 Malaga, Spain";
+const displayLocationText = isEnglish ? visibleLocationTextEN : visibleLocationText;
+
+// Obtener información completa de la ubicación
+const fullLocation = translations.personalInfo.location;
 ---
 
 <footer class='shadow p-4 py-8 md:p-8 lg:p-10 backdrop-blur-[1px]'>
@@ -18,11 +29,18 @@ const footerItems: FooterItem[] = translations.footerItems;
 			<img src='/favicon.png' class='rounded-full w-10 h-10 mr-4' />
 			{translations.personalInfo.alias}
 		</a>
-		<p class='my-6 text-gray-500 dark:text-gray-400'>
+		<div class='my-6 text-gray-500 dark:text-gray-400'>
 			{translations.personalInfo.role}
-			<span class='text-nowrap'>{translations.personalInfo.location}</span
-			>
-		</p>
+			<div class="inline-flex justify-center mt-2">
+				<LocationTextFooter
+					text={displayLocationText}
+					city="Málaga"
+					region="Andalucía"
+					address={fullLocation}
+					className="text-red-500 dark:text-red-200/95 text-nowrap"
+				/>
+			</div>
+		</div>
 		<ul
 			class='flex flex-wrap gap-y-2 md:gap-y-0 justify-center items-center mb-6 text-gray-700 dark:text-white/80'
 		>
@@ -50,9 +68,6 @@ const footerItems: FooterItem[] = translations.footerItems;
 					{footerItems[2].title}
 				</a>
 			</li>
-			<!-- <li>
-				<a href='#' class='mr-4 hover:underline md:mr-6'>Blog</a>
-			</li> -->
 			<li>
 				<a
 					href={footerItems[3].url}
@@ -90,3 +105,10 @@ const footerItems: FooterItem[] = translations.footerItems;
 		</span>
 	</div>
 </footer>
+
+<style>
+	/* Aseguramos que el LocationText esté correctamente centrado cuando está en línea */
+	.inline-flex {
+		display: inline-flex;
+	}
+</style>

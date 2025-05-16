@@ -1,0 +1,33 @@
+/* Estilos específicos para el LocationHover en el footer */
+
+/* Descripción alineada a la izquierda */
+.descriptionLeft {
+  padding: 10px;
+  z-index: 1;
+  position: relative;
+  text-align: left; /* Forzar alineación a la izquierda */
+}
+
+.descriptionLeft span,
+.descriptionLeft p {
+  text-align: left;
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Asegurar que la dirección completa no se superponga con el botón */
+.descriptionLeft p:last-child {
+  max-width: 65%; /* Limitar el ancho para evitar superposición con el botón */
+  font-size: 0.55em;
+  color: #7893B9;
+  margin-top: 2px;
+  margin: 0;
+}
+
+/* Dark mode */
+:global(html.dark) .descriptionLeft p:last-child {
+  color: #a1a1a6;
+}

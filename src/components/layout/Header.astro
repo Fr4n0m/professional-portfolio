@@ -30,7 +30,7 @@ const info = {
 </style>
 
 <header class='fixed top-0 z-50 flex items-center justify-center w-full mx-auto'>
-  <DesktopNav headerItems={headerItems} info={info} lang={lang} />
+  <DesktopNav headerItems={headerItems} info={info} lang={lang} translations={translations} />
   <MobileNav headerItems={headerItems} lang={lang} translations={translations} />
 </header>
 
@@ -47,7 +47,7 @@ const info = {
     }
     
     // Function to check if the current URL matches the nav item
-    const isCurrentPage = (itemHref: string) => {
+    const isCurrentPage = (itemHref) => {
       // Handle home page special case
       if (itemHref === '/' || itemHref === '/#main') {
         return currentPath === '/' && (currentHash === '' || currentHash === '#main');
@@ -110,6 +110,10 @@ const info = {
     // Handle sections on the current page
     const sections = document.querySelectorAll('section[data-section]');
     
+    // Depuración: mostrar las secciones encontradas
+    console.log('Secciones encontradas con data-section:', sections.length);
+    sections.forEach(section => console.log('Sección ID:', section.id, 'data-section:', section.getAttribute('data-section')));
+    
     if (sections.length > 0) {
       const observerOptions = {
         root: null,
@@ -117,7 +121,7 @@ const info = {
         threshold: 0.1 // Requiere que al menos el 10% de la sección sea visible
       };
       
-      const callback = (entries: IntersectionObserverEntry[]) => {
+      const callback = (entries) => {
         // Filter for sections that are currently intersecting
         const visibleSections = entries.filter(entry => entry.isIntersecting);
         
@@ -139,12 +143,20 @@ const info = {
         }
         
         const activeSectionId = activeSection.target.id;
+        console.log('Sección activa detectada:', activeSectionId);
         
         // Update all navigation items
         navItems.forEach(item => {
           const dataSection = item.getAttribute('data-section');
+          const itemHref = item.getAttribute('href');
           
-          if (dataSection === activeSectionId) {
+          // SOLUCIÓN: Comprobar si el enlace tiene un hash que coincide con el ID de la sección
+          const isMatchingSection = dataSection === activeSectionId;
+          const isMatchingHash = itemHref && itemHref.includes('#') && 
+                                itemHref.split('#')[1] === activeSectionId;
+          
+          if (isMatchingSection || isMatchingHash) {
+            console.log('Enlace activado:', item, 'dataSection:', dataSection, 'href:', itemHref);
             item.classList.add('active');
             if (document.documentElement.classList.contains('dark')) {
               // Solo añadimos la clase, sin estilo inline
@@ -157,6 +169,26 @@ const info = {
             // Only remove active class from hash navigation items, not from page navigation
             item.classList.remove('active', 'active-dark');
             item.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+          }
+        });
+        
+        // Para los menús desplegables, también debemos activar el botón del dropdown
+        const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
+        dropdownButtons.forEach(button => {
+          const dataSection = button.getAttribute('data-section');
+          
+          if (dataSection === activeSectionId) {
+            console.log('Activando dropdown:', button);
+            button.classList.add('active');
+            if (document.documentElement.classList.contains('dark')) {
+              button.classList.add('text-yellow-300');
+            } else {
+              button.classList.add('text-blue-800');
+            }
+            button.classList.add('font-semibold');
+          } else {
+            button.classList.remove('active', 'active-dark');
+            button.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
           }
         });
       };
@@ -205,8 +237,9 @@ const info = {
     setTimeout(() => {
       const sections = document.querySelectorAll('section[data-section]');
       const navItems = document.querySelectorAll('header nav a');
+      const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
       
-      if (sections.length > 0 && navItems.length > 0) {
+      if (sections.length > 0 && (navItems.length > 0 || dropdownButtons.length > 0)) {
         // La sección inicial es la primera
         const initialSectionId = sections[0].id;
         
@@ -216,10 +249,19 @@ const info = {
           item.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         });
         
+        dropdownButtons.forEach(button => {
+          button.classList.remove('active', 'active-dark');
+          button.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+        });
+        
         // Activamos solo el elemento del menú correspondiente a la primera sección
         navItems.forEach(item => {
           const dataSection = item.getAttribute('data-section');
-          if (dataSection === initialSectionId) {
+          const href = item.getAttribute('href');
+          const matchesSection = dataSection === initialSectionId;
+          const matchesHash = href && href.includes('#') && href.split('#')[1] === initialSectionId;
+          
+          if (matchesSection || matchesHash) {
             item.classList.add('active');
             if (document.documentElement.classList.contains('dark')) {
               // Solo añadimos la clase, sin estilo inline
@@ -230,6 +272,21 @@ const info = {
             item.classList.add('font-semibold');
           }
         });
+        
+        // También activamos el dropdown si corresponde
+        dropdownButtons.forEach(button => {
+          const dataSection = button.getAttribute('data-section');
+          
+          if (dataSection === initialSectionId) {
+            button.classList.add('active');
+            if (document.documentElement.classList.contains('dark')) {
+              button.classList.add('text-yellow-300');
+            } else {
+              button.classList.add('text-blue-800');
+            }
+            button.classList.add('font-semibold');
+          }
+        });
       }
     }, 100); // Pequeño retardo para asegurar que el DOM está listo
   }
@@ -237,7 +294,7 @@ const info = {
   // Observador para detectar cambios en el tema y actualizar colores
   const themeObserver = new MutationObserver(() => {
     const isDark = document.documentElement.classList.contains('dark');
-    const activeLinks = document.querySelectorAll('.nav-link.active, header nav a.active');
+    const activeLinks = document.querySelectorAll('.nav-link.active, header nav a.active, .dropdown-toggle.active');
     
     activeLinks.forEach(link => {
       if (isDark) {
@@ -257,3 +314,6 @@ const info = {
     attributeFilter: ['class'] 
   });
 </script>
+
+<!-- Script de depuración para el observer -->
+<script src="/src/scripts/debug-observer.js"></script>

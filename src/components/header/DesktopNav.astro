@@ -1,5 +1,6 @@
 ---
 import ProfileTooltip from './ProfileTooltip.astro';
+import DropdownNavItem from './DropdownNavItem.astro';
 import type { HeaderItem } from '../../types/headerItem';
 import { languages } from '@i18n/config';
 import ThemeToggleButton from './components/ThemeToggleButton.astro';
@@ -10,9 +11,33 @@ export interface Props {
   headerItems: HeaderItem[];
   info: any;
   lang: string;
+  translations: any;
 }
 
-const { headerItems, info, lang } = Astro.props;
+const { headerItems, info, lang, translations } = Astro.props;
+
+// Crear los elementos del submenú para proyectos y certificaciones
+const projectsSubmenu = [
+  {
+    title: translations.projectsPage.selectedProjectsSubtitle || 'Proyectos destacados',
+    url: '/#projects'
+  },
+  {
+    title: translations.projectsPage.allProjects || 'Todos los proyectos',
+    url: translations.projectsPage.allProjectsLink || '/projects'
+  }
+];
+
+const certificationsSubmenu = [
+  {
+    title: translations.certificationsPage.selectedCertificationsSubtitle || 'Certificaciones destacadas',
+    url: '/#certifications-preview'
+  },
+  {
+    title: translations.certificationsPage.allCertifications || 'Todas las certificaciones',
+    url: translations.certificationsPage.allCertificationsLink || '/certifications'
+  }
+];
 ---
 
 <nav
@@ -20,19 +45,43 @@ const { headerItems, info, lang } = Astro.props;
 >
   <ProfileTooltip info={info} lang={lang} />
   
-  {headerItems.map(item => (
-    <a
-      class='nav-link block px-3 py-2 transition text-nowrap relative hover-effect'
-      data-section={item.label}
-      aria-label={item.label}
-      href={item.url}
-      target={item.title === 'CV' ? '_blank' : '_self'}
-      data-active={false}
-    >
-      <span class="relative z-10">{item.title}</span>
-      <span class="nav-hover-background"></span>
-    </a>
-  ))}
+  {headerItems.map(item => {
+    // Comprobar si este elemento es "Proyectos" o "Certificaciones"
+    if (item.label === 'projects') {
+      return (
+        <DropdownNavItem 
+          title={item.title}
+          dataSection={item.label}
+          ariaLabel={item.label}
+          items={projectsSubmenu}
+        />
+      );
+    } else if (item.label === 'certifications-preview') {
+      return (
+        <DropdownNavItem 
+          title={item.title}
+          dataSection={item.label}
+          ariaLabel={item.label}
+          items={certificationsSubmenu}
+        />
+      );
+    } else {
+      // Para el resto de elementos, usar el enlace normal
+      return (
+        <a
+          class='nav-link block px-3 py-2 transition text-nowrap relative hover-effect'
+          data-section={item.label}
+          aria-label={item.label}
+          href={item.url}
+          target={item.title === 'CV' ? '_blank' : '_self'}
+          data-active={false}
+        >
+          <span class="relative z-10">{item.title}</span>
+          <span class="nav-hover-background"></span>
+        </a>
+      );
+    }
+  })}
   
   <!-- Botones agrupados al estilo Apple con separador -->
   <div class="flex items-center ml-1.5 rounded-full transition-all duration-300 hover:bg-white/15 dark:hover:bg-gray-700/25 py-0 px-2 group">
@@ -518,7 +567,7 @@ const { headerItems, info, lang } = Astro.props;
         
         // Primero recopilamos todas las secciones visibles
         sections.forEach(section => {
-          const sectionElement = section as HTMLElement;
+          const sectionElement = section;
           const sectionTop = sectionElement.offsetTop - offset;
           const sectionHeight = sectionElement.offsetHeight;
           
@@ -544,6 +593,30 @@ const { headerItems, info, lang } = Astro.props;
         }
       }
       
+      // Para el nuevo menú desplegable, marcar como activo el padre cuando está activo el hijo
+      function setActiveDropdownParent(sectionId) {
+        // Si es projects o certifications-preview, activar el dropdown parent
+        if (sectionId === 'projects' || sectionId === 'certifications-preview') {
+          const parentDropdown = document.querySelector(`.dropdown-nav-item button[data-section="${sectionId}"]`);
+          if (parentDropdown) {
+            parentDropdown.classList.add('active');
+            if (document.documentElement.classList.contains('dark')) {
+              parentDropdown.classList.add('text-yellow-300');
+            } else {
+              parentDropdown.classList.add('text-blue-800');
+            }
+            parentDropdown.classList.add('font-semibold');
+          }
+        }
+      }
+      
+      // Primero desactivamos todos los elementos de navegación
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        link.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+      });
+      
+      // Luego activamos solo el correspondiente a la sección activa
       navLinks.forEach(link => {
         const linkSection = link.getAttribute('data-section');
         
@@ -555,16 +628,16 @@ const { headerItems, info, lang } = Astro.props;
             link.classList.add('text-blue-800');
           }
           link.classList.add('font-semibold');
-        } else {
-          link.classList.remove('active');
-          link.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         }
       });
+      
+      // Activar también el dropdown parent si es necessary
+      setActiveDropdownParent(activeSection);
     };
     
     // Handle all internal navigation links
-    const handleNavClick = (e: Event) => {
-      const link = e.currentTarget as HTMLAnchorElement;
+    const handleNavClick = (e) => {
+      const link = e.currentTarget;
       const href = link.getAttribute('href');
       
       if (!href) return;
@@ -593,14 +666,23 @@ const { headerItems, info, lang } = Astro.props;
       }
     };
     
-    // Add click handlers to all nav links
+    // Add click handlers to all nav links (normal and dropdown)
     navLinks.forEach(link => {
       link.addEventListener('click', handleNavClick);
     });
     
+    // Añadir también a los enlaces dentro de los dropdown menus
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href').includes('#')) {
+          handleNavClick(e);
+        }
+      });
+    });
+    
     // Throttle scroll events for performance
     let isScrolling = false;
-    let scrollTimeout: number;
+    let scrollTimeout;
     
     const handleScroll = () => {
       if (!isScrolling) {

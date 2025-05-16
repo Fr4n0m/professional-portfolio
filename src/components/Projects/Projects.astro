@@ -1,6 +1,8 @@
 ---
-import ProjectItem from './ProjectItem.astro';
+import ProjectCard from './ProjectCard';
 import ViewAllButton from '@components/ui/ViewAllButton.astro';
+import CodeIcon from '@icons/Code.astro';
+import NavigationBadge from '@components/ui/NavigationBadge.astro';
 import type { Project } from '../../types/projects';
 import type { Translations } from '../../types/translations';
 import { commonClasses } from '@utils/cssClasses';
@@ -8,6 +10,7 @@ import { commonClasses } from '@utils/cssClasses';
 const translations: Translations = Astro.props.translations;
 const projects: Project[] = translations.projectsPage.projects;
 const projectsButtons = translations.projectsPage.projectsButtons;
+const selectedProjects = translations.mainPage.selectedProjects;
 
 // Lista de proyectos seleccionados
 const SELECTED_PROJECT_TITLES = [
@@ -19,19 +22,42 @@ const SELECTED_PROJECT_TITLES = [
   'Atari Breakout Game'
 ];
 
-const selectedProjects = projects.filter(project => 
+const filteredProjects = projects.filter(project => 
   SELECTED_PROJECT_TITLES.includes(project.title)
 );
 ---
 
-<div class={commonClasses.section.projectsContainer}>
-  {selectedProjects.map((project) => (
-    <ProjectItem project={project} buttons={projectsButtons} />
-  ))}
+<!-- Añadimos section con el id y data-section para el observer -->
+<section 
+  id="projects" 
+  data-section="projects" 
+  class={`${commonClasses.section.container} scroll-m-36 md:scroll-m-28 md:pb-24 mt-4 md:mt-12`}
+>
+  <!-- Título incorporado directamente en el componente -->
+  <h2 class={commonClasses.heading.h2 + ' mb-12 -ml-1'}>
+    <CodeIcon class={commonClasses.iconSize.xxl} />
+    {selectedProjects.projectsTitle}
 
-  <div class="flex justify-end mb-20 md:mb-0 pt-8">
+    <a
+      href={translations.projectsPage.allProjectsLink}
+      class='flex items-center ml-4 text-nowrap'
+    >
+      <NavigationBadge>
+        {translations.projectsPage.allProjects}
+      </NavigationBadge>
+    </a>
+  </h2>
+
+  <!-- Grid de proyectos -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    {filteredProjects.map((project) => (
+      <ProjectCard client:load project={project} buttons={projectsButtons} />
+    ))}
+  </div>
+
+  <div class="flex justify-end mb-20 md:mb-0 pt-4">
     <ViewAllButton href={translations.projectsPage.allProjectsLink}>
       {translations.projectsPage.allProjects}
     </ViewAllButton>
   </div>
-</div>
+</section>

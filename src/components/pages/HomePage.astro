@@ -4,13 +4,11 @@ import '@styles/animations.css';
 
 import SectionContainer from '@components/SectionContainer.astro';
 import Hero from '@components/Hero/index.astro';
-import CodeIcon from '@icons/Code.astro';
 import Experience from '@components/Experience.astro';
 import Briefcase from '@icons/Briefcase.astro';
 import Projects from '@components/Projects/Projects.astro';
 import Skills from '@components/Skills.astro';
 import Fire from '@icons/Fire.astro';
-import NavigationBadge from '@components/ui/NavigationBadge.astro';
 import CertificationsPreview from '@components/sections/CertificationsPreview.astro';
 
 import { commonClasses } from '@utils/cssClasses';
@@ -24,7 +22,6 @@ const { translations } = Astro.props;
 
 const skills = translations.mainPage.skills;
 const experience = translations.experience;
-const selectedProjects = translations.mainPage.selectedProjects;
 ---
 
 <main class={commonClasses.section.base}>
@@ -48,21 +45,7 @@ const selectedProjects = translations.mainPage.selectedProjects;
 		<Experience translations={translations} />
 	</SectionContainer>
 
-	<SectionContainer id='projects' class={commonClasses.section.paddingAlt}>
-		<h2 class={commonClasses.heading.h2 + ' -ml-1'}>
-			<CodeIcon class={commonClasses.iconSize.xxl} />
-			{selectedProjects.projectsTitle}
-
-			<a
-				href={translations.projectsPage.allProjectsLink}
-				class='flex items-center ml-4 text-nowrap'
-			>
-				<NavigationBadge>
-					{translations.projectsPage.allProjects}
-				</NavigationBadge>
-			</a>
-		</h2>
-	</SectionContainer>
+	<!-- Quitamos el SectionContainer redundante y dejamos solo el componente Projects -->
 	<Projects translations={translations} />
 
 	<CertificationsPreview translations={translations} />
