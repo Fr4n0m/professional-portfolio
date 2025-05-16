@@ -8,14 +8,14 @@ const { email } = siteConfig.personalInfo;
 
 <button
 	id='copy-button'
-	class='copy-button hover:scale-110 transition relative active:scale-105 text-gray-600 dark:text-white'
+	class='copy-button relative text-gray-600 dark:text-white transition-all duration-300'
 	title={translations.copyTitle}
 	data-translations={JSON.stringify({
 		copyMail: translations.copyMail,
 		copyMailError: translations.copyMailError,
 	})}
 >
-	<CopyIcon class='size-4 md:size-5 -ml-1' />
+	<CopyIcon class='size-4 md:size-5 copy-icon' />
 	<span
 		id='copy-message'
 		class='absolute top-0 right-0 -mt-3 -mr-[90px] text-xs font-bold text-blue-100 dark:text-blue-300 bg-blue-800 dark:bg-blue-900 hidden p-1 rounded'
@@ -60,3 +60,54 @@ const { email } = siteConfig.personalInfo;
 		});
 	</script>
 </button>
+
+<style>
+  /* Estilos base del botón */
+  .copy-button {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+  }
+  
+  /* Centrando el icono dentro del botón */
+  .copy-icon {
+    display: block;
+    margin: 0 auto; /* Centra el icono horizontalmente */
+  }
+  
+  .copy-button svg {
+    position: relative;
+  }
+  
+  /* Animación en hover - modo claro con acento azul */
+  .copy-button:hover {
+    transform: scale(1.15) rotate(4deg);
+    background-color: rgba(59, 130, 246, 0.1); /* Azul claro con transparencia */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); /* Sombra azul brillante */
+  }
+  
+  /* Animación en hover - modo oscuro con acento amarillo */
+  html.dark .copy-button:hover {
+    background-color: rgba(234, 179, 8, 0.2); /* Amarillo claro con transparencia en modo oscuro */
+    box-shadow: 0 0 12px rgba(234, 179, 8, 0.5); /* Sombra amarilla más brillante en modo oscuro */
+  }
+  
+  /* Efecto al hacer clic */
+  .copy-button:active {
+    transform: scale(0.95);
+    transition-duration: 0.1s;
+  }
+  
+  /* Media queries para dispositivos más grandes */
+  @media (min-width: 768px) {
+    .copy-button {
+      width: 34px;
+      height: 34px;
+    }
+  }
+</style>

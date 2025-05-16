@@ -4,22 +4,42 @@
     {
       "date": "September 2024",
       "title": "Software Developer & Front-End Developer for Dimap®",
-      "description": "Front-End Developer."
+      "description": "Front-End Developer.",
+      "isActive": true,
+      "companyName": "Dimap",
+      "companyLogo": "/assets/images/dimap-logo.png",
+      "companyUrl": "https://dimap.es/",
+      "location": "Calle Pirandello, 16, 3rd Floor, Office 6, Malaga"
     },
     {
       "date": "May 2024",
       "title": "Software Developer for Gubb Marketing®",
-      "description": "Software development and web applications."
+      "description": "Software development and web applications.",
+      "isActive": false,
+      "companyName": "Gubb Marketing",
+      "companyLogo": "/assets/images/gubb-logo.png",
+      "companyUrl": "https://gubb.es/",
+      "location": "Malaga"
     },
     {
       "date": "March 2024",
       "title": "Development of Agrooe-Cashback for Agrooe® and Gubb Marketing®.",
-      "description": "Development from 0 of a web application focused on the administration of a cashback system for the company Agrooe®. Development of the database, backend and frontend of the web application."
+      "description": "Development from 0 of a web application focused on the administration of a cashback system for the company Agrooe®. Development of the database, backend and frontend of the web application.",
+      "isActive": false,
+      "companyName": "Agrooe",
+      "companyLogo": "/assets/images/agrooe-logo.png",
+      "companyUrl": "https://agrooe.com/",
+      "location": "Malaga"
     },
     {
       "date": "June 2021",
       "title": "Freelancer",
-      "description": "Development of personal and professional projects of different kinds."
+      "description": "Development of personal and professional projects of different kinds.",
+      "isActive": false,
+      "companyName": "Freelance",
+      "companyLogo": "",
+      "companyUrl": "",
+      "location": "Malaga"
     }
   ]
 }

@@ -109,6 +109,10 @@ const { headerItems, info, lang } = Astro.props;
 <script>
   // Inicializar el control de tema
   document.addEventListener('DOMContentLoaded', () => {
+    // Sistema de paneles mútuamente excluyentes
+    let activePanel = null;
+    const openPanels = new Map(); // Para almacenar referencias a los paneles y sus funciones de cierre
+    
     // Initialize control de idioma
     const languageMenu = document.getElementById('language-menu');
     const languageToggleBtn = document.getElementById('language-toggle-btn');
@@ -116,108 +120,151 @@ const { headerItems, info, lang } = Astro.props;
     if (languageToggleBtn && languageMenu) {
       let isLangMenuOpen = false;
       
+      // Función para cerrar el menú de idioma
+      const closeLangMenu = () => {
+        if (isLangMenuOpen) {
+          languageMenu.classList.add('hidden');
+          languageMenu.classList.remove('open');
+          isLangMenuOpen = false;
+        }
+      };
+      
+      // Registrar en el sistema de paneles
+      openPanels.set('language', { 
+        element: languageMenu, 
+        close: closeLangMenu, 
+        button: languageToggleBtn 
+      });
+      
       // Toggle menu when clicking button
       languageToggleBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+        
+        // Si hay otro panel activo, cerrarlo primero
+        if (activePanel && activePanel !== 'language') {
+          openPanels.get(activePanel).close();
+        }
         
         isLangMenuOpen = !isLangMenuOpen;
         
         if (isLangMenuOpen) {
           languageMenu.classList.remove('hidden');
           languageMenu.classList.add('open');
+          activePanel = 'language';
         } else {
           languageMenu.classList.add('hidden');
           languageMenu.classList.remove('open');
-        }
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!languageMenu.contains(e.target) && !languageToggleBtn.contains(e.target) && isLangMenuOpen) {
-          isLangMenuOpen = false;
-          languageMenu.classList.add('hidden');
-          languageMenu.classList.remove('open');
+          activePanel = null;
         }
       });
     }
+    
+    // Theme toggle logic
     const themesMenu = document.getElementById('themes-menu');
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const themeOptions = document.querySelectorAll('.themes-menu-option');
     
-    if (!themesMenu || !themeToggleBtn) return;
-    
-    // Function to get current theme
-    const getThemePreference = () => {
-      if (typeof localStorage !== 'undefined') {
-        return localStorage.getItem('theme') ?? 'system';
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-    };
-    
-    // Function to update icon visibility
-    const updateIcon = (theme) => {
-      document.documentElement.classList.remove('light', 'dark', 'system');
-      document.documentElement.classList.add(theme);
+    if (themesMenu && themeToggleBtn) {
+      let isThemeMenuOpen = false;
       
-      const isDark = theme === 'dark' || 
-        (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      // Función para cerrar el menú de temas
+      const closeThemeMenu = () => {
+        if (isThemeMenuOpen) {
+          themesMenu.classList.remove('open');
+          themesMenu.classList.add('hidden');
+          isThemeMenuOpen = false;
+        }
+      };
       
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    };
-    
-    // Function to update active theme in menu
-    const updateActiveTheme = (theme) => {
+      // Registrar en el sistema de paneles
+      openPanels.set('theme', { 
+        element: themesMenu, 
+        close: closeThemeMenu, 
+        button: themeToggleBtn 
+      });
+      
+      // Function to get current theme
+      const getThemePreference = () => {
+        if (typeof localStorage !== 'undefined') {
+          return localStorage.getItem('theme') ?? 'system';
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      };
+      
+      // Function to update icon visibility
+      const updateIcon = (theme) => {
+        document.documentElement.classList.remove('light', 'dark', 'system');
+        document.documentElement.classList.add(theme);
+        
+        const isDark = theme === 'dark' || 
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+      
+      // Function to update active theme in menu
+      const updateActiveTheme = (theme) => {
+        themeOptions.forEach(option => {
+          option.setAttribute('data-active', option.dataset.theme === theme);
+        });
+      };
+      
+      // Function to apply theme
+      const updateTheme = () => {
+        const theme = getThemePreference();
+        updateIcon(theme);
+        updateActiveTheme(theme);
+      };
+      
+      // Toggle menu when clicking button
+      themeToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        // Si hay otro panel activo, cerrarlo primero
+        if (activePanel && activePanel !== 'theme') {
+          openPanels.get(activePanel).close();
+        }
+        
+        isThemeMenuOpen = !isThemeMenuOpen;
+        
+        if (isThemeMenuOpen) {
+          themesMenu.classList.remove('hidden');
+          themesMenu.classList.add('open');
+          activePanel = 'theme';
+        } else {
+          themesMenu.classList.remove('open');
+          themesMenu.classList.add('hidden');
+          activePanel = null;
+        }
+      });
+      
+      // Handle theme selection
       themeOptions.forEach(option => {
-        option.setAttribute('data-active', option.dataset.theme === theme);
+        option.addEventListener('click', () => {
+          const theme = option.dataset.theme;
+          localStorage.setItem('theme', theme);
+          updateTheme();
+          themesMenu.classList.remove('open');
+          themesMenu.classList.add('hidden');
+          isThemeMenuOpen = false;
+          activePanel = null;
+        });
       });
-    };
-    
-    // Function to apply theme
-    const updateTheme = () => {
-      const theme = getThemePreference();
-      updateIcon(theme);
-      updateActiveTheme(theme);
-    };
-    
-    // Toggle menu when clicking button
-    themeToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      themesMenu.classList.toggle('open');
-      themesMenu.classList.toggle('hidden');
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!themesMenu.contains(e.target) && !themeToggleBtn.contains(e.target)) {
-        themesMenu.classList.remove('open');
-        themesMenu.classList.add('hidden');
-      }
-    });
-    
-    // Handle theme selection
-    themeOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        const theme = option.dataset.theme;
-        localStorage.setItem('theme', theme);
-        updateTheme();
-        themesMenu.classList.remove('open');
-        themesMenu.classList.add('hidden');
-      });
-    });
-    
-    // Listen to system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
-    
-    // Initialize theme
-    updateTheme();
+      
+      // Listen to system theme changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
+      
+      // Initialize theme
+      updateTheme();
+    }
     
     // Conectar con el botón de accesibilidad para desktop
     const desktopAccessibilityToggle = document.getElementById('desktop-accessibility-toggle');
@@ -226,34 +273,62 @@ const { headerItems, info, lang } = Astro.props;
     if (desktopAccessibilityToggle && desktopAccessibilityPanel) {
       let isAccessibilityPanelOpen = false;
       
+      // Función para cerrar el panel de accesibilidad
+      const closeAccessibilityPanel = () => {
+        if (isAccessibilityPanelOpen) {
+          desktopAccessibilityPanel.classList.add('hidden');
+          desktopAccessibilityPanel.classList.remove('open');
+          isAccessibilityPanelOpen = false;
+        }
+      };
+      
+      // Registrar en el sistema de paneles
+      openPanels.set('accessibility', { 
+        element: desktopAccessibilityPanel, 
+        close: closeAccessibilityPanel, 
+        button: desktopAccessibilityToggle 
+      });
+      
       // Toggle menu when clicking button
       desktopAccessibilityToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+        
+        // Si hay otro panel activo, cerrarlo primero
+        if (activePanel && activePanel !== 'accessibility') {
+          openPanels.get(activePanel).close();
+        }
         
         isAccessibilityPanelOpen = !isAccessibilityPanelOpen;
         
         if (isAccessibilityPanelOpen) {
           desktopAccessibilityPanel.classList.remove('hidden');
           desktopAccessibilityPanel.classList.add('open');
+          activePanel = 'accessibility';
         } else {
           desktopAccessibilityPanel.classList.add('hidden');
           desktopAccessibilityPanel.classList.remove('open');
-        }
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!desktopAccessibilityPanel.contains(e.target) && !desktopAccessibilityToggle.contains(e.target) && isAccessibilityPanelOpen) {
-          isAccessibilityPanelOpen = false;
-          desktopAccessibilityPanel.classList.add('hidden');
-          desktopAccessibilityPanel.classList.remove('open');
+          activePanel = null;
         }
       });
       
       // Inicializar controles de desktop
       initDesktopAccessibilityControls();
     }
+    
+    // Cerrar dropdowns al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (activePanel) {
+        const panelData = openPanels.get(activePanel);
+        const panel = panelData.element;
+        const button = panelData.button;
+        
+        if (!panel.contains(e.target) && !button.contains(e.target)) {
+          panelData.close();
+          activePanel = null;
+        }
+      }
+    });
 
     // Ahora el efecto hover está manejado por las clases de Tailwind, no por JavaScript
     

@@ -3,6 +3,7 @@
 import { commonClasses } from '@utils/cssClasses';
 import DecryptedText from '@components/ui/DecryptedText';
 import LocationText from '@components/ui/Map/LocationText.astro';
+import { getActiveSiteData } from '../../utils/experienceUtils';
 
 interface Props {
   description1: string;
@@ -12,6 +13,19 @@ interface Props {
 }
 
 const { description1, description2, description3, location } = Astro.props;
+
+// Obtenemos la información de la ubicación activa actual
+const activeCompany = getActiveSiteData();
+const activeLocation = activeCompany.location || location;
+
+// Mantenemos el texto visible simplificado como "Málaga, España"
+const visibleLocationText = "📍 Málaga, España";
+const visibleLocationTextEN = "📍 Malaga, Spain";
+
+// Determinamos qué texto mostrar según la URL
+const currentUrl = Astro.url.pathname;
+const isEnglish = currentUrl.includes('/en');
+const displayLocationText = isEnglish ? visibleLocationTextEN : visibleLocationText;
 ---
 
 <!-- Contenedor con altura fija para evitar movimiento durante animación -->
@@ -65,10 +79,10 @@ const { description1, description2, description3, location } = Astro.props;
 <!-- Separación clara de la ubicación -->
 <div class="mt-2 md:mt-1">
   <LocationText 
-    text={location}
+    text={displayLocationText}
     city="Málaga"
     region="Andalucía"
-    address="Playa de la Malagueta"
+    address={activeLocation}
     className={commonClasses.textColors.accent + ' text-lg lg:text-xl'}
   />
 </div>

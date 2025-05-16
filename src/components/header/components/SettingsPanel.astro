@@ -1,5 +1,9 @@
 ---
+import { textsJson } from '@utils/const';
+
 const { lang, languages } = Astro.props;
+const translations = textsJson[lang];
+const controlCenter = translations.controlCenter;
 ---
 
 <div
@@ -27,20 +31,20 @@ const { lang, languages } = Astro.props;
       <svg class="w-6 h-6 mx-auto mb-2 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
       </svg>
-      <span class="text-xs text-gray-700 dark:text-gray-300">Tema</span>
+      <span class="text-xs text-gray-700 dark:text-gray-300">{controlCenter.quickActions.theme.label}</span>
     </button>
     <!-- Language Toggle -->
     <button class="desktop-lang-control-btn p-4 rounded-xl bg-gray-100/70 dark:bg-gray-800/70 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center" data-action="language">
       <span class="text-2xl mb-2 block">{languages[lang]?.flag || '🌐'}</span>
-      <span class="text-xs text-gray-700 dark:text-gray-300">Idioma</span>
+      <span class="text-xs text-gray-700 dark:text-gray-300">{controlCenter.quickActions.language.label}</span>
     </button>
   </div>
   <!-- Accesibilidad -->
   <div class="p-4 space-y-3">
-    <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-3">Accesibilidad</h3>
+    <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-3">{controlCenter.accessibility.title}</h3>
     <!-- Font Size -->
     <div class="flex items-center justify-between">
-      <span class="text-sm text-gray-700 dark:text-gray-300">Tamaño de texto</span>
+      <span class="text-sm text-gray-700 dark:text-gray-300">{controlCenter.accessibility.fontSize.label}</span>
       <div class="flex items-center gap-2">
         <button class="desktop-font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800" data-action="font-decrease">
           <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,14 +61,14 @@ const { lang, languages } = Astro.props;
     </div>
     <!-- Contrast -->
     <div class="flex items-center justify-between">
-      <span class="text-sm text-gray-700 dark:text-gray-300">Contraste</span>
+      <span class="text-sm text-gray-700 dark:text-gray-300">{controlCenter.accessibility.contrast.label}</span>
       <button class="desktop-contrast-toggle relative w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300" data-action="contrast">
         <span class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300"></span>
       </button>
     </div>
     <!-- Animations -->
     <div class="flex items-center justify-between">
-      <span class="text-sm text-gray-700 dark:text-gray-300">Animaciones</span>
+      <span class="text-sm text-gray-700 dark:text-gray-300">{controlCenter.accessibility.animations.label}</span>
       <button class="desktop-animations-toggle relative w-11 h-6 bg-blue-500 rounded-full transition-colors duration-300" data-action="animations" data-enabled="true">
         <span class="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300"></span>
       </button>
@@ -73,7 +77,7 @@ const { lang, languages } = Astro.props;
   <!-- Configuración avanzada -->
   <div class="p-4 border-t border-gray-200 dark:border-gray-700">
     <a href="/settings" class="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 block">
-      <span class="text-sm text-gray-700 dark:text-gray-300">Configuración avanzada</span>
+      <span class="text-sm text-gray-700 dark:text-gray-300">{controlCenter.settings.advanced}</span>
     </a>
   </div>
 </div>

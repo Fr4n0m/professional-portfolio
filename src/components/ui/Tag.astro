@@ -13,8 +13,76 @@ const props = Astro.props;
 	target='_blank'
 	rel='noopener noreferrer'
 	href={props.link}
-	class={`flex gap-x-2 rounded-full text-xs items-center ${props.class} px-3 py-1 border mb-6 hover:scale-110 active:scale-105 transition-all`}
+	class={`skill-pill flex gap-x-2 rounded-full text-xs items-center ${props.class} px-3 py-1 border mb-6 transition-all duration-300`}
 >
 	<props.icon class='size-3' />
 	{props.name}
 </a>
+
+<style>
+  /* Estilos base de las skill pills */
+  .skill-pill {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  /* Efecto de hover - modo claro con acento azul */
+  .skill-pill:hover {
+    transform: translateY(-2px) scale(1.08);
+    box-shadow: 0 3px 10px rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.4); /* Borde azul más pronunciado */
+  }
+  
+  /* Efecto de hover - modo oscuro con acento amarillo */
+  html.dark .skill-pill:hover {
+    box-shadow: 0 3px 10px rgba(234, 179, 8, 0.2);
+    border-color: rgba(234, 179, 8, 0.4); /* Borde amarillo para modo oscuro */
+  }
+  
+  /* Efecto click */
+  .skill-pill:active {
+    transform: translateY(0) scale(0.96);
+    transition-duration: 0.1s;
+  }
+  
+  /* Efecto de brillo animado al hacer hover - modo claro con acento azul */
+  .skill-pill::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Efecto de brillo animado al hacer hover - modo oscuro con acento amarillo */
+  html.dark .skill-pill::after {
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, transparent 70%);
+  }
+  
+  .skill-pill:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Asegurar que las animaciones de hover estén disponibles para las skill pills
+    const skillPills = document.querySelectorAll('.skill-pill');
+    if (skillPills.length > 0 && !document.documentElement.classList.contains('reduce-motion')) {
+      // Aplicar efectos avanzados si las animaciones están habilitadas
+      skillPills.forEach(pill => {
+        // Inicializar transiciones suaves
+        pill.style.transition = 'transform 0.3s ease-out, box-shadow 0.3s ease';
+      });
+    }
+  });
+</script>

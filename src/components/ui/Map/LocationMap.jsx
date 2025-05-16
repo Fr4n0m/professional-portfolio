@@ -3,8 +3,8 @@ import styles from './LocationHover.module.css';
 
 const MAP_CONFIG = {
   coordinates: {
-    lat: 36.7213, // Málaga, España
-    lng: -4.4213
+    lat: 36.7273, // Málaga, Teatinos (Calle Pirandello 16)
+    lng: -4.4741
   },
   zoom: 15,
   leaflet: {
@@ -87,9 +87,9 @@ const useLeafletMap = (mapContainerRef, location) => {
                 <div class="${styles.elements}">
                   <div class="${styles.description}">
                     <div class="${styles.blurItem}"></div>
-                    <span class="${styles.mainTitle}">${location.city || 'Málaga'}</span>
-                    <p class="${styles.secondTitle}">${location.region || 'Andalucía'}</p>
-                    <p class="${styles.addressText}">${location.address || 'Playa de la Malagueta'}</p>
+                    <span class="${styles.mainTitle}">${location.city}</span>
+                    <p class="${styles.secondTitle}">${location.region}</p>
+                    <p class="${styles.addressText}">${location.address}</p>
                   </div>
                   <div class="${styles.details}">
                     <div class="${styles.peoples}">
@@ -98,7 +98,7 @@ const useLeafletMap = (mapContainerRef, location) => {
                       <div class="${styles.people}"></div>
                     </div>
                   </div>
-                  <div class="${styles.action}" onclick="window.open('https://maps.apple.com/?ll=${MAP_CONFIG.coordinates.lat},${MAP_CONFIG.coordinates.lng}&z=20', '_blank')">
+                  <div class="${styles.action}" onclick="window.open('https://maps.apple.com/?address=Calle+Pirandello,+16,+Planta+3,+Oficina+6,+Malaga,+Andalucia+29010,+ES&ll=${MAP_CONFIG.coordinates.lat},${MAP_CONFIG.coordinates.lng}&z=20', '_blank')">
                     <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#3669B6"/>
                     </svg>

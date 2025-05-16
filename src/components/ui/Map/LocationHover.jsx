@@ -15,6 +15,14 @@ export default function LocationHover({
   const hoverCardRef = useRef(null);
   const timeoutRef = useRef(null);
 
+  // Coordenadas de Calle Pirandello 16, Málaga
+  const diMapLat = 36.7201;
+  const diMapLng = -4.4428;
+
+  // Usamos las coordenadas según la dirección
+  const actualLat = address.includes("Pirandello") ? diMapLat : lat;
+  const actualLng = address.includes("Pirandello") ? diMapLng : lng;
+
   // Gestionar eventos de mouse
   const handleMouseEnter = () => {
     clearTimeout(timeoutRef.current);
@@ -46,7 +54,7 @@ export default function LocationHover({
   // Gestionar clic en el botón del mapa
   const handleMapButtonClick = (e) => {
     e.stopPropagation(); // Evitar que el clic se propague a la tarjeta
-    window.open(`https://maps.apple.com/?ll=${lat},${lng}&z=20`, '_blank');
+    window.open(`https://maps.apple.com/?ll=${actualLat},${actualLng}&z=20`, '_blank');
   };
 
   // Limpiar timeout al desmontar el componente
