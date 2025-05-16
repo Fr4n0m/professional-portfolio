@@ -1,0 +1,37 @@
+---
+import LocationHover from '@components/ui/Map/LocationHover';
+
+interface Props {
+  text?: string;
+  city?: string;
+  region?: string;
+  address?: string;
+  lat?: number;
+  lng?: number;
+  className?: string;
+  contactUrl?: string;
+}
+
+const {
+  text = "Málaga, España",
+  city = "Málaga",
+  region = "Andalucía",
+  address = "Playa de la Malagueta",
+  lat = 36.7213,
+  lng = -4.4213,
+  className = "",
+  contactUrl = "/contacto"
+} = Astro.props;
+---
+
+<LocationHover
+  client:visible
+  city={city}
+  region={region}
+  address={address}
+  lat={lat}
+  lng={lng}
+  contactUrl={contactUrl}
+>
+  <span class={className}>{text}</span>
+</LocationHover>

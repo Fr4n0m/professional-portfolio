@@ -1,0 +1,51 @@
+---
+/**
+ * Componente Mapa de Ubicación
+ * Muestra un mapa con un marcador que tiene un tooltip de hover estilo Apple Maps
+ */
+
+import LocationMap from '@components/ui/Map/LocationMap';
+import { commonClasses } from '@utils/cssClasses';
+
+interface Props {
+  city?: string;
+  region?: string;
+  address?: string;
+  title?: string;
+  description?: string;
+}
+
+const { 
+  city = "Málaga",
+  region = "Andalucía",
+  address = "Playa de la Malagueta",
+  title = "Mi Ubicación",
+  description = "Aquí es donde me puedes encontrar actualmente."
+} = Astro.props;
+
+const location = {
+  city,
+  region,
+  address
+};
+---
+
+<section class="my-8 md:my-12">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="flex flex-col items-center mb-6">
+      <h2 class={commonClasses.heading.h2 + " mb-3"}>{title}</h2>
+      <p class={commonClasses.textColors.muted + " text-center max-w-xl"}>{description}</p>
+    </div>
+    
+    <LocationMap location={location} client:visible />
+    
+    <div class="mt-4 text-center">
+      <p class={commonClasses.textColors.secondary + " font-medium"}>
+        {city}, {region}
+      </p>
+      <p class={commonClasses.textColors.tertiary}>
+        {address}
+      </p>
+    </div>
+  </div>
+</section>

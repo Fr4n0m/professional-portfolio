@@ -49,6 +49,55 @@ export default {
           900: '#1c1c1e',
         },
       },
+      screens: {
+        'xs': '320px',     // Móviles pequeños (iPhone SE, etc)
+        'sm': '480px',     // Móviles medianos/grandes
+        'md': '768px',     // Tablets verticales y móviles horizontales
+        'lg': '1024px',    // Tablets horizontales, portátiles pequeños
+        'xl': '1280px',    // Portátiles y monitores estándar
+        '2xl': '1536px',   // Monitores grandes
+        '3xl': '1920px',   // Monitores Full HD
+        '4xl': '2560px',   // Monitores 2K y superiores
+        // Breakpoints para orientación
+        'landscape': {'raw': '(orientation: landscape)'},
+        'portrait': {'raw': '(orientation: portrait)'},
+        // Breakpoints para capacidades específicas
+        'hover': {'raw': '(hover: hover)'},
+        'touch': {'raw': '(hover: none)'},
+        // Breakpoints para dispositivos específicos
+        'iphone-se': {'raw': '(min-device-width: 320px) and (max-device-width: 375px) and (-webkit-min-device-pixel-ratio: 2)'},
+        'iphone': {'raw': '(min-device-width: 375px) and (max-device-width: 428px) and (-webkit-min-device-pixel-ratio: 2)'},
+        'ipad': {'raw': '(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)'},
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'fade-out': 'fadeOut 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-in-out',
+        'slide-down': 'slideDown 0.5s ease-in-out',
+        'scale-up': 'scaleUp 0.3s ease-out forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        scaleUp: {
+          '0%': { transform: 'scale(0.8)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+      },
     },
   },
   plugins: [require("flowbite/plugin")],

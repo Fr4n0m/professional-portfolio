@@ -12,7 +12,7 @@ interface Props {
 const { title, badgeText, darkMode = false } = Astro.props;
 ---
 
-<div class='typing-container flex flex-col-reverse gap-y-6 md:gap-y-0 md:flex-row md:gap-x-6 lg:gap-x-8 pb-2 lg:pb-3 items-center'>
+<div class='typing-container flex flex-col-reverse gap-y-6 md:gap-y-0 md:flex-row md:gap-x-6 lg:gap-x-8 pb-2 lg:pb-3 md:items-start'>
   <div class='typing mx-auto md:mx-0 md:min-w-[320px]'>
     <TextPressureWrapper 
       text={title} 
@@ -21,7 +21,7 @@ const { title, badgeText, darkMode = false } = Astro.props;
     />
   </div>
 
-  <div class='flex justify-center items-center text-nowrap'>
+  <div class='flex justify-center md:pt-8 lg:pt-12 md:self-start text-nowrap'>
     <a
       href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
       target='_blank'

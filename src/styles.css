@@ -10,5 +10,6 @@
 /* Import our modular CSS structure */
 @import './styles/main.css';
 @import './styles/tooltip.css';
+@import './styles/media-queries.css';
 
 /* Any global styles that need to override Tailwind can go here */

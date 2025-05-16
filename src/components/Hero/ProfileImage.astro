@@ -11,7 +11,7 @@ const { imageSrc, altText } = Astro.props;
 <!-- Versión móvil sin tooltip -->
 <div class="block md:hidden mb-5">
   <div class="flex justify-center">
-    <div class="hero-profile-frame-mobile">
+    <div class="hero-profile-frame-mobile profile-image-xs profile-image-sm profile-image-md profile-image-landscape">
       <img
         class="w-full h-full object-cover object-center rounded-[19px]"
         src={imageSrc}
@@ -24,8 +24,8 @@ const { imageSrc, altText } = Astro.props;
 <!-- Versión desktop con tooltip -->
 <div class="hidden md:block">
   <div class="flex justify-start">
-    <div class="hero-profile-wrapper">
-      <div class="hero-profile-frame">
+    <div class="hero-profile-wrapper hover-capable-device">
+      <div class="hero-profile-frame profile-image-lg profile-image-xl profile-image-2xl profile-image-3xl profile-image-4xl profile-image-landscape">
         <img
           class="w-full h-full object-cover object-center rounded-[19px]"
           src={imageSrc}
@@ -38,10 +38,12 @@ const { imageSrc, altText } = Astro.props;
 </div>
 
 <style>
-  /* Estilos para la imagen en móvil */
+  /* Estilos base para la imagen sin media queries */
+  
+  /* Móvil */
   .hero-profile-frame-mobile {
     position: relative;
-    width: 8rem;
+    width: 8rem; /* Tamaño por defecto - se ajustará con clases CSS globales */
     height: 8rem;
     overflow: hidden;
     border-radius: 19px;
@@ -66,7 +68,7 @@ const { imageSrc, altText } = Astro.props;
   
   .hero-profile-frame {
     position: relative;
-    width: 8.5rem;
+    width: 8.5rem; /* Tamaño por defecto - se ajustará con clases CSS globales */
     height: 8.5rem;
     overflow: hidden;
     border-radius: 19px;
@@ -92,21 +94,6 @@ const { imageSrc, altText } = Astro.props;
   :global(.dark) .hero-profile-wrapper:hover .hero-profile-frame {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
     border: 2px solid #facc15;
-  }
-  
-  @media (min-width: 1024px) {
-    .hero-profile-frame {
-      width: 9rem;
-      height: 9rem;
-    }
-  }
-  
-  /* Estilo para pantallas extra grandes */
-  @media (min-width: 1280px) {
-    .hero-profile-frame {
-      width: 9.5rem;
-      height: 9.5rem;
-    }
   }
 </style>
 

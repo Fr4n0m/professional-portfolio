@@ -18,13 +18,13 @@ const limitedCertifications = certifications.slice(0, 2);
 ---
 
 <SectionContainer id='certifications-preview' class={commonClasses.section.paddingAlt}>
-  <h2 class={commonClasses.heading.h2 + ' mb-12'}>
+  <h2 class={commonClasses.heading.h2 + ' mb-12 flex items-center'}>
     <Certificate class={commonClasses.iconSize.xl} />
-    {translations.mainPage.certificationsTitle || 'Certificaciones'}
+    <span class="align-middle">{translations.mainPage.certificationsTitle || 'Certificaciones'}</span>
     
     <a
       href={translations.certificationsPage.allCertificationsLink || '/certifications'}
-      class='flex items-center ml-4 text-nowrap'
+      class='flex items-center ml-4 align-middle text-nowrap'
     >
       <Badge>
         {translations.certificationsPage.allCertifications || 'Todas las certificaciones'}

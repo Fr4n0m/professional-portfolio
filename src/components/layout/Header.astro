@@ -79,9 +79,9 @@ const info = {
         
         // Apply or remove active classes
         if (isActive) {
-          item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+          item.classList.add('active');
         } else {
-          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+          item.classList.remove('active');
         }
       });
     };
@@ -127,10 +127,10 @@ const info = {
           const dataSection = item.getAttribute('data-section');
           
           if (dataSection === activeSectionId) {
-            item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+            item.classList.add('active');
           } else if (item.getAttribute('href')?.includes('#')) {
-            // Only remove classes from hash navigation items, not from page navigation
-            item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+            // Only remove active class from hash navigation items, not from page navigation
+            item.classList.remove('active');
           }
         });
       };
@@ -186,14 +186,14 @@ const info = {
         
         // Quitamos todas las clases de activo
         navItems.forEach(item => {
-          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold', 'active');
+          item.classList.remove('active');
         });
         
         // Activamos solo el elemento del menú correspondiente a la primera sección
         navItems.forEach(item => {
           const dataSection = item.getAttribute('data-section');
           if (dataSection === initialSectionId) {
-            item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold', 'active');
+            item.classList.add('active');
           }
         });
       }

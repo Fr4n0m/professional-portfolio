@@ -1,0 +1,46 @@
+---
+/**
+ * Ejemplo de uso del componente LocationMapSection
+ * Este archivo muestra cómo podrías implementar la sección de mapa en tu página de contacto
+ */
+
+import Layout from '@layouts/Layout.astro';
+import LocationMapSection from '@components/LocationMapSection.astro';
+import { commonClasses } from '@utils/cssClasses';
+
+// Puedes obtener estos datos de tu archivo de traducción o hardcodearlos como en este ejemplo
+const personalInfo = {
+  location: {
+    city: "Málaga",
+    region: "Andalucía",
+    address: "Playa de la Malagueta",
+  },
+  title: "Mi Ubicación",
+  description: "Puedes encontrarme trabajando en esta maravillosa ciudad junto al mar."
+};
+---
+
+<Layout title="Contacto">
+  <main class="mt-24">
+    <section class="container mx-auto px-4 py-12">
+      <h1 class={commonClasses.heading.h1 + " text-center mb-6"}>Contacto</h1>
+      
+      <div class="max-w-4xl mx-auto">
+        <p class={commonClasses.textColors.secondary + " text-center mb-12"}>
+          Estoy disponible para nuevos proyectos. Puedes contactarme a través de cualquiera de estos canales.
+        </p>
+        
+        <!-- Aquí iría tu formulario de contacto u otra información -->
+        
+        <!-- Sección del mapa -->
+        <LocationMapSection 
+          city={personalInfo.location.city}
+          region={personalInfo.location.region}
+          address={personalInfo.location.address}
+          title={personalInfo.title}
+          description={personalInfo.description}
+        />
+      </div>
+    </section>
+  </main>
+</Layout>

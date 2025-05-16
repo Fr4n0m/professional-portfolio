@@ -1,0 +1,193 @@
+/* 
+  media-queries.css 
+  Este archivo contiene todas las media queries globales para el proyecto
+  Usar estas variables CSS en lugar de repetir manualmente las media queries
+*/
+
+:root {
+  /* Variables para los tamaños de pantalla */
+  --screen-xs: 320px;
+  --screen-sm: 480px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+  --screen-2xl: 1536px;
+  --screen-3xl: 1920px;
+  --screen-4xl: 2560px;
+}
+
+/* Clases utilitarias responsive para el tooltip y otros componentes */
+@media (max-width: 320px) {
+  .text-responsive-xs {
+    font-size: 0.7rem !important;
+  }
+  
+  .icon-responsive-xs {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+  
+  .tooltip-width-xs {
+    width: 90vw !important;
+    max-width: 90vw !important;
+  }
+  
+  .profile-image-xs {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+  
+  .tooltip-padding-xs {
+    padding: 0.75rem !important;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 480px) {
+  .text-responsive-sm {
+    font-size: 0.8rem !important;
+  }
+  
+  .icon-responsive-sm {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+  
+  .tooltip-width-sm {
+    width: 85vw !important;
+    max-width: 85vw !important;
+  }
+  
+  .profile-image-sm {
+    width: 6rem !important;
+    height: 6rem !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .tooltip-width-md {
+    width: 70vw !important;
+    max-width: 70vw !important;
+  }
+  
+  .profile-image-md {
+    width: 7rem !important;
+    height: 7rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tooltip-width-lg {
+    width: min(60vw, 320px) !important;
+  }
+  
+  .profile-image-lg {
+    width: 8rem !important;
+    height: 8rem !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .tooltip-width-xl {
+    width: min(50vw, 320px) !important;
+  }
+  
+  .profile-image-xl {
+    width: 9rem !important;
+    height: 9rem !important;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1536px) {
+  .tooltip-width-2xl {
+    width: 320px !important;
+  }
+  
+  .profile-image-2xl {
+    width: 9.5rem !important;
+    height: 9.5rem !important;
+  }
+}
+
+@media (min-width: 1537px) and (max-width: 1920px) {
+  .profile-image-3xl {
+    width: 10rem !important;
+    height: 10rem !important;
+  }
+}
+
+@media (min-width: 1921px) {
+  .profile-image-4xl {
+    width: 11rem !important;
+    height: 11rem !important;
+  }
+}
+
+/* Orientación landscape con altura reducida */
+@media (max-height: 500px) and (orientation: landscape) {
+  .tooltip-scroll-landscape {
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+  }
+  
+  .tooltip-padding-landscape {
+    padding: 0.75rem !important;
+  }
+  
+  .tooltip-gap-landscape {
+    --tw-space-y-reverse: 0 !important;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse))) !important;
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse)) !important;
+  }
+  
+  .profile-image-landscape {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+}
+
+/* Dispositivos específicos */
+/* iPhone SE y dispositivos muy pequeños */
+@media only screen and (min-device-width: 320px) and (max-device-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+  .iphone-se-adjustments {
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* iPhones estándar */
+@media only screen and (min-device-width: 375px) and (max-device-width: 428px) and (-webkit-min-device-pixel-ratio: 2) {
+  .iphone-adjustments {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* iPads y tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  .ipad-adjustments {
+    font-size: 1rem !important;
+  }
+}
+
+/* Capacidades del dispositivo */
+@media (hover: hover) {
+  .hover-capable-device {
+    transition: transform 0.2s ease-in-out !important;
+  }
+  
+  .hover-capable-device:hover {
+    transform: scale(1.05) !important;
+  }
+}
+
+@media (hover: none) {
+  .touch-device {
+    /* Ajustes para dispositivos táctiles */
+    cursor: default !important;
+  }
+  
+  /* Áreas táctiles más grandes */
+  .touch-target {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+}

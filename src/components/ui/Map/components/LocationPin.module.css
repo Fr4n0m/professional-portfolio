@@ -1,0 +1,125 @@
+/* Estilos para el pin de ubicación animado */
+
+.locationPin {
+  background-color: #1F2F54;
+  top: 40%;
+  z-index: 1000;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 7px #c1c1c180;
+  border: 5px solid white;
+  position: absolute;
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+}
+
+:global(.hoverCardVisible) .locationPin {
+  transform: scale(1);
+  animation: bounce 5s infinite ease-in-out, pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(31, 47, 84, 0.7), 0 0 8px 5px #d9d9d980;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(31, 47, 84, 0), 0 0 8px 5px #d9d9d980;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(31, 47, 84, 0), 0 0 8px 5px #d9d9d980;
+  }
+}
+
+.pulseRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(31, 47, 84, 0.7);
+  opacity: 0;
+}
+
+:global(.hoverCardVisible) .pulseRing {
+  animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.33);
+    opacity: 1;
+  }
+  80%, 100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.05);
+  }
+}
+
+/* Punto parpadeante adicional en el fondo */
+.backgroundDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(54, 105, 182, 0.8);
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0;
+}
+
+/* Primer punto (superior izquierda) */
+.backgroundDot:nth-child(1) {
+  top: 15%;
+  left: 15%;
+}
+
+/* Segundo punto (superior derecha) */
+.backgroundDot:nth-child(2) {
+  top: 25%;
+  right: 20%;
+}
+
+/* Tercer punto (inferior izquierda) */
+.backgroundDot:nth-child(3) {
+  bottom: 25%;
+  left: 20%;
+}
+
+:global(.hoverCardVisible) .backgroundDot:nth-child(1) {
+  opacity: 1;
+  animation: blink 3s infinite 0.5s;
+}
+
+:global(.hoverCardVisible) .backgroundDot:nth-child(2) {
+  opacity: 1;
+  animation: blink 4s infinite 1s;
+}
+
+:global(.hoverCardVisible) .backgroundDot:nth-child(3) {
+  opacity: 1;
+  animation: blink 2.5s infinite 1.5s;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.3);
+  }
+}

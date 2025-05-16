@@ -1,6 +1,8 @@
 ---
 // HeroDescription.astro - Componente para la descripción del hero
 import { commonClasses } from '@utils/cssClasses';
+import DecryptedText from '@components/ui/DecryptedText';
+import LocationText from '@components/ui/Map/LocationText.astro';
 
 interface Props {
   description1: string;
@@ -12,20 +14,64 @@ interface Props {
 const { description1, description2, description3, location } = Astro.props;
 ---
 
-<h2 class='text-xl lg:text-2xl opacity-95 text-wrap max-w-[700px] hero-description-mobile-centered mt-2 md:mt-1'>
-  <span class={commonClasses.textColors.secondary}>
-    {description1}
-    <span class={commonClasses.textColors.tertiary}>
-      {description2}
+<!-- Contenedor con altura fija para evitar movimiento durante animación -->
+<div class="description-container min-h-[130px] md:min-h-[110px] lg:min-h-[100px] w-full">
+  <h2 class='text-xl lg:text-2xl opacity-95 text-wrap max-w-[700px] hero-description-mobile-centered mt-2 md:mt-1'>
+    <span class={commonClasses.textColors.secondary}>
+      <DecryptedText 
+        text={description1 + " "}
+        animateOn="view"
+        revealDirection="center"
+        sequential={true}
+        speed={50}
+        maxIterations={15}
+        parentClassName="inline"
+        className=""
+        encryptedClassName=""
+        client:load
+      />
+      <span class={commonClasses.textColors.tertiary}>
+        <DecryptedText 
+          text={description2 + " "}
+          animateOn="view"
+          revealDirection="center"
+          sequential={true}
+          speed={50}
+          maxIterations={15}
+          parentClassName="inline"
+          className=""
+          encryptedClassName=""
+          client:load
+        />
+      </span>
     </span>
-  </span>
-  <span class={commonClasses.textColors.muted}>
-    {description3}
-  </span>
-  <span class={commonClasses.textColors.accent + ' text-lg lg:text-xl'}>
-    <br />{location}
-  </span>
-</h2>
+    <span class={commonClasses.textColors.muted}>
+      <DecryptedText 
+        text={description3.replace("🤓", "⚡")}
+        animateOn="view"
+        revealDirection="center"
+        sequential={true}
+        speed={50}
+        maxIterations={15}
+        parentClassName="inline"
+        className=""
+        encryptedClassName=""
+        client:load
+      />
+    </span>
+  </h2>
+</div>
+
+<!-- Separación clara de la ubicación -->
+<div class="mt-2 md:mt-1">
+  <LocationText 
+    text={location}
+    city="Málaga"
+    region="Andalucía"
+    address="Playa de la Malagueta"
+    className={commonClasses.textColors.accent + ' text-lg lg:text-xl'}
+  />
+</div>
 
 <style>
   /* Estilos móviles */
@@ -42,5 +88,13 @@ const { description1, description2, description3, location } = Astro.props;
       margin-right: 0;
       text-align: left;
     }
+  }
+  
+  /* Contenedor de altura fija que evita el "salto" durante la animación */
+  .description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
   }
 </style>

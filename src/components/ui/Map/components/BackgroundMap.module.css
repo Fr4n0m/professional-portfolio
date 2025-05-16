@@ -1,0 +1,54 @@
+/* Estilos para el mapa de fondo */
+
+.bgMap {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  background: linear-gradient(135deg, #E9F1FF 0%, #FAFAFA 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+:global(.hoverCardVisible) .bgMap {
+  opacity: 1;
+}
+
+/* Clase aplicada cuando es visible */
+.bgMapVisible {
+  opacity: 1;
+}
+
+/* Simulación de calles en el mapa para cuando no se puede usar canvas */
+.bgMap::before,
+.bgMap::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 1;
+}
+
+/* Calle horizontal */
+.bgMap::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  transform: translateY(-50%);
+}
+
+/* Calle vertical */
+.bgMap::after {
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  transform: translateX(-50%);
+}
