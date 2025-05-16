@@ -16,13 +16,13 @@ const { headerItems, info, lang } = Astro.props;
 ---
 
 <nav
-  class='header-desktop-nav hidden md:flex px-3 text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90'
+  class='header-desktop-nav hidden md:flex px-4 text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90 gap-1'
 >
   <ProfileTooltip info={info} lang={lang} />
   
   {headerItems.map(item => (
     <a
-      class='nav-link block px-2 py-2 transition text-nowrap'
+      class='nav-link block px-3 py-2 transition text-nowrap'
       data-section={item.label}
       aria-label={item.label}
       href={item.url}
@@ -33,14 +33,20 @@ const { headerItems, info, lang } = Astro.props;
     </a>
   ))}
   
-  <!-- Control de tema estilo Apple -->
-  <ThemeToggleButton />
-  
-  <!-- Selector de idioma estilo Apple -->
-  <LanguageToggleButton lang={lang} />
-  
-  <!-- Control Center (Settings) estilo Apple -->
-  <SettingsButton lang={lang} />
+  <!-- Botones agrupados al estilo Apple con separador -->
+  <div class="flex items-center ml-1.5 rounded-full transition-all duration-300 hover:bg-white/15 dark:hover:bg-gray-700/25 py-0 px-2 group">
+    <!-- Grupo de tema e idioma -->
+    <div class="flex items-center gap-0.5">
+      <ThemeToggleButton />
+      <LanguageToggleButton lang={lang} />
+    </div>
+    
+    <!-- Separador estilo Apple -->
+    <div class="h-4 w-px bg-gray-300/20 dark:bg-gray-600/20 mx-1 group-hover:bg-gray-300/30 dark:group-hover:bg-gray-600/30 transition-all duration-300"></div>
+    
+    <!-- Control Center (Settings) -->
+    <SettingsButton lang={lang} />
+  </div>
 </nav>
 
 <style>

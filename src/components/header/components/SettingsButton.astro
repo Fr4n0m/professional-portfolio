@@ -5,14 +5,15 @@ import { languages } from '@i18n/config';
 const { lang } = Astro.props;
 ---
 
-<div class="relative ml-1">
+<div class="relative">
   <button 
     id="desktop-accessibility-toggle" 
-    class="appearance-none border-none flex hover:scale-110 active:scale-95 transition-all duration-200 p-2 rounded-lg"
+    class="appearance-none border-none flex hover:scale-110 active:scale-95 transition-all duration-300 p-1 ml-0.5 rounded-lg"
     aria-label='Control Center'
   >
     <span class='sr-only'>Control Center</span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-icon text-white dark:text-gray-300">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-icon text-gray-600 dark:text-gray-300">
+      <!-- Icono de control center al estilo macOS/iOS -->
       <rect x="3" y="4" width="18" height="6" rx="3"></rect>
       <circle cx="16" cy="7" r="2" fill="currentColor"></circle>
       <rect x="3" y="14" width="18" height="6" rx="3"></rect>
