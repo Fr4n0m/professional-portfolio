@@ -6,6 +6,10 @@
 
 _Enlace a la web -> https://professional-portfolio-nine.vercel.app/_
 
+## IMPORTANTE
+
+**NO MODIFICAR NINGÚN COMPONENTE O FUNCIONALIDAD** que no haya sido explícitamente solicitado. Ante cualquier duda sobre los cambios a realizar, consultar primero antes de proceder. Cualquier modificación no solicitada puede romper la funcionalidad existente.
+
 ## Guías de diseño y estilo
 
 ### Iconos y UI

@@ -80,8 +80,15 @@ const info = {
         // Apply or remove active classes
         if (isActive) {
           item.classList.add('active');
+          if (document.documentElement.classList.contains('dark')) {
+            item.classList.add('dark:text-yellow-300');
+          } else {
+            item.classList.add('text-blue-800');
+          }
+          item.classList.add('font-semibold');
         } else {
           item.classList.remove('active');
+          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         }
       });
     };
@@ -128,9 +135,16 @@ const info = {
           
           if (dataSection === activeSectionId) {
             item.classList.add('active');
+            if (document.documentElement.classList.contains('dark')) {
+              item.classList.add('dark:text-yellow-300');
+            } else {
+              item.classList.add('text-blue-800');
+            }
+            item.classList.add('font-semibold');
           } else if (item.getAttribute('href')?.includes('#')) {
             // Only remove active class from hash navigation items, not from page navigation
             item.classList.remove('active');
+            item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
           }
         });
       };
@@ -187,6 +201,7 @@ const info = {
         // Quitamos todas las clases de activo
         navItems.forEach(item => {
           item.classList.remove('active');
+          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         });
         
         // Activamos solo el elemento del menú correspondiente a la primera sección
@@ -194,6 +209,12 @@ const info = {
           const dataSection = item.getAttribute('data-section');
           if (dataSection === initialSectionId) {
             item.classList.add('active');
+            if (document.documentElement.classList.contains('dark')) {
+              item.classList.add('dark:text-yellow-300');
+            } else {
+              item.classList.add('text-blue-800');
+            }
+            item.classList.add('font-semibold');
           }
         });
       }
