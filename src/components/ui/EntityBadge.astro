@@ -1,0 +1,23 @@
+---
+import StandardBadge from './StandardBadge.astro';
+import type { Entity } from '../../types/certification';
+
+interface Props {
+  entity: Entity;
+  class?: string;
+}
+
+const { entity, class: className = '' } = Astro.props;
+const { name, url, icon: Icon } = entity;
+---
+
+<StandardBadge 
+  variant="entity" 
+  href={url} 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class={className}
+>
+  <Icon class="size-5" />
+  {name}
+</StandardBadge>

@@ -1,7 +1,7 @@
 ---
 import type { Certification } from '../../types/certification';
 import ExternalLink from '@icons/Link.astro';
-import Badge from '@components/ui/Badge.astro';
+import StandardBadge from '@components/ui/StandardBadge.astro';
 import { commonClasses } from '@utils/cssClasses';
 
 export interface Props {
@@ -43,9 +43,13 @@ const certificationsToShow = limit ? certifications.slice(0, limit) : certificat
           </p>
           
           <div class="flex items-center justify-between">
-            <Badge class="text-xs">
+            <StandardBadge 
+              variant="white" 
+              effect="neon"
+              size="xs"
+            >
               {cert.entity}
-            </Badge>
+            </StandardBadge>
             
             <span class="flex items-center gap-1 text-sm text-blue-800 dark:text-yellow-300 font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-1 group-hover:translate-x-0">
               Ver certificado

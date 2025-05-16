@@ -1,0 +1,83 @@
+---
+// NavigationBadge.astro - Badge específico para navegación en títulos de secciones
+interface Props {
+  class?: string;
+  animated?: boolean;
+}
+
+const { 
+  class: className = '',
+  animated = true
+} = Astro.props;
+
+// Classes para el badge de navegación con animación mejorada
+const baseClasses = "inline-flex items-center justify-center text-sm font-medium rounded-md transition-all duration-300 ease-out";
+const colorClasses = "text-[#f5f5f7] bg-[#1d1d1f] dark:bg-[#f5f5f7] dark:text-[#1d1d1f]";
+const shadowClasses = "shadow-sm hover:shadow-md";
+const paddingClasses = "px-4 py-1.5";
+const animationClasses = animated ? "hover:translate-x-1 hover:scale-[1.02]" : "";
+---
+
+<span
+  class={`navigation-badge ${baseClasses} ${colorClasses} ${shadowClasses} ${paddingClasses} ${animationClasses} ${className}`}
+>
+  <slot />
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-arrow h-4 w-4 ml-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+  </svg>
+</span>
+
+<style>
+  /* Estilos base */
+  .navigation-badge {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Efecto hover mejorado */
+  .navigation-badge:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Animación para la flecha */
+  .navigation-badge:hover .icon-arrow {
+    transform: translateX(2px);
+  }
+  
+  /* Efecto de resplandor */
+  .navigation-badge::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 65%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.4s ease, transform 0.5s ease;
+  }
+  
+  .navigation-badge:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Ajustes para modo oscuro */
+  :global(.dark) .navigation-badge {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  :global(.dark) .navigation-badge:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  :global(.dark) .navigation-badge::after {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 65%);
+  }
+</style>

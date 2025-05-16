@@ -1,0 +1,427 @@
+---
+interface Props {
+  class?: string;
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'entity' | 'white';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  effect?: 'glitch' | 'magnetic' | 'neon' | 'reveal' | 'none';
+  href?: string;
+  target?: string;
+  rel?: string;
+}
+
+const { 
+  class: className = '', 
+  variant = 'primary', 
+  size = 'xs',      // Tamaño xs por defecto ahora
+  effect = 'reveal',
+  href,
+  target,
+  rel
+} = Astro.props;
+
+// Determinar las clases para el tamaño - Reduciendo todos los tamaños
+let sizeClasses = '';
+switch (size) {
+  case 'xs':
+    sizeClasses = 'text-xs py-0.5 px-1.5 text-[10px]';  // Más pequeño
+    break;
+  case 'sm':
+    sizeClasses = 'text-xs py-0.5 px-2';                // Reducido
+    break;
+  case 'lg':
+    sizeClasses = 'text-sm py-1.5 px-3';                // Reducido
+    break;
+  default: // md
+    sizeClasses = 'text-xs py-1 px-2.5';                // Reducido
+}
+
+// Determinar la clase para el efecto
+const effectClass = `effect-${effect}`;
+
+// Crear el componente HTML apropiado (span o anchor)
+const Component = href ? 'a' : 'span';
+
+// Atributos adicionales para enlaces
+const linkProps = href ? {
+  href,
+  target: target || '_blank',
+  rel: rel || 'noopener noreferrer'
+} : {};
+---
+
+<Component
+  {...linkProps}
+  class={`standard-badge standard-badge-${variant} ${sizeClasses} ${effectClass} ${className}`}
+>
+  <div class="badge-content">
+    <slot />
+  </div>
+  
+  <!-- Elementos para efectos especiales -->
+  <div class="badge-effect-layer"></div>
+  <div class="badge-glitch-layer"></div>
+  <div class="badge-glow-layer"></div>
+</Component>
+
+<style>
+  /* Estilos base para el badge más compacto */
+  .standard-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    border-radius: 0.3rem;  /* Bordes más suaves */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+  }
+  
+  /* Estilo de enlace */
+  a.standard-badge {
+    cursor: pointer;
+  }
+
+  /* Badge content con gap más pequeño */
+  .badge-content {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;  /* Reducido */
+    position: relative;
+    z-index: 3;
+  }
+  
+  /* Capas de efectos */
+  .badge-effect-layer,
+  .badge-glitch-layer,
+  .badge-glow-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Variantes de colores */
+  .standard-badge-primary {
+    background-color: #6366f1;
+    color: white;
+  }
+
+  .standard-badge-secondary {
+    background-color: #6b7280;
+    color: white;
+  }
+
+  .standard-badge-success {
+    background-color: #10b981;
+    color: white;
+  }
+
+  .standard-badge-warning {
+    background-color: #f59e0b;
+    color: white;
+  }
+
+  .standard-badge-danger {
+    background-color: #ef4444;
+    color: white;
+  }
+
+  .standard-badge-info {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .standard-badge-entity {
+    background-color: #111827;
+    color: white;
+  }
+  
+  /* Nueva variante white */
+  .standard-badge-white {
+    background-color: #ffffff;
+    color: #111827;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  /* Dark mode */
+  :global(.dark) .standard-badge-primary {
+    background-color: #818cf8;
+    color: #1e1b4b;
+  }
+
+  :global(.dark) .standard-badge-secondary {
+    background-color: #9ca3af;
+    color: #1f2937;
+  }
+
+  :global(.dark) .standard-badge-success {
+    background-color: #34d399;
+    color: #064e3b;
+  }
+
+  :global(.dark) .standard-badge-warning {
+    background-color: #fbbf24;
+    color: #78350f;
+  }
+
+  :global(.dark) .standard-badge-danger {
+    background-color: #f87171;
+    color: #7f1d1d;
+  }
+
+  :global(.dark) .standard-badge-info {
+    background-color: #60a5fa;
+    color: #1e40af;
+  }
+  
+  :global(.dark) .standard-badge-entity {
+    background-color: #f3f4f6;
+    color: #111827;
+  }
+  
+  :global(.dark) .standard-badge-white {
+    background-color: #1f2937;
+    color: #f9fafb;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Efecto 1: Revelación con círculos */
+  .effect-reveal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0);
+    border-radius: inherit;
+    z-index: 1;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .effect-reveal::after {
+    content: '';
+    position: absolute;
+    width: 20px;  /* Reducido */
+    height: 20px; /* Reducido */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    z-index: 2;
+    pointer-events: none;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  }
+  
+  .effect-reveal:hover::before {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .effect-reveal:hover::after {
+    opacity: 1;
+    transform: scale(4);  /* Reducido */
+    animation: revealPulse 1.5s infinite;
+  }
+  
+  @keyframes revealPulse {
+    0% {
+      transform: scale(0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(5);  /* Reducido */
+      opacity: 0;
+    }
+  }
+  
+  /* Efecto 2: Glitch digital */
+  .effect-glitch {
+    transition: transform 0.2s ease;
+  }
+  
+  .effect-glitch .badge-glitch-layer {
+    opacity: 0;
+    background: inherit;
+    z-index: 2;
+  }
+  
+  .effect-glitch:hover {
+    transform: scale(1.05);
+  }
+  
+  .effect-glitch:hover .badge-glitch-layer {
+    animation: glitchEffect 0.8s infinite;
+  }
+  
+  @keyframes glitchEffect {
+    0% {
+      opacity: 0;
+      transform: translate(0);
+    }
+    1% {
+      opacity: 0.3;
+      transform: translate(-1px, 1px);  /* Reducido */
+    }
+    2% {
+      opacity: 0;
+      transform: translate(0);
+    }
+    5% {
+      opacity: 0.3;
+      transform: translate(1px, -1px);  /* Reducido */
+    }
+    6% {
+      opacity: 0;
+      transform: translate(0);
+    }
+    10% {
+      opacity: 0.3;
+      transform: translate(1px, 1px);   /* Reducido */
+    }
+    11% {
+      opacity: 0;
+      transform: translate(0);
+    }
+    40% {
+      opacity: 0;
+      transform: translate(0);
+    }
+    41% {
+      opacity: 0.3;
+      transform: translate(-1px, 1px);  /* Reducido */
+    }
+    42% {
+      opacity: 0;
+      transform: translate(0);
+    }
+    45% {
+      opacity: 0.3;
+      transform: translate(1px, -1px);  /* Reducido */
+    }
+    46% {
+      opacity: 0;
+      transform: translate(0);
+    }
+  }
+  
+  /* Efecto 3: Magnético con ondas */
+  .effect-magnetic {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .effect-magnetic:hover {
+    transform: scale(1.08);  /* Reducido */
+  }
+  
+  .effect-magnetic .badge-effect-layer {
+    opacity: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+  
+  .effect-magnetic:hover .badge-effect-layer {
+    opacity: 1;
+    animation: magneticWaves 2s infinite;
+  }
+  
+  @keyframes magneticWaves {
+    0% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.6);  /* Reducido */
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
+  
+  /* Efecto 4: Neon Glow */
+  .effect-neon {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 3px rgba(var(--neon-color, 99, 102, 241), 0.3);  /* Reducido */
+  }
+  
+  .effect-neon:hover {
+    box-shadow: 
+      0 0 3px rgba(var(--neon-color, 99, 102, 241), 0.5),  /* Reducido */
+      0 0 6px rgba(var(--neon-color, 99, 102, 241), 0.3),  /* Reducido */
+      0 0 9px rgba(var(--neon-color, 99, 102, 241), 0.1);  /* Reducido */
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);        /* Reducido */
+  }
+  
+  .effect-neon .badge-glow-layer {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .effect-neon:hover .badge-glow-layer {
+    opacity: 1;
+    animation: neonPulse 1.5s infinite alternate;
+  }
+  
+  @keyframes neonPulse {
+    0% {
+      box-shadow: 
+        0 0 3px rgba(var(--neon-color, 99, 102, 241), 0.5),  /* Reducido */
+        0 0 6px rgba(var(--neon-color, 99, 102, 241), 0.3);  /* Reducido */
+    }
+    100% {
+      box-shadow: 
+        0 0 6px rgba(var(--neon-color, 99, 102, 241), 0.8),  /* Reducido */
+        0 0 12px rgba(var(--neon-color, 99, 102, 241), 0.5), /* Reducido */
+        0 0 18px rgba(var(--neon-color, 99, 102, 241), 0.3); /* Reducido */
+    }
+  }
+  
+  /* Variables de colores neon para cada variante */
+  .standard-badge-primary {
+    --neon-color: 99, 102, 241;  /* indigo-500 */
+  }
+  
+  .standard-badge-secondary {
+    --neon-color: 107, 114, 128;  /* gray-500 */
+  }
+  
+  .standard-badge-success {
+    --neon-color: 16, 185, 129;  /* emerald-500 */
+  }
+  
+  .standard-badge-warning {
+    --neon-color: 245, 158, 11;  /* amber-500 */
+  }
+  
+  .standard-badge-danger {
+    --neon-color: 239, 68, 68;  /* red-500 */
+  }
+  
+  .standard-badge-info {
+    --neon-color: 59, 130, 246;  /* blue-500 */
+  }
+  
+  .standard-badge-entity {
+    --neon-color: 17, 24, 39;  /* gray-900 */
+  }
+  
+  .standard-badge-white {
+    --neon-color: 255, 255, 255;  /* white */
+  }
+  
+  /* Dark mode neon color adjustments */
+  :global(.dark) .standard-badge-primary {
+    --neon-color: 129, 140, 248;  /* indigo-400 */
+  }
+  
+  :global(.dark) .standard-badge-entity {
+    --neon-color: 243, 244, 246;  /* gray-100 */
+  }
+  
+  :global(.dark) .standard-badge-white {
+    --neon-color: 31, 41, 55;  /* gray-800 */
+  }
+</style>

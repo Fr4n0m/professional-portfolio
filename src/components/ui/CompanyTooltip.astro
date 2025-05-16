@@ -1,0 +1,140 @@
+---
+// CompanyTooltip.astro - Tooltip con información de la empresa
+interface Props {
+  companyName: string;
+  companyDescription?: string;
+  companyLocation?: string;
+  companySpecialties?: string[];
+  companyYears?: string;
+  position?: 'top' | 'right' | 'bottom' | 'left';
+  darkMode?: boolean;
+}
+
+const { 
+  companyName, 
+  companyDescription = "Empresa especializada en desarrollo de software en Málaga. Soluciones tecnológicas avanzadas y personalizadas.", 
+  companyLocation = "Calle Pirandello, 16, Planta 3, Oficina 6, Málaga", 
+  companySpecialties = ["Desarrollo de Software", "Aplicaciones Web", "Soluciones Empresariales", "Tecnologías de la Información"],
+  companyYears = "Desde 2018",
+  position = 'right',
+  darkMode = false
+} = Astro.props;
+---
+
+<div class={`company-tooltip absolute invisible opacity-0 z-[9999] transition-all duration-300 ease-out transform ${position === 'right' ? 'left-full ml-2 -translate-y-1/2 top-1/2' : 'bottom-full mb-2 -translate-x-1/2 left-1/2'} pointer-events-none`}>
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 w-[280px] md:w-[320px] backdrop-filter backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+    <div class="border-b border-gray-200 dark:border-gray-700 pb-2 mb-3">
+      <h4 class="font-semibold text-lg text-gray-900 dark:text-white">{companyName}</h4>
+      <p class="text-xs text-gray-500 dark:text-gray-400">{companyYears}</p>
+    </div>
+    <p class="text-sm mb-3 text-gray-700 dark:text-gray-300">{companyDescription}</p>
+    <div class="mb-3">
+      <p class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Especialidades:</p>
+      <div class="flex flex-wrap gap-1">
+        {companySpecialties.map((specialty) => (
+          <span class={`text-[10px] px-1.5 py-0.5 rounded-md ${darkMode ? 'bg-gray-700 text-green-400' : 'bg-green-50 text-green-700'}`}>
+            {specialty}
+          </span>
+        ))}
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+      </svg>
+      <span class="text-xs text-gray-700 dark:text-gray-300">{companyLocation}</span>
+    </div>
+    
+    <!-- Flecha del tooltip -->
+    <div class={`absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 ${position === 'right' ? 'left-[-8px] top-1/2 -translate-y-1/2 border-l border-t' : 'bottom-[-8px] left-1/2 -translate-x-1/2 border-r border-b'}`}></div>
+  </div>
+</div>
+
+<style>
+  /* Verificar posición en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .company-tooltip {
+      /* Siempre colocar arriba en móvil */
+      left: 50% !important;
+      bottom: calc(100% + 10px) !important;
+      top: auto !important;
+      transform: translateX(-50%) !important;
+      margin-left: 0 !important;
+    }
+    
+    .company-tooltip .absolute.w-4.h-4 {
+      top: auto !important;
+      bottom: -8px !important;
+      left: 50% !important;
+      transform: translateX(-50%) rotate(45deg) !important;
+      border-width: 0 1px 1px 0 !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badgeContainers = document.querySelectorAll('.badge-container');
+    
+    badgeContainers.forEach(container => {
+      // Mostrar/ocultar tooltip al hacer hover
+      container.addEventListener('mouseenter', () => {
+        const tooltip = container.querySelector('.company-tooltip');
+        if (tooltip) {
+          tooltip.classList.remove('invisible', 'opacity-0');
+          tooltip.classList.add('visible', 'opacity-100');
+        }
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        const tooltip = container.querySelector('.company-tooltip');
+        if (tooltip) {
+          tooltip.classList.add('invisible', 'opacity-0');
+          tooltip.classList.remove('visible', 'opacity-100');
+        }
+      });
+      
+      // Detectar posición mejor en función del espacio disponible
+      function updateTooltipPosition() {
+        const tooltip = container.querySelector('.company-tooltip');
+        if (!tooltip) return;
+        
+        const rect = container.getBoundingClientRect();
+        const windowWidth = window.innerWidth;
+        
+        // Si estamos en móvil, no necesitamos calcular nada más
+        if (windowWidth < 768) return;
+        
+        // Verificar si hay espacio a la derecha
+        const spaceRight = windowWidth - rect.right;
+        
+        if (spaceRight < 350) {
+          // No hay suficiente espacio a la derecha, colocar arriba
+          tooltip.classList.remove('left-full', 'ml-2', '-translate-y-1/2', 'top-1/2');
+          tooltip.classList.add('bottom-full', 'mb-2', '-translate-x-1/2', 'left-1/2');
+          
+          // Ajustar flecha
+          const arrow = tooltip.querySelector('div[class*="rotate-45"]');
+          if (arrow) {
+            arrow.className = `absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 bottom-[-8px] left-1/2 -translate-x-1/2 border-r border-b`;
+          }
+        } else {
+          // Hay espacio a la derecha, colocar a la derecha
+          tooltip.classList.remove('bottom-full', 'mb-2', '-translate-x-1/2', 'left-1/2');
+          tooltip.classList.add('left-full', 'ml-2', '-translate-y-1/2', 'top-1/2');
+          
+          // Ajustar flecha
+          const arrow = tooltip.querySelector('div[class*="rotate-45"]');
+          if (arrow) {
+            arrow.className = `absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 left-[-8px] top-1/2 -translate-y-1/2 border-l border-t`;
+          }
+        }
+      }
+      
+      // Actualizar posición al cargar y redimensionar
+      updateTooltipPosition();
+      window.addEventListener('resize', updateTooltipPosition);
+    });
+  });
+</script>

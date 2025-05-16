@@ -2,6 +2,7 @@
 // HeroTitle.astro - Componente para el título y badge del hero
 import Badge from '@components/ui/Badge.astro';
 import TextPressureWrapper from '@components/TextPressureWrapper.astro';
+import CompanyTooltip from '@components/ui/CompanyTooltip.astro';
 
 interface Props {
   title: string;
@@ -16,7 +17,7 @@ import { getActiveSiteData } from '../../utils/experienceUtils';
 const { companyUrl, companyLogo, companyName } = getActiveSiteData();
 ---
 
-<div class='typing-container flex flex-col-reverse gap-y-6 md:gap-y-0 md:flex-row md:gap-x-6 lg:gap-x-8 pb-2 lg:pb-3 md:items-start'>
+<div class='typing-container flex flex-col-reverse gap-y-4 md:gap-y-0 md:flex-row md:gap-x-4 lg:gap-x-6 pb-2 lg:pb-3 md:items-center'>
   <div class='typing mx-auto md:mx-0 md:min-w-[320px]'>
     <TextPressureWrapper 
       text={title} 
@@ -25,23 +26,35 @@ const { companyUrl, companyLogo, companyName } = getActiveSiteData();
     />
   </div>
 
-  <div class='flex justify-center md:pt-2 lg:pt-4 md:self-start text-nowrap'>
+  <div class='flex justify-center pt-0 md:pt-0 lg:pt-0 md:self-center badge-container relative'>
     <a
       href={companyUrl}
       target='_blank'
       rel='noopener'
-      class='flex justify-center items-center'
+      class='flex justify-center items-center mt-2 md:mt-0'
+      aria-label={`${companyName} website`}
     >
-      <Badge class="pulsating p-2.5 md:p-3">
+      <Badge class="p-1 md:p-1.5 lg:p-1.5 relative">
         {companyLogo && (
           <img 
             src={companyLogo} 
             alt={`${companyName} logo`} 
-            class="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28"
+            class="w-10 h-4 md:w-12 md:h-5 lg:w-16 lg:h-6 object-contain"
           />
         )}
       </Badge>
     </a>
+    
+    <!-- Tooltip de información de la empresa -->
+    <CompanyTooltip
+      companyName="Dimap"
+      companyDescription="Empresa especializada en el diseño y desarrollo de aplicaciones y soluciones tecnológicas avanzadas. Expertos en ingeniería del software."
+      companyLocation="Calle Pirandello, 16, Planta 3, Oficina 6, Málaga"
+      companySpecialties={["Desarrollo de Software", "Aplicaciones Web", "Soluciones Empresariales", "TI"]}
+      companyYears="Desde 2018"
+      position="right"
+      darkMode={darkMode}
+    />
   </div>
 </div>
 
@@ -59,30 +72,14 @@ const { companyUrl, companyLogo, companyName } = getActiveSiteData();
       document.documentElement.classList.remove('reduce-motion');
     }
     
-    // Animar la aparición del badge
-    const badgeElement = document.querySelector('.pulsating');
+    // No necesitamos animación GSAP en el badge porque ahora usamos CSS para la animación
+    // Solo configuramos la opacidad inicial
+    const badgeElement = document.querySelector('a[aria-label] > span');
     if (badgeElement) {
-      gsap.set(badgeElement, {
-        opacity: 0,
-        y: 5
-      });
-      
-      gsap.to(badgeElement, {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        ease: "power2.out",
-        delay: 0.3,
-        onComplete: () => {
-          gsap.to(badgeElement, {
-            scale: 1.05,
-            duration: 1.2,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-          });
-        }
-      });
+      gsap.fromTo(badgeElement, 
+        { opacity: 0, y: 5 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", delay: 0.3 }
+      );
     }
   });
 </script>

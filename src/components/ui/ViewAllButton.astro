@@ -1,0 +1,118 @@
+---
+// Componente especial para el botón "Ver todos los proyectos"
+interface Props {
+  class?: string;
+  href: string;
+}
+
+const { 
+  class: className = '',
+  href
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class={`view-all-button group ${className}`}
+>
+  <span class="view-all-content">
+    <slot />
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon-arrow h-5 w-5 ml-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
+    </svg>
+  </span>
+</a>
+
+<style>
+  .view-all-button {
+    display: inline-flex;
+    position: relative;
+    overflow: hidden;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    background: linear-gradient(135deg, #2d2d30 0%, #1d1d1f 100%);
+    color: #f5f5f7;
+    border-radius: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform-origin: center;
+  }
+  
+  .view-all-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Hover state */
+  .view-all-button:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  /* Hover animation for arrow */
+  .view-all-button:hover .icon-arrow {
+    transform: translateX(4px);
+  }
+  
+  /* Background shine effect */
+  .view-all-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.05), 
+      transparent
+    );
+    transform: skewX(-25deg);
+    transition: all 0.75s ease;
+  }
+  
+  .view-all-button:hover::before {
+    animation: shine 1.5s infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -75%;
+    }
+    100% {
+      left: 125%;
+    }
+  }
+  
+  /* Dark mode styles */
+  :global(.dark) .view-all-button {
+    background: linear-gradient(135deg, #f1f1f1 0%, #e8e8e8 100%);
+    color: #1d1d1f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  :global(.dark) .view-all-button:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+  
+  :global(.dark) .view-all-button::before {
+    background: linear-gradient(
+      90deg, 
+      transparent, 
+      rgba(0, 0, 0, 0.05), 
+      transparent
+    );
+  }
+  
+  /* Active state */
+  .view-all-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+</style>

@@ -75,6 +75,7 @@ export default {
         'slide-up': 'slideUp 0.5s ease-in-out',
         'slide-down': 'slideDown 0.5s ease-in-out',
         'scale-up': 'scaleUp 0.3s ease-out forwards',
+        'pulse-scale': 'pulseScale 2s infinite ease-in-out',
       },
       keyframes: {
         fadeIn: {
@@ -96,6 +97,10 @@ export default {
         scaleUp: {
           '0%': { transform: 'scale(0.8)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        pulseScale: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.15)' },
         },
       },
     },

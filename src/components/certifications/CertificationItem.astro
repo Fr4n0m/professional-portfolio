@@ -2,10 +2,9 @@
 import type { Certification } from '../../types/certification';
 import type { Translations } from '../../types/translations';
 import { ENTITIES } from '@utils/entities';
-import Entity from '../Entity.astro';
+import EntityBadge from '../ui/EntityBadge.astro';
 import PDFViewer from '../ui/PDFViewer.astro';
 import ActionButton from '../ui/ActionButton.astro';
-import Badge from '../ui/Badge.astro';
 
 export interface Props {
   certification: Certification;
@@ -14,7 +13,7 @@ export interface Props {
 
 const { certification, translations } = Astro.props;
 const { title, description, entity, url } = certification;
-const { pdfBadge, downloadButton } = translations.certificationsPage;
+const { downloadButton } = translations.certificationsPage;
 ---
 
 <article>
@@ -41,7 +40,7 @@ const { pdfBadge, downloadButton } = translations.certificationsPage;
 
   <footer class='flex items-end justify-start mt-6 gap-x-4 mb-16'>
     {entity && ENTITIES[entity] && (
-      <Entity {...ENTITIES[entity]} />
+      <EntityBadge entity={ENTITIES[entity]} />
     )}
   </footer>
 </article>

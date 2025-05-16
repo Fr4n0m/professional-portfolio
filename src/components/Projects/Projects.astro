@@ -1,6 +1,6 @@
 ---
 import ProjectItem from './ProjectItem.astro';
-import Arrow from '@icons/Arrow.astro';
+import ViewAllButton from '@components/ui/ViewAllButton.astro';
 import type { Project } from '../../types/projects';
 import type { Translations } from '../../types/translations';
 import { commonClasses } from '@utils/cssClasses';
@@ -29,13 +29,9 @@ const selectedProjects = projects.filter(project =>
     <ProjectItem project={project} buttons={projectsButtons} />
   ))}
 
-  <a
-    href={translations.projectsPage.allProjectsLink}
-    class={`mb-20 md:mb-0 flex justify-end items-center gap-[2px] group text-md w-fit px-2 py-1 rounded ${commonClasses.button.primary}`}
-  >
-    {translations.projectsPage.allProjects}
-    <Arrow
-      class={`${commonClasses.iconSize.large} transition-translate duration-300 ease-in-out group-hover:translate-x-1`}
-    />
-  </a>
+  <div class="flex justify-end mb-20 md:mb-0 pt-8">
+    <ViewAllButton href={translations.projectsPage.allProjectsLink}>
+      {translations.projectsPage.allProjects}
+    </ViewAllButton>
+  </div>
 </div>
