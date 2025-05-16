@@ -3,7 +3,7 @@ const { class: className = '' } = Astro.props;
 ---
 
 <span
-  class={`pulsating bg-blue-800 text-blue-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 hover:scale-105 pointer transition-all inline-flex items-center ${className}`}
+  class={`pulsating bg-blue-800 text-blue-100 text-xs font-medium me-2 rounded-lg dark:bg-blue-900 dark:text-blue-300 hover:scale-105 pointer transition-all inline-flex items-center justify-center ${className}`}
 >
   <slot />
 </span>

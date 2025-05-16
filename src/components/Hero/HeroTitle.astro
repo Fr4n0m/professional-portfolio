@@ -25,22 +25,21 @@ const { companyUrl, companyLogo, companyName } = getActiveSiteData();
     />
   </div>
 
-  <div class='flex justify-center md:pt-3 lg:pt-6 md:self-start text-nowrap'>
+  <div class='flex justify-center md:pt-2 lg:pt-4 md:self-start text-nowrap'>
     <a
       href={companyUrl}
       target='_blank'
       rel='noopener'
       class='flex justify-center items-center'
     >
-      <Badge class="pulsating">
+      <Badge class="pulsating p-2.5 md:p-3">
         {companyLogo && (
           <img 
             src={companyLogo} 
             alt={`${companyName} logo`} 
-            class="w-4 h-4 mr-1.5 inline-block"
+            class="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28"
           />
         )}
-        {companyName}
       </Badge>
     </a>
   </div>

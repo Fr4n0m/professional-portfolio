@@ -13,7 +13,7 @@ const props = Astro.props;
 	target='_blank'
 	rel='noopener noreferrer'
 	href={props.link}
-	class={`skill-pill flex gap-x-2 rounded-full text-xs items-center ${props.class} px-3 py-1 border mb-6 transition-all duration-300`}
+	class={`skill-pill flex gap-x-2 rounded-full text-xs font-semibold items-center ${props.class} px-3 py-1 border mb-6 transition-all duration-300`}
 >
 	<props.icon class='size-3' />
 	{props.name}
@@ -25,63 +25,71 @@ const props = Astro.props;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0.1, 1);
   }
   
-  /* Efecto de hover - modo claro con acento azul */
+  /* Efecto de hover - iluminación */
   .skill-pill:hover {
+    /* Iluminación y realce de color */
+    filter: brightness(1.25);
+    /* Escala más notable para dar sensación de elevación */
     transform: translateY(-2px) scale(1.08);
-    box-shadow: 0 3px 10px rgba(59, 130, 246, 0.15);
-    border-color: rgba(59, 130, 246, 0.4); /* Borde azul más pronunciado */
-  }
-  
-  /* Efecto de hover - modo oscuro con acento amarillo */
-  html.dark .skill-pill:hover {
-    box-shadow: 0 3px 10px rgba(234, 179, 8, 0.2);
-    border-color: rgba(234, 179, 8, 0.4); /* Borde amarillo para modo oscuro */
   }
   
   /* Efecto click */
   .skill-pill:active {
-    transform: translateY(0) scale(0.96);
+    transform: translateY(0) scale(0.98);
+    filter: brightness(0.95);
     transition-duration: 0.1s;
-  }
-  
-  /* Efecto de brillo animado al hacer hover - modo claro con acento azul */
-  .skill-pill::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
-    opacity: 0;
-    transform: scale(0.5);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  /* Efecto de brillo animado al hacer hover - modo oscuro con acento amarillo */
-  html.dark .skill-pill::after {
-    background: radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, transparent 70%);
-  }
-  
-  .skill-pill:hover::after {
-    opacity: 1;
-    transform: scale(1);
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Asegurar que las animaciones de hover estén disponibles para las skill pills
     const skillPills = document.querySelectorAll('.skill-pill');
     if (skillPills.length > 0 && !document.documentElement.classList.contains('reduce-motion')) {
-      // Aplicar efectos avanzados si las animaciones están habilitadas
       skillPills.forEach(pill => {
+        // Obtener el color del borde para el efecto de iluminación
+        const computedStyle = getComputedStyle(pill);
+        const borderColor = computedStyle.borderColor;
+        const bgColor = computedStyle.backgroundColor;
+        
+        // Crear color de brillo basado en el color del borde
+        // Convertir rgba a valores para poder manipularlos
+        const borderColorMatch = borderColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/i);
+        let glowColor;
+        
+        if (borderColorMatch) {
+          const r = parseInt(borderColorMatch[1]);
+          const g = parseInt(borderColorMatch[2]);
+          const b = parseInt(borderColorMatch[3]);
+          // Usar el color del borde para el efecto glow pero con mayor opacidad
+          glowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
+        } else {
+          // Color de respaldo si no se puede analizar
+          glowColor = 'rgba(255, 255, 255, 0.5)';
+        }
+        
         // Inicializar transiciones suaves
-        pill.style.transition = 'transform 0.3s ease-out, box-shadow 0.3s ease';
+        pill.style.transition = 'all 0.25s cubic-bezier(0.2, 0, 0.1, 1)';
+        
+        // Efecto de resplandor personalizado
+        pill.addEventListener('mouseenter', () => {
+          // Efecto de resplandor interno y externo más pronunciado usando el color del borde
+          pill.style.boxShadow = `inset 0 0 8px ${glowColor}, 0 0 12px ${glowColor}`;
+          // Aumentar sutilmente el color de fondo
+          pill.style.backgroundColor = bgColor.replace(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/i, 
+            function(match, r, g, b, a) {
+              // Aumentar la opacidad ligeramente
+              const newAlpha = a ? Math.min(parseFloat(a) + 0.1, 1) : 0.3;
+              return `rgba(${r}, ${g}, ${b}, ${newAlpha})`;
+            });
+        });
+        
+        pill.addEventListener('mouseleave', () => {
+          pill.style.boxShadow = 'none';
+          pill.style.backgroundColor = bgColor;
+        });
       });
     }
   });

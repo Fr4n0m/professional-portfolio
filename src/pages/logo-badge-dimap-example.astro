@@ -1,0 +1,55 @@
+---
+import LogoBadge from "@/components/ui/LogoBadge.astro";
+---
+
+<div class="flex flex-col space-y-8 p-6">
+  <div>
+    <h2 class="text-2xl font-bold mb-4">Badge del Logo DIMAP con Colores Oficiales</h2>
+    <p class="mb-6">Este badge utiliza exactamente los colores oficiales de DIMAP, con el logo SVG oficial y enlace a dimap.es.</p>
+    
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Variante Primary - Verde con texto azul</h3>
+        <p class="text-gray-600 mb-3">Verde: #3DD47E | Azul: #243545</p>
+        <div class="flex flex-wrap gap-3">
+          <LogoBadge size="sm" variant="primary" company="dimap">Small</LogoBadge>
+          <LogoBadge size="md" variant="primary" company="dimap">Medium</LogoBadge>
+          <LogoBadge size="lg" variant="primary" company="dimap">Large</LogoBadge>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Variante Secondary - Azul con texto verde</h3>
+        <p class="text-gray-600 mb-3">Azul: #243545 | Verde: #3DD47E</p>
+        <div class="flex flex-wrap gap-3">
+          <LogoBadge size="sm" variant="secondary" company="dimap">Small</LogoBadge>
+          <LogoBadge size="md" variant="secondary" company="dimap">Medium</LogoBadge>
+          <LogoBadge size="lg" variant="secondary" company="dimap">Large</LogoBadge>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Variante Tertiary - Verde oscuro con texto azul claro</h3>
+        <p class="text-gray-600 mb-3">Verde oscuro: #31ab66 | Azul claro: #EBF7FE</p>
+        <div class="flex flex-wrap gap-3">
+          <LogoBadge size="sm" variant="tertiary" company="dimap">Small</LogoBadge>
+          <LogoBadge size="md" variant="tertiary" company="dimap">Medium</LogoBadge>
+          <LogoBadge size="lg" variant="tertiary" company="dimap">Large</LogoBadge>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-8">
+    <h3 class="text-lg font-bold mb-2">Características del Logo Badge:</h3>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>Utiliza el logo SVG oficial de DIMAP.</li>
+      <li>Colores exactos del <code>tailwind.config.js</code> de DIMAP (verde: #3DD47E, azul: #243545, etc.).</li>
+      <li>Enlaza directamente a <code>https://dimap.es</code>.</li>
+      <li>Utiliza estilos que sobreescriben cualquier estilo global con <code>!important</code>.</li>
+      <li>Padding vertical mínimo para un badge compacto.</li>
+      <li>Animación de pulsación suave y atractiva.</li>
+      <li>Totalmente personalizable para otras empresas en el futuro.</li>
+    </ul>
+  </div>
+</div>

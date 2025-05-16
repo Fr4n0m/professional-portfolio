@@ -1,0 +1,35 @@
+---
+import LogoBadge from "@/components/ui/LogoBadge.astro";
+---
+
+<div class="flex flex-col space-y-4 p-4">
+  <h2 class="text-xl font-bold">Ejemplos de LogoBadge</h2>
+  
+  <div class="space-y-2">
+    <h3>Variante Primary (Verde)</h3>
+    <div class="flex flex-wrap gap-2">
+      <LogoBadge size="sm" variant="primary" company="dimap">Small</LogoBadge>
+      <LogoBadge size="md" variant="primary" company="dimap">Medium</LogoBadge>
+      <LogoBadge size="lg" variant="primary" company="dimap">Large</LogoBadge>
+    </div>
+  </div>
+  
+  <div class="space-y-2">
+    <h3>Variante Secondary (Azul)</h3>
+    <div class="flex flex-wrap gap-2">
+      <LogoBadge size="sm" variant="secondary" company="dimap">Small</LogoBadge>
+      <LogoBadge size="md" variant="secondary" company="dimap">Medium</LogoBadge>
+      <LogoBadge size="lg" variant="secondary" company="dimap">Large</LogoBadge>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-lg font-bold">Personalización para futuras empresas</h3>
+    <p class="mb-4">Para adaptar el badge a otra empresa en el futuro, solo necesitarás:</p>
+    <ol class="list-decimal pl-6 space-y-2">
+      <li>Agregar los colores corporativos en el objeto <code>companyColors</code> dentro del componente.</li>
+      <li>Crear un SVG simplificado del logo de la empresa y agregarlo como opción en la variable <code>logoSvg</code>.</li>
+      <li>Usar el componente con el nuevo valor de la empresa: <code>&lt;LogoBadge company="nueva-empresa"&gt;</code>.</li>
+    </ol>
+  </div>
+</div>

@@ -33,6 +33,18 @@ Badge animado con efecto pulsante. Usado para destacar información.
 <Badge>Texto destacado</Badge>
 ```
 
+### LogoBadge.astro
+Badge animado con logo de empresa y colores corporativos. Totalmente personalizable.
+
+```astro
+<LogoBadge size="md" variant="primary" company="dimap">Texto destacado</LogoBadge>
+```
+
+Opciones disponibles:
+- `size`: "sm" | "md" | "lg" (tamaño del badge, predeterminado: "md")
+- `variant`: "primary" | "secondary" (variante de color, predeterminado: "primary")
+- `company`: "dimap" | "other" (empresa, controla colores y logo, predeterminado: "dimap")
+
 ### Tag.astro
 Etiqueta para mostrar tecnologías con iconos.
 

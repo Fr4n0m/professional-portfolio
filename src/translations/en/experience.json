@@ -7,7 +7,7 @@
       "description": "Front-End Developer.",
       "isActive": true,
       "companyName": "Dimap",
-      "companyLogo": "/assets/images/dimap-logo.png",
+      "companyLogo": "/assets/logos/blue-logo.svg",
       "companyUrl": "https://dimap.es/",
       "location": "Calle Pirandello, 16, 3rd Floor, Office 6, Malaga"
     },
@@ -17,7 +17,7 @@
       "description": "Software development and web applications.",
       "isActive": false,
       "companyName": "Gubb Marketing",
-      "companyLogo": "/assets/images/gubb-logo.png",
+      "companyLogo": "",
       "companyUrl": "https://gubb.es/",
       "location": "Malaga"
     },
@@ -27,7 +27,7 @@
       "description": "Development from 0 of a web application focused on the administration of a cashback system for the company Agrooe®. Development of the database, backend and frontend of the web application.",
       "isActive": false,
       "companyName": "Agrooe",
-      "companyLogo": "/assets/images/agrooe-logo.png",
+      "companyLogo": "",
       "companyUrl": "https://agrooe.com/",
       "location": "Malaga"
     },
