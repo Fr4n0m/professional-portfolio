@@ -44,21 +44,23 @@ const { imageSrc, altText } = Astro.props;
     width: 8rem;
     height: 8rem;
     overflow: hidden;
-    border-radius: 25px;
-    background: linear-gradient(to bottom right, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.1));
-    box-shadow: rgba(14, 165, 233, 0.15) 0px 3px 8px, 0 0 0 1px rgba(56, 189, 248, 0.15);
+    border-radius: 19px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e5e7eb;
+    background-color: white;
   }
   
   /* Versión oscura para móvil */
   :global(.dark) .hero-profile-frame-mobile {
-    background: linear-gradient(to bottom right, rgba(250, 204, 21, 0.2), rgba(234, 179, 8, 0.15));
-    box-shadow: rgba(250, 204, 21, 0.15) 0px 3px 8px, 0 0 0 1px rgba(250, 204, 21, 0.15);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #374151;
+    background-color: #1f2937;
   }
 
   /* Versión desktop con hover */
   .hero-profile-wrapper {
     position: relative;
-    z-index: 500;
+    z-index: 1;
     cursor: pointer;
   }
   
@@ -67,25 +69,29 @@ const { imageSrc, altText } = Astro.props;
     width: 8.5rem;
     height: 8.5rem;
     overflow: hidden;
-    border-radius: 25px;
-    background: linear-gradient(to bottom right, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.1));
-    box-shadow: rgba(14, 165, 233, 0.2) 0px 4px 12px, 0 0 0 2px rgba(56, 189, 248, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 19px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e5e7eb;
+    background-color: white;
+    transition: all 0.2s ease;
   }
   
   .hero-profile-wrapper:hover .hero-profile-frame {
     transform: scale(1.05);
-    box-shadow: rgba(56, 189, 248, 0.25) 0px 8px 24px, 0 0 0 2px rgba(2, 132, 199, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #3b82f6;
   }
   
   /* Versión oscura */
   :global(.dark) .hero-profile-frame {
-    background: linear-gradient(to bottom right, rgba(250, 204, 21, 0.2), rgba(234, 179, 8, 0.15));
-    box-shadow: rgba(250, 204, 21, 0.25) 0px 4px 12px, 0 0 0 2px rgba(250, 204, 21, 0.25);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #374151;
+    background-color: #1f2937;
   }
   
   :global(.dark) .hero-profile-wrapper:hover .hero-profile-frame {
-    box-shadow: rgba(251, 191, 36, 0.35) 0px 8px 24px, 0 0 0 2px rgba(250, 204, 21, 0.35);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+    border: 2px solid #facc15;
   }
   
   @media (min-width: 1024px) {

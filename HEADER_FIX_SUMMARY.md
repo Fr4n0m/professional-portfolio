@@ -1,30 +1,38 @@
-# Cambios Realizados - Corrección de IDs de Navegación
+# Solución del Problema de Navegación del Header
 
-## Problema
-Los enlaces del menú del header no funcionaban correctamente en diferentes idiomas porque los IDs en los archivos de traducción no coincidían con los IDs definidos en las secciones del archivo `HomePage.astro`.
+## Problema detectado
+Cuando la página cargaba inicialmente, varias secciones (Inicio y Habilidades) aparecían marcadas como activas al mismo tiempo en el menú de navegación de escritorio, mostrando ambas en amarillo en el tema oscuro.
 
-## Solución
-He actualizado los archivos de traducción para que todos los idiomas usen los mismos IDs que están definidos en español en `HomePage.astro`:
+## Causa del problema
+1. El `IntersectionObserver` detectaba todas las secciones visibles al cargar la página y las marcaba a todas como activas.
+2. No había una lógica para priorizar y elegir una sola sección como activa cuando múltiples secciones estaban visibles en la pantalla.
+3. Existían dos implementaciones diferentes de la lógica de navegación que podrían causar conflictos: una en `Header.astro` y otra en `DesktopNav.astro`.
 
-- `inicio` (en lugar de `home`)
-- `habilidades` (en lugar de `skills`)
-- `experiencia` (en lugar de `experience`)
-- `proyectos` (en lugar de `projects`)
-- `certificaciones` (en lugar de `certifications`)
-- `contacto` (en lugar de `contact`)
+## Solución implementada
 
-## Archivos actualizados:
-- `/src/translations/en/header-items.json`
-- `/src/translations/es/header-items.json`
-- `/src/translations/de/header-items.json`
-- `/src/translations/fr/header-items.json`
+### 1. Mejora del IntersectionObserver en Header.astro
+- Modificado para detectar todas las secciones visibles y elegir solo una como activa.
+- Cuando múltiples secciones son visibles, se selecciona la que está más arriba en la pantalla.
+- Ajustes en el `rootMargin` para mejorar la detección de secciones.
+- Adición de un atributo `data-has-observer` para evitar duplicidad.
 
-## Archivos pendientes:
-Los siguientes idiomas aún necesitan actualización:
-- ar, en-us, es-mx, hi, hv, it, ja, ko, nl, pl, pt, ru, tr, zh
+### 2. Optimización del setupNavHighlighting en DesktopNav.astro
+- Verificación de si ya existe un observer activo para evitar conflictos.
+- Mejora en la lógica para seleccionar solo una sección activa cuando hay múltiples secciones visibles.
+- Corrección en la aplicación y eliminación de clases CSS.
 
-## Script de ayuda:
-He creado un script en `/scripts/fix-header-ids.js` que puede ejecutarse para actualizar automáticamente todos los archivos de traducción restantes con los IDs correctos.
+### 3. Selección explícita de la sección inicial
+- Implementación de una función `handleInitialSectionSelection()` que asegura que solo la primera sección esté activa al cargar la página.
+- La función establece explícitamente las clases para la sección inicial tras un pequeño retraso para asegurar que el DOM esté completamente cargado.
 
-## Estilos:
-Los estilos del header se han mantenido exactamente como estaban originalmente, sin cambios.
+### 4. Mejoras en la marcación HTML
+- Adición de atributos `data-active` en los enlaces de navegación para mejor control del estado.
+
+## Resultado
+Ahora, al cargar la página, solo la primera sección (Inicio) se marcará como activa en el menú de navegación, y a medida que el usuario se desplaza, las secciones activas se actualizarán correctamente, mostrando siempre una única sección activa.
+
+## Recomendación
+Para futuros desarrollos:
+1. Mantener un único sistema de detección de secciones activas para evitar conflictos.
+2. Considerar el uso de un sistema de prioridades más explícito para secciones.
+3. Implementar pruebas para verificar que la navegación funciona correctamente en diferentes dispositivos y tamaños de pantalla.

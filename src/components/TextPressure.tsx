@@ -125,25 +125,26 @@ const TextPressure: React.FC<TextPressureProps> = ({
                 const distY = mouseY - charCenterY;
                 const distance = Math.sqrt(distX * distX + distY * distY);
                 
-                // Radio de influencia (menor = efecto más concentrado y rápido)
-                const radius = 120;
+                // Radio ultra reducido para efecto localizado e inmediato
+                const radius = 60;
                 
                 // Efecto solo si está dentro del radio
                 if (distance < radius) {
-                    // Calcular intensidad (1 = cerca, 0 = lejos)
-                    const intensity = 1 - (distance / radius);
+                    // Cálculo de intensidad extremadamente agresivo para reacción instantánea
+                    // Reducimos el exponente a 0.5 para una curva más pronunciada
+                    const intensity = Math.pow(1 - (distance / radius), 0.5);
                     
-                    // Aplicar transformación - efecto más suave
-                    char.style.transform = `scale(${1 + intensity * 0.25})`;
-                    char.style.fontWeight = String(Math.min(800, 400 + intensity * 400));
-                    // Transición más suave
-                    char.style.transition = 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), font-weight 0.15s ease-out';
+                    // Aplicar transformación con efecto más visible
+                    char.style.transform = `scale(${1 + intensity * 0.4})`;  // Efecto más pronunciado
+                    char.style.fontWeight = String(Math.min(900, 400 + intensity * 500)); // Mayor cambio en el peso de la fuente
+                    // Transición inmediata (prácticamente sin retardo - 0.02s es casi imperceptible)
+                    char.style.transition = 'transform 0.02s cubic-bezier(0, 0, 0.1, 1), font-weight 0.02s linear';
                 } else {
                     // Resetear estilo si está fuera del radio
                     char.style.transform = 'scale(1)';
                     char.style.fontWeight = '400';
-                    // Transición de retorno más suave
-                    char.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), font-weight 0.2s ease-out';
+                    // Transición de retorno ultra rápida
+                    char.style.transition = 'transform 0.03s cubic-bezier(0, 0, 0.1, 1), font-weight 0.03s linear';
                 }
             });
         };
@@ -175,7 +176,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
                 overflow: 'visible',
                 whiteSpace: 'nowrap',
                 lineHeight: '1.2',
-                fontSize: '2.5rem',
+                fontSize: '3.5rem', // Aumentado de 2.5rem a 3.5rem
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif',
                 fontWeight: 400,
                 color: textColor

@@ -19,7 +19,7 @@ const info = {
 };
 ---
 
-<header class='fixed top-0 z-10 flex items-center justify-center w-full mx-auto'>
+<header class='fixed top-0 z-50 flex items-center justify-center w-full mx-auto'>
   <DesktopNav headerItems={headerItems} info={info} lang={lang} />
   <MobileNav headerItems={headerItems} lang={lang} translations={translations} />
 </header>
@@ -95,31 +95,51 @@ const info = {
     if (sections.length > 0) {
       const observerOptions = {
         root: null,
-        rootMargin: '-20% 0px -20% 0px',
-        threshold: 0
+        rootMargin: '-20% 0px -60% 0px', // Ampliar el margen inferior para priorizar secciones superiores
+        threshold: 0.1 // Requiere que al menos el 10% de la sección sea visible
       };
       
       const callback = (entries: IntersectionObserverEntry[]) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.id;
-            
-            navItems.forEach(item => {
-              const dataSection = item.getAttribute('data-section');
-              
-              if (dataSection === sectionId) {
-                item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
-              } else if (item.getAttribute('href')?.includes('#')) {
-                // Only remove classes from hash navigation items, not from page navigation
-                item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
-              }
-            });
+        // Filter for sections that are currently intersecting
+        const visibleSections = entries.filter(entry => entry.isIntersecting);
+        
+        // If no sections are visible, don't update anything
+        if (visibleSections.length === 0) return;
+        
+        // Get the section that's closest to the top of the viewport
+        let activeSection;
+        if (visibleSections.length > 1) {
+          // When multiple sections are visible, choose the one with smallest Y - the topmost one
+          activeSection = visibleSections.reduce((top, current) => {
+            const topRect = top.target.getBoundingClientRect();
+            const currentRect = current.target.getBoundingClientRect();
+            return topRect.top < currentRect.top ? top : current;
+          });
+        } else {
+          // If only one section is visible, that's our active section
+          activeSection = visibleSections[0];
+        }
+        
+        const activeSectionId = activeSection.target.id;
+        
+        // Update all navigation items
+        navItems.forEach(item => {
+          const dataSection = item.getAttribute('data-section');
+          
+          if (dataSection === activeSectionId) {
+            item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+          } else if (item.getAttribute('href')?.includes('#')) {
+            // Only remove classes from hash navigation items, not from page navigation
+            item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
           }
         });
       };
       
       const observer = new IntersectionObserver(callback, observerOptions);
       sections.forEach(section => observer.observe(section));
+      
+      // Marcamos el header para evitar inicializaciones duplicadas
+      document.querySelector('header')?.setAttribute('data-has-observer', 'true');
       
       // Handle visibility changes to pause/resume observer
       document.addEventListener('visibilitychange', () => {
@@ -142,8 +162,41 @@ const info = {
   
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNavigation);
+    document.addEventListener('DOMContentLoaded', () => {
+      initNavigation();
+      // Manejar la selección inicial de forma explícita
+      handleInitialSectionSelection();
+    });
   } else {
     initNavigation();
+    // Manejar la selección inicial de forma explícita
+    handleInitialSectionSelection();
+  }
+  
+  // Esta función se encarga de seleccionar la primera sección como activa al cargar la página
+  function handleInitialSectionSelection() {
+    // Esperamos un momento para que se complete la renderización
+    setTimeout(() => {
+      const sections = document.querySelectorAll('section[data-section]');
+      const navItems = document.querySelectorAll('header nav a');
+      
+      if (sections.length > 0 && navItems.length > 0) {
+        // La sección inicial es la primera
+        const initialSectionId = sections[0].id;
+        
+        // Quitamos todas las clases de activo
+        navItems.forEach(item => {
+          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold', 'active');
+        });
+        
+        // Activamos solo el elemento del menú correspondiente a la primera sección
+        navItems.forEach(item => {
+          const dataSection = item.getAttribute('data-section');
+          if (dataSection === initialSectionId) {
+            item.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold', 'active');
+          }
+        });
+      }
+    }, 100); // Pequeño retardo para asegurar que el DOM está listo
   }
 </script>

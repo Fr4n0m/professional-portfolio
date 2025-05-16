@@ -34,6 +34,7 @@ const themes = [
       aria-label={item.label}
       href={item.url}
       target={item.title === 'CV' ? '_blank' : '_self'}
+      data-active={false}
     >
       {item.title}
     </a>
@@ -627,10 +628,22 @@ const themes = [
   }
   
   function setupNavHighlighting() {
+    // Verificamos si ya hay un IntersectionObserver manejando esto desde Header.astro
+    // Evitamos la implementación duplicada que podría causar conflictos
+    
+    // Asegurémonos de que solo usamos una implementación para evitar conflictos
+    const hasHeaderObserver = document.querySelector('header')?.hasAttribute('data-has-observer');
+    
+    // Si ya hay un observer en el header, no configuramos uno nuevo
+    if (hasHeaderObserver) return;
+    
     const sections = document.querySelectorAll('section[data-section]');
     const navLinks = document.querySelectorAll('.nav-link');
     
     if (!sections.length || !navLinks.length) return;
+    
+    // Marcamos el header para indicar que ya tiene un observer
+    document.querySelector('header')?.setAttribute('data-has-observer', 'true');
     
     const updateActiveLink = () => {
       const scrollPosition = window.scrollY;
@@ -638,6 +651,7 @@ const themes = [
       const documentHeight = document.documentElement.scrollHeight;
       
       let activeSection = '';
+      let visibleSections = [];
       
       // Check if at bottom of page
       if (scrollPosition + windowHeight >= documentHeight - 10) {
@@ -648,17 +662,29 @@ const themes = [
         const headerHeight = header ? header.offsetHeight : 0;
         const offset = headerHeight + 80; // Additional offset for better triggering
         
+        // Primero recopilamos todas las secciones visibles
         sections.forEach(section => {
           const sectionElement = section as HTMLElement;
           const sectionTop = sectionElement.offsetTop - offset;
           const sectionHeight = sectionElement.offsetHeight;
           
           if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            activeSection = section.id;
+            visibleSections.push({
+              id: section.id,
+              top: sectionTop
+            });
           }
         });
         
-        // If no section is active and we're near the top, activate the first section
+        // Si hay múltiples secciones visibles, elegimos la que está más arriba
+        if (visibleSections.length > 0) {
+          // Ordenamos las secciones visibles por su posición vertical
+          visibleSections.sort((a, b) => a.top - b.top);
+          // La sección activa es la primera (la más alta en la página)
+          activeSection = visibleSections[0].id;
+        }
+        
+        // Si no hay sección activa y estamos cerca de la parte superior, activamos la primera sección
         if (!activeSection && scrollPosition < 100) {
           activeSection = sections[0].id;
         }
@@ -669,8 +695,10 @@ const themes = [
         
         if (linkSection === activeSection) {
           link.classList.add('active');
+          link.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         } else {
           link.classList.remove('active');
+          link.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         }
       });
     };
