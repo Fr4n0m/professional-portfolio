@@ -84,7 +84,10 @@ const { headerItems, info, lang } = Astro.props;
   }
   
   /* Modo oscuro: activo es amarillo */
-  :global(.dark) .header-desktop-nav .nav-link.active {
+  :global(.dark) .header-desktop-nav .nav-link.active,
+  :global(.dark) nav a.active,
+  :global(html.dark) .header-desktop-nav .nav-link.active,
+  :global(html.dark) nav a.active {
     color: #facc15 !important; /* yellow-300 */
     text-shadow: 0px 0px 6px rgba(250, 204, 21, 0.4);
   }
@@ -430,12 +433,17 @@ const { headerItems, info, lang } = Astro.props;
         const linkSection = link.getAttribute('data-section');
         
         if (linkSection === activeSection) {
-          link.classList.add('active');
-          link.classList.add('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+        link.classList.add('active');
+        if (document.documentElement.classList.contains('dark')) {
+            link.classList.add('text-yellow-300');
         } else {
-          link.classList.remove('active');
-          link.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
-        }
+          link.classList.add('text-blue-800');
+          }
+            link.classList.add('font-semibold');
+          } else {
+            link.classList.remove('active');
+            link.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+          }
       });
     };
     

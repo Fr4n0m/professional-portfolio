@@ -19,6 +19,16 @@ const info = {
 };
 ---
 
+<style is:global>
+  /* Estilos para navegación activa en modo oscuro */
+  html.dark nav a.active,
+  html.dark .nav-link.active,
+  .active-dark {
+    color: #facc15 !important;
+    text-shadow: 0px 0px 6px rgba(250, 204, 21, 0.4);
+  }
+</style>
+
 <header class='fixed top-0 z-50 flex items-center justify-center w-full mx-auto'>
   <DesktopNav headerItems={headerItems} info={info} lang={lang} />
   <MobileNav headerItems={headerItems} lang={lang} translations={translations} />
@@ -81,14 +91,15 @@ const info = {
         if (isActive) {
           item.classList.add('active');
           if (document.documentElement.classList.contains('dark')) {
-            item.classList.add('dark:text-yellow-300');
+            // Solo añadimos la clase, sin estilo inline
+            item.classList.add('active-dark');
           } else {
             item.classList.add('text-blue-800');
           }
           item.classList.add('font-semibold');
         } else {
-          item.classList.remove('active');
-          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+          item.classList.remove('active', 'active-dark');
+          item.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         }
       });
     };
@@ -136,15 +147,16 @@ const info = {
           if (dataSection === activeSectionId) {
             item.classList.add('active');
             if (document.documentElement.classList.contains('dark')) {
-              item.classList.add('dark:text-yellow-300');
+              // Solo añadimos la clase, sin estilo inline
+              item.classList.add('active-dark');
             } else {
               item.classList.add('text-blue-800');
             }
             item.classList.add('font-semibold');
           } else if (item.getAttribute('href')?.includes('#')) {
             // Only remove active class from hash navigation items, not from page navigation
-            item.classList.remove('active');
-            item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+            item.classList.remove('active', 'active-dark');
+            item.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
           }
         });
       };
@@ -200,8 +212,8 @@ const info = {
         
         // Quitamos todas las clases de activo
         navItems.forEach(item => {
-          item.classList.remove('active');
-          item.classList.remove('dark:text-yellow-300', 'text-blue-800', 'font-semibold');
+          item.classList.remove('active', 'active-dark');
+          item.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
         });
         
         // Activamos solo el elemento del menú correspondiente a la primera sección
@@ -210,7 +222,8 @@ const info = {
           if (dataSection === initialSectionId) {
             item.classList.add('active');
             if (document.documentElement.classList.contains('dark')) {
-              item.classList.add('dark:text-yellow-300');
+              // Solo añadimos la clase, sin estilo inline
+              item.classList.add('active-dark');
             } else {
               item.classList.add('text-blue-800');
             }
@@ -220,4 +233,27 @@ const info = {
       }
     }, 100); // Pequeño retardo para asegurar que el DOM está listo
   }
+  
+  // Observador para detectar cambios en el tema y actualizar colores
+  const themeObserver = new MutationObserver(() => {
+    const isDark = document.documentElement.classList.contains('dark');
+    const activeLinks = document.querySelectorAll('.nav-link.active, header nav a.active');
+    
+    activeLinks.forEach(link => {
+      if (isDark) {
+        // Añadir clase especial para modo oscuro
+        link.classList.add('active-dark');
+      } else {
+        // Remover clase del modo oscuro
+        link.classList.remove('active-dark');
+        link.classList.add('text-blue-800');
+      }
+    });
+  });
+  
+  // Observar cambios en la clase del html para detectar cambios de tema
+  themeObserver.observe(document.documentElement, { 
+    attributes: true, 
+    attributeFilter: ['class'] 
+  });
 </script>
