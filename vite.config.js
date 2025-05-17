@@ -16,6 +16,7 @@ export default defineConfig({
       '@types': path.resolve('./src/types'),
       '@config': path.resolve('./src/config'),
       '@i18n': path.resolve('./src/i18n'),
+      '../i18n/utils': path.resolve('./src/i18n/utils')
     }
   },
   server: {

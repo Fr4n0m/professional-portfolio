@@ -23,7 +23,8 @@
 			"@config/*": ["src/config/*"],
 			"@scripts/*": ["src/scripts/*"],
 			"@ui/*": ["src/components/ui/*"],
-			"@i18n/*": ["src/i18n/*"]
+			"@i18n/*": ["src/i18n/*"],
+			"../i18n/utils": ["src/i18n/utils.ts"]
 		}
 	}
 }
