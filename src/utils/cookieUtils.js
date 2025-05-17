@@ -201,7 +201,7 @@ export function initConsentBasedFallbacks() {
     // Si el contenedor no requiere consentimiento específico o si tiene el consentimiento necesario, iniciar fallback
     if (!needsConsent || (consentCategory && hasConsent(consentCategory)) || !consentCategory) {
       // Importar dinámicamente el módulo de fallbacks para evitar problemas de ciclo de dependencias
-      import('./fallbacks/loadingFallbacks.js').then(module => {
+      import('../components/fallbacks/loadingFallbacks.js').then(module => {
         const { initLazyLoadFallbacks } = module;
         
         // Obtener el tipo de fallback y aplicar opciones específicas
