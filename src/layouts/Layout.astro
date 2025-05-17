@@ -104,45 +104,23 @@ console.log('Detected language:', lang);
 	</body>
 </html>
 
-<script>
+<script is:inline>
   // Inicializador de animaciones globales con GSAP
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { initControlCenter } from '@scripts/controlCenter.js';
-  import { initLazyLoadFallbacks } from '@components/fallbacks/loadingFallbacks.js';
-  import { initAnalytics } from '@utils/analyticsUtils.js';
-import { initCookies } from '@utils/cookieUtils.js';
-  
-  // Registramos ScrollTrigger para animaciones de scroll
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Exponemos gsap globalmente para que pueda ser usado por el Control Center
-  window.gsap = gsap;
-  
-  // Declarar tipos para funciones de modales
-  declare global {
-    interface Window {
-      openModal: (id: string) => void;
-      closeModal: (id: string) => void;
-    }
-  }
-  
   document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar el Control Center
-    initControlCenter();
+    // Inicializamos el Control Center
+    console.log('Control Center Initialized (inline)');
     
-    // Inicializar sistema de cookies incluyendo fallbacks basados en consentimiento
-    initCookies();
-    // Inicializar servicios de análisis
-    initAnalytics();
+    // Inicializamos cookies y analytics
+    if (typeof initCookies === 'function') initCookies();
+    if (typeof initAnalytics === 'function') initAnalytics();
     
     // Elementos con clase para animaciones de entrada
     const fadeElements = document.querySelectorAll('.gsap-fade-in');
     
-    if (fadeElements.length > 0) {
+    if (window.gsap && fadeElements.length > 0) {
       // Aplicar animación de fade in a elementos con la clase
       fadeElements.forEach(element => {
-        gsap.from(element, {
+        window.gsap.from(element, {
           opacity: 0,
           y: 30,
           duration: 0.8,
@@ -159,31 +137,33 @@ import { initCookies } from '@utils/cookieUtils.js';
     // Elementos que aparecen en secuencia
     const staggerContainers = document.querySelectorAll('.gsap-stagger');
     
-    staggerContainers.forEach(container => {
-      const children = container.querySelectorAll('.gsap-stagger-item');
-      
-      if (children.length > 0) {
-        gsap.from(children, {
-          opacity: 0,
-          y: 20,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: container,
-            start: "top bottom-=120",
-            toggleActions: "play none none none"
-          }
-        });
-      }
-    });
+    if (window.gsap) {
+      staggerContainers.forEach(container => {
+        const children = container.querySelectorAll('.gsap-stagger-item');
+        
+        if (children.length > 0) {
+          window.gsap.from(children, {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: container,
+              start: "top bottom-=120",
+              toggleActions: "play none none none"
+            }
+          });
+        }
+      });
+    }
     
     // Elementos con efecto de escala
     const scaleElements = document.querySelectorAll('.gsap-scale');
     
-    if (scaleElements.length > 0) {
+    if (window.gsap && scaleElements.length > 0) {
       scaleElements.forEach(element => {
-        gsap.from(element, {
+        window.gsap.from(element, {
           scale: 0.95,
           opacity: 0,
           duration: 0.7,
@@ -198,11 +178,24 @@ import { initCookies } from '@utils/cookieUtils.js';
     }
     
     // Evitar animaciones para usuarios que prefieren reducir el movimiento
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.gsap) {
       // Detener todas las animaciones
-      gsap.globalTimeline.clear();
+      window.gsap.globalTimeline.clear();
     }
   });
+</script>
+
+<!-- Cargamos GSAP y sus plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Script para registrar GSAP y sus plugins -->
+<script is:inline>
+  // Registramos ScrollTrigger para animaciones de scroll si está disponible
+  if (window.gsap && window.ScrollTrigger) {
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    console.log('GSAP ScrollTrigger registered');
+  }
 </script>
 
 <style is:global>
