@@ -1,0 +1,40 @@
+{
+  "title": "제어 센터",
+  "profile": {
+    "name": "프란시스코 호세",
+    "role": "풀스택 개발자"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "테마",
+      "options": {
+        "light": "라이트",
+        "dark": "다크",
+        "system": "시스템"
+      }
+    },
+    "language": {
+      "label": "언어",
+      "title": "언어 선택"
+    }
+  },
+  "accessibility": {
+    "title": "접근성",
+    "fontSize": {
+      "label": "텍스트 크기",
+      "decrease": "텍스트 크기 줄이기",
+      "increase": "텍스트 크기 늘리기"
+    },
+    "contrast": {
+      "label": "고대비",
+      "toggle": "고대비 전환"
+    },
+    "animations": {
+      "label": "애니메이션",
+      "toggle": "애니메이션 전환"
+    }
+  },
+  "settings": {
+    "advanced": "고급 설정"
+  }
+}

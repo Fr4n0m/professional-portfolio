@@ -52,16 +52,27 @@ const t = translations.controlCenter;
       <!-- Quick Actions Grid -->
       <div class='p-4 grid grid-cols-2 gap-3 border-b border-gray-200 dark:border-gray-700'>
         <!-- Theme Toggle -->
-        <button class='theme-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='theme'>
-          <svg class='w-6 h-6 mx-auto mb-2 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z'></path>
-          </svg>
+        <button class='theme-control-btn p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='theme'>
+          <!-- Iconos para cada tema (solo se muestra el activo) -->
+          <div class="relative w-8 h-8 mx-auto mb-1">
+            <svg class='w-8 h-8 mx-auto theme-icon-light absolute top-0 left-0 text-amber-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z'></path>
+            </svg>
+            <svg class='w-8 h-8 mx-auto theme-icon-dark absolute top-0 left-0 text-indigo-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z'></path>
+            </svg>
+            <svg class='w-8 h-8 mx-auto theme-icon-system absolute top-0 left-0 text-gray-600 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'></path>
+            </svg>
+          </div>
           <span class='text-xs text-gray-700 dark:text-gray-300'>{t.quickActions.theme.label}</span>
         </button>
         
         <!-- Language Toggle -->
-        <button class='lang-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='language'>
-          <span class='text-2xl mb-2 block'>{languages[currentLang]?.flag || '🌐'}</span>
+        <button class='lang-control-btn p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='language'>
+          <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
+            <span class='text-3xl lang-flag-icon'>{languages[currentLang]?.flag || '🌐'}</span>
+          </div>
           <span class='text-xs text-gray-700 dark:text-gray-300'>{t.quickActions.language.label}</span>
         </button>
       </div>
@@ -71,17 +82,17 @@ const t = translations.controlCenter;
         <h3 class='text-sm font-semibold text-gray-900 dark:text-white mb-3'>{t.accessibility.title}</h3>
         
         <!-- Font Size -->
-        <div class='flex items-center justify-between'>
+        <div class='flex items-center justify-between py-1.5'>
           <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.fontSize.label}</span>
-          <div class='flex items-center gap-2'>
-            <button class='font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800' data-action='font-decrease'>
-              <svg class='w-4 h-4 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <div class='flex items-center gap-3'>
+            <button class='font-size-control p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800' data-action='font-decrease'>
+              <svg class='w-5 h-5 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                 <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18 12H6'></path>
               </svg>
             </button>
             <span class='font-size-value text-sm font-medium px-2 text-gray-900 dark:text-gray-100'>100%</span>
-            <button class='font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800' data-action='font-increase'>
-              <svg class='w-4 h-4 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <button class='font-size-control p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800' data-action='font-increase'>
+              <svg class='w-5 h-5 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                 <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 6v12m6-6H6'></path>
               </svg>
             </button>
@@ -89,21 +100,25 @@ const t = translations.controlCenter;
         </div>
         
         <!-- Contrast -->
-        <div class='flex items-center justify-between'>
+        <div class='flex items-center justify-between py-1.5'>
           <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.contrast.label}</span>
-          <button class='contrast-toggle relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/30 bg-gray-200 dark:bg-gray-700' aria-pressed="false" data-action='contrast'>
-            <span class='sr-only'>{t.accessibility.contrast.toggle}</span>
-            <span class='contrast-toggle-handle absolute bg-white rounded-full h-5 w-5 transition-transform translate-x-0.5 transform duration-200 ease-in-out shadow-sm'></span>
-          </button>
+          <div class="switch-parent">
+            <input type="checkbox" class="checkbox" id="contrast-checkbox" aria-label={t.accessibility.contrast.toggle} />
+            <label class="switch" for="contrast-checkbox" data-action='contrast'>
+              <span class="slider"></span>
+            </label>
+          </div>
         </div>
         
         <!-- Animations -->
-        <div class='flex items-center justify-between'>
+        <div class='flex items-center justify-between py-1.5'>
           <span class='text-sm text-gray-700 dark:text-gray-300'>{t.accessibility.animations.label}</span>
-          <button class='animations-toggle relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/30 bg-blue-500 dark:bg-blue-600' aria-pressed="true" data-action='animations' data-enabled='true'>
-            <span class='sr-only'>{t.accessibility.animations.toggle}</span>
-            <span class='animations-toggle-handle absolute bg-white rounded-full h-5 w-5 transition-transform translate-x-5 transform duration-200 ease-in-out shadow-sm'></span>
-          </button>
+          <div class="switch-parent">
+            <input type="checkbox" class="checkbox" id="animations-checkbox" checked aria-label={t.accessibility.animations.toggle} />
+            <label class="switch" for="animations-checkbox" data-action='animations' data-enabled='true'>
+              <span class="slider"></span>
+            </label>
+          </div>
         </div>
       </div>
       
@@ -161,6 +176,15 @@ const t = translations.controlCenter;
     
     if (!toggle || !menu || !mainPanel || !languagePanel) return;
     
+    // Inicializar el tema correcto al cargar
+    const currentTheme = localStorage.getItem('theme') || 'system';
+    document.documentElement.classList.add(currentTheme);
+    const isDarkMode = currentTheme === 'dark' || 
+                       (currentTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    }
+    
     let isOpen = false;
     
     // Animar apertura/cierre del menú con GSAP
@@ -214,25 +238,32 @@ const t = translations.controlCenter;
     // Theme control
     const themeBtn = menu.querySelector('[data-action="theme"]');
     if (themeBtn) {
+      // Actualizar icono según el tema actual al inicio
+      const updateThemeButtonIcon = (theme) => {
+        document.documentElement.classList.remove('light', 'dark', 'system');
+        document.documentElement.classList.add(theme);
+        
+        const isDark = theme === 'dark' || 
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+      
+      // Inicializar con el tema actual
+      const currentTheme = localStorage.getItem('theme') || 'system';
+      updateThemeButtonIcon(currentTheme);
+      
       themeBtn.addEventListener('click', () => {
         const currentTheme = localStorage.getItem('theme') || 'system';
         const nextTheme = currentTheme === 'light' ? 'dark' : currentTheme === 'dark' ? 'system' : 'light';
         localStorage.setItem('theme', nextTheme);
         
-        const isDark = nextTheme === 'dark' || (nextTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.classList.toggle('dark', isDark);
-        
-        // Update theme button icon
-        const svg = themeBtn.querySelector('svg');
-        if (svg) {
-          if (nextTheme === 'light') {
-            svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
-          } else if (nextTheme === 'dark') {
-            svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
-          } else {
-            svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>';
-          }
-        }
+        // Actualizar clases y apariencia
+        updateThemeButtonIcon(nextTheme);
       });
     }
     
@@ -241,7 +272,13 @@ const t = translations.controlCenter;
     const backBtn = languagePanel.querySelector('.back-btn');
     
     if (langBtn) {
-      langBtn.addEventListener('click', () => {
+      langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Asegurar que el panel de lenguaje es visible
+        languagePanel.style.display = 'block';
+        
         gsap.to(mainPanel, {
           opacity: 0,
           duration: 0.2,
@@ -258,13 +295,17 @@ const t = translations.controlCenter;
     }
     
     if (backBtn) {
-      backBtn.addEventListener('click', () => {
+      backBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
         gsap.to(languagePanel, {
           opacity: 0,
           duration: 0.2,
           onComplete: () => {
             languagePanel.classList.add('hidden');
             mainPanel.classList.remove('hidden');
+            mainPanel.style.display = 'block';
             gsap.fromTo(mainPanel, 
               { opacity: 0, x: -20 },
               { opacity: 1, x: 0, duration: 0.3 }
@@ -319,92 +360,56 @@ const t = translations.controlCenter;
       }
     });
     
-    // Contrast toggle - mejorado y accesible
+    // Contrast toggle con switch estilo iOS
     const contrastToggle = menu.querySelector('[data-action="contrast"]');
-    const contrastHandle = contrastToggle?.querySelector('.contrast-toggle-handle');
+    const contrastCheckbox = document.getElementById('contrast-checkbox');
     
     // Cargar estado de alto contraste guardado
     const loadContrastState = () => {
       const contrastEnabled = localStorage.getItem('high-contrast') === 'true';
       document.documentElement.classList.toggle('high-contrast', contrastEnabled);
       
-      if (contrastToggle && contrastHandle) {
-        contrastToggle.setAttribute('aria-pressed', contrastEnabled.toString());
-        contrastToggle.classList.toggle('bg-blue-500', contrastEnabled);
-        contrastToggle.classList.toggle('dark:bg-blue-600', contrastEnabled);
-        
-        // Actualizamos la posición del handle
-        if (contrastEnabled) {
-          contrastHandle.classList.remove('translate-x-0.5');
-          contrastHandle.classList.add('translate-x-5');
-        } else {
-          contrastHandle.classList.add('translate-x-0.5');
-          contrastHandle.classList.remove('translate-x-5');
-        }
+      if (contrastCheckbox) {
+        contrastCheckbox.checked = contrastEnabled;
       }
     };
     
     // Inicializar estado
     loadContrastState();
     
-    if (contrastToggle && contrastHandle) {
-      contrastToggle.addEventListener('click', () => {
-        const isPressed = contrastToggle.getAttribute('aria-pressed') === 'true';
-        const nextState = !isPressed;
+    if (contrastCheckbox && contrastToggle) {
+      contrastCheckbox.addEventListener('change', () => {
+        const nextState = contrastCheckbox.checked;
         
         // Guardar preferencia
         localStorage.setItem('high-contrast', nextState.toString());
         
         // Actualizar UI
-        contrastToggle.setAttribute('aria-pressed', nextState.toString());
         document.documentElement.classList.toggle('high-contrast', nextState);
-        
-        // Actualizar estilos visualmente
-        contrastToggle.classList.toggle('bg-blue-500', nextState);
-        contrastToggle.classList.toggle('dark:bg-blue-600', nextState);
-        
-        // Animar el handle
-        if (nextState) {
-          gsap.to(contrastHandle, {
-            x: '20px',
-            duration: 0.2,
-            ease: 'power2.out'
-          });
-        } else {
-          gsap.to(contrastHandle, {
-            x: '0px',
-            duration: 0.2,
-            ease: 'power2.out'
-          });
+      });
+      
+      // También permitir hacer clic en el label para activar/desactivar
+      contrastToggle.addEventListener('click', (e) => {
+        // Evitar doble activación por propagación de eventos
+        if (e.target === contrastToggle) {
+          contrastCheckbox.checked = !contrastCheckbox.checked;
+          const event = new Event('change');
+          contrastCheckbox.dispatchEvent(event);
         }
       });
     }
     
-    // Animations toggle - mejorado y con integración GSAP
+    // Animations toggle con switch estilo iOS
     const animationsToggle = menu.querySelector('[data-action="animations"]');
-    const animationsHandle = animationsToggle?.querySelector('.animations-toggle-handle');
+    const animationsCheckbox = document.getElementById('animations-checkbox');
     
     // Cargar estado de animaciones guardado
     const loadAnimationsState = () => {
       const animationsEnabled = localStorage.getItem('enable-animations') !== 'false'; // Por defecto activado
       document.documentElement.classList.toggle('reduce-motion', !animationsEnabled);
       
-      if (animationsToggle && animationsHandle) {
-        animationsToggle.setAttribute('aria-pressed', animationsEnabled.toString());
-        animationsToggle.dataset.enabled = animationsEnabled.toString();
-        animationsToggle.classList.toggle('bg-blue-500', animationsEnabled);
-        animationsToggle.classList.toggle('dark:bg-blue-600', animationsEnabled);
-        animationsToggle.classList.toggle('bg-gray-200', !animationsEnabled);
-        animationsToggle.classList.toggle('dark:bg-gray-700', !animationsEnabled);
-        
-        // Actualizamos la posición del handle
-        if (animationsEnabled) {
-          animationsHandle.classList.add('translate-x-5');
-          animationsHandle.classList.remove('translate-x-0.5');
-        } else {
-          animationsHandle.classList.remove('translate-x-5');
-          animationsHandle.classList.add('translate-x-0.5');
-        }
+      if (animationsCheckbox) {
+        animationsCheckbox.checked = animationsEnabled;
       }
       
       // Desactivar animaciones GSAP si es necesario
@@ -418,39 +423,15 @@ const t = translations.controlCenter;
     // Inicializar estado de animaciones
     loadAnimationsState();
     
-    if (animationsToggle && animationsHandle) {
-      animationsToggle.addEventListener('click', () => {
-        const isPressed = animationsToggle.getAttribute('aria-pressed') === 'true';
-        const nextState = !isPressed;
+    if (animationsCheckbox && animationsToggle) {
+      animationsCheckbox.addEventListener('change', () => {
+        const nextState = animationsCheckbox.checked;
         
         // Guardar preferencia
         localStorage.setItem('enable-animations', nextState.toString());
         
         // Actualizar UI
-        animationsToggle.setAttribute('aria-pressed', nextState.toString());
-        animationsToggle.dataset.enabled = nextState.toString();
         document.documentElement.classList.toggle('reduce-motion', !nextState);
-        
-        // Actualizar estilos visualmente
-        animationsToggle.classList.toggle('bg-blue-500', nextState);
-        animationsToggle.classList.toggle('dark:bg-blue-600', nextState);
-        animationsToggle.classList.toggle('bg-gray-200', !nextState);
-        animationsToggle.classList.toggle('dark:bg-gray-700', !nextState);
-        
-        // Animar el handle
-        if (nextState) {
-          gsap.to(animationsHandle, {
-            x: '20px',
-            duration: 0.2,
-            ease: 'power2.out'
-          });
-        } else {
-          gsap.to(animationsHandle, {
-            x: '0px',
-            duration: 0.2,
-            ease: 'power2.out'
-          });
-        }
         
         // Activar/desactivar animaciones GSAP
         if (!nextState && window.gsap) {
@@ -485,6 +466,16 @@ const t = translations.controlCenter;
               notification.parentNode.removeChild(notification);
             }
           }, 2000);
+        }
+      });
+      
+      // También permitir hacer clic en el label para activar/desactivar
+      animationsToggle.addEventListener('click', (e) => {
+        // Evitar doble activación por propagación de eventos
+        if (e.target === animationsToggle) {
+          animationsCheckbox.checked = !animationsCheckbox.checked;
+          const event = new Event('change');
+          animationsCheckbox.dispatchEvent(event);
         }
       });
     }
@@ -530,14 +521,77 @@ const t = translations.controlCenter;
     outline-color: #facc15;
   }
   
-  /* Smooth transitions for toggles */
-  .contrast-toggle-handle,
-  .animations-toggle-handle {
-    will-change: transform;
+/* The switch - the box around the slider */
+  .switch-parent {
+    width: 38px;
+    height: 22px;
+    position: relative;
+  }
+  /* Hide default HTML checkbox */
+  .checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  .switch {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #e9e9eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
   }
   
-  .translate-x-5 {
-    transform: translateX(1.25rem);
+  /* Añadir efecto de hover para mejorar la usabilidad */
+  .switch:hover {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .switch:hover .slider {
+    transform: scale(1.05);
+  }
+  /* Estilo para el switch en modo oscuro - estado no activo */
+  html.dark .switch {
+    background-color: #3d4454;
+  }
+  /* The slider */
+  .slider {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: calc(50% - 18px / 2 - 8px);
+    top: calc(50% - 18px / 2);
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  /* Estilo para el slider en modo oscuro */
+  html.dark .slider {
+    background: #e2e8f0;
+  }
+  .switch-parent:active .slider {
+    width: 22px;
+    border-radius: 14px;
+  }
+  .checkbox:checked + .switch:active .slider {
+    width: 22px;
+    left: calc(30% - 18px / 2 + 10px);
+  }
+  .checkbox:checked + .switch {
+    background-color: #34c759;
+  }
+  /* Color específico para tema oscuro */
+  html.dark .checkbox:checked + .switch {
+    background-color: #facc15;
+  }
+  .checkbox:checked + .switch .slider {
+    left: calc(50% - 18px / 2 + 8px);
+    top: calc(50% - 18px / 2);
   }
   
   /* Reduce motion */
@@ -554,12 +608,6 @@ const t = translations.controlCenter;
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
-  }
-  
-  /* Fixes for toggle components appearance */
-  .contrast-toggle,
-  .animations-toggle {
-    transition: background-color 0.3s ease;
   }
   
   /* Scrollbar for language panel */
@@ -581,7 +629,60 @@ const t = translations.controlCenter;
   }
   
   /* Pequeña animación de feedback para los botones */
-  button:active:not(.contrast-toggle):not(.animations-toggle) {
+  button:active {
     transform: scale(0.97);
+  }
+  
+  /* Estilos para los iconos de tema */
+  .theme-icon-light,
+  .theme-icon-dark,
+  .theme-icon-system {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Estado activo para cada tema */
+  :root:not(.dark) .theme-icon-light {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  :root.dark .theme-icon-dark {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  :root.system .theme-icon-system {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Animación de hover para los iconos */
+  .theme-control-btn:hover .theme-icon-light,
+  .theme-control-btn:hover .theme-icon-dark,
+  .theme-control-btn:hover .theme-icon-system {
+    filter: brightness(1.2);
+  }
+  
+  .theme-control-btn:active [class^="theme-icon"],
+  .theme-control-btn:active [class*=" theme-icon"] {
+    transform: scale(0.9);
+  }
+  
+  /* Animación para el icono de bandera */
+  .lang-control-btn:hover .lang-flag-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(1.2);
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .lang-flag-icon {
+    display: inline-block;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .lang-control-btn:active .lang-flag-icon {
+    transform: scale(0.9);
   }
 </style>

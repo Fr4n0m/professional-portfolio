@@ -84,11 +84,18 @@ console.log('Detected language:', lang);
   // Inicializador de animaciones globales con GSAP
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { initControlCenter } from '../scripts/controlCenter.js';
   
   // Registramos ScrollTrigger para animaciones de scroll
   gsap.registerPlugin(ScrollTrigger);
   
+  // Exponemos gsap globalmente para que pueda ser usado por el Control Center
+  window.gsap = gsap;
+  
   document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar el Control Center
+    initControlCenter();
+    
     // Elementos con clase para animaciones de entrada
     const fadeElements = document.querySelectorAll('.gsap-fade-in');
     

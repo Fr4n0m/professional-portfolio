@@ -1,0 +1,145 @@
+---
+// Componente Badge específico para el Hero de la empresa
+const { class: className = '' } = Astro.props;
+---
+
+<span
+  class={`hero-company-badge animate-pulse-scale bg-gradient-to-r from-[#31ab66]/20 to-[#3DD47E]/20 backdrop-blur-[1px] text-[#3DD47E] font-medium rounded-lg border border-[#3DD47E]/35 dark:bg-gradient-to-r dark:from-[#31ab66]/15 dark:to-[#3DD47E]/20 dark:text-[#4AE591] dark:border-[#4AE591]/30 transition-all ease-out duration-300 inline-flex items-center justify-center relative ${className}`}
+>
+  <div class="company-logo-wrapper">
+    <slot />
+  </div>
+  <!-- Puntito que aparece en hover (ahora en la parte superior derecha y más grande) -->
+  <span class="badge-dot"></span>
+</span>
+
+<style>
+  /* Estilos base */
+  .hero-company-badge {
+    position: relative;
+    overflow: visible; /* Cambiado a visible para que el puntito pueda salir */
+  }
+  
+  /* Para contener el logo y aplicar efectos */
+  .company-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* Puntito en la esquina superior derecha (más grande) */
+  .badge-dot {
+    position: absolute;
+    right: -5px;
+    top: -3px; /* Ajustado para el punto más grande */
+    transform: scale(0);
+    width: 10px; /* Aumentado el tamaño */
+    height: 10px; /* Aumentado el tamaño */
+    border-radius: 50%;
+    background-color: #3DD47E;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(61, 212, 126, 0.7); /* Brillo aumentado */
+    opacity: 0;
+  }
+  
+  /* Estado hover del badge */
+  .hero-company-badge:hover {
+    transform: scale(1.12);
+    border-color: rgba(61, 212, 126, 0.7);
+    background-image: linear-gradient(to right, rgba(49, 171, 102, 0.3), rgba(61, 212, 126, 0.3));
+    box-shadow: 0 0 0 1px rgba(61, 212, 126, 0.25), 0 0 8px rgba(61, 212, 126, 0.25);
+  }
+  
+  /* Puntito visible en hover y cambio de color*/
+  .hero-company-badge:hover .badge-dot {
+    transform: scale(1);
+    opacity: 1;
+    background-color: #4AE591;
+    box-shadow: 0 0 12px rgba(74, 229, 145, 0.8); /* Brillo aumentado */
+  }
+
+  /* Escala del contenedor del logo */
+  .hero-company-badge:hover .company-logo-wrapper {
+    transform: scale(1.05);
+  }
+  
+  /* Modo oscuro */
+  :global(.dark) .hero-company-badge {
+    background-image: linear-gradient(to right, rgba(49, 171, 102, 0.15), rgba(61, 212, 126, 0.2));
+    color: #4AE591;
+    border-color: rgba(74, 229, 145, 0.3);
+  }
+  
+  :global(.dark) .hero-company-badge:hover {
+    transform: scale(1.12);
+    border-color: rgba(74, 229, 145, 0.8);
+    box-shadow: 0 0 0 1px rgba(74, 229, 145, 0.4), 0 0 8px rgba(74, 229, 145, 0.4);
+    background-image: linear-gradient(to right, rgba(49, 171, 102, 0.25), rgba(74, 229, 145, 0.3));
+  }
+  
+  :global(.dark) .badge-dot {
+    background-color: #4AE591;
+    box-shadow: 0 0 10px rgba(74, 229, 145, 0.8);
+  }
+  
+  :global(.dark) .hero-company-badge:hover .badge-dot {
+    background-color: #59F9A4;
+    box-shadow: 0 0 12px rgba(89, 249, 164, 0.8);
+  }
+  
+  /* Para dispositivos móviles el puntito es un poco más pequeño */
+  @media (max-width: 768px) {
+    .badge-dot {
+      width: 8px; /* Punto más pequeño pero aún visible */
+      height: 8px;
+      right: -3px;
+      top: -2px;
+    }
+  }
+  
+  /* Animación de pulso para el badge */
+  @keyframes pulse-scale {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+  
+  .animate-pulse-scale {
+    animation: pulse-scale 2s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  // Script para cambiar el color del logo dinamicamente en hover
+  document.addEventListener('DOMContentLoaded', () => {
+    const badges = document.querySelectorAll('.hero-company-badge');
+    
+    badges.forEach(badge => {
+      // Logo normal y hover colors
+      const logoNormalColor = document.documentElement.classList.contains('dark') ? 
+        '#4AE591' : '#3DD47E';
+      const logoHoverColor = document.documentElement.classList.contains('dark') ? 
+        '#59F9A4' : '#4AE591';
+      
+      // Evento hover
+      badge.addEventListener('mouseenter', () => {
+        const svgElements = badge.querySelectorAll('svg path');
+        svgElements.forEach(path => {
+          path.setAttribute('fill', logoHoverColor);
+        });
+      });
+      
+      // Evento unhover
+      badge.addEventListener('mouseleave', () => {
+        const svgElements = badge.querySelectorAll('svg path');
+        svgElements.forEach(path => {
+          path.setAttribute('fill', logoNormalColor);
+        });
+      });
+    });
+  });
+</script>

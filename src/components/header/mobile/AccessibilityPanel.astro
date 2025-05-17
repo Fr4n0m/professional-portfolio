@@ -41,14 +41,27 @@ const translations: Translations = Astro.props.translations || {};
       <!-- Quick Actions Grid -->
       <div class='p-4 grid grid-cols-2 gap-3 border-b border-gray-200 dark:border-gray-700'>
         <!-- Theme Toggle -->
-        <button class='theme-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='theme'><svg class='w-6 h-6 mx-auto mb-2 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z'></path>
-          </svg> 
+        <button class='theme-control-btn p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='theme'>
+          <!-- Iconos para cada tema (solo se muestra el activo) -->
+          <div class="relative w-8 h-8 mx-auto mb-1">
+            <svg class='w-8 h-8 mx-auto theme-icon-light absolute top-0 left-0 text-amber-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z'></path>
+            </svg>
+            <svg class='w-8 h-8 mx-auto theme-icon-dark absolute top-0 left-0 text-indigo-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z'></path>
+            </svg>
+            <svg class='w-8 h-8 mx-auto theme-icon-system absolute top-0 left-0 text-gray-600 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'></path>
+            </svg>
+          </div>
           <span class='text-xs text-gray-700 dark:text-gray-300'>Tema</span>
         </button>
+
         <!-- Language Toggle -->
-        <button class='lang-control-btn p-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='language'>
-          <span class='text-2xl mb-2 block'>{languages[currentLang]?.flag || '🌐'}</span> 
+        <button class='lang-control-btn p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center' data-action='language'>
+          <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
+            <span class='text-3xl lang-flag-icon'>{languages[currentLang]?.flag || '🌐'}</span>
+          </div>
           <span class='text-xs text-gray-700 dark:text-gray-300'>Idioma</span>
         </button>
       </div>
@@ -73,16 +86,22 @@ const translations: Translations = Astro.props.translations || {};
         <!-- Contrast -->
         <div class='flex items-center justify-between'> 
           <span class='text-sm text-gray-700 dark:text-gray-300'>Contraste</span>
-          <button class='contrast-toggle relative w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300' data-action='contrast'>
-            <span class='absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300'></span>
-          </button>
+          <div class="switch-parent">
+            <input type="checkbox" class="checkbox" id="mobile-contrast-checkbox" />
+            <label class="switch" for="mobile-contrast-checkbox" data-action='contrast'>
+              <span class="slider"></span>
+            </label>
+          </div>
         </div>
         <!-- Animations -->
         <div class='flex items-center justify-between'> 
           <span class='text-sm text-gray-700 dark:text-gray-300'>Animaciones</span>
-          <button class='animations-toggle relative w-11 h-6 bg-blue-500 rounded-full transition-colors duration-300' data-action='animations' data-enabled='true'>
-            <span class='absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300'></span>
-          </button>
+          <div class="switch-parent">
+            <input type="checkbox" class="checkbox" id="mobile-animations-checkbox" checked />
+            <label class="switch" for="mobile-animations-checkbox" data-action='animations' data-enabled='true'>
+              <span class="slider"></span>
+            </label>
+          </div>
         </div>
       </div>
       <!-- Additional Settings -->
@@ -131,12 +150,21 @@ const translations: Translations = Astro.props.translations || {};
   import { gsap } from 'gsap';
   
   document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.querySelector('.accessibility-toggle');
+    const toggle = document.querySelector('.control-center-toggle');
     const menu = document.getElementById('accessibility-panel');
     const mainPanel = menu?.querySelector('.main-panel');
     const languagePanel = menu?.querySelector('.language-panel');
 
     if (!toggle || !menu || !mainPanel || !languagePanel) return;
+    
+    // Inicializar el tema correcto al cargar
+    const currentTheme = localStorage.getItem('theme') || 'system';
+    document.documentElement.classList.add(currentTheme);
+    const isDarkMode = currentTheme === 'dark' || 
+                       (currentTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    }
 
     let isOpen = false;
 
@@ -192,14 +220,33 @@ const translations: Translations = Astro.props.translations || {};
     // Theme control con GSAP
     const themeBtn = menu.querySelector('[data-action="theme"]');
     if (themeBtn) {
+      // Actualizar icono según el tema actual al inicio
+      const updateThemeButtonIcon = (theme) => {
+        document.documentElement.classList.remove('light', 'dark', 'system');
+        document.documentElement.classList.add(theme);
+        
+        const isDark = theme === 'dark' || 
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+      
+      // Inicializar con el tema actual
+      const currentTheme = localStorage.getItem('theme') || 'system';
+      updateThemeButtonIcon(currentTheme);
+      
       themeBtn.addEventListener('click', () => {
         const currentTheme = localStorage.getItem('theme') || 'system';
         const nextTheme = currentTheme === 'light' ? 'dark' : currentTheme === 'dark' ? 'system' : 'light';
         localStorage.setItem('theme', nextTheme);
-
-        const isDark = nextTheme === 'dark' || (nextTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.classList.toggle('dark', isDark);
-
+        
+        // Actualizar clases y apariencia
+        updateThemeButtonIcon(nextTheme);
+        
         // Añadir efecto de pulsación
         gsap.to(themeBtn, {
           scale: 0.95,
@@ -213,31 +260,6 @@ const translations: Translations = Astro.props.translations || {};
             });
           }
         });
-
-        // Update theme button icon con animación
-        const svg = themeBtn.querySelector('svg');
-        if (svg) {
-          gsap.to(svg, {
-            opacity: 0,
-            scale: 0.8,
-            duration: 0.2,
-            onComplete: () => {
-              if (nextTheme === 'light') {
-                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
-              } else if (nextTheme === 'dark') {
-                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
-              } else {
-                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>';
-              }
-              gsap.to(svg, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.3,
-                ease: 'back.out(1.7)'
-              });
-            }
-          });
-        }
       });
     }
 
@@ -246,7 +268,13 @@ const translations: Translations = Astro.props.translations || {};
     const backBtn = languagePanel.querySelector('.back-btn');
 
     if (langBtn) {
-      langBtn.addEventListener('click', () => {
+      langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Asegurar que el panel de lenguaje es visible
+        languagePanel.style.display = 'block';
+        
         // Animar transición entre paneles
         gsap.to(mainPanel, {
           opacity: 0,
@@ -265,7 +293,10 @@ const translations: Translations = Astro.props.translations || {};
     }
 
     if (backBtn) {
-      backBtn.addEventListener('click', () => {
+      backBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
         // Animar transición de vuelta
         gsap.to(languagePanel, {
           opacity: 0,
@@ -274,6 +305,7 @@ const translations: Translations = Astro.props.translations || {};
           onComplete: () => {
             languagePanel.classList.add('hidden');
             mainPanel.classList.remove('hidden');
+            mainPanel.style.display = 'block';
             gsap.fromTo(mainPanel, 
               { opacity: 0, x: -20 },
               { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out' }
@@ -316,32 +348,58 @@ const translations: Translations = Astro.props.translations || {};
       }
     });
     
-    // Contrast toggle
+    // Contrast toggle con switch estilo iOS
     const contrastToggle = menu.querySelector('[data-action="contrast"]');
-    if (contrastToggle) {
-      contrastToggle.addEventListener('click', () => {
-        document.documentElement.classList.toggle('high-contrast');
-        const span = contrastToggle.querySelector('span');
-        span?.classList.toggle('translate-x-5');
-        contrastToggle.classList.toggle('bg-blue-500');
+    const contrastCheckbox = document.getElementById('mobile-contrast-checkbox');
+    
+    // Cargar estado de alto contraste guardado
+    if (contrastCheckbox) {
+      const contrastEnabled = localStorage.getItem('high-contrast') === 'true';
+      contrastCheckbox.checked = contrastEnabled;
+      document.documentElement.classList.toggle('high-contrast', contrastEnabled);
+    }
+    
+    if (contrastToggle && contrastCheckbox) {
+      contrastCheckbox.addEventListener('change', () => {
+        const isEnabled = contrastCheckbox.checked;
+        localStorage.setItem('high-contrast', isEnabled.toString());
+        document.documentElement.classList.toggle('high-contrast', isEnabled);
+      });
+      
+      // También permitir hacer clic en el label
+      contrastToggle.addEventListener('click', (e) => {
+        if (e.target === contrastToggle) {
+          contrastCheckbox.checked = !contrastCheckbox.checked;
+          const event = new Event('change');
+          contrastCheckbox.dispatchEvent(event);
+        }
       });
     }
     
-    // Animations toggle
+    // Animations toggle con switch estilo iOS
     const animationsToggle = menu.querySelector('[data-action="animations"]');
-    if (animationsToggle) {
-      animationsToggle.addEventListener('click', () => {
-        const isEnabled = animationsToggle.dataset.enabled === 'true';
-        animationsToggle.dataset.enabled = (!isEnabled).toString();
-        
-        if (!isEnabled) {
-          document.documentElement.classList.remove('reduce-motion');
-          animationsToggle.classList.add('bg-blue-500');
-          animationsToggle.querySelector('span')?.classList.add('translate-x-5');
-        } else {
-          document.documentElement.classList.add('reduce-motion');
-          animationsToggle.classList.remove('bg-blue-500');
-          animationsToggle.querySelector('span')?.classList.remove('translate-x-5');
+    const animationsCheckbox = document.getElementById('mobile-animations-checkbox');
+    
+    // Cargar estado de animaciones guardado
+    if (animationsCheckbox) {
+      const animationsEnabled = localStorage.getItem('enable-animations') !== 'false';
+      animationsCheckbox.checked = animationsEnabled;
+      document.documentElement.classList.toggle('reduce-motion', !animationsEnabled);
+    }
+    
+    if (animationsToggle && animationsCheckbox) {
+      animationsCheckbox.addEventListener('change', () => {
+        const isEnabled = animationsCheckbox.checked;
+        localStorage.setItem('enable-animations', isEnabled.toString());
+        document.documentElement.classList.toggle('reduce-motion', !isEnabled);
+      });
+      
+      // También permitir hacer clic en el label
+      animationsToggle.addEventListener('click', (e) => {
+        if (e.target === animationsToggle) {
+          animationsCheckbox.checked = !animationsCheckbox.checked;
+          const event = new Event('change');
+          animationsCheckbox.dispatchEvent(event);
         }
       });
     }
@@ -367,14 +425,60 @@ const translations: Translations = Astro.props.translations || {};
     background-color: rgb(17 24 39 / 0.98);
   }
   
-  /* Smooth transitions for toggles */
-  .contrast-toggle span,
-  .animations-toggle span {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* The switch - the box around the slider */
+  .switch-parent {
+    width: 28px;
+    height: 16px;
+    position: relative;
   }
-  
-  .translate-x-5 {
-    transform: translateX(1.25rem);
+  /* Hide default HTML checkbox */
+  .checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  .switch {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #e9e9eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
+  }
+  /* The slider */
+  .slider {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: calc(50% - 12px / 2 - 6px);
+    top: calc(50% - 12px / 2);
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  .switch-parent:active .slider {
+    width: 16px;
+    border-radius: 10px;
+  }
+  .checkbox:checked + .switch:active .slider {
+    width: 16px;
+    left: calc(30% - 12px / 2 + 6px);
+  }
+  .checkbox:checked + .switch {
+    background-color: #34c759;
+  }
+  /* Color específico para tema oscuro */
+  html.dark .checkbox:checked + .switch {
+    background-color: #facc15;
+  }
+  .checkbox:checked + .switch .slider {
+    left: calc(50% - 12px / 2 + 6px);
+    top: calc(50% - 12px / 2);
   }
   
   /* Reduce motion */
@@ -399,5 +503,58 @@ const translations: Translations = Astro.props.translations || {};
   
   .language-panel .grid::-webkit-scrollbar-thumb:hover {
     background: rgba(128, 128, 128, 0.5);
+  }
+  
+  /* Estilos para los iconos de tema */
+  .theme-icon-light,
+  .theme-icon-dark,
+  .theme-icon-system {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Estado activo para cada tema */
+  :root:not(.dark) .theme-icon-light {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  :root.dark .theme-icon-dark {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  :root.system .theme-icon-system {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Animación de hover para los iconos */
+  .theme-control-btn:hover .theme-icon-light,
+  .theme-control-btn:hover .theme-icon-dark,
+  .theme-control-btn:hover .theme-icon-system {
+    filter: brightness(1.2);
+  }
+  
+  .theme-control-btn:active [class^="theme-icon"],
+  .theme-control-btn:active [class*=" theme-icon"] {
+    transform: scale(0.9);
+  }
+  
+  /* Animación para el icono de bandera */
+  .lang-control-btn:hover .lang-flag-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(1.2);
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .lang-flag-icon {
+    display: inline-block;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .lang-control-btn:active .lang-flag-icon {
+    transform: scale(0.9);
   }
 </style>

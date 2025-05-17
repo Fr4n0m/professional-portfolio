@@ -1,0 +1,75 @@
+/* animation-controls.css */
+/* Estilos para controlar las animaciones y el contraste alto */
+
+/* Modo reducción de movimiento */
+html.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* GSAP también se controla mediante JavaScript */
+
+/* Modo alto contraste */
+html.high-contrast {
+  /* Aumentar el contraste de texto */
+  --tw-text-opacity: 1 !important;
+}
+
+html.high-contrast.dark {
+  --tw-bg-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  --tw-border-opacity: 1 !important;
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+html.high-contrast:not(.dark) {
+  --tw-bg-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+  --tw-border-opacity: 1 !important;
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+/* Aumentar el contraste de texto */
+html.high-contrast p, 
+html.high-contrast span, 
+html.high-contrast a {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* Mejorar contraste de bordes */
+html.high-contrast.dark .border,
+html.high-contrast.dark [class*="border-"] {
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+html.high-contrast:not(.dark) .border,
+html.high-contrast:not(.dark) [class*="border-"] {
+  border-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Eliminar fondos semi-transparentes */
+html.high-contrast [class*="bg-white/"],
+html.high-contrast [class*="bg-black/"],
+html.high-contrast [class*="bg-gray-900/"] {
+  background-color: transparent !important;
+}
+
+html.high-contrast.dark [class*="bg-white/"],
+html.high-contrast.dark [class*="bg-gray-900/"] {
+  background-color: #000 !important;
+}
+
+html.high-contrast:not(.dark) [class*="bg-black/"],
+html.high-contrast:not(.dark) [class*="bg-gray-900/"] {
+  background-color: #fff !important;
+}
+
+/* Eliminar blur en todos los elementos */
+html.high-contrast [class*="backdrop-blur"] {
+  backdrop-filter: none !important;
+}

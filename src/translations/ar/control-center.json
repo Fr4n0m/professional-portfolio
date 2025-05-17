@@ -1,0 +1,40 @@
+{
+  "title": "مركز التحكم",
+  "profile": {
+    "name": "فرانسيسكو خوسيه",
+    "role": "مطور الويب الشامل"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "السمة",
+      "options": {
+        "light": "فاتح",
+        "dark": "داكن",
+        "system": "النظام"
+      }
+    },
+    "language": {
+      "label": "اللغة",
+      "title": "اختر اللغة"
+    }
+  },
+  "accessibility": {
+    "title": "إمكانية الوصول",
+    "fontSize": {
+      "label": "حجم النص",
+      "decrease": "تصغير حجم النص",
+      "increase": "تكبير حجم النص"
+    },
+    "contrast": {
+      "label": "تباين عالي",
+      "toggle": "تبديل التباين العالي"
+    },
+    "animations": {
+      "label": "الرسوم المتحركة",
+      "toggle": "تبديل الرسوم المتحركة"
+    }
+  },
+  "settings": {
+    "advanced": "الإعدادات المتقدمة"
+  }
+}

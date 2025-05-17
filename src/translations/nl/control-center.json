@@ -1,0 +1,40 @@
+{
+  "title": "Bedieningspaneel",
+  "profile": {
+    "name": "Francisco José",
+    "role": "Full Stack Ontwikkelaar"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Thema",
+      "options": {
+        "light": "Licht",
+        "dark": "Donker",
+        "system": "Systeem"
+      }
+    },
+    "language": {
+      "label": "Taal",
+      "title": "Taal selecteren"
+    }
+  },
+  "accessibility": {
+    "title": "Toegankelijkheid",
+    "fontSize": {
+      "label": "Tekstgrootte",
+      "decrease": "Tekstgrootte verkleinen",
+      "increase": "Tekstgrootte vergroten"
+    },
+    "contrast": {
+      "label": "Hoog contrast",
+      "toggle": "Hoog contrast in-/uitschakelen"
+    },
+    "animations": {
+      "label": "Animaties",
+      "toggle": "Animaties in-/uitschakelen"
+    }
+  },
+  "settings": {
+    "advanced": "Geavanceerde instellingen"
+  }
+}

@@ -1,0 +1,25 @@
+---
+/**
+ * LogoWrapper.astro - Componente para envolver el logo de la empresa
+ */
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`company-logo-wrapper ${className}`}>
+  <slot />
+</div>
+
+<style>
+  /* Para contener el logo y aplicar efectos */
+  .company-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+</style>

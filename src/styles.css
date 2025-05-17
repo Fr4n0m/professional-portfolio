@@ -11,5 +11,6 @@
 @import './styles/main.css';
 @import './styles/tooltip.css';
 @import './styles/media-queries.css';
+@import './styles/animation-controls.css';
 
 /* Any global styles that need to override Tailwind can go here */

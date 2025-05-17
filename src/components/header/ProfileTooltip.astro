@@ -19,9 +19,9 @@ const {
 } = Astro.props;
 ---
 
-<div class={`relative group flex items-center ${Astro.props.class || ''}`}>
-  <a href={lang === 'es' ? '/' : `/${lang}/`} class='flex items-center hover:scale-110 transition-transform duration-200 p-2 mr-1'>
-    <div class='w-6 h-6 rounded-full overflow-hidden hero-profile-img'>
+<div class={`relative group flex items-center ml-2 ${Astro.props.class || ''}`}>
+  <a href={lang === 'es' ? '/' : `/${lang}/`} class='flex items-center rounded-full transition-all duration-300 hover:bg-black/10 dark:hover:bg-gray-700/25 hover:scale-110 active:scale-95 p-1.5 profile-icon-link'>
+    <div class='w-5 h-5 rounded-full overflow-hidden hero-profile-img'>
       <img
         src='/assets/images/Fr4n0m Photo.webp'
         alt='Fr4n0m photo'
@@ -127,5 +127,23 @@ const {
   /* Ocultar el ícono de perfil pequeño en el hero */
   .hero-tooltip .hero-profile-img {
     display: none;
+  }
+  
+  /* Animación avanzada para el icono de perfil en hover (similar a los otros iconos del header) */
+  .profile-icon-link:hover .hero-profile-img {
+    transform: scale(1.2) rotate(8deg);
+    filter: brightness(1.2);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+  }
+  
+  /* Estado inicial para el icono */
+  .profile-icon-link .hero-profile-img {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+  }
+  
+  /* Efecto pulse en active para el botón */
+  .profile-icon-link:active .hero-profile-img {
+    transform: scale(0.9);
+    transition: transform 0.15s ease-out;
   }
 </style>

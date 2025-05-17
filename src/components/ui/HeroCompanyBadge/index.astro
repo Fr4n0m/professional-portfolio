@@ -1,0 +1,105 @@
+---
+/**
+ * index.astro - Componente principal que combina todos los subcomponentes del badge
+ */
+
+import BaseBadge from './BaseBadge.astro';
+import LogoWrapper from './LogoWrapper.astro';
+import BadgeDot from './BadgeDot.astro';
+
+// Props que se pueden pasar al componente
+interface Props {
+  class?: string;
+  animationEnabled?: boolean;
+  logoWrapperClass?: string;
+  dotClass?: string;
+}
+
+const { 
+  class: className = '',
+  animationEnabled = true,
+  logoWrapperClass = '',
+  dotClass = ''
+} = Astro.props;
+---
+
+<BaseBadge class={className} animationEnabled={animationEnabled}>
+  <LogoWrapper class={logoWrapperClass}>
+    <slot />
+  </LogoWrapper>
+  <BadgeDot class={dotClass} />
+</BaseBadge>
+
+<style>
+  /* Estilos específicos para la interacción entre componentes */
+  
+  /* Puntito visible en hover y cambio de color*/
+  :global(.hero-company-badge:hover .badge-dot) {
+    transform: scale(1);
+    opacity: 1;
+    background-color: #26A35A; /* Verde más oscuro para modo claro */
+    box-shadow: 0 0 8px rgba(38, 163, 90, 0.9);
+    animation: dot-pulse 0.8s ease-in-out infinite alternate;
+  }
+  
+  @keyframes dot-pulse {
+    from {
+      box-shadow: 0 0 4px rgba(38, 163, 90, 0.7);
+    }
+    to {
+      box-shadow: 0 0 8px rgba(38, 163, 90, 1);
+    }
+  }
+
+  /* Escala del contenedor del logo */
+  :global(.hero-company-badge:hover .company-logo-wrapper) {
+    transform: scale(1.05);
+  }
+  
+  /* Modo oscuro */
+  :global(.dark .hero-company-badge:hover .badge-dot) {
+    background-color: #59F9A4;
+    box-shadow: 0 0 8px rgba(89, 249, 164, 0.9);
+    animation: dot-pulse-dark 0.8s ease-in-out infinite alternate;
+  }
+  
+  @keyframes dot-pulse-dark {
+    from {
+      box-shadow: 0 0 4px rgba(89, 249, 164, 0.7);
+    }
+    to {
+      box-shadow: 0 0 10px rgba(89, 249, 164, 1);
+    }
+  }
+</style>
+
+<script>
+  // Script para cambiar el color del logo dinamicamente en hover
+  document.addEventListener('DOMContentLoaded', () => {
+    const badges = document.querySelectorAll('.hero-company-badge');
+    
+    badges.forEach(badge => {
+      // Logo normal y hover colors
+      const logoNormalColor = document.documentElement.classList.contains('dark') ? 
+        '#4AE591' : '#3DD47E';
+      const logoHoverColor = document.documentElement.classList.contains('dark') ? 
+        '#59F9A4' : '#26A35A'; // Verde más oscuro para modo claro
+      
+      // Evento hover
+      badge.addEventListener('mouseenter', () => {
+        const svgElements = badge.querySelectorAll('svg path');
+        svgElements.forEach(path => {
+          path.setAttribute('fill', logoHoverColor);
+        });
+      });
+      
+      // Evento unhover
+      badge.addEventListener('mouseleave', () => {
+        const svgElements = badge.querySelectorAll('svg path');
+        svgElements.forEach(path => {
+          path.setAttribute('fill', logoNormalColor);
+        });
+      });
+    });
+  });
+</script>

@@ -1,4 +1,7 @@
 ---
+import SunIcon from '@icons/Sun.astro';
+import MoonIcon from '@icons/Moon.astro';
+import SystemIcon from '@icons/System.astro';
 import { textsJson } from '@utils/const';
 
 const { lang, languages } = Astro.props;
@@ -27,20 +30,25 @@ const controlCenter = translations.controlCenter || {};
   <!-- Acciones rápidas -->
   <div class="p-4 grid grid-cols-2 gap-3 border-b border-gray-200 dark:border-gray-700">
     <!-- Theme Toggle -->
-    <button class="desktop-theme-control-btn p-4 rounded-xl bg-gray-100/70 dark:bg-gray-800/70 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center" data-action="theme">
-      <svg class="w-6 h-6 mx-auto mb-2 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-      </svg>
+    <button class="desktop-theme-control-btn p-3 rounded-xl bg-gray-100/70 dark:bg-gray-800/70 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center" data-action="theme">
+      <!-- Iconos para cada tema (solo se muestra el activo) -->
+      <div class="relative w-8 h-8 mx-auto mb-1 flex items-center justify-center">
+        <SunIcon id="light" class="theme-icon-light size-8 absolute text-amber-500" />
+        <MoonIcon id="dark" class="theme-icon-dark size-8 absolute text-indigo-500" />
+        <SystemIcon id="system" class="theme-icon-system size-8 absolute text-gray-600 dark:text-gray-400" />
+      </div>
       <span class="text-xs text-gray-700 dark:text-gray-300">{controlCenter.quickActions?.theme?.label || 'Theme'}</span>
     </button>
     <!-- Language Toggle -->
-    <button class="desktop-lang-control-btn p-4 rounded-xl bg-gray-100/70 dark:bg-gray-800/70 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center" data-action="language">
-      <span class="text-2xl mb-2 block">{languages[lang]?.flag || '🌐'}</span>
+    <button class="desktop-lang-control-btn p-3 rounded-xl bg-gray-100/70 dark:bg-gray-800/70 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 text-center" data-action="language">
+      <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
+        <span class="text-3xl lang-flag-icon">{languages[lang]?.flag || '🌐'}</span>
+      </div>
       <span class="text-xs text-gray-700 dark:text-gray-300">{controlCenter.quickActions?.language?.label || 'Language'}</span>
     </button>
   </div>
   <!-- Accesibilidad -->
-  <div class="p-4 space-y-3">
+  <div class="p-4 space-y-3 main-settings-panel">
     <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-3">{controlCenter.accessibility?.title || 'Accessibility'}</h3>
     <!-- Font Size -->
     <div class="flex items-center justify-between">
@@ -62,23 +70,62 @@ const controlCenter = translations.controlCenter || {};
     <!-- Contrast -->
     <div class="flex items-center justify-between">
       <span class="text-sm text-gray-700 dark:text-gray-300">{controlCenter.accessibility?.contrast?.label || 'Contrast'}</span>
-      <button class="desktop-contrast-toggle relative w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300" data-action="contrast">
-        <span class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300"></span>
-      </button>
+      <div class="switch-parent">
+        <input type="checkbox" class="checkbox" id="desktop-contrast-checkbox" />
+        <label class="switch" for="desktop-contrast-checkbox" data-action="contrast">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
     <!-- Animations -->
     <div class="flex items-center justify-between">
       <span class="text-sm text-gray-700 dark:text-gray-300">{controlCenter.accessibility?.animations?.label || 'Animations'}</span>
-      <button class="desktop-animations-toggle relative w-11 h-6 bg-blue-500 rounded-full transition-colors duration-300" data-action="animations" data-enabled="true">
-        <span class="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-300"></span>
-      </button>
+      <div class="switch-parent">
+        <input type="checkbox" class="checkbox" id="desktop-animations-checkbox" checked />
+        <label class="switch" for="desktop-animations-checkbox" data-action="animations" data-enabled="true">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
   </div>
   <!-- Configuración avanzada -->
-  <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+  <div class="p-4 border-t border-gray-200 dark:border-gray-700 main-settings-panel">
     <a href="/settings" class="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 block">
       <span class="text-sm text-gray-700 dark:text-gray-300">{controlCenter.settings?.advanced || 'Advanced Settings'}</span>
     </a>
+  </div>
+  
+  <!-- Panel de Idiomas (inicialmente oculto) -->
+  <div class="language-settings-panel hidden">
+    <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-semibold text-gray-900 dark:text-white">{controlCenter.quickActions?.language?.title || 'Select Language'}</h3>
+        <button class="back-settings-btn p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
+          <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="p-4 grid grid-cols-2 gap-2 max-h-96 overflow-y-auto">
+      {Object.entries(languages).map(([code, langInfo]) => {
+        const isActive = code === lang;
+        const langUrl = code === 'es' ? '/' : `/${code}/`;
+        return (
+          <a
+            href={langUrl}
+            class={`p-3 rounded-lg text-center transition-colors duration-200 ${
+              isActive 
+                ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' 
+                : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+            }`}
+          >
+            <span class="text-2xl block mb-1">{langInfo.flag}</span>
+            <span class="text-xs text-gray-700 dark:text-gray-300">{langInfo.nativeName}</span>
+          </a>
+        );
+      })}
+    </div>
   </div>
 </div>
 
@@ -125,8 +172,164 @@ const controlCenter = translations.controlCenter || {};
     background: rgba(128, 128, 128, 0.5);
   }
   
-  /* Estilo para el panel de accesibilidad */
-  .translate-x-5 {
-    transform: translateX(1.25rem) !important;
+  /* Estilos para los iconos de tema */
+  .theme-icon-light,
+  .theme-icon-dark,
+  .theme-icon-system {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Estado activo para cada tema - usando los mismos selectores que en ThemeToggleButton */
+  #light {
+    scale: 1;
+    opacity: 1;
+  }
+  
+  #dark, #system {
+    scale: 0;
+    opacity: 0;
+  }
+  
+  :global(.dark) #light {
+    scale: 0;
+    opacity: 0;
+  }
+  
+  :global(.dark) #dark {
+    scale: 1;
+    opacity: 1;
+  }
+  
+  :global(.system) #light,
+  :global(.system) #dark {
+    scale: 0;
+    opacity: 0;
+  }
+  
+  :global(.system) #system {
+    scale: 1;
+    opacity: 1;
+  }
+  
+  /* Animación de hover para los iconos */
+  .desktop-theme-control-btn:hover #light,
+  .desktop-theme-control-btn:hover #dark,
+  .desktop-theme-control-btn:hover #system {
+    filter: brightness(1.2);
+    transform: scale(1.2) rotate(8deg);
+  }
+  
+  .desktop-theme-control-btn:active #light,
+  .desktop-theme-control-btn:active #dark,
+  .desktop-theme-control-btn:active #system {
+    transform: scale(0.9);
+  }
+  
+  /* Animación para el icono de bandera */
+  .desktop-lang-control-btn:hover .lang-flag-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(1.2);
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .lang-flag-icon {
+    display: inline-block;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .desktop-lang-control-btn:active .lang-flag-icon {
+    transform: scale(0.9);
+  }
+  
+  /* Animaciones para el panel de idiomas */
+  .language-settings-panel {
+    animation: slide-in-right 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Estilo para el scrollbar del panel de idiomas */
+  .language-settings-panel .grid::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .language-settings-panel .grid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .language-settings-panel .grid::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 3px;
+  }
+  
+  .language-settings-panel .grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.5);
+  }
+  
+  /* The switch - the box around the slider */
+  .switch-parent {
+    width: 38px;
+    height: 22px;
+    position: relative;
+  }
+  /* Hide default HTML checkbox */
+  .checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  .switch {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #e9e9eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
+  }
+  /* The slider */
+  .slider {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: calc(50% - 18px / 2 - 8px);
+    top: calc(50% - 18px / 2);
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  .switch-parent:active .slider {
+    width: 22px;
+    border-radius: 14px;
+  }
+  .checkbox:checked + .switch:active .slider {
+    width: 22px;
+    left: calc(30% - 18px / 2 + 10px);
+  }
+  .checkbox:checked + .switch {
+    background-color: #34c759;
+  }
+  /* Color específico para tema oscuro */
+  html.dark .checkbox:checked + .switch {
+    background-color: #facc15;
+  }
+  .checkbox:checked + .switch .slider {
+    left: calc(50% - 18px / 2 + 8px);
+    top: calc(50% - 18px / 2);
   }
 </style>

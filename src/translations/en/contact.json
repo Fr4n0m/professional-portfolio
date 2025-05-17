@@ -1,0 +1,16 @@
+{
+  "title": "Contact",
+  "description": "I'm available for new projects and opportunities. Feel free to reach out through any of these channels.",
+  "locationTitle": "My Location",
+  "locationDescription": "You can find me working at this office located in Malaga.",
+  "formTitle": "Send me a message",
+  "nameLabel": "Name",
+  "emailLabel": "Email",
+  "messageLabel": "Message",
+  "submitLabel": "Send message",
+  "namePlaceholder": "Your name",
+  "emailPlaceholder": "your@email.com",
+  "messagePlaceholder": "Write your message here...",
+  "messageSent": "Message sent successfully! I will contact you soon.",
+  "sending": "Sending..."
+}

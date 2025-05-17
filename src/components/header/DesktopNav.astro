@@ -41,7 +41,7 @@ const certificationsSubmenu = [
 ---
 
 <nav
-  class='header-desktop-nav hidden md:flex px-4 text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90 gap-1'
+  class='header-desktop-nav hidden md:flex text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90 gap-1 pl-1'
 >
   <ProfileTooltip info={info} lang={lang} />
   
@@ -77,7 +77,6 @@ const certificationsSubmenu = [
           data-active={false}
         >
           <span class="relative z-10">{item.title}</span>
-          <span class="nav-hover-background"></span>
         </a>
       );
     }
@@ -143,51 +142,36 @@ const certificationsSubmenu = [
   :global(.dark) .header-desktop-nav .nav-link.active,
   :global(.dark) nav a.active,
   :global(html.dark) .header-desktop-nav .nav-link.active,
-  :global(html.dark) nav a.active {
+  :global(html.dark) nav a.active,
+  :global(.dark) .dropdown-toggle.active {
     color: #facc15 !important; /* yellow-300 */
     text-shadow: 0px 0px 6px rgba(250, 204, 21, 0.4);
   }
   
   /* Modo claro: activo es azul oscuro */
-  :global(:not(.dark)) .header-desktop-nav .nav-link.active {
+  :global(:not(.dark)) .header-desktop-nav .nav-link.active,
+  :global(:not(.dark)) .dropdown-toggle.active {
     color: #1e40af !important; /* blue-800 */
     text-shadow: 0px 0px 4px rgba(30, 64, 175, 0.3);
     font-weight: 700;
   }
   
-  /* Nuevos estilos para el efecto hover */
+  /* Nuevos estilos para el efecto hover - más minimalista */
   .hover-effect {
-    overflow: hidden;
+    position: relative;
   }
   
-  .nav-hover-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    transform: translateY(100%);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    border-radius: 0.5rem;
+  /* Transición simple de opacidad para el texto */
+  .nav-link:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
   }
   
-  /* Estilo para modo claro */
-  :global(:not(.dark)) .nav-link:hover .nav-hover-background {
-    transform: translateY(0%);
-    background: linear-gradient(to top, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
-  }
-  
-  /* Estilo para modo oscuro */
-  :global(.dark) .nav-link:hover .nav-hover-background {
-    transform: translateY(0%);
-    background: linear-gradient(to top, rgba(250, 204, 21, 0.15), rgba(250, 204, 21, 0.05));
-  }
-  
-  /* Escalado del texto */
-  .nav-link:hover span {
-    transform: scale(1.03);
-    transition: transform 0.3s ease;
+  /* Más sutil para enlaces activos */
+  .nav-link.active,
+  .dropdown-toggle.active {
+    font-weight: 600 !important;
+    position: relative;
   }
 </style>
 
@@ -421,29 +405,87 @@ const certificationsSubmenu = [
   
   // Función para inicializar controles de accesibilidad en desktop
   function initDesktopAccessibilityControls() {
+    // Inicializar el tema correcto al cargar
+    const currentTheme = localStorage.getItem('theme') || 'system';
+    document.documentElement.classList.add(currentTheme);
+    
     // Theme control
     const themeBtn = document.querySelector('.desktop-theme-control-btn');
     if (themeBtn) {
+      // Función para actualizar el tema
+      const updateThemeButtonIcon = (theme) => {
+        // Eliminar todas las clases de tema
+        document.documentElement.classList.remove('light', 'dark', 'system');
+        // Añadir la clase del tema actual
+        document.documentElement.classList.add(theme);
+        
+        // Actualizar el estado dark para compatibilidad con el resto del sitio
+        const isDark = theme === 'dark' || 
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        
+        // Registrar el tema actual para depuración
+        console.log('Tema actualizado a:', theme, 'isDark:', isDark);
+      };
+      
+      // Inicializar con el tema actual
+      updateThemeButtonIcon(currentTheme);
+      
       themeBtn.addEventListener('click', () => {
         const currentTheme = localStorage.getItem('theme') || 'system';
         const nextTheme = currentTheme === 'light' ? 'dark' : currentTheme === 'dark' ? 'system' : 'light';
         localStorage.setItem('theme', nextTheme);
 
-        const isDark = nextTheme === 'dark' || (nextTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.classList.toggle('dark', isDark);
+        // Actualizar clases y apariencia
+        updateThemeButtonIcon(nextTheme);
       });
     }
     
     // Language control
     const langBtn = document.querySelector('.desktop-lang-control-btn');
-    if (langBtn) {
-      langBtn.addEventListener('click', () => {
-        // Abrir el menú de idiomas normal al hacer clic
-        const languageToggleBtn = document.getElementById('language-toggle-btn');
-        if (languageToggleBtn) {
-          languageToggleBtn.click();
-        }
+    const languageToggleBtn = document.getElementById('language-toggle-btn');
+    const languageMenu = document.getElementById('language-menu');
+    const desktopAccessibilityPanel = document.getElementById('desktop-accessibility-panel');
+    
+    if (langBtn && desktopAccessibilityPanel) {
+      const mainSettingsPanel = desktopAccessibilityPanel.querySelectorAll('.main-settings-panel');
+      const languageSettingsPanel = desktopAccessibilityPanel.querySelector('.language-settings-panel');
+      const backSettingsBtn = desktopAccessibilityPanel.querySelector('.back-settings-btn');
+      
+      // Simular abrir el menú de idiomas
+      langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Ocultar los paneles principales
+        mainSettingsPanel.forEach(panel => {
+          panel.classList.add('hidden');
+        });
+        
+        // Mostrar el panel de idiomas
+        languageSettingsPanel.classList.remove('hidden');
       });
+      
+      // Botón de regreso
+      if (backSettingsBtn) {
+        backSettingsBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Ocultar el panel de idiomas
+          languageSettingsPanel.classList.add('hidden');
+          
+          // Mostrar los paneles principales
+          mainSettingsPanel.forEach(panel => {
+            panel.classList.remove('hidden');
+          });
+        });
+      }
     }
     
     // Font size controls
@@ -471,60 +513,56 @@ const certificationsSubmenu = [
       }
     });
     
-    // Contrast toggle
-    const contrastToggle = document.querySelector('.desktop-contrast-toggle');
-    if (contrastToggle) {
+    // Contrast toggle usando el switch estilo iOS
+    const contrastToggle = document.querySelector('[data-action="contrast"]');
+    const contrastCheckbox = document.getElementById('desktop-contrast-checkbox');
+    
+    if (contrastCheckbox && contrastToggle) {
+      // Cargar el estado guardado
       const isHighContrast = localStorage.getItem('high-contrast') === 'true';
-      if (isHighContrast) {
-        contrastToggle.classList.add('bg-blue-500');
-        const span = contrastToggle.querySelector('span');
-        if (span) span.classList.add('translate-x-5');
-        document.documentElement.classList.add('high-contrast');
-      }
+      contrastCheckbox.checked = isHighContrast;
+      document.documentElement.classList.toggle('high-contrast', isHighContrast);
       
-      contrastToggle.addEventListener('click', () => {
-        const isCurrentlyHighContrast = document.documentElement.classList.contains('high-contrast');
-        localStorage.setItem('high-contrast', (!isCurrentlyHighContrast).toString());
-        document.documentElement.classList.toggle('high-contrast');
-        contrastToggle.classList.toggle('bg-blue-500');
-        const span = contrastToggle.querySelector('span');
-        if (span) span.classList.toggle('translate-x-5');
+      // Manejar los cambios
+      contrastCheckbox.addEventListener('change', () => {
+        const nextState = contrastCheckbox.checked;
+        localStorage.setItem('high-contrast', nextState.toString());
+        document.documentElement.classList.toggle('high-contrast', nextState);
+      });
+      
+      // También permitir hacer clic en el label
+      contrastToggle.addEventListener('click', (e) => {
+        if (e.target === contrastToggle) {
+          contrastCheckbox.checked = !contrastCheckbox.checked;
+          const event = new Event('change');
+          contrastCheckbox.dispatchEvent(event);
+        }
       });
     }
     
-    // Animations toggle
-    const animationsToggle = document.querySelector('.desktop-animations-toggle');
-    if (animationsToggle) {
-      const hasReducedMotion = localStorage.getItem('enable-animations') === 'false';
-      if (hasReducedMotion) {
-        animationsToggle.classList.remove('bg-blue-500');
-        const span = animationsToggle.querySelector('span');
-        if (span) {
-          span.classList.remove('right-0.5');
-          span.classList.add('left-0.5');
-        }
-        document.documentElement.classList.add('reduce-motion');
-        animationsToggle.setAttribute('data-enabled', 'false');
-      }
+    // Animations toggle usando el switch estilo iOS
+    const animationsToggle = document.querySelector('[data-action="animations"]');
+    const animationsCheckbox = document.getElementById('desktop-animations-checkbox');
+    
+    if (animationsCheckbox && animationsToggle) {
+      // Cargar el estado guardado
+      const animationsEnabled = localStorage.getItem('enable-animations') !== 'false';
+      animationsCheckbox.checked = animationsEnabled;
+      document.documentElement.classList.toggle('reduce-motion', !animationsEnabled);
       
-      animationsToggle.addEventListener('click', () => {
-        const isEnabled = animationsToggle.getAttribute('data-enabled') === 'true';
-        const nextState = !isEnabled;
+      // Manejar los cambios
+      animationsCheckbox.addEventListener('change', () => {
+        const nextState = animationsCheckbox.checked;
         localStorage.setItem('enable-animations', nextState.toString());
-        animationsToggle.setAttribute('data-enabled', nextState.toString());
-        
         document.documentElement.classList.toggle('reduce-motion', !nextState);
-        animationsToggle.classList.toggle('bg-blue-500', nextState);
-        
-        const span = animationsToggle.querySelector('span');
-        if (span) {
-          if (nextState) {
-            span.classList.remove('left-0.5');
-            span.classList.add('right-0.5');
-          } else {
-            span.classList.remove('right-0.5');
-            span.classList.add('left-0.5');
-          }
+      });
+      
+      // También permitir hacer clic en el label
+      animationsToggle.addEventListener('click', (e) => {
+        if (e.target === animationsToggle) {
+          animationsCheckbox.checked = !animationsCheckbox.checked;
+          const event = new Event('change');
+          animationsCheckbox.dispatchEvent(event);
         }
       });
     }
@@ -710,7 +748,9 @@ const certificationsSubmenu = [
   // Inicializar cuando el DOM está listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      // El DOM ya se cargó a través del evento DOMContentLoaded principal
+      initDesktopAccessibilityControls(); // Asegurar que se inicialicen los controles
     });
+  } else {
+    initDesktopAccessibilityControls(); // Inicializar inmediatamente si el DOM ya está listo
   }
 </script>

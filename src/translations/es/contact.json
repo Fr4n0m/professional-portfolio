@@ -1,0 +1,16 @@
+{
+  "title": "Contacto",
+  "description": "Estoy disponible para nuevos proyectos y oportunidades. No dudes en contactarme a través de cualquiera de estos canales.",
+  "locationTitle": "Mi Ubicación",
+  "locationDescription": "Puedes encontrarme trabajando en esta oficina ubicada en Málaga.",
+  "formTitle": "Envíame un mensaje",
+  "nameLabel": "Nombre",
+  "emailLabel": "Email",
+  "messageLabel": "Mensaje",
+  "submitLabel": "Enviar mensaje",
+  "namePlaceholder": "Tu nombre",
+  "emailPlaceholder": "tu@email.com",
+  "messagePlaceholder": "Escribe tu mensaje aquí...",
+  "messageSent": "¡Mensaje enviado con éxito! Te contactaré pronto.",
+  "sending": "Enviando..."
+}

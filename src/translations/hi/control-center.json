@@ -1,0 +1,40 @@
+{
+  "title": "नियंत्रण केंद्र",
+  "profile": {
+    "name": "फ्रांसिस्को जोस",
+    "role": "फुल स्टैक डेवलपर"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "थीम",
+      "options": {
+        "light": "हल्का",
+        "dark": "गहरा",
+        "system": "सिस्टम"
+      }
+    },
+    "language": {
+      "label": "भाषा",
+      "title": "भाषा चुनें"
+    }
+  },
+  "accessibility": {
+    "title": "पहुंच",
+    "fontSize": {
+      "label": "पाठ आकार",
+      "decrease": "पाठ आकार घटाएं",
+      "increase": "पाठ आकार बढ़ाएं"
+    },
+    "contrast": {
+      "label": "उच्च कंट्रास्ट",
+      "toggle": "उच्च कंट्रास्ट टॉगल करें"
+    },
+    "animations": {
+      "label": "एनिमेशन",
+      "toggle": "एनिमेशन टॉगल करें"
+    }
+  },
+  "settings": {
+    "advanced": "उन्नत सेटिंग्स"
+  }
+}

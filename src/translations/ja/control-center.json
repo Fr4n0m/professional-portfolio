@@ -1,0 +1,40 @@
+{
+  "title": "コントロールセンター",
+  "profile": {
+    "name": "フランシスコ・ホセ",
+    "role": "フルスタック開発者"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "テーマ",
+      "options": {
+        "light": "ライト",
+        "dark": "ダーク",
+        "system": "システム"
+      }
+    },
+    "language": {
+      "label": "言語",
+      "title": "言語を選択"
+    }
+  },
+  "accessibility": {
+    "title": "アクセシビリティ",
+    "fontSize": {
+      "label": "文字サイズ",
+      "decrease": "文字サイズを小さく",
+      "increase": "文字サイズを大きく"
+    },
+    "contrast": {
+      "label": "ハイコントラスト",
+      "toggle": "ハイコントラストの切り替え"
+    },
+    "animations": {
+      "label": "アニメーション",
+      "toggle": "アニメーションの切り替え"
+    }
+  },
+  "settings": {
+    "advanced": "詳細設定"
+  }
+}

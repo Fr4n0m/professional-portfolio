@@ -1,0 +1,40 @@
+{
+  "title": "Centrum Sterowania",
+  "profile": {
+    "name": "Francisco José",
+    "role": "Full Stack Developer"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Motyw",
+      "options": {
+        "light": "Jasny",
+        "dark": "Ciemny",
+        "system": "Systemowy"
+      }
+    },
+    "language": {
+      "label": "Język",
+      "title": "Wybierz język"
+    }
+  },
+  "accessibility": {
+    "title": "Dostępność",
+    "fontSize": {
+      "label": "Rozmiar tekstu",
+      "decrease": "Zmniejsz rozmiar tekstu",
+      "increase": "Zwiększ rozmiar tekstu"
+    },
+    "contrast": {
+      "label": "Wysoki kontrast",
+      "toggle": "Włącz/wyłącz wysoki kontrast"
+    },
+    "animations": {
+      "label": "Animacje",
+      "toggle": "Włącz/wyłącz animacje"
+    }
+  },
+  "settings": {
+    "advanced": "Ustawienia zaawansowane"
+  }
+}

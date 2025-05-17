@@ -1,0 +1,40 @@
+{
+  "title": "控制中心",
+  "profile": {
+    "name": "弗朗西斯科·何塞",
+    "role": "全栈开发工程师"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "主题",
+      "options": {
+        "light": "浅色",
+        "dark": "深色",
+        "system": "系统"
+      }
+    },
+    "language": {
+      "label": "语言",
+      "title": "选择语言"
+    }
+  },
+  "accessibility": {
+    "title": "无障碍",
+    "fontSize": {
+      "label": "文字大小",
+      "decrease": "减小文字大小",
+      "increase": "增大文字大小"
+    },
+    "contrast": {
+      "label": "高对比度",
+      "toggle": "切换高对比度"
+    },
+    "animations": {
+      "label": "动画",
+      "toggle": "切换动画"
+    }
+  },
+  "settings": {
+    "advanced": "高级设置"
+  }
+}

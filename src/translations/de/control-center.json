@@ -1,0 +1,40 @@
+{
+  "title": "Kontrollzentrum",
+  "profile": {
+    "name": "Francisco José",
+    "role": "Full-Stack-Entwickler"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Design",
+      "options": {
+        "light": "Hell",
+        "dark": "Dunkel",
+        "system": "System"
+      }
+    },
+    "language": {
+      "label": "Sprache",
+      "title": "Sprache auswählen"
+    }
+  },
+  "accessibility": {
+    "title": "Barrierefreiheit",
+    "fontSize": {
+      "label": "Textgröße",
+      "decrease": "Textgröße verringern",
+      "increase": "Textgröße erhöhen"
+    },
+    "contrast": {
+      "label": "Hoher Kontrast",
+      "toggle": "Hohen Kontrast umschalten"
+    },
+    "animations": {
+      "label": "Animationen",
+      "toggle": "Animationen umschalten"
+    }
+  },
+  "settings": {
+    "advanced": "Erweiterte Einstellungen"
+  }
+}

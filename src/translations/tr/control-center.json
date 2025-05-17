@@ -1,0 +1,40 @@
+{
+  "title": "Kontrol Merkezi",
+  "profile": {
+    "name": "Francisco José",
+    "role": "Full Stack Geliştirici"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Tema",
+      "options": {
+        "light": "Açık",
+        "dark": "Koyu",
+        "system": "Sistem"
+      }
+    },
+    "language": {
+      "label": "Dil",
+      "title": "Dil seçin"
+    }
+  },
+  "accessibility": {
+    "title": "Erişilebilirlik",
+    "fontSize": {
+      "label": "Metin boyutu",
+      "decrease": "Metin boyutunu küçült",
+      "increase": "Metin boyutunu büyüt"
+    },
+    "contrast": {
+      "label": "Yüksek kontrast",
+      "toggle": "Yüksek kontrastı aç/kapat"
+    },
+    "animations": {
+      "label": "Animasyonlar",
+      "toggle": "Animasyonları aç/kapat"
+    }
+  },
+  "settings": {
+    "advanced": "Gelişmiş ayarlar"
+  }
+}

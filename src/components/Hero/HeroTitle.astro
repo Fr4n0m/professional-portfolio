@@ -1,8 +1,8 @@
 ---
 // HeroTitle.astro - Componente para el título y badge del hero
-import Badge from '@components/ui/Badge.astro';
+import HeroCompanyBadge from '@components/ui/HeroCompanyBadge/index.astro';
 import TextPressureWrapper from '@components/TextPressureWrapper.astro';
-import CompanyTooltip from '@components/ui/CompanyTooltip.astro';
+import DimapLogo from '@components/icons/DimapLogo.astro';
 
 interface Props {
   title: string;
@@ -26,7 +26,7 @@ const { companyUrl, companyLogo, companyName } = getActiveSiteData();
     />
   </div>
 
-  <div class='flex justify-center pt-0 md:pt-0 lg:pt-0 md:self-center badge-container relative'>
+  <div class='flex justify-center pt-0 md:pt-0 lg:pt-0 md:self-center'>
     <a
       href={companyUrl}
       target='_blank'
@@ -34,27 +34,15 @@ const { companyUrl, companyLogo, companyName } = getActiveSiteData();
       class='flex justify-center items-center mt-2 md:mt-0'
       aria-label={`${companyName} website`}
     >
-      <Badge class="p-1 md:p-1.5 lg:p-1.5 relative">
-        {companyLogo && (
-          <img 
-            src={companyLogo} 
-            alt={`${companyName} logo`} 
-            class="w-10 h-4 md:w-12 md:h-5 lg:w-16 lg:h-6 object-contain"
-          />
-        )}
-      </Badge>
+      <HeroCompanyBadge class="p-0 md:p-0.5 lg:p-0.5 relative">
+        <DimapLogo 
+          darkMode={darkMode}
+          width="60" 
+          height="26" 
+          class="w-7 h-2.5 md:w-8 md:h-3 lg:w-10 lg:h-4 transition-all duration-300"
+        />
+      </HeroCompanyBadge>
     </a>
-    
-    <!-- Tooltip de información de la empresa -->
-    <CompanyTooltip
-      companyName="Dimap"
-      companyDescription="Empresa especializada en el diseño y desarrollo de aplicaciones y soluciones tecnológicas avanzadas. Expertos en ingeniería del software."
-      companyLocation="Calle Pirandello, 16, Planta 3, Oficina 6, Málaga"
-      companySpecialties={["Desarrollo de Software", "Aplicaciones Web", "Soluciones Empresariales", "TI"]}
-      companyYears="Desde 2018"
-      position="right"
-      darkMode={darkMode}
-    />
   </div>
 </div>
 
@@ -72,8 +60,7 @@ const { companyUrl, companyLogo, companyName } = getActiveSiteData();
       document.documentElement.classList.remove('reduce-motion');
     }
     
-    // No necesitamos animación GSAP en el badge porque ahora usamos CSS para la animación
-    // Solo configuramos la opacidad inicial
+    // Configuración inicial del badge
     const badgeElement = document.querySelector('a[aria-label] > span');
     if (badgeElement) {
       gsap.fromTo(badgeElement, 

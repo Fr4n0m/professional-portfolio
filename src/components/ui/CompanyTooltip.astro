@@ -21,8 +21,8 @@ const {
 } = Astro.props;
 ---
 
-<div class={`company-tooltip absolute invisible opacity-0 z-[9999] transition-all duration-300 ease-out transform ${position === 'right' ? 'left-full ml-2 -translate-y-1/2 top-1/2' : 'bottom-full mb-2 -translate-x-1/2 left-1/2'} pointer-events-none`}>
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 w-[280px] md:w-[320px] backdrop-filter backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+<div class={`company-tooltip absolute invisible opacity-0 z-[9999] transition-all duration-300 ease-out transform pointer-events-none ${position === 'right' ? 'left-full ml-2 -translate-y-1/2 top-1/2' : 'bottom-full mb-2 -translate-x-1/2 left-1/2'}`}>
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 w-[280px] md:w-[320px] backdrop-filter backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.12)] relative">
     <div class="border-b border-gray-200 dark:border-gray-700 pb-2 mb-3">
       <h4 class="font-semibold text-lg text-gray-900 dark:text-white">{companyName}</h4>
       <p class="text-xs text-gray-500 dark:text-gray-400">{companyYears}</p>
@@ -47,7 +47,7 @@ const {
     </div>
     
     <!-- Flecha del tooltip -->
-    <div class={`absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 ${position === 'right' ? 'left-[-8px] top-1/2 -translate-y-1/2 border-l border-t' : 'bottom-[-8px] left-1/2 -translate-x-1/2 border-r border-b'}`}></div>
+    <div class={`absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 ${position === 'right' ? 'left-[-6px] top-5 border-l border-b' : 'bottom-[-6px] left-1/2 -translate-x-1/2 border-r border-b'}`}></div>
   </div>
 </div>
 
@@ -65,7 +65,7 @@ const {
     
     .company-tooltip .absolute.w-4.h-4 {
       top: auto !important;
-      bottom: -8px !important;
+      bottom: -6px !important;
       left: 50% !important;
       transform: translateX(-50%) rotate(45deg) !important;
       border-width: 0 1px 1px 0 !important;
@@ -117,7 +117,7 @@ const {
           // Ajustar flecha
           const arrow = tooltip.querySelector('div[class*="rotate-45"]');
           if (arrow) {
-            arrow.className = `absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 bottom-[-8px] left-1/2 -translate-x-1/2 border-r border-b`;
+            arrow.className = 'absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 bottom-[-6px] left-1/2 -translate-x-1/2 border-r border-b';
           }
         } else {
           // Hay espacio a la derecha, colocar a la derecha
@@ -127,7 +127,7 @@ const {
           // Ajustar flecha
           const arrow = tooltip.querySelector('div[class*="rotate-45"]');
           if (arrow) {
-            arrow.className = `absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 left-[-8px] top-1/2 -translate-y-1/2 border-l border-t`;
+            arrow.className = 'absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 left-[-6px] top-5 border-l border-b';
           }
         }
       }

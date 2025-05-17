@@ -1,0 +1,40 @@
+{
+  "title": "Центр управления",
+  "profile": {
+    "name": "Франсиско Хосе",
+    "role": "Full Stack Разработчик"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Тема",
+      "options": {
+        "light": "Светлая",
+        "dark": "Темная",
+        "system": "Системная"
+      }
+    },
+    "language": {
+      "label": "Язык",
+      "title": "Выбрать язык"
+    }
+  },
+  "accessibility": {
+    "title": "Доступность",
+    "fontSize": {
+      "label": "Размер текста",
+      "decrease": "Уменьшить размер текста",
+      "increase": "Увеличить размер текста"
+    },
+    "contrast": {
+      "label": "Высокий контраст",
+      "toggle": "Вкл/выкл высокий контраст"
+    },
+    "animations": {
+      "label": "Анимации",
+      "toggle": "Вкл/выкл анимации"
+    }
+  },
+  "settings": {
+    "advanced": "Расширенные настройки"
+  }
+}

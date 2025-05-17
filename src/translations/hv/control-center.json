@@ -1,0 +1,40 @@
+{
+  "title": "Dōros Aōhos",
+  "profile": {
+    "name": "Francisco Jōrī",
+    "role": "Dāria Obūljagon"
+  },
+  "quickActions": {
+    "theme": {
+      "label": "Jelmāzma",
+      "options": {
+        "light": "Sȳrī",
+        "dark": "Ēlio",
+        "system": "Bruva"
+      }
+    },
+    "language": {
+      "label": "Laedan",
+      "title": "Laedan jiōragon"
+    }
+  },
+  "accessibility": {
+    "title": "Grevion",
+    "fontSize": {
+      "label": "Vala dekētor",
+      "decrease": "Dekētor pryjagon",
+      "increase": "Dekētor padāron"
+    },
+    "contrast": {
+      "label": "Targāri zīrtys",
+      "toggle": "Targāri zīrtys jomīsagon"
+    },
+    "animations": {
+      "label": "Glaesagon",
+      "toggle": "Glaesagon jomīsagon"
+    }
+  },
+  "settings": {
+    "advanced": "Targāri āmogion"
+  }
+}

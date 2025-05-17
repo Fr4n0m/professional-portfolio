@@ -1,0 +1,67 @@
+---
+/**
+ * BaseBadge.astro - Componente base para el badge del hero
+ */
+
+interface Props {
+  class?: string;
+  animationEnabled?: boolean;
+}
+
+const { 
+  class: className = '',
+  animationEnabled = true
+} = Astro.props;
+---
+
+<span
+  class={`hero-company-badge ${animationEnabled ? 'animate-pulse-scale' : ''} bg-gradient-to-r from-[#26A35A]/20 to-[#26A35A]/20 backdrop-blur-[1px] text-[#26A35A] font-medium rounded py-0.5 px-1.5 border border-[#26A35A]/35 dark:bg-gradient-to-r dark:from-[#31ab66]/15 dark:to-[#4AE591]/20 dark:text-[#4AE591] dark:border-[#4AE591]/30 transition-all ease-out duration-300 inline-flex items-center justify-center relative text-xs ${className}`}
+>
+  <slot />
+</span>
+
+<style>
+  /* Estilos base */
+  .hero-company-badge {
+    position: relative;
+    overflow: visible; /* Para que el puntito pueda salir */
+  }
+  
+  /* Estado hover del badge */
+  .hero-company-badge:hover {
+    transform: scale(1.1);
+    border-color: rgba(38, 163, 90, 0.8); /* Color verde más oscuro */
+    background-image: linear-gradient(to right, rgba(38, 163, 90, 0.3), rgba(38, 163, 90, 0.4));
+    box-shadow: 0 0 0 1px rgba(38, 163, 90, 0.3), 0 0 8px rgba(38, 163, 90, 0.4);
+  }
+  
+  /* Modo oscuro */
+  :global(.dark) .hero-company-badge {
+    background-image: linear-gradient(to right, rgba(49, 171, 102, 0.15), rgba(61, 212, 126, 0.2));
+    color: #4AE591;
+    border-color: rgba(74, 229, 145, 0.3);
+  }
+  
+  :global(.dark) .hero-company-badge:hover {
+    transform: scale(1.1);
+    border-color: rgba(74, 229, 145, 0.8);
+    box-shadow: 0 0 0 1px rgba(74, 229, 145, 0.5), 0 0 10px rgba(74, 229, 145, 0.5);
+    background-image: linear-gradient(to right, rgba(49, 171, 102, 0.3), rgba(74, 229, 145, 0.4));
+  }
+  
+  /* Animación de pulso para el badge */
+  @keyframes pulse-scale {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 0.8;
+    }
+  }
+  
+  .animate-pulse-scale {
+    animation: pulse-scale 1.5s ease-in-out infinite;
+  }
+</style>
