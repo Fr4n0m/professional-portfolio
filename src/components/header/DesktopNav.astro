@@ -8,749 +8,860 @@ import LanguageToggleButton from './components/LanguageToggleButton.astro';
 import SettingsButton from './components/SettingsButton.astro';
 
 export interface Props {
-  headerItems: HeaderItem[];
-  info: any;
-  lang: string;
-  translations: any;
+	headerItems: HeaderItem[];
+	info: any;
+	lang: string;
+	translations: any;
 }
 
 const { headerItems, info, lang, translations } = Astro.props;
 
 // Crear los elementos del submenú para proyectos y certificaciones
 const projectsSubmenu = [
-  {
-    title: translations.projectsPage.selectedProjectsSubtitle || 'Proyectos destacados',
-    url: '/#projects'
-  },
-  {
-    title: translations.projectsPage.allProjects || 'Todos los proyectos',
-    url: translations.projectsPage.allProjectsLink || '/projects'
-  }
+	{
+		title:
+			translations.projectsPage.selectedProjectsSubtitle ||
+			'Proyectos destacados',
+		url: '/#projects',
+	},
+	{
+		title: translations.projectsPage.allProjects || 'Todos los proyectos',
+		url: translations.projectsPage.allProjectsLink || '/projects',
+	},
 ];
 
 const certificationsSubmenu = [
-  {
-    title: translations.certificationsPage.selectedCertificationsSubtitle || 'Certificaciones destacadas',
-    url: '/#certifications-preview'
-  },
-  {
-    title: translations.certificationsPage.allCertifications || 'Todas las certificaciones',
-    url: translations.certificationsPage.allCertificationsLink || '/certifications'
-  }
+	{
+		title:
+			translations.certificationsPage.selectedCertificationsSubtitle ||
+			'Certificaciones destacadas',
+		url: '/#certifications-preview',
+	},
+	{
+		title:
+			translations.certificationsPage.allCertifications ||
+			'Todas las certificaciones',
+		url:
+			translations.certificationsPage.allCertificationsLink ||
+			'/certifications',
+	},
 ];
 ---
 
 <nav
-  class='header-desktop-nav hidden md:flex text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90 gap-1 pl-1'
+	class='header-desktop-nav hidden md:flex text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90 gap-1 pl-1'
 >
-  <ProfileTooltip info={info} lang={lang} />
-  
-  {headerItems.map(item => {
-    // Comprobar si este elemento es "Proyectos" o "Certificaciones"
-    if (item.label === 'projects') {
-      return (
-        <DropdownNavItem 
-          title={item.title}
-          dataSection={item.label}
-          ariaLabel={item.label}
-          items={projectsSubmenu}
-        />
-      );
-    } else if (item.label === 'certifications-preview') {
-      return (
-        <DropdownNavItem 
-          title={item.title}
-          dataSection={item.label}
-          ariaLabel={item.label}
-          items={certificationsSubmenu}
-        />
-      );
-    } else {
-      // Para el resto de elementos, usar el enlace normal
-      return (
-        <a
-          class='nav-link block px-3 py-2 transition text-nowrap relative hover-effect'
-          data-section={item.label}
-          aria-label={item.label}
-          href={item.url}
-          target={item.title === 'CV' ? '_blank' : '_self'}
-          data-active={false}
-        >
-          <span class="relative z-10">{item.title}</span>
-        </a>
-      );
-    }
-  })}
-  
-  <!-- Botones agrupados al estilo Apple con separador -->
-  <div class="flex items-center ml-1.5 rounded-full transition-all duration-300 hover:bg-white/15 dark:hover:bg-gray-700/25 py-0 px-2 group">
-    <!-- Grupo de tema e idioma -->
-    <div class="flex items-center gap-0.5">
-      <ThemeToggleButton />
-      <LanguageToggleButton lang={lang} />
-    </div>
-    
-    <!-- Separador estilo Apple -->
-    <div class="h-4 w-px bg-gray-300/20 dark:bg-gray-600/20 mx-1 group-hover:bg-gray-300/30 dark:group-hover:bg-gray-600/30 transition-all duration-300"></div>
-    
-    <!-- Control Center (Settings) -->
-    <SettingsButton lang={lang} />
-  </div>
+	<ProfileTooltip info={info} lang={lang} />
+
+	{
+		headerItems.map(item => {
+			// Comprobar si este elemento es "Proyectos" o "Certificaciones"
+			if (item.label === 'projects') {
+				return (
+					<DropdownNavItem
+						title={item.title}
+						dataSection={item.label}
+						ariaLabel={item.label}
+						items={projectsSubmenu}
+					/>
+				);
+			} else if (item.label === 'certifications-preview') {
+				return (
+					<DropdownNavItem
+						title={item.title}
+						dataSection={item.label}
+						ariaLabel={item.label}
+						items={certificationsSubmenu}
+					/>
+				);
+			} else {
+				// Para el resto de elementos, usar el enlace normal
+				return (
+					<a
+						class='nav-link block px-3 py-2 transition text-nowrap relative hover-effect'
+						data-section={item.label}
+						aria-label={item.label}
+						href={item.url}
+						target={item.title === 'CV' ? '_blank' : '_self'}
+						data-active={false}
+					>
+						<span class='relative z-10'>{item.title}</span>
+					</a>
+				);
+			}
+		})
+	}
+
+	<!-- Botones agrupados al estilo Apple con separador -->
+	<div
+		class='header-controls-container flex items-center ml-1.5 rounded-full transition-all duration-300 hover:bg-white/15 dark:hover:bg-gray-700/25 py-0 px-2 group'
+	>
+		<!-- Grupo de tema e idioma -->
+		<div class='flex items-center gap-0.5'>
+			<ThemeToggleButton />
+			<LanguageToggleButton lang={lang} />
+		</div>
+
+		<!-- Separador estilo Apple -->
+		<div
+			class='h-4 w-px bg-gray-300/20 dark:bg-gray-600/20 mx-1 group-hover:bg-gray-300/30 dark:group-hover:bg-gray-600/30 transition-all duration-300'
+		>
+		</div>
+
+		<!-- Control Center (Settings) -->
+		<SettingsButton lang={lang} />
+	</div>
 </nav>
 
 <style>
-  nav {
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 1000px;
-  }
+	nav {
+		animation: nav-shadown 1s linear both;
+		animation-timeline: scroll();
+		animation-range: 0 1000px;
+	}
 
-  @keyframes nav-shadown {
-    0% {
-      box-shadow: none;
-    }
-    to {
-      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
-    }
-  }
-  
-  .nav-link.active {
-    @apply text-blue-800 dark:text-yellow-300 font-semibold;
-  }
-  
-  /* Estilos globales para el header desktop */
-  .header-desktop-nav {
-    color: white;
-  }
-  
-  /* Modo claro: opciones normales en gris */
-  :global(:not(.dark)) .header-desktop-nav .nav-link {
-    color: #6b7280 !important; /* gray-500 */
-  }
-  
-  /* Modo oscuro: opciones normales en blanco */
-  :global(.dark) .header-desktop-nav .nav-link {
-    color: white !important;
-  }
-  
-  /* Estilos para enlaces activos */
-  .header-desktop-nav .nav-link.active {
-    font-weight: 600;
-  }
-  
-  /* Modo oscuro: activo es amarillo */
-  :global(.dark) .header-desktop-nav .nav-link.active,
-  :global(.dark) nav a.active,
-  :global(html.dark) .header-desktop-nav .nav-link.active,
-  :global(html.dark) nav a.active,
-  :global(.dark) .dropdown-toggle.active {
-    color: #facc15 !important; /* yellow-300 */
-    text-shadow: 0px 0px 6px rgba(250, 204, 21, 0.4);
-  }
-  
-  /* Modo claro: activo es azul oscuro */
-  :global(:not(.dark)) .header-desktop-nav .nav-link.active,
-  :global(:not(.dark)) .dropdown-toggle.active {
-    color: #1e40af !important; /* blue-800 */
-    text-shadow: 0px 0px 4px rgba(30, 64, 175, 0.3);
-    font-weight: 700;
-  }
-  
-  /* Nuevos estilos para el efecto hover - más minimalista */
-  .hover-effect {
-    position: relative;
-  }
-  
-  /* Transición simple de opacidad para el texto */
-  .nav-link:hover {
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-  }
-  
-  /* Más sutil para enlaces activos */
-  .nav-link.active,
-  .dropdown-toggle.active {
-    font-weight: 600 !important;
-    position: relative;
-  }
+	@keyframes nav-shadown {
+		0% {
+			box-shadow: none;
+		}
+		to {
+			@apply shadow-lg ring-1 backdrop-blur ring-white/10;
+		}
+	}
+
+	.nav-link.active {
+		@apply text-blue-800 dark:text-yellow-300 font-semibold;
+	}
+
+	/* Estilos globales para el header desktop */
+	.header-desktop-nav {
+		color: white;
+	}
+
+	/* Modo claro: opciones normales en gris */
+	:global(:not(.dark)) .header-desktop-nav .nav-link {
+		color: #6b7280 !important; /* gray-500 */
+	}
+
+	/* Modo oscuro: opciones normales en blanco */
+	:global(.dark) .header-desktop-nav .nav-link {
+		color: white !important;
+	}
+
+	/* Estilos para enlaces activos */
+	.header-desktop-nav .nav-link.active {
+		font-weight: 600;
+	}
+
+	/* Modo oscuro: activo es amarillo */
+	:global(.dark) .header-desktop-nav .nav-link.active,
+	:global(.dark) nav a.active,
+	:global(html.dark) .header-desktop-nav .nav-link.active,
+	:global(html.dark) nav a.active,
+	:global(.dark) .dropdown-toggle.active {
+		color: #facc15 !important; /* yellow-300 */
+		text-shadow: 0px 0px 6px rgba(250, 204, 21, 0.4);
+	}
+
+	/* Modo claro: activo es azul oscuro */
+	:global(:not(.dark)) .header-desktop-nav .nav-link.active,
+	:global(:not(.dark)) .dropdown-toggle.active {
+		color: #1e40af !important; /* blue-800 */
+		text-shadow: 0px 0px 4px rgba(30, 64, 175, 0.3);
+		font-weight: 700;
+	}
+
+	/* Contenedor de los botones de control, con fondo que coincide con el header */
+	.header-controls-container {
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+
+	:global(.dark) .header-controls-container {
+		background-color: rgba(31, 41, 55, 0.9); /* gray-800 con 90% opacidad */
+	}
+
+	/* Nuevos estilos para el efecto hover - más minimalista */
+	.hover-effect {
+		position: relative;
+	}
+
+	/* Transición simple de opacidad para el texto */
+	.nav-link:hover {
+		opacity: 0.8;
+		transition: opacity 0.2s ease;
+	}
+
+	/* Más sutil para enlaces activos */
+	.nav-link.active,
+	.dropdown-toggle.active {
+		font-weight: 600 !important;
+		position: relative;
+	}
 </style>
 
 <script>
-  // Inicializar el control de tema
-  document.addEventListener('DOMContentLoaded', () => {
-    // Sistema de paneles mútuamente excluyentes
-    let activePanel = null;
-    const openPanels = new Map(); // Para almacenar referencias a los paneles y sus funciones de cierre
-    
-    // Initialize control de idioma
-    const languageMenu = document.getElementById('language-menu');
-    const languageToggleBtn = document.getElementById('language-toggle-btn');
-    
-    if (languageToggleBtn && languageMenu) {
-      let isLangMenuOpen = false;
-      
-      // Función para cerrar el menú de idioma
-      const closeLangMenu = () => {
-        if (isLangMenuOpen) {
-          languageMenu.classList.add('hidden');
-          languageMenu.classList.remove('open');
-          isLangMenuOpen = false;
-        }
-      };
-      
-      // Registrar en el sistema de paneles
-      openPanels.set('language', { 
-        element: languageMenu, 
-        close: closeLangMenu, 
-        button: languageToggleBtn 
-      });
-      
-      // Toggle menu when clicking button
-      languageToggleBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Si hay otro panel activo, cerrarlo primero
-        if (activePanel && activePanel !== 'language') {
-          openPanels.get(activePanel).close();
-        }
-        
-        isLangMenuOpen = !isLangMenuOpen;
-        
-        if (isLangMenuOpen) {
-          languageMenu.classList.remove('hidden');
-          languageMenu.classList.add('open');
-          activePanel = 'language';
-        } else {
-          languageMenu.classList.add('hidden');
-          languageMenu.classList.remove('open');
-          activePanel = null;
-        }
-      });
-    }
-    
-    // Theme toggle logic
-    const themesMenu = document.getElementById('themes-menu');
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    const themeOptions = document.querySelectorAll('.themes-menu-option');
-    
-    if (themesMenu && themeToggleBtn) {
-      let isThemeMenuOpen = false;
-      
-      // Función para cerrar el menú de temas
-      const closeThemeMenu = () => {
-        if (isThemeMenuOpen) {
-          themesMenu.classList.remove('open');
-          themesMenu.classList.add('hidden');
-          isThemeMenuOpen = false;
-        }
-      };
-      
-      // Registrar en el sistema de paneles
-      openPanels.set('theme', { 
-        element: themesMenu, 
-        close: closeThemeMenu, 
-        button: themeToggleBtn 
-      });
-      
-      // Function to get current theme
-      const getThemePreference = () => {
-        if (typeof localStorage !== 'undefined') {
-          return localStorage.getItem('theme') ?? 'system';
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light';
-      };
-      
-      // Function to update icon visibility
-      const updateIcon = (theme) => {
-        document.documentElement.classList.remove('light', 'dark', 'system');
-        document.documentElement.classList.add(theme);
-        
-        const isDark = theme === 'dark' || 
-          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        
-        if (isDark) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      };
-      
-      // Function to update active theme in menu
-      const updateActiveTheme = (theme) => {
-        themeOptions.forEach(option => {
-          option.setAttribute('data-active', option.dataset.theme === theme);
-        });
-      };
-      
-      // Function to apply theme
-      const updateTheme = () => {
-        const theme = getThemePreference();
-        updateIcon(theme);
-        updateActiveTheme(theme);
-      };
-      
-      // Toggle menu when clicking button
-      themeToggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        
-        // Si hay otro panel activo, cerrarlo primero
-        if (activePanel && activePanel !== 'theme') {
-          openPanels.get(activePanel).close();
-        }
-        
-        isThemeMenuOpen = !isThemeMenuOpen;
-        
-        if (isThemeMenuOpen) {
-          themesMenu.classList.remove('hidden');
-          themesMenu.classList.add('open');
-          activePanel = 'theme';
-        } else {
-          themesMenu.classList.remove('open');
-          themesMenu.classList.add('hidden');
-          activePanel = null;
-        }
-      });
-      
-      // Handle theme selection
-      themeOptions.forEach(option => {
-        option.addEventListener('click', () => {
-          const theme = option.dataset.theme;
-          localStorage.setItem('theme', theme);
-          updateTheme();
-          themesMenu.classList.remove('open');
-          themesMenu.classList.add('hidden');
-          isThemeMenuOpen = false;
-          activePanel = null;
-        });
-      });
-      
-      // Listen to system theme changes
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
-      
-      // Initialize theme
-      updateTheme();
-    }
-    
-    // Conectar con el botón de accesibilidad para desktop
-    const desktopAccessibilityToggle = document.getElementById('desktop-accessibility-toggle');
-    const desktopAccessibilityPanel = document.getElementById('desktop-accessibility-panel');
-    
-    if (desktopAccessibilityToggle && desktopAccessibilityPanel) {
-      let isAccessibilityPanelOpen = false;
-      
-      // Función para cerrar el panel de accesibilidad
-      const closeAccessibilityPanel = () => {
-        if (isAccessibilityPanelOpen) {
-          desktopAccessibilityPanel.classList.add('hidden');
-          desktopAccessibilityPanel.classList.remove('open');
-          isAccessibilityPanelOpen = false;
-        }
-      };
-      
-      // Registrar en el sistema de paneles
-      openPanels.set('accessibility', { 
-        element: desktopAccessibilityPanel, 
-        close: closeAccessibilityPanel, 
-        button: desktopAccessibilityToggle 
-      });
-      
-      // Toggle menu when clicking button
-      desktopAccessibilityToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Si hay otro panel activo, cerrarlo primero
-        if (activePanel && activePanel !== 'accessibility') {
-          openPanels.get(activePanel).close();
-        }
-        
-        isAccessibilityPanelOpen = !isAccessibilityPanelOpen;
-        
-        if (isAccessibilityPanelOpen) {
-          desktopAccessibilityPanel.classList.remove('hidden');
-          desktopAccessibilityPanel.classList.add('open');
-          activePanel = 'accessibility';
-        } else {
-          desktopAccessibilityPanel.classList.add('hidden');
-          desktopAccessibilityPanel.classList.remove('open');
-          activePanel = null;
-        }
-      });
-      
-      // Inicializar controles de desktop
-      initDesktopAccessibilityControls();
-    }
-    
-    // Cerrar dropdowns al hacer clic fuera
-    document.addEventListener('click', (e) => {
-      if (activePanel) {
-        const panelData = openPanels.get(activePanel);
-        const panel = panelData.element;
-        const button = panelData.button;
-        
-        if (!panel.contains(e.target) && !button.contains(e.target)) {
-          panelData.close();
-          activePanel = null;
-        }
-      }
-    });
-    
-    // Inicializar el resaltado de navegación
-    setupNavHighlighting();
-  });
-  
-  // Función para inicializar controles de accesibilidad en desktop
-  function initDesktopAccessibilityControls() {
-    // Inicializar el tema correcto al cargar
-    const currentTheme = localStorage.getItem('theme') || 'system';
-    document.documentElement.classList.add(currentTheme);
-    
-    // Theme control
-    const themeBtn = document.querySelector('.desktop-theme-control-btn');
-    if (themeBtn) {
-      // Función para actualizar el tema
-      const updateThemeButtonIcon = (theme) => {
-        // Eliminar todas las clases de tema
-        document.documentElement.classList.remove('light', 'dark', 'system');
-        // Añadir la clase del tema actual
-        document.documentElement.classList.add(theme);
-        
-        // Actualizar el estado dark para compatibilidad con el resto del sitio
-        const isDark = theme === 'dark' || 
-          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        
-        if (isDark) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-        
-        // Registrar el tema actual para depuración
-        console.log('Tema actualizado a:', theme, 'isDark:', isDark);
-      };
-      
-      // Inicializar con el tema actual
-      updateThemeButtonIcon(currentTheme);
-      
-      themeBtn.addEventListener('click', () => {
-        const currentTheme = localStorage.getItem('theme') || 'system';
-        const nextTheme = currentTheme === 'light' ? 'dark' : currentTheme === 'dark' ? 'system' : 'light';
-        localStorage.setItem('theme', nextTheme);
+	// Inicializar el control de tema
+	document.addEventListener('DOMContentLoaded', () => {
+		// Sistema de paneles mútuamente excluyentes
+		let activePanel = null;
+		const openPanels = new Map(); // Para almacenar referencias a los paneles y sus funciones de cierre
 
-        // Actualizar clases y apariencia
-        updateThemeButtonIcon(nextTheme);
-      });
-    }
-    
-    // Language control
-    const langBtn = document.querySelector('.desktop-lang-control-btn');
-    const languageToggleBtn = document.getElementById('language-toggle-btn');
-    const languageMenu = document.getElementById('language-menu');
-    const desktopAccessibilityPanel = document.getElementById('desktop-accessibility-panel');
-    
-    if (langBtn && desktopAccessibilityPanel) {
-      const mainSettingsPanel = desktopAccessibilityPanel.querySelectorAll('.main-settings-panel');
-      const languageSettingsPanel = desktopAccessibilityPanel.querySelector('.language-settings-panel');
-      const backSettingsBtn = desktopAccessibilityPanel.querySelector('.back-settings-btn');
-      
-      // Simular abrir el menú de idiomas
-      langBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Ocultar los paneles principales
-        mainSettingsPanel.forEach(panel => {
-          panel.classList.add('hidden');
-        });
-        
-        // Mostrar el panel de idiomas
-        languageSettingsPanel.classList.remove('hidden');
-      });
-      
-      // Botón de regreso
-      if (backSettingsBtn) {
-        backSettingsBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Ocultar el panel de idiomas
-          languageSettingsPanel.classList.add('hidden');
-          
-          // Mostrar los paneles principales
-          mainSettingsPanel.forEach(panel => {
-            panel.classList.remove('hidden');
-          });
-        });
-      }
-    }
-    
-    // Font size controls
-    let fontSize = parseInt(localStorage.getItem('fontSize') || '100');
-    const fontSizeSpan = document.querySelector('.desktop-font-size-value');
-    
-    // Initialize font size display
-    if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
-    
-    document.querySelector('[data-action="font-decrease"]')?.addEventListener('click', () => {
-      if (fontSize > 85) {
-        fontSize -= 5;
-        localStorage.setItem('fontSize', fontSize.toString());
-        document.documentElement.style.fontSize = `${fontSize}%`;
-        if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
-      }
-    });
-    
-    document.querySelector('[data-action="font-increase"]')?.addEventListener('click', () => {
-      if (fontSize < 120) {
-        fontSize += 5;
-        localStorage.setItem('fontSize', fontSize.toString());
-        document.documentElement.style.fontSize = `${fontSize}%`;
-        if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
-      }
-    });
-    
-    // Contrast toggle usando el switch estilo iOS
-    const contrastToggle = document.querySelector('[data-action="contrast"]');
-    const contrastCheckbox = document.getElementById('desktop-contrast-checkbox');
-    
-    if (contrastCheckbox && contrastToggle) {
-      // Cargar el estado guardado
-      const isHighContrast = localStorage.getItem('high-contrast') === 'true';
-      contrastCheckbox.checked = isHighContrast;
-      document.documentElement.classList.toggle('high-contrast', isHighContrast);
-      
-      // Manejar los cambios
-      contrastCheckbox.addEventListener('change', () => {
-        const nextState = contrastCheckbox.checked;
-        localStorage.setItem('high-contrast', nextState.toString());
-        document.documentElement.classList.toggle('high-contrast', nextState);
-      });
-      
-      // También permitir hacer clic en el label
-      contrastToggle.addEventListener('click', (e) => {
-        if (e.target === contrastToggle) {
-          contrastCheckbox.checked = !contrastCheckbox.checked;
-          const event = new Event('change');
-          contrastCheckbox.dispatchEvent(event);
-        }
-      });
-    }
-    
-    // Animations toggle usando el switch estilo iOS
-    const animationsToggle = document.querySelector('[data-action="animations"]');
-    const animationsCheckbox = document.getElementById('desktop-animations-checkbox');
-    
-    if (animationsCheckbox && animationsToggle) {
-      // Cargar el estado guardado
-      const animationsEnabled = localStorage.getItem('enable-animations') !== 'false';
-      animationsCheckbox.checked = animationsEnabled;
-      document.documentElement.classList.toggle('reduce-motion', !animationsEnabled);
-      
-      // Manejar los cambios
-      animationsCheckbox.addEventListener('change', () => {
-        const nextState = animationsCheckbox.checked;
-        localStorage.setItem('enable-animations', nextState.toString());
-        document.documentElement.classList.toggle('reduce-motion', !nextState);
-      });
-      
-      // También permitir hacer clic en el label
-      animationsToggle.addEventListener('click', (e) => {
-        if (e.target === animationsToggle) {
-          animationsCheckbox.checked = !animationsCheckbox.checked;
-          const event = new Event('change');
-          animationsCheckbox.dispatchEvent(event);
-        }
-      });
-    }
-  }
-  
-  function setupNavHighlighting() {
-    // Verificamos si ya hay un IntersectionObserver manejando esto desde Header.astro
-    // Evitamos la implementación duplicada que podría causar conflictos
-    
-    // Asegurémonos de que solo usamos una implementación para evitar conflictos
-    const hasHeaderObserver = document.querySelector('header')?.hasAttribute('data-has-observer');
-    
-    // Si ya hay un observer en el header, no configuramos uno nuevo
-    if (hasHeaderObserver) return;
-    
-    const sections = document.querySelectorAll('section[data-section]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    if (!sections.length || !navLinks.length) return;
-    
-    // Marcamos el header para indicar que ya tiene un observer
-    document.querySelector('header')?.setAttribute('data-has-observer', 'true');
-    
-    const updateActiveLink = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      let activeSection = '';
-      let visibleSections = [];
-      
-      // Check if at bottom of page
-      if (scrollPosition + windowHeight >= documentHeight - 10) {
-        activeSection = sections[sections.length - 1].id;
-      } else {
-        // Get the header height for offset calculation
-        const header = document.querySelector('header');
-        const headerHeight = header ? header.offsetHeight : 0;
-        const offset = headerHeight + 80; // Additional offset for better triggering
-        
-        // Primero recopilamos todas las secciones visibles
-        sections.forEach(section => {
-          const sectionElement = section;
-          const sectionTop = sectionElement.offsetTop - offset;
-          const sectionHeight = sectionElement.offsetHeight;
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            visibleSections.push({
-              id: section.id,
-              top: sectionTop
-            });
-          }
-        });
-        
-        // Si hay múltiples secciones visibles, elegimos la que está más arriba
-        if (visibleSections.length > 0) {
-          // Ordenamos las secciones visibles por su posición vertical
-          visibleSections.sort((a, b) => a.top - b.top);
-          // La sección activa es la primera (la más alta en la página)
-          activeSection = visibleSections[0].id;
-        }
-        
-        // Si no hay sección activa y estamos cerca de la parte superior, activamos la primera sección
-        if (!activeSection && scrollPosition < 100) {
-          activeSection = sections[0].id;
-        }
-      }
-      
-      // Para el nuevo menú desplegable, marcar como activo el padre cuando está activo el hijo
-      function setActiveDropdownParent(sectionId) {
-        // Si es projects o certifications-preview, activar el dropdown parent
-        if (sectionId === 'projects' || sectionId === 'certifications-preview') {
-          const parentDropdown = document.querySelector(`.dropdown-nav-item button[data-section="${sectionId}"]`);
-          if (parentDropdown) {
-            parentDropdown.classList.add('active');
-            if (document.documentElement.classList.contains('dark')) {
-              parentDropdown.classList.add('text-yellow-300');
-            } else {
-              parentDropdown.classList.add('text-blue-800');
-            }
-            parentDropdown.classList.add('font-semibold');
-          }
-        }
-      }
-      
-      // Primero desactivamos todos los elementos de navegación
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        link.classList.remove('text-yellow-300', 'dark:text-yellow-300', 'text-blue-800', 'font-semibold');
-      });
-      
-      // Luego activamos solo el correspondiente a la sección activa
-      navLinks.forEach(link => {
-        const linkSection = link.getAttribute('data-section');
-        
-        if (linkSection === activeSection) {
-          link.classList.add('active');
-          if (document.documentElement.classList.contains('dark')) {
-            link.classList.add('text-yellow-300');
-          } else {
-            link.classList.add('text-blue-800');
-          }
-          link.classList.add('font-semibold');
-        }
-      });
-      
-      // Activar también el dropdown parent si es necessary
-      setActiveDropdownParent(activeSection);
-    };
-    
-    // Handle all internal navigation links
-    const handleNavClick = (e) => {
-      const link = e.currentTarget;
-      const href = link.getAttribute('href');
-      
-      if (!href) return;
-      
-      // Only handle internal hash links
-      if (href.includes('#')) {
-        e.preventDefault();
-        
-        // Extract the hash from the URL
-        const hashIndex = href.indexOf('#');
-        const targetId = href.substring(hashIndex + 1);
-        
-        // Find the target section
-        const targetSection = document.getElementById(targetId);
-        
-        if (targetSection) {
-          const header = document.querySelector('header');
-          const headerHeight = header ? header.offsetHeight : 0;
-          const targetPosition = targetSection.offsetTop - headerHeight - 20;
-          
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }
-    };
-    
-    // Add click handlers to all nav links (normal and dropdown)
-    navLinks.forEach(link => {
-      link.addEventListener('click', handleNavClick);
-    });
-    
-    // Añadir también a los enlaces dentro de los dropdown menus
-    document.querySelectorAll('.dropdown-menu a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (link.getAttribute('href').includes('#')) {
-          handleNavClick(e);
-        }
-      });
-    });
-    
-    // Throttle scroll events for performance
-    let isScrolling = false;
-    let scrollTimeout;
-    
-    const handleScroll = () => {
-      if (!isScrolling) {
-        window.requestAnimationFrame(() => {
-          updateActiveLink();
-          isScrolling = false;
-        });
-        isScrolling = true;
-      }
-      
-      // Clear and reset timeout for scroll end detection
-      clearTimeout(scrollTimeout);
-      scrollTimeout = window.setTimeout(() => {
-        updateActiveLink();
-      }, 100);
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', updateActiveLink);
-    
-    // Initial check
-    updateActiveLink();
-  }
-  
-  // Inicializar cuando el DOM está listo
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initDesktopAccessibilityControls(); // Asegurar que se inicialicen los controles
-    });
-  } else {
-    initDesktopAccessibilityControls(); // Inicializar inmediatamente si el DOM ya está listo
-  }
+		// Initialize control de idioma
+		const languageMenu = document.getElementById('language-menu');
+		const languageToggleBtn = document.getElementById(
+			'language-toggle-btn',
+		);
+
+		if (languageToggleBtn && languageMenu) {
+			let isLangMenuOpen = false;
+
+			// Función para cerrar el menú de idioma
+			const closeLangMenu = () => {
+				if (isLangMenuOpen) {
+					languageMenu.classList.add('hidden');
+					languageMenu.classList.remove('open');
+					isLangMenuOpen = false;
+				}
+			};
+
+			// Registrar en el sistema de paneles
+			openPanels.set('language', {
+				element: languageMenu,
+				close: closeLangMenu,
+				button: languageToggleBtn,
+			});
+
+			// Toggle menu when clicking button
+			languageToggleBtn.addEventListener('click', e => {
+				e.preventDefault();
+				e.stopPropagation();
+
+				// Si hay otro panel activo, cerrarlo primero
+				if (activePanel && activePanel !== 'language') {
+					openPanels.get(activePanel).close();
+				}
+
+				isLangMenuOpen = !isLangMenuOpen;
+
+				if (isLangMenuOpen) {
+					languageMenu.classList.remove('hidden');
+					languageMenu.classList.add('open');
+					activePanel = 'language';
+				} else {
+					languageMenu.classList.add('hidden');
+					languageMenu.classList.remove('open');
+					activePanel = null;
+				}
+			});
+		}
+
+		// Theme toggle logic
+		const themesMenu = document.getElementById('themes-menu');
+		const themeToggleBtn = document.getElementById('theme-toggle-btn');
+		const themeOptions = document.querySelectorAll('.themes-menu-option');
+
+		if (themesMenu && themeToggleBtn) {
+			let isThemeMenuOpen = false;
+
+			// Función para cerrar el menú de temas
+			const closeThemeMenu = () => {
+				if (isThemeMenuOpen) {
+					themesMenu.classList.remove('open');
+					themesMenu.classList.add('hidden');
+					isThemeMenuOpen = false;
+				}
+			};
+
+			// Registrar en el sistema de paneles
+			openPanels.set('theme', {
+				element: themesMenu,
+				close: closeThemeMenu,
+				button: themeToggleBtn,
+			});
+
+			// Function to get current theme
+			const getThemePreference = () => {
+				if (typeof localStorage !== 'undefined') {
+					return localStorage.getItem('theme') ?? 'system';
+				}
+				return window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light';
+			};
+
+			// Function to update icon visibility
+			const updateIcon = theme => {
+				document.documentElement.classList.remove(
+					'light',
+					'dark',
+					'system',
+				);
+				document.documentElement.classList.add(theme);
+
+				const isDark =
+					theme === 'dark' ||
+					(theme === 'system' &&
+						window.matchMedia('(prefers-color-scheme: dark)')
+							.matches);
+
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+			};
+
+			// Function to update active theme in menu
+			const updateActiveTheme = theme => {
+				themeOptions.forEach(option => {
+					option.setAttribute(
+						'data-active',
+						option.dataset.theme === theme,
+					);
+				});
+			};
+
+			// Function to apply theme
+			const updateTheme = () => {
+				const theme = getThemePreference();
+				updateIcon(theme);
+				updateActiveTheme(theme);
+			};
+
+			// Toggle menu when clicking button
+			themeToggleBtn.addEventListener('click', e => {
+				e.stopPropagation();
+				e.preventDefault();
+
+				// Si hay otro panel activo, cerrarlo primero
+				if (activePanel && activePanel !== 'theme') {
+					openPanels.get(activePanel).close();
+				}
+
+				isThemeMenuOpen = !isThemeMenuOpen;
+
+				if (isThemeMenuOpen) {
+					themesMenu.classList.remove('hidden');
+					themesMenu.classList.add('open');
+					activePanel = 'theme';
+				} else {
+					themesMenu.classList.remove('open');
+					themesMenu.classList.add('hidden');
+					activePanel = null;
+				}
+			});
+
+			// Handle theme selection
+			themeOptions.forEach(option => {
+				option.addEventListener('click', () => {
+					const theme = option.dataset.theme;
+					localStorage.setItem('theme', theme);
+					updateTheme();
+					themesMenu.classList.remove('open');
+					themesMenu.classList.add('hidden');
+					isThemeMenuOpen = false;
+					activePanel = null;
+				});
+			});
+
+			// Listen to system theme changes
+			window
+				.matchMedia('(prefers-color-scheme: dark)')
+				.addEventListener('change', updateTheme);
+
+			// Initialize theme
+			updateTheme();
+		}
+
+		// Conectar con el botón de accesibilidad para desktop
+		const desktopAccessibilityToggle = document.getElementById(
+			'desktop-accessibility-toggle',
+		);
+		const desktopAccessibilityPanel = document.getElementById(
+			'desktop-accessibility-panel',
+		);
+
+		if (desktopAccessibilityToggle && desktopAccessibilityPanel) {
+			let isAccessibilityPanelOpen = false;
+
+			// Función para cerrar el panel de accesibilidad
+			const closeAccessibilityPanel = () => {
+				if (isAccessibilityPanelOpen) {
+					desktopAccessibilityPanel.classList.add('hidden');
+					desktopAccessibilityPanel.classList.remove('open');
+					isAccessibilityPanelOpen = false;
+				}
+			};
+
+			// Registrar en el sistema de paneles
+			openPanels.set('accessibility', {
+				element: desktopAccessibilityPanel,
+				close: closeAccessibilityPanel,
+				button: desktopAccessibilityToggle,
+			});
+
+			// Toggle menu when clicking button
+			desktopAccessibilityToggle.addEventListener('click', e => {
+				e.preventDefault();
+				e.stopPropagation();
+
+				// Si hay otro panel activo, cerrarlo primero
+				if (activePanel && activePanel !== 'accessibility') {
+					openPanels.get(activePanel).close();
+				}
+
+				isAccessibilityPanelOpen = !isAccessibilityPanelOpen;
+
+				if (isAccessibilityPanelOpen) {
+					desktopAccessibilityPanel.classList.remove('hidden');
+					desktopAccessibilityPanel.classList.add('open');
+					activePanel = 'accessibility';
+				} else {
+					desktopAccessibilityPanel.classList.add('hidden');
+					desktopAccessibilityPanel.classList.remove('open');
+					activePanel = null;
+				}
+			});
+
+			// Inicializar controles de desktop
+			initDesktopAccessibilityControls();
+		}
+
+		// Cerrar dropdowns al hacer clic fuera
+		document.addEventListener('click', e => {
+			if (activePanel) {
+				const panelData = openPanels.get(activePanel);
+				const panel = panelData.element;
+				const button = panelData.button;
+
+				if (!panel.contains(e.target) && !button.contains(e.target)) {
+					panelData.close();
+					activePanel = null;
+				}
+			}
+		});
+
+		// Inicializar el resaltado de navegación
+		setupNavHighlighting();
+	});
+
+	// Función para inicializar controles de accesibilidad en desktop
+	function initDesktopAccessibilityControls() {
+		// Inicializar el tema correcto al cargar
+		const currentTheme = localStorage.getItem('theme') || 'system';
+		document.documentElement.classList.add(currentTheme);
+
+		// Theme control
+		const themeBtn = document.querySelector('.desktop-theme-control-btn');
+		if (themeBtn) {
+			// Función para actualizar el tema
+			const updateThemeButtonIcon = theme => {
+				// Eliminar todas las clases de tema
+				document.documentElement.classList.remove(
+					'light',
+					'dark',
+					'system',
+				);
+				// Añadir la clase del tema actual
+				document.documentElement.classList.add(theme);
+
+				// Actualizar el estado dark para compatibilidad con el resto del sitio
+				const isDark =
+					theme === 'dark' ||
+					(theme === 'system' &&
+						window.matchMedia('(prefers-color-scheme: dark)')
+							.matches);
+
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+
+				// Registrar el tema actual para depuración
+				console.log('Tema actualizado a:', theme, 'isDark:', isDark);
+			};
+
+			// Inicializar con el tema actual
+			updateThemeButtonIcon(currentTheme);
+
+			themeBtn.addEventListener('click', () => {
+				const currentTheme = localStorage.getItem('theme') || 'system';
+				const nextTheme =
+					currentTheme === 'light'
+						? 'dark'
+						: currentTheme === 'dark'
+							? 'system'
+							: 'light';
+				localStorage.setItem('theme', nextTheme);
+
+				// Actualizar clases y apariencia
+				updateThemeButtonIcon(nextTheme);
+			});
+		}
+
+		// Language control
+		const langBtn = document.querySelector('.desktop-lang-control-btn');
+		const languageToggleBtn = document.getElementById(
+			'language-toggle-btn',
+		);
+		const languageMenu = document.getElementById('language-menu');
+		const desktopAccessibilityPanel = document.getElementById(
+			'desktop-accessibility-panel',
+		);
+
+		if (langBtn && desktopAccessibilityPanel) {
+			const mainSettingsPanel =
+				desktopAccessibilityPanel.querySelectorAll(
+					'.main-settings-panel',
+				);
+			const languageSettingsPanel =
+				desktopAccessibilityPanel.querySelector(
+					'.language-settings-panel',
+				);
+			const backSettingsBtn =
+				desktopAccessibilityPanel.querySelector('.back-settings-btn');
+
+			// Simular abrir el menú de idiomas
+			langBtn.addEventListener('click', e => {
+				e.preventDefault();
+				e.stopPropagation();
+
+				// Ocultar los paneles principales
+				mainSettingsPanel.forEach(panel => {
+					panel.classList.add('hidden');
+				});
+
+				// Mostrar el panel de idiomas
+				languageSettingsPanel.classList.remove('hidden');
+			});
+
+			// Botón de regreso
+			if (backSettingsBtn) {
+				backSettingsBtn.addEventListener('click', e => {
+					e.preventDefault();
+					e.stopPropagation();
+
+					// Ocultar el panel de idiomas
+					languageSettingsPanel.classList.add('hidden');
+
+					// Mostrar los paneles principales
+					mainSettingsPanel.forEach(panel => {
+						panel.classList.remove('hidden');
+					});
+				});
+			}
+		}
+
+		// Font size controls
+		let fontSize = parseInt(localStorage.getItem('fontSize') || '100');
+		const fontSizeSpan = document.querySelector('.desktop-font-size-value');
+
+		// Initialize font size display
+		if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+
+		document
+			.querySelector('[data-action="font-decrease"]')
+			?.addEventListener('click', () => {
+				if (fontSize > 85) {
+					fontSize -= 5;
+					localStorage.setItem('fontSize', fontSize.toString());
+					document.documentElement.style.fontSize = `${fontSize}%`;
+					if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+				}
+			});
+
+		document
+			.querySelector('[data-action="font-increase"]')
+			?.addEventListener('click', () => {
+				if (fontSize < 120) {
+					fontSize += 5;
+					localStorage.setItem('fontSize', fontSize.toString());
+					document.documentElement.style.fontSize = `${fontSize}%`;
+					if (fontSizeSpan) fontSizeSpan.textContent = `${fontSize}%`;
+				}
+			});
+
+		// Contrast toggle usando el switch estilo iOS
+		const contrastToggle = document.querySelector(
+			'[data-action="contrast"]',
+		);
+		const contrastCheckbox = document.getElementById(
+			'desktop-contrast-checkbox',
+		);
+
+		if (contrastCheckbox && contrastToggle) {
+			// Cargar el estado guardado
+			const isHighContrast =
+				localStorage.getItem('high-contrast') === 'true';
+			contrastCheckbox.checked = isHighContrast;
+			document.documentElement.classList.toggle(
+				'high-contrast',
+				isHighContrast,
+			);
+
+			// Manejar los cambios
+			contrastCheckbox.addEventListener('change', () => {
+				const nextState = contrastCheckbox.checked;
+				localStorage.setItem('high-contrast', nextState.toString());
+				document.documentElement.classList.toggle(
+					'high-contrast',
+					nextState,
+				);
+			});
+
+			// También permitir hacer clic en el label
+			contrastToggle.addEventListener('click', e => {
+				if (e.target === contrastToggle) {
+					contrastCheckbox.checked = !contrastCheckbox.checked;
+					const event = new Event('change');
+					contrastCheckbox.dispatchEvent(event);
+				}
+			});
+		}
+
+		// Animations toggle usando el switch estilo iOS
+		const animationsToggle = document.querySelector(
+			'[data-action="animations"]',
+		);
+		const animationsCheckbox = document.getElementById(
+			'desktop-animations-checkbox',
+		);
+
+		if (animationsCheckbox && animationsToggle) {
+			// Cargar el estado guardado
+			const animationsEnabled =
+				localStorage.getItem('enable-animations') !== 'false';
+			animationsCheckbox.checked = animationsEnabled;
+			document.documentElement.classList.toggle(
+				'reduce-motion',
+				!animationsEnabled,
+			);
+
+			// Manejar los cambios
+			animationsCheckbox.addEventListener('change', () => {
+				const nextState = animationsCheckbox.checked;
+				localStorage.setItem('enable-animations', nextState.toString());
+				document.documentElement.classList.toggle(
+					'reduce-motion',
+					!nextState,
+				);
+			});
+
+			// También permitir hacer clic en el label
+			animationsToggle.addEventListener('click', e => {
+				if (e.target === animationsToggle) {
+					animationsCheckbox.checked = !animationsCheckbox.checked;
+					const event = new Event('change');
+					animationsCheckbox.dispatchEvent(event);
+				}
+			});
+		}
+	}
+
+	function setupNavHighlighting() {
+		// Verificamos si ya hay un IntersectionObserver manejando esto desde Header.astro
+		// Evitamos la implementación duplicada que podría causar conflictos
+
+		// Asegurémonos de que solo usamos una implementación para evitar conflictos
+		const hasHeaderObserver = document
+			.querySelector('header')
+			?.hasAttribute('data-has-observer');
+
+		// Si ya hay un observer en el header, no configuramos uno nuevo
+		if (hasHeaderObserver) return;
+
+		const sections = document.querySelectorAll('section[data-section]');
+		const navLinks = document.querySelectorAll('.nav-link');
+
+		if (!sections.length || !navLinks.length) return;
+
+		// Marcamos el header para indicar que ya tiene un observer
+		document
+			.querySelector('header')
+			?.setAttribute('data-has-observer', 'true');
+
+		const updateActiveLink = () => {
+			const scrollPosition = window.scrollY;
+			const windowHeight = window.innerHeight;
+			const documentHeight = document.documentElement.scrollHeight;
+
+			let activeSection = '';
+			let visibleSections = [];
+
+			// Check if at bottom of page
+			if (scrollPosition + windowHeight >= documentHeight - 10) {
+				activeSection = sections[sections.length - 1].id;
+			} else {
+				// Get the header height for offset calculation
+				const header = document.querySelector('header');
+				const headerHeight = header ? header.offsetHeight : 0;
+				const offset = headerHeight + 80; // Additional offset for better triggering
+
+				// Primero recopilamos todas las secciones visibles
+				sections.forEach(section => {
+					const sectionElement = section;
+					const sectionTop = sectionElement.offsetTop - offset;
+					const sectionHeight = sectionElement.offsetHeight;
+
+					if (
+						scrollPosition >= sectionTop &&
+						scrollPosition < sectionTop + sectionHeight
+					) {
+						visibleSections.push({
+							id: section.id,
+							top: sectionTop,
+						});
+					}
+				});
+
+				// Si hay múltiples secciones visibles, elegimos la que está más arriba
+				if (visibleSections.length > 0) {
+					// Ordenamos las secciones visibles por su posición vertical
+					visibleSections.sort((a, b) => a.top - b.top);
+					// La sección activa es la primera (la más alta en la página)
+					activeSection = visibleSections[0].id;
+				}
+
+				// Si no hay sección activa y estamos cerca de la parte superior, activamos la primera sección
+				if (!activeSection && scrollPosition < 100) {
+					activeSection = sections[0].id;
+				}
+			}
+
+			// Para el nuevo menú desplegable, marcar como activo el padre cuando está activo el hijo
+			function setActiveDropdownParent(sectionId) {
+				// Si es projects o certifications-preview, activar el dropdown parent
+				if (
+					sectionId === 'projects' ||
+					sectionId === 'certifications-preview'
+				) {
+					const parentDropdown = document.querySelector(
+						`.dropdown-nav-item button[data-section="${sectionId}"]`,
+					);
+					if (parentDropdown) {
+						parentDropdown.classList.add('active');
+						if (
+							document.documentElement.classList.contains('dark')
+						) {
+							parentDropdown.classList.add('text-yellow-300');
+						} else {
+							parentDropdown.classList.add('text-blue-800');
+						}
+						parentDropdown.classList.add('font-semibold');
+					}
+				}
+			}
+
+			// Primero desactivamos todos los elementos de navegación
+			navLinks.forEach(link => {
+				link.classList.remove('active');
+				link.classList.remove(
+					'text-yellow-300',
+					'dark:text-yellow-300',
+					'text-blue-800',
+					'font-semibold',
+				);
+			});
+
+			// Luego activamos solo el correspondiente a la sección activa
+			navLinks.forEach(link => {
+				const linkSection = link.getAttribute('data-section');
+
+				if (linkSection === activeSection) {
+					link.classList.add('active');
+					if (document.documentElement.classList.contains('dark')) {
+						link.classList.add('text-yellow-300');
+					} else {
+						link.classList.add('text-blue-800');
+					}
+					link.classList.add('font-semibold');
+				}
+			});
+
+			// Activar también el dropdown parent si es necessary
+			setActiveDropdownParent(activeSection);
+		};
+
+		// Handle all internal navigation links
+		const handleNavClick = e => {
+			const link = e.currentTarget;
+			const href = link.getAttribute('href');
+
+			if (!href) return;
+
+			// Only handle internal hash links
+			if (href.includes('#')) {
+				e.preventDefault();
+
+				// Extract the hash from the URL
+				const hashIndex = href.indexOf('#');
+				const targetId = href.substring(hashIndex + 1);
+
+				// Find the target section
+				const targetSection = document.getElementById(targetId);
+
+				if (targetSection) {
+					const header = document.querySelector('header');
+					const headerHeight = header ? header.offsetHeight : 0;
+					const targetPosition =
+						targetSection.offsetTop - headerHeight - 20;
+
+					window.scrollTo({
+						top: targetPosition,
+						behavior: 'smooth',
+					});
+				}
+			}
+		};
+
+		// Add click handlers to all nav links (normal and dropdown)
+		navLinks.forEach(link => {
+			link.addEventListener('click', handleNavClick);
+		});
+
+		// Añadir también a los enlaces dentro de los dropdown menus
+		document.querySelectorAll('.dropdown-menu a').forEach(link => {
+			link.addEventListener('click', e => {
+				if (link.getAttribute('href').includes('#')) {
+					handleNavClick(e);
+				}
+			});
+		});
+
+		// Throttle scroll events for performance
+		let isScrolling = false;
+		let scrollTimeout;
+
+		const handleScroll = () => {
+			if (!isScrolling) {
+				window.requestAnimationFrame(() => {
+					updateActiveLink();
+					isScrolling = false;
+				});
+				isScrolling = true;
+			}
+
+			// Clear and reset timeout for scroll end detection
+			clearTimeout(scrollTimeout);
+			scrollTimeout = window.setTimeout(() => {
+				updateActiveLink();
+			}, 100);
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('resize', updateActiveLink);
+
+		// Initial check
+		updateActiveLink();
+	}
+
+	// Inicializar cuando el DOM está listo
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', () => {
+			initDesktopAccessibilityControls(); // Asegurar que se inicialicen los controles
+		});
+	} else {
+		initDesktopAccessibilityControls(); // Inicializar inmediatamente si el DOM ya está listo
+	}
 </script>
