@@ -10,10 +10,10 @@ import type { Translations } from '../../types/translations';
 const langJson = textsJson.es;
 const translations: Translations = langJson;
 
-const { projectsTitle, projectsDescription } = translations.projectsPage || {
-  projectsTitle: 'Proyectos',
-  projectsDescription: 'Mis proyectos'
-};
+// Asegurar que projectsPage existe antes de desestructurar
+const projectsPage = translations.projectsPage || {};
+const projectsTitle = projectsPage.projectsTitle || 'Proyectos';
+const projectsDescription = projectsPage.projectsDescription || 'Mis proyectos';
 ---
 
 <Layout

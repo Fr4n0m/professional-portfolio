@@ -153,60 +153,97 @@ export const languagePriority: Language[] = [
   'es', 'es-mx', 'en', 'en-us', 'zh', 'pt', 'fr', 'de', 'ja', 'ru', 'ar', 'hi', 'it', 'ko', 'nl', 'pl', 'tr', 'hv'
 ];
 
-// Función para obtener el idioma actual
-export function getCurrentLanguage(url: URL): Language {
-  if (!url || typeof url.pathname !== 'string') {
-    console.warn('URL or pathname is undefined in getCurrentLanguage, defaulting to es');
-    return 'es';
-  }
-  
-  const pathSegments = url.pathname.split('/').filter(Boolean);
-  if (pathSegments.length === 0) return 'es'; // Default to Spanish for root
-  
-  const possibleLang = pathSegments[0];
-  return languages[possibleLang as Language] ? (possibleLang as Language) : 'es';
-}
-
-// Función para cambiar de idioma manteniendo la ruta actual
-export function getLanguageSwitchUrl(currentUrl: URL, targetLang: Language): string {
-  if (!currentUrl || typeof currentUrl.pathname !== 'string') {
-    console.warn('URL or pathname is undefined in getLanguageSwitchUrl, using default paths');
-    return targetLang === 'es' ? '/' : `/${targetLang}`;
-  }
-  
-  const currentLang = getCurrentLanguage(currentUrl);
-  const pathSegments = currentUrl.pathname.split('/').filter(Boolean);
-  
-  // Si el primer segmento es un idioma, lo removemos
-  if (languages[pathSegments[0] as Language]) {
-    pathSegments.shift();
-  }
-  
-  // Construir la nueva URL
-  if (targetLang === 'es') {
-    // Español es el default, no necesita prefijo
-    return pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/';
-  } else {
-    // Otros idiomas necesitan prefijo
-    return '/' + targetLang + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '');
+// Función para obtener el idioma actual - versión supersegura
+export function getCurrentLanguage(url: URL | string | null | undefined): Language {
+  try {
+    // Si no hay URL, devolver idioma por defecto
+    if (!url) return 'es';
+    
+    // Convertir a URL si es string
+    const urlObj = typeof url === 'string' ? new URL(url) : url;
+    
+    // Comprobar que es un objeto URL válido
+    if (!urlObj || typeof urlObj !== 'object' || typeof urlObj.pathname !== 'string') {
+      return 'es';
+    }
+    
+    // Procesar la ruta
+    const pathSegments = urlObj.pathname.split('/').filter(Boolean);
+    if (pathSegments.length === 0) return 'es'; // Default para root
+    
+    const possibleLang = pathSegments[0];
+    return languages[possibleLang as Language] ? (possibleLang as Language) : 'es';
+  } catch (error) {
+    console.error('Error en getCurrentLanguage:', error);
+    return 'es'; // En caso de error, devolver idioma por defecto
   }
 }
 
-// Función para obtener rutas alternativas para el mismo contenido en diferentes idiomas
-export function getAlternateLanguageUrls(currentUrl: URL): Record<Language, string> {
-  const result = {} as Record<Language, string>;
-  
-  if (!currentUrl || typeof currentUrl.pathname !== 'string') {
-    console.warn('URL or pathname is undefined in getAlternateLanguageUrls, using default paths');
+// Función para cambiar de idioma manteniendo la ruta actual - versión supersegura
+export function getLanguageSwitchUrl(currentUrl: URL | string | null | undefined, targetLang: Language): string {
+  try {
+    // Si no hay URL, devolver ruta simple
+    if (!currentUrl) {
+      return targetLang === 'es' ? '/' : `/${targetLang}`;
+    }
+    
+    // Convertir a URL si es string
+    const urlObj = typeof currentUrl === 'string' ? new URL(currentUrl) : currentUrl;
+    
+    // Comprobar que es un objeto URL válido
+    if (!urlObj || typeof urlObj !== 'object' || typeof urlObj.pathname !== 'string') {
+      return targetLang === 'es' ? '/' : `/${targetLang}`;
+    }
+    
+    // Obtener el idioma actual y los segmentos de la ruta de manera segura
+    const currentLang = getCurrentLanguage(urlObj);
+    let pathSegments: string[] = [];
+    
+    try {
+      pathSegments = urlObj.pathname.split('/').filter(Boolean);
+    } catch (error) {
+      console.error('Error al procesar pathname:', error);
+      return targetLang === 'es' ? '/' : `/${targetLang}`;
+    }
+    
+    // Si el primer segmento es un idioma válido, lo quitamos
+    if (pathSegments.length > 0 && languages[pathSegments[0] as Language]) {
+      pathSegments.shift();
+    }
+    
+    // Construir la nueva URL
+    if (targetLang === 'es') {
+      // Español es el default, no necesita prefijo
+      return pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/';
+    } else {
+      // Otros idiomas necesitan prefijo
+      return '/' + targetLang + (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '');
+    }
+  } catch (error) {
+    console.error('Error en getLanguageSwitchUrl:', error);
+    return targetLang === 'es' ? '/' : `/${targetLang}`; // En caso de error, devolver ruta simple
+  }
+}
+
+// Función para obtener rutas alternativas para el mismo contenido en diferentes idiomas - versión supersegura
+export function getAlternateLanguageUrls(currentUrl: URL | string | null | undefined): Record<Language, string> {
+  try {
+    const result = {} as Record<Language, string>;
+    
+    // Creamos rutas para cada idioma soportado
+    Object.keys(languages).forEach((lang) => {
+      result[lang as Language] = getLanguageSwitchUrl(currentUrl, lang as Language);
+    });
+    
+    return result;
+  } catch (error) {
+    console.error('Error en getAlternateLanguageUrls:', error);
+    
+    // En caso de error, devolver rutas básicas
+    const result = {} as Record<Language, string>;
     Object.keys(languages).forEach((lang) => {
       result[lang as Language] = lang === 'es' ? '/' : `/${lang}`;
     });
     return result;
   }
-  
-  Object.keys(languages).forEach((lang) => {
-    result[lang as Language] = getLanguageSwitchUrl(currentUrl, lang as Language);
-  });
-  
-  return result;
 }

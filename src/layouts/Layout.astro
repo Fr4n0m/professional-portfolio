@@ -24,14 +24,25 @@ const { description, title, json } = Astro.props;
 // Detectar idioma actual correctamente
 let lang = 'es'; // Valor predeterminado
 try {
-  const currentUrl = new URL(Astro.request.url);
-  lang = getCurrentLanguage(currentUrl);
+  // Intentar crear la URL
+  let url = null;
+  try {
+    if (Astro.request && Astro.request.url) {
+      url = new URL(Astro.request.url);
+    }
+  } catch (urlError) {
+    console.error('Error al crear URL:', urlError);
+  }
   
-  // Depuración (puedes quitar esto después)
-  console.log('Current URL:', currentUrl.pathname);
-  console.log('Detected language:', lang);
+  // Obtener idioma usando la función robusta
+  lang = getCurrentLanguage(url);
+  
+  if (url && url.pathname) {
+    console.log('Current URL:', url.pathname);
+    console.log('Detected language:', lang);
+  }
 } catch (error) {
-  console.error('Error al procesar la URL:', error);
+  console.error('Error general al procesar la URL:', error);
   // lang ya tiene el valor predeterminado 'es'
 }
 ---
