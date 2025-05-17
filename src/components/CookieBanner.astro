@@ -501,7 +501,9 @@ class CookieConsent {
     
     enableAnalytics() {
       // Ahora utilizamos la utilidad centralizada
-      applyAnalyticsConsent();
+      if (typeof applyAnalyticsConsent === 'function') {
+        applyAnalyticsConsent();
+      }
       
       // Desbloquear elementos relacionados con analytics
       document.querySelectorAll('.analytical-content.requires-consent').forEach((element: Element) => {
@@ -511,7 +513,9 @@ class CookieConsent {
     
     disableAnalytics() {
       // Ahora utilizamos la utilidad centralizada
-      applyAnalyticsConsent();
+      if (typeof applyAnalyticsConsent === 'function') {
+        applyAnalyticsConsent();
+      }
       
       // Bloquear elementos relacionados con analytics
       document.querySelectorAll('.analytical-content').forEach((element: Element) => {
@@ -521,7 +525,9 @@ class CookieConsent {
     
     enableFunctional() {
       // Ahora utilizamos la utilidad centralizada
-      applyAnalyticsConsent();
+      if (typeof applyAnalyticsConsent === 'function') {
+        applyAnalyticsConsent();
+      }
       
       // Habilitar widgets de redes sociales y otros elementos funcionales
       document.querySelectorAll('.social-widget.requires-consent, .functional-content.requires-consent').forEach((widget: Element) => {
@@ -537,7 +543,9 @@ class CookieConsent {
     
     disableFunctional() {
       // Ahora utilizamos la utilidad centralizada
-      applyAnalyticsConsent();
+      if (typeof applyAnalyticsConsent === 'function') {
+        applyAnalyticsConsent();
+      }
       
       // Deshabilitar widgets de redes sociales y otros elementos funcionales
       document.querySelectorAll('.social-widget, .functional-content').forEach((widget: Element) => {
@@ -555,7 +563,9 @@ class CookieConsent {
     // Registro de consentimiento para análisis internos
     logConsentEvent(action: string): void {
       // Utilizar la función centralizada de registro de consentimiento
-      logConsentEvent(action);
+      if (typeof logConsentEvent === 'function') {
+        logConsentEvent(action);
+      }
     }
   }
   
