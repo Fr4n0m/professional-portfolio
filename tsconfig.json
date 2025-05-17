@@ -4,6 +4,11 @@
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
 		"baseUrl": ".",
+		"skipLibCheck": true,
+		"noImplicitAny": false,
+		"allowJs": true,
+		"checkJs": false,
+		"noEmit": true,
 		"paths": {
 			"@components/*": ["src/components/*"],
 			"@assets/*": ["src/assets/*"],
