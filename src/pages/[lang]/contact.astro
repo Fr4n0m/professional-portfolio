@@ -3,7 +3,18 @@
  * Contact Page with language support
  */
 
-import Contact from '../../contact.astro';
+export const prerender = true;
+
+import Contact from '@pages/contact.astro';
+
+export async function getStaticPaths() {
+  // Importación dinámica para evitar circular dependencies
+  const { languages } = await import('@i18n/config');
+  
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }
+  }));
+}
 ---
 
 <Contact />

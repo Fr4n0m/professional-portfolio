@@ -5,6 +5,8 @@ import { textsJson } from '@utils/const';
 import type { Translations } from '../../../types/translations';
 import { languages } from '@i18n/config';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({
     params: { lang }

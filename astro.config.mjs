@@ -69,8 +69,12 @@ export default defineConfig({
 		format: 'file',
 		typeChecking: false,
 		transform: {
-			include: ['**/*'],
-			exclude: ['**/node_modules/**', 'src/utils/tests/**', 'src/components/tests/**']
+			include: ['**/*', '*.astro'],
+			exclude: [
+				'**/node_modules/**', 
+				'src/utils/tests/**', 
+				'src/components/tests/**'
+			]
 		}
 	}
 });
