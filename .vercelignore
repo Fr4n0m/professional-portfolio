@@ -41,6 +41,3 @@ src/pages/seo-test.astro
 src/pages/logo-badge-dimap-example.astro
 src/pages/logo-badge-example.astro
 
-# Ignorar archivos específicos con error
-src/layouts/Layout.astro
-

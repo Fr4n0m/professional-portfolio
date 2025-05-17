@@ -19,6 +19,15 @@ export default defineConfig({
 			formats: ['image/avif', 'image/webp'],
 		},
 		include: ['**/*'], // Incluir todos los archivos en el despliegue
+		exclude: [
+			'**/node_modules/**',
+			'**/dist/**',
+			'src/utils/tests/**',
+			'src/components/tests/**',
+			'src/pages/seo-test.astro',
+			'src/pages/logo-badge-dimap-example.astro',
+			'src/pages/logo-badge-example.astro'
+		]
 	}),
 	i18n: {
 		defaultLocale: 'es',
