@@ -2,6 +2,7 @@
 import { languages, getCurrentLanguage, getLanguageSwitchUrl } from '@i18n/config';
 import { textsJson } from '@utils/const';
 import type { Translations } from '../types/translations';
+import type { Language } from '@i18n/config';
 
 // Obtener el idioma actual
 const currentLang = getCurrentLanguage(Astro.url);
@@ -28,7 +29,7 @@ const languageNames = translations.languageNames || {};
 		<ul class='grid grid-cols-1 gap-2'>
 			{
 				Object.entries(languages).map(([code, langInfo]) => {
-					const url = getLanguageSwitchUrl(Astro.url, code);
+					const url = getLanguageSwitchUrl(Astro.url, code as any);
 					const isActive = code === currentLang;
 					return (
 					<li class='language-menu-option px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors duration-150' data-lang={code} data-active={isActive}>

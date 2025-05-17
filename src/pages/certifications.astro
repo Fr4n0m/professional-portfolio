@@ -1,6 +1,16 @@
 ---
-import { redirect } from 'astro';
-
 // Redirigir a la página de certificaciones en español
-return redirect('/es/certifications');
+const redirectTo = '/es/certifications';
+
+function redirectResponse() {
+  return new Response(null, {
+    status: 302,
+    headers: {
+      'Location': redirectTo
+    }
+  });
+}
+
+const response = redirectResponse();
+export const GET = () => response;
 ---

@@ -4,9 +4,10 @@ export interface Props {
   variant?: 'primary' | 'secondary';
   download?: boolean;
   children: any;
+  class?: string;
 }
 
-const { href, variant = 'secondary', download = false, ...props } = Astro.props;
+const { href, variant = 'secondary', download = false, class: className = '', ...props } = Astro.props;
 
 const variantClasses = {
   primary: 'bg-blue-600 hover:bg-blue-700 text-white',
@@ -17,7 +18,7 @@ const variantClasses = {
 <a 
   href={href}
   download={download}
-  class={`${variantClasses[variant]} px-3 py-1 rounded-md flex items-center gap-2 transition-colors font-medium`}
+  class={`${variantClasses[variant]} px-3 py-1 rounded-md flex items-center gap-2 transition-colors font-medium ${className}`}
   {...props}
 >
   <slot />

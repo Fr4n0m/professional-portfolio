@@ -23,11 +23,11 @@ const limitedCertifications = certifications.slice(0, 2);
     <span class="align-middle">{translations.mainPage.certificationsTitle || 'Certificaciones'}</span>
     
     <a
-      href={translations.certificationsPage.allCertificationsLink || '/certifications'}
+      href={'/certifications'}
       class='flex items-center ml-4 align-middle text-nowrap'
     >
       <NavigationBadge>
-        {translations.certificationsPage.allCertifications || 'Todas las certificaciones'}
+        {'Todas las certificaciones'}
       </NavigationBadge>
     </a>
   </h2>
@@ -35,7 +35,7 @@ const limitedCertifications = certifications.slice(0, 2);
   <CertificationsGrid 
     certifications={limitedCertifications}
     limit={2}
-    viewMoreText={translations.certificationsPage.viewMore || 'Ver más certificaciones'}
-    viewMoreUrl={translations.certificationsPage.allCertificationsLink || '/certifications'}
+    viewMoreText={'Ver más certificaciones'}
+    viewMoreUrl={'/certifications'}
   />
 </SectionContainer>

@@ -67,7 +67,9 @@ const translations = {
 };
 
 // Seleccionar el conjunto de traducciones según el idioma actual
-const t = translations[currentLang] || translations.es;
+type SupportedLanguage = 'es' | 'en' | 'pt';
+const typedLang = (currentLang as SupportedLanguage) || 'es';
+const t = translations[typedLang] || translations.es;
 ---
 
 <div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-700 z-50 transition-transform duration-500 transform translate-y-full">
@@ -185,7 +187,28 @@ const t = translations[currentLang] || translations.es;
 
 <script>
   // Sistema de gestión de cookies
-  class CookieConsent {
+interface CookieConsentConfig {
+  consentName: string;
+  consentVersion: string;
+  cookieExpiry: number;
+  cookieDomain: string;
+  banner: HTMLElement | null;
+  simpleView: HTMLElement | null;
+  detailedView: HTMLElement | null;
+  acceptBtn: HTMLElement | null;
+  rejectBtn: HTMLElement | null;
+  preferencesBtn: HTMLElement | null;
+  savePreferencesBtn: HTMLElement | null;
+  closePreferencesBtn: HTMLElement | null;
+  categoryInputs: {
+    essential: HTMLInputElement | null;
+    analytical: HTMLInputElement | null;
+    functional: HTMLInputElement | null;
+    advertising: HTMLInputElement | null;
+  };
+}
+
+class CookieConsent implements CookieConsentConfig {
     constructor() {
       this.consentName = 'cookie_consent';
       this.consentVersion = '1.0.0'; // Incrementar cuando cambie la política
@@ -338,12 +361,12 @@ const t = translations[currentLang] || translations.es;
       this.logConsentEvent('custom_preferences');
     }
     
-    saveConsent(consent) {
+    saveConsent(consent: any): void {
       // Guardar el consentimiento en una cookie
       this.setCookie(this.consentName, JSON.stringify(consent), this.cookieExpiry, this.cookieDomain);
     }
     
-    applyConsent(consent) {
+    applyConsent(consent: any): void {
       // Aplicar configuraciones basadas en el consentimiento
       
       // Analíticas (Google Analytics, etc.)
@@ -442,7 +465,7 @@ const t = translations[currentLang] || translations.es;
     
     // Métodos de utilidad para cookies
     
-    setCookie(name, value, days, domain) {
+    setCookie(name: string, value: string, days: number, domain: string): void {
       const date = new Date();
       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
       const expires = "expires=" + date.toUTCString();
@@ -456,7 +479,7 @@ const t = translations[currentLang] || translations.es;
       document.cookie = cookieString;
     }
     
-    getCookie(name) {
+    getCookie(name: string): string | null {
       const nameEq = name + "=";
       const cookies = document.cookie.split(';');
       
@@ -471,7 +494,7 @@ const t = translations[currentLang] || translations.es;
     }
     
     // Registro de consentimiento para análisis internos (opcional)
-    logConsentEvent(action) {
+    logConsentEvent(action: string): void {
       // Solo registrar si las analíticas están permitidas
       const consent = JSON.parse(this.getCookie(this.consentName) || '{}');
       if (consent.categories?.essential) {

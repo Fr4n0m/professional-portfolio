@@ -12,7 +12,7 @@ import { getCurrentLanguage } from '@i18n/config';
 interface Props {
 	title: string;
 	description: string;
-	json: Translations;
+	json?: Translations;
 }
 
 const { description, title, json } = Astro.props;
@@ -98,7 +98,8 @@ console.log('Detected language:', lang);
   // Inicializador de animaciones globales con GSAP
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { initControlCenter } from '../scripts/controlCenter.js';
+  // Usar ruta relativa correcta
+  import { initControlCenter } from '@scripts/controlCenter';
   import { initLazyLoadFallbacks } from '../components/fallbacks/loadingFallbacks.js';
   
   // Registramos ScrollTrigger para animaciones de scroll

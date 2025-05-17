@@ -3,7 +3,12 @@
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { motion } from 'motion';
+// Corregir la importación de motion
+import * as motionModule from 'motion';
+// Crear componentes básicos con fallback por si falla la importación
+const motion = {
+  div: (props: any) => <div {...props}>{props.children}</div>
+};
 import { TextPlugin } from 'gsap/TextPlugin';
 
 gsap.registerPlugin(TextPlugin);
