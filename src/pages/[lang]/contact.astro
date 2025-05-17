@@ -5,7 +5,10 @@
 
 export const prerender = true;
 
-import Contact from '@pages/contact.astro';
+import Layout from '@layouts/Layout.astro';
+import { getCurrentLanguage } from '@i18n/config';
+import { textsJson } from '@utils/const';
+import Contact from '@components/Contact/Contact.astro';
 
 export async function getStaticPaths() {
   // Importación dinámica para evitar circular dependencies
@@ -15,6 +18,19 @@ export async function getStaticPaths() {
     params: { lang }
   }));
 }
+
+// Obtener el idioma de la ruta
+const { lang } = Astro.params;
+
+// Cargar las traducciones para este idioma
+const langCode = lang || 'es';
+const json = textsJson[langCode] || textsJson.es;
+
+// Título y descripción 
+const title = json?.contactPage?.title || 'Contact';
+const description = json?.contactPage?.description || 'Contact Form';
 ---
 
-<Contact />
+<Layout title={title} description={description} json={json}>
+  <Contact lang={langCode} json={json} />
+</Layout>
