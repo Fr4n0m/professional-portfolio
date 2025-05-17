@@ -8,8 +8,8 @@ import SocialLinks from '@components/Hero/SocialLinks.astro';
 import type { Translations } from '../../types/translations';
 
 interface Props {
-  translations: Translations;
-  lang?: string;
+	translations: Translations;
+	lang?: string;
 }
 
 const { translations, lang } = Astro.props;
@@ -22,45 +22,39 @@ const personalInfo = translations.personalInfo;
 
 // Crear objeto de información para el ProfileTooltip
 const info = {
-  name: personalInfo.name,
-  role: personalInfo.role,
-  email: personalInfo.mail,
-  location: personalInfo.location,
-  specialties: 'React, Next.js, Node.js, Astro, TypeScript',
-  additionalTech: 'Tailwind CSS, MongoDB, PostgreSQL, Git'
+	name: personalInfo.name,
+	role: personalInfo.role,
+	email: personalInfo.mail,
+	location: personalInfo.location,
+	specialties: 'React, Next.js, Node.js, Astro, TypeScript',
+	additionalTech: 'Tailwind CSS, MongoDB, PostgreSQL, Git',
 };
 ---
 
 <!-- Componente de imagen de perfil con tooltip -->
-<ProfileImage 
-  imageSrc='/assets/images/foto-carnet.webp'
-  altText='Fr4n0m photo'
->
-  <ProfileTooltip {...info} />
+<ProfileImage imageSrc='assets/images/foto-carnet.webp' altText='Fr4n0m photo'>
+	<ProfileTooltip {...info} />
 </ProfileImage>
 
 <!-- Título y badge -->
-<HeroTitle 
-  title={hero.heroTitle}
-  badgeText={hero.heroBadge}
-/>
+<HeroTitle title={hero.heroTitle} badgeText={hero.heroBadge} />
 
 <!-- Descripción -->
-<HeroDescription 
-  description1={hero.heroDescription1}
-  description2={hero.heroDescription2}
-  description3={hero.heroDescription3}
-  location={personalInfo.location}
+<HeroDescription
+	description1={hero.heroDescription1}
+	description2={hero.heroDescription2}
+	description3={hero.heroDescription3}
+	location={personalInfo.location}
 />
 
 <!-- Enlaces sociales -->
-<SocialLinks 
-  linkedinText={socialMedia.linkedin}
-  githubText={socialMedia.github}
-  mailText={personalInfo.mail}
-  pillTitle={socialPill.socialPillTitle}
-  mailPillTitle={socialPill.sendMailSocialPill}
-  email={personalInfo.mail}
-  copyButton={copyButton}
-  lang={lang}
+<SocialLinks
+	linkedinText={socialMedia.linkedin}
+	githubText={socialMedia.github}
+	mailText={personalInfo.mail}
+	pillTitle={socialPill.socialPillTitle}
+	mailPillTitle={socialPill.sendMailSocialPill}
+	email={personalInfo.mail}
+	copyButton={copyButton}
+	lang={lang}
 />

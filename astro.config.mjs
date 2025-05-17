@@ -7,7 +7,19 @@ import vercel from '@astrojs/vercel/serverless';
 export default defineConfig({
 	integrations: [tailwind(), react()],
 	output: 'server',
-	adapter: vercel(),
+	adapter: vercel({
+		analytics: true, // Habilita analytics de Vercel
+		speedInsights: true, // Habilita Speed Insights
+		webAnalytics: {
+			enabled: true, // Habilita Web Analytics
+		},
+		imagesConfig: {
+			sizes: [640, 750, 828, 1080, 1200, 1920],
+			domains: [],
+			formats: ['image/avif', 'image/webp'],
+		},
+		include: ['**/*'], // Incluir todos los archivos en el despliegue
+	}),
 	i18n: {
 		defaultLocale: 'es',
 		locales: [

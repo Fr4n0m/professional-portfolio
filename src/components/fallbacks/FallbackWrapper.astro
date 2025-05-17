@@ -1,0 +1,72 @@
+---
+// FallbackWrapper.astro - Componente para gestionar fallbacks en componentes Astro
+
+interface Props {
+    type?: 'skeleton' | 'shimmer' | 'image' | 'content';
+    id?: string;
+    class?: string;
+}
+
+const { 
+    type = 'content',
+    id = undefined,
+    class: className = ''
+} = Astro.props;
+---
+
+<div
+    id={id}
+    class:list={['fallback-wrapper', className]}
+    data-fallback={type}
+>
+    <slot />
+</div>
+
+<style>
+    .fallback-wrapper {
+        position: relative;
+        min-height: 20px;
+        min-width: 20px;
+    }
+</style>
+
+<script>
+    import { initLazyLoadFallbacks } from './loadingFallbacks.js';
+
+    // Inicializar fallbacks cuando el DOM está listo
+    document.addEventListener('DOMContentLoaded', () => {
+        // Seleccionar todos los contenedores de fallback
+        const fallbackContainers = document.querySelectorAll('[data-fallback]');
+        
+        // Aplicar fallbacks con opciones según el tipo
+        fallbackContainers.forEach(container => {
+            const fallbackType = container.getAttribute('data-fallback');
+            
+            let options = {
+                shimmerEffect: true,
+                placeholderColor: 'rgba(200, 200, 200, 0.3)'
+            };
+            
+            // Opciones personalizadas por tipo
+            switch (fallbackType) {
+                case 'skeleton':
+                    options.shimmerEffect = false;
+                    break;
+                case 'shimmer':
+                    options.shimmerEffect = true;
+                    options.placeholderColor = 'rgba(230, 230, 230, 0.4)';
+                    break;
+                case 'image':
+                    options.shimmerEffect = true;
+                    options.placeholderColor = 'rgba(220, 220, 220, 0.3)';
+                    break;
+                default:
+                    // Opciones predeterminadas para 'content'
+                    break;
+            }
+            
+            // Inicializar fallback con lazy loading
+            initLazyLoadFallbacks(container, options);
+        });
+    });
+</script>

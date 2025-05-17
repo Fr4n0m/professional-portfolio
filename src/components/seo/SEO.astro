@@ -1,0 +1,172 @@
+---
+// SEO.astro - Componente completo para gestionar todas las etiquetas SEO
+// Este componente no modifica contenido ni estilos, solo añade metadatos
+
+interface Props {
+  title: string;
+  description: string;
+  lang: string;
+  type?: string;
+  image?: string;
+  imageAlt?: string;
+  canonicalURL?: URL | string;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  siteAuthor?: string;
+  siteOwner?: string;
+  noIndex?: boolean;
+  structuredData?: object;
+  keywords?: string[];
+}
+
+const {
+  title,
+  description,
+  lang,
+  type = "website",
+  image = "/assets/images/Fr4n0m Photo.webp",
+  imageAlt = "Fr4n0m Portfolio",
+  canonicalURL = Astro.url,
+  ogTitle = title,
+  ogDescription = description,
+  twitterTitle = title,
+  twitterDescription = description,
+  siteAuthor = "Francisco José Rodríguez Martínez",
+  siteOwner = "Francisco José Rodríguez Martínez",
+  noIndex = false,
+  structuredData = null,
+  keywords = [
+    "desarrollador full stack",
+    "full stack developer",
+    "web development",
+    "desarrollo web",
+    "frontend",
+    "backend",
+    "portfolio",
+    "React",
+    "JavaScript",
+    "TypeScript",
+    "Astro",
+    "programador web",
+    "Málaga",
+    "Francisco José Rodríguez Martínez"
+  ]
+} = Astro.props;
+
+// Preparamos la URL canónica
+const canonicalURLStr = canonicalURL instanceof URL 
+  ? canonicalURL.toString() 
+  : canonicalURL;
+
+// Determinar la URL absoluta para la imagen de OG
+const absoluteImageUrl = new URL(image, Astro.site || Astro.url).toString();
+
+// Determinar la URL en lenguaje alternativo para hreflang
+const currentUrl = new URL(Astro.url);
+const pathSegments = currentUrl.pathname.split('/').filter(Boolean);
+const isLangRoute = pathSegments.length > 0 && pathSegments[0] in ["en", "es", "fr", "de", "it", "ja", "zh", "hi", "ar", "pt", "ru", "ko", "nl", "pl", "tr", "hv"];
+
+// Crear hreflang URLs para idiomas soportados
+const getHrefLangUrl = (targetLang: string) => {
+  const newUrl = new URL(currentUrl);
+  const path = newUrl.pathname;
+
+  if (targetLang === 'es') {
+    // Para español (idioma por defecto), eliminamos cualquier prefijo de idioma
+    if (isLangRoute) {
+      newUrl.pathname = path.replace(/^\/[a-z]{2}/, '');
+    }
+  } else {
+    // Para otros idiomas, aseguramos que el prefijo es correcto
+    if (isLangRoute) {
+      newUrl.pathname = path.replace(/^\/[a-z]{2}/, `/${targetLang}`);
+    } else {
+      newUrl.pathname = `/${targetLang}${path}`;
+    }
+  }
+  
+  return newUrl.toString();
+};
+
+// Lista de idiomas para hreflang
+const supportedLanguages = ["es", "en", "fr", "de", "it", "ja", "zh", "hi", "ar", "pt", "ru", "ko", "nl", "pl", "tr", "hv"];
+
+// Creación de objeto structured data para schema.org
+let schema = structuredData;
+
+// Si no se proporciona schema personalizado, creamos uno predeterminado
+if (!schema) {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": title,
+    "url": canonicalURLStr,
+    "description": description,
+    "author": {
+      "@type": "Person",
+      "name": siteAuthor,
+      "jobTitle": "Full Stack Developer",
+      "url": canonicalURL instanceof URL ? canonicalURL.origin : new URL(canonicalURL).origin,
+      "knowsAbout": ["Web Development", "JavaScript", "TypeScript", "React", "Astro", "Node.js"]
+    },
+    "inLanguage": lang
+  };
+}
+---
+
+<!-- SEO básico -->
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content={siteAuthor} />
+{keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+<link rel="canonical" href={canonicalURLStr} />
+
+<!-- Control de indexación -->
+{noIndex && <meta name="robots" content="noindex, nofollow" />}
+{!noIndex && <meta name="robots" content="index, follow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURLStr} />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:image" content={absoluteImageUrl} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content={title.split(" | ")[0] || title} />
+<meta property="og:locale" content={lang === "en" ? "en_US" : `${lang}_${lang.toUpperCase()}`} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURLStr} />
+<meta property="twitter:title" content={twitterTitle} />
+<meta property="twitter:description" content={twitterDescription} />
+<meta property="twitter:image" content={absoluteImageUrl} />
+<meta property="twitter:image:alt" content={imageAlt} />
+
+<!-- Idiomas alternativos (hreflang) para SEO internacional -->
+{supportedLanguages.map(supportedLang => (
+  <link 
+    rel="alternate" 
+    hreflang={supportedLang} 
+    href={getHrefLangUrl(supportedLang)} 
+  />
+))}
+<link rel="alternate" hreflang="x-default" href={getHrefLangUrl('es')} />
+
+<!-- Schema.org structured data para rich snippets -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+
+<!-- Mobile App capabilidades (PWA ready) -->
+<meta name="application-name" content={title.split(" | ")[0] || title} />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content={title.split(" | ")[0] || title} />
+<meta name="format-detection" content="telephone=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="color-scheme" content="light dark" />
+
+<!-- Viewport y soporte para pantallas de alta resolución -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />

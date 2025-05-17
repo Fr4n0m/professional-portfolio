@@ -1,5 +1,7 @@
 ---
 // ProfileImage.astro - Componente para manejar la imagen de perfil en ambas versiones (móvil y desktop)
+import ImageWithFallback from '../fallbacks/ImageWithFallback.astro';
+
 interface Props {
   imageSrc: string;
   altText: string;
@@ -12,10 +14,12 @@ const { imageSrc, altText } = Astro.props;
 <div class="block md:hidden mb-5">
   <div class="flex justify-center">
     <div class="hero-profile-frame-mobile profile-image-xs profile-image-sm profile-image-md profile-image-landscape">
-      <img
-        class="w-full h-full object-cover object-center rounded-[19px]"
+      <ImageWithFallback
         src={imageSrc}
         alt={altText}
+        class="w-full h-full object-cover object-center rounded-[19px]"
+        lazy={false}
+        fadeIn={false}
       />
     </div>
   </div>
@@ -26,10 +30,12 @@ const { imageSrc, altText } = Astro.props;
   <div class="flex justify-start">
     <div class="hero-profile-wrapper hover-capable-device">
       <div class="hero-profile-frame profile-image-lg profile-image-xl profile-image-2xl profile-image-3xl profile-image-4xl profile-image-landscape">
-        <img
-          class="w-full h-full object-cover object-center rounded-[19px]"
+        <ImageWithFallback
           src={imageSrc}
           alt={altText}
+          class="w-full h-full object-cover object-center rounded-[19px]"
+          lazy={false}
+          fadeIn={false}
         />
       </div>
       <slot />

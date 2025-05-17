@@ -10,6 +10,8 @@ import Projects from '@components/Projects/Projects.astro';
 import Skills from '@components/Skills.astro';
 import Fire from '@icons/Fire.astro';
 import CertificationsPreview from '@components/sections/CertificationsPreview.astro';
+import FallbackWrapper from '@components/fallbacks/FallbackWrapper.astro';
+import ImageWithFallback from '@components/fallbacks/ImageWithFallback.astro';
 
 import { commonClasses } from '@utils/cssClasses';
 import type { Translations } from '../../types/translations';
@@ -34,7 +36,10 @@ const experience = translations.experience;
 			<Fire class={commonClasses.iconSize.xl} />
 			{skills.skillsTitle}
 		</h2>
-		<Skills />
+		<!-- Añadimos fallback con efecto shimmer a Skills -->
+		<FallbackWrapper type="shimmer">
+			<Skills />
+		</FallbackWrapper>
 	</SectionContainer>
 
 	<SectionContainer id='experience' class={commonClasses.section.paddingAlt}>
@@ -42,7 +47,10 @@ const experience = translations.experience;
 			<Briefcase class={commonClasses.iconSize.xl} />
 			{experience.workExperience}
 		</h2>
-		<Experience translations={translations} />
+		<!-- Añadimos fallback al componente Experience -->
+		<FallbackWrapper type="content">
+			<Experience translations={translations} />
+		</FallbackWrapper>
 	</SectionContainer>
 
 	<!-- Quitamos el SectionContainer redundante y dejamos solo el componente Projects -->

@@ -1,0 +1,113 @@
+---
+// FallbacksTest.astro - Componente para probar los fallbacks en diferentes idiomas
+
+import FallbackWrapper from './FallbackWrapper.astro';
+import ImageWithFallback from './ImageWithFallback.astro';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+// Texto informativo dependiente del idioma
+const texts = {
+  es: {
+    title: "Prueba de Fallbacks",
+    description: "Este componente está mostrando diferentes tipos de fallbacks en idioma español.",
+    imageAlt: "Imagen de prueba con fallback"
+  },
+  en: {
+    title: "Fallbacks Test",
+    description: "This component is showing different types of fallbacks in English language.",
+    imageAlt: "Test image with fallback"
+  },
+  fr: {
+    title: "Test de Fallbacks",
+    description: "Ce composant montre différents types de fallbacks en français.",
+    imageAlt: "Image de test avec fallback"
+  },
+  de: {
+    title: "Fallbacks Test",
+    description: "Diese Komponente zeigt verschiedene Arten von Fallbacks auf Deutsch.",
+    imageAlt: "Testbild mit Fallback"
+  }
+};
+
+// Usar texto en el idioma actual o en inglés como fallback
+const currentText = texts[lang as keyof typeof texts] || texts.en;
+---
+
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mt-8 mb-8">
+  <h3 class="text-xl font-bold mb-4">{currentText.title}</h3>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Prueba 1: Shimmer Effect -->
+    <div>
+      <h4 class="font-medium mb-2">Shimmer Effect</h4>
+      <FallbackWrapper type="shimmer" class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+        <p class="mb-4">{currentText.description}</p>
+        <div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-2"></div>
+        <div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-1/2"></div>
+      </FallbackWrapper>
+    </div>
+    
+    <!-- Prueba 2: Skeleton Loader -->
+    <div>
+      <h4 class="font-medium mb-2">Skeleton Loader</h4>
+      <FallbackWrapper type="skeleton" class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+        <div class="space-y-3">
+          <div class="h-5 bg-gray-200 dark:bg-gray-600 rounded"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-4/6"></div>
+        </div>
+      </FallbackWrapper>
+    </div>
+    
+    <!-- Prueba 3: Image Fallback -->
+    <div>
+      <h4 class="font-medium mb-2">Image Fallback</h4>
+      <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg overflow-hidden">
+        <ImageWithFallback 
+          src="/assets/images/Fr4n0m Photo.webp" 
+          alt={currentText.imageAlt}
+          width="200"
+          height="200"
+          class="w-full h-auto rounded-lg"
+          fadeIn={true}
+        />
+      </div>
+    </div>
+    
+    <!-- Prueba 4: Content Fallback -->
+    <div>
+      <h4 class="font-medium mb-2">Content Fallback</h4>
+      <FallbackWrapper type="content" class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+        <div class="space-y-3">
+          <p class="text-sm">{lang}: {currentText.description}</p>
+          <ul class="text-sm list-disc list-inside">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+          </ul>
+        </div>
+      </FallbackWrapper>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initLazyLoadFallbacks } from './loadingFallbacks.js';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar todos los fallbacks en este componente específico
+    const fallbacks = document.querySelectorAll('[data-fallback]');
+    
+    // Inicializar cada fallback con un retraso para que se vea mejor el efecto
+    fallbacks.forEach((fallback, index) => {
+      setTimeout(() => {
+        initLazyLoadFallbacks(fallback);
+      }, index * 500);  // Retraso escalonado para cada fallback
+    });
+  });
+</script>

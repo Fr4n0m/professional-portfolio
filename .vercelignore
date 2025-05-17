@@ -1,0 +1,32 @@
+# Archivos y directorios ignorados en el despliegue de Vercel
+
+# Archivos de desarrollo
+.DS_Store
+.vscode/
+.idea/
+*.log
+.git/
+.gitignore
+
+# Backups y archivos temporales
+backup-components/
+backup-static-pages/
+*.tmp
+*.bak
+
+# Dependencias y compilados 
+node_modules/
+dist/
+.astro/
+
+# Scripts y archivos de desarrollo
+scripts/
+cleanup-old-json.js
+fix-translations.ts
+install-gsap.sh
+migrate-all-languages.js
+migrate-languages.ts
+
+# Archivos de configuración local
+.env.local
+.env.development

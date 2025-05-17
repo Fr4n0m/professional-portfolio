@@ -1,0 +1,25 @@
+---
+// SimpleHeroImage.astro - Componente simplificado para la imagen del héroe
+interface Props {
+  imageSrc: string;
+  altText: string;
+}
+
+const { imageSrc, altText } = Astro.props;
+---
+
+<div style="width:150px; height:150px; border-radius:19px; overflow:hidden; border:2px solid #e5e7eb;">
+  <img 
+    src={imageSrc}
+    alt={altText}
+    style="width:100%; height:100%; object-fit:cover; display:block;"
+    loading="eager"
+  />
+</div>
+
+<style>
+  /* Estilos para modo oscuro */
+  :global(.dark) div {
+    border-color: #374151;
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import { languages } from '@i18n/config';
+
+// Define las páginas estáticas base del sitio
+const pages = [
+  { url: '', priority: 1.0 }, // Home page
+  { url: 'projects', priority: 0.9 },
+  { url: 'certifications', priority: 0.8 },
+  { url: 'contact', priority: 0.7 },
+  { url: 'settings', priority: 0.3 },
+  { url: 'privacy-policy', priority: 0.4 },
+  { url: 'cookies-policy', priority: 0.4 }
+];
+
+// Obtenemos la base URL del sitio desde astro.config o el entorno
+const siteUrl = import.meta.env.SITE || 'https://professional-portfolio-nine.vercel.app';
+const siteUrlObj = new URL(siteUrl);
+const hostname = siteUrlObj.hostname;
+
+// Función para generar las entradas del sitemap 
+function generateSitemapEntries() {
+  let entries = [];
+
+  // Agregamos todas las URL para español (default)
+  pages.forEach(page => {
+    const url = page.url === '' ? '/' : `/${page.url}`;
+    entries.push({
+      url: url,
+      lastmod: new Date().toISOString(),
+      priority: page.priority,
+      changefreq: "weekly"
+    });
+  });
+
+  // Ahora agregamos todas las URL para cada idioma con sus prefijos
+  Object.keys(languages).forEach(lang => {
+    if (lang !== 'es') { // Español ya está cubierto arriba
+      pages.forEach(page => {
+        const url = page.url === '' ? `/${lang}` : `/${lang}/${page.url}`;
+        entries.push({
+          url: url,
+          lastmod: new Date().toISOString(),
+          priority: page.priority,
+          changefreq: "weekly"
+        });
+      });
+    }
+  });
+
+  return entries;
+}
+
+const sitemapEntries = generateSitemapEntries();
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  {sitemapEntries.map(entry => (
+    <url>
+      <loc>{siteUrl}{entry.url}</loc>
+      <lastmod>{entry.lastmod}</lastmod>
+      <changefreq>{entry.changefreq}</changefreq>
+      <priority>{entry.priority}</priority>
+      
+      <!-- Referencias de idioma alternativo -->
+      {Object.keys(languages).map(lang => {
+        const path = entry.url.replace(/^\/[a-z]{2}/, '');
+        const langPath = lang === 'es' 
+          ? path 
+          : `/${lang}${path === '/' ? '' : path}`;
+        
+        return (
+          <xhtml:link 
+            rel="alternate" 
+            hreflang={lang} 
+            href={`${siteUrl}${langPath}`} 
+          />
+        );
+      })}
+      <xhtml:link 
+        rel="alternate" 
+        hreflang="x-default" 
+        href={`${siteUrl}${entry.url.replace(/^\/[a-z]{2}/, '')}`} 
+      />
+      
+      <!-- Imagen principal para Google Image Sitemaps -->
+      <image:image>
+        <image:loc>{siteUrl}/assets/images/Fr4n0m Photo.webp</image:loc>
+        <image:title>Fr4n0m - Full Stack Developer</image:title>
+      </image:image>
+    </url>
+  ))}
+</urlset>

@@ -5,6 +5,7 @@ import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
 import AlternativeFooter from '@components/layout/AlternativeFooter.astro';
 import KeyboardManager from '@components/KeyboardManager.astro';
+import SEO from '@components/seo/SEO.astro';
 import type { Translations } from '../types/translations';
 import { getCurrentLanguage } from '@i18n/config';
 
@@ -29,10 +30,23 @@ console.log('Detected language:', lang);
 <html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
 	<head>
 		<meta charset='UTF-8' />
-		<meta name='description' content={description} />
 		<meta name='viewport' content='width=device-width' />
 		<link rel='icon' type='image/svg+xml' href={lang === "es" ? "/favicon.png" : `/${lang}/favicon.png`} />
 		<meta name='generator' content={Astro.generator} />
+		
+		<!-- Componente SEO mejorado -->
+		<SEO 
+			title={title}
+			description={description}
+			lang={lang}
+			type="website"
+			image="/assets/images/Fr4n0m Photo.webp"
+			imageAlt="Fr4n0m - Full Stack Developer"
+			siteAuthor="Francisco José Rodríguez Martínez"
+		/>
+		
+		<!-- Enlace al manifest.json para PWA -->
+		<link rel="manifest" href="/manifest.json" />
 		
 		<!-- Precargar fuentes japonesas si el idioma es japonés -->
 		{lang === 'ja' && (
@@ -85,6 +99,7 @@ console.log('Detected language:', lang);
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import { initControlCenter } from '../scripts/controlCenter.js';
+  import { initLazyLoadFallbacks } from '../components/fallbacks/loadingFallbacks.js';
   
   // Registramos ScrollTrigger para animaciones de scroll
   gsap.registerPlugin(ScrollTrigger);
@@ -95,6 +110,12 @@ console.log('Detected language:', lang);
   document.addEventListener('DOMContentLoaded', () => {
     // Inicializar el Control Center
     initControlCenter();
+    
+    // Inicializar fallbacks automáticamente
+    const fallbackContainers = document.querySelectorAll('[data-fallback]');
+    fallbackContainers.forEach(container => {
+      initLazyLoadFallbacks(container);
+    });
     
     // Elementos con clase para animaciones de entrada
     const fadeElements = document.querySelectorAll('.gsap-fade-in');

@@ -1,0 +1,17 @@
+---
+const siteUrl = import.meta.env.SITE || 'https://professional-portfolio-nine.vercel.app';
+---
+
+User-agent: *
+Allow: /
+
+# Bloquear páginas específicas para bots si es necesario
+# Disallow: /ejemplo-contacto
+# Disallow: /logo-badge-example
+
+# Bloquear todas las páginas en desarrollo (si se detecta por la URL)
+User-agent: *
+Disallow: /if-hostname-is-localhost-or-staging
+
+# Sitemaps
+Sitemap: {siteUrl}/sitemap.xml

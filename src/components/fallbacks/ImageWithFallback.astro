@@ -1,0 +1,94 @@
+---
+// ImageWithFallback.astro - Componente para imágenes con fallback integrado
+
+interface Props {
+    src: string;
+    alt: string;
+    width?: number | string;
+    height?: number | string;
+    class?: string;
+    lazy?: boolean;
+    fadeIn?: boolean;
+    placeholderColor?: string;
+}
+
+const { 
+    src, 
+    alt, 
+    width, 
+    height, 
+    class: className = '',
+    lazy = true,
+    fadeIn = true,
+    placeholderColor = 'rgba(200, 200, 200, 0.3)'
+} = Astro.props;
+
+// Determinar dimensiones
+const widthAttr = width ? { width } : {};
+const heightAttr = height ? { height } : {};
+
+// Generar un ID único para este elemento
+const uniqueId = `img-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class={`image-fallback-container ${className}`} id={uniqueId} data-fallback="image">
+    <img 
+        src={src} 
+        alt={alt}
+        {...widthAttr}
+        {...heightAttr}
+        loading={lazy ? "lazy" : "eager"}
+        decoding="async"
+        class={fadeIn ? 'fallback-fade' : ''}
+    />
+</div>
+
+<style>
+    .image-fallback-container {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+    }
+    
+    .fallback-fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    
+    /* Imagen cargada */
+    .fallback-fade.loaded {
+        opacity: 1;
+    }
+</style>
+
+<script define:vars={{ uniqueId, placeholderColor, fadeIn }}>
+    import { createImageFallback } from './loadingFallbacks.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById(uniqueId);
+        
+        if (container) {
+            const imgElement = container.querySelector('img');
+            
+            if (imgElement) {
+                // Crear fallback
+                createImageFallback(imgElement, {
+                    placeholderColor,
+                    fadeInDuration: fadeIn ? 0.5 : 0,
+                    shimmerEffect: true
+                });
+                
+                // Manejar la carga de la imagen si fadeIn está habilitado
+                if (fadeIn) {
+                    if (imgElement.complete) {
+                        imgElement.classList.add('loaded');
+                    } else {
+                        imgElement.addEventListener('load', () => {
+                            imgElement.classList.add('loaded');
+                        });
+                    }
+                }
+            }
+        }
+    });
+</script>
