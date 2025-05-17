@@ -1,0 +1,82 @@
+---
+// TermsOfUseModal.astro - Modal de Términos de Uso con estilo Apple/macOS
+import LegalModal from '../LegalModal.astro';
+
+// Metadatos legales
+const meta = {
+  companyName: "Francisco José Romero",
+  domain: "fr4n0m-portfolio.dev",
+  email: "Fran11799@outlook.com",
+  lastUpdate: "15 de mayo de 2025"
+};
+---
+
+<LegalModal id="terms-of-use-modal" title="Términos de Uso" lastUpdate={meta.lastUpdate}>
+  <section class="space-y-6">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">1. Aceptación de los términos</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Al acceder y utilizar {meta.domain} ("el Sitio"), aceptas estar legalmente vinculado por estos Términos de Uso. Si no estás de acuerdo con alguno de estos términos, no debes utilizar el Sitio.
+      </p>
+    </div>
+    
+    <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">2. Propiedad intelectual</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Todo el contenido, diseño, gráficos, código, interfaces, logotipos, imágenes y material presentado en este Sitio está protegido por leyes de propiedad intelectual y pertenece a {meta.companyName}.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mt-2">
+        Se te concede una licencia limitada, no exclusiva y no transferible para acceder y utilizar el Sitio únicamente para uso personal y no comercial.
+      </p>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">3. Uso del sitio</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Al utilizar este Sitio, te comprometes a:
+      </p>
+      <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+        <li>Utilizar el Sitio de forma legal y de manera que no infrinja los derechos de terceros</li>
+        <li>No intentar obtener acceso no autorizado a nuestros sistemas o redes</li>
+        <li>No utilizar el Sitio para fines ilegales o no autorizados</li>
+        <li>No transmitir virus, malware u otro código malicioso</li>
+        <li>No interferir o interrumpir la integridad o el rendimiento del Sitio</li>
+      </ul>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">4. Enlaces a sitios de terceros</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          El Sitio puede contener enlaces a sitios web de terceros. Estos enlaces son proporcionados únicamente para tu conveniencia. No tenemos control sobre el contenido de estos sitios y no somos responsables de ellos ni de ninguna pérdida o daño que pueda surgir de tu uso de los mismos.
+        </p>
+      </div>
+      
+      <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">5. Limitación de responsabilidad</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          El Sitio y su contenido se proporcionan "tal cual" y "según disponibilidad", sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos que el Sitio sea ininterrumpido, oportuno, seguro o libre de errores.
+        </p>
+      </div>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">6. Cambios a estos términos</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Podemos actualizar estos Términos de Uso periódicamente. Te recomendamos revisar esta página regularmente para estar al tanto de cualquier cambio. El uso continuado del Sitio después de cualquier cambio constituye tu aceptación de los nuevos términos.
+      </p>
+    </div>
+    
+    <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm flex items-center">
+      <svg class="w-10 h-10 text-blue-500 dark:text-blue-400 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">7. Contacto</h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Si tienes alguna pregunta sobre estos Términos de Uso, puedes contactarnos a través de <a href={`mailto:${meta.email}`} class="text-blue-600 dark:text-blue-400 hover:underline">{meta.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</LegalModal>

@@ -1,0 +1,147 @@
+---
+// LegalFooter.astro - Enlaces legales para el pie de página
+import { getCurrentLanguage } from '@i18n/config';
+
+// Obtener el idioma actual
+const currentLang = getCurrentLanguage(Astro.url);
+
+// Traducciones
+const translations = {
+  es: {
+    privacyPolicy: "Política de Privacidad",
+    cookiesPolicy: "Política de Cookies",
+    termsOfUse: "Términos de Uso",
+    managePreferences: "Gestionar preferencias"
+  },
+  en: {
+    privacyPolicy: "Privacy Policy",
+    cookiesPolicy: "Cookies Policy",
+    termsOfUse: "Terms of Use",
+    managePreferences: "Manage preferences"
+  },
+  pt: {
+    privacyPolicy: "Política de Privacidade",
+    cookiesPolicy: "Política de Cookies",
+    termsOfUse: "Termos de Uso",
+    managePreferences: "Gerenciar preferências"
+  }
+};
+
+// Seleccionar el conjunto de traducciones según el idioma actual
+type SupportedLanguage = 'es' | 'en' | 'pt';
+const typedLang = (currentLang as SupportedLanguage) || 'es';
+const t = translations[typedLang] || translations.es;
+---
+
+<div class="legal-links flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm mt-2 mb-3">
+  <button class="legal-link text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" data-modal="privacy-policy-modal">
+    {t.privacyPolicy}
+  </button>
+  <span class="text-gray-400 dark:text-gray-600">•</span>
+  <button class="legal-link text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" data-modal="cookies-policy-modal">
+    {t.cookiesPolicy}
+  </button>
+  <span class="text-gray-400 dark:text-gray-600">•</span>
+  <button class="legal-link text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" data-modal="terms-of-use-modal">
+    {t.termsOfUse}
+  </button>
+  <span class="text-gray-400 dark:text-gray-600">•</span>
+  <button id="manage-cookie-preferences" class="legal-link text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+    {t.managePreferences}
+  </button>
+</div>
+
+<script>
+  // Importamos GSAP para animaciones estilo Apple
+  import { gsap } from 'gsap';
+  
+  // Manejar clics en enlaces para abrir modales
+  document.addEventListener('DOMContentLoaded', () => {
+    // Botones de modales
+    document.querySelectorAll('[data-modal]').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modalId = (button as HTMLElement).dataset.modal;
+        if (modalId && typeof window.openModal === 'function') {
+          // Efecto de rebote ligero al hacer clic
+          gsap.fromTo(
+            button,
+            { scale: 0.97 },
+            { scale: 1, duration: 0.3, ease: "back.out(2)" }
+          );
+          window.openModal(modalId);
+        }
+      });
+    });
+    
+    // Botón para gestionar preferencias de cookies
+    document.getElementById('manage-cookie-preferences')?.addEventListener('click', () => {
+      // Efecto de rebote ligero al hacer clic
+      const button = document.getElementById('manage-cookie-preferences');
+      if (button) {
+        gsap.fromTo(
+          button,
+          { scale: 0.97 },
+          { scale: 1, duration: 0.3, ease: "back.out(2)" }
+        );
+      }
+      
+      // Buscar el banner de cookies
+      const cookieBanner = document.getElementById('cookie-consent-banner');
+      const simpleBanner = document.getElementById('cookie-banner-simple');
+      const detailedBanner = document.getElementById('cookie-banner-detailed');
+      
+      if (cookieBanner && simpleBanner && detailedBanner) {
+        // Mostrar el banner y el panel detallado
+        cookieBanner.classList.remove('translate-y-full');
+        simpleBanner.classList.add('hidden');
+        detailedBanner.classList.remove('hidden');
+        
+        // Animar la apertura del banner
+        gsap.fromTo(
+          cookieBanner,
+          { y: '100%' },
+          { 
+            y: 0, 
+            duration: 0.5, 
+            ease: 'power3.out',
+            onComplete: () => {
+              // Scroll hacia el banner
+              cookieBanner.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        );
+      } else {
+        // Si el banner no existe, recargamos la página para que aparezca
+        localStorage.removeItem('cookie_consent');
+        window.location.reload();
+      }
+    });
+  });
+</script>
+
+<style>
+  .legal-link {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+  }
+  
+  .legal-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -1px;
+    left: 50%;
+    background-color: currentColor;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  
+  .legal-link:hover::after {
+    width: 100%;
+    opacity: 0.7;
+  }
+</style>

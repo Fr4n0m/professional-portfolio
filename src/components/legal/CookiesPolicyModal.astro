@@ -1,0 +1,190 @@
+---
+// CookiesPolicyModal.astro - Modal de Política de Cookies con estilo Apple/macOS
+import LegalModal from '../LegalModal.astro';
+import { getCurrentLanguage } from '@i18n/config';
+
+// Obtener el idioma actual
+const currentLang = getCurrentLanguage(Astro.url);
+
+// Metadatos legales
+const meta = {
+  companyName: "Francisco José Romero",
+  domain: "fr4n0m-portfolio.dev",
+  email: "Fran11799@outlook.com",
+  lastUpdate: "15 de mayo de 2025"
+};
+---
+
+<LegalModal id="cookies-policy-modal" title="Política de Cookies" lastUpdate={meta.lastUpdate}>
+  <section class="space-y-6">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">1. ¿Qué son las cookies?</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Las cookies son pequeños archivos de texto que los sitios web que visitas colocan en tu ordenador, móvil u otro dispositivo para almacenar información sobre tu navegación en ese sitio. Las cookies son ampliamente utilizadas para hacer que los sitios web funcionen de manera más eficiente.
+      </p>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">2. Tipos de cookies que utilizamos</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm">
+          <h4 class="font-medium text-gray-800 dark:text-gray-200 mb-2 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span class="group relative cursor-help">
+              Esenciales
+              <div class="absolute z-10 w-48 p-2 mt-1 text-xs transform scale-0 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-white rounded-xl shadow-lg opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm transition-all duration-200 left-0 top-full">
+                Las cookies esenciales siempre están activadas ya que son necesarias para el funcionamiento básico del sitio.
+                <div class="absolute -top-1 left-4 transform -rotate-45 w-2 h-2 bg-white dark:bg-gray-800 border-t border-l border-gray-200/50 dark:border-gray-700/50"></div>
+              </div>
+            </span>
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Necesarias para el funcionamiento del sitio web. No pueden ser desactivadas.
+          </p>
+        </div>
+        
+        <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm">
+          <h4 class="font-medium text-gray-800 dark:text-gray-200 mb-2 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+            Analíticas
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Permiten medir y analizar el uso que hacen los usuarios del servicio.
+          </p>
+        </div>
+        
+        <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm">
+          <h4 class="font-medium text-gray-800 dark:text-gray-200 mb-2 flex items-center">
+            <svg class="w-5 h-5 mr-2 text-purple-500 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            Funcionales
+          </h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Permiten recordar información para que el usuario acceda al servicio con determinadas características.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">3. Cookies específicas utilizadas</h3>
+      <div class="overflow-x-auto bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="bg-gray-100 dark:bg-gray-700">
+              <th class="px-4 py-2 text-left">Nombre</th>
+              <th class="px-4 py-2 text-left">Finalidad</th>
+              <th class="px-4 py-2 text-left">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-3">cookie_consent</td>
+              <td class="px-4 py-3">Almacena preferencias de cookies</td>
+              <td class="px-4 py-3">Esencial</td>
+            </tr>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-3">theme</td>
+              <td class="px-4 py-3">Preferencia de tema (claro/oscuro)</td>
+              <td class="px-4 py-3">Funcional</td>
+            </tr>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-3">language</td>
+              <td class="px-4 py-3">Preferencia de idioma</td>
+              <td class="px-4 py-3">Funcional</td>
+            </tr>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-3">_ga, _gid, _gat</td>
+              <td class="px-4 py-3">Análisis de uso del sitio</td>
+              <td class="px-4 py-3">Analítica</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">4. Gestión de cookies</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Puedes gestionar las cookies a través de:
+      </p>
+      <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300 mb-3">
+        <li>Nuestro panel de preferencias de cookies</li>
+        <li>La configuración de tu navegador</li>
+      </ul>
+      <div class="flex justify-center mt-4">
+        <button id="open-cookie-settings-modal" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition-colors text-sm font-medium flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          Gestionar preferencias de cookies
+        </button>
+      </div>
+    </div>
+    
+    <div class="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-900/20 backdrop-blur-sm">
+      <p class="text-gray-700 dark:text-gray-300">
+        Para la versión completa de nuestra política de cookies, por favor visita <a href={`/${currentLang !== 'es' ? currentLang + '/' : ''}cookies-policy`} class="text-blue-600 dark:text-blue-400 hover:underline font-medium">esta página</a>.
+      </p>
+    </div>
+  </section>
+</LegalModal>
+
+<script>
+  // Importamos GSAP para animaciones estilo Apple
+  import { gsap } from 'gsap';
+  
+  document.getElementById('open-cookie-settings-modal')?.addEventListener('click', () => {
+    // Efecto de rebote ligero al hacer clic
+    const button = document.getElementById('open-cookie-settings-modal');
+    if (button) {
+      gsap.fromTo(
+        button,
+        { scale: 0.95 },
+        { scale: 1, duration: 0.3, ease: "back.out(1.7)" }
+      );
+    }
+    
+    // Cerrar este modal
+    if (typeof window.closeModal === 'function') {
+      window.closeModal('cookies-policy-modal');
+    }
+    
+    // Buscar el banner de cookies
+    const cookieBanner = document.getElementById('cookie-consent-banner');
+    const simpleBanner = document.getElementById('cookie-banner-simple');
+    const detailedBanner = document.getElementById('cookie-banner-detailed');
+    
+    if (cookieBanner && simpleBanner && detailedBanner) {
+      // Mostrar el banner y el panel detallado
+      cookieBanner.classList.remove('translate-y-full');
+      simpleBanner.classList.add('hidden');
+      detailedBanner.classList.remove('hidden');
+      
+      // Animar la apertura del banner
+      gsap.fromTo(
+        cookieBanner,
+        { y: '100%' },
+        { 
+          y: 0, 
+          duration: 0.5, 
+          ease: 'power3.out',
+          onComplete: () => {
+            // Scroll hacia el banner
+            cookieBanner.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      );
+    } else {
+      // Si el banner no existe, recargamos la página para que aparezca
+      localStorage.removeItem('cookie_consent');
+      window.location.reload();
+    }
+  });
+</script>

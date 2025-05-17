@@ -52,6 +52,18 @@ El proyecto utiliza un enfoque modular para la creación de componentes, dividie
 - **HeroAnimation**: Dividido en TitleAnimation, ButtonsAnimation y DecorationElement.
 - **Projects**: Dividido en ProjectHeader, ProjectTags y ProjectFooter.
 
+## Gestión de Cookies y Privacidad
+
+Este proyecto incluye un sistema completo de gestión de cookies y consentimiento de usuario, cumpliendo con normativas como GDPR y CCPA. Características principales:
+
+- **Banner de consentimiento de cookies** personalizable y multilingüe
+- **Panel de preferencias** para que los usuarios seleccionen sus categorías de cookies
+- **Carga diferida** de contenido que requiere consentimiento
+- **Integración con servicios analíticos** (Google Analytics, Facebook Pixel)
+- **Documentación detallada** sobre implementación en `/docs/COOKIE-COMPLIANCE.md`
+
+Para más información, consulta la documentación específica en la carpeta `/docs`.
+
 ## Scripts disponibles
 
 ```bash

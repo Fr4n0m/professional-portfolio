@@ -1,0 +1,97 @@
+---
+// PrivacyPolicyModal.astro - Modal de Política de Privacidad con estilo Apple/macOS
+import LegalModal from '../LegalModal.astro';
+import { getCurrentLanguage } from '@i18n/config';
+
+// Obtener el idioma actual
+const currentLang = getCurrentLanguage(Astro.url);
+
+// Metadatos legales
+const meta = {
+  companyName: "Francisco José Romero",
+  domain: "fr4n0m-portfolio.dev",
+  email: "Fran11799@outlook.com",
+  lastUpdate: "15 de mayo de 2025"
+};
+---
+
+<LegalModal id="privacy-policy-modal" title="Política de Privacidad" lastUpdate={meta.lastUpdate}>
+  <section class="space-y-6">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">1. Introducción</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Bienvenido a la Política de Privacidad del sitio web {meta.domain} ("el Sitio"), operado por {meta.companyName}. Respetamos tu privacidad y estamos comprometidos con la protección de tus datos personales.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mt-2">
+        Esta política de privacidad tiene como objetivo informarte sobre cómo recopilamos, usamos, compartimos y protegemos tu información personal cuando visitas nuestro Sitio o interactúas con nuestros servicios.
+      </p>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">2. Responsable del tratamiento</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        {meta.companyName} es el responsable del tratamiento de los datos personales que nos proporciones.
+      </p>
+      <p class="text-gray-600 dark:text-gray-300 mt-1">
+        <strong>Datos de contacto:</strong>
+      </p>
+      <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+        <li>Nombre: {meta.companyName}</li>
+        <li>Correo electrónico: <a href={`mailto:${meta.email}`} class="text-blue-600 dark:text-blue-400 hover:underline">{meta.email}</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">3. Datos que recopilamos</h3>
+      
+      <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm">
+        <h4 class="font-medium text-gray-800 dark:text-gray-200 mb-1">3.1 Información que nos proporcionas</h4>
+        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300 mb-3">
+          <li><strong>Datos de contacto:</strong> Cuando te comunicas con nosotros a través del formulario de contacto.</li>
+          <li><strong>Datos profesionales:</strong> Si nos envías tu currículum o solicitas una posición laboral.</li>
+          <li><strong>Comentarios y opiniones:</strong> Cualquier comentario o feedback que decidas compartir.</li>
+        </ul>
+      </div>
+      
+      <div class="p-4 rounded-xl bg-gray-100/60 dark:bg-gray-800/60 backdrop-blur-sm mt-3">
+        <h4 class="font-medium text-gray-800 dark:text-gray-200 mb-1">3.2 Información que recopilamos automáticamente</h4>
+        <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+          <li><strong>Datos técnicos:</strong> Dirección IP, tipo de navegador, configuración de zona horaria, etc.</li>
+          <li><strong>Datos de uso:</strong> Información sobre cómo utilizas nuestro Sitio.</li>
+          <li><strong>Cookies y tecnologías similares:</strong> Para más información, consulta nuestra <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline" onclick="window.openModal('cookies-policy-modal'); return false;">Política de Cookies</a>.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">4. Tus derechos</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Bajo la legislación de protección de datos, tienes los siguientes derechos:
+      </p>
+      <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300">
+        <li>Derecho de acceso a tus datos personales</li>
+        <li>Derecho de rectificación de datos inexactos</li>
+        <li>Derecho de supresión de tus datos</li>
+        <li>Derecho a la limitación del tratamiento</li>
+        <li>Derecho a la portabilidad de los datos</li>
+        <li>Derecho de oposición al tratamiento</li>
+      </ul>
+      <p class="text-gray-600 dark:text-gray-300 mt-2">
+        Para ejercer estos derechos, contáctanos a través de <a href={`mailto:${meta.email}`} class="text-blue-600 dark:text-blue-400 hover:underline">{meta.email}</a>.
+      </p>
+    </div>
+    
+    <div>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">5. Cambios a esta política</h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        Podemos actualizar esta política de privacidad periódicamente. La versión más reciente estará siempre disponible en nuestro Sitio con la fecha de la última actualización.
+      </p>
+    </div>
+    
+    <div class="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-900/20 backdrop-blur-sm">
+      <p class="text-gray-700 dark:text-gray-300">
+        Para la versión completa de nuestra política de privacidad, por favor visita <a href={`/${currentLang !== 'es' ? currentLang + '/' : ''}privacy-policy`} class="text-blue-600 dark:text-blue-400 hover:underline font-medium">esta página</a>.
+      </p>
+    </div>
+  </section>
+</LegalModal>

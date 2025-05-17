@@ -9,15 +9,13 @@ const currentLang = getCurrentLanguage(Astro.url);
 const translations = {
   es: {
     title: "Respetamos tu privacidad",
-    description: "Utilizamos cookies para mejorar tu experiencia, mostrar contenido personalizado, analizar el tráfico del sitio web y comprender de dónde vienen nuestros visitantes. Al hacer clic en 'Aceptar todas', consientes nuestro uso de cookies para estos fines.",
+    description: "Utilizamos cookies para mejorar tu experiencia, mostrar contenido personalizado y analizar el tráfico del sitio web. Al hacer clic en 'Aceptar todas', consientes nuestro uso de cookies para estos fines.",
     essential: "Esenciales",
     essentialDescription: "Necesarias para el funcionamiento del sitio web. No pueden ser desactivadas.",
     analytical: "Analíticas",
     analyticalDescription: "Nos ayudan a entender cómo los visitantes interactúan con el sitio web.",
     functional: "Funcionales",
     functionalDescription: "Permiten funciones adicionales como compartir en redes sociales.",
-    advertising: "Publicidad",
-    advertisingDescription: "Se utilizan para mostrar anuncios relevantes basados en tus intereses.",
     acceptAll: "Aceptar todas",
     acceptSelected: "Aceptar seleccionadas",
     rejectAll: "Rechazar todas",
@@ -28,15 +26,13 @@ const translations = {
   },
   en: {
     title: "We respect your privacy",
-    description: "We use cookies to enhance your experience, display personalized content, analyze website traffic, and understand where our visitors come from. By clicking 'Accept all', you consent to our use of cookies for these purposes.",
+    description: "We use cookies to enhance your experience, display personalized content, and analyze website traffic. By clicking 'Accept all', you consent to our use of cookies for these purposes.",
     essential: "Essential",
     essentialDescription: "Necessary for the website to function. Cannot be disabled.",
     analytical: "Analytical",
     analyticalDescription: "Help us understand how visitors interact with the website.",
     functional: "Functional",
     functionalDescription: "Enable additional functions such as social media sharing.",
-    advertising: "Advertising",
-    advertisingDescription: "Used to show relevant ads based on your interests.",
     acceptAll: "Accept all",
     acceptSelected: "Accept selected",
     rejectAll: "Reject all",
@@ -47,15 +43,13 @@ const translations = {
   },
   pt: {
     title: "Respeitamos sua privacidade",
-    description: "Usamos cookies para melhorar sua experiência, exibir conteúdo personalizado, analisar o tráfego do site e entender de onde vêm nossos visitantes. Ao clicar em 'Aceitar todos', você consente com o uso de cookies para esses fins.",
+    description: "Usamos cookies para melhorar sua experiência, exibir conteúdo personalizado e analisar o tráfego do site. Ao clicar em 'Aceitar todos', você consente com o uso de cookies para esses fins.",
     essential: "Essenciais",
     essentialDescription: "Necessários para o funcionamento do site. Não podem ser desativados.",
     analytical: "Analíticos",
     analyticalDescription: "Nos ajudam a entender como os visitantes interagem com o site.",
     functional: "Funcionais",
     functionalDescription: "Habilitam funções adicionais como compartilhamento em redes sociais.",
-    advertising: "Publicidade",
-    advertisingDescription: "Usados para mostrar anúncios relevantes com base nos seus interesses.",
     acceptAll: "Aceitar todos",
     acceptSelected: "Aceitar selecionados",
     rejectAll: "Rejeitar todos",
@@ -72,7 +66,7 @@ const typedLang = (currentLang as SupportedLanguage) || 'es';
 const t = translations[typedLang] || translations.es;
 ---
 
-<div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-700 z-50 transition-transform duration-500 transform translate-y-full">
+<div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 z-50 transition-transform duration-500 transform translate-y-full mb-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg border-t border-gray-200/20 dark:border-gray-700/20">
   <!-- Banner simple inicial -->
   <div id="cookie-banner-simple" class="p-4 md:p-6">
     <div class="max-w-6xl mx-auto">
@@ -82,13 +76,13 @@ const t = translations[typedLang] || translations.es;
           <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base max-w-3xl">{t.description}</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-          <button id="cookie-preferences-btn" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-sm font-medium">
+          <button id="cookie-preferences-btn" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors text-sm font-medium">
             {t.preferences}
           </button>
-          <button id="cookie-reject-btn" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-sm font-medium">
+          <button id="cookie-reject-btn" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors text-sm font-medium">
             {t.rejectAll}
           </button>
-          <button id="cookie-accept-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium">
+          <button id="cookie-accept-btn" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition-colors text-sm font-medium">
             {t.acceptAll}
           </button>
         </div>
@@ -107,8 +101,8 @@ const t = translations[typedLang] || translations.es;
     <div class="max-w-6xl mx-auto">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">{t.preferences}</h2>
-        <button id="cookie-close-preferences" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="cookie-close-preferences" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -116,68 +110,60 @@ const t = translations[typedLang] || translations.es;
       
       <div class="space-y-4 mb-6">
         <!-- Cookies esenciales -->
-        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+        <div class="p-4 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200/20 dark:border-gray-700/20">
           <div class="flex items-center justify-between">
             <div>
               <h3 class="font-semibold text-gray-900 dark:text-white">{t.essential}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">{t.essentialDescription}</p>
             </div>
-            <div class="relative inline-flex items-center">
-              <input type="checkbox" checked disabled class="sr-only peer" id="cookie-essential">
-              <div class="w-11 h-6 bg-gray-300 peer-checked:bg-gray-400 rounded-full peer"></div>
-              <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"></div>
+            <div class="switch-parent relative group">
+              <input type="checkbox" class="checkbox" id="cookie-essential" checked disabled aria-label={t.essential} />
+              <label class="switch switch-checked-disabled" for="cookie-essential">
+                <span class="slider"></span>
+              </label>
+              <div class="absolute top-full right-0 mt-1 w-60 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-white text-xs p-2 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-10 backdrop-blur-sm">
+                Las cookies esenciales son necesarias para el funcionamiento básico del sitio y no pueden ser desactivadas.
+                <div class="absolute -top-1 right-4 transform -rotate-45 w-2 h-2 bg-white dark:bg-gray-800 border-t border-l border-gray-200/50 dark:border-gray-700/50"></div>
+              </div>
             </div>
           </div>
         </div>
         
         <!-- Cookies analíticas -->
-        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+        <div class="p-4 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200/20 dark:border-gray-700/20">
           <div class="flex items-center justify-between">
             <div>
               <h3 class="font-semibold text-gray-900 dark:text-white">{t.analytical}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">{t.analyticalDescription}</p>
             </div>
-            <div class="relative inline-flex items-center">
-              <input type="checkbox" class="sr-only peer" id="cookie-analytical">
-              <div class="w-11 h-6 bg-gray-300 peer-checked:bg-blue-600 rounded-full peer"></div>
-              <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"></div>
+            <div class="switch-parent">
+              <input type="checkbox" class="checkbox" id="cookie-analytical" aria-label={t.analytical} />
+              <label class="switch" for="cookie-analytical">
+                <span class="slider"></span>
+              </label>
             </div>
           </div>
         </div>
         
         <!-- Cookies funcionales -->
-        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+        <div class="p-4 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200/20 dark:border-gray-700/20">
           <div class="flex items-center justify-between">
             <div>
               <h3 class="font-semibold text-gray-900 dark:text-white">{t.functional}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">{t.functionalDescription}</p>
             </div>
-            <div class="relative inline-flex items-center">
-              <input type="checkbox" class="sr-only peer" id="cookie-functional">
-              <div class="w-11 h-6 bg-gray-300 peer-checked:bg-blue-600 rounded-full peer"></div>
-              <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"></div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Cookies de publicidad -->
-        <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="font-semibold text-gray-900 dark:text-white">{t.advertising}</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400">{t.advertisingDescription}</p>
-            </div>
-            <div class="relative inline-flex items-center">
-              <input type="checkbox" class="sr-only peer" id="cookie-advertising">
-              <div class="w-11 h-6 bg-gray-300 peer-checked:bg-blue-600 rounded-full peer"></div>
-              <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"></div>
+            <div class="switch-parent">
+              <input type="checkbox" class="checkbox" id="cookie-functional" aria-label={t.functional} />
+              <label class="switch" for="cookie-functional">
+                <span class="slider"></span>
+              </label>
             </div>
           </div>
         </div>
       </div>
       
       <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-end">
-        <button id="cookie-save-preferences" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium">
+        <button id="cookie-save-preferences" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition-colors text-sm font-medium">
           {t.save}
         </button>
       </div>
@@ -187,6 +173,10 @@ const t = translations[typedLang] || translations.es;
 
 <script>
   // Sistema de gestión de cookies
+  import { getCookie, setCookie, logConsentEvent } from '@utils/cookieUtils';
+  import { applyAnalyticsConsent } from '@utils/analyticsUtils';
+  import { gsap } from 'gsap';
+
 interface CookieConsentConfig {
   consentName: string;
   consentVersion: string;
@@ -204,7 +194,6 @@ interface CookieConsentConfig {
     essential: HTMLInputElement | null;
     analytical: HTMLInputElement | null;
     functional: HTMLInputElement | null;
-    advertising: HTMLInputElement | null;
   };
 }
 
@@ -225,11 +214,10 @@ class CookieConsent {
     essential: HTMLInputElement | null;
     analytical: HTMLInputElement | null;
     functional: HTMLInputElement | null;
-    advertising: HTMLInputElement | null;
   };
     constructor() {
       this.consentName = 'cookie_consent';
-      this.consentVersion = '1.0.0'; // Incrementar cuando cambie la política
+      this.consentVersion = '1.0.2'; // Incrementado para la nueva versión con estilo Apple
       this.cookieExpiry = 365; // Días
       this.cookieDomain = window.location.hostname;
       
@@ -243,10 +231,9 @@ class CookieConsent {
       this.closePreferencesBtn = document.getElementById('cookie-close-preferences');
       
       this.categoryInputs = {
-        essential: document.getElementById('cookie-essential'),
-        analytical: document.getElementById('cookie-analytical'),
-        functional: document.getElementById('cookie-functional'),
-        advertising: document.getElementById('cookie-advertising')
+        essential: document.getElementById('cookie-essential') as HTMLInputElement,
+        analytical: document.getElementById('cookie-analytical') as HTMLInputElement,
+        functional: document.getElementById('cookie-functional') as HTMLInputElement
       };
       
       this.init();
@@ -254,9 +241,9 @@ class CookieConsent {
     
     init() {
       // Comprueba si ya existe consentimiento
-      const existingConsent = this.getCookie(this.consentName);
+      const existingConsent = getCookie(this.consentName);
       
-      if (!existingConsent || JSON.parse(existingConsent).version !== this.consentVersion) {
+      if (!existingConsent || (existingConsent && JSON.parse(existingConsent).version !== this.consentVersion)) {
         // Mostrar el banner si no hay consentimiento o si la versión ha cambiado
         this.showBanner();
       } else {
@@ -278,39 +265,87 @@ class CookieConsent {
       this.savePreferencesBtn?.addEventListener('click', () => this.savePreferences());
       
       // Si hay inputs de categorías, establece sus valores iniciales
-      const existingConsent = this.getCookie(this.consentName);
+      const existingConsent = getCookie(this.consentName);
       if (existingConsent) {
-        const consent = JSON.parse(existingConsent);
-        Object.entries(this.categoryInputs).forEach(([category, input]) => {
-          if (input && category !== 'essential') { // Esenciales siempre activas
-            input.checked = consent.categories[category];
+        try {
+          const consent = JSON.parse(existingConsent);
+          if (consent && consent.categories) {
+            Object.entries(this.categoryInputs).forEach(([category, input]) => {
+              if (input && category !== 'essential' && consent.categories[category] !== undefined) { // Esenciales siempre activas
+                input.checked = consent.categories[category];
+              }
+            });
           }
-        });
+        } catch (e) {
+          console.error('Error parsing consent cookie:', e);
+        }
       }
     }
     
     showBanner() {
       // Mostrar el banner con animación
       setTimeout(() => {
-        this.banner.classList.remove('translate-y-full');
+        if (this.banner) {
+          gsap.to(this.banner, {
+            y: 0, 
+            duration: 0.5,
+            ease: 'power3.out',
+            onStart: () => {
+              this.banner.classList.remove('translate-y-full');
+            }
+          });
+        }
       }, 1000); // Retraso de 1 segundo para no interrumpir inmediatamente
     }
     
     hideBanner() {
       // Ocultar el banner con animación
-      this.banner.classList.add('translate-y-full');
+      if (this.banner) {
+        gsap.to(this.banner, {
+          y: '100%',
+          duration: 0.4,
+          ease: 'power3.in',
+          onComplete: () => {
+            this.banner.classList.add('translate-y-full');
+          }
+        });
+      }
     }
     
     showPreferences() {
-      // Mostrar vista detallada
-      this.simpleView.classList.add('hidden');
-      this.detailedView.classList.remove('hidden');
+      // Mostrar vista detallada con animación
+      if (this.simpleView && this.detailedView) {
+        gsap.to(this.simpleView, {
+          opacity: 0,
+          duration: 0.2,
+          onComplete: () => {
+            this.simpleView.classList.add('hidden');
+            this.detailedView.classList.remove('hidden');
+            gsap.fromTo(this.detailedView, 
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' }
+            );
+          }
+        });
+      }
     }
     
     hidePreferences() {
-      // Volver a vista simple
-      this.detailedView.classList.add('hidden');
-      this.simpleView.classList.remove('hidden');
+      // Volver a vista simple con animación
+      if (this.detailedView && this.simpleView) {
+        gsap.to(this.detailedView, {
+          opacity: 0,
+          duration: 0.2,
+          onComplete: () => {
+            this.detailedView.classList.add('hidden');
+            this.simpleView.classList.remove('hidden');
+            gsap.fromTo(this.simpleView, 
+              { opacity: 0 },
+              { opacity: 1, duration: 0.3 }
+            );
+          }
+        });
+      }
     }
     
     acceptAll() {
@@ -322,14 +357,16 @@ class CookieConsent {
         categories: {
           essential: true,
           analytical: true,
-          functional: true,
-          advertising: true
+          functional: true
         }
       };
       
       this.saveConsent(consent);
       this.applyConsent(consent);
       this.hideBanner();
+      
+      // Animación de éxito
+      this.showSuccessNotification("Preferencias guardadas");
       
       // Registrar evento de consentimiento para análisis
       this.logConsentEvent('accept_all');
@@ -344,14 +381,16 @@ class CookieConsent {
         categories: {
           essential: true, // Las esenciales siempre se aceptan
           analytical: false,
-          functional: false,
-          advertising: false
+          functional: false
         }
       };
       
       this.saveConsent(consent);
       this.applyConsent(consent);
       this.hideBanner();
+      
+      // Animación de éxito
+      this.showSuccessNotification("Preferencias guardadas");
       
       // Registrar evento de consentimiento para análisis
       this.logConsentEvent('reject_all');
@@ -366,8 +405,7 @@ class CookieConsent {
         categories: {
           essential: true, // Las esenciales siempre se aceptan
           analytical: this.categoryInputs.analytical?.checked || false,
-          functional: this.categoryInputs.functional?.checked || false,
-          advertising: this.categoryInputs.advertising?.checked || false
+          functional: this.categoryInputs.functional?.checked || false
         }
       };
       
@@ -375,17 +413,28 @@ class CookieConsent {
       this.applyConsent(consent);
       this.hideBanner();
       
+      // Animación de éxito
+      this.showSuccessNotification("Preferencias guardadas");
+      
       // Registrar evento de consentimiento para análisis
       this.logConsentEvent('custom_preferences');
     }
     
     saveConsent(consent: any): void {
-      // Guardar el consentimiento en una cookie
-      this.setCookie(this.consentName, JSON.stringify(consent), this.cookieExpiry, this.cookieDomain);
+      // Guardar el consentimiento en una cookie usando utilidades
+      setCookie(this.consentName, JSON.stringify(consent), {
+        days: this.cookieExpiry,
+        domain: this.cookieDomain,
+        secure: window.location.protocol === 'https:',
+        sameSite: 'Lax'
+      });
     }
     
     applyConsent(consent: any): void {
       // Aplicar configuraciones basadas en el consentimiento
+      if (!consent || !consent.categories) {
+        return; // No aplicar si no hay datos de consentimiento válidos
+      }
       
       // Analíticas (Google Analytics, etc.)
       if (consent.categories.analytical) {
@@ -400,141 +449,107 @@ class CookieConsent {
       } else {
         this.disableFunctional();
       }
+    }
+    
+    // Mostrar notificación de éxito en estilo macOS
+    showSuccessNotification(message: string): void {
+      const notification = document.createElement('div');
+      notification.className = 'fixed z-50 bottom-4 right-4 bg-gray-800/90 dark:bg-gray-700/90 text-white rounded-lg p-3 shadow-xl backdrop-blur-sm border border-gray-700/10 dark:border-gray-600/10 transform transition-all duration-300 opacity-0 translate-y-4';
       
-      // Publicidad (Google Ads, Facebook Pixel, etc.)
-      if (consent.categories.advertising) {
-        this.enableAdvertising();
-      } else {
-        this.disableAdvertising();
-      }
+      // Agregar ícono de éxito
+      notification.innerHTML = `
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>${message}</span>
+        </div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Animar entrada
+      gsap.to(notification, {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: 'back.out(1.7)',
+        onComplete: () => {
+          // Luego animar salida después de 3 segundos
+          setTimeout(() => {
+            gsap.to(notification, {
+              opacity: 0,
+              y: 10,
+              duration: 0.3,
+              ease: 'power3.in',
+              onComplete: () => {
+                notification.remove();
+              }
+            });
+          }, 3000);
+        }
+      });
     }
     
     // Métodos para habilitar/deshabilitar servicios específicos
     
     enableAnalytics() {
-      // Ejemplo: Inicializar Google Analytics
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          analytics_storage: 'granted'
-        });
-      }
+      // Ahora utilizamos la utilidad centralizada
+      applyAnalyticsConsent();
+      
+      // Desbloquear elementos relacionados con analytics
+      document.querySelectorAll('.analytical-content.requires-consent').forEach((element: Element) => {
+        element.classList.remove('consent-blocked');
+      });
     }
     
     disableAnalytics() {
-      // Ejemplo: Deshabilitar Google Analytics
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          analytics_storage: 'denied'
-        });
-      }
+      // Ahora utilizamos la utilidad centralizada
+      applyAnalyticsConsent();
+      
+      // Bloquear elementos relacionados con analytics
+      document.querySelectorAll('.analytical-content').forEach((element: Element) => {
+        element.classList.add('consent-blocked');
+      });
     }
     
     enableFunctional() {
-      // Ejemplo: Habilitar widgets de redes sociales
-      document.querySelectorAll('.social-widget.requires-consent').forEach(widget => {
+      // Ahora utilizamos la utilidad centralizada
+      applyAnalyticsConsent();
+      
+      // Habilitar widgets de redes sociales y otros elementos funcionales
+      document.querySelectorAll('.social-widget.requires-consent, .functional-content.requires-consent').forEach((widget: Element) => {
         widget.classList.remove('consent-blocked');
         
         // Cargar iframes que estaban bloqueados
-        const iframe = widget.querySelector('iframe[data-src]');
-        if (iframe) {
+        const iframe = widget.querySelector('iframe[data-src]') as HTMLIFrameElement;
+        if (iframe && iframe.dataset.src) {
           iframe.src = iframe.dataset.src;
         }
       });
     }
     
     disableFunctional() {
-      // Ejemplo: Deshabilitar widgets de redes sociales
-      document.querySelectorAll('.social-widget').forEach(widget => {
+      // Ahora utilizamos la utilidad centralizada
+      applyAnalyticsConsent();
+      
+      // Deshabilitar widgets de redes sociales y otros elementos funcionales
+      document.querySelectorAll('.social-widget, .functional-content').forEach((widget: Element) => {
         widget.classList.add('consent-blocked');
+        
+        // Descargar iframes
+        const iframe = widget.querySelector('iframe[src]') as HTMLIFrameElement;
+        if (iframe && iframe.src) {
+          iframe.dataset.src = iframe.src;
+          iframe.src = 'about:blank';
+        }
       });
     }
     
-    enableAdvertising() {
-      // Ejemplo: Habilitar Google Ads, Facebook Pixel
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          ad_personalization: 'granted'
-        });
-      }
-      
-      // Facebook Pixel
-      if (typeof window.fbq === 'function') {
-        window.fbq('consent', 'grant');
-      }
-    }
-    
-    disableAdvertising() {
-      // Ejemplo: Deshabilitar Google Ads, Facebook Pixel
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied'
-        });
-      }
-      
-      // Facebook Pixel
-      if (typeof window.fbq === 'function') {
-        window.fbq('consent', 'revoke');
-      }
-    }
-    
-    // Métodos de utilidad para cookies
-    
-    setCookie(name: string, value: string, days: number, domain: string): void {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      const expires = "expires=" + date.toUTCString();
-      const cookieValue = encodeURIComponent(value);
-      
-      let cookieString = `${name}=${cookieValue};${expires};path=/;SameSite=Lax`;
-      if (domain) {
-        cookieString += `;domain=${domain}`;
-      }
-      
-      document.cookie = cookieString;
-    }
-    
-    getCookie(name: string): string | null {
-      const nameEq = name + "=";
-      const cookies = document.cookie.split(';');
-      
-      for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.indexOf(nameEq) === 0) {
-          return decodeURIComponent(cookie.substring(nameEq.length, cookie.length));
-        }
-      }
-      
-      return null;
-    }
-    
-    // Registro de consentimiento para análisis internos (opcional)
+    // Registro de consentimiento para análisis internos
     logConsentEvent(action: string): void {
-      // Solo registrar si las analíticas están permitidas
-      const consent = JSON.parse(this.getCookie(this.consentName) || '{}');
-      if (consent.categories?.essential) {
-        const data = {
-          event: 'cookie_consent',
-          action: action,
-          timestamp: new Date().toISOString(),
-          page: window.location.pathname
-        };
-        
-        // Enviar a endpoint interno para registro
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon('/api/consent-log', JSON.stringify(data));
-        } else {
-          // Fallback para navegadores que no soportan sendBeacon
-          fetch('/api/consent-log', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            keepalive: true
-          }).catch(e => console.error('Error logging consent:', e));
-        }
-      }
+      // Utilizar la función centralizada de registro de consentimiento
+      logConsentEvent(action);
     }
   }
   
@@ -550,7 +565,7 @@ class CookieConsent {
     position: relative;
     min-height: 100px;
     background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -574,30 +589,126 @@ class CookieConsent {
     color: rgba(255, 255, 255, 0.7);
   }
   
-  /* Animación del banner */
-  #cookie-consent-banner {
-    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+  /* The switch - the box around the slider */
+  .switch-parent {
+    width: 38px;
+    height: 22px;
+    position: relative;
+  }
+  /* Hide default HTML checkbox */
+  .checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  .switch {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #e9e9eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
   }
   
-  /* Estilos para interruptores */
-  input[type="checkbox"]:checked + div {
-    @apply bg-blue-600;
+  /* Añadir efecto de hover para mejorar la usabilidad */
+  .switch:hover {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
   }
   
-  input[type="checkbox"]:focus + div {
-    @apply ring-2 ring-blue-400;
+  .switch:hover .slider {
+    transform: scale(1.05);
   }
-  
-  input[type="checkbox"] + div > div {
-    @apply transform transition-transform;
+  /* Estilo para el switch en modo oscuro - estado no activo */
+  html.dark .switch {
+    background-color: #3d4454;
   }
-  
-  input[type="checkbox"]:checked + div > div {
-    @apply translate-x-5;
+  /* The slider */
+  .slider {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: calc(50% - 18px / 2 - 8px);
+    top: calc(50% - 18px / 2);
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  /* Estilo para el slider en modo oscuro */
+  html.dark .slider {
+    background: #e2e8f0;
+  }
+  .switch-parent:active .slider {
+    width: 22px;
+    border-radius: 14px;
+  }
+  .checkbox:checked + .switch:active .slider {
+    width: 22px;
+    left: calc(30% - 18px / 2 + 10px);
+  }
+  .checkbox:checked + .switch {
+    background-color: #34c759;
+  }
+  /* Color específico para tema oscuro */
+  html.dark .checkbox:checked + .switch {
+    background-color: #facc15;
+  }
+  .checkbox:checked + .switch .slider {
+    left: calc(50% - 18px / 2 + 8px);
+    top: calc(50% - 18px / 2);
   }
   
   /* Interruptor deshabilitado */
-  input[type="checkbox"]:disabled + div {
-    @apply bg-gray-400 dark:bg-gray-600 cursor-not-allowed;
+  .checkbox:disabled + .switch {
+    background-color: rgba(128, 128, 128, 0.2);
+    cursor: not-allowed;
+  }
+  
+  html.dark .checkbox:disabled + .switch {
+    background-color: rgba(128, 128, 128, 0.3);
+  }
+  
+  /* Interruptor marcado y deshabilitado - estilo especial para esenciales */
+  .checkbox:checked:disabled + .switch-checked-disabled {
+    background-color: #34c759;
+    opacity: 0.7;
+    cursor: help;
+  }
+  
+  html.dark .checkbox:checked:disabled + .switch-checked-disabled {
+    background-color: #facc15;
+    opacity: 0.7;
+  }
+  
+  /* Muestra un borde de ayuda al hacer hover y un cursor especial */
+  .switch-checked-disabled {
+    cursor: help;
+  }
+  
+  .switch-checked-disabled:hover {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+  
+  html.dark .switch-checked-disabled:hover {
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.3);
+  }
+  
+  .consent-message {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #4B5563;
+  }
+  
+  .dark .consent-message {
+    color: #9CA3AF;
+  }
+  
+  /* Efectos de hover para botones */
+  button:active {
+    transform: scale(0.97);
   }
 </style>

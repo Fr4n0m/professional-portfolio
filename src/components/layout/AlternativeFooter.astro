@@ -3,6 +3,7 @@ import ArrowUp from '@icons/ArrowUp.astro';
 import type { Translations } from '@types/translations';
 import type { FooterItem } from '@types/footerItem';
 import LocationTextFooter from '@components/ui/Map/LocationTextFooter.astro';
+import LegalFooter from '@components/legal/LegalFooter.astro';
 
 const translations: Translations = Astro.props.translations;
 const footerItems: FooterItem[] = translations.footerItems;
@@ -41,6 +42,8 @@ const fullLocation = translations.personalInfo.location;
 				/>
 			</div>
 		</div>
+		
+		<!-- Enlaces de navegación -->
 		<ul
 			class='flex flex-wrap gap-y-2 md:gap-y-0 justify-center items-center mb-6 text-gray-700 dark:text-white/80'
 		>
@@ -97,9 +100,16 @@ const fullLocation = translations.personalInfo.location;
 				>
 			</li>
 		</ul>
-		<span class='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
+		
+		<!-- Enlaces legales -->
+		<div class="mt-4 mb-3">
+			<LegalFooter />
+		</div>
+		
+		<!-- Copyright -->
+		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
 			© 2024{' '}
-			<a href='#' class='hover:underline'>
+			<a href='#' class="hover:underline">
 				{translations.personalInfo.name}
 			</a>
 		</span>
