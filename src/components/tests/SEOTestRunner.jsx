@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { runAllTests, testSEO, testFallbacks } from '../../utils/tests/seoTester';
 
 export default function SEOTestRunner() {
@@ -7,11 +7,11 @@ export default function SEOTestRunner() {
   const [activeTab, setActiveTab] = useState('summary');
 
   // Función para ejecutar los tests
-  const runTests = async () => {
+  const runTests = () => {
     setLoading(true);
     // Pequeño retraso para asegurar que el DOM esté completamente cargado
-    setTimeout(async () => {
-      const testResults = await runAllTests();
+    setTimeout(() => {
+      const testResults = runAllTests();
       setResults(testResults);
       setLoading(false);
     }, 1000);

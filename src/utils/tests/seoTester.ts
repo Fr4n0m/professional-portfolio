@@ -1,11 +1,51 @@
-// seoTester.js - Herramienta para probar la implementación de SEO y fallbacks
+// seoTester.ts - Herramienta para probar la implementación de SEO y fallbacks
+
+interface TestResults {
+  url?: string;
+  timestamp: string;
+  pass: boolean;
+  score: number;
+  issues: string[];
+  checks: Record<string, boolean>;
+}
+
+interface SEOResults extends TestResults {
+  checks: {
+    metaTagsBasic: boolean;
+    openGraph: boolean;
+    twitterCards: boolean;
+    structuredData: boolean;
+    hreflang: boolean;
+    canonicalUrl: boolean;
+    manifest: boolean;
+    imageOptimization: boolean;
+  };
+}
+
+interface FallbackResults extends TestResults {
+  implemented: boolean;
+  checks: {
+    fallbackComponents: boolean;
+    imageWithFallback: boolean;
+    loadingFallbacks: boolean;
+    accessibilitySupport: boolean;
+  };
+}
+
+interface AllTestsResults {
+  timestamp: string;
+  seo: SEOResults;
+  fallbacks: FallbackResults;
+  overallScore: number;
+  overallPass: boolean;
+}
 
 /**
  * Verifica la implementación SEO en una página
  * @param {string} url - URL de la página a probar (puede ser relativa)
- * @returns {Object} - Resultado del test con información y problemas encontrados
+ * @returns {SEOResults} - Resultado del test con información y problemas encontrados
  */
-export async function testSEO(url = window.location.href) {
+export function testSEO(url: string = window.location.href): SEOResults {
   console.group(`🔍 Realizando test de SEO para: ${url}`);
   
   const results = {
@@ -179,10 +219,9 @@ export async function testSEO(url = window.location.href) {
 
 /**
  * Verifica la implementación de fallbacks en la página
- * @param {string} url - URL de la página a probar (puede ser relativa)
- * @returns {Object} - Resultado del test con información y problemas encontrados
+ * @returns {FallbackResults} - Resultado del test con información y problemas encontrados
  */
-export async function testFallbacks() {
+export function testFallbacks(): FallbackResults {
   console.group("🔍 Realizando test de fallbacks");
   
   const results = {
@@ -266,9 +305,9 @@ export async function testFallbacks() {
 }
 
 // Función para ejecutar todos los tests
-export async function runAllTests() {
-  const seoResults = await testSEO();
-  const fallbackResults = await testFallbacks();
+export function runAllTests(): AllTestsResults {
+  const seoResults = testSEO();
+  const fallbackResults = testFallbacks();
   
   console.group("📊 Resumen de tests");
   console.log("SEO:", seoResults.pass ? "✅ APROBADO" : "❌ REPROBADO", `(${seoResults.score}/100)`);
