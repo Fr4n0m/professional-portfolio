@@ -1,0 +1,141 @@
+---
+// AnalyticsBasedImage.astro - Ejemplo de imagen que se carga solo con consentimiento analítico
+
+interface Props {
+    src: string;
+    alt: string;
+    width?: number | string;
+    height?: number | string;
+    class?: string;
+    lazy?: boolean;
+    fadeIn?: boolean;
+}
+
+const { 
+    src, 
+    alt, 
+    width, 
+    height, 
+    class: className = '',
+    lazy = true,
+    fadeIn = true,
+} = Astro.props;
+
+// Determinar dimensiones
+const widthAttr = width ? { width } : {};
+const heightAttr = height ? { height } : {};
+
+// Generar un ID único para este elemento
+const uniqueId = `analytics-img-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div 
+    class={`analytical-content requires-consent ${className}`} 
+    id={uniqueId} 
+    data-fallback="image"
+    data-consent="analytical"
+>
+    <img 
+        data-src={src} 
+        alt={alt}
+        {...widthAttr}
+        {...heightAttr}
+        loading={lazy ? "lazy" : "eager"}
+        decoding="async"
+        class={fadeIn ? 'fallback-fade' : ''}
+    />
+    <div class="consent-message">
+        Se requiere su consentimiento para cargar esta imagen analítica
+    </div>
+</div>
+
+<style>
+    .analytical-content {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+    }
+    
+    .fallback-fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    
+    /* Imagen cargada */
+    .fallback-fade.loaded {
+        opacity: 1;
+    }
+    
+    /* Estilo para cuando está bloqueado */
+    .analytical-content.requires-consent.consent-blocked {
+        position: relative;
+        min-height: 100px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    .consent-message {
+        display: none;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .consent-blocked .consent-message {
+        display: block;
+    }
+    
+    /* Ocultar la imagen cuando está bloqueada */
+    .consent-blocked img {
+        display: none;
+    }
+    
+    /* Estilos para modo oscuro */
+    @media (prefers-color-scheme: dark) {
+        .analytical-content.requires-consent.consent-blocked {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .consent-message {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+</style>
+
+<script>
+    import { hasConsent } from '@utils/cookieUtils';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        // Verificar el consentimiento para elementos analíticos
+        const analyticalElements = document.querySelectorAll('.analytical-content.requires-consent');
+        
+        analyticalElements.forEach(element => {
+            if (hasConsent('analytical')) {
+                // Si hay consentimiento, cargar la imagen
+                element.classList.remove('consent-blocked');
+                
+                const img = element.querySelector('img');
+                if (img && img.dataset.src) {
+                    img.src = img.dataset.src;
+                    
+                    // Marcar como cargada cuando se complete la carga
+                    if (img.complete) {
+                        img.classList.add('loaded');
+                    } else {
+                        img.addEventListener('load', () => {
+                            img.classList.add('loaded');
+                        });
+                    }
+                }
+            } else {
+                // Si no hay consentimiento, bloquear
+                element.classList.add('consent-blocked');
+            }
+        });
+    });
+</script>

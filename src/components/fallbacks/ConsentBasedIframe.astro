@@ -1,0 +1,154 @@
+---
+// ConsentBasedIframe.astro - Iframe que respeta consentimiento
+
+interface Props {
+    src: string;
+    title: string;
+    width?: number | string;
+    height?: number | string;
+    class?: string;
+    consentType: 'analytical' | 'functional';
+    consentMessage?: string;
+}
+
+const { 
+    src, 
+    title, 
+    width = '100%', 
+    height = '400px', 
+    class: className = '',
+    consentType = 'functional',
+    consentMessage
+} = Astro.props;
+
+// Mensaje por defecto según tipo de consentimiento
+let defaultMessage = 'Se requiere su consentimiento para cargar este contenido';
+if (consentType === 'analytical') {
+    defaultMessage = 'Se requiere su consentimiento para cargar este contenido analítico';
+} else if (consentType === 'functional') {
+    defaultMessage = 'Se requiere su consentimiento para cargar este contenido funcional';
+}
+
+// Mensaje final
+const message = consentMessage || defaultMessage;
+
+// Generar ID único
+const uniqueId = `iframe-${Math.random().toString(36).substr(2, 9)}`;
+
+// Determinar la clase de consentimiento
+const consentClass = consentType === 'analytical' ? 'analytical-content' : 'functional-content';
+---
+
+<div 
+    id={uniqueId}
+    class={`${consentClass} requires-consent ${className}`}
+    data-fallback="content"
+    data-consent={consentType}
+    style={`width: ${width}; height: ${height};`}
+>
+    <iframe 
+        data-src={src} 
+        title={title}
+        width="100%" 
+        height="100%"
+        frameborder="0"
+        allowfullscreen="true"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        loading="lazy"
+    ></iframe>
+    <div class="consent-message">
+        {message}
+    </div>
+</div>
+
+<style>
+    /* Contenedor del iframe */
+    .requires-consent {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        min-height: 100px;
+        border-radius: 0.75rem;
+    }
+    
+    /* Estilo para cuando está bloqueado */
+    .requires-consent.consent-blocked {
+        background-color: rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Mensaje de consentimiento */
+    .consent-message {
+        display: none;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .consent-blocked .consent-message {
+        display: block;
+    }
+    
+    /* Ocultar el iframe cuando está bloqueado */
+    .consent-blocked iframe {
+        display: none;
+    }
+    
+    /* Ajustes para modo oscuro */
+    @media (prefers-color-scheme: dark) {
+        .requires-consent.consent-blocked {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .consent-message {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+</style>
+
+<script define:vars={{uniqueId, consentType}}>
+    import { hasConsent } from '@utils/cookieUtils';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById(uniqueId);
+        
+        if (container) {
+            // Verificar si hay consentimiento para el tipo específico
+            if (hasConsent(consentType)) {
+                // Si hay consentimiento, cargar el iframe
+                container.classList.remove('consent-blocked');
+                
+                const iframe = container.querySelector('iframe');
+                if (iframe && iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                }
+            } else {
+                // Si no hay consentimiento, mantener bloqueado
+                container.classList.add('consent-blocked');
+            }
+            
+            // Registrar un listener para eventos de cambio de consentimiento
+            document.addEventListener('consentUpdated', () => {
+                if (hasConsent(consentType)) {
+                    container.classList.remove('consent-blocked');
+                    
+                    const iframe = container.querySelector('iframe');
+                    if (iframe && iframe.dataset.src && !iframe.src) {
+                        iframe.src = iframe.dataset.src;
+                    }
+                } else {
+                    container.classList.add('consent-blocked');
+                    
+                    const iframe = container.querySelector('iframe');
+                    if (iframe && iframe.src) {
+                        iframe.dataset.src = iframe.src;
+                        iframe.src = 'about:blank';
+                    }
+                }
+            });
+        }
+    });
+</script>

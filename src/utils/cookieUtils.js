@@ -181,4 +181,66 @@ export function initCookies() {
       });
     }
   }
+  
+  // Inicializar fallbacks respetando las preferencias de cookies
+  initConsentBasedFallbacks();
+}
+
+/**
+ * Inicializa los fallbacks basados en el consentimiento de cookies
+ */
+export function initConsentBasedFallbacks() {
+  // Obtener todos los contenedores de fallback
+  const fallbackContainers = document.querySelectorAll('[data-fallback]');
+  
+  fallbackContainers.forEach(container => {
+    // Determinar si el contenedor tiene requisitos de consentimiento
+    const consentCategory = container.getAttribute('data-consent');
+    const needsConsent = container.classList.contains('requires-consent');
+    
+    // Si el contenedor no requiere consentimiento específico o si tiene el consentimiento necesario, iniciar fallback
+    if (!needsConsent || (consentCategory && hasConsent(consentCategory)) || !consentCategory) {
+      // Importar dinámicamente el módulo de fallbacks para evitar problemas de ciclo de dependencias
+      import('./fallbacks/loadingFallbacks.js').then(module => {
+        const { initLazyLoadFallbacks } = module;
+        
+        // Obtener el tipo de fallback y aplicar opciones específicas
+        const fallbackType = container.getAttribute('data-fallback');
+        let options = {
+          shimmerEffect: true,
+          placeholderColor: 'rgba(200, 200, 200, 0.3)'
+        };
+        
+        switch (fallbackType) {
+          case 'skeleton':
+            options.shimmerEffect = false;
+            break;
+          case 'shimmer':
+            options.shimmerEffect = true;
+            options.placeholderColor = 'rgba(230, 230, 230, 0.4)';
+            break;
+          case 'image':
+            options.shimmerEffect = true;
+            options.placeholderColor = 'rgba(220, 220, 220, 0.3)';
+            break;
+        }
+        
+        // Inicializar fallback con las opciones adecuadas
+        initLazyLoadFallbacks(container, options);
+      }).catch(error => {
+        console.error('Error loading fallback module:', error);
+      });
+    } else {
+      // Si requiere consentimiento pero no lo tiene, aplicar bloqueo visual
+      container.classList.add('consent-blocked');
+      
+      // Agregar mensaje de consentimiento si no existe
+      if (!container.querySelector('.consent-message')) {
+        const message = document.createElement('div');
+        message.className = 'consent-message';
+        message.textContent = `Se requiere su consentimiento para cargar este contenido`;
+        container.appendChild(message);
+      }
+    }
+  });
 }

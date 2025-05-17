@@ -131,15 +131,10 @@ import { initCookies } from '../utils/cookieUtils.js';
     // Inicializar el Control Center
     initControlCenter();
     
-    // Inicializar sistema de cookies y luego servicios de análisis
+    // Inicializar sistema de cookies incluyendo fallbacks basados en consentimiento
     initCookies();
+    // Inicializar servicios de análisis
     initAnalytics();
-    
-    // Inicializar fallbacks automáticamente
-    const fallbackContainers = document.querySelectorAll('[data-fallback]');
-    fallbackContainers.forEach(container => {
-      initLazyLoadFallbacks(container);
-    });
     
     // Elementos con clase para animaciones de entrada
     const fadeElements = document.querySelectorAll('.gsap-fade-in');

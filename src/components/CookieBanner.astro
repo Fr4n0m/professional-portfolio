@@ -428,6 +428,12 @@ class CookieConsent {
         secure: window.location.protocol === 'https:',
         sameSite: 'Lax'
       });
+      
+      // Disparar un evento personalizado para notificar a los componentes basados en consentimiento
+      const consentEvent = new CustomEvent('consentUpdated', {
+        detail: { consent }
+      });
+      document.dispatchEvent(consentEvent);
     }
     
     applyConsent(consent: any): void {
