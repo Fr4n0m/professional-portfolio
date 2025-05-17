@@ -3,12 +3,24 @@ import { TAGS } from '@utils/tags';
 import Tag from '@components/ui/Tag.astro';
 ---
 
-<ul class='flex gap-x-3 flex-row text-nowrap flex-wrap -mt-3 md:-mt-0'>
-	{
-		Object.values(TAGS).map(tag => (
-			<li>
-				<Tag {...tag} />
-			</li>
-		))
+<!-- Contenedor de skills sin fondo -->
+<div class="relative skills-container mb-8">
+	<ul class='flex gap-x-3 gap-y-3 flex-row flex-wrap'>
+		{
+			Object.values(TAGS).map(tag => (
+				<li>
+					<Tag {...tag} />
+				</li>
+			))
+		}
+	</ul>
+</div>
+
+<!-- Estilo mínimo para el contenedor -->
+<style>
+	.skills-container {
+		overflow: visible;
+		position: relative;
+		z-index: 10; /* Asegura que el contenedor tenga un z-index decente */
 	}
-</ul>
+</style>

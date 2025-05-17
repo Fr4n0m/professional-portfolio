@@ -1,0 +1,38 @@
+<!-- SVG personalizado para JavaScript -->
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f8f9fa" />
+  
+  <!-- Fondo de código con sintaxis JavaScript -->
+  <rect x="50" y="50" width="700" height="300" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+  <text x="70" y="90" font-family="Consolas, monospace" font-size="14" fill="#6366f1">// Ejemplo de código JavaScript</text>
+  <text x="70" y="120" font-family="Consolas, monospace" font-size="14" fill="#9333ea">function</text>
+  <text x="130" y="120" font-family="Consolas, monospace" font-size="14" fill="#2563eb"> calcularPromedio</text>
+  <text x="255" y="120" font-family="Consolas, monospace" font-size="14" fill="#374151">(numeros) {</text>
+  <text x="90" y="150" font-family="Consolas, monospace" font-size="14" fill="#374151">  const suma = numeros.</text>
+  <text x="245" y="150" font-family="Consolas, monospace" font-size="14" fill="#2563eb">reduce</text>
+  <text x="290" y="150" font-family="Consolas, monospace" font-size="14" fill="#374151">((acumulador, num) => acumulador + num, 0);</text>
+  <text x="90" y="180" font-family="Consolas, monospace" font-size="14" fill="#374151">  return suma / numeros.length;</text>
+  <text x="70" y="210" font-family="Consolas, monospace" font-size="14" fill="#374151">}</text>
+  
+  <text x="70" y="240" font-family="Consolas, monospace" font-size="14" fill="#374151">const numeros = [5, 8, 10, 2, 7];</text>
+  <text x="70" y="270" font-family="Consolas, monospace" font-size="14" fill="#374151">const promedio = calcularPromedio(numeros);</text>
+  
+  <text x="70" y="300" font-family="Consolas, monospace" font-size="14" fill="#2563eb">console</text>
+  <text x="130" y="300" font-family="Consolas, monospace" font-size="14" fill="#374151">.</text>
+  <text x="135" y="300" font-family="Consolas, monospace" font-size="14" fill="#2563eb">log</text>
+  <text x="158" y="300" font-family="Consolas, monospace" font-size="14" fill="#374151">(</text>
+  <text x="163" y="300" font-family="Consolas, monospace" font-size="14" fill="#dc2626">`El promedio es: ${promedio}`</text>
+  <text x="370" y="300" font-family="Consolas, monospace" font-size="14" fill="#374151">);</text>
+  
+  <!-- Logo de JavaScript pequeño -->
+  <g transform="translate(650, 70)">
+    <rect width="70" height="70" fill="#f7df1e" />
+    <path d="M20,55 L28,55 L28,35 L20,35 Z" fill="#000000" />
+    <path d="M33,55 L41,55 L41,35 L33,35 Z" fill="#000000" />
+    <path d="M45,35 L53,35 L53,45 Q53,50 48,50 Q43,50 43,45" stroke="#000000" stroke-width="3" fill="none" />
+  </g>
+  
+  <text x="400" y="375" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#64748b">
+    JavaScript: Lenguaje de programación para la web
+  </text>
+</svg>

@@ -24,6 +24,7 @@
 			"@scripts/*": ["src/scripts/*"],
 			"@ui/*": ["src/components/ui/*"],
 			"@i18n/*": ["src/i18n/*"],
+			"@data/*": ["src/data/*"],
 			"../i18n/utils": ["src/i18n/utils.ts"]
 		}
 	}

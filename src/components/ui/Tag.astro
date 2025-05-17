@@ -1,5 +1,7 @@
 ---
 import SkillTooltip from '@components/ui/tooltips/SkillTooltip.astro';
+// Importamos la función para determinar la experiencia recomendada
+import { getRecommendedExperience } from '@config/skillDescriptions';
 
 interface Tag {
 	name: string;
@@ -16,19 +18,23 @@ const props = Astro.props;
 		target='_blank'
 		rel='noopener noreferrer'
 		href={props.link}
-		class={`skill-pill flex gap-x-2 rounded-full text-xs font-semibold items-center ${props.class} px-3 py-1 border mb-6 transition-all duration-300`}
+		class={`skill-pill flex gap-x-2 rounded-full text-xs font-semibold items-center ${props.class} px-3 py-1 border mb-2 transition-all duration-300`}
 	>
 		<props.icon class='size-3' />
 		{props.name}
 	</a>
 	
 	<!-- Tooltip que aparece al hacer hover -->
-	<SkillTooltip 
-		name={props.name}
-		link={props.link}
-		className={props.class}
-		position="top"
-	/>
+	<div class="tooltip-wrapper absolute left-1/2 transform -translate-x-1/2 -translate-y-[120%] top-0 pointer-events-none">
+		<SkillTooltip 
+			name={props.name}
+			link={props.link}
+			className={props.class}
+			position="top"
+			icon={props.icon}
+			experience={getRecommendedExperience(props.name)}
+		/>
+	</div>
 </div>
 
 <style>
@@ -37,22 +43,26 @@ const props = Astro.props;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    transition: all 0.25s cubic-bezier(0.2, 0, 0.1, 1);
+    /* Eliminamos las transiciones CSS para manejarlas completamente con JavaScript */
   }
   
-  /* Efecto de hover - iluminación */
-  .skill-pill:hover {
-    /* Iluminación y realce de color */
-    filter: brightness(1.25);
-    /* Escala más notable para dar sensación de elevación */
-    transform: translateY(-2px) scale(1.08);
-  }
+  /* El efecto hover ahora se maneja con JavaScript */
   
   /* Efecto click */
   .skill-pill:active {
     transform: translateY(0) scale(0.98);
     filter: brightness(0.95);
     transition-duration: 0.1s;
+  }
+  
+  /* Estilos para el tooltip wrapper */
+  .tooltip-wrapper {
+    position: absolute;
+    width: max-content;
+    z-index: 9999;
+    /* Offset para posicionar el tooltip correctamente */
+    top: 0;
+    margin-top: -10px;
   }
 </style>
 
@@ -61,153 +71,167 @@ const props = Astro.props;
     const skillContainers = document.querySelectorAll('.skill-tooltip-container');
     const skillPills = document.querySelectorAll('.skill-pill');
 
-    // Configuración de comportamiento del tooltip
-    skillContainers.forEach(container => {
-      const pill = container.querySelector('.skill-pill');
-      const tooltip = container.querySelector('.skill-tooltip');
-      
-      // Mostrar tooltip al hacer hover
-      container.addEventListener('mouseenter', () => {
-        if (tooltip) {
-          tooltip.classList.remove('invisible', 'opacity-0');
-          tooltip.classList.add('visible', 'opacity-100');
-        }
-      });
-      
-      container.addEventListener('mouseleave', () => {
-        if (tooltip) {
-          tooltip.classList.add('invisible', 'opacity-0');
-          tooltip.classList.remove('visible', 'opacity-100');
-        }
-      });
-      
-      // Detectar posición mejor en función del espacio disponible
-      function updateTooltipPosition() {
-        if (!tooltip) return;
-        
-        const rect = container.getBoundingClientRect();
-        const tooltipRect = tooltip.getBoundingClientRect();
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        
-        // Si estamos en móvil, no necesitamos calcular nada más
-        if (windowWidth < 768) return;
-        
-        // Verificar si hay espacio suficiente en cada dirección
-        const spaceTop = rect.top;
-        const spaceRight = windowWidth - rect.right;
-        const spaceBottom = windowHeight - rect.bottom;
-        const spaceLeft = rect.left;
-        
-        // Determinar la mejor posición según el espacio disponible
-        let bestPosition = 'top'; // Por defecto arriba
-        
-        // Altura y anchura del tooltip +20px de margen
-        const tooltipHeight = tooltipRect.height + 20;
-        const tooltipWidth = tooltipRect.width + 20;
-        
-        if (spaceTop < tooltipHeight && spaceBottom >= tooltipHeight) {
-          bestPosition = 'bottom';
-        } else if (spaceRight > tooltipWidth && spaceLeft < tooltipWidth) {
-          bestPosition = 'right';
-        } else if (spaceLeft > tooltipWidth && spaceRight < tooltipWidth) {
-          bestPosition = 'left';
-        }
-        
-        // Actualizar clases del tooltip según la mejor posición
-        // Eliminar todas las clases de posición
-        tooltip.classList.remove(
-          'bottom-full', 'mb-2', '-translate-x-1/2', 'left-1/2',
-          'left-full', 'ml-2', '-translate-y-1/2', 'top-1/2',
-          'top-full', 'mt-2',
-          'right-full', 'mr-2'
-        );
-        
-        // Añadir clases según la nueva posición
-        if (bestPosition === 'top') {
-          tooltip.classList.add('bottom-full', 'mb-2', '-translate-x-1/2', 'left-1/2');
-        } else if (bestPosition === 'right') {
-          tooltip.classList.add('left-full', 'ml-2', '-translate-y-1/2', 'top-1/2');
-        } else if (bestPosition === 'bottom') {
-          tooltip.classList.add('top-full', 'mt-2', '-translate-x-1/2', 'left-1/2');
-        } else if (bestPosition === 'left') {
-          tooltip.classList.add('right-full', 'mr-2', '-translate-y-1/2', 'top-1/2');
-        }
-        
-        // Actualizar la flecha
-        const arrow = tooltip.querySelector('div[class*="rotate-45"]');
-        if (arrow) {
-          // Eliminar todas las clases de posición
-          arrow.className = arrow.className.replace(/top-\[.*?\]|left-\[.*?\]|right-\[.*?\]|bottom-\[.*?\]|border-[trbl]|translate-[xy]-.*?(\s|$)/g, '');
-          
-          // Clase base
-          let arrowClass = 'absolute w-3 h-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 ';
-          
-          // Añadir clases según la posición
-          if (bestPosition === 'top') {
-            arrowClass += 'top-[-6px] left-1/2 -translate-x-1/2 border-t border-l';
-          } else if (bestPosition === 'right') {
-            arrowClass += 'right-[-6px] top-1/2 -translate-y-1/2 border-r border-t';
-          } else if (bestPosition === 'bottom') {
-            arrowClass += 'bottom-[-6px] left-1/2 -translate-x-1/2 border-b border-r';
-          } else if (bestPosition === 'left') {
-            arrowClass += 'left-[-6px] top-1/2 -translate-y-1/2 border-l border-b';
-          }
-          
-          arrow.className = arrowClass;
-        }
-      }
-      
-      // Actualizar posición al cargar y redimensionar
-      updateTooltipPosition();
-      window.addEventListener('resize', updateTooltipPosition);
-    });
+    // Guardamos los efectos de iluminación por pill para mantener consistencia
+    const pillEffects = {};
 
-    // Efectos visuales de las skill pills (si no está activada la preferencia de reducir movimiento)
-    if (skillPills.length > 0 && !document.documentElement.classList.contains('reduce-motion')) {
-      skillPills.forEach(pill => {
+    // Variable para controlar el tiempo de cierre
+    let closeTimeouts = {};
+
+    // Configuración de comportamiento del tooltip
+    skillContainers.forEach((container, index) => {
+      const pill = container.querySelector('.skill-pill');
+      const tooltipWrapper = container.querySelector('.tooltip-wrapper');
+      const tooltip = tooltipWrapper ? tooltipWrapper.querySelector('.skill-tooltip') : null;
+      const containerId = `tooltip-${index}`;
+      
+      // Variable para saber si el pill está iluminado
+      let isPillHighlighted = false;
+      
+      // Precalcular los efectos de iluminación para esta pill
+      if (pill && !pillEffects[containerId]) {
         // Obtener el color del borde para el efecto de iluminación
         const computedStyle = getComputedStyle(pill);
         const borderColor = computedStyle.borderColor;
-        const bgColor = computedStyle.backgroundColor;
-        
-        // Crear color de brillo basado en el color del borde
-        // Convertir rgba a valores para poder manipularlos
-        const borderColorMatch = borderColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/i);
+
+        // Extraer los componentes de color
         let glowColor;
-        
-        if (borderColorMatch) {
-          const r = parseInt(borderColorMatch[1]);
-          const g = parseInt(borderColorMatch[2]);
-          const b = parseInt(borderColorMatch[3]);
-          // Usar el color del borde para el efecto glow pero con mayor opacidad
-          glowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
-        } else {
-          // Color de respaldo si no se puede analizar
-          glowColor = 'rgba(255, 255, 255, 0.5)';
+        try {
+          const colorMatch = borderColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/i);
+          if (colorMatch) {
+            const r = parseInt(colorMatch[1]);
+            const g = parseInt(colorMatch[2]);
+            const b = parseInt(colorMatch[3]);
+            glowColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
+          } else {
+            glowColor = 'rgba(100, 100, 255, 0.5)';
+          }
+        } catch (e) {
+          glowColor = 'rgba(100, 100, 255, 0.5)';
         }
         
-        // Inicializar transiciones suaves
-        pill.style.transition = 'all 0.25s cubic-bezier(0.2, 0, 0.1, 1)';
-        
-        // Efecto de resplandor personalizado
-        pill.addEventListener('mouseenter', () => {
-          // Efecto de resplandor interno y externo más pronunciado usando el color del borde
-          pill.style.boxShadow = `inset 0 0 8px ${glowColor}, 0 0 12px ${glowColor}`;
-          // Aumentar sutilmente el color de fondo
-          pill.style.backgroundColor = bgColor.replace(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/i, 
-            function(match, r, g, b, a) {
-              // Aumentar la opacidad ligeramente
-              const newAlpha = a ? Math.min(parseFloat(a) + 0.1, 1) : 0.3;
-              return `rgba(${r}, ${g}, ${b}, ${newAlpha})`;
-            });
-        });
-        
-        pill.addEventListener('mouseleave', () => {
-          pill.style.boxShadow = 'none';
-          pill.style.backgroundColor = bgColor;
-        });
+        // Guardar los efectos para esta pill
+        pillEffects[containerId] = {
+          filter: 'brightness(1.25)',
+          transform: 'translateY(-2px) scale(1.08)',
+          boxShadow: `0 4px 8px ${glowColor}, 0 0 12px ${glowColor}`
+        };
+      }
+      
+      // Función para resaltar el pill
+      const highlightPill = () => {
+        if (pill && pillEffects[containerId]) {
+          // Si ya está resaltado, no hacemos nada para evitar relanzar la transición
+          if (isPillHighlighted) return;
+          
+          isPillHighlighted = true;
+          
+          // Añadir las clases de iluminación al pill
+          pill.classList.add('highlighted');
+          
+          // Aplicamos todos los efectos en un solo step para evitar reflow o multiple renders
+          const effects = pillEffects[containerId];
+          requestAnimationFrame(() => {
+            pill.style.cssText = `
+              filter: ${effects.filter};
+              transform: ${effects.transform};
+              box-shadow: ${effects.boxShadow};
+              transition: all 0.25s cubic-bezier(0.2, 0, 0.1, 1);
+            `;
+          });
+        }
+      };
+      
+      // Función para quitar el resaltado del pill
+      const unhighlightPill = () => {
+        if (pill && isPillHighlighted) {
+          isPillHighlighted = false;
+          // Quitar las clases de iluminación
+          pill.classList.remove('highlighted');
+          
+          // Quitamos todos los efectos en un solo step para una transición suave
+          requestAnimationFrame(() => {
+            pill.style.cssText = `
+              filter: none;
+              transform: none;
+              box-shadow: none;
+              transition: all 0.25s cubic-bezier(0.2, 0, 0.1, 1);
+            `;
+          });
+        }
+      };
+      
+      // Función para mostrar tooltip con delay
+      const showTooltip = () => {
+        if (tooltip) {
+          // Cancelar cualquier cierre programado
+          if (closeTimeouts[containerId]) {
+            clearTimeout(closeTimeouts[containerId]);
+            delete closeTimeouts[containerId];
+          }
+          
+          // Iluminar el pill inmediatamente
+          highlightPill();
+          
+          // Añadimos un delay de 400ms antes de mostrar el tooltip
+          setTimeout(() => {
+            // Solo añadimos la clase visible si todavía estamos en hover
+            if (container.matches(':hover') || tooltip.matches(':hover')) {
+              tooltip.classList.add('visible');
+              tooltipWrapper.style.pointerEvents = 'auto';
+            }
+          }, 400);
+        }
+      };
+      
+      // Función para esconder tooltip con delay
+      const hideTooltip = () => {
+        if (tooltip) {
+          // Programar el cierre con delay de 300ms
+          closeTimeouts[containerId] = setTimeout(() => {
+            // Solo ocultamos el tooltip si no estamos en hover ni en el pill ni en el tooltip
+            if (!container.matches(':hover') && !tooltip.matches(':hover')) {
+              tooltip.classList.remove('visible');
+              tooltipWrapper.style.pointerEvents = 'none';
+              // Solo quitamos la iluminación del pill si no hay hover
+              unhighlightPill();
+            }
+            delete closeTimeouts[containerId];
+          }, 300); // Delay para permitir mover el mouse al tooltip
+        }
+      };
+      
+      // Eventos para el pill
+      container.addEventListener('mouseenter', () => {
+        highlightPill();
+        showTooltip();
       });
-    }
+      
+      container.addEventListener('mouseleave', () => {
+        // No quitamos la iluminación inmediatamente, dejamos que hideTooltip lo decida
+        hideTooltip();
+      });
+      
+      // Eventos para el tooltip
+      if (tooltip) {
+        tooltip.addEventListener('mouseenter', () => {
+          // Cancelar cualquier cierre programado
+          if (closeTimeouts[containerId]) {
+            clearTimeout(closeTimeouts[containerId]);
+            delete closeTimeouts[containerId];
+          }
+          // Mantener el pill iluminado mientras el cursor esté sobre el tooltip
+          highlightPill();
+          tooltip.classList.add('visible');
+        });
+        
+        tooltip.addEventListener('mouseleave', () => {
+          // Al salir del tooltip, intentar cerrar todo
+          hideTooltip();
+        });
+      }
+    });
+
+    // Ya no necesitamos los efectos visuales adicionales ya que
+    // ahora manejamos todo el efecto hover con JavaScript
   });
 </script>

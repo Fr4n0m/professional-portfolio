@@ -1,0 +1,10 @@
+<!-- Esta será una imagen SVG de placeholder que se usará cuando no hay una captura de pantalla específica -->
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f0f2f5" />
+  <text x="400" y="200" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#666">
+    Vista previa de la tecnología
+  </text>
+  <text x="400" y="230" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#999">
+    Imagen de ejemplo
+  </text>
+</svg>

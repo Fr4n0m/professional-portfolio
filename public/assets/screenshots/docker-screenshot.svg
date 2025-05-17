@@ -1,0 +1,44 @@
+<!-- SVG personalizado para Docker -->
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f0f8ff" />
+  
+  <!-- Fondo de terminal de Docker -->
+  <rect x="50" y="50" width="700" height="300" rx="10" fill="#0f1629" stroke="#e2e8f0" stroke-width="1" />
+  
+  <!-- Comando de Docker -->
+  <text x="70" y="90" font-family="Consolas, monospace" font-size="14" fill="#0db7ed">$ docker version</text>
+  <text x="70" y="115" font-family="Consolas, monospace" font-size="14" fill="#f8f8f2">Client:</text>
+  <text x="90" y="140" font-family="Consolas, monospace" font-size="14" fill="#a6e22e"> Version:</text>
+  <text x="165" y="140" font-family="Consolas, monospace" font-size="14" fill="#e6db74"> 24.0.6</text>
+  <text x="90" y="165" font-family="Consolas, monospace" font-size="14" fill="#a6e22e"> API version:</text>
+  <text x="190" y="165" font-family="Consolas, monospace" font-size="14" fill="#e6db74"> 1.43</text>
+  
+  <text x="70" y="195" font-family="Consolas, monospace" font-size="14" fill="#f8f8f2">Server:</text>
+  <text x="90" y="220" font-family="Consolas, monospace" font-size="14" fill="#a6e22e"> Engine:</text>
+  <text x="90" y="245" font-family="Consolas, monospace" font-size="14" fill="#a6e22e">  Version:</text>
+  <text x="165" y="245" font-family="Consolas, monospace" font-size="14" fill="#e6db74"> 24.0.6</text>
+  <text x="90" y="270" font-family="Consolas, monospace" font-size="14" fill="#a6e22e">  API version:</text>
+  <text x="190" y="270" font-family="Consolas, monospace" font-size="14" fill="#e6db74"> 1.43 (minimum version 1.12)</text>
+  
+  <text x="70" y="300" font-family="Consolas, monospace" font-size="14" fill="#0db7ed">$ docker-compose --version</text>
+  <text x="70" y="325" font-family="Consolas, monospace" font-size="14" fill="#e6db74">Docker Compose version v2.23.0</text>
+  
+  <!-- Logo de Docker pequeño -->
+  <g transform="translate(600, 70)">
+    <path d="M 40,20 H 55 V 35 H 40 V 50 H 25 V 35 H 10 V 20 H 25 V 5 H 40 Z" fill="none" stroke="#0db7ed" stroke-width="2" />
+    <rect x="10" y="20" width="15" height="15" fill="#0db7ed" />
+    <rect x="25" y="5" width="15" height="15" fill="#0db7ed" />
+    <rect x="25" y="20" width="15" height="15" fill="#0db7ed" />
+    <rect x="25" y="35" width="15" height="15" fill="#0db7ed" />
+    <rect x="40" y="20" width="15" height="15" fill="#0db7ed" />
+    <rect x="55" y="20" width="15" height="15" fill="#0db7ed" />
+    <rect x="70" y="20" width="15" height="15" fill="#0db7ed" />
+    <rect x="85" y="20" width="15" height="15" fill="#0db7ed" />
+    <rect x="100" y="20" width="15" height="15" fill="#0db7ed" />
+    <rect x="40" y="35" width="15" height="15" fill="#0db7ed" />
+  </g>
+  
+  <text x="400" y="375" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#64748b">
+    Docker: Plataforma de contenedores
+  </text>
+</svg>

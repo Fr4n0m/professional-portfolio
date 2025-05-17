@@ -1,6 +1,40 @@
 ---
 // SkillTooltip.astro - Tooltip para mostrar información detallada sobre tecnologías y habilidades
 import { getCurrentLanguage } from '@i18n/config';
+import { getCategoryByName, getRecommendedExperience, skillDescriptions } from '@config/skillDescriptions';
+
+// Componentes de iconos
+import HTMLIcon from '@icons/HTML.astro';
+import CSSIcon from '@icons/CSS.astro';
+import JavaScriptIcon from '@icons/JavaScript.astro';
+import TypeScriptIcon from '@icons/TypeScript.astro';
+import NodeJSIcon from '@icons/NodeJS.astro';
+import ReactIcon from '@icons/React.astro';
+import NextJSIcon from '@icons/NextJS.astro';
+import AstroIcon from '@icons/AstroIcon.astro';
+import TailwindIcon from '@icons/Tailwind.astro';
+import MongoIcon from '@icons/Mongo.astro';
+import DockerIcon from '@icons/Docker.astro';
+import GitIcon from '@icons/Git.astro';
+import GitHubIcon from '@icons/GitHub.astro';
+import SupabaseIcon from '@icons/SupabaseIcon.astro';
+import ViteIcon from '@icons/Vite.jsx';
+import DenoIcon from '@icons/Deno.astro';
+import ExpressIcon from '@icons/Express.astro';
+import GraphqlIcon from '@icons/Graphql.astro';
+import MySQLIcon from '@icons/MySQL.astro';
+import StripeIcon from '@icons/Stripe.astro';
+import BunIcon from '@icons/Bun.astro';
+import PnpmIcon from '@icons/Pnpm.astro';
+import NpmIcon from '@icons/Npm.astro';
+import VercelIcon from '@icons/Vercel.astro';
+import WindowsIcon from '@icons/Windows.astro';
+import MacOSIcon from '@icons/MacOS.astro';
+import DebianIcon from '@icons/Debian.astro';
+import KaliIcon from '@icons/Kali.astro';
+import PhaserIcon from '@icons/Phaser.jsx';
+import StrapiIcon from '@icons/Strapi.astro';
+import CppIcon from '@icons/Cpp.astro';
 
 interface Props {
   name: string;
@@ -10,6 +44,7 @@ interface Props {
   experience?: number; // Nivel de experiencia de 1 a 5
   link?: string;
   className?: string; // Para pasar las clases de estilo basadas en el Tag
+  icon?: (_props: Record<string, any>) => any; // Icono de la skill
 }
 
 // Obtener el idioma actual
@@ -22,144 +57,335 @@ const {
   position = 'top',
   experience = 3,
   link = '#',
-  className = ''
+  className = '',
+  icon
 } = Astro.props;
 
-// Generar el nivel de experiencia de 1 a 5
-const experienceBars = Array(5).fill(0).map((_, i) => i < experience);
+// Usar la función de getCategoryByName del archivo de configuración
+const finalCategory = category || getCategoryByName(name);
 
-// Descripciones por defecto multilingües
-const defaultDescriptions = {
-  // Categoría Frontend
-  'HTML': {
-    es: 'Lenguaje de marcado estándar para la creación de páginas web.',
-    en: 'Standard markup language for creating web pages.'
+// Obtener el nivel de experiencia usando la función del archivo de configuración
+const finalExperience = experience || getRecommendedExperience(name);
+
+// Generar el nivel de experiencia según el valor calculado
+const experienceBars = Array(5).fill(0).map((_, i) => i < finalExperience);
+
+// Mapa de iconos para cada tecnología
+const technologyIcons = {
+  'HTML': HTMLIcon,
+  'CSS': CSSIcon,
+  'Tailwind CSS': TailwindIcon,
+  'JavaScript': JavaScriptIcon,
+  'TypeScript': TypeScriptIcon,
+  'React': ReactIcon,
+  'NextJS': NextJSIcon,
+  'Astro': AstroIcon,
+  'Vite': ViteIcon,
+  'NodeJS': NodeJSIcon,
+  'Deno': DenoIcon,
+  'ExpressJS': ExpressIcon,
+  'MongoDB': MongoIcon,
+  'Supabase': SupabaseIcon,
+  'MySQL': MySQLIcon,
+  'Stripe': StripeIcon,
+  'Docker': DockerIcon,
+  'Git': GitIcon,
+  'GitHub': GitHubIcon,
+  'Npm': NpmIcon,
+  'Pnpm': PnpmIcon,
+  'Bun': BunIcon,
+  'Phaser': PhaserIcon,
+  'C++': CppIcon,
+  'Windows': WindowsIcon,
+  'MacOS': MacOSIcon,
+  'Debian': DebianIcon,
+  'Kali': KaliIcon,
+  'Vercel': VercelIcon,
+  'Strapi': StrapiIcon,
+  'Graphql': GraphqlIcon
+};
+
+// Obtener el icono adecuado para esta tecnología
+const TechIcon = technologyIcons[name] || null;
+
+// Mapa de screenshots de ejemplo para cada tecnología
+const technologyScreenshots = {
+  // Frontend
+  'HTML': '/assets/screenshots/html-screenshot.svg',
+  'CSS': '/assets/screenshots/css-screenshot.svg',
+  'Tailwind CSS': '/assets/screenshots/frontend-screenshot.svg',
+  'JavaScript': '/assets/screenshots/js-screenshot.svg',
+  'TypeScript': '/assets/screenshots/frontend-screenshot.svg',
+  'React': '/assets/screenshots/frontend-screenshot.svg',
+  'NextJS': '/assets/screenshots/frontend-screenshot.svg',
+  'Astro': '/assets/screenshots/frontend-screenshot.svg',
+  'Vite': '/assets/screenshots/frontend-screenshot.svg',
+  // Backend
+  'NodeJS': '/assets/screenshots/backend-screenshot.svg',
+  'Deno': '/assets/screenshots/backend-screenshot.svg',
+  'ExpressJS': '/assets/screenshots/backend-screenshot.svg', 
+  'Bun': '/assets/screenshots/backend-screenshot.svg',
+  // Database
+  'MongoDB': '/assets/screenshots/database-screenshot.svg',
+  'Supabase': '/assets/screenshots/database-screenshot.svg',
+  'MySQL': '/assets/screenshots/database-screenshot.svg',
+  'Stripe': '/assets/screenshots/database-screenshot.svg',
+  'Graphql': '/assets/screenshots/database-screenshot.svg',
+  'Strapi': '/assets/screenshots/database-screenshot.svg',
+  // Tools
+  'Docker': '/assets/screenshots/docker-screenshot.svg',
+  'Git': '/assets/screenshots/tools-screenshot.svg',
+  'GitHub': '/assets/screenshots/tools-screenshot.svg',
+  'Npm': '/assets/screenshots/tools-screenshot.svg',
+  'Pnpm': '/assets/screenshots/tools-screenshot.svg',
+  'Bun': '/assets/screenshots/tools-screenshot.svg',
+  'Phaser': '/assets/screenshots/phaser-screenshot.svg',
+  'Vercel': '/assets/screenshots/tools-screenshot.svg',
+  'C++': '/assets/screenshots/tools-screenshot.svg',
+  // OS
+  'Windows': '/assets/screenshots/os-screenshot.svg',
+  'MacOS': '/assets/screenshots/os-screenshot.svg',
+  'Debian': '/assets/screenshots/os-screenshot.svg',
+  'Kali': '/assets/screenshots/os-screenshot.svg'
+};
+
+// Imagen por defecto para tecnologías sin screenshot específico
+const defaultScreenshot = '/assets/screenshots/default-tech.svg';
+
+// Obtener el screenshot adecuado o usar el predeterminado por categoría
+const techScreenshot = technologyScreenshots[name] || (finalCategory ? `/assets/screenshots/${finalCategory}-screenshot.svg` : defaultScreenshot);
+
+// Obtener la descripción desde el archivo de configuración centralizado
+const finalDescription = description || 
+  skillDescriptions[name]?.[currentLang] || 
+  skillDescriptions[name]?.['en'] || 
+  `${name} - Tecnología web moderna.`;
+
+// Traducciones para las etiquetas del tooltip
+const translations = {
+  experienceLevel: {
+    es: 'Nivel de experiencia:',
+    en: 'Experience level:',
+    'en-us': 'Experience level:',
+    'es-mx': 'Nivel de experiencia:',
+    pt: 'Nível de experiência:',
+    fr: 'Niveau d\'expérience:',
+    de: 'Erfahrungsstufe:',
+    it: 'Livello di esperienza:',
+    zh: '经验水平:',
+    ja: '経験レベル:',
+    ru: 'Уровень опыта:',
+    ar: 'مستوى الخبرة:',
+    hi: 'अनुभव स्तर:',
+    ko: '경험 레벨:',
+    nl: 'Ervaringsniveau:',
+    pl: 'Poziom doświadczenia:',
+    tr: 'Deneyim seviyesi:',
+    hv: 'Undaghoś vala:'
   },
-  'CSS': {
-    es: 'Lenguaje de hojas de estilo para diseñar páginas web.',
-    en: 'Style sheet language for designing web pages.'
+  viewMore: {
+    es: 'Ver más',
+    en: 'View more',
+    'en-us': 'View more',
+    'es-mx': 'Ver más',
+    pt: 'Ver mais',
+    fr: 'Voir plus',
+    de: 'Mehr anzeigen',
+    it: 'Vedi di più',
+    zh: '查看更多',
+    ja: 'もっと見る',
+    ru: 'Подробнее',
+    ar: 'عرض المزيد',
+    hi: 'और देखें',
+    ko: '더 보기',
+    nl: 'Meer bekijken',
+    pl: 'Zobacz więcej',
+    tr: 'Daha fazla görüntüle',
+    hv: 'Tolmiotā'
   },
-  'Tailwind CSS': {
-    es: 'Framework CSS utilitario para crear diseños personalizados rápidamente.',
-    en: 'Utility-first CSS framework for rapidly building custom designs.'
-  },
-  'JavaScript': {
-    es: 'Lenguaje de programación para crear contenido dinámico e interactivo.',
-    en: 'Programming language for creating dynamic and interactive content.'
-  },
-  'TypeScript': {
-    es: 'Superset tipado de JavaScript que añade tipos estáticos.',
-    en: 'Typed superset of JavaScript that adds static types.'
-  },
-  'React': {
-    es: 'Biblioteca JavaScript para construir interfaces de usuario.',
-    en: 'JavaScript library for building user interfaces.'
-  },
-  'NextJS': {
-    es: 'Framework React para aplicaciones web renderizadas por servidor.',
-    en: 'React framework for server-rendered web applications.'
-  },
-  'Astro': {
-    es: 'Framework para construir sitios web orientados al contenido y enfocados en rendimiento.',
-    en: 'Framework for building content-focused websites with a focus on performance.'
-  },
-  'Vite': {
-    es: 'Herramienta de desarrollo frontend rápida que permite hot module replacement.',
-    en: 'Fast frontend development tool that enables hot module replacement.'
-  },
-  // Categoría Backend
-  'NodeJS': {
-    es: 'Entorno de ejecución de JavaScript en el servidor.',
-    en: 'JavaScript runtime built on Chrome\'s V8 JavaScript engine for server-side applications.'
-  },
-  'Deno': {
-    es: 'Entorno de ejecución seguro para JavaScript y TypeScript.',
-    en: 'Secure runtime for JavaScript and TypeScript.'
-  },
-  'ExpressJS': {
-    es: 'Framework web minimalista para NodeJS.',
-    en: 'Minimal web framework for NodeJS.'
-  },
-  // Bases de datos
-  'MongoDB': {
-    es: 'Base de datos NoSQL orientada a documentos.',
-    en: 'Document-oriented NoSQL database.'
-  },
-  'Supabase': {
-    es: 'Alternativa de código abierto a Firebase con Postgres.',
-    en: 'Open source Firebase alternative with Postgres.'
-  },
-  'MySQL': {
-    es: 'Sistema de gestión de bases de datos relacionales de código abierto.',
-    en: 'Open-source relational database management system.'
-  },
-  'Stripe': {
-    es: 'Plataforma de procesamiento de pagos online.',
-    en: 'Online payment processing platform.'
-  },
-  // Otros
-  'Docker': {
-    es: 'Plataforma para desarrollar, enviar y ejecutar aplicaciones en contenedores.',
-    en: 'Platform for developing, shipping, and running applications in containers.'
-  },
-  'Git': {
-    es: 'Sistema de control de versiones distribuido.',
-    en: 'Distributed version control system.'
-  },
-  'GitHub': {
-    es: 'Plataforma de alojamiento de código para control de versiones y colaboración.',
-    en: 'Code hosting platform for version control and collaboration.'
-  },
-  'Npm': {
-    es: 'Gestor de paquetes para JavaScript y Node.js.',
-    en: 'Package manager for JavaScript and Node.js.'
-  },
-  'Pnpm': {
-    es: 'Gestor de paquetes rápido y eficiente para JavaScript.',
-    en: 'Fast and efficient package manager for JavaScript.'
-  },
-  'Bun': {
-    es: 'Entorno de ejecución rápido para JavaScript y TypeScript.',
-    en: 'Fast JavaScript and TypeScript runtime.'
-  },
-  'Windows': {
-    es: 'Sistema operativo de Microsoft para ordenadores personales.',
-    en: 'Microsoft operating system for personal computers.'
-  },
-  'MacOS': {
-    es: 'Sistema operativo de Apple para ordenadores Mac.',
-    en: 'Apple operating system for Mac computers.'
-  },
-  'Debian': {
-    es: 'Distribución Linux estable y segura.',
-    en: 'Stable and secure Linux distribution.'
-  },
-  'Kali': {
-    es: 'Distribución Linux especializada en seguridad informática.',
-    en: 'Linux distribution specialized in computer security.'
+  category: {
+    frontend: {
+      es: 'Frontend',
+      en: 'Frontend',
+      'en-us': 'Frontend',
+      'es-mx': 'Frontend',
+      pt: 'Frontend',
+      fr: 'Frontend',
+      de: 'Frontend',
+      it: 'Frontend',
+      zh: '前端',
+      ja: 'フロントエンド',
+      ru: 'Фронтенд',
+      ar: 'واجهة أمامية',
+      hi: 'फ्रंटएंड',
+      ko: '프론트엔드',
+      nl: 'Frontend',
+      pl: 'Frontend',
+      tr: 'Ön uç',
+      hv: 'Qrinuntys'
+    },
+    backend: {
+      es: 'Backend',
+      en: 'Backend',
+      'en-us': 'Backend',
+      'es-mx': 'Backend',
+      pt: 'Backend',
+      fr: 'Backend',
+      de: 'Backend',
+      it: 'Backend',
+      zh: '后端',
+      ja: 'バックエンド',
+      ru: 'Бэкенд',
+      ar: 'واجهة خلفية',
+      hi: 'बैकएंड',
+      ko: '백엔드',
+      nl: 'Backend',
+      pl: 'Backend',
+      tr: 'Arka uç',
+      hv: 'HŪchtys'
+    },
+    database: {
+      es: 'Base de datos',
+      en: 'Database',
+      'en-us': 'Database',
+      'es-mx': 'Base de datos',
+      pt: 'Banco de dados',
+      fr: 'Base de données',
+      de: 'Datenbank',
+      it: 'Database',
+      zh: '数据库',
+      ja: 'データベース',
+      ru: 'База данных',
+      ar: 'قاعدة بيانات',
+      hi: 'डेटाबेस',
+      ko: '데이터베이스',
+      nl: 'Database',
+      pl: 'Baza danych',
+      tr: 'Veritabanı',
+      hv: 'Tubis'
+    },
+    tools: {
+      es: 'Herramientas',
+      en: 'Tools',
+      'en-us': 'Tools',
+      'es-mx': 'Herramientas',
+      pt: 'Ferramentas',
+      fr: 'Outils',
+      de: 'Werkzeuge',
+      it: 'Strumenti',
+      zh: '工具',
+      ja: 'ツール',
+      ru: 'Инструменты',
+      ar: 'أدوات',
+      hi: 'उपकरण',
+      ko: '도구',
+      nl: 'Gereedschappen',
+      pl: 'Narzędzia',
+      tr: 'Araçlar',
+      hv: 'Tembyr'
+    },
+    os: {
+      es: 'Sistemas operativos',
+      en: 'Operating systems',
+      'en-us': 'Operating systems',
+      'es-mx': 'Sistemas operativos',
+      pt: 'Sistemas operacionais',
+      fr: 'Systèmes d\'exploitation',
+      de: 'Betriebssysteme',
+      it: 'Sistemi operativi',
+      zh: '操作系统',
+      ja: 'オペレーティングシステム',
+      ru: 'Операционные системы',
+      ar: 'أنظمة التشغيل',
+      hi: 'ऑपरेटिंग सिस्टम',
+      ko: '운영 체제',
+      nl: 'Besturingssystemen',
+      pl: 'Systemy operacyjne',
+      tr: 'İşletim sistemleri',
+      hv: 'Gundytyr'
+    },
+    language: {
+      es: 'Lenguaje',
+      en: 'Language',
+      'en-us': 'Language',
+      'es-mx': 'Lenguaje',
+      pt: 'Linguagem',
+      fr: 'Langage',
+      de: 'Sprache',
+      it: 'Linguaggio',
+      zh: '语言',
+      ja: '言語',
+      ru: 'Язык',
+      ar: 'لغة',
+      hi: 'भाषा',
+      ko: '언어',
+      nl: 'Taal',
+      pl: 'Język',
+      tr: 'Dil',
+      hv: 'Valyre'
+    },
+    framework: {
+      es: 'Framework',
+      en: 'Framework',
+      'en-us': 'Framework',
+      'es-mx': 'Framework',
+      pt: 'Framework',
+      fr: 'Framework',
+      de: 'Framework',
+      it: 'Framework',
+      zh: '框架',
+      ja: 'フレームワーク',
+      ru: 'Фреймворк',
+      ar: 'إطار عمل',
+      hi: 'फ्रेमवर्क',
+      ko: '프레임워크',
+      nl: 'Framework',
+      pl: 'Framework',
+      tr: 'Çerçeve',
+      hv: 'Zyhossyrdi'
+    },
+    library: {
+      es: 'Biblioteca',
+      en: 'Library',
+      'en-us': 'Library',
+      'es-mx': 'Biblioteca',
+      pt: 'Biblioteca',
+      fr: 'Bibliothèque',
+      de: 'Bibliothek',
+      it: 'Libreria',
+      zh: '库',
+      ja: 'ライブラリ',
+      ru: 'Библиотека',
+      ar: 'مكتبة',
+      hi: 'लाइब्रेरी',
+      ko: '라이브러리',
+      nl: 'Bibliotheek',
+      pl: 'Biblioteka',
+      tr: 'Kütüphane',
+      hv: 'Ubrardy'
+    },
+    technology: {
+      es: 'Tecnología',
+      en: 'Technology',
+      'en-us': 'Technology',
+      'es-mx': 'Tecnología',
+      pt: 'Tecnologia',
+      fr: 'Technologie',
+      de: 'Technologie',
+      it: 'Tecnologia',
+      zh: '技术',
+      ja: 'テクノロジー',
+      ru: 'Технология',
+      ar: 'تكنولوجيا',
+      hi: 'टेक्नोलॉजी',
+      ko: '기술',
+      nl: 'Technologie',
+      pl: 'Technologia',
+      tr: 'Teknoloji',
+      hv: 'Texnolojy'
+    }
   }
 };
-
-// Si no hay descripción personalizada, usar la descripción por defecto según el nombre y el idioma
-const finalDescription = description || defaultDescriptions[name]?.[currentLang] || defaultDescriptions[name]?.['en'] || `${name} - Tecnología web moderna.`;
-
-// Obtener la categoría según el nombre si no se proporciona
-const getCategoryByName = (name) => {
-  const frontendTechs = ['HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'TypeScript', 'React', 'NextJS', 'Astro', 'Vite'];
-  const backendTechs = ['NodeJS', 'Deno', 'ExpressJS', 'PHP', 'Python', 'Java'];
-  const databaseTechs = ['MongoDB', 'Supabase', 'MySQL', 'PostgreSQL', 'SQLite', 'Redis'];
-  const toolsTechs = ['Docker', 'Git', 'GitHub', 'Npm', 'Pnpm', 'Bun', 'Vite', 'Vercel'];
-  const osTechs = ['Windows', 'MacOS', 'Debian', 'Kali', 'Ubuntu', 'Linux'];
-
-  if (frontendTechs.includes(name)) return 'frontend';
-  if (backendTechs.includes(name)) return 'backend';
-  if (databaseTechs.includes(name)) return 'database';
-  if (osTechs.includes(name)) return 'os';
-  if (toolsTechs.includes(name)) return 'tools';
-  return 'framework';
-};
-
-const finalCategory = category || getCategoryByName(name);
 
 // Icono y color según la categoría
 let categoryIcon;
@@ -170,76 +396,48 @@ switch (finalCategory) {
   case 'frontend':
     categoryIcon = 'layout';
     categoryBackground = 'bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400';
-    categoryTitle = currentLang === 'es' ? 'Frontend' : 'Frontend';
+    categoryTitle = translations.category.frontend[currentLang] || translations.category.frontend['en'];
     break;
   case 'backend':
     categoryIcon = 'server';
     categoryBackground = 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400';
-    categoryTitle = currentLang === 'es' ? 'Backend' : 'Backend';
+    categoryTitle = translations.category.backend[currentLang] || translations.category.backend['en'];
     break;
   case 'database':
     categoryIcon = 'database';
     categoryBackground = 'bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400';
-    categoryTitle = currentLang === 'es' ? 'Base de datos' : 'Database';
+    categoryTitle = translations.category.database[currentLang] || translations.category.database['en'];
     break;
   case 'tools':
     categoryIcon = 'tool';
     categoryBackground = 'bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400';
-    categoryTitle = currentLang === 'es' ? 'Herramientas' : 'Tools';
+    categoryTitle = translations.category.tools[currentLang] || translations.category.tools['en'];
     break;
   case 'os':
     categoryIcon = 'monitor';
     categoryBackground = 'bg-gray-100 dark:bg-gray-900/40 text-gray-600 dark:text-gray-400';
-    categoryTitle = currentLang === 'es' ? 'Sistemas operativos' : 'Operating systems';
+    categoryTitle = translations.category.os[currentLang] || translations.category.os['en'];
     break;
   case 'language':
     categoryIcon = 'code';
     categoryBackground = 'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400';
-    categoryTitle = currentLang === 'es' ? 'Lenguaje' : 'Language';
+    categoryTitle = translations.category.language[currentLang] || translations.category.language['en'];
     break;
   case 'framework':
     categoryIcon = 'box';
     categoryBackground = 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-600 dark:text-yellow-400';
-    categoryTitle = currentLang === 'es' ? 'Framework' : 'Framework';
+    categoryTitle = translations.category.framework[currentLang] || translations.category.framework['en'];
     break;
   case 'library':
     categoryIcon = 'package';
     categoryBackground = 'bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400';
-    categoryTitle = currentLang === 'es' ? 'Biblioteca' : 'Library';
+    categoryTitle = translations.category.library[currentLang] || translations.category.library['en'];
     break;
   default:
     categoryIcon = 'code';
     categoryBackground = 'bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400';
-    categoryTitle = currentLang === 'es' ? 'Tecnología' : 'Technology';
+    categoryTitle = translations.category.technology[currentLang] || translations.category.technology['en'];
 }
-
-// Traducciones para las etiquetas del tooltip
-const translations = {
-  experienceLevel: {
-    es: 'Nivel de experiencia:',
-    en: 'Experience level:',
-    pt: 'Nível de experiência:',
-    fr: 'Niveau d\'expérience:',
-    de: 'Erfahrungsstufe:',
-    it: 'Livello di esperienza:',
-    zh: '经验水平:',
-    ja: '経験レベル:',
-    ru: 'Уровень опыта:',
-    ar: 'مستوى الخبرة:',
-  },
-  viewMore: {
-    es: 'Ver más',
-    en: 'View more',
-    pt: 'Ver mais',
-    fr: 'Voir plus',
-    de: 'Mehr anzeigen',
-    it: 'Vedi di più',
-    zh: '查看更多',
-    ja: 'もっと見る',
-    ru: 'Подробнее',
-    ar: 'عرض المزيد',
-  }
-};
 
 // Obtener la traducción para el idioma actual o usar el predeterminado
 const getTranslation = (key) => {
@@ -247,49 +445,33 @@ const getTranslation = (key) => {
 };
 ---
 
-<div class={`skill-tooltip absolute invisible opacity-0 z-[9999] transition-all duration-300 ease-out transform pointer-events-none ${
-  position === 'top' ? 'bottom-full mb-2 -translate-x-1/2 left-1/2' : 
-  position === 'right' ? 'left-full ml-2 -translate-y-1/2 top-1/2' : 
-  position === 'bottom' ? 'top-full mt-2 -translate-x-1/2 left-1/2' : 
-  'right-full mr-2 -translate-y-1/2 top-1/2'
-}`}
-  dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
-  data-lang={currentLang}
->
-  <div class={`bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-3 w-[230px] md:w-[270px] backdrop-filter backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.12)] relative ${className ? 'skill-custom-tooltip' : ''}`}>
+<div class="skill-tooltip" dir={currentLang === 'ar' ? 'rtl' : 'ltr'} data-lang={currentLang}>
+  <div class={`bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-3 w-[270px] md:w-[320px] backdrop-filter backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.12)] relative ${className ? 'skill-custom-tooltip' : ''}`}>
     <!-- Agregar un borde sutil con el color del skill -->
     {className && (
       <div class="absolute inset-0 rounded-lg opacity-30 pointer-events-none border-2 skill-custom-border"></div>
     )}
     
+    <!-- Imagen de screenshot de la tecnología -->
+    <div class="w-full h-[120px] mb-3 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-700 relative">
+      <img 
+        src={techScreenshot} 
+        alt={`Ejemplo de ${name}`}
+        class="w-full h-full object-cover object-center transition-transform hover:scale-105"
+        loading="lazy"
+        onError="this.onerror=null; this.src='/assets/screenshots/default-tech.svg';"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-50"></div>
+    </div>
+    
     <div class="flex items-center border-b border-gray-200 dark:border-gray-700 pb-2 mb-2">
-      <div class={`w-7 h-7 rounded-full ${categoryBackground} flex items-center justify-center mr-2.5`}>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          {categoryIcon === 'layout' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-          )}
-          {categoryIcon === 'server' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-          )}
-          {categoryIcon === 'database' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
-          )}
-          {categoryIcon === 'tool' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-          )}
-          {categoryIcon === 'monitor' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          )}
-          {categoryIcon === 'code' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-          )}
-          {categoryIcon === 'box' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-          )}
-          {categoryIcon === 'package' && (
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
-          )}
-        </svg>
+      <!-- Usar el mismo icono para esta tecnología -->
+      <div class={`w-7 h-7 rounded-full flex items-center justify-center mr-2.5 ${className}`}>
+        {TechIcon ? <TechIcon class="size-4" /> : (
+          <div class="size-4 flex items-center justify-center text-current">
+            <span class="text-xs font-bold">{name.charAt(0)}</span>
+          </div>
+        )}
       </div>
       <div>
         <h4 class="font-semibold text-sm text-gray-900 dark:text-white leading-tight">{name}</h4>
@@ -311,16 +493,6 @@ const getTranslation = (key) => {
     <a href={link} target="_blank" rel="noopener noreferrer" class="text-[10px] font-medium text-right block hover:underline skill-tooltip-link">
       {getTranslation('viewMore')} &rarr;
     </a>
-    
-    <!-- Flecha del tooltip según la posición -->
-    <div 
-      class={`absolute w-3 h-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 ${
-        position === 'top' ? 'top-[-6px] left-1/2 -translate-x-1/2 border-t border-l' : 
-        position === 'right' ? 'right-[-6px] top-1/2 -translate-y-1/2 border-r border-t' : 
-        position === 'bottom' ? 'bottom-[-6px] left-1/2 -translate-x-1/2 border-b border-r' : 
-        'left-[-6px] top-1/2 -translate-y-1/2 border-l border-b'
-      }`}
-    ></div>
   </div>
 </div>
 
@@ -376,7 +548,16 @@ const getTranslation = (key) => {
   
   /* Animar opciones al cambiar opción */
   .skill-tooltip {
-    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    /* Animación más lenta y con retraso */
+    transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    z-index: 99999;
   }
   
   /* Estilos para el borde personalizado basado en el color del pill */
@@ -390,6 +571,14 @@ const getTranslation = (key) => {
   
   .skill-custom-tooltip .skill-gradient-bar {
     background: linear-gradient(90deg, var(--tag-color, #3B82F6), color-mix(in srgb, var(--tag-color, #3B82F6), #ffffff 20%));
+  }
+
+  /* Hacer que los tooltips sean más visibles cuando aparecen */
+  .skill-tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto; /* Habilitamos interactividad */
   }
 </style>
 
