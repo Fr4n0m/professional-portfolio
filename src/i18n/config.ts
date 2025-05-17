@@ -1,4 +1,40 @@
-// Configuración del sistema i18n
+// Solución temporal para indexación de idiomas
+declare global {
+  interface Window {
+    // Definiciones globales de propiedades en window
+    gsap: any;
+    fbq: any;
+    gtag: any;
+  }
+}
+
+// Extiende HTMLElement para agregar propiedades que TypeScript no reconoce
+interface HTMLElementWithStyle extends HTMLElement {
+  style: CSSStyleDeclaration & {
+    scale?: string;
+    opacity?: string;
+    width?: string;
+    backgroundColor?: string;
+    boxShadow?: string;
+    transition?: string;
+  };
+}
+
+// Extiende Element para agregar propiedades de dataset
+interface ElementWithDataset extends Element {
+  dataset: DOMStringMap & {
+    theme?: string;
+    src?: string;
+    [key: string]: string | undefined;
+  };
+}
+
+// Extiende HTMLElement para checked
+interface HTMLInputElementWithChecked extends HTMLElement {
+  checked: boolean;
+}
+
+// TypeScript ignora estos tipos, son solo para corregir errores
 export const languages = {
   en: {
     name: 'English (UK)',

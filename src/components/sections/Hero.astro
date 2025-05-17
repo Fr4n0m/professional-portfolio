@@ -1,6 +1,6 @@
 ---
 // sections/Hero.astro - Redirección al nuevo componente modular
-import Hero from '@components/Hero/index.astro';
+import HeroComponent from '@components/Hero/index.astro';
 import type { Translations } from '../../types/translations';
 
 interface Props {
@@ -11,4 +11,4 @@ interface Props {
 const { translations, lang } = Astro.props;
 ---
 
-<Hero translations={translations} lang={lang} />
+<HeroComponent translations={translations} lang={lang} />

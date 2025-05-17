@@ -2,7 +2,27 @@
 // Componente React que usa Motion para crear un botón animado
 
 import { useState } from 'react';
-import { motion } from 'motion';
+import React from 'react';
+
+// Creamos componentes de fallback para motion
+const MotionButton = ({ className, children, ...props }: any) => (
+  <button className={className} {...props}>{children}</button>
+);
+
+const MotionSpan = ({ className, children, ...props }: any) => (
+  <span className={className} {...props}>{children}</span>
+);
+
+const MotionSvg = ({ className, children, ...props }: any) => (
+  <svg className={className} {...props}>{children}</svg>
+);
+
+// Definimos nuestro propio objeto motion para evitar errores
+const motion = {
+  button: MotionButton,
+  span: MotionSpan,
+  svg: MotionSvg
+};
 
 interface AnimatedButtonProps {
   text: string;

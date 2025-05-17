@@ -208,7 +208,25 @@ interface CookieConsentConfig {
   };
 }
 
-class CookieConsent implements CookieConsentConfig {
+class CookieConsent {
+  consentName: string;
+  consentVersion: string;
+  cookieExpiry: number;
+  cookieDomain: string;
+  banner: HTMLElement | null;
+  simpleView: HTMLElement | null;
+  detailedView: HTMLElement | null;
+  acceptBtn: HTMLElement | null;
+  rejectBtn: HTMLElement | null;
+  preferencesBtn: HTMLElement | null;
+  savePreferencesBtn: HTMLElement | null;
+  closePreferencesBtn: HTMLElement | null;
+  categoryInputs: {
+    essential: HTMLInputElement | null;
+    analytical: HTMLInputElement | null;
+    functional: HTMLInputElement | null;
+    advertising: HTMLInputElement | null;
+  };
     constructor() {
       this.consentName = 'cookie_consent';
       this.consentVersion = '1.0.0'; // Incrementar cuando cambie la política

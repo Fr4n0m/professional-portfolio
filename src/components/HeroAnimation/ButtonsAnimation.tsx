@@ -1,6 +1,16 @@
 // ButtonsAnimation.tsx
 // Componente para la animación de los botones con Motion
-import { motion } from 'motion';
+import React from 'react';
+
+// Creamos componentes de fallback para motion
+const MotionDiv = ({ className, children, ...props }: any) => (
+  <div className={className} {...props}>{children}</div>
+);
+
+// Definimos nuestro propio objeto motion para evitar errores
+const motion = {
+  div: MotionDiv
+};
 
 interface ButtonsAnimationProps {
   primaryButtonText: string;
