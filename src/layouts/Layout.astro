@@ -108,10 +108,10 @@ console.log('Detected language:', lang);
   // Inicializador de animaciones globales con GSAP
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { initControlCenter } from '../scripts/controlCenter.js';
-  import { initLazyLoadFallbacks } from '../components/fallbacks/loadingFallbacks.js';
-  import { initAnalytics } from '../utils/analyticsUtils.js';
-import { initCookies } from '../utils/cookieUtils.js';
+  import { initControlCenter } from '@scripts/controlCenter.js';
+  import { initLazyLoadFallbacks } from '@components/fallbacks/loadingFallbacks.js';
+  import { initAnalytics } from '@utils/analyticsUtils.js';
+import { initCookies } from '@utils/cookieUtils.js';
   
   // Registramos ScrollTrigger para animaciones de scroll
   gsap.registerPlugin(ScrollTrigger);
