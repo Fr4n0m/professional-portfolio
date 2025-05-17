@@ -1,0 +1,294 @@
+---
+// SocialSkillTooltip.astro - Tooltip para mostrar información detallada sobre habilidades sociales
+interface Props {
+  title: string;
+  description: string;
+  strengthLevel?: number; // Nivel de fortaleza de 1 a 5
+  relatedSkills?: string[];
+  icon?: string; // Nombre del icono (opcional)
+  position?: 'top' | 'right' | 'bottom' | 'left';
+  darkMode?: boolean;
+  lang?: string;  // Idioma actual
+}
+
+const { 
+  title, 
+  description,
+  strengthLevel = 4,
+  relatedSkills = [],
+  icon = 'people',
+  position = 'top',
+  darkMode = false,
+  lang = 'es'
+} = Astro.props;
+
+// Convertir nivel de fuerza en una representación visual
+const strengthBars = Array(5).fill(0).map((_, i) => i < strengthLevel);
+
+// Traducciones para las etiquetas del tooltip
+const translations = {
+  strengthLevel: {
+    es: 'Nivel de fortaleza:',
+    en: 'Strength level:',
+    fr: 'Niveau de force:',
+    de: 'Stärkegrad:',
+    pt: 'Nível de força:',
+    it: 'Livello di forza:',
+    zh: '强度等级:',
+    ja: '強度レベル:',
+    ko: '수준:',
+    ru: 'Уровень навыка:',
+    ar: 'مستوى القوة:',
+    nl: 'Sterkte niveau:',
+    pl: 'Poziom umiejętności:',
+    tr: 'Beceri seviyesi:',
+  },
+  relatedSkills: {
+    es: 'Habilidades relacionadas:',
+    en: 'Related skills:',
+    fr: 'Compétences connexes:',
+    de: 'Verwandte Fähigkeiten:',
+    pt: 'Habilidades relacionadas:',
+    it: 'Abilità correlate:',
+    zh: '相关技能:',
+    ja: '関連スキル:',
+    ko: '관련 기술:',
+    ru: 'Связанные навыки:',
+    ar: 'المهارات ذات الصلة:',
+    nl: 'Gerelateerde vaardigheden:',
+    pl: 'Powiązane umiejętności:',
+    tr: 'İlgili beceriler:',
+  }
+};
+
+// Obtener la traducción para el idioma actual o usar el predeterminado (inglés si no hay traducción)
+const getTranslation = (key: string) => {
+  return translations[key]?.[lang] || translations[key]?.en || translations[key]?.es || key;
+};
+---
+
+<div class={`social-skill-tooltip absolute invisible opacity-0 z-[9999] transition-all duration-300 ease-out transform pointer-events-none ${
+  position === 'top' ? 'bottom-full mb-2 -translate-x-1/2 left-1/2' : 
+  position === 'right' ? 'left-full ml-2 -translate-y-1/2 top-1/2' : 
+  position === 'bottom' ? 'top-full mt-2 -translate-x-1/2 left-1/2' : 
+  'right-full mr-2 -translate-y-1/2 top-1/2'
+}`}
+  dir={lang === 'ar' ? 'rtl' : 'ltr'}
+  data-lang={lang}
+>
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 w-[280px] md:w-[320px] backdrop-filter backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.12)] relative">
+    <div class="flex items-center border-b border-gray-200 dark:border-gray-700 pb-2 mb-3">
+      <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center mr-3">
+        <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {icon === 'people' && (
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          )}
+          {icon === 'communication' && (
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          )}
+          {icon === 'leadership' && (
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          )}
+          {icon === 'teamwork' && (
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          )}
+          {icon === 'problem' && (
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+          )}
+        </svg>
+      </div>
+      <h4 class="font-semibold text-lg text-gray-900 dark:text-white">{title}</h4>
+    </div>
+    
+    <p class="text-sm mb-3 text-gray-700 dark:text-gray-300">{description}</p>
+    
+    <div class="mb-3">
+      <p class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{getTranslation('strengthLevel')}</p>
+      <div class="flex space-x-1">
+        {strengthBars.map((filled) => (
+          <div class={`w-8 h-2 rounded-sm ${filled ? 'bg-blue-500 dark:bg-blue-400' : 'bg-gray-200 dark:bg-gray-700'}`}></div>
+        ))}
+      </div>
+    </div>
+    
+    {relatedSkills.length > 0 && (
+      <div>
+        <p class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{getTranslation('relatedSkills')}</p>
+        <div class="flex flex-wrap gap-1">
+          {relatedSkills.map((skill) => (
+            <span class={`text-[10px] px-1.5 py-0.5 rounded-md ${darkMode ? 'bg-blue-900/40 text-blue-400' : 'bg-blue-50 text-blue-700'}`}>
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    )}
+    
+    <!-- Flecha del tooltip según la posición -->
+    <div 
+      class={`absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 ${
+        position === 'top' ? 'top-[-6px] left-1/2 -translate-x-1/2 border-t border-l' : 
+        position === 'right' ? 'right-[-6px] top-1/2 -translate-y-1/2 border-r border-t' : 
+        position === 'bottom' ? 'bottom-[-6px] left-1/2 -translate-x-1/2 border-b border-r' : 
+        'left-[-6px] top-1/2 -translate-y-1/2 border-l border-b'
+      }`}
+    ></div>
+  </div>
+</div>
+
+<style>
+  /* Verificar posición en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .social-skill-tooltip {
+      /* Siempre colocar arriba en móvil */
+      left: 50% !important;
+      bottom: 100% !important;
+      top: auto !important;
+      transform: translateX(-50%) !important;
+      margin: 0 0 0.5rem 0 !important;
+    }
+    
+    .social-skill-tooltip .absolute.w-4.h-4 {
+      top: auto !important;
+      bottom: -6px !important;
+      left: 50% !important;
+      transform: translateX(-50%) rotate(45deg) !important;
+      border-width: 0 1px 1px 0 !important;
+    }
+  }
+  
+  /* Estilos específicos para RTL (para árabe y otros idiomas RTL) */
+  [dir="rtl"] .social-skill-tooltip {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .social-skill-tooltip .flex {
+    flex-direction: row-reverse;
+  }
+  
+  [dir="rtl"] .social-skill-tooltip .mr-3 {
+    margin-right: 0;
+    margin-left: 0.75rem;
+  }
+  
+  [dir="rtl"] .social-skill-tooltip .space-x-1 > * + * {
+    margin-left: 0;
+    margin-right: 0.25rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const skillContainers = document.querySelectorAll('.skill-tooltip-container');
+    
+    skillContainers.forEach(container => {
+      // Mostrar/ocultar tooltip al hacer hover
+      container.addEventListener('mouseenter', () => {
+        const tooltip = container.querySelector('.social-skill-tooltip');
+        if (tooltip) {
+          tooltip.classList.remove('invisible', 'opacity-0');
+          tooltip.classList.add('visible', 'opacity-100');
+        }
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        const tooltip = container.querySelector('.social-skill-tooltip');
+        if (tooltip) {
+          tooltip.classList.add('invisible', 'opacity-0');
+          tooltip.classList.remove('visible', 'opacity-100');
+        }
+      });
+      
+      // Detectar posición mejor en función del espacio disponible
+      function updateTooltipPosition() {
+        const tooltip = container.querySelector('.social-skill-tooltip');
+        if (!tooltip) return;
+        
+        const rect = container.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        
+        // Si estamos en móvil, no necesitamos calcular nada más
+        if (windowWidth < 768) return;
+        
+        // Verificar si hay espacio suficiente en cada dirección
+        const spaceTop = rect.top;
+        const spaceRight = windowWidth - rect.right;
+        const spaceBottom = windowHeight - rect.bottom;
+        const spaceLeft = rect.left;
+        
+        // Obtener la posición actual
+        const currentPosition = tooltip.getAttribute('data-position') || 'top';
+        
+        // Determinar la mejor posición según el espacio disponible
+        let bestPosition = currentPosition;
+        
+        // Altura y anchura del tooltip +20px de margen
+        const tooltipHeight = tooltipRect.height + 20;
+        const tooltipWidth = tooltipRect.width + 20;
+        
+        if (currentPosition === 'top' && spaceTop < tooltipHeight && spaceBottom >= tooltipHeight) {
+          bestPosition = 'bottom';
+        } else if (currentPosition === 'right' && spaceRight < tooltipWidth && spaceLeft >= tooltipWidth) {
+          bestPosition = 'left';
+        } else if (currentPosition === 'bottom' && spaceBottom < tooltipHeight && spaceTop >= tooltipHeight) {
+          bestPosition = 'top';
+        } else if (currentPosition === 'left' && spaceLeft < tooltipWidth && spaceRight >= tooltipWidth) {
+          bestPosition = 'right';
+        }
+        
+        // Actualizar clases del tooltip según la mejor posición
+        if (bestPosition !== currentPosition) {
+          tooltip.setAttribute('data-position', bestPosition);
+          
+          // Eliminar todas las clases de posición
+          tooltip.classList.remove(
+            'bottom-full', 'mb-2', '-translate-x-1/2', 'left-1/2',
+            'left-full', 'ml-2', '-translate-y-1/2', 'top-1/2',
+            'top-full', 'mt-2',
+            'right-full', 'mr-2'
+          );
+          
+          // Añadir clases según la nueva posición
+          if (bestPosition === 'top') {
+            tooltip.classList.add('bottom-full', 'mb-2', '-translate-x-1/2', 'left-1/2');
+          } else if (bestPosition === 'right') {
+            tooltip.classList.add('left-full', 'ml-2', '-translate-y-1/2', 'top-1/2');
+          } else if (bestPosition === 'bottom') {
+            tooltip.classList.add('top-full', 'mt-2', '-translate-x-1/2', 'left-1/2');
+          } else if (bestPosition === 'left') {
+            tooltip.classList.add('right-full', 'mr-2', '-translate-y-1/2', 'top-1/2');
+          }
+          
+          // Actualizar la flecha
+          const arrow = tooltip.querySelector('div[class*="rotate-45"]');
+          if (arrow) {
+            // Eliminar todas las clases de posición
+            arrow.className = arrow.className.replace(/top-\[.*?\]|left-\[.*?\]|right-\[.*?\]|bottom-\[.*?\]|border-[trbl]|translate-[xy]-.*?(\s|$)/g, '');
+            
+            // Clase base
+            let arrowClass = 'absolute w-4 h-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transform rotate-45 ';
+            
+            // Añadir clases según la posición
+            if (bestPosition === 'top') {
+              arrowClass += 'top-[-6px] left-1/2 -translate-x-1/2 border-t border-l';
+            } else if (bestPosition === 'right') {
+              arrowClass += 'right-[-6px] top-1/2 -translate-y-1/2 border-r border-t';
+            } else if (bestPosition === 'bottom') {
+              arrowClass += 'bottom-[-6px] left-1/2 -translate-x-1/2 border-b border-r';
+            } else if (bestPosition === 'left') {
+              arrowClass += 'left-[-6px] top-1/2 -translate-y-1/2 border-l border-b';
+            }
+            
+            arrow.className = arrowClass;
+          }
+        }
+      }
+      
+      // Actualizar posición al cargar y redimensionar
+      updateTooltipPosition();
+      window.addEventListener('resize', updateTooltipPosition);
+    });
+  });
+</script>

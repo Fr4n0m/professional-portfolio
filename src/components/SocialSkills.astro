@@ -1,0 +1,252 @@
+---
+// SocialSkills.astro - Componente que muestra las habilidades sociales
+import SocialSkillPill from '@components/ui/SocialSkillPill.astro';
+import { commonClasses } from '@utils/cssClasses';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  lang?: string;
+  json?: any; // Traducciones completas
+}
+
+const { 
+  title,
+  subtitle,
+  lang = 'es',
+  json
+} = Astro.props;
+
+// Usar traducciones del JSON si están disponibles, o las predeterminadas
+const translations = {
+  title: {
+    es: "Habilidades Sociales",
+    en: "Social Skills",
+    fr: "Compétences Sociales",
+    de: "Soziale Fähigkeiten",
+    pt: "Habilidades Sociais",
+    it: "Abilità Sociali",
+    zh: "社交技能",
+    ja: "対人スキル",
+    ko: "사회적 기술",
+    ru: "Социальные навыки",
+    ar: "المهارات الاجتماعية",
+    nl: "Sociale vaardigheden",
+    pl: "Umiejętności społeczne",
+    tr: "Sosyal beceriler"
+  },
+  subtitle: {
+    es: "Capacidades interpersonales que complementan mis habilidades técnicas",
+    en: "Interpersonal capabilities that complement my technical skills",
+    fr: "Capacités interpersonnelles qui complètent mes compétences techniques",
+    de: "Zwischenmenschliche Fähigkeiten, die meine technischen Kenntnisse ergänzen",
+    pt: "Capacidades interpessoais que complementam minhas habilidades técnicas",
+    it: "Capacità interpersonali che completano le mie competenze tecniche",
+    zh: "补充我的技术能力的人际交往能力",
+    ja: "技術的スキルを補完する対人スキル",
+    ko: "기술적 능력을 보완하는 대인 능력",
+    ru: "Межличностные навыки, дополняющие мои технические навыки",
+    ar: "قدرات التواصل بين الأشخاص التي تكمل مهاراتي التقنية",
+    nl: "Interpersoonlijke vaardigheden die mijn technische vaardigheden aanvullen",
+    pl: "Umiejętności interpersonalne, które uzupełniają moje umiejętności techniczne",
+    tr: "Teknik becerilerimi tamamlayan kişilerarası yetenekler"
+  },
+  skills: {
+    communication: {
+      name: {
+        es: "Comunicación",
+        en: "Communication",
+        fr: "Communication",
+        de: "Kommunikation",
+        pt: "Comunicação",
+        it: "Comunicazione",
+        zh: "沟通能力",
+        ja: "コミュニケーション",
+        ko: "커뮤니케이션",
+        ru: "Коммуникация",
+        ar: "التواصل",
+        nl: "Communicatie",
+        pl: "Komunikacja",
+        tr: "İletişim"
+      },
+      description: {
+        es: "Capacidad para transmitir ideas de manera clara y concisa, adaptando el mensaje según el interlocutor. Incluye habilidades de escucha activa y retroalimentación constructiva.",
+        en: "Ability to convey ideas clearly and concisely, adapting the message according to the interlocutor. Includes active listening skills and constructive feedback.",
+        fr: "Capacité à transmettre des idées de manière claire et concise, en adaptant le message en fonction de l'interlocuteur. Inclut des compétences d'écoute active et de rétroaction constructive.",
+        de: "Fähigkeit, Ideen klar und präzise zu vermitteln und die Botschaft an den Gesprächspartner anzupassen. Beinhaltet aktives Zuhören und konstruktives Feedback."
+      }
+    },
+    teamwork: {
+      name: {
+        es: "Trabajo en equipo",
+        en: "Teamwork",
+        fr: "Travail d'équipe",
+        de: "Teamarbeit",
+        pt: "Trabalho em equipe",
+        it: "Lavoro di squadra",
+        zh: "团队合作",
+        ja: "チームワーク",
+        ko: "팀워크",
+        ru: "Командная работа",
+        ar: "العمل الجماعي",
+        nl: "Teamwerk",
+        pl: "Praca zespołowa",
+        tr: "Takım çalışması"
+      },
+      description: {
+        es: "Habilidad para colaborar eficazmente con otros profesionales, contribuyendo al logro de objetivos comunes y creando un ambiente de trabajo positivo.",
+        en: "Ability to collaborate effectively with other professionals, contributing to the achievement of common goals and creating a positive work environment.",
+        fr: "Capacité à collaborer efficacement avec d'autres professionnels, contribuant à la réalisation d'objectifs communs et créant un environnement de travail positif.",
+        de: "Fähigkeit zur effektiven Zusammenarbeit mit anderen Fachleuten, zur Erreichung gemeinsamer Ziele und zur Schaffung eines positiven Arbeitsumfelds."
+      }
+    },
+    leadership: {
+      name: {
+        es: "Liderazgo",
+        en: "Leadership",
+        fr: "Leadership",
+        de: "Führung",
+        pt: "Liderança",
+        it: "Leadership",
+        zh: "领导力",
+        ja: "リーダーシップ",
+        ko: "리더십",
+        ru: "Лидерство",
+        ar: "القيادة",
+        nl: "Leiderschap",
+        pl: "Przywództwo",
+        tr: "Liderlik"
+      },
+      description: {
+        es: "Capacidad para guiar e inspirar a un equipo, tomando decisiones estratégicas y asumiendo responsabilidad por los resultados colectivos.",
+        en: "Ability to guide and inspire a team, making strategic decisions and taking responsibility for collective results.",
+        fr: "Capacité à guider et inspirer une équipe, à prendre des décisions stratégiques et à assumer la responsabilité des résultats collectifs.",
+        de: "Fähigkeit, ein Team zu führen und zu inspirieren, strategische Entscheidungen zu treffen und Verantwortung für kollektive Ergebnisse zu übernehmen."
+      }
+    },
+    problemSolving: {
+      name: {
+        es: "Resolución de problemas",
+        en: "Problem solving",
+        fr: "Résolution de problèmes",
+        de: "Problemlösung",
+        pt: "Resolução de problemas",
+        it: "Risoluzione dei problemi",
+        zh: "解决问题能力",
+        ja: "問題解決能力",
+        ko: "문제 해결 능력",
+        ru: "Решение проблем",
+        ar: "حل المشكلات",
+        nl: "Problemen oplossen",
+        pl: "Rozwiązywanie problemów",
+        tr: "Problem çözme"
+      },
+      description: {
+        es: "Habilidad para identificar, analizar y solucionar problemas complejos de manera eficiente, considerando diferentes perspectivas y alternativas.",
+        en: "Ability to identify, analyze, and solve complex problems efficiently, considering different perspectives and alternatives.",
+        fr: "Capacité à identifier, analyser et résoudre efficacement des problèmes complexes, en tenant compte de différentes perspectives et alternatives.",
+        de: "Fähigkeit, komplexe Probleme effizient zu identifizieren, zu analysieren und zu lösen, wobei verschiedene Perspektiven und Alternativen berücksichtigt werden."
+      }
+    },
+    adaptability: {
+      name: {
+        es: "Adaptabilidad",
+        en: "Adaptability",
+        fr: "Adaptabilité",
+        de: "Anpassungsfähigkeit",
+        pt: "Adaptabilidade",
+        it: "Adattabilità",
+        zh: "适应能力",
+        ja: "適応力",
+        ko: "적응력",
+        ru: "Адаптивность",
+        ar: "القدرة على التكيف",
+        nl: "Aanpassingsvermogen",
+        pl: "Adaptacyjność",
+        tr: "Uyum sağlayabilme"
+      },
+      description: {
+        es: "Capacidad para ajustarse a cambios en el entorno, requisitos o tecnologías, manteniendo la productividad y actitud positiva frente a nuevos desafíos.",
+        en: "Ability to adjust to changes in the environment, requirements, or technologies, maintaining productivity and a positive attitude towards new challenges.",
+        fr: "Capacité à s'adapter aux changements d'environnement, d'exigences ou de technologies, en maintenant la productivité et une attitude positive face aux nouveaux défis.",
+        de: "Fähigkeit, sich an Veränderungen in der Umgebung, bei Anforderungen oder Technologien anzupassen und dabei Produktivität und eine positive Einstellung gegenüber neuen Herausforderungen zu bewahren."
+      }
+    }
+  }
+};
+
+// Obtener textos traducidos o usar valores predeterminados
+const finalTitle = title || (json?.socialSkills?.title || translations.title[lang] || translations.title.en);
+const finalSubtitle = subtitle || (json?.socialSkills?.subtitle || translations.subtitle[lang] || translations.subtitle.en);
+
+// Definir las habilidades sociales con las traducciones
+const socialSkills = [
+  {
+    name: translations.skills.communication.name[lang] || translations.skills.communication.name.en,
+    description: translations.skills.communication.description[lang] || translations.skills.communication.description.en,
+    icon: "communication",
+    strengthLevel: 5,
+    relatedSkills: ["Presentaciones", "Documentación", "Escucha activa", "Feedback"],
+    colorClass: "bg-blue-100/80 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 border-blue-300 dark:border-blue-700",
+    link: "/contact"
+  },
+  {
+    name: translations.skills.teamwork.name[lang] || translations.skills.teamwork.name.en,
+    description: translations.skills.teamwork.description[lang] || translations.skills.teamwork.description.en,
+    icon: "teamwork",
+    strengthLevel: 5,
+    relatedSkills: ["Colaboración", "Empatía", "Adaptabilidad", "Coordinación"],
+    colorClass: "bg-green-100/80 dark:bg-green-900/20 text-green-800 dark:text-green-300 border-green-300 dark:border-green-700",
+    link: "/projects"
+  },
+  {
+    name: translations.skills.leadership.name[lang] || translations.skills.leadership.name.en,
+    description: translations.skills.leadership.description[lang] || translations.skills.leadership.description.en,
+    icon: "leadership",
+    strengthLevel: 4,
+    relatedSkills: ["Toma de decisiones", "Delegación", "Visión estratégica", "Motivación"],
+    colorClass: "bg-purple-100/80 dark:bg-purple-900/20 text-purple-800 dark:text-purple-300 border-purple-300 dark:border-purple-700"
+  },
+  {
+    name: translations.skills.problemSolving.name[lang] || translations.skills.problemSolving.name.en,
+    description: translations.skills.problemSolving.description[lang] || translations.skills.problemSolving.description.en,
+    icon: "problem",
+    strengthLevel: 4,
+    relatedSkills: ["Pensamiento crítico", "Análisis", "Creatividad", "Pragmatismo"],
+    colorClass: "bg-orange-100/80 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300 border-orange-300 dark:border-orange-700"
+  },
+  {
+    name: translations.skills.adaptability.name[lang] || translations.skills.adaptability.name.en,
+    description: translations.skills.adaptability.description[lang] || translations.skills.adaptability.description.en,
+    icon: "people",
+    strengthLevel: 5,
+    relatedSkills: ["Flexibilidad", "Aprendizaje rápido", "Resiliencia", "Gestión del cambio"],
+    colorClass: "bg-pink-100/80 dark:bg-pink-900/20 text-pink-800 dark:text-pink-300 border-pink-300 dark:border-pink-700"
+  }
+];
+---
+
+<section class="my-8 py-6">
+  <div class="container mx-auto px-4">
+    <h2 class={commonClasses.heading.h2 + " mb-2 text-center"}>{finalTitle}</h2>
+    <p class={commonClasses.textColors.secondary + " mb-6 text-center max-w-2xl mx-auto"}>
+      {finalSubtitle}
+    </p>
+    
+    <div class="flex flex-wrap justify-center gap-2 mt-6">
+      {socialSkills.map((skill, index) => (
+        <SocialSkillPill
+          name={skill.name}
+          description={skill.description}
+          icon={skill.icon}
+          strengthLevel={skill.strengthLevel}
+          relatedSkills={skill.relatedSkills}
+          colorClass={skill.colorClass}
+          position={index % 4 === 0 ? 'top' : index % 4 === 1 ? 'right' : index % 4 === 2 ? 'bottom' : 'left'}
+          link={skill.link}
+          lang={lang}
+        />
+      ))}
+    </div>
+  </div>
+</section>

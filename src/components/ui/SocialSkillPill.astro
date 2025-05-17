@@ -1,0 +1,202 @@
+---
+// SocialSkillPill.astro - Componente que muestra una habilidad social con tooltip
+import SocialSkillTooltip from './tooltips/SocialSkillTooltip.astro';
+import { useTranslatedPath } from '@i18n/utils';
+
+interface Props {
+  name: string;
+  description: string;
+  icon?: string;
+  strengthLevel?: number;
+  relatedSkills?: string[];
+  colorClass?: string;
+  position?: 'top' | 'right' | 'bottom' | 'left';
+  link?: string;  // Enlace base (se traducirá si es necesario)
+  lang?: string;  // Idioma actual
+}
+
+const { 
+  name, 
+  description,
+  icon = 'people',
+  strengthLevel = 4,
+  relatedSkills = [],
+  colorClass = 'bg-blue-100/80 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 border-blue-300 dark:border-blue-700',
+  position = 'top',
+  link = '',
+  lang = 'es'
+} = Astro.props;
+
+// Traducir enlace si es necesario
+const translatePath = useTranslatedPath(lang);
+const translatedLink = link ? translatePath(link) : '';
+
+const isDarkMode = Astro.url.searchParams.get('theme') === 'dark';
+---
+
+<div class="skill-tooltip-container relative inline-block">
+  {link ? (
+    <a
+      href={translatedLink}
+      class={`social-skill-pill flex gap-x-2 rounded-full text-xs font-semibold items-center px-3 py-1 border my-1 mx-1 transition-all duration-300 ${colorClass}`}
+    >
+      <!-- Icono según el tipo de habilidad -->
+      <svg class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {icon === 'people' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        )}
+        {icon === 'communication' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        )}
+        {icon === 'leadership' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+        )}
+        {icon === 'teamwork' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        )}
+        {icon === 'problem' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        )}
+      </svg>
+      {name}
+    </a>
+  ) : (
+    <button
+      type="button"
+      class={`social-skill-pill flex gap-x-2 rounded-full text-xs font-semibold items-center px-3 py-1 border my-1 mx-1 transition-all duration-300 ${colorClass}`}
+    >
+      <!-- Icono según el tipo de habilidad -->
+      <svg class="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {icon === 'people' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        )}
+        {icon === 'communication' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        )}
+        {icon === 'leadership' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+        )}
+        {icon === 'teamwork' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        )}
+        {icon === 'problem' && (
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        )}
+      </svg>
+      {name}
+    </button>
+  )}
+  
+  <!-- Tooltip con la información detallada -->
+  <SocialSkillTooltip 
+    title={name}
+    description={description}
+    strengthLevel={strengthLevel}
+    relatedSkills={relatedSkills}
+    icon={icon}
+    position={position}
+    darkMode={isDarkMode}
+    lang={lang}
+  />
+</div>
+
+<style>
+  /* Estilos base de las social skill pills */
+  .social-skill-pill {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0.1, 1);
+  }
+  
+  /* Efecto de hover */
+  .social-skill-pill:hover {
+    /* Iluminación y realce de color */
+    filter: brightness(1.15);
+    /* Escala ligera para dar sensación de elevación */
+    transform: translateY(-2px) scale(1.05);
+    /* Sombra suave */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Efecto para cada color */
+  .social-skill-pill.bg-blue-100\/80:hover {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+  
+  .social-skill-pill.bg-green-100\/80:hover {
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  }
+  
+  .social-skill-pill.bg-purple-100\/80:hover {
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+  }
+  
+  .social-skill-pill.bg-orange-100\/80:hover {
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  }
+  
+  .social-skill-pill.bg-pink-100\/80:hover {
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+  }
+  
+  /* Efecto click */
+  .social-skill-pill:active {
+    transform: translateY(0) scale(0.98);
+    filter: brightness(0.95);
+    transition-duration: 0.1s;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Por defecto los tooltips estarán ocultos, solo se muestran con hover
+    const tooltips = document.querySelectorAll('.social-skill-tooltip');
+    tooltips.forEach(tooltip => {
+      tooltip.classList.add('invisible', 'opacity-0');
+    });
+    
+    // Mostrar el tooltip en hover
+    const containers = document.querySelectorAll('.skill-tooltip-container');
+    containers.forEach(container => {
+      container.addEventListener('mouseenter', () => {
+        const tooltip = container.querySelector('.social-skill-tooltip');
+        if (tooltip) {
+          tooltip.classList.remove('invisible', 'opacity-0');
+          tooltip.classList.add('visible', 'opacity-100');
+        }
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        const tooltip = container.querySelector('.social-skill-tooltip');
+        if (tooltip) {
+          tooltip.classList.add('invisible', 'opacity-0');
+          tooltip.classList.remove('visible', 'opacity-100');
+        }
+      });
+    });
+    
+    // Mejora de accesibilidad para eventos de foco
+    const pills = document.querySelectorAll('.social-skill-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('focus', () => {
+        const container = pill.closest('.skill-tooltip-container');
+        const tooltip = container?.querySelector('.social-skill-tooltip');
+        if (tooltip) {
+          tooltip.classList.remove('invisible', 'opacity-0');
+          tooltip.classList.add('visible', 'opacity-100');
+        }
+      });
+      
+      pill.addEventListener('blur', () => {
+        const container = pill.closest('.skill-tooltip-container');
+        const tooltip = container?.querySelector('.social-skill-tooltip');
+        if (tooltip) {
+          tooltip.classList.add('invisible', 'opacity-0');
+          tooltip.classList.remove('visible', 'opacity-100');
+        }
+      });
+    });
+  });
+</script>
