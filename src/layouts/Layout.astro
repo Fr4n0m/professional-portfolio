@@ -22,12 +22,18 @@ interface Props {
 const { description, title, json } = Astro.props;
 
 // Detectar idioma actual correctamente
-const currentUrl = new URL(Astro.request.url);
-const lang = getCurrentLanguage(currentUrl);
-
-// Depuración (puedes quitar esto después)
-console.log('Current URL:', currentUrl.pathname);
-console.log('Detected language:', lang);
+let lang = 'es'; // Valor predeterminado
+try {
+  const currentUrl = new URL(Astro.request.url);
+  lang = getCurrentLanguage(currentUrl);
+  
+  // Depuración (puedes quitar esto después)
+  console.log('Current URL:', currentUrl.pathname);
+  console.log('Detected language:', lang);
+} catch (error) {
+  console.error('Error al procesar la URL:', error);
+  // lang ya tiene el valor predeterminado 'es'
+}
 ---
 
 <!doctype html>

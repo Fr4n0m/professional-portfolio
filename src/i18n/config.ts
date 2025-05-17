@@ -155,6 +155,11 @@ export const languagePriority: Language[] = [
 
 // Función para obtener el idioma actual
 export function getCurrentLanguage(url: URL): Language {
+  if (!url || typeof url.pathname !== 'string') {
+    console.warn('URL or pathname is undefined in getCurrentLanguage, defaulting to es');
+    return 'es';
+  }
+  
   const pathSegments = url.pathname.split('/').filter(Boolean);
   if (pathSegments.length === 0) return 'es'; // Default to Spanish for root
   
@@ -164,6 +169,11 @@ export function getCurrentLanguage(url: URL): Language {
 
 // Función para cambiar de idioma manteniendo la ruta actual
 export function getLanguageSwitchUrl(currentUrl: URL, targetLang: Language): string {
+  if (!currentUrl || typeof currentUrl.pathname !== 'string') {
+    console.warn('URL or pathname is undefined in getLanguageSwitchUrl, using default paths');
+    return targetLang === 'es' ? '/' : `/${targetLang}`;
+  }
+  
   const currentLang = getCurrentLanguage(currentUrl);
   const pathSegments = currentUrl.pathname.split('/').filter(Boolean);
   
@@ -185,6 +195,14 @@ export function getLanguageSwitchUrl(currentUrl: URL, targetLang: Language): str
 // Función para obtener rutas alternativas para el mismo contenido en diferentes idiomas
 export function getAlternateLanguageUrls(currentUrl: URL): Record<Language, string> {
   const result = {} as Record<Language, string>;
+  
+  if (!currentUrl || typeof currentUrl.pathname !== 'string') {
+    console.warn('URL or pathname is undefined in getAlternateLanguageUrls, using default paths');
+    Object.keys(languages).forEach((lang) => {
+      result[lang as Language] = lang === 'es' ? '/' : `/${lang}`;
+    });
+    return result;
+  }
   
   Object.keys(languages).forEach((lang) => {
     result[lang as Language] = getLanguageSwitchUrl(currentUrl, lang as Language);
