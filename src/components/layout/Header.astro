@@ -34,7 +34,7 @@ const info = {
   <MobileNav headerItems={headerItems} lang={lang} translations={translations} />
 </header>
 
-<script>
+<script is:inline>
   // Navigation highlighting with improved logic for all pages and sections
   function initNavigation() {
     const navItems = document.querySelectorAll('header nav a');
@@ -315,6 +315,22 @@ const info = {
   });
 </script>
 
-<!-- Funcionalidad de depuración para el observer incorporada -->
-<script src="../scripts/debug-observer.js">
+<!-- Funcionalidad de depuración para observer -->
+<script is:inline>
+  // Código de depuración incorporado directamente 
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('Debug Observer integrado: Script cargado');
+    
+    // Mostrar todas las secciones con sus IDs y data-section
+    const sections = document.querySelectorAll('section[id]');
+    console.log('Secciones totales:', sections.length);
+    
+    // Mostrar enlaces de navegación
+    const navLinks = document.querySelectorAll('.nav-link');
+    console.log('Enlaces de navegación:', navLinks.length);
+    
+    // Verificar observer en header
+    const header = document.querySelector('header');
+    console.log('Header tiene observer:', header?.hasAttribute('data-has-observer'));
+  });
 </script>
