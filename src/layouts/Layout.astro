@@ -128,8 +128,11 @@ try {
     console.log('Control Center Initialized (inline)');
     
     // Inicializamos cookies y analytics
-    if (typeof initCookies === 'function') initCookies();
-    if (typeof initAnalytics === 'function') initAnalytics();
+    setTimeout(() => {
+      // Asegurar que los módulos estén cargados completamente
+      if (typeof window.initCookies === 'function') window.initCookies();
+      if (typeof window.initAnalytics === 'function') window.initAnalytics();
+    }, 100);
     
     // Elementos con clase para animaciones de entrada
     const fadeElements = document.querySelectorAll('.gsap-fade-in');
@@ -213,6 +216,20 @@ try {
     window.gsap.registerPlugin(window.ScrollTrigger);
     console.log('GSAP ScrollTrigger registered');
   }
+</script>
+
+<!-- Carga final de inicialización de cookies - Este script es crucial para Vercel -->
+<script is:inline>
+  window.addEventListener('load', function() {
+    setTimeout(() => {
+      // Verificar si el banner de cookies ya fue inicializado
+      if (!window.cookieConsentInitialized && window.CookieConsent) {
+        console.log('Inicializando CookieConsent desde script final...');
+        window.cookieConsentInitialized = true;
+        new window.CookieConsent();
+      }
+    }, 1000);
+  });
 </script>
 
 <style is:global>

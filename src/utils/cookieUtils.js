@@ -154,6 +154,8 @@ export function logConsentEvent(action) {
  * @returns {void}
  */
 export function initCookies() {
+  // Hacemos esta función disponible globalmente
+  window.initCookies = initCookies;
   // Cargar el estado de consentimiento de cookies
   const consent = getConsentConfig();
   

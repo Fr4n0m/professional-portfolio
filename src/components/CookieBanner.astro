@@ -569,10 +569,24 @@ class CookieConsent {
     }
   }
   
+  // Asegurar que el objeto CookieConsent esté disponible globalmente
+  window.CookieConsent = CookieConsent;
+  
   // Inicializar cuando el DOM esté cargado
   document.addEventListener('DOMContentLoaded', () => {
     new CookieConsent();
   });
+  
+  // Backup para entornos como Vercel donde DOMContentLoaded podría haber disparado ya
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(() => {
+      if (!window.cookieConsentInitialized) {
+        console.log('Iniciando CookieConsent desde backup...');
+        window.cookieConsentInitialized = true;
+        new CookieConsent();
+      }
+    }, 500);
+  }
 </script>
 
 <style>

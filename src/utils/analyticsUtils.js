@@ -82,6 +82,8 @@ export function applyAnalyticsConsent() {
  * Debe llamarse al cargar la página
  */
 export function initAnalytics() {
+  // Hacemos esta función disponible globalmente
+  window.initAnalytics = initAnalytics;
   // IDs de servicios (deberían estar en variables de entorno en producción)
   const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || '';
   
