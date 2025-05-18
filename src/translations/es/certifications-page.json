@@ -6,5 +6,6 @@
 	"downloadButton": "Descargar",
 	"allCertifications": "Todas las certificaciones",
 	"allCertificationsLink": "/es/certifications",
-	"viewMore": "Ver más certificaciones"
+	"viewMore": "Ver más certificaciones",
+	"selectedCertificationsSubtitle": "Certificaciones destacadas"
 }

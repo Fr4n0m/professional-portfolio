@@ -3,5 +3,9 @@
   "certificationsTitle": "Certifications",
   "certificationsDescription": "My certifications",
   "pdfBadge": "PDF",
-  "downloadButton": "Download"
+  "downloadButton": "Download",
+  "allCertifications": "All Certifications",
+  "allCertificationsLink": "/certifications",
+  "viewMore": "View more certifications",
+  "selectedCertificationsSubtitle": "Featured Certifications"
 }

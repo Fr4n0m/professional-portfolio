@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import AllProjects from '@components/Projects/AllProjects.astro';
+import PageHero from '@components/ui/PageHero.astro';
 import { textsJson } from '@utils/const';
 import type { Translations } from '../../../types/translations';
 import { languages } from '@i18n/config';
@@ -17,7 +18,7 @@ const { lang } = Astro.params;
 const langJson = textsJson[lang as keyof typeof textsJson];
 const translations: Translations = langJson;
 
-const { allProjectsTitle, allProjectsDescription } = translations.projectsPage;
+const { allProjectsTitle, allProjectsDescription, allProjects } = translations.projectsPage;
 ---
 
 <Layout
@@ -25,7 +26,10 @@ const { allProjectsTitle, allProjectsDescription } = translations.projectsPage;
 	description={allProjectsDescription}
 	json={langJson}
 >
-	<section class='px-8'>
+	<PageHero title={allProjects} subtitle={allProjectsDescription} />
+	<section id="all-projects" data-section="all-projects">
 		<AllProjects translations={translations} />
 	</section>
 </Layout>
+
+<script is:inline src="/projects/projects-header-fix.js"></script>

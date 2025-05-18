@@ -29,7 +29,7 @@ const info = {
   }
 </style>
 
-<header class='fixed top-0 z-50 flex items-center justify-center w-full mx-auto'>
+<header class='fixed top-4 md:top-5 lg:top-6 z-50 flex items-center justify-center w-full mx-auto'>
   <DesktopNav headerItems={headerItems} info={info} lang={lang} translations={translations} />
   <MobileNav headerItems={headerItems} lang={lang} translations={translations} />
 </header>
@@ -69,6 +69,53 @@ const info = {
       return currentPath === itemPath || currentPath === itemPath + '/';
     };
     
+    // Function to check if we're on any projects page
+    const isProjectsPage = () => {
+      // Verificar si estamos en la URL /projects directamente
+      if (currentPath.includes('/projects')) {
+        return true;
+      }
+      // Verificar si estamos en el hash #projects (proyectos destacados)
+      if (currentHash === '#projects') {
+        return true;
+      }
+      // Verificar si estamos en la sección all-projects
+      if (document.getElementById('all-projects')) {
+        return true;
+      }
+      return false;
+    };
+    
+    // Function to check if we're on any certifications page
+    const isCertificationsPage = () => {
+      // Verificar si estamos en la URL /certifications directamente
+      if (currentPath.includes('/certifications')) {
+        return true;
+      }
+      // Verificar si estamos en el hash #certifications-preview
+      if (currentHash === '#certifications-preview') {
+        return true;
+      }
+      // Verificar si estamos en la sección all-certifications
+      if (document.getElementById('all-certifications')) {
+        return true;
+      }
+      return false;
+    };
+    
+    // Function to check if we're on any CV page
+    const isCvPage = () => {
+      // Verificar si estamos en el CV online
+      if (window.location.href.includes('cv-web-smoky.vercel.app')) {
+        return true;
+      }
+      // Verificar si estamos en el PDF del CV
+      if (window.location.href.includes('/cv/')) {
+        return true;
+      }
+      return false;
+    };
+    
     // Function to update navigation highlighting
     const updateNavHighlighting = () => {
       navItems.forEach(item => {
@@ -84,6 +131,21 @@ const info = {
         
         // Check if this is the current page
         if (href && isCurrentPage(href)) {
+          isActive = true;
+        }
+        
+        // Special case for projects navigation
+        if (dataSection === 'projects' && isProjectsPage()) {
+          isActive = true;
+        }
+        
+        // Special case for certifications navigation
+        if (dataSection === 'certifications-preview' && isCertificationsPage()) {
+          isActive = true;
+        }
+        
+        // Special case for CV navigation
+        if (dataSection === 'cv' && isCvPage()) {
           isActive = true;
         }
         
@@ -177,7 +239,22 @@ const info = {
         dropdownButtons.forEach(button => {
           const dataSection = button.getAttribute('data-section');
           
-          if (dataSection === activeSectionId) {
+          // Activar directamente si estamos en alguna página de proyectos
+          const shouldActivateProjects = dataSection === 'projects' && (
+            isProjectsPage() || activeSectionId === 'projects'
+          );
+          
+          // Activar directamente si estamos en alguna página de certificaciones
+          const shouldActivateCertifications = dataSection === 'certifications-preview' && (
+            isCertificationsPage() || activeSectionId === 'certifications-preview'
+          );
+          
+          // Activar directamente si estamos en alguna página de CV
+          const shouldActivateCv = dataSection === 'cv' && (
+            isCvPage()
+          );
+          
+          if (dataSection === activeSectionId || shouldActivateProjects || shouldActivateCertifications || shouldActivateCv) {
             console.log('Activando dropdown:', button);
             button.classList.add('active');
             if (document.documentElement.classList.contains('dark')) {
@@ -238,6 +315,39 @@ const info = {
       const sections = document.querySelectorAll('section[data-section]');
       const navItems = document.querySelectorAll('header nav a');
       const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
+      const currentPath = window.location.pathname;
+      
+      // Función para comprobar si estamos en alguna página de proyectos
+      const isProjectsPage = () => {
+        if (currentPath.includes('/projects')) {
+          return true;
+        }
+        // Verificar la presencia de la sección de proyectos
+        if (document.getElementById('all-projects')) {
+          return true;
+        }
+        return false;
+      };
+      
+      // Función para comprobar si estamos en alguna página de certificaciones
+      const isCertificationsPage = () => {
+        if (currentPath.includes('/certifications')) {
+          return true;
+        }
+        // Verificar la presencia de la sección de certificaciones
+        if (document.getElementById('all-certifications')) {
+          return true;
+        }
+        return false;
+      };
+      
+      // Función para comprobar si estamos en alguna página de CV
+      const isCvPage = () => {
+        if (window.location.href.includes('cv-web-smoky.vercel.app') || window.location.href.includes('/cv/')) {
+          return true;
+        }
+        return false;
+      };
       
       if (sections.length > 0 && (navItems.length > 0 || dropdownButtons.length > 0)) {
         // La sección inicial es la primera
@@ -260,8 +370,11 @@ const info = {
           const href = item.getAttribute('href');
           const matchesSection = dataSection === initialSectionId;
           const matchesHash = href && href.includes('#') && href.split('#')[1] === initialSectionId;
+          const isProjectsLink = dataSection === 'projects' && isProjectsPage();
+          const isCertificationsLink = dataSection === 'certifications-preview' && isCertificationsPage();
+          const isCvLink = dataSection === 'cv' && isCvPage();
           
-          if (matchesSection || matchesHash) {
+          if (matchesSection || matchesHash || isProjectsLink || isCertificationsLink || isCvLink) {
             item.classList.add('active');
             if (document.documentElement.classList.contains('dark')) {
               // Solo añadimos la clase, sin estilo inline
@@ -276,8 +389,11 @@ const info = {
         // También activamos el dropdown si corresponde
         dropdownButtons.forEach(button => {
           const dataSection = button.getAttribute('data-section');
+          const isProjectsDropdown = dataSection === 'projects' && isProjectsPage();
+          const isCertificationsDropdown = dataSection === 'certifications-preview' && isCertificationsPage();
+          const isCvDropdown = dataSection === 'cv' && isCvPage();
           
-          if (dataSection === initialSectionId) {
+          if (dataSection === initialSectionId || isProjectsDropdown || isCertificationsDropdown || isCvDropdown) {
             button.classList.add('active');
             if (document.documentElement.classList.contains('dark')) {
               button.classList.add('text-yellow-300');

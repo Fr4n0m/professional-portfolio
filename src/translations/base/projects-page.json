@@ -2,5 +2,6 @@
   "projectsTitle": "Projects",
   "projectsDescription": "My projects",
   "allProjects": "All Projects",
-  "allProjectsLink": "/projects"
+  "allProjectsLink": "/projects",
+  "selectedProjectsSubtitle": "Featured Projects"
 }

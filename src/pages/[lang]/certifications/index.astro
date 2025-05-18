@@ -3,6 +3,7 @@ export const prerender = true;
 
 import Layout from '@layouts/Layout.astro';
 import Certifications from '@components/Certifications.astro';
+import PageHero from '@components/ui/PageHero.astro';
 import { textsJson } from '@utils/const';
 import type { Translations } from '../../../types/translations';
 import { languages } from '@i18n/config';
@@ -31,9 +32,12 @@ try {
 
 const translations: Translations = langJson;
 const layout = translations.layout;
-const { certificationsTitle, certificationsDescription } = translations.certificationsPage || {
+
+// Obtener las traducciones específicas de la página
+const { certificationsTitle, certificationsDescription, allCertifications } = translations.certificationsPage || {
   certificationsTitle: 'Certifications',
-  certificationsDescription: 'My certifications'
+  certificationsDescription: 'My certifications',
+  allCertifications: 'All Certifications'
 };
 ---
 
@@ -42,8 +46,10 @@ const { certificationsTitle, certificationsDescription } = translations.certific
   description={certificationsDescription}
   json={langJson}
 >
-  <section class='px-8'>
+  <PageHero title={allCertifications} subtitle={certificationsDescription} />
+  <section id="all-certifications" data-section="all-certifications">
     <Certifications translations={translations} />
-    <!-- Agrega aquí el componente de certificaciones -->
   </section>
 </Layout>
+
+<script is:inline src="/certifications/certifications-header-fix.js"></script>

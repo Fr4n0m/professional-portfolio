@@ -17,7 +17,7 @@ const { headerItems, lang, translations } = Astro.props;
 <!-- Header Mobile - Nuevo diseño con Accessibility Panel -->
 <div class='md:hidden'>
   <!-- Header móvil fijo con blur -->
-  <header class='fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 border-b border-gray-200/20 dark:border-gray-700/20'>
+  <header class='fixed top-4 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 border border-gray-200/20 dark:border-gray-700/20 rounded-xl mx-3'>
     <div class='flex items-center justify-between px-4 py-3'>
       <!-- Logo y botón de menú -->
       <div class='flex items-center gap-3'>
@@ -66,10 +66,10 @@ const { headerItems, lang, translations } = Astro.props;
   <!-- Mobile Menu - Estilo moderno -->
   <div
     id='mobile-menu'
-    class='fixed inset-x-0 top-[69px] bg-white dark:bg-gray-900 shadow-2xl overflow-hidden z-40 transition-all duration-500 ease-out transform -translate-y-full opacity-0'
+    class='fixed inset-x-3 top-[85px] bg-white dark:bg-gray-900 shadow-2xl overflow-hidden z-40 transition-all duration-500 ease-out transform -translate-y-full opacity-0 rounded-xl border border-gray-200/20 dark:border-gray-700/20'
     data-open='false'
   >
-    <nav class='px-4 py-6 max-h-[calc(100vh-69px)] overflow-y-auto'>
+    <nav class='px-4 py-6 max-h-[calc(100vh-85px)] overflow-y-auto'>
       {headerItems.map((item, index) => (
         <a
           class='mobile-nav-link flex items-center gap-3 px-4 py-3 mb-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200 transform hover:translate-x-1'
@@ -107,7 +107,7 @@ const { headerItems, lang, translations } = Astro.props;
 </div>
 
 <!-- Spacer para que el contenido no quede bajo el header -->
-<div class='md:hidden h-[69px]'></div>
+<div class='md:hidden h-[95px]'></div>
 
 <script>
   import { gsap } from 'gsap';
@@ -193,7 +193,7 @@ const { headerItems, lang, translations } = Astro.props;
           const targetSection = document.getElementById(targetId);
           
           if (targetSection) {
-            const headerHeight = 69;
+            const headerHeight = 85;
             const targetPosition = targetSection.offsetTop - headerHeight - 20;
             
             window.scrollTo({
@@ -233,7 +233,7 @@ const { headerItems, lang, translations } = Astro.props;
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      const headerHeight = 69;
+      const headerHeight = 85;
       const offset = headerHeight + 40;
       
       let activeSection = '';

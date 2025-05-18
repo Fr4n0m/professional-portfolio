@@ -22,7 +22,7 @@ const projectsSubmenu = [
 		title:
 			translations.projectsPage.selectedProjectsSubtitle ||
 			'Proyectos destacados',
-		url: '/#projects',
+		url: lang === 'es' ? '/#projects' : `/${lang}/#projects`,
 	},
 	{
 		title: translations.projectsPage.allProjects || 'Todos los proyectos',
@@ -35,7 +35,7 @@ const certificationsSubmenu = [
 		title:
 			translations.certificationsPage.selectedCertificationsSubtitle ||
 			'Certificaciones destacadas',
-		url: '/#certifications-preview',
+		url: lang === 'es' ? '/#certifications-preview' : `/${lang}/#certifications-preview`,
 	},
 	{
 		title:
@@ -46,35 +46,58 @@ const certificationsSubmenu = [
 			'/certifications',
 	},
 ];
+
+// Crear el submenú para CV
+const cvSubmenu = [
+	{
+		title: translations.cvMenu?.cvOnline || 'Ver CV online',
+		url: 'https://cv-web-smoky.vercel.app/',
+		isExternal: true
+	},
+	{
+		title: translations.cvMenu?.cvDownload || 'Descargar PDF',
+		url: '/cv/resume.pdf',
+		isExternal: true
+	},
+];
 ---
 
 <nav
-	class='header-desktop-nav hidden md:flex text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1 mt-2 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90 gap-1 pl-1'
+	class='header-desktop-nav hidden md:flex text-sm font-medium rounded-full flex-wrap m-3 ml-5 mr-5 p-1.5 text-white dark:text-white/90 items-center justify-center bg-white/30 dark:bg-gray-800/90 gap-1 pl-2 shadow-md backdrop-blur-sm'
 >
 	<ProfileTooltip info={info} lang={lang} />
 
 	{
 		headerItems.map(item => {
-			// Comprobar si este elemento es "Proyectos" o "Certificaciones"
-			if (item.label === 'projects') {
-				return (
-					<DropdownNavItem
-						title={item.title}
-						dataSection={item.label}
-						ariaLabel={item.label}
-						items={projectsSubmenu}
-					/>
-				);
-			} else if (item.label === 'certifications-preview') {
-				return (
-					<DropdownNavItem
-						title={item.title}
-						dataSection={item.label}
-						ariaLabel={item.label}
-						items={certificationsSubmenu}
-					/>
-				);
-			} else {
+		// Comprobar si este elemento es "Proyectos", "Certificaciones" o "CV"
+		if (item.label === 'projects') {
+		return (
+		<DropdownNavItem
+		title={item.title}
+		dataSection={item.label}
+		ariaLabel={item.label}
+		items={projectsSubmenu}
+		/>
+		);
+		} else if (item.label === 'certifications-preview') {
+		return (
+		<DropdownNavItem
+		title={item.title}
+		dataSection={item.label}
+		ariaLabel={item.label}
+		items={certificationsSubmenu}
+		/>
+		);
+		} else if (item.label === 'cv') {
+					return (
+						<DropdownNavItem
+							title={item.title}
+							dataSection={item.label}
+							ariaLabel={item.label}
+							items={cvSubmenu}
+						/>
+					);
+				} else {
 				// Para el resto de elementos, usar el enlace normal
 				return (
 					<a

@@ -21,7 +21,9 @@ const projectsDescription = projectsPage.projectsDescription || 'Mis proyectos';
   description={projectsDescription}
   json={langJson}
 >
-  <section class='px-8'>
+  <section class='px-8' id="all-projects" data-section="all-projects">
     <Projects translations={translations} />
   </section>
 </Layout>
+
+<script is:inline src="/projects/projects-header-fix.js"></script>

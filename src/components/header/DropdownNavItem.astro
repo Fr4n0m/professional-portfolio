@@ -33,14 +33,31 @@ const { title, dataSection, ariaLabel, items } = Astro.props;
   <div class="dropdown-menu absolute z-40 left-0 hidden pt-2 group-hover:block min-w-[190px]">
     <div class="bg-white/90 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 py-1.5 transition-all duration-300 origin-top scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 w-full">
       {items.map(item => {
-        const isActive = item.url.includes('#') && item.url.split('#')[1] === dataSection;
+        // Determinar si es la opción de proyectos destacados, todos los proyectos,
+        // certificaciones destacadas, todas las certificaciones o CV
+        const isHighlightedProjects = item.url.includes('#projects');
+        const isAllProjects = item.url.includes('/projects') && !item.url.includes('#');
+        const isHighlightedCertifications = item.url.includes('#certifications-preview');
+        const isAllCertifications = item.url.includes('/certifications') && !item.url.includes('#');
+        const isCvOnline = item.url.includes('cv-web-smoky.vercel.app');
+        const isCvPdf = item.url.includes('/cv/resume.pdf');
+        
         return (
           <a 
             href={item.url} 
-            class={`block px-4 py-2 text-sm transition-opacity ${isActive ? 'font-semibold active-link' : 'text-gray-700 dark:text-white hover:opacity-85'}`}
+            class="block px-4 py-2 text-sm transition-all hover:bg-gray-100 dark:hover:bg-gray-800 hover:opacity-85 rounded-md text-gray-700 dark:text-white"
             target={item.isExternal ? "_blank" : "_self"}
             rel={item.isExternal ? "noopener noreferrer" : ""}
-            data-section={item.url.includes('#') ? item.url.split('#')[1] : ''}
+            data-section={item.url.includes('#') ? item.url.split('#')[1] : 
+                        (item.url.includes('/projects') && !item.url.includes('#')) ? 'all-projects' : 
+                        (item.url.includes('/certifications') && !item.url.includes('#')) ? 'all-certifications' : 
+                        (item.url.includes('cv-web-smoky.vercel.app') || item.url.includes('/cv/')) ? 'cv' : ''}
+            data-is-highlighted-projects={isHighlightedProjects ? 'true' : 'false'}
+            data-is-all-projects={isAllProjects ? 'true' : 'false'}
+            data-is-highlighted-certifications={isHighlightedCertifications ? 'true' : 'false'}
+            data-is-all-certifications={isAllCertifications ? 'true' : 'false'}
+            data-is-cv-online={isCvOnline ? 'true' : 'false'}
+            data-is-cv-pdf={isCvPdf ? 'true' : 'false'}
           >
             {item.title}
           </a>
@@ -79,25 +96,118 @@ const { title, dataSection, ariaLabel, items } = Astro.props;
     transform: rotate(180deg);
   }
   
-  /* Hover para elementos del dropdown */
+  /* Hover para elementos del dropdown con un diseño más moderno */
+  .dropdown-menu a {
+    transition: all 0.15s ease-in-out;
+    border-radius: 0.375rem;
+  }
+  
   .dropdown-menu a:hover {
-    opacity: 0.85;
+    opacity: 0.95;
+    transform: translateX(2px);
   }
   
   /* Estilo para el enlace activo */
   .active-link {
     @apply text-blue-800 dark:text-yellow-300;
     position: relative;
+    font-weight: 600;
   }
 </style>
 
 <script>
-  // Este código se ejecuta en el cliente, después de que el DOM esté listo
   document.addEventListener('DOMContentLoaded', () => {
-    // Manejo del tema oscuro para los enlaces activos
-    const updateActiveLinks = () => {
+    const currentPath = window.location.pathname;
+    const currentHash = window.location.hash;
+    
+    // Determinar en qué página estamos
+    const isProjectsPage = currentPath.includes('/projects');
+    const isProjectsSection = currentHash === '#projects';
+    const isCertificationsPage = currentPath.includes('/certifications');
+    const isCertificationsSection = currentHash === '#certifications-preview';
+    const isCvPage = currentPath.includes('/cv/') || currentPath.includes('cv-web-smoky.vercel.app');
+    
+    // Obtener los enlaces del menú desplegable
+    const menuLinks = document.querySelectorAll('.dropdown-menu a');
+    
+    menuLinks.forEach(link => {
+      // Verificar de qué tipo es cada enlace
+      const isHighlightedProjects = link.getAttribute('data-is-highlighted-projects') === 'true';
+      const isAllProjects = link.getAttribute('data-is-all-projects') === 'true';
+      const isHighlightedCertifications = link.getAttribute('data-is-highlighted-certifications') === 'true';
+      const isAllCertifications = link.getAttribute('data-is-all-certifications') === 'true';
+      const isCvOnline = link.getAttribute('data-is-cv-online') === 'true';
+      const isCvPdf = link.getAttribute('data-is-cv-pdf') === 'true';
+      
+      // Activar el enlace correcto según la página actual
+      if ((isHighlightedProjects && isProjectsSection) || 
+          (isAllProjects && isProjectsPage && !isProjectsSection) || 
+          (isHighlightedCertifications && isCertificationsSection) || 
+          (isAllCertifications && isCertificationsPage && !isCertificationsSection) ||
+          (isCvOnline && window.location.href.includes('cv-web-smoky.vercel.app')) ||
+          (isCvPdf && window.location.href.includes('/cv/resume.pdf'))) {
+        
+        // Añadir clases activas
+        link.classList.add('active-link', 'font-semibold');
+        
+        // Aplicar el color correcto según el tema
+        if (document.documentElement.classList.contains('dark')) {
+          link.classList.add('text-yellow-300');
+          link.classList.remove('text-gray-700', 'dark:text-white');
+        } else {
+          link.classList.add('text-blue-800');
+          link.classList.remove('text-gray-700', 'dark:text-white');
+        }
+      }
+    });
+    
+    // Activar el botón de proyectos en el header si estamos en una página de proyectos
+    if (isProjectsPage || isProjectsSection) {
+      const projectsButton = document.querySelector('.dropdown-toggle[data-section="projects"]');
+      if (projectsButton) {
+        projectsButton.classList.add('active', 'font-semibold');
+        
+        if (document.documentElement.classList.contains('dark')) {
+          projectsButton.classList.add('text-yellow-300');
+        } else {
+          projectsButton.classList.add('text-blue-800');
+        }
+      }
+    }
+    
+    // Activar el botón de certificaciones en el header si estamos en una página de certificaciones
+    if (isCertificationsPage || isCertificationsSection) {
+      const certificationsButton = document.querySelector('.dropdown-toggle[data-section="certifications-preview"]');
+      if (certificationsButton) {
+        certificationsButton.classList.add('active', 'font-semibold');
+        
+        if (document.documentElement.classList.contains('dark')) {
+          certificationsButton.classList.add('text-yellow-300');
+        } else {
+          certificationsButton.classList.add('text-blue-800');
+        }
+      }
+    }
+    
+    // Activar el botón de CV en el header si estamos en una página de CV
+    if (window.location.href.includes('cv-web-smoky.vercel.app') || window.location.href.includes('/cv/')) {
+      const cvButton = document.querySelector('.dropdown-toggle[data-section="cv"]');
+      if (cvButton) {
+        cvButton.classList.add('active', 'font-semibold');
+        
+        if (document.documentElement.classList.contains('dark')) {
+          cvButton.classList.add('text-yellow-300');
+        } else {
+          cvButton.classList.add('text-blue-800');
+        }
+      }
+    }
+    
+    // Observar cambios en el tema para actualizar los colores
+    const themeObserver = new MutationObserver(() => {
       const isDark = document.documentElement.classList.contains('dark');
-      const activeLinks = document.querySelectorAll('.active-link');
+      const activeLinks = document.querySelectorAll('.active-link, .dropdown-toggle.active');
+      
       activeLinks.forEach(link => {
         if (isDark) {
           link.classList.add('text-yellow-300');
@@ -107,21 +217,11 @@ const { title, dataSection, ariaLabel, items } = Astro.props;
           link.classList.remove('text-yellow-300');
         }
       });
-    };
-    
-    // Actualizar los enlaces activos inicialmente
-    updateActiveLinks();
-    
-    // Observar cambios en el tema
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        if (mutation.attributeName === 'class' && 
-            mutation.target === document.documentElement) {
-          updateActiveLinks();
-        }
-      });
     });
     
-    observer.observe(document.documentElement, { attributes: true });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
   });
 </script>
