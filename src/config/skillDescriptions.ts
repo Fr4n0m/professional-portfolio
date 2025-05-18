@@ -299,8 +299,8 @@ export const getCategoryByName = (name: string): string => {
 // Función para obtener la experiencia recomendada basada en la skill
 export const getRecommendedExperience = (name: string): number => {
   // Personaliza estos valores según tus niveles de experiencia reales
-  const highExperience = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'NextJS', 'Tailwind CSS', 'Git', 'GitHub', 'Astro'];
-  const mediumHighExperience = ['NodeJS', 'Vite', 'MongoDB', 'Supabase', 'MacOS', 'Windows', 'Vercel', 'Npm', 'Pnpm'];
+  const highExperience = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'NextJS', 'Tailwind CSS', 'Git', 'GitHub', 'Astro', 'NodeJS'];
+  const mediumHighExperience = ['Vite', 'MongoDB', 'Supabase', 'MacOS', 'Windows', 'Vercel', 'Npm', 'Pnpm'];
   const mediumExperience = ['Docker', 'ExpressJS', 'MySQL', 'Debian', 'Bun'];
   const lowMediumExperience = ['Phaser', 'Stripe', 'Graphql', 'Strapi', 'Kali'];
   const lowExperience = ['Deno', 'C++'];

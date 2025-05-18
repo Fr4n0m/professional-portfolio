@@ -1,0 +1,144 @@
+/* 
+ * multilingual-typography.css
+ * Este archivo contiene configuraciones tipográficas para asegurar una correcta 
+ * visualización de caracteres en múltiples idiomas internacionales
+ */
+
+/* 
+ * Importar fuentes para diferentes sistemas de escritura
+ * Noto Sans es una familia de fuentes diseñada para una compatibilidad amplia
+ * con múltiples idiomas y sistemas de escritura
+ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'); /* Chino Simplificado */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap'); /* Japonés */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap'); /* Coreano */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap'); /* Árabe */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;700&display=swap'); /* Hindi */
+
+/* Actualizar las variables tipográficas para soportar múltiples idiomas */
+:root {
+  /* Actualizar la familia de fuentes para incluir soporte multilingüe */
+  --font-family-sans: 'Noto Sans', 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 
+    'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Arabic', 'Noto Sans Devanagari', 
+    'Helvetica Neue', 'Arial', sans-serif;
+  
+  /* Agregar propiedades de font-feature-settings para mejorar el renderizado */
+  --font-features-standard: "kern", "liga", "calt";
+  --font-features-multilingual: "kern", "liga", "calt", "locl";
+  
+  /* Agregar ajustes para orientación de texto en diferentes idiomas */
+  --text-orientation: mixed;
+  --writing-mode-standard: horizontal-tb;
+}
+
+/* 
+ * Aplicación global de estilos multilingües
+ */
+
+/* Aplicar la fuente multilingüe a todo el documento */
+html, body {
+  font-family: var(--font-family-sans);
+  font-feature-settings: var(--font-features-standard);
+}
+
+/* 
+ * Configuraciones específicas para idiomas con sistemas de escritura diferentes 
+ */
+
+/* Árabe - Orientación de derecha a izquierda */
+html[lang="ar"], body:lang(ar), [lang="ar"], [data-lang="ar"] {
+  font-family: 'Noto Sans Arabic', var(--font-family-sans);
+  font-feature-settings: var(--font-features-multilingual);
+  direction: rtl;
+  text-align: right;
+}
+
+/* Chino */
+html[lang="zh"], body:lang(zh), [lang="zh"], [data-lang="zh"] {
+  font-family: 'Noto Sans SC', var(--font-family-sans);
+  font-feature-settings: var(--font-features-multilingual);
+}
+
+/* Japonés */
+html[lang="ja"], body:lang(ja), [lang="ja"], [data-lang="ja"] {
+  font-family: 'Noto Sans JP', var(--font-family-sans);
+  font-feature-settings: var(--font-features-multilingual);
+}
+
+/* Coreano */
+html[lang="ko"], body:lang(ko), [lang="ko"], [data-lang="ko"] {
+  font-family: 'Noto Sans KR', var(--font-family-sans);
+  font-feature-settings: var(--font-features-multilingual);
+}
+
+/* Hindi */
+html[lang="hi"], body:lang(hi), [lang="hi"], [data-lang="hi"] {
+  font-family: 'Noto Sans Devanagari', var(--font-family-sans);
+  font-feature-settings: var(--font-features-multilingual);
+}
+
+/* 
+ * Ajustes generales para mejorar la legibilidad en todos los idiomas 
+ */
+
+/* Mejorar el espaciado entre líneas para idiomas que requieren más altura */
+body:lang(hi), body:lang(ar), body:lang(ja), body:lang(zh), body:lang(ko),
+[lang="hi"], [lang="ar"], [lang="ja"], [lang="zh"], [lang="ko"],
+[data-lang="hi"], [data-lang="ar"], [data-lang="ja"], [data-lang="zh"], [data-lang="ko"] {
+  line-height: calc(var(--line-height-normal) * 1.2);
+}
+
+/* Ajustes para texto en componentes principales */
+.hero-title h1,
+.hero-description-mobile-centered,
+.text-pressure-wrapper {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Ajustes especiales para el componente de título del hero */
+[lang="hi"] .text-pressure-wrapper h1, [data-lang="hi"] .text-pressure-wrapper h1,
+[lang="ar"] .text-pressure-wrapper h1, [data-lang="ar"] .text-pressure-wrapper h1,
+[lang="zh"] .text-pressure-wrapper h1, [data-lang="zh"] .text-pressure-wrapper h1,
+[lang="ja"] .text-pressure-wrapper h1, [data-lang="ja"] .text-pressure-wrapper h1,
+[lang="ko"] .text-pressure-wrapper h1, [data-lang="ko"] .text-pressure-wrapper h1 {
+  font-size: calc(var(--font-size-4xl) * 0.9);
+  line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal !important;
+}
+
+/* Ajustes para tooltip y elementos de interfaz */
+.skill-tooltip, .tooltip, .profile-tooltip {
+  font-family: var(--font-family-sans);
+  font-feature-settings: var(--font-features-multilingual);
+}
+
+/* Ajustar el tamaño del texto para sistemas de escritura que requieren más espacio */
+[lang="hi"] .skill-tooltip p, [data-lang="hi"] .skill-tooltip p,
+[lang="ar"] .skill-tooltip p, [data-lang="ar"] .skill-tooltip p,
+[lang="ja"] .skill-tooltip p, [data-lang="ja"] .skill-tooltip p,
+[lang="zh"] .skill-tooltip p, [data-lang="zh"] .skill-tooltip p,
+[lang="ko"] .skill-tooltip p, [data-lang="ko"] .skill-tooltip p {
+  font-size: calc(var(--font-size-xs) * 0.95);
+  word-break: break-word;
+}
+
+/* Asegurar que los contenedores se expandan para textos más largos en ciertos idiomas */
+.skill-pill, .tag, .badge {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Ajustes para textos en la descripción del hero */
+[lang="hi"] .hero-description-mobile-centered, [data-lang="hi"] .hero-description-mobile-centered,
+[lang="ar"] .hero-description-mobile-centered, [data-lang="ar"] .hero-description-mobile-centered,
+[lang="zh"] .hero-description-mobile-centered, [data-lang="zh"] .hero-description-mobile-centered,
+[lang="ja"] .hero-description-mobile-centered, [data-lang="ja"] .hero-description-mobile-centered,
+[lang="ko"] .hero-description-mobile-centered, [data-lang="ko"] .hero-description-mobile-centered {
+  font-size: calc(var(--font-size-xl) * 0.9);
+  line-height: 1.4;
+  white-space: normal;
+}

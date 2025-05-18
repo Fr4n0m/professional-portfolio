@@ -1,4 +1,5 @@
 // src/components/TextPressure.tsx
+// Versión actualizada con mejor soporte multilingüe
 import { useEffect, useRef, useState } from 'react';
 import { useSprings, animated, config } from '@react-spring/web';
 
@@ -28,8 +29,31 @@ const TextPressure: React.FC<TextPressureProps> = ({
     const [isInteractive, setIsInteractive] = useState(false);
     const animatedCount = useRef(0);
     
-    // Dividir el texto en caracteres individuales
-    const chars = text.split('');
+    // Detectar si el texto está en un idioma que requiere tratamiento especial
+    const isComplexScript = () => {
+        // Expresiones regulares para detectar diferentes sistemas de escritura
+        const patterns = {
+            devanagari: /[\u0900-\u097F]/,    // Hindi
+            arabic: /[\u0600-\u06FF]/,        // Árabe
+            cjk: /[\u4E00-\u9FFF\u3400-\u4DBF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/  // Chino, Japonés, Coreano
+        };
+        
+        return patterns.devanagari.test(text) || patterns.arabic.test(text) || patterns.cjk.test(text);
+    };
+    
+    // Estrategia para dividir texto basada en el idioma
+    const splitText = () => {
+        if (isComplexScript()) {
+            // Para scripts complejos, dividir cada caracter
+            return text.split('');
+        } else {
+            // Para scripts latinos, también dividir por caracteres
+            return text.split('');
+        }
+    };
+    
+    // Dividir el texto apropiadamente
+    const chars = splitText();
     
     // Color del texto según el tema (adaptado para theme switching)
     const textColor = 'currentColor';
@@ -38,7 +62,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     const from = { opacity: 0, transform: 'translate3d(0,40px,0)' };
     const to = { opacity: 1, transform: 'translate3d(0,0,0)' };
     
-    // Crear springs para cada carácter
+    // Crear springs para cada carácter o token
     const springs = useSprings(
         chars.length,
         chars.map((_, i) => ({
@@ -167,6 +191,9 @@ const TextPressure: React.FC<TextPressureProps> = ({
         };
     }, [isInteractive]);
     
+    // Determinar si se debe permitir ajuste de línea para idiomas complejos
+    const needsWordWrap = isComplexScript();
+    
     return (
         <div 
             ref={containerRef}
@@ -174,29 +201,32 @@ const TextPressure: React.FC<TextPressureProps> = ({
                 position: 'relative',
                 width: '100%',
                 overflow: 'visible',
-                whiteSpace: 'nowrap',
-                lineHeight: '1.2',
-                fontSize: '3.5rem', // Aumentado de 2.5rem a 3.5rem
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif',
+                whiteSpace: needsWordWrap ? 'normal' : 'pre-wrap', // Permitir ajuste para scripts complejos
+                lineHeight: needsWordWrap ? '1.3' : '1.2',
+                fontSize: needsWordWrap ? '3rem' : '3.5rem', // Tamaño ligeramente más pequeño para scripts complejos
                 fontWeight: 400,
-                color: textColor
+                color: textColor,
+                wordBreak: needsWordWrap ? 'break-word' : 'normal',
+                overflowWrap: 'break-word'
             }}
         >
-            {springs.map((spring, i) => (
-                <animated.div
-                    key={i}
-                    ref={el => charsRef.current[i] = el}
-                    style={{
-                        ...spring,
-                        display: 'inline-block',
-                        transformOrigin: 'center',
-                        willChange: 'transform, opacity, font-weight',
-                        whiteSpace: 'pre'
-                    }}
-                >
-                    {chars[i]}
-                </animated.div>
-            ))}
+            <h1 style={{ fontSize: 'inherit', margin: 0, padding: 0, fontWeight: 'inherit' }}>
+                {springs.map((spring, i) => (
+                    <animated.div
+                        key={i}
+                        ref={el => charsRef.current[i] = el}
+                        style={{
+                            ...spring,
+                            display: 'inline-block',
+                            transformOrigin: 'center',
+                            willChange: 'transform, opacity, font-weight',
+                            whiteSpace: needsWordWrap ? 'normal' : 'pre'
+                        }}
+                    >
+                        {chars[i]}
+                    </animated.div>
+                ))}
+            </h1>
         </div>
     );
 };

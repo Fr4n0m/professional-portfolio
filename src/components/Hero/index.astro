@@ -1,11 +1,12 @@
 ---
 // Hero.astro - Componente principal para la sección hero
-import ProfileImage from '@components/Hero/ProfileImage.astro';
+import UpdatedProfileImage from '@components/Hero/UpdatedProfileImage.astro';
 import ProfileTooltip from '@components/Hero/ProfileTooltip.astro';
 import HeroTitle from '@components/Hero/HeroTitle.astro';
 import HeroDescription from '@components/Hero/HeroDescription.astro';
 import SocialLinks from '@components/Hero/SocialLinks.astro';
 import type { Translations } from '../../types/translations';
+import { getCurrentLanguage } from '@i18n/config';
 
 interface Props {
 	translations: Translations;
@@ -13,6 +14,9 @@ interface Props {
 }
 
 const { translations, lang } = Astro.props;
+
+// Detectar el idioma actual
+const currentLang = lang || getCurrentLanguage(Astro.url) || 'es';
 
 const hero = translations.mainPage.hero;
 const socialPill = translations.mainPage.socialPill;
@@ -29,12 +33,15 @@ const info = {
 	specialties: 'React, Next.js, Node.js, Astro, TypeScript',
 	additionalTech: 'Tailwind CSS, MongoDB, PostgreSQL, Git',
 };
+
+// Determinar la ruta correcta de la imagen con una URL absoluta
+const imageUrl = '/assets/images/foto-carnet.webp';
 ---
 
 <!-- Componente de imagen de perfil con tooltip -->
-<ProfileImage imageSrc='assets/images/foto-carnet.webp' altText='Fr4n0m photo'>
+<UpdatedProfileImage imageSrc={imageUrl} altText='Fr4n0m photo'>
 	<ProfileTooltip {...info} />
-</ProfileImage>
+</UpdatedProfileImage>
 
 <!-- Título y badge -->
 <HeroTitle title={hero.heroTitle} badgeText={hero.heroBadge} />

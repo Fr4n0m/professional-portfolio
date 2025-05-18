@@ -1,0 +1,677 @@
+---
+// SkillTooltip.astro - Tooltip actualizado para mostrar información detallada sobre tecnologías y habilidades
+// Incluye soporte mejorado para visualización de múltiples idiomas
+import { getCurrentLanguage } from '@i18n/config';
+// Importación actualizada para usar las nuevas descripciones de habilidades
+import { completeSkillDescriptions as skillDescriptions, getUpdatedCategoryByName as getCategoryByName, getUpdatedRecommendedExperience as getRecommendedExperience } from '@config/skillDescriptions_new';
+
+// Componentes de iconos
+import HTMLIcon from '@icons/HTML.astro';
+import CSSIcon from '@icons/CSS.astro';
+import JavaScriptIcon from '@icons/JavaScript.astro';
+import TypeScriptIcon from '@icons/TypeScript.astro';
+import NodeJSIcon from '@icons/NodeJS.astro';
+import ReactIcon from '@icons/React.astro';
+import NextJSIcon from '@icons/NextJS.astro';
+import AstroIcon from '@icons/AstroIcon.astro';
+import TailwindIcon from '@icons/Tailwind.astro';
+import MongoIcon from '@icons/Mongo.astro';
+import DockerIcon from '@icons/Docker.astro';
+import GitIcon from '@icons/Git.astro';
+import GitHubIcon from '@icons/GitHub.astro';
+import SupabaseIcon from '@icons/SupabaseIcon.astro';
+import ViteIcon from '@icons/Vite.jsx';
+import DenoIcon from '@icons/Deno.astro';
+import ExpressIcon from '@icons/Express.astro';
+import GraphqlIcon from '@icons/Graphql.astro';
+import MySQLIcon from '@icons/MySQL.astro';
+import StripeIcon from '@icons/Stripe.astro';
+import BunIcon from '@icons/Bun.astro';
+import PnpmIcon from '@icons/Pnpm.astro';
+import NpmIcon from '@icons/Npm.astro';
+import VercelIcon from '@icons/Vercel.astro';
+import WindowsIcon from '@icons/Windows.astro';
+import MacOSIcon from '@icons/MacOS.astro';
+import DebianIcon from '@icons/Debian.astro';
+import KaliIcon from '@icons/Kali.astro';
+import PhaserIcon from '@icons/Phaser.jsx';
+import StrapiIcon from '@icons/Strapi.astro';
+import CppIcon from '@icons/Cpp.astro';
+// Iconos para nuevas habilidades
+import GSAPIcon from '@icons/GSAP.astro';
+import FramerMotionIcon from '@icons/FramerMotion.astro';
+import MotionDesignIcon from '@icons/MotionDesign.astro';
+import AnimationIcon from '@icons/Animation.astro';
+import WebAnimationIcon from '@icons/WebAnimation.astro';
+
+interface Props {
+  name: string;
+  description?: string;
+  category?: 'frontend' | 'backend' | 'database' | 'tools' | 'language' | 'os' | 'framework' | 'library' | 'animation';
+  position?: 'top' | 'right' | 'bottom' | 'left';
+  experience?: number; // Nivel de experiencia de 1 a 5
+  link?: string;
+  className?: string; // Para pasar las clases de estilo basadas en el Tag
+  icon?: (_props: Record<string, any>) => any; // Icono de la skill
+}
+
+// Obtener el idioma actual
+const currentLang = getCurrentLanguage(Astro.url) || 'es';
+
+const { 
+  name, 
+  description = "",
+  category = 'frontend',
+  position = 'top',
+  experience = 3,
+  link = '#',
+  className = '',
+  icon
+} = Astro.props;
+
+// Usar la función de getCategoryByName del archivo de configuración
+const finalCategory = category || getCategoryByName(name);
+
+// Obtener el nivel de experiencia usando la función del archivo de configuración
+const finalExperience = experience || getRecommendedExperience(name);
+
+// Generar el nivel de experiencia según el valor calculado
+const experienceBars = Array(5).fill(0).map((_, i) => i < finalExperience);
+
+// Mapa de iconos para cada tecnología
+const technologyIcons = {
+  'HTML': HTMLIcon,
+  'CSS': CSSIcon,
+  'Tailwind CSS': TailwindIcon,
+  'JavaScript': JavaScriptIcon,
+  'TypeScript': TypeScriptIcon,
+  'React': ReactIcon,
+  'NextJS': NextJSIcon,
+  'Astro': AstroIcon,
+  'Vite': ViteIcon,
+  'NodeJS': NodeJSIcon,
+  'Deno': DenoIcon,
+  'ExpressJS': ExpressIcon,
+  'MongoDB': MongoIcon,
+  'Supabase': SupabaseIcon,
+  'MySQL': MySQLIcon,
+  'Stripe': StripeIcon,
+  'GraphQL': GraphqlIcon,
+  'Strapi': StrapiIcon,
+  'Docker': DockerIcon,
+  'Git': GitIcon,
+  'GitHub': GitHubIcon,
+  'NPM': NpmIcon,
+  'PNPM': PnpmIcon,
+  'Bun': BunIcon,
+  'Phaser': PhaserIcon,
+  'C++': CppIcon,
+  'Windows': WindowsIcon,
+  'MacOS': MacOSIcon,
+  'Debian': DebianIcon,
+  'Kali': KaliIcon,
+  'Vercel': VercelIcon,
+  // Nuevos iconos para habilidades de animación
+  'GSAP': GSAPIcon,
+  'Framer Motion': FramerMotionIcon,
+  'Motion Design': MotionDesignIcon,
+  'Animation': AnimationIcon,
+  'Web Animation': WebAnimationIcon
+};
+
+// Obtener el icono adecuado para esta tecnología
+const TechIcon = technologyIcons[name] || null;
+
+// Mapa de screenshots de ejemplo para cada tecnología
+const technologyScreenshots = {
+  // Frontend
+  'HTML': '/assets/screenshots/html-screenshot.svg',
+  'CSS': '/assets/screenshots/css-screenshot.svg',
+  'Tailwind CSS': '/assets/screenshots/frontend-screenshot.svg',
+  'JavaScript': '/assets/screenshots/js-screenshot.svg',
+  'TypeScript': '/assets/screenshots/frontend-screenshot.svg',
+  'React': '/assets/screenshots/frontend-screenshot.svg',
+  'NextJS': '/assets/screenshots/frontend-screenshot.svg',
+  'Astro': '/assets/screenshots/frontend-screenshot.svg',
+  'Vite': '/assets/screenshots/frontend-screenshot.svg',
+  // Backend
+  'NodeJS': '/assets/screenshots/backend-screenshot.svg',
+  'Deno': '/assets/screenshots/backend-screenshot.svg',
+  'ExpressJS': '/assets/screenshots/backend-screenshot.svg', 
+  'Bun': '/assets/screenshots/backend-screenshot.svg',
+  // Database
+  'MongoDB': '/assets/screenshots/database-screenshot.svg',
+  'Supabase': '/assets/screenshots/database-screenshot.svg',
+  'MySQL': '/assets/screenshots/database-screenshot.svg',
+  'Stripe': '/assets/screenshots/database-screenshot.svg',
+  'GraphQL': '/assets/screenshots/database-screenshot.svg',
+  'Strapi': '/assets/screenshots/database-screenshot.svg',
+  // Tools
+  'Docker': '/assets/screenshots/docker-screenshot.svg',
+  'Git': '/assets/screenshots/tools-screenshot.svg',
+  'GitHub': '/assets/screenshots/tools-screenshot.svg',
+  'NPM': '/assets/screenshots/tools-screenshot.svg',
+  'PNPM': '/assets/screenshots/tools-screenshot.svg',
+  'Bun': '/assets/screenshots/tools-screenshot.svg',
+  'Phaser': '/assets/screenshots/phaser-screenshot.svg',
+  'Vercel': '/assets/screenshots/tools-screenshot.svg',
+  'C++': '/assets/screenshots/tools-screenshot.svg',
+  // OS
+  'Windows': '/assets/screenshots/os-screenshot.svg',
+  'MacOS': '/assets/screenshots/os-screenshot.svg',
+  'Debian': '/assets/screenshots/os-screenshot.svg',
+  'Kali': '/assets/screenshots/os-screenshot.svg',
+  // Animation
+  'GSAP': '/assets/screenshots/animation-screenshot.svg',
+  'Framer Motion': '/assets/screenshots/animation-screenshot.svg',
+  'Motion Design': '/assets/screenshots/animation-screenshot.svg',
+  'Animation': '/assets/screenshots/animation-screenshot.svg',
+  'Web Animation': '/assets/screenshots/animation-screenshot.svg'
+};
+
+// Imagen por defecto para tecnologías sin screenshot específico
+const defaultScreenshot = '/assets/screenshots/default-tech.svg';
+
+// Obtener el screenshot adecuado o usar el predeterminado por categoría
+const techScreenshot = technologyScreenshots[name] || (finalCategory ? `/assets/screenshots/${finalCategory}-screenshot.svg` : defaultScreenshot);
+
+// Obtener la descripción desde el archivo de configuración centralizado
+const finalDescription = description || 
+  skillDescriptions[name]?.[currentLang] || 
+  skillDescriptions[name]?.['en'] || 
+  `${name} - Tecnología web moderna.`;
+
+// Traducciones para las etiquetas del tooltip
+const translations = {
+  experienceLevel: {
+    es: 'Nivel de experiencia:',
+    en: 'Experience level:',
+    'en-us': 'Experience level:',
+    'es-mx': 'Nivel de experiencia:',
+    pt: 'Nível de experiência:',
+    fr: 'Niveau d\'expérience:',
+    de: 'Erfahrungsstufe:',
+    it: 'Livello di esperienza:',
+    zh: '经验水平:',
+    ja: '経験レベル:',
+    ru: 'Уровень опыта:',
+    ar: 'مستوى الخبرة:',
+    hi: 'अनुभव स्तर:',
+    ko: '경험 레벨:',
+    nl: 'Ervaringsniveau:',
+    pl: 'Poziom doświadczenia:',
+    tr: 'Deneyim seviyesi:',
+    hv: 'Undaghoś vala:'
+  },
+  viewMore: {
+    es: 'Ver más',
+    en: 'View more',
+    'en-us': 'View more',
+    'es-mx': 'Ver más',
+    pt: 'Ver mais',
+    fr: 'Voir plus',
+    de: 'Mehr anzeigen',
+    it: 'Vedi di più',
+    zh: '查看更多',
+    ja: 'もっと見る',
+    ru: 'Подробнее',
+    ar: 'عرض المزيد',
+    hi: 'और देखें',
+    ko: '더 보기',
+    nl: 'Meer bekijken',
+    pl: 'Zobacz więcej',
+    tr: 'Daha fazla görüntüle',
+    hv: 'Tolmiotā'
+  },
+  category: {
+    frontend: {
+      es: 'Frontend',
+      en: 'Frontend',
+      'en-us': 'Frontend',
+      'es-mx': 'Frontend',
+      pt: 'Frontend',
+      fr: 'Frontend',
+      de: 'Frontend',
+      it: 'Frontend',
+      zh: '前端',
+      ja: 'フロントエンド',
+      ru: 'Фронтенд',
+      ar: 'واجهة أمامية',
+      hi: 'फ्रंटएंड',
+      ko: '프론트엔드',
+      nl: 'Frontend',
+      pl: 'Frontend',
+      tr: 'Ön uç',
+      hv: 'Qrinuntys'
+    },
+    backend: {
+      es: 'Backend',
+      en: 'Backend',
+      'en-us': 'Backend',
+      'es-mx': 'Backend',
+      pt: 'Backend',
+      fr: 'Backend',
+      de: 'Backend',
+      it: 'Backend',
+      zh: '后端',
+      ja: 'バックエンド',
+      ru: 'Бэкенд',
+      ar: 'واجهة خلفية',
+      hi: 'बैकएंड',
+      ko: '백엔드',
+      nl: 'Backend',
+      pl: 'Backend',
+      tr: 'Arka uç',
+      hv: 'HŪchtys'
+    },
+    database: {
+      es: 'Base de datos',
+      en: 'Database',
+      'en-us': 'Database',
+      'es-mx': 'Base de datos',
+      pt: 'Banco de dados',
+      fr: 'Base de données',
+      de: 'Datenbank',
+      it: 'Database',
+      zh: '数据库',
+      ja: 'データベース',
+      ru: 'База данных',
+      ar: 'قاعدة بيانات',
+      hi: 'डेटाबेस',
+      ko: '데이터베이스',
+      nl: 'Database',
+      pl: 'Baza danych',
+      tr: 'Veritabanı',
+      hv: 'Tubis'
+    },
+    tools: {
+      es: 'Herramientas',
+      en: 'Tools',
+      'en-us': 'Tools',
+      'es-mx': 'Herramientas',
+      pt: 'Ferramentas',
+      fr: 'Outils',
+      de: 'Werkzeuge',
+      it: 'Strumenti',
+      zh: '工具',
+      ja: 'ツール',
+      ru: 'Инструменты',
+      ar: 'أدوات',
+      hi: 'उपकरण',
+      ko: '도구',
+      nl: 'Gereedschappen',
+      pl: 'Narzędzia',
+      tr: 'Araçlar',
+      hv: 'Tembyr'
+    },
+    os: {
+      es: 'Sistemas operativos',
+      en: 'Operating systems',
+      'en-us': 'Operating systems',
+      'es-mx': 'Sistemas operativos',
+      pt: 'Sistemas operacionais',
+      fr: 'Systèmes d\'exploitation',
+      de: 'Betriebssysteme',
+      it: 'Sistemi operativi',
+      zh: '操作系统',
+      ja: 'オペレーティングシステム',
+      ru: 'Операционные системы',
+      ar: 'أنظمة التشغيل',
+      hi: 'ऑपरेटिंग सिस्टम',
+      ko: '운영 체제',
+      nl: 'Besturingssystemen',
+      pl: 'Systemy operacyjne',
+      tr: 'İşletim sistemleri',
+      hv: 'Gundytyr'
+    },
+    animation: {
+      es: 'Animación',
+      en: 'Animation',
+      'en-us': 'Animation',
+      'es-mx': 'Animación',
+      pt: 'Animação',
+      fr: 'Animation',
+      de: 'Animation',
+      it: 'Animazione',
+      zh: '动画',
+      ja: 'アニメーション',
+      ru: 'Анимация',
+      ar: 'رسوم متحركة',
+      hi: 'एनिमेशन',
+      ko: '애니메이션',
+      nl: 'Animatie',
+      pl: 'Animacja',
+      tr: 'Animasyon',
+      hv: 'Uēpa'
+    },
+    language: {
+      es: 'Lenguaje',
+      en: 'Language',
+      'en-us': 'Language',
+      'es-mx': 'Lenguaje',
+      pt: 'Linguagem',
+      fr: 'Langage',
+      de: 'Sprache',
+      it: 'Linguaggio',
+      zh: '语言',
+      ja: '言語',
+      ru: 'Язык',
+      ar: 'لغة',
+      hi: 'भाषा',
+      ko: '언어',
+      nl: 'Taal',
+      pl: 'Język',
+      tr: 'Dil',
+      hv: 'Valyre'
+    },
+    framework: {
+      es: 'Framework',
+      en: 'Framework',
+      'en-us': 'Framework',
+      'es-mx': 'Framework',
+      pt: 'Framework',
+      fr: 'Framework',
+      de: 'Framework',
+      it: 'Framework',
+      zh: '框架',
+      ja: 'フレームワーク',
+      ru: 'Фреймворк',
+      ar: 'إطار عمل',
+      hi: 'फ्रेमवर्क',
+      ko: '프레임워크',
+      nl: 'Framework',
+      pl: 'Framework',
+      tr: 'Çerçeve',
+      hv: 'Zyhossyrdi'
+    },
+    library: {
+      es: 'Biblioteca',
+      en: 'Library',
+      'en-us': 'Library',
+      'es-mx': 'Biblioteca',
+      pt: 'Biblioteca',
+      fr: 'Bibliothèque',
+      de: 'Bibliothek',
+      it: 'Libreria',
+      zh: '库',
+      ja: 'ライブラリ',
+      ru: 'Библиотека',
+      ar: 'مكتبة',
+      hi: 'लाइब्रेरी',
+      ko: '라이브러리',
+      nl: 'Bibliotheek',
+      pl: 'Biblioteka',
+      tr: 'Kütüphane',
+      hv: 'Ubrardy'
+    },
+    technology: {
+      es: 'Tecnología',
+      en: 'Technology',
+      'en-us': 'Technology',
+      'es-mx': 'Tecnología',
+      pt: 'Tecnologia',
+      fr: 'Technologie',
+      de: 'Technologie',
+      it: 'Tecnologia',
+      zh: '技术',
+      ja: 'テクノロジー',
+      ru: 'Технология',
+      ar: 'تكنولوجيا',
+      hi: 'टेक्नोलॉजी',
+      ko: '기술',
+      nl: 'Technologie',
+      pl: 'Technologia',
+      tr: 'Teknoloji',
+      hv: 'Texnolojy'
+    }
+  }
+};
+
+// Icono y color según la categoría
+let categoryIcon;
+let categoryBackground;
+let categoryTitle;
+
+switch (finalCategory) {
+  case 'frontend':
+    categoryIcon = 'layout';
+    categoryBackground = 'bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400';
+    categoryTitle = translations.category.frontend[currentLang] || translations.category.frontend['en'];
+    break;
+  case 'backend':
+    categoryIcon = 'server';
+    categoryBackground = 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400';
+    categoryTitle = translations.category.backend[currentLang] || translations.category.backend['en'];
+    break;
+  case 'database':
+    categoryIcon = 'database';
+    categoryBackground = 'bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400';
+    categoryTitle = translations.category.database[currentLang] || translations.category.database['en'];
+    break;
+  case 'tools':
+    categoryIcon = 'tool';
+    categoryBackground = 'bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400';
+    categoryTitle = translations.category.tools[currentLang] || translations.category.tools['en'];
+    break;
+  case 'os':
+    categoryIcon = 'monitor';
+    categoryBackground = 'bg-gray-100 dark:bg-gray-900/40 text-gray-600 dark:text-gray-400';
+    categoryTitle = translations.category.os[currentLang] || translations.category.os['en'];
+    break;
+  case 'animation':
+    categoryIcon = 'film';
+    categoryBackground = 'bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400';
+    categoryTitle = translations.category.animation[currentLang] || translations.category.animation['en'];
+    break;
+  case 'language':
+    categoryIcon = 'code';
+    categoryBackground = 'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400';
+    categoryTitle = translations.category.language[currentLang] || translations.category.language['en'];
+    break;
+  case 'framework':
+    categoryIcon = 'box';
+    categoryBackground = 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-600 dark:text-yellow-400';
+    categoryTitle = translations.category.framework[currentLang] || translations.category.framework['en'];
+    break;
+  case 'library':
+    categoryIcon = 'package';
+    categoryBackground = 'bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400';
+    categoryTitle = translations.category.library[currentLang] || translations.category.library['en'];
+    break;
+  default:
+    categoryIcon = 'code';
+    categoryBackground = 'bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400';
+    categoryTitle = translations.category.technology[currentLang] || translations.category.technology['en'];
+}
+
+// Obtener la traducción para el idioma actual o usar el predeterminado
+const getTranslation = (key) => {
+  return translations[key]?.[currentLang] || translations[key]?.['en'] || translations[key]?.['es'] || key;
+};
+---
+
+<div class="skill-tooltip" dir={currentLang === 'ar' ? 'rtl' : 'ltr'} data-lang={currentLang} lang={currentLang}>
+  <div class={`bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-3 w-[270px] md:w-[320px] backdrop-filter backdrop-blur-sm shadow-[0_8px_30px_rgba(0,0,0,0.12)] relative ${className ? 'skill-custom-tooltip' : ''} multilingual-tooltip`}>
+    <!-- Agregar un borde sutil con el color del skill -->
+    {className && (
+      <div class="absolute inset-0 rounded-lg opacity-30 pointer-events-none border-2 skill-custom-border"></div>
+    )}
+    
+    <!-- Imagen de screenshot de la tecnología -->
+    <div class="w-full h-[120px] mb-3 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-700 relative">
+      <img 
+        src={techScreenshot} 
+        alt={`Ejemplo de ${name}`}
+        class="w-full h-full object-cover object-center transition-transform hover:scale-105"
+        loading="lazy"
+        onError="this.onerror=null; this.src='/assets/screenshots/default-tech.svg';"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-50"></div>
+    </div>
+    
+    <div class="flex items-center border-b border-gray-200 dark:border-gray-700 pb-2 mb-2">
+      <!-- Usar el mismo icono para esta tecnología -->
+      <div class={`w-7 h-7 rounded-full flex items-center justify-center mr-2.5 ${className}`}>
+        {TechIcon ? <TechIcon class="size-4" /> : (
+          <div class="size-4 flex items-center justify-center text-current">
+            <span class="text-xs font-bold">{name.charAt(0)}</span>
+          </div>
+        )}
+      </div>
+      <div>
+        <h4 class="font-semibold text-sm text-gray-900 dark:text-white leading-tight">{name}</h4>
+        <p class="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">{categoryTitle}</p>
+      </div>
+    </div>
+    
+    <p class="text-xs mb-2.5 text-gray-700 dark:text-gray-300">{finalDescription}</p>
+    
+    <div class="mb-2.5">
+      <p class="text-[10px] font-medium text-gray-500 dark:text-gray-400 mb-1">{getTranslation('experienceLevel')}</p>
+      <div class="flex space-x-1">
+        {experienceBars.map((filled) => (
+          <div class={`w-10 h-1.5 rounded-sm ${filled ? 'bg-gradient-to-r skill-gradient-bar' : 'bg-gray-200 dark:bg-gray-700'}`}></div>
+        ))}
+      </div>
+    </div>
+    
+    <a href={link} target="_blank" rel="noopener noreferrer" class="text-[10px] font-medium text-right block hover:underline skill-tooltip-link">
+      {getTranslation('viewMore')} &rarr;
+    </a>
+  </div>
+</div>
+
+<style>
+  /* Verificar posición en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .skill-tooltip {
+      /* Siempre colocar arriba en móvil */
+      left: 50% !important;
+      bottom: 100% !important;
+      top: auto !important;
+      transform: translateX(-50%) !important;
+      margin: 0 0 0.5rem 0 !important;
+    }
+    
+    .skill-tooltip .absolute.w-3.h-3 {
+      top: auto !important;
+      bottom: -6px !important;
+      left: 50% !important;
+      transform: translateX(-50%) rotate(45deg) !important;
+      border-width: 0 1px 1px 0 !important;
+    }
+  }
+  
+  /* Estilos específicos para RTL (para árabe y otros idiomas RTL) */
+  [dir="rtl"] .skill-tooltip {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .skill-tooltip .flex {
+    flex-direction: row-reverse;
+  }
+  
+  [dir="rtl"] .skill-tooltip .mr-2.5 {
+    margin-right: 0;
+    margin-left: 0.625rem;
+  }
+  
+  [dir="rtl"] .skill-tooltip .space-x-1 > * + * {
+    margin-left: 0;
+    margin-right: 0.25rem;
+  }
+  
+  [dir="rtl"] .skill-tooltip-link {
+    text-align: left;
+  }
+  
+  /* Estilos personalizados para el gradiente */
+  .skill-gradient-bar {
+    /* Gradiente por defecto */
+    background: linear-gradient(90deg, #3B82F6, #4F46E5);
+  }
+  
+  /* Animar opciones al cambiar opción */
+  .skill-tooltip {
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    /* Animación más lenta y con retraso */
+    transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    z-index: 99999;
+  }
+  
+  /* Estilos para el borde personalizado basado en el color del pill */
+  .skill-custom-tooltip .skill-tooltip-link {
+    color: var(--tag-color, #3B82F6);
+  }
+  
+  .skill-custom-tooltip .skill-custom-border {
+    border-color: var(--tag-color, transparent);
+  }
+  
+  .skill-custom-tooltip .skill-gradient-bar {
+    background: linear-gradient(90deg, var(--tag-color, #3B82F6), color-mix(in srgb, var(--tag-color, #3B82F6), #ffffff 20%));
+  }
+
+  /* Hacer que los tooltips sean más visibles cuando aparecen */
+  .skill-tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto; /* Habilitamos interactividad */
+  }
+  
+  /* Estilos multilingües para manejar caracteres de diferentes idiomas */
+  .multilingual-tooltip p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Ajustes específicos por idioma para mejorar legibilidad */
+  [data-lang="hi"] .multilingual-tooltip p,
+  [data-lang="ar"] .multilingual-tooltip p,
+  [data-lang="zh"] .multilingual-tooltip p,
+  [data-lang="ja"] .multilingual-tooltip p,
+  [data-lang="ko"] .multilingual-tooltip p {
+    font-size: 0.7rem; /* Ligeramente más pequeño para idiomas con caracteres más complejos */
+    line-height: 1.4;
+  }
+  
+  /* Ajuste adicional para árabe */
+  [data-lang="ar"] .multilingual-tooltip h4,
+  [data-lang="ar"] .multilingual-tooltip p {
+    letter-spacing: -0.01em;
+  }
+  
+  /* Ajuste para idiomas asiáticos */
+  [data-lang="zh"] .multilingual-tooltip,
+  [data-lang="ja"] .multilingual-tooltip,
+  [data-lang="ko"] .multilingual-tooltip {
+    letter-spacing: -0.02em;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Configurar colores personalizados de tooltips basados en el pill
+    document.querySelectorAll('.skill-tooltip-container').forEach(container => {
+      const pill = container.querySelector('.skill-pill');
+      const tooltip = container.querySelector('.skill-tooltip');
+      
+      if (pill && tooltip) {
+        // Extraer color del borde del pill para usar en tooltip
+        const computedStyle = getComputedStyle(pill);
+        const borderColor = computedStyle.borderColor;
+        
+        // Aplicar el color del borde como variable CSS en el tooltip
+        tooltip.style.setProperty('--tag-color', borderColor);
+      }
+    });
+  });
+</script>

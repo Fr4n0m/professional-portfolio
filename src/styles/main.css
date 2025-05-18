@@ -4,6 +4,7 @@
 @import './base/reset.css';
 @import './base/variables.css';
 @import './base/typography.css';
+@import './base/multilingual-typography.css';
 
 /* Animations */
 @import './animations/base.css';

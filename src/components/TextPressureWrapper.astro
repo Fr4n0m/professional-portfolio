@@ -1,6 +1,7 @@
 ---
 // Componente Astro que envuelve el componente React TextPressure
 import TextPressure from './TextPressure';
+import { getCurrentLanguage } from '@i18n/config';
 
 interface Props {
   text?: string;
@@ -9,9 +10,12 @@ interface Props {
 }
 
 const { text = "Hey, soy Fran", darkMode = false, className = "" } = Astro.props;
+
+// Obtener el idioma actual
+const lang = getCurrentLanguage(Astro.url) || 'es';
 ---
 
-<div class={`text-pressure-wrapper ${className}`}>
+<div class={`text-pressure-wrapper ${className}`} lang={lang} data-lang={lang}>
   <TextPressure
     text={text}
     darkMode={darkMode}

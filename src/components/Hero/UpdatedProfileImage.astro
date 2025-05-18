@@ -1,0 +1,145 @@
+---
+// ProfileImage.astro - Componente mejorado para manejar la imagen de perfil en todos los idiomas
+import ImageWithFallback from '../fallbacks/ImageWithFallback.astro';
+import { getCurrentLanguage } from '@i18n/config';
+
+interface Props {
+  imageSrc: string;
+  altText: string;
+}
+
+const { imageSrc, altText } = Astro.props;
+
+// Asegurar que la ruta de la imagen sea absoluta
+const ensureAbsolutePath = (path: string) => {
+  if (path.startsWith('/')) {
+    return path;
+  }
+  return '/' + path;
+};
+
+// Obtener la ruta absoluta de la imagen
+const absoluteImagePath = ensureAbsolutePath(imageSrc);
+
+// Detectar el idioma actual para potenciales personalizaciones
+const currentLang = getCurrentLanguage(Astro.url) || 'es';
+---
+
+<!-- Versión móvil sin tooltip -->
+<div class="block md:hidden mb-5">
+  <div class="flex justify-center">
+    <div class="hero-profile-frame-mobile profile-image-xs profile-image-sm profile-image-md profile-image-landscape">
+      <ImageWithFallback
+        src={absoluteImagePath}
+        alt={altText}
+        class="w-full h-full object-cover object-center rounded-[19px]"
+        lazy={false}
+        fadeIn={false}
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Versión desktop con tooltip -->
+<div class="hidden md:block">
+  <div class="flex justify-start">
+    <div class="hero-profile-wrapper hover-capable-device">
+      <div class="hero-profile-frame profile-image-lg profile-image-xl profile-image-2xl profile-image-3xl profile-image-4xl profile-image-landscape">
+        <ImageWithFallback
+          src={absoluteImagePath}
+          alt={altText}
+          class="w-full h-full object-cover object-center rounded-[19px]"
+          lazy={false}
+          fadeIn={false}
+        />
+      </div>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Estilos base para la imagen sin media queries */
+  
+  /* Móvil */
+  .hero-profile-frame-mobile {
+    position: relative;
+    width: 8rem; /* Tamaño por defecto - se ajustará con clases CSS globales */
+    height: 8rem;
+    overflow: hidden;
+    border-radius: 19px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e5e7eb;
+    background-color: white;
+  }
+  
+  /* Versión oscura para móvil */
+  :global(.dark) .hero-profile-frame-mobile {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #374151;
+    background-color: #1f2937;
+  }
+
+  /* Versión desktop con hover */
+  .hero-profile-wrapper {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .hero-profile-frame {
+    position: relative;
+    width: 8.5rem; /* Tamaño por defecto - se ajustará con clases CSS globales */
+    height: 8.5rem;
+    overflow: hidden;
+    border-radius: 19px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e5e7eb;
+    background-color: white;
+    transition: all 0.2s ease;
+  }
+  
+  .hero-profile-wrapper:hover .hero-profile-frame {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #3b82f6;
+  }
+  
+  /* Versión oscura */
+  :global(.dark) .hero-profile-frame {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #374151;
+    background-color: #1f2937;
+  }
+  
+  :global(.dark) .hero-profile-wrapper:hover .hero-profile-frame {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+    border: 2px solid #facc15;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Detectar si el dispositivo soporta hover (probablemente desktop)
+    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    
+    // Solo aplicamos animaciones en desktop
+    if (supportsHover) {
+      // Animación para la imagen en desktop
+      const profileFrame = document.querySelector('.hero-profile-frame');
+      if (profileFrame) {
+        profileFrame.style.opacity = "1";
+        
+        gsap.from(profileFrame, {
+          scale: 0.9,
+          opacity: 0,
+          duration: 0.4,
+          ease: "back.out(1.4)",
+          clearProps: "all"
+        });
+      }
+    }
+  });
+</script>
