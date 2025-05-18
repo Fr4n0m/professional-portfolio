@@ -2,7 +2,7 @@
   "allProjects": "すべてのプロジェクト",
   "allProjectsTitle": "「すべてのプロジェクト」ページへようこそ",
   "allProjectsDescription": "こちらで今まで制作したすべてのプロジェクトをご覧いただけます。",
-  "allProjectsLink": "プロジェクトをもっと見る",
+  "allProjectsLink": "/ja/projects",
   "projectsButtons": {
     "textCodeButton": "コードを見る",
     "textDemoButton": "デモを見る",

@@ -1,0 +1,21 @@
+{
+  "id": "agrooe-cashback",
+  "title": "Agrooe Cashback",
+  "description": "On this website, I worked with a team to develop a platform from scratch, committed to selling quality products and promoting local commerce. We worked from the concept to the implementation, creating both the back-end and front-end. In addition to various technologies, integrations were added, such as JWT for user account control and login, a dashboard to manage all the data... Features included the ability to log in with different social networks, account creation as a user to purchase products or as a company to add them, maps showing the nearest locations where the product could be found, among other things. Due to confidentiality reasons, the code is not displayed.",
+  "images": [
+    "/assets/images/projects/agrooe_1.jpeg",
+    "/assets/images/projects/agrooe_2.jpeg",
+    "/assets/images/projects/agrooe_3.jpeg"
+  ],
+  "tags": [
+    "HTML",
+    "CSS",
+    "TAILWIND",
+    "JAVASCRIPT",
+    "REACT",
+    "NEXTJS",
+    "EXPRESS",
+    "NODEJS",
+    "MONGODB"
+  ]
+}

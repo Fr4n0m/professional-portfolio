@@ -2,9 +2,15 @@
 import { languages, getCurrentLanguage, getLanguageSwitchUrl } from '@i18n/config';
 import type { Translations } from '../../../types/translations';
 import ControlCenterIcon from '@icons/ControlCenter.astro';
+import { getAccessibilityTranslations } from '@i18n/utils/accessibilityTranslations';
+
 // Obtener el idioma actual
 const currentLang = getCurrentLanguage(Astro.url);
-// Obtener traducciones
+
+// Obtener las traducciones para el idioma actual
+const texts = getAccessibilityTranslations(currentLang);
+
+// Obtener traducciones del proyecto
 const translations: Translations = Astro.props.translations || {};
 // Control Center para móvil - Estilo macOS
 ---
@@ -32,7 +38,7 @@ const translations: Translations = Astro.props.translations || {};
         />
         <div> 
           <p class='font-semibold text-gray-900 dark:text-white'>Francisco José Rodríguez</p>
-          <p class='text-sm text-gray-600 dark:text-gray-400'>Frontend Developer</p>
+          <p class='text-sm text-gray-600 dark:text-gray-400'>{texts.profile.role}</p>
         </div>
       </div>
     </div>
@@ -54,7 +60,7 @@ const translations: Translations = Astro.props.translations || {};
               <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'></path>
             </svg>
           </div>
-          <span class='text-xs text-gray-700 dark:text-gray-300'>Tema</span>
+          <span class='text-xs text-gray-700 dark:text-gray-300'>{texts.theme}</span>
         </button>
 
         <!-- Language Toggle -->
@@ -62,15 +68,15 @@ const translations: Translations = Astro.props.translations || {};
           <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
             <span class='text-3xl lang-flag-icon'>{languages[currentLang]?.flag || '🌐'}</span>
           </div>
-          <span class='text-xs text-gray-700 dark:text-gray-300'>Idioma</span>
+          <span class='text-xs text-gray-700 dark:text-gray-300'>{texts.language}</span>
         </button>
       </div>
       <!-- Accessibility Settings -->
       <div class='p-4 space-y-3'> 
-        <h3 class='text-sm font-semibold text-gray-900 dark:text-white mb-3'>Accesibilidad</h3>
+        <h3 class='text-sm font-semibold text-gray-900 dark:text-white mb-3'>{texts.accessibility}</h3>
         <!-- Font Size -->
         <div class='flex items-center justify-between'> 
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Tamaño de texto</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{texts.fontSize}</span>
           <div class='flex items-center gap-2'>
             <button class='font-size-control p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800' data-action='font-decrease'> <svg class='w-4 h-4 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                 <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18 12H6'></path>
@@ -85,7 +91,7 @@ const translations: Translations = Astro.props.translations || {};
         </div>
         <!-- Contrast -->
         <div class='flex items-center justify-between'> 
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Contraste</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{texts.contrast}</span>
           <div class="switch-parent">
             <input type="checkbox" class="checkbox" id="mobile-contrast-checkbox" />
             <label class="switch" for="mobile-contrast-checkbox" data-action='contrast'>
@@ -95,7 +101,7 @@ const translations: Translations = Astro.props.translations || {};
         </div>
         <!-- Animations -->
         <div class='flex items-center justify-between'> 
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Animaciones</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{texts.animations}</span>
           <div class="switch-parent">
             <input type="checkbox" class="checkbox" id="mobile-animations-checkbox" checked />
             <label class="switch" for="mobile-animations-checkbox" data-action='animations' data-enabled='true'>
@@ -107,7 +113,7 @@ const translations: Translations = Astro.props.translations || {};
       <!-- Additional Settings -->
       <div class='p-4 border-t border-gray-200 dark:border-gray-700'>
         <button class='w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200'> 
-          <span class='text-sm text-gray-700 dark:text-gray-300'>Configuración avanzada</span>
+          <span class='text-sm text-gray-700 dark:text-gray-300'>{texts.advancedSettings}</span>
         </button>
       </div>
     </div>
@@ -115,7 +121,7 @@ const translations: Translations = Astro.props.translations || {};
     <div class='language-panel hidden'>
       <div class='p-4 border-b border-gray-200 dark:border-gray-700'>
         <div class='flex items-center justify-between'> 
-          <h3 class='text-sm font-semibold text-gray-900 dark:text-white'>Seleccionar idioma</h3>
+          <h3 class='text-sm font-semibold text-gray-900 dark:text-white'>{texts.selectLanguage}</h3>
           <button class='back-btn p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800'> 
             <svg class='w-5 h-5 text-gray-700 dark:text-gray-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
               <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>

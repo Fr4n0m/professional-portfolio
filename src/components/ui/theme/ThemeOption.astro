@@ -1,0 +1,37 @@
+---
+/**
+ * ThemeOption.astro
+ * Opción individual para el menú de selección de tema
+ */
+
+export interface Props {
+  id: string;
+  name: string;
+  isActive?: boolean;
+}
+
+const { id, name, isActive = false } = Astro.props;
+---
+
+<li class="themes-menu-option px-3 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors duration-150" data-theme={id} data-active={isActive ? "true" : "false"}>
+  <span class="flex items-center gap-3">
+    <slot />
+    <span class="font-medium text-gray-700 dark:text-gray-200">{name}</span>
+  </span>
+</li>
+
+<style>
+  .themes-menu-option {
+    transition: all 150ms ease;
+  }
+  .themes-menu-option:hover {
+    transform: translateX(2px);
+  }
+  /* Indicador activo */
+  .themes-menu-option[data-active="true"] {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  .themes-menu-option[data-active="true"] span {
+    color: rgb(59, 130, 246);
+  }
+</style>

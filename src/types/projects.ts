@@ -1,16 +1,23 @@
-export interface TagInfo {
-	name: string;
-	class: string;
-	link: string;
-	icon: Record<string, any>;
+export interface ProjectSummary {
+  id: string;
+  title: string;
+  summary: string;
+  mainImage: string;
+  tags: string[];
 }
 
-export interface Project {
-	images: string[];
-	title: string;
-	description: string;
-	tags: string[];
-	link?: string;
-	secondaryLink?: string;
-	github?: string;
+export interface ProjectDetail {
+  id: string;
+  title: string;
+  description: string;
+  images: string[];
+  tags: string[];
+  link?: string;
+  github?: string;
+  secondaryLink?: string;
+}
+
+export interface Project extends ProjectDetail {
+  // Esta interfaz mantiene compatibilidad con el código existente
+  // mientras se hace la transición al nuevo sistema
 }

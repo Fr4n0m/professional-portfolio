@@ -1,0 +1,22 @@
+{
+  "id": "strapi-games-store",
+  "title": "Strapi Games Store",
+  "description": "Web app designed to manage games content using Strapi as backend and CMS.",
+  "link": "https://strapi-games-store.vercel.app/",
+  "github": "https://github.com/Fr4n0m/strapi-games-store",
+  "images": [
+    "/assets/images/projects/strapi-games-web-1.webp",
+    "/assets/images/projects/strapi-games-web-2.webp",
+    "/assets/images/projects/strapi-games-web-3.webp"
+  ],
+  "tags": [
+    "HTML",
+    "CSS",
+    "TAILWIND",
+    "JAVASCRIPT",
+    "TYPESCRIPT",
+    "REACT",
+    "NEXTJS",
+    "STRAPI"
+  ]
+}

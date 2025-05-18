@@ -30,8 +30,8 @@ const { title, dataSection, ariaLabel, items } = Astro.props;
     </span>
   </button>
   
-  <div class="dropdown-menu absolute z-40 left-0 hidden pt-2 group-hover:block min-w-[180px]">
-    <div class="bg-white/90 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 py-1 transition-all duration-300 origin-top scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100">
+  <div class="dropdown-menu absolute z-40 left-0 hidden pt-2 group-hover:block min-w-[190px]">
+    <div class="bg-white/90 dark:bg-gray-800/95 backdrop-blur-md rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 py-1.5 transition-all duration-300 origin-top scale-95 opacity-0 group-hover:scale-100 group-hover:opacity-100 w-full">
       {items.map(item => {
         const isActive = item.url.includes('#') && item.url.split('#')[1] === dataSection;
         return (
@@ -55,6 +55,8 @@ const { title, dataSection, ariaLabel, items } = Astro.props;
   .dropdown-menu {
     transform-origin: top center;
     transition: all 0.25s ease;
+    width: max-content; /* Asegurar que el ancho se ajuste al contenido */
+    min-width: 190px; /* Valor mínimo */
   }
   
   /* Evitar que el menú desaparezca inmediatamente */

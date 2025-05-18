@@ -1,80 +1,111 @@
 ---
+import { getCurrentLanguage } from '@i18n/config';
+import { getThemeTranslations } from '@i18n/utils/themeTranslations';
+import ThemeMenu from './ThemeMenu.astro';
 import SunIcon from '@icons/Sun.astro';
 import MoonIcon from '@icons/Moon.astro';
 import SystemIcon from '@icons/System.astro';
-import ThemeMenu from './ThemeMenu.astro';
 
+// Determinar el idioma actual
+const currentLang = getCurrentLanguage(Astro.url) || 'es';
+
+// Obtener las traducciones de temas para el idioma actual
+const themeTexts = getThemeTranslations(currentLang);
+
+// Configurar los temas con los nombres traducidos
 const themes = [
-  { id: 'light', name: 'Claro', icon: SunIcon },
-  { id: 'dark', name: 'Oscuro', icon: MoonIcon },
-  { id: 'system', name: 'Sistema', icon: SystemIcon }
+  { id: 'light', name: themeTexts.light, icon: SunIcon },
+  { id: 'dark', name: themeTexts.dark, icon: MoonIcon },
+  { id: 'system', name: themeTexts.system, icon: SystemIcon }
 ];
 ---
 
-<div class='relative'>
+<div class='relative' data-theme-lang={currentLang}>
   <button
-    id='theme-toggle-btn'
-    class='appearance-none border-none flex hover:scale-110 active:scale-95 transition-all duration-200 p-1 rounded-lg'
-    aria-label='Cambiar tema'
+    id="theme-toggle-btn"
+    class="appearance-none border-none flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 p-2 rounded-lg"
+    aria-label={themeTexts.ariaLabel}
   >
-    <span class='sr-only'>Elige el tema</span>
-    <SunIcon id='light' class='theme-toggle-icon size-[20px] text-amber-500' />
-    <MoonIcon
-      id='dark'
-      class='theme-toggle-icon absolute size-[20px] text-indigo-500'
-    />
-    <SystemIcon
-      id='system'
-      class='theme-toggle-icon absolute size-[20px] text-gray-600 dark:text-gray-400'
-    />
+    <span class="sr-only">{themeTexts.chooseTheme}</span>
+    
+    <!-- Icono de sol (modo claro) -->
+    <span id="light-icon" class="theme-icon">
+      <SunIcon class="size-4 text-amber-500" />
+    </span>
+    
+    <!-- Icono de luna (modo oscuro) -->
+    <span id="dark-icon" class="theme-icon">
+      <MoonIcon class="size-4 text-indigo-500" />
+    </span>
+    
+    <!-- Icono de sistema (modo sistema) -->
+    <span id="system-icon" class="theme-icon">
+      <SystemIcon class="size-4 text-gray-600 dark:text-gray-400" />
+    </span>
   </button>
   <ThemeMenu themes={themes} />
 </div>
 
 <style>
-  /* Estilo Apple para los toggles */
-  .theme-toggle-icon {
-    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1), scale 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
+  /* Estilos para el menú y los iconos de tema */
   #theme-toggle-btn {
     position: relative;
   }
-
-  #light {
-    scale: 1;
-  }
-
-  #dark, #system {
-    scale: 0;
-  }
-
-  :global(.dark) #light {
-    scale: 0;
-  }
-
-  :global(.dark) #dark {
-    scale: 1;
-  }
-
-  :global(.system) #light, :global(.system) #dark {
-    scale: 0;
-  }
-
-  :global(.system) #system {
-    scale: 1;
+  
+  #theme-toggle-btn:active {
+    transform: scale(0.95);
   }
   
-  /* Animación avanzada para los iconos en hover */
-  #theme-toggle-btn:hover .theme-toggle-icon {
-    transform: scale(1.2) rotate(8deg);
+  /* Posicionamiento de iconos */
+  .theme-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Mostrar iconos basados en la clase del tema */
+  :global(html:not(.dark):not(.system)) #light-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  :global(html.dark:not(.system)) #dark-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  :global(html.system) #system-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Efecto hover para los iconos */
+  #theme-toggle-btn:hover .theme-icon {
     filter: brightness(1.2);
+    transform: scale(1.2) rotate(8deg);
     transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
   }
   
-  /* Efecto pulse en active para los botones del header */
-  #theme-toggle-btn:active .theme-toggle-icon {
+  /* Efecto active para los iconos */
+  #theme-toggle-btn:active .theme-icon {
     transform: scale(0.9);
     transition: transform 0.15s ease-out;
   }
 </style>
+
+<script>
+  // Asegurar que el icono correcto se muestre al cargar la página
+  document.addEventListener('DOMContentLoaded', () => {
+    const theme = localStorage.getItem('theme') || 'system';
+    document.documentElement.classList.remove('light', 'dark', 'system');
+    document.documentElement.classList.add(theme);
+  });
+</script>

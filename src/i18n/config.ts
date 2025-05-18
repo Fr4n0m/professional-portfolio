@@ -195,8 +195,7 @@ export function getLanguageSwitchUrl(currentUrl: URL | string | null | undefined
       return targetLang === 'es' ? '/' : `/${targetLang}`;
     }
     
-    // Obtener el idioma actual y los segmentos de la ruta de manera segura
-    const currentLang = getCurrentLanguage(urlObj);
+    // Obtener los segmentos de la ruta de manera segura
     let pathSegments: string[] = [];
     
     try {
@@ -206,12 +205,17 @@ export function getLanguageSwitchUrl(currentUrl: URL | string | null | undefined
       return targetLang === 'es' ? '/' : `/${targetLang}`;
     }
     
-    // Si el primer segmento es un idioma válido, lo quitamos
-    if (pathSegments.length > 0 && languages[pathSegments[0] as Language]) {
+    // Si no hay segmentos, simplemente devolver la ruta del idioma
+    if (pathSegments.length === 0) {
+      return targetLang === 'es' ? '/' : `/${targetLang}`;
+    }
+    
+    // Si el primer segmento es un idioma válido, lo quitamos para obtener la ruta sin idioma
+    if (languages[pathSegments[0] as Language]) {
       pathSegments.shift();
     }
     
-    // Construir la nueva URL
+    // Construir la nueva URL manteniendo el resto de la ruta
     if (targetLang === 'es') {
       // Español es el default, no necesita prefijo
       return pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/';

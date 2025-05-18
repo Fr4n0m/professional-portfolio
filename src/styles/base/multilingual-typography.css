@@ -64,6 +64,7 @@ html[lang="zh"], body:lang(zh), [lang="zh"], [data-lang="zh"] {
 html[lang="ja"], body:lang(ja), [lang="ja"], [data-lang="ja"] {
   font-family: 'Noto Sans JP', var(--font-family-sans);
   font-feature-settings: var(--font-features-multilingual);
+  letter-spacing: 0.02em; /* Ligeramente más espaciado entre caracteres */
 }
 
 /* Coreano */
@@ -132,6 +133,13 @@ body:lang(hi), body:lang(ar), body:lang(ja), body:lang(zh), body:lang(ko),
   overflow-wrap: break-word;
 }
 
+/* Estilos por defecto para todos los idiomas */
+.text-pressure-wrapper h1 {
+  overflow: visible;
+}
+
+/* Estilos específicos para idiomas CJK y otros sistemas de escritura complejos */
+
 /* Ajustes para textos en la descripción del hero */
 [lang="hi"] .hero-description-mobile-centered, [data-lang="hi"] .hero-description-mobile-centered,
 [lang="ar"] .hero-description-mobile-centered, [data-lang="ar"] .hero-description-mobile-centered,
@@ -141,4 +149,11 @@ body:lang(hi), body:lang(ar), body:lang(ja), body:lang(zh), body:lang(ko),
   font-size: calc(var(--font-size-xl) * 0.9);
   line-height: 1.4;
   white-space: normal;
+}
+
+/* Media queries minimalistas */
+@media (min-width: 768px) {
+  .text-pressure-wrapper {
+    min-width: 300px;
+  }
 }

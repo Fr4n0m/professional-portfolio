@@ -1,0 +1,145 @@
+---
+/**
+ * ThemeToggle.astro
+ * Componente principal para cambiar el tema con internacionalización
+ */
+import ThemeToggleButton from './ThemeToggleButton.astro';
+import ThemeMenu from './ThemeMenu.astro';
+import { getCurrentLanguage } from '@i18n/config';
+import { getThemeTranslations } from '@i18n/utils/themeTranslations';
+import SunIcon from '@icons/Sun.astro';
+import MoonIcon from '@icons/Moon.astro';
+import SystemIcon from '@icons/System.astro';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+// Determine the current language based on URL or default to 'es'
+const lang = getCurrentLanguage(Astro.url) || 'es';
+
+// Get translations for the current language
+const themeTexts = getThemeTranslations(lang);
+
+// Create themes array with translated names and icons
+const themes = [
+  { id: 'light', name: themeTexts.light, icon: SunIcon },
+  { id: 'dark', name: themeTexts.dark, icon: MoonIcon },
+  { id: 'system', name: themeTexts.system, icon: SystemIcon }
+];
+
+const containerClasses = `relative ${className}`;
+---
+
+<div class={containerClasses} data-theme-lang={lang}>
+  <ThemeToggleButton 
+    ariaLabel={themeTexts.ariaLabel}
+    srOnlyText={themeTexts.chooseTheme}
+  />
+  
+  <ThemeMenu themes={themes} />
+</div>
+
+<!-- Script inicial para aplicar el tema tan pronto como sea posible -->
+<script is:inline>
+  (function() {
+    const getStoredTheme = () => localStorage.getItem('theme');
+    const storedTheme = getStoredTheme();
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (storedTheme === 'dark' || (storedTheme === 'system' && systemPrefersDark) || (!storedTheme && systemPrefersDark)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  })();
+</script>
+
+<!-- Script para la funcionalidad interactiva del tema -->
+<script>
+  // Initialize theme functionality
+  (function initTheme() {
+    // Apply theme immediately on page load
+    const getStoredTheme = () => localStorage.getItem('theme') || 'system';
+    const storedTheme = getStoredTheme();
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    const applyTheme = (theme) => {
+      const isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+      document.documentElement.classList.toggle('dark', isDark);
+    };
+    
+    applyTheme(storedTheme);
+    
+    // Setup interactive functionality after DOM loads
+    function setupThemeToggle() {
+      const toggle = document.getElementById('theme-toggle-btn');
+      const menu = document.getElementById('themes-menu');
+      
+      if (!toggle || !menu) {
+        console.warn('Theme toggle elements not found');
+        return;
+      }
+      
+      const updateIcons = (theme) => {
+        document.querySelectorAll('.theme-toggle-icon').forEach(icon => {
+          icon.style.scale = icon.id === theme ? '1' : '0';
+        });
+      };
+      
+      // Toggle menu
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('open');
+      });
+      
+      // Close menu on outside click
+      document.addEventListener('click', () => {
+        menu.classList.remove('open');
+      });
+      
+      // Prevent menu from closing when clicking inside
+      menu.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+      
+      // Handle theme selection
+      document.querySelectorAll('.themes-menu-option').forEach(option => {
+        option.addEventListener('click', () => {
+          const theme = option.dataset.theme;
+          localStorage.setItem('theme', theme);
+          applyTheme(theme);
+          updateIcons(theme);
+          menu.classList.remove('open');
+          
+          // Update active state
+          document.querySelectorAll('.themes-menu-option').forEach(opt => {
+            opt.setAttribute('data-active', opt.dataset.theme === theme);
+          });
+        });
+      });
+      
+      // Initialize icons and active state
+      const currentTheme = getStoredTheme();
+      updateIcons(currentTheme);
+      document.querySelectorAll('.themes-menu-option').forEach(opt => {
+        opt.setAttribute('data-active', opt.dataset.theme === currentTheme);
+      });
+      
+      // Listen to system theme changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (getStoredTheme() === 'system') {
+          applyTheme('system');
+        }
+      });
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupThemeToggle);
+    } else {
+      setupThemeToggle();
+    }
+  })();
+</script>

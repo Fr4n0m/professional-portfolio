@@ -132,45 +132,42 @@ const TextPressure: React.FC<TextPressureProps> = ({
             updateChars();
         };
         
-        // Función para actualizar los caracteres basado en la posición del mouse
+        // Configuración más segura para radio del efecto hover
         const updateChars = () => {
-            if (mouseX < 0 || charsRef.current.length === 0) return;
-            
-            charsRef.current.forEach((char) => {
-                if (!char) return;
-                
-                // Obtener posición y dimensiones del caracter
-                const charRect = char.getBoundingClientRect();
-                const charCenterX = charRect.left + charRect.width / 2;
-                const charCenterY = charRect.top + charRect.height / 2;
-                
-                // Calcular distancia desde el mouse al caracter
-                const distX = mouseX - charCenterX;
-                const distY = mouseY - charCenterY;
-                const distance = Math.sqrt(distX * distX + distY * distY);
-                
-                // Radio ultra reducido para efecto localizado e inmediato
-                const radius = 60;
-                
-                // Efecto solo si está dentro del radio
-                if (distance < radius) {
-                    // Cálculo de intensidad extremadamente agresivo para reacción instantánea
-                    // Reducimos el exponente a 0.5 para una curva más pronunciada
-                    const intensity = Math.pow(1 - (distance / radius), 0.5);
-                    
-                    // Aplicar transformación con efecto más visible
-                    char.style.transform = `scale(${1 + intensity * 0.4})`;  // Efecto más pronunciado
-                    char.style.fontWeight = String(Math.min(900, 400 + intensity * 500)); // Mayor cambio en el peso de la fuente
-                    // Transición inmediata (prácticamente sin retardo - 0.02s es casi imperceptible)
-                    char.style.transition = 'transform 0.02s cubic-bezier(0, 0, 0.1, 1), font-weight 0.02s linear';
-                } else {
-                    // Resetear estilo si está fuera del radio
-                    char.style.transform = 'scale(1)';
-                    char.style.fontWeight = '400';
-                    // Transición de retorno ultra rápida
-                    char.style.transition = 'transform 0.03s cubic-bezier(0, 0, 0.1, 1), font-weight 0.03s linear';
-                }
-            });
+        if (mouseX < 0 || charsRef.current.length === 0) return;
+        
+        charsRef.current.forEach((char) => {
+        if (!char) return;
+        
+        // Obtener posición y dimensiones del caracter
+        const charRect = char.getBoundingClientRect();
+        const charCenterX = charRect.left + charRect.width / 2;
+        const charCenterY = charRect.top + charRect.height / 2;
+        
+        // Calcular distancia desde el mouse al caracter
+        const distX = mouseX - charCenterX;
+        const distY = mouseY - charCenterY;
+        const distance = Math.sqrt(distX * distX + distY * distY);
+        
+        // Radio más pequeño para evitar desbordamiento
+        const radius = 40;
+        
+        // Efecto solo si está dentro del radio
+        if (distance < radius) {
+        // Intensidad reducida para menor escala
+        const intensity = Math.pow(1 - (distance / radius), 0.5);
+        
+        // Aplicar transformación con efecto más controlado
+        char.style.transform = `scale(${1 + intensity * 0.2})`; // Efecto más sutil
+        char.style.fontWeight = String(Math.min(800, 400 + intensity * 300)); // Menor cambio en el peso
+        char.style.transition = 'transform 0.02s cubic-bezier(0, 0, 0.1, 1), font-weight 0.02s linear';
+        } else {
+        // Resetear estilo si está fuera del radio
+            char.style.transform = 'scale(1)';
+        char.style.fontWeight = '400';
+        char.style.transition = 'transform 0.03s cubic-bezier(0, 0, 0.1, 1), font-weight 0.03s linear';
+        }
+        });
         };
         
         // Agregar listener de mouse
@@ -201,13 +198,14 @@ const TextPressure: React.FC<TextPressureProps> = ({
                 position: 'relative',
                 width: '100%',
                 overflow: 'visible',
-                whiteSpace: needsWordWrap ? 'normal' : 'pre-wrap', // Permitir ajuste para scripts complejos
+                whiteSpace: needsWordWrap ? 'normal' : 'pre-wrap',
                 lineHeight: needsWordWrap ? '1.3' : '1.2',
-                fontSize: needsWordWrap ? '3rem' : '3.5rem', // Tamaño ligeramente más pequeño para scripts complejos
+                fontSize: needsWordWrap ? '3rem' : '3.5rem',
                 fontWeight: 400,
                 color: textColor,
                 wordBreak: needsWordWrap ? 'break-word' : 'normal',
-                overflowWrap: 'break-word'
+                overflowWrap: 'break-word',
+                paddingRight: '0', // Quitar padding para no afectar el aspecto visual
             }}
         >
             <h1 style={{ fontSize: 'inherit', margin: 0, padding: 0, fontWeight: 'inherit' }}>
@@ -220,7 +218,9 @@ const TextPressure: React.FC<TextPressureProps> = ({
                             display: 'inline-block',
                             transformOrigin: 'center',
                             willChange: 'transform, opacity, font-weight',
-                            whiteSpace: needsWordWrap ? 'normal' : 'pre'
+                            whiteSpace: needsWordWrap ? 'normal' : 'pre',
+                            marginRight: '0px', // Quitar margen entre caracteres
+                            fontSize: 'inherit' // Usar tamaño de fuente heredado
                         }}
                     >
                         {chars[i]}

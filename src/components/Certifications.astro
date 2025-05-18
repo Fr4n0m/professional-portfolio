@@ -1,13 +1,28 @@
 ---
 import type { Translations } from '../types/translations';
 import CertificationItem from './certifications/CertificationItem.astro';
+import { getCurrentLanguage } from '@i18n/config';
 
 export interface Props {
   translations: Translations;
 }
 
 const { translations } = Astro.props;
-const CERTIFICATIONS = translations.certificationsPage.certificationsList;
+const currentLang = getCurrentLanguage(Astro.url);
+
+// Cargar certificaciones
+let CERTIFICATIONS;
+try {
+  CERTIFICATIONS = (await import(`../translations/${currentLang}/certifications.json`)).default;
+} catch (e) {
+  // Si no se encuentra el archivo para el idioma actual, intentamos cargar el de español
+  try {
+    CERTIFICATIONS = (await import(`../translations/es/certifications.json`)).default;
+  } catch (e) {
+    CERTIFICATIONS = [];
+    console.error('Error al cargar las certificaciones:', e);
+  }
+}
 ---
 
 <div class='section w-full mx-auto pt-8 md:pt-16 container lg:w-[740px]'>

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "agrooe-cashback",
+    "title": "Agrooe Cashback",
+    "summary": "Platform for selling quality products and promoting local commerce.",
+    "mainImage": "/assets/images/projects/agrooe_1.jpeg",
+    "tags": ["HTML", "CSS", "TAILWIND", "JAVASCRIPT", "REACT", "NEXTJS", "EXPRESS", "NODEJS", "MONGODB"]
+  },
+  {
+    "id": "strapi-games-store",
+    "title": "Strapi Games Store",
+    "summary": "Web app designed to manage games content using Strapi as backend and CMS.",
+    "mainImage": "/assets/images/projects/strapi-games-web-1.webp",
+    "tags": ["HTML", "CSS", "TAILWIND", "JAVASCRIPT", "TYPESCRIPT", "REACT", "NEXTJS", "STRAPI"]
+  },
+  {
+    "id": "realtime-chat",
+    "title": "Realtime Chat",
+    "summary": "Chat app using Socket.IO for real-time communication and Supabase as database.",
+    "mainImage": "/assets/images/projects/realtime-chat_1.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT", "VITE", "EXPRESS", "NODEJS", "SUPABASE"]
+  },
+  {
+    "id": "super-mario-bros-85",
+    "title": "Super Mario Bros 85'",
+    "summary": "Clone for educational purposes of the legendary Nintendo game Super Mario Bros from 1985.",
+    "mainImage": "/assets/images/projects/super-mario-bros-85.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT", "VITE", "PHASER"]
+  },
+  {
+    "id": "paint-windows-95",
+    "title": "Paint Windows 95'",
+    "summary": "A Paint-inspired application from the Windows 95 era.",
+    "mainImage": "/assets/images/projects/paint-95.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT", "VITE"]
+  },
+  {
+    "id": "bookshop-view-transitions",
+    "title": "Bookshop View Transitions Demo",
+    "summary": "Web library to practice view transitions.",
+    "mainImage": "/assets/images/projects/bookshop_1.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT", "ASTRO"]
+  },
+  {
+    "id": "tiktok-clone",
+    "title": "Tiktok clone",
+    "summary": "Tiktok interface clone using Vite and React with Supabase backend.",
+    "mainImage": "/assets/images/projects/tiktok_2.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT", "VITE", "REACT", "NODEJS", "EXPRESS", "SUPABASE"]
+  },
+  {
+    "id": "atari-breakout-game",
+    "title": "Atari Breakout Game",
+    "summary": "Legendary Atari BreakOut game version with JavaScript.",
+    "mainImage": "/assets/images/projects/breakout-game_2.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT"]
+  },
+  {
+    "id": "filmax",
+    "title": "Filmax",
+    "summary": "Web to see information about movies and series.",
+    "mainImage": "/assets/images/projects/filmax_home_preview.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT"]
+  },
+  {
+    "id": "web-calculator",
+    "title": "Web Calculator",
+    "summary": "Simple calculator to perform basic arithmetic operations.",
+    "mainImage": "/assets/images/projects/WebCalculator_light.webp",
+    "tags": ["HTML", "CSS", "TAILWIND", "JAVASCRIPT"]
+  },
+  {
+    "id": "pokedex",
+    "title": "Pokedex",
+    "summary": "Pokedex to view information about pokemons with various features.",
+    "mainImage": "/assets/images/projects/pokedex.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "NEXTJS"]
+  },
+  {
+    "id": "first-portfolio",
+    "title": "First portfolio",
+    "summary": "First web portfolio using HTML, CSS and JavaScript, later implemented in Astro.",
+    "mainImage": "/assets/images/projects/1er_portfolio.webp",
+    "tags": ["HTML", "CSS", "JAVASCRIPT", "REACT", "ASTRO"]
+  }
+]

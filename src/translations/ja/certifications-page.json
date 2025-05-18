@@ -3,5 +3,8 @@
 	"certificationsTitle": "認定資格 - Francisco José Rodríguez Martínez ポートフォリオ - ソフトウェア開発者・Webプログラマー",
 	"certificationsDescription": "認定資格 - Francisco José Rodríguez Martínez ポートフォリオ - ソフトウェア開発者・Webプログラマー",
 	"pdfBadge": "PDF",
-	"downloadButton": "ダウンロード"
+	"downloadButton": "ダウンロード",
+	"allCertifications": "すべての認定資格",
+	"allCertificationsLink": "/ja/certifications",
+	"viewMore": "認定資格をもっと見る"
 }

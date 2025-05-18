@@ -1,0 +1,48 @@
+---
+/**
+ * ThemeToggleButton.astro
+ * Botón para cambiar el tema con soporte para internacionalización
+ */
+import SunIcon from '@icons/Sun.astro';
+import MoonIcon from '@icons/Moon.astro';
+import SystemIcon from '@icons/System.astro';
+import ThemeIcon from './ThemeIcon.astro';
+
+export interface Props {
+  ariaLabel: string;
+  srOnlyText: string;
+  class?: string;
+}
+
+const { ariaLabel, srOnlyText, class: className = '' } = Astro.props;
+const buttonClasses = `appearance-none border-none flex hover:scale-110 transition-transform duration-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 ${className}`;
+---
+
+<button
+  id="theme-toggle-btn"
+  class={buttonClasses}
+  aria-label={ariaLabel}
+>
+  <span class="sr-only">{srOnlyText}</span>
+  
+  <ThemeIcon id="light" class="size-5 text-amber-500">
+    <SunIcon />
+  </ThemeIcon>
+  
+  <ThemeIcon id="dark" class="size-5 text-indigo-500">
+    <MoonIcon />
+  </ThemeIcon>
+  
+  <ThemeIcon id="system" class="size-5 text-gray-600 dark:text-gray-400">
+    <SystemIcon />
+  </ThemeIcon>
+</button>
+
+<style>
+  #theme-toggle-btn {
+    position: relative;
+  }
+  #theme-toggle-btn:active {
+    transform: scale(0.95);
+  }
+</style>
