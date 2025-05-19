@@ -3,5 +3,9 @@
 	"certificationsTitle": "Certyfikaty - Portfolio Francisco José Rodríguez Martínez - Programista i programista webowy",
 	"certificationsDescription": "Certyfikaty - Portfolio Francisco José Rodríguez Martínez - Programista i programista webowy",
 	"pdfBadge": "PDF",
-	"downloadButton": "Pobierz"
+	"downloadButton": "Pobierz",
+	"allCertifications": "Wszystkie certyfikaty",
+	"allCertificationsLink": "/pl/certifications",
+	"viewMore": "Zobacz więcej certyfikatów",
+	"selectedCertificationsSubtitle": "Wyróżnione certyfikaty"
 }

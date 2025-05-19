@@ -3,6 +3,7 @@
   "allProjectsTitle": "\"Tüm Projeler\" sayfasına hoş geldiniz",
   "allProjectsDescription": "Burada üzerinde çalıştığım tüm projeleri görebilirsiniz.",
   "allProjectsLink": "Daha fazla proje gör",
+  "selectedProjectsSubtitle": "Öne Çıkan Projeler",
   "projectsButtons": {
     "textCodeButton": "Kodu gör",
     "textDemoButton": "Demoyu gör",

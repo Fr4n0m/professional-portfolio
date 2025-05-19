@@ -11,6 +11,7 @@ import experience from './experience.json';
 import footerItems from './footer-items.json';
 import keyboardManager from './keyboard-manager.json';
 import languageNames from './language-names.json';
+import cvMenu from './cv-menu.json';
 
 export default {
   personalInfo,
@@ -29,5 +30,6 @@ export default {
   experience: experience,
   footerItems,
   keyboardManager,
-  languageNames
+  languageNames,
+  cvMenu
 };

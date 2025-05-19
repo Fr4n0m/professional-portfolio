@@ -3,5 +3,9 @@
 	"certificationsTitle": "Certificaciones - Portafolio Francisco José Rodríguez Martínez - Desarrollador de Software y Programador Web",
 	"certificationsDescription": "Certificaciones - Portafolio Francisco José Rodríguez Martínez - Desarrollador de Software y Programador Web",
 	"pdfBadge": "PDF",
-	"downloadButton": "Descargar"
+	"downloadButton": "Descargar",
+	"allCertifications": "Todas las certificaciones",
+	"allCertificationsLink": "/es-mx/certifications",
+	"viewMore": "Ver más certificaciones",
+	"selectedCertificationsSubtitle": "Certificaciones destacadas"
 }

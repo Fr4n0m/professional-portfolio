@@ -3,5 +3,9 @@
 	"certificationsTitle": "认证 - Francisco José Rodríguez Martínez作品集 - 软件开发人员和网络程序员",
 	"certificationsDescription": "认证 - Francisco José Rodríguez Martínez作品集 - 软件开发人员和网络程序员",
 	"pdfBadge": "PDF",
-	"downloadButton": "下载"
+	"downloadButton": "下载",
+	"allCertifications": "所有认证",
+	"allCertificationsLink": "/zh/certifications",
+	"viewMore": "查看更多认证",
+	"selectedCertificationsSubtitle": "精选认证"
 }

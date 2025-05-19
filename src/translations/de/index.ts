@@ -12,6 +12,7 @@ import footerItems from './footer-items.json';
 import keyboardManager from './keyboard-manager.json';
 import languageNames from './language-names.json';
 import controlCenter from './control-center.json';
+import cvMenu from './cv-menu.json';
 
 export default {
   personalInfo,
@@ -31,5 +32,6 @@ export default {
   footerItems,
   keyboardManager,
   languageNames,
-  controlCenter
+  controlCenter,
+  cvMenu
 };

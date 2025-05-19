@@ -3,6 +3,7 @@
   "allProjectsTitle": "Projects - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
   "allProjectsDescription": "All projects - Portfolio Francisco José Rodríguez Martínez - Developer & Full Stack",
   "allProjectsLink": "/en/projects",
+  "selectedProjectsSubtitle": "Featured projects",
   "projectsButtons": {
     "textCodeButton": "Code",
     "textDemoButton": "Demo",

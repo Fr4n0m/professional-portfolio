@@ -3,6 +3,7 @@
   "allProjectsTitle": "Witaj na stronie \"Wszystkie projekty\"",
   "allProjectsDescription": "Tutaj możesz zobaczyć wszystkie projekty, nad którymi pracowałem.",
   "allProjectsLink": "Zobacz więcej projektów",
+  "selectedProjectsSubtitle": "Wyróżnione projekty",
   "projectsButtons": {
     "textCodeButton": "Zobacz kod",
     "textDemoButton": "Zobacz demo",

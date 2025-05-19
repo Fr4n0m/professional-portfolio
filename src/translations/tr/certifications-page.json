@@ -3,5 +3,9 @@
 	"certificationsTitle": "Sertifikalar - Francisco José Rodríguez Martínez Portföyü - Yazılım Geliştirici ve Web Programcısı",
 	"certificationsDescription": "Sertifikalar - Francisco José Rodríguez Martínez Portföyü - Yazılım Geliştirici ve Web Programcısı",
 	"pdfBadge": "PDF",
-	"downloadButton": "İndir"
+	"downloadButton": "İndir",
+	"allCertifications": "Tüm sertifikalar",
+	"allCertificationsLink": "/tr/certifications",
+	"viewMore": "Daha fazla sertifika görüntüle",
+	"selectedCertificationsSubtitle": "Öne Çıkan Sertifikalar"
 }

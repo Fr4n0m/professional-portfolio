@@ -3,5 +3,9 @@
 	"certificationsTitle": "Certificaten - Portfolio Francisco José Rodríguez Martínez - Softwareontwikkelaar en webprogrammeur",
 	"certificationsDescription": "Certificaten - Portfolio Francisco José Rodríguez Martínez - Softwareontwikkelaar en webprogrammeur",
 	"pdfBadge": "PDF",
-	"downloadButton": "Downloaden"
+	"downloadButton": "Downloaden",
+	"allCertifications": "Alle certificaten",
+	"allCertificationsLink": "/nl/certifications",
+	"viewMore": "Meer certificaten bekijken",
+	"selectedCertificationsSubtitle": "Uitgelichte certificaten"
 }

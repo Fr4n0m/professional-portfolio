@@ -6,5 +6,6 @@
 	"downloadButton": "ダウンロード",
 	"allCertifications": "すべての認定資格",
 	"allCertificationsLink": "/ja/certifications",
-	"viewMore": "認定資格をもっと見る"
+	"viewMore": "認定資格をもっと見る",
+	"selectedCertificationsSubtitle": "おすすめの認定資格"
 }

@@ -3,5 +3,9 @@
 	"certificationsTitle": "الشهادات - محفظة Francisco José Rodríguez Martínez - مطور برمجيات ومبرمج ويب",
 	"certificationsDescription": "الشهادات - محفظة Francisco José Rodríguez Martínez - مطور برمجيات ومبرمج ويب",
 	"pdfBadge": "PDF",
-	"downloadButton": "تحميل"
+	"downloadButton": "تحميل",
+	"allCertifications": "جميع الشهادات",
+	"allCertificationsLink": "/ar/certifications",
+	"viewMore": "عرض المزيد من الشهادات",
+	"selectedCertificationsSubtitle": "الشهادات المميزة"
 }

@@ -3,6 +3,7 @@
   "allProjectsTitle": "项目 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
   "allProjectsDescription": "所有项目 - Portfolio Francisco José Rodríguez Martínez - 开发人员和网页程序员",
   "allProjectsLink": "/zh/projects",
+  "selectedProjectsSubtitle": "精选项目",
   "projectsButtons": {
     "textCodeButton": "代码",
     "textDemoButton": "演示",
