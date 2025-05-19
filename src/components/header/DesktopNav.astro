@@ -26,7 +26,7 @@ const projectsSubmenu = [
 	},
 	{
 		title: translations.projectsPage.allProjects || 'Todos los proyectos',
-		url: translations.projectsPage.allProjectsLink || '/projects',
+		url: lang === 'es' ? '/projects' : `/${lang}/projects`,
 	},
 ];
 
@@ -41,9 +41,7 @@ const certificationsSubmenu = [
 		title:
 			translations.certificationsPage.allCertifications ||
 			'Todas las certificaciones',
-		url:
-			translations.certificationsPage.allCertificationsLink ||
-			'/certifications',
+		url: lang === 'es' ? '/certifications' : `/${lang}/certifications`,
 	},
 ];
 
