@@ -1,0 +1,70 @@
+---
+// SimplePersonTooltip.astro - Tooltip simple para mostrar información de contacto personal
+interface Props {
+  name: string;
+  email?: string;
+  role?: string;
+  specialties?: string;
+  additionalTech?: string;
+  linkedinUrl?: string;
+  className?: string;
+}
+
+const { 
+  name, 
+  email = "Fran11799@outlook.com",
+  role = "Developer",
+  specialties = "React, Next.js, Node.js, Astro, TypeScript",
+  additionalTech = "Tailwind CSS, MongoDB, PostgreSQL, Git",
+  linkedinUrl = "https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/",
+  className = ""
+} = Astro.props;
+---
+
+<span class={`relative inline-block tooltip-container ${className}`}>
+  <a href={linkedinUrl} class="hover:underline">
+    <slot>{name}</slot>
+  </a>
+
+  <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 opacity-0 invisible transition-all duration-300 ease-out group-hover:opacity-100 tooltip z-50 pointer-events-none">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3 max-w-xs">
+      <!-- Información de la persona -->
+      <div class="flex flex-col space-y-2 text-sm">
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">📩</span>
+          <span class="text-gray-700 dark:text-gray-300 truncate">{email}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">📍</span>
+          <span class="text-gray-700 dark:text-gray-300">Málaga, España</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">💻</span>
+          <span class="text-gray-700 dark:text-gray-300 truncate">{specialties}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xl">⚙️</span>
+          <span class="text-gray-700 dark:text-gray-300 truncate">{additionalTech}</span>
+        </div>
+      </div>
+      
+      <!-- Flecha del tooltip -->
+      <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 rotate-45 w-4 h-4 bg-white dark:bg-gray-800 border-r border-b border-gray-200 dark:border-gray-700"></div>
+    </div>
+  </div>
+</span>
+
+<style>
+  .tooltip-container:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  /* Ajuste para dispositivos pequeños */
+  @media (max-width: 640px) {
+    .tooltip {
+      width: 240px;
+    }
+  }
+</style>

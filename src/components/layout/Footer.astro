@@ -1,5 +1,6 @@
 ---
 import LocationText from '@components/ui/Map/LocationText.astro';
+import SimplePersonTooltip from '@components/ui/tooltips/SimplePersonTooltip.astro';
 ---
 
 <footer
@@ -8,11 +9,15 @@ import LocationText from '@components/ui/Map/LocationText.astro';
 	<div
 		class='w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between'
 	>
-		<span class='text-sm text-white/60 sm:text-center'
-			>© 2024 <a
-				href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
-				class='hover:underline'>Francisco José Rodríguez Martínez</a
-			>.
+		<span class='text-sm text-white/60 sm:text-center'>
+			© 2024 
+			<SimplePersonTooltip 
+				name="Francisco José Rodríguez Martínez" 
+				email="Fran11799@outlook.com"
+				role="Developer"
+				specialties="React, Next.js, Node.js, Astro, TypeScript"
+				additionalTech="Tailwind CSS, MongoDB, PostgreSQL, Git"
+			/>.
 			<LocationText 
 			text="Málaga, España" 
 			className="ml-1 hover:text-white/80 transition-colors" 
