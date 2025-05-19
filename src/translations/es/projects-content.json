@@ -1,0 +1,50 @@
+{
+  "agrooe-cashback": {
+    "title": "Agrooe Cashback",
+    "description": "En esta web trabajé junto a un equipo para desarrollar de cero una plataforma comprometida con la venta de productos de calidad y el desarrollo del comercio local. Trabajamos desde cero con el concepto hasta la práctica creando tanto el back-end como el front-end. A parte de diferentes tecnologías se incorporaron integraciones como jwt para el control de cuentas de usuario e inicio de sesión, un dashboard para el control de todos los datos... Funcionalidades como poder iniciar sesión con diferentes redes sociales, creación de cuenta como usuario para comprar productos o como empresa para añadirlos, mapas del lugar más cercano donde se podría encontrar el producto en cuestión, entre otras cosas. Por motivos de confidencialidad no se muestra el código."
+  },
+  "strapi-games-store": {
+    "title": "Strapi Games Store",
+    "description": "Aplicación web diseñada para gestionar contenido relacionado con videojuegos utilizando Strapi como backend y CMS."
+  },
+  "realtime-chat": {
+    "title": "Realtime Chat",
+    "description": "Aplicación de chat en tiempo real que utiliza Socket.IO para la comunicación en tiempo real y Supabase como base de datos."
+  },
+  "super-mario-bros-85": {
+    "title": "Super Mario Bros 85'",
+    "description": "Clon para fines educativos del mítico juego de Nintendo Super Mario Bros de 1985."
+  },
+  "paint-windows-95": {
+    "title": "Paint Windows 95'",
+    "description": "Aplicación Paint inspirada en la era de Windows 95."
+  },
+  "bookshop-view-transitions": {
+    "title": "Bookshop View Transitions Demo",
+    "description": "Librería web para practicar view transitions."
+  },
+  "tiktok-clone": {
+    "title": "Clon de Tiktok",
+    "description": "Clon de la interfaz de Tiktok usando Vite y React con backend de Supabase."
+  },
+  "atari-breakout-game": {
+    "title": "Atari Breakout Game",
+    "description": "Versión del legendario juego de Atari BreakOut con JavaScript."
+  },
+  "filmax": {
+    "title": "Filmax",
+    "description": "Web para ver información de películas y series."
+  },
+  "web-calculator": {
+    "title": "Web Calculator",
+    "description": "Una calculadora sencilla para realizar operaciones aritméticas básicas."
+  },
+  "pokedex": {
+    "title": "Pokédex",
+    "description": "Pokédex para ver información de pokemons con la posibilidad de añadir favoritos, eliminar o incluso crear tu propio pokemon."
+  },
+  "first-portfolio": {
+    "title": "1er Porfolio web",
+    "description": "Primer porfolio web usando simplemente HTML, CSS y JavaScript. Más adelante lo implementé en Astro."
+  }
+}

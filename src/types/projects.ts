@@ -15,6 +15,8 @@ export interface ProjectDetail {
   link?: string;
   github?: string;
   secondaryLink?: string;
+  featured?: boolean;
+  order?: number;
 }
 
 export interface Project extends ProjectDetail {

@@ -1,0 +1,50 @@
+/* Estilos base de las skill pills */
+.skill-pill {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Efecto click */
+.skill-pill:active {
+  transform: translateY(0) scale(0.98);
+  filter: brightness(0.95);
+  transition-duration: 0.1s;
+}
+
+/* Configuración de efectos hover para los pills */
+/* Los pills en las tarjetas de proyecto (ProjectCard) NO tienen hover */
+/* Los pills en el modal de proyecto (ProjectModal) SÍ tienen hover */
+
+/* Clase específica para pills en las tarjetas de proyectos */
+.project-card-pill {
+  /* Mantener estable sin efectos de hover */
+  transform: none !important;
+  transition: none !important;
+}
+
+.project-card-pill:hover {
+  filter: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Desactivar el script de hover en las tarjetas de proyectos */
+.project-card-pill.highlighted {
+  filter: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* No mostrar tooltips en las tarjetas de proyectos */
+.skill-tooltip-container:has(.project-card-pill) .tooltip-wrapper {
+  display: none !important;
+}
+
+/* Asegurarse de que no se aplican estilos inline del script */
+.skill-tooltip-container:has(.project-card-pill) > a {
+  transition: none !important;
+  filter: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}

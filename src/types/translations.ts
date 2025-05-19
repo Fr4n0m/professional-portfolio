@@ -62,7 +62,13 @@ export interface Translations {
 			textDemoButton: string;
 			textDemo2Button: string;
 		};
-		projects: Project[];
+	};
+
+	projectsContent?: {
+		[key: string]: {
+			title: string;
+			description: string;
+		};
 	};
 
 	certificationsPage: {

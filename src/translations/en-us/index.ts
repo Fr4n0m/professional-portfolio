@@ -3,7 +3,7 @@ import headerItems from './header-items.json';
 import layout from './layout.json';
 import mainPage from './main-page.json';
 import projectsPage from './projects-page.json';
-import projects from './projects.json';
+import projectsContent from './projects-content.json';
 import certificationsPage from './certifications-page.json';
 import certificationsList from './certifications.json';
 import socialMedia from './social-media.json';
@@ -19,10 +19,8 @@ export default {
   headerItems,
   layout,
   mainPage,
-  projectsPage: {
-    ...projectsPage,
-    projects
-  },
+  projectsPage,
+  projectsContent,
   certificationsPage: {
     ...certificationsPage,
     certificationsList

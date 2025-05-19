@@ -1,25 +1,30 @@
 ---
+import { getAllProjects, getTranslatedProjects } from '../../utils/project-utils';
 import GithubIcon from '@icons/GitHub.astro';
 import LinkIcon from '@icons/Link.astro';
 import Carousel from '@components/Carousel';
 import LinkButton from '@components/ui/LinkButton.astro';
 import ProjectsDescription from '@components/Projects/ProjectsDescription';
 import Tag from '@components/ui/Tag.astro';
-
-import type { Project } from '../../types/projects';
 import type { Translations } from '../../types/translations';
 import { TAGS } from '@utils/tags';
+import DisableProjectCardHover from './DisableProjectCardHover.astro';
 
-const translations: Translations = Astro.props.translations;
+export interface Props {
+	translations: Translations;
+}
 
+const { translations } = Astro.props;
 const projectsButtons = translations.projectsPage.projectsButtons;
 
-const projects: Project[] = translations.projectsPage.projects;
+// Obtener todos los proyectos y traducirlos
+const allProjects = getAllProjects();
+const translatedProjects = getTranslatedProjects(allProjects, translations);
 ---
 
 <div class='section w-full mx-auto container lg:w-[740px] px-4 sm:px-6 lg:px-8'>
 	{
-		projects.map(
+		translatedProjects.map(
 			({
 				images,
 				title,
@@ -79,3 +84,6 @@ const projects: Project[] = translations.projectsPage.projects;
 		)
 	}
 </div>
+
+<!-- Incluir script para deshabilitar hover en tarjetas de proyectos -->
+<DisableProjectCardHover />

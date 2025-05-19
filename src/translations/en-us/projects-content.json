@@ -1,0 +1,50 @@
+{
+  "agrooe-cashback": {
+    "title": "Agrooe Cashback",
+    "description": "On this website, I worked with a team to develop a platform from scratch, committed to selling quality products and promoting local commerce. We worked from the concept to the implementation, creating both the back-end and front-end. In addition to various technologies, integrations were added, such as JWT for user account control and login, a dashboard to manage all the data... Features included the ability to log in with different social networks, account creation as a user to purchase products or as a company to add them, maps showing the nearest locations where the product could be found, among other things. Due to confidentiality reasons, the code is not displayed."
+  },
+  "strapi-games-store": {
+    "title": "Strapi Games Store",
+    "description": "Web app designed to manage games content using Strapi as backend and CMS."
+  },
+  "realtime-chat": {
+    "title": "Realtime Chat",
+    "description": "Chat app using Socket.IO for real-time communication and Supabase as database."
+  },
+  "super-mario-bros-85": {
+    "title": "Super Mario Bros 85'",
+    "description": "Clone for educational purposes of the legendary Nintendo game Super Mario Bros from 1985."
+  },
+  "paint-windows-95": {
+    "title": "Paint Windows 95'",
+    "description": "A Paint-inspired application from the Windows 95 era."
+  },
+  "bookshop-view-transitions": {
+    "title": "Bookshop View Transitions Demo",
+    "description": "Web library to practice view transitions."
+  },
+  "tiktok-clone": {
+    "title": "Tiktok clone",
+    "description": "Tiktok interface clone using Vite and React with Supabase backend."
+  },
+  "atari-breakout-game": {
+    "title": "Atari Breakout Game",
+    "description": "Legendary Atari BreakOut game version with JavaScript."
+  },
+  "filmax": {
+    "title": "Filmax",
+    "description": "Web to see information about movies and series."
+  },
+  "web-calculator": {
+    "title": "Web Calculator",
+    "description": "Simple calculator to perform basic arithmetic operations."
+  },
+  "pokedex": {
+    "title": "Pokedex",
+    "description": "Pokedex to view information about pokemons with the possibility of adding favourites, deleting or even creating your own pokemon."
+  },
+  "first-portfolio": {
+    "title": "First portfolio",
+    "description": "First web portfolio using only HTML, CSS and JavaScript. Later I implemented it in Astro."
+  }
+}

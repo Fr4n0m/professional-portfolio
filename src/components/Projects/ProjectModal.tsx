@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { Project } from '../../types/projects';
+import { TAGS } from '../../utils/tags';
 
 interface ModalProps {
   project: Project;
@@ -124,15 +125,29 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{project.title}</h2>
           
           {/* Tags */}
-          <div className="mb-4 flex flex-wrap gap-2">
-            {project.tags.map((tag, index) => (
-              <span 
-                key={index}
-                className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="mb-4 flex flex-wrap gap-3">
+            {project.tags.map((tag, index) => {
+              return TAGS[tag] ? (
+                <div key={index} className="skill-tooltip-container relative inline-block">
+                  <a
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    href={TAGS[tag].link}
+                    className={`skill-pill flex gap-x-2 rounded-full text-xs font-semibold items-center ${TAGS[tag].class} px-3 py-1 border mb-2`}
+                  >
+                    {/* Nombre de la tecnología */}
+                    {TAGS[tag].name}
+                  </a>
+                </div>
+              ) : (
+                <span 
+                  key={index}
+                  className="text-xs py-1 px-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md"
+                >
+                  {tag}
+                </span>
+              );
+            })}
           </div>
           
           {/* Descripción */}
@@ -191,3 +206,6 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
 };
 
 export default ProjectModal;
+
+/* Estilo para las pills */
+import "./project-card-styles.css"

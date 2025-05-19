@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import type { Project } from '../../types/projects';
 import ProjectModal from './ProjectModal';
+import { TAGS } from '../../utils/tags';
+
+// Importar estilos
+import "./project-card-styles.css";
 
 interface Props {
   project: Project;
@@ -14,13 +18,15 @@ interface Props {
 const ProjectCard: React.FC<Props> = ({ project, buttons }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Seleccionar la primera imagen para la tarjeta principal
-  const thumbnailImage = project.images.length > 0 ? project.images[0] : '/assets/images/placeholder-project.webp';
+  // Verificar que project.images existe y es un array antes de usar length
+  const thumbnailImage = project.images && project.images.length > 0 
+    ? project.images[0] 
+    : '/assets/images/placeholder-project.webp';
   
-  // Limitar la descripción a un extracto breve
-  const shortDescription = project.description.length > 100 
+  // Verificar que project.description existe antes de usar length
+  const shortDescription = project.description && project.description.length > 100 
     ? project.description.substring(0, 97) + '...' 
-    : project.description;
+    : project.description || '';
   
   return (
     <>
@@ -47,17 +53,40 @@ const ProjectCard: React.FC<Props> = ({ project, buttons }) => {
           </p>
           
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.slice(0, 3).map((tag, index) => (
-              <span 
-                key={index} 
-                className="inline-flex items-center text-xs py-0.5 px-1.5 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md shadow-sm"
-              >
-                {tag}
-              </span>
-            ))}
-            {project.tags.length > 3 && (
-              <span className="inline-flex items-center text-xs py-0.5 px-1.5 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-md shadow-sm">
-                +{project.tags.length - 3}
+            {project.tags && project.tags.length > 0 ? (
+              <>
+                {project.tags.slice(0, 3).map((tag, index) => {
+                  return TAGS[tag] ? (
+                    <div key={index} className="skill-tooltip-container relative inline-block">
+                      <a
+                        onClick={(e) => e.stopPropagation()} // Evitar que se abra el modal al hacer clic en el tag
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        href={TAGS[tag].link}
+                        className={`skill-pill flex gap-x-2 rounded-full text-xs font-semibold items-center ${TAGS[tag].class} px-2 py-0.5 border project-card-pill`}
+                      >
+                        {/* Nombre de la tecnología */}
+                        {TAGS[tag].name}
+                      </a>
+                    </div>
+                  ) : (
+                    <span 
+                      key={index} 
+                      className="inline-flex items-center text-xs py-0.5 px-1.5 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md shadow-sm"
+                    >
+                      {tag}
+                    </span>
+                  );
+                })}
+                {project.tags.length > 3 && (
+                  <span className="inline-flex items-center text-xs py-0.5 px-1.5 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-md shadow-sm">
+                    +{project.tags.length - 3}
+                  </span>
+                )}
+              </>
+            ) : (
+              <span className="inline-flex items-center text-xs py-0.5 px-1.5 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md shadow-sm">
+                No tags
               </span>
             )}
           </div>

@@ -1,0 +1,63 @@
+---
+// DisableProjectCardHover.astro - Componente para deshabilitar hover en las tarjetas de proyectos
+---
+
+<script>
+// Script para desactivar completamente los efectos de hover en las etiquetas de las tarjetas de proyectos
+document.addEventListener('DOMContentLoaded', () => {
+  // Desactivar cualquier comportamiento de hover en pills de las tarjetas de proyectos
+  const disableHoverEffects = () => {
+    // Seleccionar todas las pill con la clase project-card-pill
+    const projectCardPills = document.querySelectorAll('.project-card-pill');
+    
+    projectCardPills.forEach(pill => {
+      // Limpiar cualquier estilo inline que pueda haber sido aplicado por otros scripts
+      pill.style.cssText = `
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+      `;
+      
+      // Quitar cualquier clase que pueda estar habilitando efectos
+      pill.classList.remove('highlighted');
+      
+      // Evitar que el evento mouseenter tenga efecto
+      pill.addEventListener('mouseenter', (e) => {
+        // Detener la propagación para que no llegue a los event listeners de Tag.astro
+        e.stopPropagation();
+        // Asegurarse de que no hay estilos de hover
+        pill.style.cssText = `
+          transform: none !important;
+          transition: none !important;
+          filter: none !important;
+          box-shadow: none !important;
+        `;
+      });
+      
+      // Hacer lo mismo para el contenedor del tooltip
+      const container = pill.closest('.skill-tooltip-container');
+      if (container) {
+        // Ocultar el tooltip
+        const tooltipWrapper = container.querySelector('.tooltip-wrapper');
+        if (tooltipWrapper) {
+          tooltipWrapper.style.display = 'none';
+          tooltipWrapper.style.pointerEvents = 'none';
+        }
+        
+        // Detener eventos de mouseenter en el contenedor
+        container.addEventListener('mouseenter', (e) => {
+          e.stopPropagation();
+        });
+      }
+    });
+  };
+  
+  // Ejecutar inicialmente
+  disableHoverEffects();
+  
+  // También ejecutar después de cambios dinámicos en el DOM (por ejemplo, apertura de modales)
+  const observer = new MutationObserver(disableHoverEffects);
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+</script>
