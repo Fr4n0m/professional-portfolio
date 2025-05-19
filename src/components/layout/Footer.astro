@@ -1,51 +1,384 @@
 ---
-import LocationText from '@components/ui/Map/LocationText.astro';
-import SimplePersonTooltip from '@components/ui/tooltips/SimplePersonTooltip.astro';
+import ArrowUp from '@icons/ArrowUp.astro';
+import type { Translations } from '@types/translations';
+import type { FooterItem } from '@types/footerItem';
+import LocationTextFooter from '@components/ui/Map/LocationTextFooter.astro';
+import LegalFooter from '@components/legal/LegalFooter.astro';
+
+const translations: Translations = Astro.props.translations;
+const lang = Astro.props.lang || 'es';
+
+// Configuración para la ubicación tal como está en el Hero
+const currentUrl = Astro.url.pathname;
+const isEnglish = currentUrl.includes('/en');
+const visibleLocationText = "Málaga, España";
+const visibleLocationTextEN = "Malaga, Spain";
+const displayLocationText = isEnglish ? visibleLocationTextEN : visibleLocationText;
+
+// Obtener información completa de la ubicación
+const fullLocation = translations.personalInfo.location;
+
+// Definir los items del footer
+const footerItems: FooterItem[] = [
+  {
+    title: "Sobre mí",
+    url: lang === 'es' ? "/#about" : `/${lang}/#about`
+  },
+  {
+    title: "Proyectos",
+    url: lang === 'es' ? "/#projects" : `/${lang}/#projects`
+  },
+  {
+    title: "Experiencia",
+    url: lang === 'es' ? "/#experience" : `/${lang}/#experience`
+  },
+  {
+    title: "Contacto",
+    url: "mailto:" + translations.personalInfo.mail
+  },
+  {
+    title: "CV",
+    url: "https://cv-web-smoky.vercel.app/"
+  },
+  {
+    title: "Subir",
+    url: "#"
+  }
+];
 ---
 
-<footer
-	class='rounded-lg shadow m-4 bg-black/20 backdrop-blur-lg md:w-[780px] lg:w-[780px] xl:w-[780px] mx-auto mb-16'
->
-	<div
-		class='w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between'
-	>
-		<span class='text-sm text-white/60 sm:text-center'>
-			© 2024 
-			<SimplePersonTooltip 
-				name="Francisco José Rodríguez Martínez" 
-				email="Fran11799@outlook.com"
-				role="Developer"
-				specialties="React, Next.js, Node.js, Astro, TypeScript"
-				additionalTech="Tailwind CSS, MongoDB, PostgreSQL, Git"
-			/>.
-			<LocationText 
-			text="Málaga, España" 
-			className="ml-1 hover:text-white/80 transition-colors" 
-			    icon="📍"
-            />
-		</span>
-		<ul
-			class='flex flex-wrap items-center mt-3 gap-4 text-sm font-medium text-white/60 sm:mt-0'
+<footer class='shadow p-4 py-8 md:p-8 lg:p-10 backdrop-blur-[1px]'>
+	<div class='mx-auto max-w-screen-xl text-center'>
+		<a
+			href='https://www.linkedin.com/in/francisco-jos%C3%A9-r-5b2181bb/'
+			class='flex justify-center items-center text-2xl font-semibold text-gray-700 dark:text-white'
+			target='_blank'
+			rel='noopener noreferrer'
 		>
-			<!-- <li>
-        <a href="#" class="hover:underline me-4 md:me-6">Sobre mí</a>
-      </li> -->
-			<li>
-				<a href='#' class='hover:underline'>Subir</a>
-			</li>
-			<li>
-				<a href='mailto:Fran11799@outlook.com' class='hover:underline'
-					>Contacto</a
-				>
-			</li>
-			<li>
-				<a
-					href='https://cv-web-smoky.vercel.app/'
-					class='hover:underline'
-					target='_blank'
-					rel='noopener noreferrer'>CV</a
-				>
-			</li>
+			<img src='/favicon.png' class='rounded-full w-10 h-10 mr-4' alt="Logo"/>
+			{translations.personalInfo.alias}
+		</a>
+		<div class='my-6 text-gray-500 dark:text-gray-400'>
+			{translations.personalInfo.role}
+			<div class="inline-flex justify-center mt-2">
+				<LocationTextFooter
+					text={displayLocationText}
+					city="Málaga"
+					region="Andalucía"
+					address={fullLocation}
+					className="text-red-500 dark:text-red-200/95 text-nowrap"
+				/>
+			</div>
+		</div>
+		
+		<!-- Enlaces de navegación -->
+		<ul
+			class='flex flex-wrap gap-y-3 gap-x-2 md:gap-y-0 md:gap-x-1 justify-center items-center mb-6 text-gray-700 dark:text-white/80'
+		>
+			{footerItems.map((item, index) => (
+				item.title === "Subir" ? (
+					<li>
+						<a
+							href={item.url}
+							class='footer-nav-item-special px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-yellow-400/10 dark:to-amber-500/10 flex flex-row items-center justify-center group gap-1.5 hover:shadow-sm transition-all duration-300 whitespace-nowrap'
+							aria-label="Volver al inicio de la página"
+							id="back-to-top-link"
+						>
+							{item.title}
+							<ArrowUp
+								class='size-4 inline-block ml-1 group-hover:-translate-y-[2px] transition-all duration-300'
+							/>
+						</a>
+					</li>
+				) : (
+					<li>
+						<a
+							href={item.url}
+							class='footer-nav-item px-3 py-1.5 rounded-full hover:bg-white/10 dark:hover:bg-gray-800/30 transition-all duration-300 hover:text-gray-900 dark:hover:text-white'
+							target={item.url.startsWith('http') || item.url.startsWith('mailto:') ? '_blank' : undefined}
+							rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+						>
+							{item.title}
+						</a>
+					</li>
+				)
+			))}
 		</ul>
+		
+		<!-- Enlaces legales -->
+		<div class="mt-4 mb-3">
+			<LegalFooter />
+		</div>
+		
+		<!-- Copyright -->
+		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+			© {new Date().getFullYear()}{' '}
+			<div class="footer-profile-wrapper inline-block relative">
+				<a href='#' class="hover:underline text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
+					{translations.personalInfo.name}
+				</a>
+				<div class="footer-tooltip-container">
+					<div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-4 tooltip-content">
+						<div class="flex items-center space-x-4 mb-3">
+							<div class="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 flex-shrink-0 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 ring-2 ring-primary/20 animate-scale-up">
+								<img
+									src='/assets/images/Fr4n0m Photo.webp'
+									alt='Fr4n0m photo'
+									class="w-full h-full object-cover"
+									style="aspect-ratio: 1/1; object-position: center;"
+								/>
+							</div>
+							<div>
+								<h3 class="font-bold text-base xs:text-lg dark:text-white">{translations.personalInfo.name}</h3>
+								<p class="text-xs xs:text-sm text-gray-600 dark:text-gray-400">{translations.personalInfo.role}</p>
+							</div>
+						</div>
+						<div class="space-y-2 text-xs xs:text-sm">
+							<div class="flex items-center space-x-2">
+								<span class="text-lg">📩</span>
+								<span class="text-gray-700 dark:text-gray-300 truncate">{translations.personalInfo.mail}</span>
+							</div>
+							<div class="flex items-center space-x-2">
+								<span class="text-lg">📍</span>
+								<span class="text-gray-700 dark:text-gray-300">
+									Málaga, España
+								</span>
+							</div>
+							<div class="flex items-center space-x-2">
+								<span class="text-lg">💻</span>
+								<span class="text-gray-700 dark:text-gray-300 specialties-text">React, Next.js, Node.js, Astro, TypeScript</span>
+							</div>
+							<div class="flex items-center space-x-2">
+								<span class="text-lg">⚙️</span>
+								<span class="text-gray-700 dark:text-gray-300 tech-text">Tailwind CSS, MongoDB, PostgreSQL, Git</span>
+							</div>
+						</div>
+						<div class="arrow absolute w-4 h-4 bg-white dark:bg-gray-800 border-l border-t border-gray-200 dark:border-gray-700 transform rotate-45"></div>
+					</div>
+				</div>
+			</div>
+		</span>
 	</div>
 </footer>
+
+<style>
+	/* Aseguramos que el LocationText esté correctamente centrado cuando está en línea */
+	.inline-flex {
+		display: inline-flex;
+	}
+	
+	/* Estilos para el tooltip del footer */
+	.footer-profile-wrapper {
+		cursor: pointer;
+		z-index: 10;
+	}
+
+	.footer-tooltip-container {
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-bottom: 1rem;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+		z-index: 40;
+		pointer-events: none;
+		width: min(90vw, 320px);
+		transform: translateX(-50%) translateY(5px);
+	}
+	
+	.footer-profile-wrapper:hover .footer-tooltip-container {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transform: translateX(-50%) translateY(0);
+	}
+	
+	/* Contenido del tooltip */
+	.tooltip-content {
+		width: 100%;
+		max-width: 100%;
+		min-width: 250px;
+		font-size: 0.875rem;
+	}
+	
+	/* Flecha del tooltip */
+	.arrow {
+		bottom: -0.5rem;
+		left: 50%;
+		transform: translateX(-50%) rotate(225deg);
+	}
+
+	/* Truncar textos largos */
+	.specialties-text,
+	.tech-text {
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: calc(100% - 2rem);
+	}
+	
+	/* Animación para la imagen */
+	@keyframes scale-up {
+		0% {
+			transform: scale(0.8);
+			opacity: 0;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	.animate-scale-up {
+		animation: scale-up 0.3s ease-out forwards;
+	}
+	
+	/* Estilos para los elementos del menú de navegación */
+	.footer-nav-item {
+		position: relative;
+		display: inline-block;
+		font-size: 0.875rem;
+		font-weight: 500;
+		background-color: transparent;
+		transition: all 0.25s ease;
+	}
+	
+	.footer-nav-item:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	}
+	
+	.footer-nav-item-special {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.875rem;
+		font-weight: 500;
+		transition: all 0.25s ease;
+	}
+	
+	.footer-nav-item-special:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+	
+	/* Estilo hover Apple/macOS similar al del header */
+	.footer-nav-item:after {
+		content: '';
+		position: absolute;
+		width: 0%;
+		height: 2px;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		background: currentColor;
+		transition: width 0.3s ease;
+		opacity: 0.5;
+	}
+	
+	.footer-nav-item:hover:after {
+		width: 50%;
+	}
+
+	/* Adaptación para móviles */
+	@media (max-width: 640px) {
+		.footer-tooltip-container {
+			max-width: 280px;
+		}
+		
+		.tooltip-content {
+			padding: 0.75rem;
+			font-size: 0.75rem;
+		}
+		
+		.tech-text, .specialties-text {
+			max-width: 170px;
+		}
+		
+		.footer-nav-item, .footer-nav-item-special {
+			font-size: 0.8125rem;
+			padding: 0.75rem 1rem;
+		}
+	}
+	
+	/* Adaptación para dispositivos muy pequeños */
+	@media (max-width: 480px) {
+		footer ul {
+			gap: 0.5rem;
+		}
+		
+		.footer-nav-item, .footer-nav-item-special {
+			padding: 0.5rem 0.75rem;
+		}
+	}
+	
+	/* Tema oscuro - resaltar mejor los elementos en hover */
+	:global(.dark) .footer-nav-item:hover {
+		background-color: rgba(255, 255, 255, 0.08);
+	}
+	
+	:global(.dark) .footer-nav-item-special:hover {
+		background: linear-gradient(to right, rgba(250, 204, 21, 0.2), rgba(245, 158, 11, 0.2));
+	}
+</style>
+
+<script>
+  // Script para el botón "Subir"
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopLink = document.getElementById('back-to-top-link');
+    
+    if (backToTopLink) {
+      backToTopLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+    
+    // Añadir efecto de hover estilo Apple/macOS a los enlaces
+    const footerNavItems = document.querySelectorAll('.footer-nav-item, .footer-nav-item-special');
+    
+    footerNavItems.forEach(link => {
+      // Efecto scale-up suave al hacer hover
+      link.addEventListener('mouseenter', () => {
+        link.style.transform = 'translateY(-2px) scale(1.02)';
+      });
+      
+      link.addEventListener('mouseleave', () => {
+        link.style.transform = 'translateY(0) scale(1)';
+      });
+      
+      // Efecto de presionar cuando se hace clic
+      link.addEventListener('mousedown', () => {
+        link.style.transform = 'translateY(-1px) scale(0.98)';
+      });
+      
+      link.addEventListener('mouseup', () => {
+        link.style.transform = 'translateY(-2px) scale(1.02)';
+      });
+    });
+    
+    // Efecto especial para el botón Subir
+    if (backToTopLink) {
+    const arrowIcon = backToTopLink.querySelector('svg');
+    
+    backToTopLink.addEventListener('mouseenter', () => {
+    if (arrowIcon) {
+    arrowIcon.classList.add('translate-y-[-4px]');
+    }
+    });
+    
+    backToTopLink.addEventListener('mouseleave', () => {
+    if (arrowIcon) {
+    arrowIcon.classList.remove('translate-y-[-4px]');
+    }
+    });
+    }
+  });
+</script>

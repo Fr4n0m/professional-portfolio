@@ -1,0 +1,40 @@
+---
+import Footer from '../layout/Footer.astro';
+import { FooterReact } from './FooterReact';
+
+export interface Props {
+  lang: string;
+  translations: any;
+  useReact?: boolean;
+}
+
+const { lang, translations, useReact = false } = Astro.props;
+
+// Datos personales
+const personData = {
+  name: "Francisco José Rodríguez Martínez",
+  email: "Fran11799@outlook.com",
+  role: "Developer",
+  specialties: "React, Next.js, Node.js, Astro, TypeScript",
+  additionalTech: "Tailwind CSS, MongoDB, PostgreSQL, Git",
+  locationText: "Málaga, España",
+  locationIcon: "📍"
+};
+
+---
+
+{useReact ? (
+  <FooterReact
+    client:load
+    lang={lang}
+    personName={personData.name}
+    personEmail={personData.email}
+    personRole={personData.role}
+    personSpecialties={personData.specialties}
+    personAdditionalTech={personData.additionalTech}
+    locationText={personData.locationText}
+    locationIcon={personData.locationIcon}
+  />
+) : (
+  <Footer lang={lang} translations={translations} />
+)}

@@ -3,7 +3,6 @@
 
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
-import AlternativeFooter from '@components/layout/AlternativeFooter.astro';
 import KeyboardManager from '@components/KeyboardManager.astro';
 import CookieBanner from '@components/CookieBanner.astro';
 import PrivacyPolicyModal from '@components/legal/PrivacyPolicyModal.astro';
@@ -122,7 +121,7 @@ try {
 		<main class='flex-1'>
 			<slot />
 		</main>
-		<AlternativeFooter translations={json} />
+		<Footer translations={json} lang={lang} />
 
 		<KeyboardManager translations={json} />
 		<CookieBanner />

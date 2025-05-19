@@ -1,0 +1,99 @@
+---
+import type { FooterItem } from '../../types/footerItem';
+
+export interface Props {
+  footerItems: FooterItem[];
+  lang: string;
+}
+
+const { footerItems, lang } = Astro.props;
+---
+
+<ul class="flex flex-wrap items-center mt-3 gap-4 text-sm font-medium text-white/60 dark:text-white/60 sm:mt-0">
+  {footerItems.map((item) => (
+    item.title === "Subir" ? (
+      <li class="footer-nav-item">
+        <a 
+          href="#" 
+          class="hover:underline hover:text-white/90 transition-colors flex items-center gap-1 group"
+          aria-label="Volver arriba"
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+        >
+          <span>{item.title}</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            class="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </a>
+      </li>
+    ) : (
+      <li class="footer-nav-item">
+        <a 
+          href={item.url} 
+          class="hover:underline hover:text-white/90 transition-colors"
+          target={item.url.startsWith('http') || item.url.startsWith('mailto:') ? '_blank' : undefined}
+          rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+        >
+          {item.title}
+        </a>
+      </li>
+    )
+  ))}
+</ul>
+
+<script>
+  // Script para el botón "Subir"
+  document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar todos los enlaces con ruta "#"
+    const scrollTopLinks = document.querySelectorAll('footer a[href="#"]');
+    
+    scrollTopLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Espaciado entre elementos */
+  .footer-nav-item {
+    position: relative;
+  }
+
+  /* Añadir separadores sutiles entre elementos, excepto el último */
+  .footer-nav-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0.75rem;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Efectos hover más pronunciados */
+  .footer-nav-item a {
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .footer-nav-item a:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Efecto especial para el botón Subir */
+  .footer-nav-item a[href="#"]:hover svg {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  }
+</style>
