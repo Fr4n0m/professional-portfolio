@@ -1,0 +1,26 @@
+{
+  "name": "Express.JS",
+  "category": "backend",
+  "experience": 5,
+  "link": "https://expressjs.com/",
+  "translations": {
+    "es": "Framework minimalista para Node.js que simplifica el desarrollo de aplicaciones web y APIs. Ofrece un conjunto robusto de características para aplicaciones web y móviles.",
+    "en": "Minimalist framework for Node.js that simplifies web application and API development. Offers a robust set of features for web and mobile applications.",
+    "en-us": "Minimalist framework for Node.js that simplifies web application and API development. Offers a robust set of features for web and mobile applications.",
+    "es-mx": "Framework minimalista para Node.js que simplifica el desarrollo de aplicaciones web y APIs. Ofrece un conjunto robusto de características para aplicaciones web y móviles.",
+    "pt": "Framework minimalista para Node.js que simplifica o desenvolvimento de aplicações web e APIs. Oferece um conjunto robusto de recursos para aplicações web e móveis.",
+    "fr": "Framework minimaliste pour Node.js qui simplifie le développement d'applications web et d'API. Offre un ensemble robuste de fonctionnalités pour les applications web et mobiles.",
+    "de": "Minimalistisches Framework für Node.js, das die Entwicklung von Webanwendungen und APIs vereinfacht. Bietet einen robusten Satz an Funktionen für Web- und mobile Anwendungen.",
+    "it": "Framework minimalista per Node.js che semplifica lo sviluppo di applicazioni web e API. Offre un set robusto di funzionalità per applicazioni web e mobili.",
+    "zh": "用于Node.js的极简框架，简化Web应用程序和API开发。为Web和移动应用程序提供强大的功能集。",
+    "ja": "WebアプリケーションとAPI開発を簡素化するNode.js用のミニマリストフレームワーク。Webおよびモバイルアプリケーションのための堅牢な機能セットを提供。",
+    "ru": "Минималистичный фреймворк для Node.js, упрощающий разработку веб-приложений и API. Предлагает надежный набор функций для веб- и мобильных приложений.",
+    "ar": "إطار عمل بسيط لـ Node.js يبسط تطوير تطبيقات الويب وواجهات برمجة التطبيقات. يقدم مجموعة قوية من الميزات لتطبيقات الويب والجوال.",
+    "hi": "Node.js के लिए मिनिमलिस्ट फ्रेमवर्क जो वेब एप्लिकेशन और API डेवलपमेंट को सरल बनाता है। वेब और मोबाइल एप्लिकेशन के लिए फीचर्स का एक मजबूत सेट प्रदान करता है।",
+    "ko": "웹 애플리케이션 및 API 개발을 단순화하는 Node.js를 위한 미니멀리스트 프레임워크. 웹 및 모바일 애플리케이션을 위한 강력한 기능 세트를 제공합니다.",
+    "nl": "Minimalistische framework voor Node.js dat de ontwikkeling van webapplicaties en API's vereenvoudigt. Biedt een robuuste set functies voor web- en mobiele applicaties.",
+    "pl": "Minimalistyczny framework dla Node.js, który upraszcza tworzenie aplikacji internetowych i API. Oferuje solidny zestaw funkcji dla aplikacji internetowych i mobilnych.",
+    "tr": "Web uygulaması ve API geliştirmeyi basitleştiren Node.js için minimalist framework. Web ve mobil uygulamalar için sağlam bir özellik seti sunar.",
+    "hv": "Zȳhe zyhossyr Node.js hen sikagon vēttan sikagossi gaomi. Udra tubys lī sikagon gaomi se kȳvana sikagossi."
+  }
+}

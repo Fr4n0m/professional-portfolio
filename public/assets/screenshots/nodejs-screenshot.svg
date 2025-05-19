@@ -1,0 +1,84 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#2c2e3a" rx="10" ry="10"/>
+
+  <!-- Node.js Logo -->
+  <g transform="translate(120, 150) scale(1.2)">
+    <path d="M48,22.5C48,25.5 46.2,28.1 43.2,29.7L26.5,39.5C25.9,39.8 25.3,40 24.6,40C23.9,40 23.3,39.8 22.7,39.5L6,29.7C3,28.1 1.2,25.5 1.2,22.5V3.1C1.2,2.4 1.4,1.8 1.9,1.3C2.3,0.8 2.9,0.6 3.6,0.6C4.3,0.6 4.9,0.8 5.4,1.3L22.6,11.5C23.5,12 24.1,12.9 24.1,13.9C24.1,14.9 23.5,15.8 22.6,16.3L9.2,24.2C8.7,24.5 8.7,25.2 9.2,25.5L22.5,33.3C22.8,33.5 23.2,33.6 23.6,33.6C24,33.6 24.4,33.5 24.7,33.3L38,25.5C38.5,25.2 38.5,24.5 38,24.2L24.6,16.3C23.7,15.8 23.1,14.9 23.1,13.9C23.1,12.9 23.7,12 24.6,11.5L41.8,1.3C42.3,0.8 42.9,0.6 43.6,0.6C44.3,0.6 44.9,0.8 45.3,1.3C45.8,1.8 46,2.4 46,3.1V22.5H48Z" fill="#8cc84b"/>
+  </g>
+
+  <!-- Server Express Code -->
+  <g transform="translate(260, 80)">
+    <rect width="450" height="240" rx="5" fill="#232531" />
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#c792ea">const</text>
+    <text x="65" y="30" font-family="monospace" font-size="14" fill="#82aaff">express</text>
+    <text x="125" y="30" font-family="monospace" font-size="14" fill="#a6accd">=</text>
+    <text x="140" y="30" font-family="monospace" font-size="14" fill="#89ddff">require</text>
+    <text x="190" y="30" font-family="monospace" font-size="14" fill="#a6accd">(</text>
+    <text x="200" y="30" font-family="monospace" font-size="14" fill="#c3e88d">'express'</text>
+    <text x="260" y="30" font-family="monospace" font-size="14" fill="#a6accd">);</text>
+    
+    <text x="20" y="60" font-family="monospace" font-size="14" fill="#c792ea">const</text>
+    <text x="65" y="60" font-family="monospace" font-size="14" fill="#82aaff">app</text>
+    <text x="95" y="60" font-family="monospace" font-size="14" fill="#a6accd">=</text>
+    <text x="110" y="60" font-family="monospace" font-size="14" fill="#82aaff">express</text>
+    <text x="160" y="60" font-family="monospace" font-size="14" fill="#a6accd">();</text>
+    
+    <text x="20" y="90" font-family="monospace" font-size="14" fill="#c792ea">const</text>
+    <text x="65" y="90" font-family="monospace" font-size="14" fill="#82aaff">port</text>
+    <text x="100" y="90" font-family="monospace" font-size="14" fill="#a6accd">=</text>
+    <text x="115" y="90" font-family="monospace" font-size="14" fill="#f78c6c">3000</text>
+    <text x="145" y="90" font-family="monospace" font-size="14" fill="#a6accd">;</text>
+    
+    <text x="20" y="120" font-family="monospace" font-size="14" fill="#82aaff">app</text>
+    <text x="45" y="120" font-family="monospace" font-size="14" fill="#a6accd">.</text>
+    <text x="55" y="120" font-family="monospace" font-size="14" fill="#82aaff">get</text>
+    <text x="80" y="120" font-family="monospace" font-size="14" fill="#a6accd">(</text>
+    <text x="90" y="120" font-family="monospace" font-size="14" fill="#c3e88d">'/'</text>
+    <text x="105" y="120" font-family="monospace" font-size="14" fill="#a6accd">,</text>
+    <text x="115" y="120" font-family="monospace" font-size="14" fill="#a6accd">(</text>
+    <text x="125" y="120" font-family="monospace" font-size="14" fill="#ffcb6b">req</text>
+    <text x="150" y="120" font-family="monospace" font-size="14" fill="#a6accd">,</text>
+    <text x="160" y="120" font-family="monospace" font-size="14" fill="#ffcb6b">res</text>
+    <text x="180" y="120" font-family="monospace" font-size="14" fill="#a6accd">)</text>
+    <text x="190" y="120" font-family="monospace" font-size="14" fill="#c792ea">=></text>
+    <text x="215" y="120" font-family="monospace" font-size="14" fill="#a6accd">{</text>
+    
+    <text x="40" y="150" font-family="monospace" font-size="14" fill="#82aaff">res</text>
+    <text x="65" y="150" font-family="monospace" font-size="14" fill="#a6accd">.</text>
+    <text x="75" y="150" font-family="monospace" font-size="14" fill="#82aaff">send</text>
+    <text x="105" y="150" font-family="monospace" font-size="14" fill="#a6accd">(</text>
+    <text x="115" y="150" font-family="monospace" font-size="14" fill="#c3e88d">'Hello World!'</text>
+    <text x="210" y="150" font-family="monospace" font-size="14" fill="#a6accd">);</text>
+    
+    <text x="20" y="180" font-family="monospace" font-size="14" fill="#a6accd">});</text>
+    
+    <text x="20" y="210" font-family="monospace" font-size="14" fill="#82aaff">app</text>
+    <text x="45" y="210" font-family="monospace" font-size="14" fill="#a6accd">.</text>
+    <text x="55" y="210" font-family="monospace" font-size="14" fill="#82aaff">listen</text>
+    <text x="100" y="210" font-family="monospace" font-size="14" fill="#a6accd">(</text>
+    <text x="110" y="210" font-family="monospace" font-size="14" fill="#82aaff">port</text>
+    <text x="140" y="210" font-family="monospace" font-size="14" fill="#a6accd">,</text>
+    <text x="150" y="210" font-family="monospace" font-size="14" fill="#c792ea">()</text>
+    <text x="170" y="210" font-family="monospace" font-size="14" fill="#c792ea">=></text>
+    <text x="190" y="210" font-family="monospace" font-size="14" fill="#a6accd">{</text>
+    
+    <text x="40" y="240" font-family="monospace" font-size="14" fill="#82aaff">console</text>
+    <text x="95" y="240" font-family="monospace" font-size="14" fill="#a6accd">.</text>
+    <text x="105" y="240" font-family="monospace" font-size="14" fill="#82aaff">log</text>
+    <text x="130" y="240" font-family="monospace" font-size="14" fill="#a6accd">(</text>
+    <text x="140" y="240" font-family="monospace" font-size="14" fill="#c3e88d">`Server running on port ${port}`</text>
+    <text x="360" y="240" font-family="monospace" font-size="14" fill="#a6accd">);</text>
+    
+    <text x="20" y="270" font-family="monospace" font-size="14" fill="#a6accd">});</text>
+  </g>
+
+  <!-- Servidor Terminal -->
+  <g transform="translate(405, 330)">
+    <rect width="280" height="30" rx="5" fill="#1e2127" />
+    <text x="10" y="20" font-family="monospace" font-size="12" fill="#98c379">Server running on port 3000</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#8cc84b">Node.js</text>
+</svg>

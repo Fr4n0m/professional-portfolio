@@ -1,0 +1,26 @@
+{
+  "name": "GitHub",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://github.com/",
+  "translations": {
+    "es": "Plataforma de alojamiento de código para control de versiones y colaboración. Permite a los equipos trabajar juntos en proyectos desde cualquier lugar.",
+    "en": "Code hosting platform for version control and collaboration. Allows teams to work together on projects from anywhere.",
+    "en-us": "Code hosting platform for version control and collaboration. Allows teams to work together on projects from anywhere.",
+    "es-mx": "Plataforma de alojamiento de código para control de versiones y colaboración. Permite a los equipos trabajar juntos en proyectos desde cualquier lugar.",
+    "pt": "Plataforma de hospedagem de código para controle de versão e colaboração. Permite que equipes trabalhem juntas em projetos de qualquer lugar.",
+    "fr": "Plateforme d'hébergement de code pour le contrôle de version et la collaboration. Permet aux équipes de travailler ensemble sur des projets depuis n'importe où.",
+    "de": "Code-Hosting-Plattform für Versionskontrolle und Zusammenarbeit. Ermöglicht Teams, von überall an Projekten zusammenzuarbeiten.",
+    "it": "Piattaforma di hosting di codice per il controllo versione e la collaborazione. Consente ai team di lavorare insieme ai progetti da qualsiasi luogo.",
+    "zh": "用于版本控制和协作的代码托管平台。允许团队从任何地方一起合作开展项目。",
+    "ja": "バージョン管理とコラボレーションのためのコードホスティングプラットフォーム。チームがどこからでもプロジェクトで一緒に作業することを可能にします。",
+    "ru": "Платформа для хостинга кода, контроля версий и совместной работы. Позволяет командам работать вместе над проектами из любого места.",
+    "ar": "منصة استضافة الكود للتحكم في الإصدار والتعاون. تسمح للفرق بالعمل معًا في المشاريع من أي مكان.",
+    "hi": "वर्शन कंट्रोल और कोलैबोरेशन के लिए कोड होस्टिंग प्लेटफॉर्म। टीमों को कहीं से भी प्रोजेक्ट पर एक साथ काम करने की अनुमति देता है।",
+    "ko": "버전 제어 및 협업을 위한 코드 호스팅 플랫폼. 팀이 어디서나 프로젝트에서 함께 작업할 수 있게 합니다.",
+    "nl": "Code hosting platform voor versiecontrole en samenwerking. Stelt teams in staat om overal samen aan projecten te werken.",
+    "pl": "Platforma hostingowa kodu do kontroli wersji i współpracy. Umożliwia zespołom wspólną pracę nad projektami z dowolnego miejsca.",
+    "tr": "Sürüm kontrolü ve işbirliği için kod barındırma platformu. Ekiplerin herhangi bir yerden projeler üzerinde birlikte çalışmasına olanak tanır.",
+    "hv": "Tubir aōghar hen grādāzma se iderbagon. Unsyn sētaga naejot dubys glaeson vestragon."
+  }
+}

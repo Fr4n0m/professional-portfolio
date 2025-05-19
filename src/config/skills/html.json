@@ -1,0 +1,26 @@
+{
+  "name": "HTML",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://www.w3.org/html/",
+  "translations": {
+    "es": "Lenguaje de marcado estándar para la creación de páginas web. Fundamental para definir la estructura del contenido.",
+    "en": "Standard markup language for creating web pages. Essential for defining content structure.",
+    "en-us": "Standard markup language for creating web pages. Essential for defining content structure.",
+    "es-mx": "Lenguaje de marcado estándar para la creación de páginas web. Fundamental para definir la estructura del contenido.",
+    "pt": "Linguagem de marcação padrão para a criação de páginas web. Fundamental para definir a estrutura do conteúdo.",
+    "fr": "Langage de balisage standard pour la création de pages web. Fondamental pour définir la structure du contenu.",
+    "de": "Standardauszeichnungssprache für die Erstellung von Webseiten. Grundlegend für die Definition der Inhaltsstruktur.",
+    "it": "Linguaggio di markup standard per la creazione di pagine web. Fondamentale per definire la struttura del contenuto.",
+    "zh": "用于创建网页的标准标记语言。对定义内容结构至关重要。",
+    "ja": "ウェブページ作成のための標準マークアップ言語。コンテンツ構造の定義に不可欠。",
+    "ru": "Стандартный язык разметки для создания веб-страниц. Основа для определения структуры контента.",
+    "ar": "لغة الترميز القياسية لإنشاء صفحات الويب. أساسية لتحديد هيكل المحتوى.",
+    "hi": "वेब पेज बनाने के लिए मानक मार्कअप भाषा। सामग्री संरचना को परिभाषित करने के लिए आवश्यक।",
+    "ko": "웹 페이지 제작을 위한 표준 마크업 언어. 콘텐츠 구조를 정의하는 데 필수적입니다.",
+    "nl": "Standaard opmaaktaal voor het maken van webpagina's. Essentieel voor het definiëren van contentstructuur.",
+    "pl": "Standardowy język znaczników do tworzenia stron internetowych. Kluczowy dla definiowania struktury treści.",
+    "tr": "Web sayfaları oluşturmak için standart işaretleme dili. İçerik yapısını tanımlamak için temel öneme sahiptir.",
+    "hv": "Rhaenyō kostōbi gaomilaksir sikudeptātie. Valariponi gaomilaksior sȳngonomy."
+  }
+}

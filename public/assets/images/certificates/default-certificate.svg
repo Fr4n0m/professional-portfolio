@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo del certificado -->
+  <rect width="800" height="500" fill="#f8f9fa" />
+  <rect x="10" y="10" width="780" height="480" rx="15" stroke="#e9ecef" stroke-width="2" fill="white" />
+  
+  <!-- Borde decorativo -->
+  <rect x="25" y="25" width="750" height="450" rx="10" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5,5" fill="none" />
+  
+  <!-- Título -->
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#495057">Certificado</text>
+  
+  <!-- Icono de certificado -->
+  <path d="M400 150 L400 180 M370 210 L400 180 L430 210" stroke="#adb5bd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="400" cy="250" r="70" stroke="#adb5bd" stroke-width="4" fill="none" />
+  <circle cx="400" cy="250" r="50" stroke="#adb5bd" stroke-width="2" fill="none" />
+  
+  <!-- Texto informativo -->
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#6c757d">Haz clic para ver el certificado</text>
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#6c757d">El documento PDF se abrirá en una nueva ventana</text>
+  
+  <!-- Pie de página -->
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#adb5bd">Este certificado verifica el logro académico o profesional</text>
+</svg>

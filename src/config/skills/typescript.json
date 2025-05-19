@@ -1,0 +1,26 @@
+{
+  "name": "TypeScript",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://www.typescriptlang.org/",
+  "translations": {
+    "es": "Superset tipado de JavaScript que añade tipos estáticos opcionales. Mejora la calidad del código y la experiencia de desarrollo.",
+    "en": "Typed superset of JavaScript that adds optional static types. Improves code quality and development experience.",
+    "en-us": "Typed superset of JavaScript that adds optional static types. Improves code quality and development experience.",
+    "es-mx": "Superset tipado de JavaScript que añade tipos estáticos opcionales. Mejora la calidad del código y la experiencia de desarrollo.",
+    "pt": "Superconjunto tipado de JavaScript que adiciona tipos estáticos opcionais. Melhora a qualidade do código e a experiência de desenvolvimento.",
+    "fr": "Sur-ensemble typé de JavaScript qui ajoute des types statiques optionnels. Améliore la qualité du code et l'expérience de développement.",
+    "de": "Typisiertes Superset von JavaScript, das optionale statische Typen hinzufügt. Verbessert die Codequalität und die Entwicklungserfahrung.",
+    "it": "Superset tipizzato di JavaScript che aggiunge tipi statici opzionali. Migliora la qualità del codice e l'esperienza di sviluppo.",
+    "zh": "JavaScript 的类型化超集，增加了可选的静态类型。提高代码质量和开发体验。",
+    "ja": "オプションの静的型を追加するJavaScriptの型付きスーパーセット。コード品質と開発体験を向上。",
+    "ru": "Типизированный суперсет JavaScript, добавляющий необязательные статические типы. Улучшает качество кода и опыт разработки.",
+    "ar": "مجموعة فائقة من JavaScript تضيف أنواعًا ثابتة اختيارية. يحسن جودة الكود وتجربة التطوير.",
+    "hi": "जावास्क्रिप्ट का टाइप्ड सुपरसेट जो वैकल्पिक स्टैटिक टाइप्स जोड़ता है। कोड की गुणवत्ता और विकास अनुभव को बेहतर बनाता है।",
+    "ko": "선택적 정적 타입을 추가하는 JavaScript의 타입 지정 상위 집합. 코드 품질과 개발 경험을 향상시킵니다.",
+    "nl": "Getypeerde superset van JavaScript die optionele statische typen toevoegt. Verbetert codekwaliteit en ontwikkelingservaring.",
+    "pl": "Typowany nadzbiór JavaScript, który dodaje opcjonalne typy statyczne. Poprawia jakość kodu i doświadczenie programistyczne.",
+    "tr": "JavaScript'in isteğe bağlı statik tipler ekleyen tipli bir üst kümesi. Kod kalitesini ve geliştirme deneyimini iyileştirir.",
+    "hv": "Skorkydor JavaScript se tubis sikagon. Gūrogon kodāty pōntyr sytilībin."
+  }
+}

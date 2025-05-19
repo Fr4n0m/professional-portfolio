@@ -1,14 +1,36 @@
-<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="400" fill="#161616"/>
-  <rect x="150" y="100" width="500" height="300" rx="8" fill="#232323"/>
-  <rect x="200" y="120" width="400" height="30" rx="4" fill="#2A2A2A"/>
-  <rect x="200" y="170" width="400" height="200" rx="4" fill="#2A2A2A"/>
-  <circle cx="185" cy="135" r="6" fill="#d70751"/>
-  <circle cx="185" cy="170" r="6" fill="#00adef"/>
-  <circle cx="185" cy="205" r="6" fill="#898989"/>
-  <rect x="230" y="190" width="340" height="1" fill="#3A3A3A"/>
-  <rect x="230" y="230" width="340" height="1" fill="#3A3A3A"/>
-  <rect x="230" y="270" width="340" height="1" fill="#3A3A3A"/>
-  <rect x="230" y="310" width="340" height="1" fill="#3A3A3A"/>
-  <text x="400" y="80" font-family="Arial" font-size="14" text-anchor="middle" fill="#d70751">OPERATING SYSTEMS</text>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#f8f9fa" rx="10" ry="10"/>
+  
+  <!-- Elementos de sistema operativo -->
+  <g fill="#6b7280" opacity="0.8">
+    <!-- Barra de tareas / dock -->
+    <rect x="50" y="320" width="700" height="40" rx="5" opacity="0.2"/>
+    <circle cx="80" cy="340" r="15" opacity="0.7"/>
+    <circle cx="120" cy="340" r="15" opacity="0.6"/>
+    <circle cx="160" cy="340" r="15" opacity="0.5"/>
+    <circle cx="200" cy="340" r="15" opacity="0.7"/>
+    <circle cx="240" cy="340" r="15" opacity="0.6"/>
+    <rect x="650" y="330" width="70" height="20" rx="3" opacity="0.5"/>
+    
+    <!-- Ventana de aplicación -->
+    <rect x="100" y="80" width="600" height="220" rx="8" opacity="0.3"/>
+    <rect x="100" y="80" width="600" height="30" rx="8" opacity="0.5"/>
+    <circle cx="120" cy="95" r="8" opacity="0.7"/>
+    <circle cx="145" cy="95" r="8" opacity="0.6"/>
+    <circle cx="170" cy="95" r="8" opacity="0.5"/>
+    
+    <!-- Contenido de la ventana -->
+    <rect x="120" y="130" width="560" height="150" rx="5" opacity="0.15"/>
+    <rect x="140" y="150" width="150" height="20" rx="3" opacity="0.7"/>
+    <rect x="140" y="180" width="520" height="10" rx="2" opacity="0.5"/>
+    <rect x="140" y="200" width="520" height="10" rx="2" opacity="0.4"/>
+    <rect x="140" y="220" width="520" height="10" rx="2" opacity="0.6"/>
+    <rect x="140" y="240" width="300" height="10" rx="2" opacity="0.5"/>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="385" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#6b7280">
+    Operating Systems
+  </text>
 </svg>

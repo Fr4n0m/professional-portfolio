@@ -1,0 +1,68 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#ffffff" rx="10" ry="10"/>
+  
+  <!-- GSAP Logo -->
+  <g transform="translate(80, 100)">
+    <rect width="140" height="140" rx="10" fill="#88ce02" />
+    <text x="70" y="90" font-family="Arial, sans-serif" font-size="40" fill="white" text-anchor="middle" font-weight="bold">GSAP</text>
+  </g>
+  
+  <!-- Código GSAP -->
+  <g transform="translate(240, 60)">
+    <rect width="500" height="280" rx="5" fill="#f9f9f9" stroke="#dddddd" stroke-width="1" />
+    
+    <!-- Código JavaScript -->
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#0c7cba">import</text>
+    <text x="70" y="30" font-family="monospace" font-size="14" fill="#333333">{ gsap } from</text>
+    <text x="160" y="30" font-family="monospace" font-size="14" fill="#c41a16">'gsap'</text>
+    <text x="200" y="30" font-family="monospace" font-size="14" fill="#333333">;</text>
+    
+    <text x="20" y="60" font-family="monospace" font-size="14" fill="#0c7cba">import</text>
+    <text x="70" y="60" font-family="monospace" font-size="14" fill="#333333">{ ScrollTrigger } from</text>
+    <text x="220" y="60" font-family="monospace" font-size="14" fill="#c41a16">'gsap/ScrollTrigger'</text>
+    <text x="360" y="60" font-family="monospace" font-size="14" fill="#333333">;</text>
+    
+    <text x="20" y="90" font-family="monospace" font-size="14" fill="#333333">gsap.registerPlugin(ScrollTrigger);</text>
+    
+    <text x="20" y="120" font-family="monospace" font-size="14" fill="#333333">// Animation timeline</text>
+    <text x="20" y="150" font-family="monospace" font-size="14" fill="#0c7cba">const</text>
+    <text x="60" y="150" font-family="monospace" font-size="14" fill="#333333">tl = gsap.timeline({</text>
+    <text x="40" y="180" font-family="monospace" font-size="14" fill="#333333">scrollTrigger: {</text>
+    <text x="60" y="210" font-family="monospace" font-size="14" fill="#333333">trigger:</text>
+    <text x="120" y="210" font-family="monospace" font-size="14" fill="#c41a16">'.section'</text>
+    <text x="190" y="210" font-family="monospace" font-size="14" fill="#333333">,</text>
+    <text x="60" y="240" font-family="monospace" font-size="14" fill="#333333">start:</text>
+    <text x="105" y="240" font-family="monospace" font-size="14" fill="#c41a16">'top center'</text>
+    <text x="190" y="240" font-family="monospace" font-size="14" fill="#333333">,</text>
+    <text x="60" y="270" font-family="monospace" font-size="14" fill="#333333">scrub:</text>
+    <text x="110" y="270" font-family="monospace" font-size="14" fill="#0c7cba">true</text>
+    <text x="40" y="300" font-family="monospace" font-size="14" fill="#333333">}</text>
+    <text x="20" y="330" font-family="monospace" font-size="14" fill="#333333">});</text>
+  </g>
+  
+  <!-- Animación visualizada -->
+  <g transform="translate(300, 110)">
+    <!-- Objeto animado -->
+    <rect x="180" y="50" width="80" height="80" fill="#88ce02" rx="5">
+      <animateTransform attributeName="transform" type="rotate" from="0 220 90" to="360 220 90" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.5" to="1" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="width" from="60" to="100" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="height" from="60" to="100" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="x" from="190" to="170" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="y" from="60" to="40" dur="2.5s" repeatCount="indefinite" />
+    </rect>
+    
+    <!-- Línea de tiempo -->
+    <line x1="150" y1="200" x2="350" y2="200" stroke="#dddddd" stroke-width="2" />
+    <circle cx="180" cy="200" r="5" fill="#88ce02" />
+    <circle cx="250" cy="200" r="5" fill="#88ce02" />
+    <circle cx="320" cy="200" r="5" fill="#88ce02" />
+    <text x="180" y="220" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="middle">start</text>
+    <text x="320" y="220" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="middle">end</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#88ce02">GSAP</text>
+  <text x="400" y="395" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666666">Professional-grade JavaScript animation</text>
+</svg>

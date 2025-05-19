@@ -1,0 +1,26 @@
+{
+  "name": "Vercel",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://vercel.com/",
+  "translations": {
+    "es": "Plataforma de implementación y colaboración para desarrolladores frontend. Optimizada para frameworks como Next.js, ofrece despliegues automáticos y CDN global.",
+    "en": "Deployment and collaboration platform for frontend developers. Optimized for frameworks like Next.js, offers automatic deployments and global CDN.",
+    "en-us": "Deployment and collaboration platform for frontend developers. Optimized for frameworks like Next.js, offers automatic deployments and global CDN.",
+    "es-mx": "Plataforma de implementación y colaboración para desarrolladores frontend. Optimizada para frameworks como Next.js, ofrece despliegues automáticos y CDN global.",
+    "pt": "Plataforma de implantação e colaboração para desenvolvedores frontend. Otimizada para frameworks como Next.js, oferece implantações automáticas e CDN global.",
+    "fr": "Plateforme de déploiement et de collaboration pour les développeurs frontend. Optimisée pour les frameworks comme Next.js, offre des déploiements automatiques et un CDN mondial.",
+    "de": "Bereitstellungs- und Kollaborationsplattform für Frontend-Entwickler. Optimiert für Frameworks wie Next.js, bietet automatische Bereitstellungen und globales CDN.",
+    "it": "Piattaforma di deployment e collaborazione per sviluppatori frontend. Ottimizzata per framework come Next.js, offre deployment automatici e CDN globale.",
+    "zh": "面向前端开发人员的部署和协作平台。针对Next.js等框架进行了优化，提供自动部署和全球CDN。",
+    "ja": "フロントエンド開発者向けのデプロイメントおよびコラボレーションプラットフォーム。Next.jsなどのフレームワークに最適化され、自動デプロイメントとグローバルCDNを提供します。",
+    "ru": "Платформа для развертывания и совместной работы для фронтенд-разработчиков. Оптимизирована для фреймворков типа Next.js, предлагает автоматическое развертывание и глобальный CDN.",
+    "ar": "منصة نشر وتعاون لمطوري الواجهة الأمامية. مُحسّنة للأطر مثل Next.js، وتقدم عمليات نشر تلقائية وشبكة توصيل محتوى عالمية.",
+    "hi": "फ्रंटएंड डेवलपर्स के लिए डिप्लॉयमेंट और कोलैबोरेशन प्लेटफॉर्म। Next.js जैसे फ्रेमवर्क के लिए अनुकूलित, स्वचालित डिप्लॉयमेंट और ग्लोबल CDN प्रदान करता है।",
+    "ko": "프론트엔드 개발자를 위한 배포 및 협업 플랫폼. Next.js와 같은 프레임워크에 최적화되어 있으며 자동 배포 및 글로벌 CDN을 제공합니다.",
+    "nl": "Deployment- en samenwerkingsplatform voor frontend-ontwikkelaars. Geoptimaliseerd voor frameworks zoals Next.js, biedt automatische deployments en wereldwijde CDN.",
+    "pl": "Platforma wdrożeniowa i współpracy dla programistów frontend. Zoptymalizowana dla frameworków takich jak Next.js, oferuje automatyczne wdrożenia i globalny CDN.",
+    "tr": "Frontend geliştiricileri için dağıtım ve işbirliği platformu. Next.js gibi framework'ler için optimize edilmiş, otomatik dağıtımlar ve küresel CDN sunar.",
+    "hv": "Tubir azantyr se iderenigon lī iderbagon qrīdrossa. Sytiliby lī zȳhe tubys Nextjs, sikagon azantyr uēpa se glokta CDN."
+  }
+}

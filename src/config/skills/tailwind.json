@@ -1,0 +1,26 @@
+{
+  "name": "Tailwind CSS",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://tailwindcss.com/",
+  "translations": {
+    "es": "Framework CSS utilitario que permite crear diseños personalizados rápidamente usando clases predefinidas. Optimizado para desarrollo ágil.",
+    "en": "Utility-first CSS framework for rapidly building custom designs using predefined classes. Optimized for agile development.",
+    "en-us": "Utility-first CSS framework for rapidly building custom designs using predefined classes. Optimized for agile development.",
+    "es-mx": "Framework CSS utilitario que permite crear diseños personalizados rápidamente usando clases predefinidas. Optimizado para desarrollo ágil.",
+    "pt": "Framework CSS utilitário que permite criar designs personalizados rapidamente usando classes predefinidas. Otimizado para desenvolvimento ágil.",
+    "fr": "Framework CSS utilitaire permettant de créer rapidement des designs personnalisés à l'aide de classes prédéfinies. Optimisé pour le développement agile.",
+    "de": "Utility-First-CSS-Framework zum schnellen Erstellen benutzerdefinierter Designs mit vordefinierten Klassen. Optimiert für agile Entwicklung.",
+    "it": "Framework CSS utility-first per creare rapidamente design personalizzati utilizzando classi predefinite. Ottimizzato per lo sviluppo agile.",
+    "zh": "实用程序优先的CSS框架，使用预定义的类快速构建自定义设计。针对敏捷开发进行了优化。",
+    "ja": "事前定義されたクラスを使用して、カスタムデザインを迅速に構築するためのユーティリティファーストCSSフレームワーク。アジャイル開発に最適化。",
+    "ru": "Utility-first CSS-фреймворк для быстрого создания пользовательских дизайнов с использованием предопределенных классов. Оптимизирован для гибкой разработки.",
+    "ar": "إطار عمل CSS يعطي الأولوية للوظائف لبناء تصميمات مخصصة بسرعة باستخدام فئات محددة مسبقًا. محسن للتطوير المرن.",
+    "hi": "पूर्व-परिभाषित क्लासों का उपयोग करके तेजी से कस्टम डिजाइन बनाने के लिए यूटिलिटी-फर्स्ट सीएसएस फ्रेमवर्क। एजाइल डेवलपमेंट के लिए अनुकूलित।",
+    "ko": "사전 정의된 클래스를 사용하여 맞춤형 디자인을 빠르게 구축하기 위한 유틸리티 우선 CSS 프레임워크. 애자일 개발에 최적화되었습니다.",
+    "nl": "Utility-first CSS-framework voor het snel bouwen van aangepaste ontwerpen met voorgedefinieerde klassen. Geoptimaliseerd voor agile ontwikkeling.",
+    "pl": "Framework CSS typu utility-first do szybkiego tworzenia niestandardowych projektów przy użyciu predefiniowanych klas. Zoptymalizowany dla zwinnego rozwoju.",
+    "tr": "Önceden tanımlanmış sınıfları kullanarak özel tasarımları hızla oluşturmak için utility-first CSS framework'ü. Çevik geliştirme için optimize edilmiştir.",
+    "hv": "Rhaenyō pāsȳghomy vestragon gaomilaksir sikudeptilaksir tembyr. Mazōrety sytilīby ropagon."
+  }
+}

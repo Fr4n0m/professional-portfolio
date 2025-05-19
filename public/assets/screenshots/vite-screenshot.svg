@@ -1,0 +1,78 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#1e1e1e" rx="10" ry="10"/>
+  
+  <!-- Vite Logo -->
+  <g transform="translate(80, 100)">
+    <svg width="128" height="128" viewBox="0 0 256 257" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="viteGrad1" x1="-.828%" y1="7.652%" x2="57.636%" y2="78.411%">
+          <stop offset="0%" stop-color="#41D1FF"/>
+          <stop offset="100%" stop-color="#BD34FE"/>
+        </linearGradient>
+        <linearGradient id="viteGrad2" x1="43.376%" y1="2.242%" x2="50.316%" y2="89.03%">
+          <stop offset="0%" stop-color="#FFEA83"/>
+          <stop offset="8.333%" stop-color="#FFDD35"/>
+          <stop offset="100%" stop-color="#FFA800"/>
+        </linearGradient>
+      </defs>
+      <path d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z" fill="url(#viteGrad1)"/>
+      <path d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028 72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z" fill="url(#viteGrad2)"/>
+    </svg>
+  </g>
+  
+  <!-- Código Vite -->
+  <g transform="translate(240, 60)">
+    <rect width="500" height="280" rx="5" fill="#242424" />
+    
+    <!-- Terminal -->
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#dcdcaa">npm</text>
+    <text x="50" y="30" font-family="monospace" font-size="14" fill="#cccccc">create</text>
+    <text x="100" y="30" font-family="monospace" font-size="14" fill="#dcdcaa">vite@latest</text>
+    <text x="180" y="30" font-family="monospace" font-size="14" fill="#cccccc">my-project</text>
+    <text x="260" y="30" font-family="monospace" font-size="14" fill="#cccccc">--</text>
+    <text x="280" y="30" font-family="monospace" font-size="14" fill="#cccccc">--template</text>
+    <text x="350" y="30" font-family="monospace" font-size="14" fill="#dcdcaa">react-ts</text>
+    
+    <text x="20" y="60" font-family="monospace" font-size="14" fill="#6a9955">✓</text>
+    <text x="40" y="60" font-family="monospace" font-size="14" fill="#cccccc">Project created!</text>
+    
+    <text x="20" y="90" font-family="monospace" font-size="14" fill="#cccccc">cd</text>
+    <text x="40" y="90" font-family="monospace" font-size="14" fill="#dcdcaa">my-project</text>
+    
+    <text x="20" y="120" font-family="monospace" font-size="14" fill="#dcdcaa">npm</text>
+    <text x="50" y="120" font-family="monospace" font-size="14" fill="#cccccc">install</text>
+    
+    <text x="20" y="150" font-family="monospace" font-size="14" fill="#dcdcaa">npm</text>
+    <text x="50" y="150" font-family="monospace" font-size="14" fill="#cccccc">run</text>
+    <text x="80" y="150" font-family="monospace" font-size="14" fill="#dcdcaa">dev</text>
+    
+    <text x="20" y="180" font-family="monospace" font-size="14" fill="#6a9955">VITE v4.4.8</text>
+    <text x="110" y="180" font-family="monospace" font-size="14" fill="#cccccc">ready in</text>
+    <text x="170" y="180" font-family="monospace" font-size="14" fill="#dcdcaa">234</text>
+    <text x="200" y="180" font-family="monospace" font-size="14" fill="#cccccc">ms</text>
+    
+    <text x="20" y="210" font-family="monospace" font-size="14" fill="#6a9955">➜</text>
+    <text x="40" y="210" font-family="monospace" font-size="14" fill="#cccccc">Local:</text>
+    <text x="100" y="210" font-family="monospace" font-size="14" fill="#dcdcaa">http://localhost:5173/</text>
+    
+    <text x="20" y="240" font-family="monospace" font-size="14" fill="#6a9955">➜</text>
+    <text x="40" y="240" font-family="monospace" font-size="14" fill="#cccccc">Network:</text>
+    <text x="110" y="240" font-family="monospace" font-size="14" fill="#dcdcaa">http://192.168.1.5:5173/</text>
+
+    <text x="20" y="280" font-family="monospace" font-size="14" fill="#6a9955">➜</text>
+    <text x="40" y="280" font-family="monospace" font-size="14" fill="#cccccc">press</text>
+    <text x="85" y="280" font-family="monospace" font-size="14" fill="#dcdcaa">h</text>
+    <text x="95" y="280" font-family="monospace" font-size="14" fill="#cccccc">to show help</text>
+  </g>
+  
+  <!-- Dev Server Speed -->
+  <g transform="translate(320, 370)">
+    <text x="40" y="0" font-family="Arial, sans-serif" font-size="14" fill="#bd34fe">Lightning Fast HMR</text>
+    <rect x="0" y="10" width="160" height="5" rx="2" fill="#666666" />
+    <rect x="0" y="10" width="155" height="5" rx="2" fill="#bd34fe" />
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#ffffff">Vite</text>
+</svg>

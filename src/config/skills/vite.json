@@ -1,0 +1,26 @@
+{
+  "name": "Vite",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://vitejs.dev/",
+  "translations": {
+    "es": "Herramienta de construcción frontend moderna que proporciona una experiencia de desarrollo extremadamente rápida. Usa importación de ES modules nativos.",
+    "en": "Modern frontend build tool providing an extremely fast development experience. Uses native ES module imports.",
+    "en-us": "Modern frontend build tool providing an extremely fast development experience. Uses native ES module imports.",
+    "es-mx": "Herramienta de construcción frontend moderna que proporciona una experiencia de desarrollo extremadamente rápida. Usa importación de ES modules nativos.",
+    "pt": "Ferramenta de construção frontend moderna que fornece uma experiência de desenvolvimento extremamente rápida. Usa importações de módulos ES nativos.",
+    "fr": "Outil de construction frontend moderne offrant une expérience de développement extrêmement rapide. Utilise les importations de modules ES natifs.",
+    "de": "Modernes Frontend-Build-Tool, das eine extrem schnelle Entwicklungserfahrung bietet. Verwendet native ES-Modulimporte.",
+    "it": "Moderno strumento di build frontend che fornisce un'esperienza di sviluppo estremamente veloce. Utilizza importazioni di moduli ES nativi.",
+    "zh": "提供极快开发体验的现代前端构建工具。使用原生ES模块导入。",
+    "ja": "非常に高速な開発体験を提供する最新のフロントエンドビルドツール。ネイティブESモジュールインポートを使用。",
+    "ru": "Современный инструмент сборки фронтенда, обеспечивающий чрезвычайно быстрый опыт разработки. Использует нативные импорты модулей ES.",
+    "ar": "أداة بناء واجهة أمامية حديثة توفر تجربة تطوير سريعة للغاية. تستخدم استيراد وحدات ES الأصلية.",
+    "hi": "आधुनिक फ्रंटएंड बिल्ड टूल जो अत्यधिक तेज़ डेवलपमेंट अनुभव प्रदान करता है। नेटिव ES मॉड्यूल इम्पोर्ट का उपयोग करता है।",
+    "ko": "매우 빠른 개발 경험을 제공하는 현대적인 프론트엔드 빌드 도구. 기본 ES 모듈 가져오기를 사용합니다.",
+    "nl": "Modern frontend-buildtool dat een extreem snelle ontwikkelingservaring biedt. Gebruikt native ES-module-imports.",
+    "pl": "Nowoczesne narzędzie do budowania frontendu zapewniające wyjątkowo szybkie doświadczenie programistyczne. Wykorzystuje natywne importy modułów ES.",
+    "tr": "Son derece hızlı bir geliştirme deneyimi sunan modern frontend derleme aracı. Yerel ES modül içe aktarmalarını kullanır.",
+    "hv": "Qrīdrot tembyr vēttir idaños se sytilīby tembion. Ūndegon ērīnion ropagon gundyson."
+  }
+}

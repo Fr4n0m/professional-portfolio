@@ -1,0 +1,26 @@
+{
+  "name": "NPM",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://www.npmjs.com/",
+  "translations": {
+    "es": "Gestor de paquetes por defecto para Node.js, permite a los desarrolladores compartir e instalar fácilmente paquetes y dependencias para sus proyectos.",
+    "en": "Default package manager for Node.js, allows developers to easily share and install packages and dependencies for their projects.",
+    "en-us": "Default package manager for Node.js, allows developers to easily share and install packages and dependencies for their projects.",
+    "es-mx": "Gestor de paquetes por defecto para Node.js, permite a los desarrolladores compartir e instalar fácilmente paquetes y dependencias para sus proyectos.",
+    "pt": "Gerenciador de pacotes padrão para Node.js, permite que os desenvolvedores compartilhem e instalem facilmente pacotes e dependências para seus projetos.",
+    "fr": "Gestionnaire de paquets par défaut pour Node.js, permet aux développeurs de partager et d'installer facilement des paquets et des dépendances pour leurs projets.",
+    "de": "Standard-Paketmanager für Node.js, ermöglicht es Entwicklern, Pakete und Abhängigkeiten für ihre Projekte einfach zu teilen und zu installieren.",
+    "it": "Gestore di pacchetti predefinito per Node.js, consente agli sviluppatori di condividere e installare facilmente pacchetti e dipendenze per i loro progetti.",
+    "zh": "Node.js的默认包管理器，允许开发人员轻松共享和安装项目的包和依赖项。",
+    "ja": "Node.jsのデフォルトパッケージマネージャーで、開発者がプロジェクト用のパッケージと依存関係を簡単に共有およびインストールできるようにします。",
+    "ru": "Менеджер пакетов по умолчанию для Node.js, позволяет разработчикам легко обмениваться и устанавливать пакеты и зависимости для своих проектов.",
+    "ar": "مدير الحزم الافتراضي لـ Node.js، يسمح للمطورين بمشاركة وتثبيت الحزم والتبعيات لمشاريعهم بسهولة.",
+    "hi": "Node.js के लिए डिफ़ॉल्ट पैकेज मैनेजर, डेवलपर्स को अपने प्रोजेक्ट्स के लिए पैकेज और डिपेंडेंसी को आसानी से शेयर और इंस्टॉल करने की अनुमति देता है।",
+    "ko": "Node.js의 기본 패키지 관리자로, 개발자가 프로젝트에 대한 패키지 및 종속성을 쉽게 공유하고 설치할 수 있게 합니다.",
+    "nl": "Standaard pakketbeheerder voor Node.js, stelt ontwikkelaars in staat om gemakkelijk pakketten en afhankelijkheden voor hun projecten te delen en te installeren.",
+    "pl": "Domyślny menedżer pakietów dla Node.js, umożliwia programistom łatwe udostępnianie i instalowanie pakietów i zależności dla ich projektów.",
+    "tr": "Node.js için varsayılan paket yöneticisi, geliştiricilerin projelerindeki paketleri ve bağımlılıkları kolayca paylaşıp yüklemelerini sağlar.",
+    "hv": "Sytedher Node.js, sikagon iderbagon sikagon iderbagon se dothragon aōhar lī urne sikagossi."
+  }
+}

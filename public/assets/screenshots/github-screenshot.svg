@@ -1,0 +1,66 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#f5f5f5" rx="10" ry="10"/>
+  
+  <!-- GitHub Logo -->
+  <g transform="translate(80, 100)">
+    <svg width="128" height="128" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M50 0C22.4 0 0 22.4 0 50c0 22.1 14.3 40.8 34.2 47.4 2.5 0.5 3.4-1.1 3.4-2.4 0-1.2 0-4.3-0.1-8.5-13.9 3-16.8-6.7-16.8-6.7-2.3-5.8-5.6-7.3-5.6-7.3-4.5-3.1 0.3-3.1 0.3-3.1 5 0.4 7.7 5.2 7.7 5.2 4.5 7.6 11.7 5.4 14.5 4.2 0.5-3.2 1.7-5.4 3.2-6.7-11.1-1.3-22.8-5.6-22.8-24.7 0-5.5 1.9-9.9 5.1-13.4-0.5-1.3-2.2-6.3 0.5-13.2 0 0 4.2-1.3 13.7 5.1 4-1.1 8.3-1.7 12.5-1.7 4.2 0 8.5 0.6 12.5 1.7 9.5-6.5 13.7-5.1 13.7-5.1 2.7 6.9 1 12 0.5 13.2 3.2 3.5 5.1 7.9 5.1 13.4 0 19.2-11.7 23.4-22.8 24.7 1.8 1.5 3.4 4.6 3.4 9.3 0 6.7-0.1 12.1-0.1 13.7 0 1.3 0.9 2.9 3.4 2.4C85.7 90.8 100 72.1 100 50 100 22.4 77.6 0 50 0z" fill="#24292e"/>
+    </svg>
+  </g>
+  
+  <!-- GitHub Interface -->
+  <g transform="translate(240, 60)">
+    <rect width="500" height="280" rx="5" fill="#ffffff" stroke="#e1e4e8" stroke-width="1" />
+    
+    <!-- Barra de navegación -->
+    <rect x="0" y="0" width="500" height="40" fill="#24292e" />
+    <circle cx="25" cy="20" r="15" fill="#ffffff" />
+    <text x="60" y="25" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">username / repository</text>
+    
+    <!-- Tabs -->
+    <rect x="0" y="40" width="500" height="40" fill="#f6f8fa" />
+    <text x="30" y="65" font-family="Arial, sans-serif" font-size="14" fill="#24292e">Code</text>
+    <text x="90" y="65" font-family="Arial, sans-serif" font-size="14" fill="#586069">Issues</text>
+    <text x="150" y="65" font-family="Arial, sans-serif" font-size="14" fill="#586069">Pull requests</text>
+    <text x="260" y="65" font-family="Arial, sans-serif" font-size="14" fill="#586069">Actions</text>
+    <text x="330" y="65" font-family="Arial, sans-serif" font-size="14" fill="#586069">Projects</text>
+    <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" fill="#586069">Wiki</text>
+    
+    <!-- File List -->
+    <line x1="0" y1="80" x2="500" y2="80" stroke="#e1e4e8" stroke-width="1" />
+    
+    <text x="40" y="105" font-family="Arial, sans-serif" font-size="14" fill="#0366d6">src</text>
+    <text x="400" y="105" font-family="Arial, sans-serif" font-size="12" fill="#586069">last commit 2 days ago</text>
+    
+    <line x1="0" y1="115" x2="500" y2="115" stroke="#e1e4e8" stroke-width="1" />
+    
+    <text x="40" y="140" font-family="Arial, sans-serif" font-size="14" fill="#0366d6">README.md</text>
+    <text x="400" y="140" font-family="Arial, sans-serif" font-size="12" fill="#586069">Update readme</text>
+    
+    <line x1="0" y1="150" x2="500" y2="150" stroke="#e1e4e8" stroke-width="1" />
+    
+    <text x="40" y="175" font-family="Arial, sans-serif" font-size="14" fill="#0366d6">package.json</text>
+    <text x="400" y="175" font-family="Arial, sans-serif" font-size="12" fill="#586069">Bump version</text>
+    
+    <line x1="0" y1="185" x2="500" y2="185" stroke="#e1e4e8" stroke-width="1" />
+    
+    <text x="40" y="210" font-family="Arial, sans-serif" font-size="14" fill="#0366d6">.gitignore</text>
+    <text x="400" y="210" font-family="Arial, sans-serif" font-size="12" fill="#586069">Initial commit</text>
+    
+    <line x1="0" y1="220" x2="500" y2="220" stroke="#e1e4e8" stroke-width="1" />
+    
+    <text x="40" y="245" font-family="Arial, sans-serif" font-size="14" fill="#0366d6">LICENSE</text>
+    <text x="400" y="245" font-family="Arial, sans-serif" font-size="12" fill="#586069">Add MIT license</text>
+    
+    <line x1="0" y1="255" x2="500" y2="255" stroke="#e1e4e8" stroke-width="1" />
+    
+    <!-- README Preview -->
+    <rect x="0" y="255" width="500" height="25" fill="#f6f8fa" />
+    <text x="20" y="272" font-family="Arial, sans-serif" font-size="14" fill="#24292e">README.md</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#24292e">GitHub</text>
+  <text x="400" y="395" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#586069">Where the world builds software</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#f0f0f0" rx="10" ry="10"/>
+  
+  <!-- MySQL Logo -->
+  <g transform="translate(70, 100)">
+    <rect width="140" height="140" fill="#00758f" rx="8" />
+    <text x="70" y="85" font-family="Arial, sans-serif" font-size="80" fill="white" text-anchor="middle" font-weight="bold">M</text>
+  </g>
+  
+  <!-- MySQL Table -->
+  <g transform="translate(240, 80)">
+    <rect width="510" height="240" rx="5" fill="#ffffff" stroke="#cccccc" stroke-width="1" />
+    
+    <!-- Table Header -->
+    <rect x="0" y="0" width="510" height="40" fill="#4285f4" />
+    <text x="30" y="25" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">id</text>
+    <text x="150" y="25" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">name</text>
+    <text x="300" y="25" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">email</text>
+    <text x="450" y="25" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">age</text>
+    
+    <!-- Row 1 -->
+    <rect x="0" y="40" width="510" height="40" fill="#f8f9fa" />
+    <text x="30" y="65" font-family="Arial, sans-serif" font-size="14" fill="#333333">1</text>
+    <text x="150" y="65" font-family="Arial, sans-serif" font-size="14" fill="#333333">John Doe</text>
+    <text x="300" y="65" font-family="Arial, sans-serif" font-size="14" fill="#333333">john@example.com</text>
+    <text x="450" y="65" font-family="Arial, sans-serif" font-size="14" fill="#333333">30</text>
+    
+    <!-- Row 2 -->
+    <rect x="0" y="80" width="510" height="40" fill="#ffffff" />
+    <text x="30" y="105" font-family="Arial, sans-serif" font-size="14" fill="#333333">2</text>
+    <text x="150" y="105" font-family="Arial, sans-serif" font-size="14" fill="#333333">Jane Smith</text>
+    <text x="300" y="105" font-family="Arial, sans-serif" font-size="14" fill="#333333">jane@example.com</text>
+    <text x="450" y="105" font-family="Arial, sans-serif" font-size="14" fill="#333333">28</text>
+    
+    <!-- Row 3 -->
+    <rect x="0" y="120" width="510" height="40" fill="#f8f9fa" />
+    <text x="30" y="145" font-family="Arial, sans-serif" font-size="14" fill="#333333">3</text>
+    <text x="150" y="145" font-family="Arial, sans-serif" font-size="14" fill="#333333">Bob Johnson</text>
+    <text x="300" y="145" font-family="Arial, sans-serif" font-size="14" fill="#333333">bob@example.com</text>
+    <text x="450" y="145" font-family="Arial, sans-serif" font-size="14" fill="#333333">35</text>
+
+    <!-- Row 4 -->
+    <rect x="0" y="160" width="510" height="40" fill="#ffffff" />
+    <text x="30" y="185" font-family="Arial, sans-serif" font-size="14" fill="#333333">4</text>
+    <text x="150" y="185" font-family="Arial, sans-serif" font-size="14" fill="#333333">Sarah Lee</text>
+    <text x="300" y="185" font-family="Arial, sans-serif" font-size="14" fill="#333333">sarah@example.com</text>
+    <text x="450" y="185" font-family="Arial, sans-serif" font-size="14" fill="#333333">27</text>
+    
+    <!-- Row 5 -->
+    <rect x="0" y="200" width="510" height="40" fill="#f8f9fa" />
+    <text x="30" y="225" font-family="Arial, sans-serif" font-size="14" fill="#333333">5</text>
+    <text x="150" y="225" font-family="Arial, sans-serif" font-size="14" fill="#333333">Mike Chen</text>
+    <text x="300" y="225" font-family="Arial, sans-serif" font-size="14" fill="#333333">mike@example.com</text>
+    <text x="450" y="225" font-family="Arial, sans-serif" font-size="14" fill="#333333">32</text>
+  </g>
+  
+  <!-- SQL Query -->
+  <g transform="translate(265, 340)">
+    <rect width="440" height="30" rx="5" fill="#f5f5f5" stroke="#cccccc" stroke-width="1" />
+    <text x="15" y="20" font-family="monospace" font-size="12" fill="#0066cc">SELECT * FROM users WHERE age > 30 ORDER BY name;</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="390" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#00758f">MySQL</text>
+</svg>

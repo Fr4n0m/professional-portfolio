@@ -1,0 +1,56 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#282c34" rx="10" ry="10"/>
+
+  <!-- React logo -->
+  <g transform="translate(400, 170) scale(1.5)">
+    <ellipse cx="0" cy="0" rx="37" ry="13" fill="none" stroke="#61dafb" stroke-width="3" />
+    <ellipse cx="0" cy="0" rx="37" ry="13" fill="none" stroke="#61dafb" stroke-width="3" transform="rotate(60)" />
+    <ellipse cx="0" cy="0" rx="37" ry="13" fill="none" stroke="#61dafb" stroke-width="3" transform="rotate(-60)" />
+    <circle cx="0" cy="0" r="6" fill="#61dafb" />
+  </g>
+
+  <!-- Código JSX -->
+  <g transform="translate(120, 100)">
+    <rect width="240" height="180" rx="5" fill="#1e2127" />
+    <text x="15" y="30" font-family="monospace" font-size="12" fill="#e06c75">import</text>
+    <text x="65" y="30" font-family="monospace" font-size="12" fill="#abb2bf">React, { useState } </text>
+    <text x="215" y="30" font-family="monospace" font-size="12" fill="#e06c75">from</text>
+    <text x="250" y="30" font-family="monospace" font-size="12" fill="#98c379">'react';</text>
+
+    <text x="15" y="60" font-family="monospace" font-size="12" fill="#c678dd">function</text>
+    <text x="65" y="60" font-family="monospace" font-size="12" fill="#61afef">Counter</text>
+    <text x="115" y="60" font-family="monospace" font-size="12" fill="#abb2bf">() {</text>
+
+    <text x="30" y="90" font-family="monospace" font-size="12" fill="#c678dd">const</text>
+    <text x="70" y="90" font-family="monospace" font-size="12" fill="#abb2bf">[count, setCount] = </text>
+    <text x="190" y="90" font-family="monospace" font-size="12" fill="#61afef">useState</text>
+    <text x="240" y="90" font-family="monospace" font-size="12" fill="#abb2bf">(0);</text>
+
+    <text x="30" y="120" font-family="monospace" font-size="12" fill="#c678dd">return</text>
+    <text x="80" y="120" font-family="monospace" font-size="12" fill="#abb2bf">(</text>
+    
+    <text x="45" y="150" font-family="monospace" font-size="12" fill="#e06c75">&lt;button</text>
+    <text x="100" y="150" font-family="monospace" font-size="12" fill="#d19a66">onClick</text>
+    <text x="155" y="150" font-family="monospace" font-size="12" fill="#abb2bf">={() => </text>
+    <text x="200" y="150" font-family="monospace" font-size="12" fill="#61afef">setCount</text>
+    <text x="245" y="150" font-family="monospace" font-size="12" fill="#abb2bf">(count + 1)}</text>
+    <text x="45" y="180" font-family="monospace" font-size="12" fill="#abb2bf">&gt;Count: {count}&lt;/</text>
+    <text x="165" y="180" font-family="monospace" font-size="12" fill="#e06c75">button</text>
+    <text x="205" y="180" font-family="monospace" font-size="12" fill="#abb2bf">&gt;</text>
+    
+    <text x="15" y="210" font-family="monospace" font-size="12" fill="#abb2bf">  );</text>
+    <text x="15" y="240" font-family="monospace" font-size="12" fill="#abb2bf">}</text>
+  </g>
+
+  <!-- UI Componente -->
+  <g transform="translate(470, 100)">
+    <rect width="210" height="70" rx="5" fill="#282a36" />
+    <rect x="10" y="15" width="190" height="40" rx="20" fill="#6272a4" />
+    <text x="65" y="40" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Count: 5</text>
+  </g>
+
+  <!-- Texto Explicativo -->
+  <text x="400" y="340" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#61dafb">React</text>
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#8d96a7">A JavaScript library for building user interfaces</text>
+</svg>

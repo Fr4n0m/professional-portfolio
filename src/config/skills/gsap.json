@@ -1,0 +1,26 @@
+{
+  "name": "GSAP",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://greensock.com/gsap/",
+  "translations": {
+    "es": "Biblioteca profesional de animación JavaScript. Permite crear animaciones potentes con alto rendimiento, control preciso y compatibilidad entre navegadores.",
+    "en": "Professional JavaScript animation library. Enables creating powerful animations with high performance, precise control, and cross-browser compatibility.",
+    "en-us": "Professional JavaScript animation library. Enables creating powerful animations with high performance, precise control, and cross-browser compatibility.",
+    "es-mx": "Biblioteca profesional de animación JavaScript. Permite crear animaciones potentes con alto rendimiento, control preciso y compatibilidad entre navegadores.",
+    "pt": "Biblioteca profissional de animação JavaScript. Permite criar animações poderosas com alto desempenho, controle preciso e compatibilidade entre navegadores.",
+    "fr": "Bibliothèque professionnelle d'animation JavaScript. Permet de créer des animations puissantes avec des performances élevées, un contrôle précis et une compatibilité multi-navigateurs.",
+    "de": "Professionelle JavaScript-Animationsbibliothek. Ermöglicht die Erstellung leistungsstarker Animationen mit hoher Leistung, präziser Kontrolle und browserübergreifender Kompatibilität.",
+    "it": "Libreria professionale di animazione JavaScript. Consente di creare animazioni potenti con alte prestazioni, controllo preciso e compatibilità tra browser.",
+    "zh": "专业的JavaScript动画库。能够创建具有高性能、精确控制和跨浏览器兼容性的强大动画。",
+    "ja": "プロフェッショナルなJavaScriptアニメーションライブラリ。高性能、正確な制御、ブラウザ間の互換性を備えた強力なアニメーションを作成可能。",
+    "ru": "Профессиональная библиотека анимации JavaScript. Позволяет создавать мощные анимации с высокой производительностью, точным контролем и кросс-браузерной совместимостью.",
+    "ar": "مكتبة رسوم متحركة JavaScript احترافية. تمكن من إنشاء رسوم متحركة قوية بأداء عالٍ وتحكم دقيق وتوافق بين المتصفحات.",
+    "hi": "प्रोफेशनल जावास्क्रिप्ट एनिमेशन लाइब्रेरी। उच्च प्रदर्शन, सटीक नियंत्रण, और क्रॉस-ब्राउज़र संगतता के साथ शक्तिशाली एनिमेशन बनाने की अनुमति देती है।",
+    "ko": "전문 JavaScript 애니메이션 라이브러리. 고성능, 정확한 제어 및 크로스 브라우저 호환성으로 강력한 애니메이션을 만들 수 있습니다.",
+    "nl": "Professionele JavaScript-animatiebibliotheek. Maakt het mogelijk om krachtige animaties te maken met hoge prestaties, nauwkeurige controle en cross-browser compatibiliteit.",
+    "pl": "Profesjonalna biblioteka animacji JavaScript. Umożliwia tworzenie potężnych animacji o wysokiej wydajności, precyzyjnej kontroli i kompatybilności między przeglądarkami.",
+    "tr": "Profesyonel JavaScript animasyon kütüphanesi. Yüksek performans, hassas kontrol ve tarayıcılar arası uyumluluk ile güçlü animasyonlar oluşturmayı sağlar.",
+    "hv": "JavaScript vaoreznuni tubys. Sikagon rhēdegon vaoreznuni hen vala tolmio, tubys dubyssy, se syndrōñoty."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "JavaScript",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://developer.mozilla.org/es/docs/Web/JavaScript",
+  "translations": {
+    "es": "Lenguaje de programación versátil para crear contenido dinámico e interactivo en sitios web. Compatible con todos los navegadores modernos.",
+    "en": "Versatile programming language for creating dynamic and interactive content on websites. Compatible with all modern browsers.",
+    "en-us": "Versatile programming language for creating dynamic and interactive content on websites. Compatible with all modern browsers.",
+    "es-mx": "Lenguaje de programación versátil para crear contenido dinámico e interactivo en sitios web. Compatible con todos los navegadores modernos.",
+    "pt": "Linguagem de programação versátil para criar conteúdo dinâmico e interativo em sites. Compatível com todos os navegadores modernos.",
+    "fr": "Langage de programmation polyvalent pour créer du contenu dynamique et interactif sur les sites web. Compatible avec tous les navigateurs modernes.",
+    "de": "Vielseitige Programmiersprache zum Erstellen dynamischer und interaktiver Inhalte auf Websites. Kompatibel mit allen modernen Browsern.",
+    "it": "Linguaggio di programmazione versatile per creare contenuti dinamici e interattivi sui siti web. Compatibile con tutti i browser moderni.",
+    "zh": "用于在网站上创建动态和交互式内容的多功能编程语言。与所有现代浏览器兼容。",
+    "ja": "ウェブサイト上で動的でインタラクティブなコンテンツを作成するための多目的プログラミング言語。全ての現代的なブラウザと互換性あり。",
+    "ru": "Универсальный язык программирования для создания динамического и интерактивного контента на веб-сайтах. Совместим со всеми современными браузерами.",
+    "ar": "لغة برمجة متعددة الاستخدامات لإنشاء محتوى ديناميكي وتفاعلي على المواقع. متوافقة مع جميع المتصفحات الحديثة.",
+    "hi": "वेबसाइटों पर गतिशील और इंटरैक्टिव सामग्री बनाने के लिए बहुमुखी प्रोग्रामिंग भाषा। सभी आधुनिक ब्राउज़रों के साथ संगत।",
+    "ko": "웹사이트에서 동적이고 상호작용하는 콘텐츠를 만들기 위한 다재다능한 프로그래밍 언어. 모든 현대 브라우저와 호환됩니다.",
+    "nl": "Veelzijdige programmeertaal voor het creëren van dynamische en interactieve inhoud op websites. Compatibel met alle moderne browsers.",
+    "pl": "Wszechstronny język programowania do tworzenia dynamicznych i interaktywnych treści na stronach internetowych. Kompatybilny ze wszystkimi nowoczesnymi przeglądarkami.",
+    "tr": "Web sitelerinde dinamik ve etkileşimli içerik oluşturmak için çok yönlü programlama dili. Tüm modern tarayıcılarla uyumludur.",
+    "hv": "Rhaenyō kodātyr vestragon sikagion gaomaksir. Syndrōñe lanta mirehī."
+  }
+}

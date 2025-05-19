@@ -35,7 +35,7 @@ const { headerItems, lang, translations } = Astro.props;
           </svg>
         </button>
         
-        <a href={lang === 'es' ? '/' : `/${lang}/`} class='flex items-center group'>
+        <a href={`/${lang}/`} class='flex items-center group'>
           <img
             src='/assets/images/Fr4n0m Photo.webp'
             alt='Fr4n0m photo'
@@ -97,13 +97,13 @@ const { headerItems, lang, translations } = Astro.props;
         </button>
         <div class="mobile-dropdown-content hidden pl-6 pr-2 space-y-1 mt-1">
           <a 
-            href={lang === 'es' ? '/#projects' : `/${lang}/#projects`}
+            href={`/${lang}/#projects`}
             class="block px-4 py-2 text-base text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200"
           >
             {translations.projectsPage.selectedProjectsSubtitle || 'Proyectos destacados'}
           </a>
           <a 
-            href={lang === 'es' ? '/projects' : `/${lang}/projects`}
+            href={`/${lang}/projects`}
             class="block px-4 py-2 text-base text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200"
           >
             {translations.projectsPage.allProjects || 'Todos los proyectos'}
@@ -121,13 +121,13 @@ const { headerItems, lang, translations } = Astro.props;
         </button>
         <div class="mobile-dropdown-content hidden pl-6 pr-2 space-y-1 mt-1">
           <a 
-            href={lang === 'es' ? '/#certifications-preview' : `/${lang}/#certifications-preview`}
+            href={`/${lang}/#certifications-preview`}
             class="block px-4 py-2 text-base text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200"
           >
             {translations.certificationsPage.selectedCertificationsSubtitle || 'Certificaciones destacadas'}
           </a>
           <a 
-            href={lang === 'es' ? '/certifications' : `/${lang}/certifications`}
+            href={`/${lang}/certifications`}
             class="block px-4 py-2 text-base text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200"
           >
             {translations.certificationsPage.allCertifications || 'Todas las certificaciones'}

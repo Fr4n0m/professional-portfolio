@@ -1,91 +1,85 @@
-# Instrucciones para actualizar las descripciones de habilidades
+# Instrucciones para Actualizar Tecnologías (Skills)
 
-Este documento contiene instrucciones para actualizar las descripciones de habilidades faltantes en el proyecto.
+Este documento explica cómo actualizar y mantener la información de las tecnologías (skills) en el portafolio.
 
-## Archivos creados
+## Estructura del sistema
 
-Se han creado los siguientes archivos:
+La información de las tecnologías se almacena en archivos JSON individuales en la carpeta `src/config/skills/`. Cada tecnología tiene su propio archivo con sus traducciones e información asociada.
 
-1. `/src/config/skillDescriptions_new/backend_database.ts` - Contiene las descripciones de habilidades de backend y bases de datos.
-2. `/src/config/skillDescriptions_new/frontend_tools.ts` - Contiene las descripciones de habilidades de frontend y herramientas.
-3. `/src/config/skillDescriptions_new/animation.ts` - Contiene las descripciones de habilidades de animación y motion design.
-4. `/src/config/skillDescriptions_new/index.ts` - Combina todas las descripciones y proporciona funciones actualizadas.
-5. `/src/components/ui/tooltips/UpdatedSkillTooltip.astro` - Versión actualizada del componente SkillTooltip que utiliza las nuevas descripciones.
-6. `/src/icons/GSAP.astro`, `/src/icons/FramerMotion.astro`, `/src/icons/MotionDesign.astro`, `/src/icons/Animation.astro`, `/src/icons/WebAnimation.astro` - Iconos para las nuevas habilidades de animación.
-7. `/public/assets/screenshots/animation-screenshot.svg` - Imagen de muestra para la categoría de animación.
+## Cómo agregar una nueva tecnología
 
-## Habilidades añadidas
+1. Crea un nuevo archivo JSON en la carpeta `src/config/skills/` con el nombre de la tecnología en minúsculas (por ejemplo, `python.json`).
 
-Se han añadido descripciones completas con traducciones para:
+2. Usa la siguiente estructura para el archivo:
 
-- **C++**: Lenguaje de programación potente y de alto rendimiento
-- **ExpressJS**: Framework minimalista para Node.js
-- **NodeJS**: Actualizado con mayor nivel de experiencia
-- **Deno**: Runtime JavaScript y TypeScript seguro
-- **MongoDB**: Base de datos NoSQL orientada a documentos
-- **Supabase**: Alternativa open source a Firebase
-- **GraphQL**: Lenguaje de consulta y manipulación de datos
-- **MySQL**: Sistema de gestión de bases de datos relacional
-- **Strapi**: CMS headless de código abierto
-- **Astro**: Framework web innovador
-- **Vite**: Herramienta de compilación frontend ultrarrápida
-- **Phaser**: Framework para desarrollar juegos HTML5
-- **Vercel**: Plataforma de despliegue para proyectos frontend
-- **NPM**: Gestor de paquetes estándar para Node.js
-- **PNPM**: Gestor de paquetes rápido y eficiente
-- **Bun**: Entorno de ejecución JavaScript todo en uno
-- **Debian**: Distribución Linux libre y estable
-- **Kali**: Distribución Linux especializada en pruebas de penetración
-- **GSAP**: Biblioteca profesional de animación JavaScript con rendimiento superior
-- **Framer Motion**: Biblioteca de animación declarativa para React
-- **Motion Design**: Disciplina creativa que combina diseño gráfico y animación
-- **Animation**: Arte de crear la ilusión de movimiento mediante secuencias de imágenes
-- **Web Animation**: Técnicas y tecnologías para añadir movimiento y efectos dinámicos a sitios web
-
-## Cómo implementar los cambios
-
-Para actualizar las descripciones de habilidades en el proyecto, puedes seguir estas opciones:
-
-### Opción 1: Reemplazar archivos completos
-
-1. Reemplaza el archivo `/src/config/skillDescriptions.ts` con uno nuevo que combine todas las descripciones.
-2. Actualiza las importaciones en los archivos que utilizan este módulo.
-
-### Opción 2: Integración incremental (recomendada)
-
-1. Mantén los archivos en la nueva estructura de directorios.
-2. Actualiza las importaciones en los componentes que utilizan las descripciones de habilidades:
-
-```typescript
-// Cambia esto:
-import { skillDescriptions, getCategoryByName, getRecommendedExperience } from '../config/skillDescriptions';
-
-// Por esto:
-import { completeSkillDescriptions as skillDescriptions, getUpdatedCategoryByName as getCategoryByName, getUpdatedRecommendedExperience as getRecommendedExperience } from '../config/skillDescriptions_new';
+```json
+{
+  "name": "Python",
+  "category": "language",
+  "experience": 3,
+  "link": "https://www.python.org/",
+  "translations": {
+    "es": "Lenguaje de programación interpretado de alto nivel conocido por su sintaxis legible y versatilidad.",
+    "en": "High-level interpreted programming language known for its readable syntax and versatility.",
+    "en-us": "High-level interpreted programming language known for its readable syntax and versatility.",
+    "es-mx": "Lenguaje de programación interpretado de alto nivel conocido por su sintaxis legible y versatilidad.",
+    "pt": "Linguagem de programação interpretada de alto nível conhecida por sua sintaxe legível e versatilidade.",
+    "fr": "Langage de programmation interprété de haut niveau connu pour sa syntaxe lisible et sa polyvalence.",
+    "de": "Interpretierte Hochsprache, bekannt für ihre lesbare Syntax und Vielseitigkeit.",
+    "it": "Linguaggio di programmazione interpretato di alto livello noto per la sua sintassi leggibile e versatilità.",
+    "zh": "以可读语法和多功能性而闻名的高级解释型编程语言。",
+    "ja": "読みやすい構文と汎用性で知られる高レベルのインタプリタ型プログラミング言語。",
+    "ru": "Высокоуровневый интерпретируемый язык программирования, известный своим читаемым синтаксисом и универсальностью.",
+    "ar": "لغة برمجة عالية المستوى مفسرة معروفة بقواعدها المقروءة وتعدد استخداماتها.",
+    "hi": "उच्च स्तरीय व्याख्या योग्य प्रोग्रामिंग भाषा जो अपने पढ़ने योग्य सिंटैक्स और बहुमुखी प्रतिभा के लिए जानी जाती है।",
+    "ko": "읽기 쉬운 구문과 다재다능함으로 알려진 고수준 인터프리티드 프로그래밍 언어.",
+    "nl": "Hoogwaardige geïnterpreteerde programmeertaal bekend om zijn leesbare syntaxis en veelzijdigheid.",
+    "pl": "Wysokopoziomowy interpretowany język programowania znany z czytelnej składni i wszechstronności.",
+    "tr": "Okunabilir sözdizimi ve çok yönlülüğü ile bilinen yüksek seviyeli yorumlanmış programlama dili.",
+    "hv": "Rhaenyō kostōbi kodātyr drējī sȳndor se valyrīha."
+  }
+}
 ```
 
-3. Reemplaza el componente `SkillTooltip.astro` con el nuevo `UpdatedSkillTooltip.astro` o actualiza el original para usar las nuevas importaciones.
+3. Personaliza la información:
+   - `name`: Nombre exacto de la tecnología
+   - `category`: Categoría a la que pertenece (`frontend`, `backend`, `database`, `tools`, `os`, `language`, `framework`, `library`)
+   - `experience`: Nivel de experiencia del 1 al 5
+   - `link`: Enlace a la documentación oficial
+   - `translations`: Traducciones de la descripción para cada idioma soportado
 
-### Opción 3: Implementación gradual
+4. Agrega el nombre de la tecnología a la lista en `src/config/skills/index.ts`:
 
-1. Mantén ambos componentes `SkillTooltip.astro` y `UpdatedSkillTooltip.astro`.
-2. Actualiza las referencias al tooltip en las habilidades nuevas para usar `UpdatedSkillTooltip` mientras que las existentes siguen usando el original.
-3. Una vez verificado que todo funciona, unifica los componentes.
+```typescript
+export const SKILLS_LIST = [
+  // ... otros skills
+  'Python',
+  // ... otros skills
+];
+```
 
-## Implementación de nuevas habilidades de animación
+5. Si la tecnología requiere un ícono nuevo:
+   - Crea el ícono en la carpeta `src/icons/`
+   - Actualiza el mapa de íconos en `src/utils/tags.ts`
+   - Actualiza el mapa de colores CSS para la tecnología en el mismo archivo
 
-Para implementar las nuevas habilidades de animación:
+## Valores de categorías disponibles
 
-1. Asegúrate de que los iconos creados (`GSAP.astro`, `FramerMotion.astro`, etc.) estén disponibles en el directorio `/src/icons/`.
-2. Verifica que la imagen de ejemplo `animation-screenshot.svg` esté en `/public/assets/screenshots/`.
-3. Actualiza o reemplaza el componente `SkillTooltip.astro` que utiliza estos recursos.
-4. Añade las nuevas habilidades de animación a los componentes correspondientes de skills o crea nuevos componentes para mostrarlas.
+- `frontend`: Tecnologías de fronted
+- `backend`: Tecnologías de backend
+- `database`: Bases de datos y almacenamiento
+- `tools`: Herramientas y utilidades
+- `os`: Sistemas operativos
+- `language`: Lenguajes de programación
+- `framework`: Frameworks
+- `library`: Bibliotecas
 
-## Notas adicionales
+## Niveles de experiencia
 
-- Todas las descripciones se han proporcionado en los 15 idiomas soportados por el proyecto.
-- Las descripciones y los niveles de experiencia se han adaptado según las indicaciones proporcionadas.
-- La estructura modular permite mantener ordenada la información y facilita futuras actualizaciones.
-- Se ha añadido una nueva categoría `animation` para organizar mejor las habilidades relacionadas con la animación.
+Todas las tecnologías están configuradas con el nivel máximo de experiencia (5). Esto refleja un dominio profesional avanzado de todas las herramientas y tecnologías listadas.
 
-Si encuentras algún problema durante la implementación, revisa los archivos originales y los nuevos para asegurarte de que todas las interfaces y tipos se mantienen consistentes.
+- 5: Nivel experto (valor actual para todas las tecnologías)
+
+## Traducción
+
+Para mantener la consistencia, asegúrate de traducir la descripción a todos los idiomas soportados. Cada descripción no debe exceder los 150 caracteres para garantizar que se muestre correctamente en el tooltip.

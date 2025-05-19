@@ -85,12 +85,14 @@ socialLinks.push({
     <h1 class={commonClasses.heading.h1 + " text-center mb-6"}>{contactText.title}</h1>
     
     <div class="max-w-4xl mx-auto">
+      <!--
       <p class={commonClasses.textColors.secondary + " text-center mb-12"}>
         {contactText.description}
       </p>
+      -->
       
       <!-- Redes sociales -->
-      <div class="flex flex-wrap gap-3 justify-center mb-16">
+      <div class="flex flex-wrap gap-3 justify-center mb-12 mt-4">
         {socialLinks.map(link => (
           <SocialPill href={link.url} icon={link.icon}>
             {link.name}

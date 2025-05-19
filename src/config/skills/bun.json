@@ -1,0 +1,26 @@
+{
+  "name": "Bun",
+  "category": "backend",
+  "experience": 5,
+  "link": "https://bun.sh/",
+  "translations": {
+    "es": "Entorno de ejecución y gestor de paquetes JavaScript todo en uno con rendimiento ultrarrápido. Compatible con el ecosistema Node.js y npm.",
+    "en": "All-in-one JavaScript runtime and package manager with ultra-fast performance. Compatible with the Node.js and npm ecosystem.",
+    "en-us": "All-in-one JavaScript runtime and package manager with ultra-fast performance. Compatible with the Node.js and npm ecosystem.",
+    "es-mx": "Entorno de ejecución y gestor de paquetes JavaScript todo en uno con rendimiento ultrarrápido. Compatible con el ecosistema Node.js y npm.",
+    "pt": "Ambiente de execução JavaScript e gerenciador de pacotes tudo em um com desempenho ultrarrápido. Compatível com o ecossistema Node.js e npm.",
+    "fr": "Environnement d'exécution JavaScript et gestionnaire de paquets tout-en-un avec des performances ultra-rapides. Compatible avec l'écosystème Node.js et npm.",
+    "de": "All-in-One-JavaScript-Laufzeit und Paketmanager mit ultraschneller Leistung. Kompatibel mit dem Node.js- und npm-Ökosystem.",
+    "it": "Runtime JavaScript e gestore di pacchetti all-in-one con prestazioni ultrarapide. Compatibile con l'ecosistema Node.js e npm.",
+    "zh": "具有超快性能的一体式JavaScript运行时和包管理器。与Node.js和npm生态系统兼容。",
+    "ja": "超高速パフォーマンスを持つオールインワンJavaScriptランタイムとパッケージマネージャー。Node.jsとnpmエコシステムと互換性があります。",
+    "ru": "Универсальная среда выполнения JavaScript и менеджер пакетов с ультрабыстрой производительностью. Совместим с экосистемой Node.js и npm.",
+    "ar": "بيئة تشغيل JavaScript ومدير حزم شامل بأداء فائق السرعة. متوافق مع نظام Node.js و npm البيئي.",
+    "hi": "अत्यधिक तेज़ प्रदर्शन के साथ ऑल-इन-वन जावास्क्रिप्ट रनटाइम और पैकेज मैनेजर। Node.js और npm इकोसिस्टम के साथ संगत।",
+    "ko": "초고속 성능을 갖춘 올인원 JavaScript 런타임 및 패키지 관리자. Node.js 및 npm 생태계와 호환됩니다.",
+    "nl": "Alles-in-één JavaScript-runtime en pakketbeheerder met ultrasnel rendement. Compatibel met het Node.js- en npm-ecosysteem.",
+    "pl": "Kompleksowe środowisko uruchomieniowe JavaScript i menedżer pakietów o ultraszybkiej wydajności. Kompatybilny z ekosystemem Node.js i npm.",
+    "tr": "Ultra hızlı performansa sahip hepsi bir arada JavaScript çalışma zamanı ve paket yöneticisi. Node.js ve npm ekosistemi ile uyumludur.",
+    "hv": "JavaScript tubir se sytedher tubys lī vala tolmio. Syndrōñe henujagon Node.js se npm."
+  }
+}

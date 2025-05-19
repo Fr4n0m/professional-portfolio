@@ -1,0 +1,26 @@
+{
+  "name": "NodeJS",
+  "category": "backend",
+  "experience": 5,
+  "link": "https://nodejs.org/",
+  "translations": {
+    "es": "Entorno de ejecución de JavaScript en el servidor basado en el motor V8 de Chrome. Permite construir aplicaciones de red escalables.",
+    "en": "JavaScript runtime built on Chrome's V8 JavaScript engine for server-side applications. Allows building scalable network applications.",
+    "en-us": "JavaScript runtime built on Chrome's V8 JavaScript engine for server-side applications. Allows building scalable network applications.",
+    "es-mx": "Entorno de ejecución de JavaScript en el servidor basado en el motor V8 de Chrome. Permite construir aplicaciones de red escalables.",
+    "pt": "Ambiente de execução JavaScript construído no motor V8 do Chrome para aplicações do lado do servidor. Permite construir aplicações de rede escaláveis.",
+    "fr": "Environnement d'exécution JavaScript basé sur le moteur V8 de Chrome pour les applications côté serveur. Permet de construire des applications réseau évolutives.",
+    "de": "JavaScript-Laufzeitumgebung auf Basis der Chrome V8 JavaScript-Engine für serverseitige Anwendungen. Ermöglicht den Aufbau skalierbarer Netzwerkanwendungen.",
+    "it": "Runtime JavaScript costruito sul motore V8 di Chrome per applicazioni lato server. Consente di creare applicazioni di rete scalabili.",
+    "zh": "基于Chrome的V8 JavaScript引擎构建的JavaScript运行时，用于服务器端应用程序。允许构建可扩展的网络应用程序。",
+    "ja": "Chrome V8 JavaScriptエンジンに基づいたサーバーサイドアプリケーション向けのJavaScriptランタイム。スケーラブルなネットワークアプリケーションの構築が可能。",
+    "ru": "Среда выполнения JavaScript, построенная на движке V8 Chrome для серверных приложений. Позволяет создавать масштабируемые сетевые приложения.",
+    "ar": "بيئة تشغيل JavaScript مبنية على محرك V8 JavaScript من Chrome للتطبيقات من جانب الخادم. يسمح ببناء تطبيقات شبكة قابلة للتوسع.",
+    "hi": "सर्वर-साइड एप्लिकेशन के लिए Chrome के V8 JavaScript इंजन पर बना JavaScript रनटाइम। स्केलेबल नेटवर्क एप्लिकेशन बनाने की अनुमति देता है।",
+    "ko": "서버 측 애플리케이션을 위한 Chrome의 V8 JavaScript 엔진을 기반으로 구축된 JavaScript 런타임. 확장 가능한 네트워크 애플리케이션을 구축할 수 있습니다.",
+    "nl": "JavaScript-runtime gebouwd op Chrome's V8 JavaScript-engine voor server-side applicaties. Maakt het mogelijk om schaalbare netwerkapplicaties te bouwen.",
+    "pl": "Środowisko uruchomieniowe JavaScript zbudowane na silniku JavaScript V8 Chrome'a dla aplikacji po stronie serwera. Umożliwia budowanie skalowalnych aplikacji sieciowych.",
+    "tr": "Chrome'un V8 JavaScript motoruyla oluşturulmuş, sunucu tarafı uygulamalar için JavaScript çalışma zamanı. Ölçeklenebilir ağ uygulamaları oluşturmaya olanak tanır.",
+    "hv": "JavaScript tubir Chrome V8 ropagos hen hūchtys. Sikagon vestragon sīgrun."
+  }
+}

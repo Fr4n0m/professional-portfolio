@@ -1,0 +1,26 @@
+{
+  "name": "Stripe",
+  "category": "database",
+  "experience": 5,
+  "link": "https://stripe.com/",
+  "translations": {
+    "es": "Plataforma de procesamiento de pagos para negocios de cualquier tamaño. Permite aceptar pagos en línea con integraciones flexibles y APIs robustas.",
+    "en": "Payment processing platform for businesses of any size. Allows accepting online payments with flexible integrations and robust APIs.",
+    "en-us": "Payment processing platform for businesses of any size. Allows accepting online payments with flexible integrations and robust APIs.",
+    "es-mx": "Plataforma de procesamiento de pagos para negocios de cualquier tamaño. Permite aceptar pagos en línea con integraciones flexibles y APIs robustas.",
+    "pt": "Plataforma de processamento de pagamentos para empresas de qualquer tamanho. Permite aceitar pagamentos online com integrações flexíveis e APIs robustas.",
+    "fr": "Plateforme de traitement des paiements pour les entreprises de toute taille. Permet d'accepter les paiements en ligne avec des intégrations flexibles et des API robustes.",
+    "de": "Zahlungsabwicklungsplattform für Unternehmen jeder Größe. Ermöglicht die Annahme von Online-Zahlungen mit flexiblen Integrationen und robusten APIs.",
+    "it": "Piattaforma di elaborazione dei pagamenti per aziende di qualsiasi dimensione. Consente di accettare pagamenti online con integrazioni flessibili e API robuste.",
+    "zh": "适用于任何规模企业的支付处理平台。允许通过灵活的集成和强大的API接受在线支付。",
+    "ja": "あらゆる規模のビジネスのための支払い処理プラットフォーム。柔軟な統合と堅牢なAPIでオンライン支払いを受け入れることができます。",
+    "ru": "Платформа обработки платежей для предприятий любого размера. Позволяет принимать онлайн-платежи с гибкими интеграциями и надежными API.",
+    "ar": "منصة معالجة المدفوعات للأعمال من أي حجم. تسمح بقبول المدفوعات عبر الإنترنت مع عمليات تكامل مرنة وواجهات برمجة تطبيقات قوية.",
+    "hi": "किसी भी आकार के व्यवसायों के लिए भुगतान प्रोसेसिंग प्लेटफ़ॉर्म। लचीले एकीकरण और मजबूत API के साथ ऑनलाइन भुगतान स्वीकार करने की अनुमति देता है।",
+    "ko": "모든 규모의 비즈니스를 위한 결제 처리 플랫폼. 유연한 통합 및 강력한 API로 온라인 결제를 허용합니다.",
+    "nl": "Betalingsverwerkingsplatform voor bedrijven van elke omvang. Maakt het mogelijk om online betalingen te accepteren met flexibele integraties en robuuste API's.",
+    "pl": "Platforma przetwarzania płatności dla firm każdej wielkości. Umożliwia akceptowanie płatności online z elastycznymi integracjami i solidnymi API.",
+    "tr": "Her büyüklükteki işletmeler için ödeme işleme platformu. Esnek entegrasyonlar ve sağlam API'lerle çevrimiçi ödemeleri kabul etmeyi sağlar.",
+    "hv": "Urnegon tubir lī tubyssy keha tubys. Sikagon jaelagon urnen kara urnen pāsȳghos se API."
+  }
+}

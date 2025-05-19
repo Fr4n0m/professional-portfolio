@@ -1,0 +1,26 @@
+{
+  "name": "React",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://es.react.dev/",
+  "translations": {
+    "es": "Biblioteca JavaScript para construir interfaces de usuario con componentes reutilizables. Desarrollada por Facebook, permite crear aplicaciones web de una sola página.",
+    "en": "JavaScript library for building user interfaces with reusable components. Developed by Facebook, allows creating single-page applications.",
+    "en-us": "JavaScript library for building user interfaces with reusable components. Developed by Facebook, allows creating single-page applications.",
+    "es-mx": "Biblioteca JavaScript para construir interfaces de usuario con componentes reutilizables. Desarrollada por Facebook, permite crear aplicaciones web de una sola página.",
+    "pt": "Biblioteca JavaScript para construir interfaces de usuário com componentes reutilizáveis. Desenvolvida pelo Facebook, permite criar aplicações de página única.",
+    "fr": "Bibliothèque JavaScript pour construire des interfaces utilisateur avec des composants réutilisables. Développée par Facebook, permet de créer des applications à page unique.",
+    "de": "JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen mit wiederverwendbaren Komponenten. Von Facebook entwickelt, ermöglicht die Erstellung von Single-Page-Anwendungen.",
+    "it": "Libreria JavaScript per costruire interfacce utente con componenti riutilizzabili. Sviluppata da Facebook, consente di creare applicazioni a pagina singola.",
+    "zh": "用于构建具有可重用组件的用户界面的JavaScript库。由Facebook开发，允许创建单页应用程序。",
+    "ja": "再利用可能なコンポーネントでユーザーインターフェースを構築するためのJavaScriptライブラリ。Facebookによって開発され、シングルページアプリケーションの作成が可能。",
+    "ru": "Библиотека JavaScript для создания пользовательских интерфейсов с многоразовыми компонентами. Разработана Facebook, позволяет создавать одностраничные приложения.",
+    "ar": "مكتبة JavaScript لبناء واجهات المستخدم باستخدام مكونات قابلة لإعادة الاستخدام. طورتها Facebook، وتسمح بإنشاء تطبيقات الصفحة الواحدة.",
+    "hi": "पुन: प्रयोज्य कम्पोनेन्ट्स के साथ उपयोगकर्ता इंटरफेस बनाने के लिए जावास्क्रिप्ट लाइब्रेरी। फेसबुक द्वारा विकसित, एकल-पृष्ठ एप्लिकेशन बनाने की अनुमति देता है।",
+    "ko": "재사용 가능한 컴포넌트로 사용자 인터페이스를 구축하기 위한 JavaScript 라이브러리. Facebook에서 개발했으며 단일 페이지 애플리케이션을 만들 수 있습니다.",
+    "nl": "JavaScript-bibliotheek voor het bouwen van gebruikersinterfaces met herbruikbare componenten. Ontwikkeld door Facebook, maakt het mogelijk om single-page applicaties te creëren.",
+    "pl": "Biblioteka JavaScript do budowania interfejsów użytkownika z wykorzystaniem komponentów wielokrotnego użytku. Opracowana przez Facebook, umożliwia tworzenie aplikacji jednostronicowych.",
+    "tr": "Yeniden kullanılabilir bileşenlerle kullanıcı arayüzleri oluşturmak için JavaScript kütüphanesi. Facebook tarafından geliştirilmiş olup, tek sayfalık uygulamalar oluşturmaya olanak tanır.",
+    "hv": "Ubrardy JavaScript hen uhtyghir uēpa iderenigon. Facebook morghor, sikagon gaomagon sikagon."
+  }
+}

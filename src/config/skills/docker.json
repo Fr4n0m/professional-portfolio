@@ -1,0 +1,26 @@
+{
+  "name": "Docker",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://www.docker.com/",
+  "translations": {
+    "es": "Plataforma para desarrollar, enviar y ejecutar aplicaciones en contenedores. Simplifica la configuración de entornos y el despliegue.",
+    "en": "Platform for developing, shipping, and running applications in containers. Simplifies environment setup and deployment.",
+    "en-us": "Platform for developing, shipping, and running applications in containers. Simplifies environment setup and deployment.",
+    "es-mx": "Plataforma para desarrollar, enviar y ejecutar aplicaciones en contenedores. Simplifica la configuración de entornos y el despliegue.",
+    "pt": "Plataforma para desenvolver, enviar e executar aplicações em contêineres. Simplifica a configuração de ambientes e a implantação.",
+    "fr": "Plateforme pour développer, livrer et exécuter des applications dans des conteneurs. Simplifie la configuration de l'environnement et le déploiement.",
+    "de": "Plattform zum Entwickeln, Ausliefern und Ausführen von Anwendungen in Containern. Vereinfacht die Umgebungseinrichtung und -bereitstellung.",
+    "it": "Piattaforma per sviluppare, distribuire ed eseguire applicazioni in container. Semplifica la configurazione dell'ambiente e il deployment.",
+    "zh": "用于在容器中开发、交付和运行应用程序的平台。简化环境设置和部署。",
+    "ja": "コンテナでアプリケーションを開発、配信、実行するためのプラットフォーム。環境設定とデプロイメントを簡素化。",
+    "ru": "Платформа для разработки, доставки и запуска приложений в контейнерах. Упрощает настройку среды и развертывание.",
+    "ar": "منصة لتطوير وشحن وتشغيل التطبيقات في حاويات. يبسط إعداد البيئة والنشر.",
+    "hi": "कंटेनरों में एप्लिकेशन डेवलप, शिप और रन करने के लिए प्लेटफॉर्म। एनवायरनमेंट सेटअप और डिप्लॉयमेंट को सरल बनाता है।",
+    "ko": "컨테이너에서 애플리케이션을 개발, 배포 및 실행하기 위한 플랫폼. 환경 설정 및 배포를 단순화합니다.",
+    "nl": "Platform voor het ontwikkelen, verzenden en uitvoeren van applicaties in containers. Vereenvoudigt omgevingsconfiguratie en implementatie.",
+    "pl": "Platforma do tworzenia, dostarczania i uruchamiania aplikacji w kontenerach. Upraszcza konfigurację środowiska i wdrażanie.",
+    "tr": "Konteynerlerde uygulama geliştirme, gönderme ve çalıştırma platformu. Ortam kurulumunu ve dağıtımını basitleştirir.",
+    "hv": "Tubir gaomagon, urnen, se udra hen uēpa. Māzigonty urnen se udra."
+  }
+}

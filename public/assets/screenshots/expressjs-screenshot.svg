@@ -1,0 +1,59 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#f5f5f5" rx="10" ry="10"/>
+  
+  <!-- Express Logo -->
+  <g transform="translate(80, 70)">
+    <rect width="140" height="140" rx="10" fill="#000000" />
+    <text x="70" y="85" font-family="Arial, sans-serif" font-size="80" fill="white" text-anchor="middle" font-weight="bold">Ex</text>
+  </g>
+  
+  <!-- Código Express -->
+  <g transform="translate(240, 60)">
+    <rect width="500" height="280" rx="5" fill="#ffffff" stroke="#dddddd" stroke-width="1" />
+    
+    <!-- Líneas de código -->
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#0c7cba">const</text>
+    <text x="60" y="30" font-family="monospace" font-size="14" fill="#333333">express =</text>
+    <text x="140" y="30" font-family="monospace" font-size="14" fill="#0c7cba">require</text>
+    <text x="200" y="30" font-family="monospace" font-size="14" fill="#333333">(</text>
+    <text x="210" y="30" font-family="monospace" font-size="14" fill="#c41a16">'express'</text>
+    <text x="280" y="30" font-family="monospace" font-size="14" fill="#333333">);</text>
+    
+    <text x="20" y="60" font-family="monospace" font-size="14" fill="#0c7cba">const</text>
+    <text x="60" y="60" font-family="monospace" font-size="14" fill="#333333">app = express();</text>
+    
+    <text x="20" y="90" font-family="monospace" font-size="14" fill="#0c7cba">const</text>
+    <text x="60" y="90" font-family="monospace" font-size="14" fill="#333333">PORT = process.env.PORT ||</text>
+    <text x="270" y="90" font-family="monospace" font-size="14" fill="#1c00cf">3000</text>
+    <text x="300" y="90" font-family="monospace" font-size="14" fill="#333333">;</text>
+    
+    <text x="20" y="120" font-family="monospace" font-size="14" fill="#333333">// Middleware</text>
+    <text x="20" y="150" font-family="monospace" font-size="14" fill="#333333">app.use(express.json());</text>
+    <text x="20" y="180" font-family="monospace" font-size="14" fill="#333333">app.use(express.urlencoded({ extended:</text>
+    <text x="300" y="180" font-family="monospace" font-size="14" fill="#0c7cba">true</text>
+    <text x="330" y="180" font-family="monospace" font-size="14" fill="#333333">}));</text>
+    
+    <text x="20" y="210" font-family="monospace" font-size="14" fill="#333333">// Routes</text>
+    <text x="20" y="240" font-family="monospace" font-size="14" fill="#333333">app.get(</text>
+    <text x="85" y="240" font-family="monospace" font-size="14" fill="#c41a16">'/'</text>
+    <text x="100" y="240" font-family="monospace" font-size="14" fill="#333333">, (req, res) => {</text>
+    <text x="40" y="270" font-family="monospace" font-size="14" fill="#333333">res.send(</text>
+    <text x="110" y="270" font-family="monospace" font-size="14" fill="#c41a16">'Hello World!'</text>
+    <text x="210" y="270" font-family="monospace" font-size="14" fill="#333333">);</text>
+    <text x="20" y="300" font-family="monospace" font-size="14" fill="#333333">});</text>
+    
+    <text x="20" y="330" font-family="monospace" font-size="14" fill="#333333">app.listen(PORT, () => console.log(</text>
+    <text x="320" y="330" font-family="monospace" font-size="14" fill="#c41a16">`Server running on port ${PORT}`</text>
+    <text x="570" y="330" font-family="monospace" font-size="14" fill="#333333">));</text>
+  </g>
+  
+  <!-- Terminal Output -->
+  <g transform="translate(320, 350)">
+    <rect width="280" height="30" rx="5" fill="#222222" />
+    <text x="10" y="20" font-family="monospace" font-size="12" fill="#00ff00">Server running on port 3000</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="390" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#333333">Express.js</text>
+</svg>

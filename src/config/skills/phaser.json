@@ -1,0 +1,26 @@
+{
+  "name": "Phaser",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://phaser.io/",
+  "translations": {
+    "es": "Framework de código abierto para crear juegos HTML5 para navegadores móviles y de escritorio. Potente, fácil de aprender y con excelente rendimiento.",
+    "en": "Open source framework for creating HTML5 games for mobile and desktop browsers. Powerful, easy to learn, and with excellent performance.",
+    "en-us": "Open source framework for creating HTML5 games for mobile and desktop browsers. Powerful, easy to learn, and with excellent performance.",
+    "es-mx": "Framework de código abierto para crear juegos HTML5 para navegadores móviles y de escritorio. Potente, fácil de aprender y con excelente rendimiento.",
+    "pt": "Framework de código aberto para criar jogos HTML5 para navegadores móveis e desktop. Poderoso, fácil de aprender e com excelente desempenho.",
+    "fr": "Framework open source pour créer des jeux HTML5 pour navigateurs mobiles et de bureau. Puissant, facile à apprendre et avec d'excellentes performances.",
+    "de": "Open-Source-Framework zur Erstellung von HTML5-Spielen für Mobile- und Desktop-Browser. Leistungsstark, leicht zu erlernen und mit hervorragender Leistung.",
+    "it": "Framework open source per la creazione di giochi HTML5 per browser mobili e desktop. Potente, facile da imparare e con prestazioni eccellenti.",
+    "zh": "用于为移动和桌面浏览器创建HTML5游戏的开源框架。功能强大，易于学习，性能出色。",
+    "ja": "モバイルおよびデスクトップブラウザー向けのHTML5ゲームを作成するためのオープンソースフレームワーク。強力で、学びやすく、優れたパフォーマンスを持っています。",
+    "ru": "Фреймворк с открытым исходным кодом для создания HTML5-игр для мобильных и настольных браузеров. Мощный, простой в освоении и с отличной производительностью.",
+    "ar": "إطار عمل مفتوح المصدر لإنشاء ألعاب HTML5 لمتصفحات الجوال وسطح المكتب. قوي وسهل التعلم وبأداء ممتاز.",
+    "hi": "मोबाइल और डेस्कटॉप ब्राउज़र के लिए HTML5 गेम बनाने के लिए ओपन सोर्स फ्रेमवर्क। शक्तिशाली, सीखने में आसान, और उत्कृष्ट प्रदर्शन के साथ।",
+    "ko": "모바일 및 데스크톱 브라우저용 HTML5 게임을 만들기 위한 오픈 소스 프레임워크. 강력하고 배우기 쉬우며 우수한 성능을 제공합니다.",
+    "nl": "Open source framework voor het maken van HTML5-games voor mobiele en desktop browsers. Krachtig, gemakkelijk te leren en met uitstekende prestaties.",
+    "pl": "Framework open source do tworzenia gier HTML5 dla przeglądarek mobilnych i stacjonarnych. Potężny, łatwy do nauczenia i z doskonałą wydajnością.",
+    "tr": "Mobil ve masaüstü tarayıcılar için HTML5 oyunları oluşturmak için açık kaynaklı framework. Güçlü, öğrenmesi kolay ve mükemmel performansa sahip.",
+    "hv": "Tubir mele lī vestragon HTML5 saerin lī sȳndror se tubys. Rhēdegon, māzigon iā udir, se hen mazōrety tolmio."
+  }
+}

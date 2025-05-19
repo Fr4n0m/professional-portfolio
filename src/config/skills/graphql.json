@@ -1,0 +1,26 @@
+{
+  "name": "GraphQL",
+  "category": "database",
+  "experience": 5,
+  "link": "https://graphql.org/",
+  "translations": {
+    "es": "Lenguaje de consulta y manipulación de datos para APIs. Permite a los clientes solicitar exactamente los datos que necesitan, facilitando la evolución de las APIs.",
+    "en": "Query and manipulation language for APIs. Enables clients to request exactly the data they need, making it easier to evolve APIs over time.",
+    "en-us": "Query and manipulation language for APIs. Enables clients to request exactly the data they need, making it easier to evolve APIs over time.",
+    "es-mx": "Lenguaje de consulta y manipulación de datos para APIs. Permite a los clientes solicitar exactamente los datos que necesitan, facilitando la evolución de las APIs.",
+    "pt": "Linguagem de consulta e manipulação para APIs. Permite que os clientes solicitem exatamente os dados de que precisam, facilitando a evolução das APIs ao longo do tempo.",
+    "fr": "Langage de requête et de manipulation pour les API. Permet aux clients de demander exactement les données dont ils ont besoin, facilitant l'évolution des API au fil du temps.",
+    "de": "Abfrage- und Manipulationssprache für APIs. Ermöglicht es Clients, genau die Daten anzufordern, die sie benötigen, was die Entwicklung von APIs im Laufe der Zeit erleichtert.",
+    "it": "Linguaggio di query e manipolazione per API. Consente ai client di richiedere esattamente i dati di cui hanno bisogno, facilitando l'evoluzione delle API nel tempo.",
+    "zh": "用于API的查询和操作语言。使客户能够请求他们确切需要的数据，使API随时间演变变得更容易。",
+    "ja": "API用のクエリおよび操作言語。クライアントが必要とするデータを正確にリクエストできるようにし、APIの進化を容易にします。",
+    "ru": "Язык запросов и манипуляций для API. Позволяет клиентам запрашивать именно те данные, которые им нужны, что упрощает развитие API с течением времени.",
+    "ar": "لغة استعلام ومعالجة لواجهات برمجة التطبيقات. تمكن العملاء من طلب البيانات التي يحتاجونها بالضبط، مما يسهل تطور واجهات برمجة التطبيقات بمرور الوقت.",
+    "hi": "API के लिए क्वेरी और हेरफेर भाषा। क्लाइंट को वास्तव में आवश्यक डेटा का अनुरोध करने की अनुमति देता है, जिससे समय के साथ API का विकास आसान हो जाता है।",
+    "ko": "API를 위한 쿼리 및 조작 언어. 클라이언트가 정확히 필요한 데이터만 요청할 수 있게 하여 시간이 지남에 따라 API를 발전시키는 것이 더 쉬워집니다.",
+    "nl": "Query- en manipulatietaal voor API's. Stelt clients in staat precies de data aan te vragen die ze nodig hebben, waardoor API's gemakkelijker kunnen evolueren.",
+    "pl": "Język zapytań i manipulacji dla API. Umożliwia klientom żądanie dokładnie tych danych, których potrzebują, ułatwiając ewolucję API w czasie.",
+    "tr": "API'ler için sorgu ve manipülasyon dili. İstemcilerin tam olarak ihtiyaç duydukları verileri talep etmelerini sağlayarak, API'lerin zaman içinde gelişmesini kolaylaştırır.",
+    "hv": "Rhaenyō tolmion API. Sikagon urnegon tubyn tubys syt glaesoty, vestragon urnen uvegon hen tubys."
+  }
+}

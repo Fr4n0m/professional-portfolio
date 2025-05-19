@@ -1,0 +1,65 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#ffffff" rx="10" ry="10"/>
+  
+  <!-- Motion Logo -->
+  <g transform="translate(80, 100)">
+    <rect width="140" height="140" rx="20" fill="#000000" />
+    <text x="70" y="95" font-family="Arial, sans-serif" font-size="80" fill="white" text-anchor="middle" font-weight="bold">M</text>
+  </g>
+  
+  <!-- Código React Motion -->
+  <g transform="translate(240, 60)">
+    <rect width="500" height="280" rx="5" fill="#f9f9f9" stroke="#dddddd" stroke-width="1" />
+    
+    <!-- Código JavaScript -->
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#0c7cba">import</text>
+    <text x="80" y="30" font-family="monospace" font-size="14" fill="#333333">{ motion } from</text>
+    <text x="210" y="30" font-family="monospace" font-size="14" fill="#c41a16">'framer-motion'</text>
+    <text x="320" y="30" font-family="monospace" font-size="14" fill="#333333">;</text>
+    
+    <text x="20" y="60" font-family="monospace" font-size="14" fill="#0c7cba">const</text>
+    <text x="60" y="60" font-family="monospace" font-size="14" fill="#333333">variants = {</text>
+    <text x="40" y="90" font-family="monospace" font-size="14" fill="#333333">hidden: { opacity:</text>
+    <text x="150" y="90" font-family="monospace" font-size="14" fill="#1c00cf">0</text>
+    <text x="160" y="90" font-family="monospace" font-size="14" fill="#333333">, y:</text>
+    <text x="180" y="90" font-family="monospace" font-size="14" fill="#1c00cf">20</text>
+    <text x="200" y="90" font-family="monospace" font-size="14" fill="#333333">},</text>
+    <text x="40" y="120" font-family="monospace" font-size="14" fill="#333333">visible: {</text>
+    <text x="40" y="150" font-family="monospace" font-size="14" fill="#333333">  opacity:</text>
+    <text x="100" y="150" font-family="monospace" font-size="14" fill="#1c00cf">1</text>
+    <text x="110" y="150" font-family="monospace" font-size="14" fill="#333333">,</text>
+    <text x="40" y="180" font-family="monospace" font-size="14" fill="#333333">  y:</text>
+    <text x="60" y="180" font-family="monospace" font-size="14" fill="#1c00cf">0</text>
+    <text x="70" y="180" font-family="monospace" font-size="14" fill="#333333">,</text>
+    <text x="40" y="210" font-family="monospace" font-size="14" fill="#333333">  transition: {</text>
+    <text x="40" y="240" font-family="monospace" font-size="14" fill="#333333">    duration:</text>
+    <text x="120" y="240" font-family="monospace" font-size="14" fill="#1c00cf">0.5</text>
+    <text x="150" y="240" font-family="monospace" font-size="14" fill="#333333">,</text>
+    <text x="40" y="270" font-family="monospace" font-size="14" fill="#333333">    ease:</text>
+    <text x="90" y="270" font-family="monospace" font-size="14" fill="#c41a16">'easeOut'</text>
+    <text x="40" y="300" font-family="monospace" font-size="14" fill="#333333">  }</text>
+    <text x="30" y="330" font-family="monospace" font-size="14" fill="#333333">}</text>
+  </g>
+  
+  <!-- Animación visualizada -->
+  <g transform="translate(300, 150)">
+    <!-- Círculo animado -->
+    <circle cx="200" cy="70" r="40" fill="#ff4f5e">
+      <animate attributeName="cy" from="0" to="70" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0" to="1" dur="1s" fill="freeze" />
+    </circle>
+    
+    <!-- Líneas de movimiento -->
+    <line x1="160" y1="20" x2="160" y2="110" stroke="#dddddd" stroke-width="1" stroke-dasharray="5,5" />
+    <line x1="240" y1="20" x2="240" y2="110" stroke="#dddddd" stroke-width="1" stroke-dasharray="5,5" />
+    
+    <!-- Etiquetas de estado -->
+    <text x="150" y="15" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="end">hidden</text>
+    <text x="150" y="125" font-family="Arial, sans-serif" font-size="12" fill="#666666" text-anchor="end">visible</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#ff4f5e">Framer Motion</text>
+  <text x="400" y="395" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666666">Production-ready animations for React</text>
+</svg>

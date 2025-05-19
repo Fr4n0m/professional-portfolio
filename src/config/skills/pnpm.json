@@ -1,0 +1,26 @@
+{
+  "name": "PNPM",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://pnpm.io/",
+  "translations": {
+    "es": "Gestor de paquetes JavaScript rápido y eficiente en espacio. Reutiliza paquetes entre proyectos con enlaces simbólicos, ahorrando espacio en disco.",
+    "en": "Fast, disk space efficient JavaScript package manager. Reuses packages between projects via symlinks, saving disk space.",
+    "en-us": "Fast, disk space efficient JavaScript package manager. Reuses packages between projects via symlinks, saving disk space.",
+    "es-mx": "Gestor de paquetes JavaScript rápido y eficiente en espacio. Reutiliza paquetes entre proyectos con enlaces simbólicos, ahorrando espacio en disco.",
+    "pt": "Gerenciador de pacotes JavaScript rápido e eficiente em espaço em disco. Reutiliza pacotes entre projetos via symlinks, economizando espaço em disco.",
+    "fr": "Gestionnaire de paquets JavaScript rapide et économe en espace disque. Réutilise les paquets entre projets via des liens symboliques, économisant de l'espace disque.",
+    "de": "Schneller, speichereffizienter JavaScript-Paketmanager. Wiederverwendet Pakete zwischen Projekten über Symlinks und spart so Speicherplatz.",
+    "it": "Gestore di pacchetti JavaScript veloce ed efficiente nello spazio su disco. Riutilizza i pacchetti tra progetti tramite symlink, risparmiando spazio su disco.",
+    "zh": "快速、节省磁盘空间的JavaScript包管理器。通过符号链接在项目之间重用包，节省磁盘空间。",
+    "ja": "高速でディスク容量効率の良いJavaScriptパッケージマネージャー。シンボリックリンクを介してプロジェクト間でパッケージを再利用し、ディスク容量を節約します。",
+    "ru": "Быстрый, эффективный по дисковому пространству менеджер пакетов JavaScript. Повторно использует пакеты между проектами через символические ссылки, экономя дисковое пространство.",
+    "ar": "مدير حزم JavaScript سريع وفعال في مساحة القرص. يعيد استخدام الحزم بين المشاريع عبر الروابط الرمزية، مما يوفر مساحة القرص.",
+    "hi": "तेज, डिस्क स्पेस कुशल जावास्क्रिप्ट पैकेज मैनेजर। सिमलिंक्स के माध्यम से प्रोजेक्ट्स के बीच पैकेज का पुनः उपयोग करता है, डिस्क स्पेस बचाता है।",
+    "ko": "빠르고 디스크 공간 효율적인 JavaScript 패키지 관리자. 심볼릭 링크를 통해 프로젝트 간에 패키지를 재사용하여 디스크 공간을 절약합니다.",
+    "nl": "Snelle, schijfruimte-efficiënte JavaScript-pakketbeheerder. Hergebruikt pakketten tussen projecten via symlinks, waardoor schijfruimte wordt bespaard.",
+    "pl": "Szybki, wydajny pod względem miejsca na dysku menedżer pakietów JavaScript. Ponownie wykorzystuje pakiety między projektami za pomocą dowiązań symbolicznych, oszczędzając miejsce na dysku.",
+    "tr": "Hızlı, disk alanı verimli JavaScript paket yöneticisi. Sembolik bağlantılar aracılığıyla projeler arasında paketleri yeniden kullanarak disk alanından tasarruf sağlar.",
+    "hv": "Māzigon, tubys JavaScript sytedher. Iksan aōhar lī urne sikagossi hen dothragon, zālagon ubrar."
+  }
+}

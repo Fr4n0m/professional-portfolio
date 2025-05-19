@@ -1,0 +1,26 @@
+{
+  "name": "Git",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://git-scm.com/",
+  "translations": {
+    "es": "Sistema de control de versiones distribuido diseñado para manejar proyectos pequeños y grandes con velocidad y eficiencia.",
+    "en": "Distributed version control system designed to handle projects of all sizes with speed and efficiency.",
+    "en-us": "Distributed version control system designed to handle projects of all sizes with speed and efficiency.",
+    "es-mx": "Sistema de control de versiones distribuido diseñado para manejar proyectos pequeños y grandes con velocidad y eficiencia.",
+    "pt": "Sistema de controle de versão distribuído projetado para lidar com projetos de todos os tamanhos com velocidade e eficiência.",
+    "fr": "Système de contrôle de version distribué conçu pour gérer des projets de toutes tailles avec rapidité et efficacité.",
+    "de": "Verteiltes Versionskontrollsystem, das für die schnelle und effiziente Handhabung von Projekten aller Größenordnungen konzipiert ist.",
+    "it": "Sistema di controllo versione distribuito progettato per gestire progetti di tutte le dimensioni con velocità ed efficienza.",
+    "zh": "分布式版本控制系统，旨在以速度和效率处理各种规模的项目。",
+    "ja": "あらゆる規模のプロジェクトを速度と効率性で扱うために設計された分散型バージョン管理システム。",
+    "ru": "Распределенная система контроля версий, предназначенная для быстрой и эффективной обработки проектов любого размера.",
+    "ar": "نظام تحكم بالإصدارات موزع مصمم للتعامل مع المشاريع بجميع أحجامها بسرعة وكفاءة.",
+    "hi": "वितरित वर्शन कंट्रोल सिस्टम जो हर आकार के प्रोजेक्ट को स्पीड और कुशलता से संभालने के लिए डिज़ाइन किया गया है।",
+    "ko": "모든 크기의 프로젝트를 빠르고 효율적으로 처리하도록 설계된 분산 버전 제어 시스템.",
+    "nl": "Gedistribueerd versiebeheersysteem ontworpen om projecten van alle groottes met snelheid en efficiëntie te verwerken.",
+    "pl": "Rozproszony system kontroli wersji zaprojektowany do obsługi projektów każdej wielkości z szybkością i wydajnością.",
+    "tr": "Her boyuttaki projeyi hız ve verimlilikle ele almak için tasarlanmış dağıtılmış sürüm kontrol sistemi.",
+    "hv": "Vestragon grādāzma dubys udra gaomagon kehos māzigon se ubrar."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "MongoDB",
+  "category": "database",
+  "experience": 5,
+  "link": "https://www.mongodb.com/",
+  "translations": {
+    "es": "Base de datos NoSQL orientada a documentos, diseñada para almacenar grandes volúmenes de datos con esquemas flexibles. Ideal para aplicaciones modernas.",
+    "en": "Document-oriented NoSQL database designed for storing large volumes of data with flexible schemas. Ideal for modern applications.",
+    "en-us": "Document-oriented NoSQL database designed for storing large volumes of data with flexible schemas. Ideal for modern applications.",
+    "es-mx": "Base de datos NoSQL orientada a documentos, diseñada para almacenar grandes volúmenes de datos con esquemas flexibles. Ideal para aplicaciones modernas.",
+    "pt": "Banco de dados NoSQL orientado a documentos, projetado para armazenar grandes volumes de dados com esquemas flexíveis. Ideal para aplicações modernas.",
+    "fr": "Base de données NoSQL orientée document, conçue pour stocker de grands volumes de données avec des schémas flexibles. Idéal pour les applications modernes.",
+    "de": "Dokumentenorientierte NoSQL-Datenbank, die für die Speicherung großer Datenmengen mit flexiblen Schemas konzipiert ist. Ideal für moderne Anwendungen.",
+    "it": "Database NoSQL orientato ai documenti, progettato per memorizzare grandi volumi di dati con schemi flessibili. Ideale per applicazioni moderne.",
+    "zh": "面向文档的NoSQL数据库，设计用于存储具有灵活模式的大量数据。适合现代应用程序。",
+    "ja": "柔軟なスキーマで大量のデータを保存するように設計されたドキュメント指向のNoSQLデータベース。最新のアプリケーションに最適。",
+    "ru": "Документо-ориентированная NoSQL база данных, предназначенная для хранения больших объемов данных с гибкими схемами. Идеально подходит для современных приложений.",
+    "ar": "قاعدة بيانات NoSQL موجهة للمستندات، مصممة لتخزين كميات كبيرة من البيانات بمخططات مرنة. مثالية للتطبيقات الحديثة.",
+    "hi": "डॉक्यूमेंट-ओरिएंटेड NoSQL डेटाबेस जो लचीले स्कीमा के साथ बड़ी मात्रा में डेटा स्टोर करने के लिए डिज़ाइन किया गया है। आधुनिक एप्लिकेशन के लिए आदर्श।",
+    "ko": "유연한 스키마로 대량의 데이터를 저장하도록 설계된 문서 지향 NoSQL 데이터베이스. 현대적인 애플리케이션에 이상적입니다.",
+    "nl": "Documentgeoriënteerde NoSQL-database ontworpen voor het opslaan van grote hoeveelheden gegevens met flexibele schema's. Ideaal voor moderne applicaties.",
+    "pl": "Zorientowana na dokumenty baza danych NoSQL zaprojektowana do przechowywania dużych ilości danych z elastycznymi schematami. Idealna dla nowoczesnych aplikacji.",
+    "tr": "Esnek şemalarla büyük miktarda veri depolamak için tasarlanmış belge odaklı NoSQL veritabanı. Modern uygulamalar için idealdir.",
+    "hv": "Tubis NoSQL dombo gaomilaksir se iksan udra glaesoty tubys sīgrun. Mazōrety qrīdrossa sikagossi."
+  }
+}

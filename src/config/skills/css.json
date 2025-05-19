@@ -1,0 +1,26 @@
+{
+  "name": "CSS",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://www.w3.org/Style/CSS/",
+  "translations": {
+    "es": "Lenguaje de hojas de estilo para diseñar y dar formato visual a páginas web. Permite controlar la apariencia y el diseño.",
+    "en": "Style sheet language for designing and visually formatting web pages. Allows control over appearance and layout.",
+    "en-us": "Style sheet language for designing and visually formatting web pages. Allows control over appearance and layout.",
+    "es-mx": "Lenguaje de hojas de estilo para diseñar y dar formato visual a páginas web. Permite controlar la apariencia y el diseño.",
+    "pt": "Linguagem de folhas de estilo para projetar e formatar visualmente páginas web. Permite controlar a aparência e o layout.",
+    "fr": "Langage de feuilles de style pour concevoir et formater visuellement des pages web. Permet de contrôler l'apparence et la mise en page.",
+    "de": "Stylesheet-Sprache zum Gestalten und visuellen Formatieren von Webseiten. Ermöglicht die Kontrolle über Aussehen und Layout.",
+    "it": "Linguaggio di fogli di stile per progettare e formattare visivamente le pagine web. Consente il controllo dell'aspetto e del layout.",
+    "zh": "用于设计和视觉格式化网页的样式表语言。允许控制外观和布局。",
+    "ja": "ウェブページをデザインし視覚的に整形するためのスタイルシート言語。外観とレイアウトを制御可能。",
+    "ru": "Язык таблиц стилей для дизайна и визуального форматирования веб-страниц. Позволяет контролировать внешний вид и макет.",
+    "ar": "لغة أوراق الأنماط لتصميم صفحات الويب وتنسيقها بصرياً. تتيح التحكم في المظهر والتخطيط.",
+    "hi": "वेब पेज को डिजाइन करने और विज़ुअल फॉर्मेटिंग के लिए स्टाइल शीट भाषा। उपस्थिति और लेआउट पर नियंत्रण की अनुमति देता है।",
+    "ko": "웹 페이지를 디자인하고 시각적으로 포맷팅하기 위한 스타일시트 언어. 외관 및 레이아웃 제어를 가능하게 합니다.",
+    "nl": "Stijlbladtaal voor het ontwerpen en visueel formatteren van webpagina's. Maakt controle over uiterlijk en layout mogelijk.",
+    "pl": "Język arkuszy stylów do projektowania i formatowania wizualnego stron internetowych. Umożliwia kontrolę nad wyglądem i układem.",
+    "tr": "Web sayfalarını tasarlamak ve görsel olarak biçimlendirmek için stil sayfası dili. Görünüm ve düzen üzerinde kontrol sağlar.",
+    "hv": "Rhaenyō pāsȳghomy gaomilaksir sikudeptilaksir. Uhtyghir rhaenyrȳbroz mazvrȳpti."
+  }
+}

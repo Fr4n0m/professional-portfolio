@@ -1,0 +1,26 @@
+{
+  "name": "Deno",
+  "category": "backend",
+  "experience": 5,
+  "link": "https://deno.com/",
+  "translations": {
+    "es": "Entorno de ejecución para JavaScript y TypeScript basado en el motor V8, centrado en la seguridad y la productividad. Creado por el fundador original de Node.js.",
+    "en": "Runtime for JavaScript and TypeScript based on V8 engine, focused on security and productivity. Created by the original founder of Node.js.",
+    "en-us": "Runtime for JavaScript and TypeScript based on V8 engine, focused on security and productivity. Created by the original founder of Node.js.",
+    "es-mx": "Entorno de ejecución para JavaScript y TypeScript basado en el motor V8, centrado en la seguridad y la productividad. Creado por el fundador original de Node.js.",
+    "pt": "Runtime para JavaScript e TypeScript baseado no motor V8, com foco em segurança e produtividade. Criado pelo fundador original do Node.js.",
+    "fr": "Environnement d'exécution pour JavaScript et TypeScript basé sur le moteur V8, axé sur la sécurité et la productivité. Créé par le fondateur original de Node.js.",
+    "de": "Laufzeitumgebung für JavaScript und TypeScript basierend auf der V8-Engine, fokussiert auf Sicherheit und Produktivität. Erstellt vom ursprünglichen Gründer von Node.js.",
+    "it": "Runtime per JavaScript e TypeScript basato sul motore V8, incentrato sulla sicurezza e la produttività. Creato dal fondatore originale di Node.js.",
+    "zh": "基于V8引擎的JavaScript和TypeScript运行时，注重安全性和生产力。由Node.js的原始创始人创建。",
+    "ja": "V8エンジンに基づいたJavaScriptとTypeScriptのランタイム、セキュリティと生産性に焦点を当てています。Node.jsの元々の創設者によって作成されました。",
+    "ru": "Среда выполнения для JavaScript и TypeScript на базе движка V8, ориентированная на безопасность и продуктивность. Создана оригинальным основателем Node.js.",
+    "ar": "بيئة تشغيل لـ JavaScript و TypeScript استنادًا إلى محرك V8، مع التركيز على الأمان والإنتاجية. تم إنشاؤه بواسطة المؤسس الأصلي لـ Node.js.",
+    "hi": "V8 इंजन पर आधारित JavaScript और TypeScript के लिए रनटाइम, सुरक्षा और प्रोडक्टिविटी पर केंद्रित। Node.js के मूल संस्थापक द्वारा बनाया गया।",
+    "ko": "V8 엔진을 기반으로 한 JavaScript 및 TypeScript 런타임으로 보안 및 생산성에 중점을 둡니다. Node.js의 원래 창시자가 만들었습니다.",
+    "nl": "Runtime voor JavaScript en TypeScript gebaseerd op de V8-engine, gericht op veiligheid en productiviteit. Gemaakt door de oorspronkelijke oprichter van Node.js.",
+    "pl": "Środowisko uruchomieniowe dla JavaScript i TypeScript oparte na silniku V8, skoncentrowane na bezpieczeństwie i produktywności. Stworzone przez oryginalnego założyciela Node.js.",
+    "tr": "V8 motoruna dayalı, güvenlik ve üretkenliğe odaklanan JavaScript ve TypeScript için çalışma zamanı. Node.js'in orijinal kurucusu tarafından oluşturulmuştur.",
+    "hv": "JavaScript se TypeScript tubir V8 ropagon, tubys lī sytedhy se udyragon. Morghor qrīdrossa Node.js."
+  }
+}

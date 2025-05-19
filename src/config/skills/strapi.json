@@ -1,0 +1,26 @@
+{
+  "name": "Strapi",
+  "category": "database",
+  "experience": 5,
+  "link": "https://strapi.io/",
+  "translations": {
+    "es": "Sistema de gestión de contenido (CMS) headless de código abierto. Permite crear y gestionar fácilmente contenido con APIs personalizables.",
+    "en": "Open source headless content management system (CMS). Enables easy content creation and management with customizable APIs.",
+    "en-us": "Open source headless content management system (CMS). Enables easy content creation and management with customizable APIs.",
+    "es-mx": "Sistema de gestión de contenido (CMS) headless de código abierto. Permite crear y gestionar fácilmente contenido con APIs personalizables.",
+    "pt": "Sistema de gerenciamento de conteúdo (CMS) headless de código aberto. Permite fácil criação e gerenciamento de conteúdo com APIs personalizáveis.",
+    "fr": "Système de gestion de contenu (CMS) headless open source. Permet une création et une gestion faciles du contenu avec des API personnalisables.",
+    "de": "Open-Source-Headless-Content-Management-System (CMS). Ermöglicht einfache Erstellung und Verwaltung von Inhalten mit anpassbaren APIs.",
+    "it": "Sistema di gestione dei contenuti (CMS) headless open source. Consente la creazione e la gestione facile di contenuti con API personalizzabili.",
+    "zh": "开源无头内容管理系统（CMS）。通过可自定义的API实现轻松的内容创建和管理。",
+    "ja": "オープンソースのヘッドレスコンテンツ管理システム（CMS）。カスタマイズ可能なAPIを使用して、コンテンツの簡単な作成と管理を可能にします。",
+    "ru": "Система управления контентом (CMS) с открытым исходным кодом без интерфейса. Обеспечивает легкое создание и управление контентом с настраиваемыми API.",
+    "ar": "نظام إدارة محتوى (CMS) بدون رأس مفتوح المصدر. يمكّن من إنشاء وإدارة المحتوى بسهولة مع واجهات برمجة تطبيقات قابلة للتخصيص.",
+    "hi": "ओपन सोर्स हेडलेस कंटेंट मैनेजमेंट सिस्टम (CMS)। कस्टमाइज़ेबल API के साथ आसान कंटेंट क्रिएशन और मैनेजमेंट को सक्षम करता है।",
+    "ko": "오픈 소스 헤드리스 콘텐츠 관리 시스템(CMS). 사용자 정의 가능한 API로 쉬운 콘텐츠 생성 및 관리를 가능하게 합니다.",
+    "nl": "Open source headless content management systeem (CMS). Maakt eenvoudige contentcreatie en -beheer mogelijk met aanpasbare API's.",
+    "pl": "Otwarte źródło bezgłowy system zarządzania treścią (CMS). Umożliwia łatwe tworzenie i zarządzanie treścią z konfigurowalnymi API.",
+    "tr": "Açık kaynaklı başsız içerik yönetim sistemi (CMS). Özelleştirilebilir API'ler ile kolay içerik oluşturma ve yönetimi sağlar.",
+    "hv": "Tubir mele udra tolmy sytilīby (CMS). Sikagon ābrazdan vestragon se tolmy API."
+  }
+}

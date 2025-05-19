@@ -1,0 +1,66 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#f3f9fb" rx="10" ry="10"/>
+  
+  <!-- GraphQL Logo -->
+  <g transform="translate(80, 100)">
+    <svg width="128" height="128" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 50 300 L 300 50 L 550 300 L 300 550 Z" fill="#ffffff" stroke="#e535ab" stroke-width="24" />
+      <circle cx="50" cy="300" r="50" fill="#e535ab" />
+      <circle cx="300" cy="50" r="50" fill="#e535ab" />
+      <circle cx="550" cy="300" r="50" fill="#e535ab" />
+      <circle cx="300" cy="550" r="50" fill="#e535ab" />
+      <circle cx="300" cy="300" r="50" fill="#e535ab" />
+    </svg>
+  </g>
+  
+  <!-- GraphQL Query -->
+  <g transform="translate(240, 60)">
+    <rect width="500" height="280" rx="5" fill="#ffffff" stroke="#e1e4e8" stroke-width="1" />
+    
+    <!-- GraphQL Query -->
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#e535ab">query</text>
+    <text x="70" y="30" font-family="monospace" font-size="14" fill="#444444">GetUserProfile {</text>
+    
+    <text x="40" y="60" font-family="monospace" font-size="14" fill="#444444">user(id: "123") {</text>
+    <text x="60" y="90" font-family="monospace" font-size="14" fill="#444444">name</text>
+    <text x="60" y="120" font-family="monospace" font-size="14" fill="#444444">email</text>
+    <text x="60" y="150" font-family="monospace" font-size="14" fill="#444444">posts {</text>
+    <text x="80" y="180" font-family="monospace" font-size="14" fill="#444444">id</text>
+    <text x="80" y="210" font-family="monospace" font-size="14" fill="#444444">title</text>
+    <text x="80" y="240" font-family="monospace" font-size="14" fill="#444444">body</text>
+    <text x="60" y="270" font-family="monospace" font-size="14" fill="#444444">}</text>
+    <text x="40" y="300" font-family="monospace" font-size="14" fill="#444444">}</text>
+    <text x="20" y="330" font-family="monospace" font-size="14" fill="#444444">}</text>
+  </g>
+  
+  <!-- GraphQL Response -->
+  <g transform="translate(400, 60)">
+    <rect width="340" height="280" rx="5" fill="#fafafa" />
+    
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#444444">{</text>
+    <text x="40" y="60" font-family="monospace" font-size="14" fill="#444444">"data": {</text>
+    <text x="60" y="90" font-family="monospace" font-size="14" fill="#444444">"user": {</text>
+    <text x="80" y="120" font-family="monospace" font-size="14" fill="#009688">"name"</text>
+    <text x="135" y="120" font-family="monospace" font-size="14" fill="#444444">:</text>
+    <text x="150" y="120" font-family="monospace" font-size="14" fill="#4caf50">"John Doe"</text>
+    <text x="80" y="150" font-family="monospace" font-size="14" fill="#009688">"email"</text>
+    <text x="135" y="150" font-family="monospace" font-size="14" fill="#444444">:</text>
+    <text x="150" y="150" font-family="monospace" font-size="14" fill="#4caf50">"john@example.com"</text>
+    <text x="80" y="180" font-family="monospace" font-size="14" fill="#009688">"posts"</text>
+    <text x="135" y="180" font-family="monospace" font-size="14" fill="#444444">: [</text>
+    <text x="100" y="210" font-family="monospace" font-size="14" fill="#444444">{</text>
+    <text x="120" y="240" font-family="monospace" font-size="14" fill="#009688">"id"</text>
+    <text x="145" y="240" font-family="monospace" font-size="14" fill="#444444">:</text>
+    <text x="160" y="240" font-family="monospace" font-size="14" fill="#ff5722">"1"</text>
+    <text x="120" y="270" font-family="monospace" font-size="14" fill="#009688">"title"</text>
+    <text x="165" y="270" font-family="monospace" font-size="14" fill="#444444">:</text>
+    <text x="180" y="270" font-family="monospace" font-size="14" fill="#4caf50">"Hello GraphQL"</text>
+    <text x="100" y="300" font-family="monospace" font-size="14" fill="#444444">}</text>
+    <text x="80" y="330" font-family="monospace" font-size="14" fill="#444444">]</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#e535ab">GraphQL</text>
+  <text x="400" y="395" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666666">A query language for your API</text>
+</svg>

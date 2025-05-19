@@ -1,0 +1,26 @@
+{
+  "name": "Kali",
+  "category": "os",
+  "experience": 5,
+  "link": "https://www.kali.org/",
+  "translations": {
+    "es": "Distribución Linux basada en Debian, diseñada para pruebas de penetración y auditorías de seguridad. Incluye numerosas herramientas de seguridad informática.",
+    "en": "Debian-based Linux distribution designed for penetration testing and security auditing. Includes numerous computer security tools.",
+    "en-us": "Debian-based Linux distribution designed for penetration testing and security auditing. Includes numerous computer security tools.",
+    "es-mx": "Distribución Linux basada en Debian, diseñada para pruebas de penetración y auditorías de seguridad. Incluye numerosas herramientas de seguridad informática.",
+    "pt": "Distribuição Linux baseada em Debian, projetada para testes de penetração e auditoria de segurança. Inclui numerosas ferramentas de segurança de computadores.",
+    "fr": "Distribution Linux basée sur Debian, conçue pour les tests de pénétration et les audits de sécurité. Comprend de nombreux outils de sécurité informatique.",
+    "de": "Auf Debian basierende Linux-Distribution, die für Penetrationstests und Sicherheitsaudits entwickelt wurde. Enthält zahlreiche Computersicherheitstools.",
+    "it": "Distribuzione Linux basata su Debian, progettata per test di penetrazione e audit di sicurezza. Include numerosi strumenti di sicurezza informatica.",
+    "zh": "基于Debian的Linux发行版，专为渗透测试和安全审计而设计。包含众多计算机安全工具。",
+    "ja": "Debianベースのペネトレーションテストとセキュリティ監査のために設計されたLinuxディストリビューション。多数のコンピュータセキュリティツールを含みます。",
+    "ru": "Дистрибутив Linux на базе Debian, предназначенный для тестирования на проникновение и аудита безопасности. Включает множество инструментов компьютерной безопасности.",
+    "ar": "توزيعة لينكس مبنية على دبيان، مصممة لاختبار الاختراق وتدقيق الأمان. تتضمن العديد من أدوات أمان الكمبيوتر.",
+    "hi": "डेबियन पर आधारित लिनक्स डिस्ट्रीब्यूशन, पेनेट्रेशन टेस्टिंग और सिक्योरिटी ऑडिटिंग के लिए डिज़ाइन किया गया। कई कंप्यूटर सुरक्षा टूल शामिल हैं।",
+    "ko": "침투 테스트 및 보안 감사를 위해 설계된 Debian 기반 Linux 배포판. 수많은 컴퓨터 보안 도구가 포함되어 있습니다.",
+    "nl": "Op Debian gebaseerde Linux-distributie ontworpen voor penetratietests en beveiligingsaudits. Bevat talrijke computerbeveiliginsgtools.",
+    "pl": "Dystrybucja Linuksa oparta na Debianie, zaprojektowana do testów penetracyjnych i audytów bezpieczeństwa. Zawiera liczne narzędzia do bezpieczeństwa komputerowego.",
+    "tr": "Penetrasyon testi ve güvenlik denetimi için tasarlanmış, Debian tabanlı Linux dağıtımı. Çok sayıda bilgisayar güvenlik aracı içerir.",
+    "hv": "Debian iderenigon Linux ubrar syt sytedhy arlie se sytedhy. Iksan ñuhomy dohaerza sytedhy tembyr."
+  }
+}

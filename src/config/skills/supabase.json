@@ -1,0 +1,26 @@
+{
+  "name": "Supabase",
+  "category": "database",
+  "experience": 5,
+  "link": "https://supabase.com/",
+  "translations": {
+    "es": "Alternativa open source a Firebase que proporciona base de datos PostgreSQL, autenticación, API instantáneas, almacenamiento y funciones en tiempo real.",
+    "en": "Open source Firebase alternative providing PostgreSQL database, authentication, instant APIs, storage, and realtime functions.",
+    "en-us": "Open source Firebase alternative providing PostgreSQL database, authentication, instant APIs, storage, and realtime functions.",
+    "es-mx": "Alternativa open source a Firebase que proporciona base de datos PostgreSQL, autenticación, API instantáneas, almacenamiento y funciones en tiempo real.",
+    "pt": "Alternativa de código aberto ao Firebase que fornece banco de dados PostgreSQL, autenticação, APIs instantâneas, armazenamento e funções em tempo real.",
+    "fr": "Alternative open source à Firebase offrant une base de données PostgreSQL, une authentification, des API instantanées, du stockage et des fonctions en temps réel.",
+    "de": "Open-Source-Alternative zu Firebase, die PostgreSQL-Datenbank, Authentifizierung, sofortige APIs, Speicher und Echtzeit-Funktionen bietet.",
+    "it": "Alternativa open source a Firebase che fornisce database PostgreSQL, autenticazione, API istantanee, archiviazione e funzioni in tempo reale.",
+    "zh": "开源的Firebase替代品，提供PostgreSQL数据库、身份验证、即时API、存储和实时功能。",
+    "ja": "PostgreSQLデータベース、認証、インスタントAPI、ストレージ、リアルタイム機能を提供するオープンソースのFirebase代替。",
+    "ru": "Открытая альтернатива Firebase, предоставляющая базу данных PostgreSQL, аутентификацию, мгновенные API, хранилище и функции реального времени.",
+    "ar": "بديل مفتوح المصدر لـ Firebase يوفر قاعدة بيانات PostgreSQL والمصادقة وواجهات برمجة التطبيقات الفورية والتخزين والوظائف في الوقت الفعلي.",
+    "hi": "फायरबेस का ओपन सोर्स विकल्प जो PostgreSQL डेटाबेस, प्रमाणीकरण, तत्काल API, स्टोरेज और रीयलटाइम फंक्शंस प्रदान करता है।",
+    "ko": "PostgreSQL 데이터베이스, 인증, 즉시 API, 스토리지 및 실시간 기능을 제공하는 오픈 소스 Firebase 대안.",
+    "nl": "Open source Firebase-alternatief dat PostgreSQL-database, authenticatie, instant API's, opslag en realtime functies biedt.",
+    "pl": "Otwartoźródłowa alternatywa dla Firebase zapewniająca bazę danych PostgreSQL, uwierzytelnianie, natychmiastowe API, przechowywanie i funkcje w czasie rzeczywistym.",
+    "tr": "PostgreSQL veritabanı, kimlik doğrulama, anında API'ler, depolama ve gerçek zamanlı işlevler sağlayan açık kaynaklı Firebase alternatifi.",
+    "hv": "Firebase sikagon zȳhe ubrar PostgreSQL tubis, henujagon, API, aōghar, se lȳsenigon gundyr."
+  }
+}

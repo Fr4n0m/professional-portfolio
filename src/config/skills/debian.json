@@ -1,0 +1,26 @@
+{
+  "name": "Debian",
+  "category": "os",
+  "experience": 5,
+  "link": "https://www.debian.org/index.es.html",
+  "translations": {
+    "es": "Sistema operativo Linux libre, estable y seguro. Base para muchas otras distribuciones, conocido por su fiabilidad y amplio repositorio de software.",
+    "en": "Free, stable, and secure Linux operating system. Foundation for many other distributions, known for its reliability and extensive software repository.",
+    "en-us": "Free, stable, and secure Linux operating system. Foundation for many other distributions, known for its reliability and extensive software repository.",
+    "es-mx": "Sistema operativo Linux libre, estable y seguro. Base para muchas otras distribuciones, conocido por su fiabilidad y amplio repositorio de software.",
+    "pt": "Sistema operacional Linux livre, estável e seguro. Base para muitas outras distribuições, conhecido por sua confiabilidade e extenso repositório de software.",
+    "fr": "Système d'exploitation Linux libre, stable et sécurisé. Base de nombreuses autres distributions, connu pour sa fiabilité et son vaste référentiel de logiciels.",
+    "de": "Freies, stabiles und sicheres Linux-Betriebssystem. Grundlage für viele andere Distributionen, bekannt für seine Zuverlässigkeit und umfangreiche Software-Repository.",
+    "it": "Sistema operativo Linux libero, stabile e sicuro. Base per molte altre distribuzioni, noto per la sua affidabilità e l'ampio repository di software.",
+    "zh": "免费、稳定和安全的Linux操作系统。许多其他发行版的基础，以其可靠性和广泛的软件库而闻名。",
+    "ja": "自由で安定した安全なLinuxオペレーティングシステム。多くの他のディストリビューションの基盤であり、その信頼性と広範なソフトウェアリポジトリで知られています。",
+    "ru": "Свободная, стабильная и безопасная операционная система Linux. Основа для многих других дистрибутивов, известная своей надежностью и обширным репозиторием программного обеспечения.",
+    "ar": "نظام تشغيل لينكس حر ومستقر وآمن. أساس للعديد من التوزيعات الأخرى، معروف بموثوقيته ومستودع البرمجيات الواسع.",
+    "hi": "मुफ्त, स्थिर, और सुरक्षित लिनक्स ऑपरेटिंग सिस्टम। कई अन्य डिस्ट्रीब्यूशन के लिए आधार, अपनी विश्वसनीयता और व्यापक सॉफ्टवेयर रिपॉजिटरी के लिए जाना जाता है।",
+    "ko": "무료, 안정적이고 안전한 Linux 운영 체제. 다른 많은 배포판의 기반으로, 신뢰성과 광범위한 소프트웨어 저장소로 알려져 있습니다.",
+    "nl": "Vrij, stabiel en veilig Linux-besturingssysteem. Basis voor veel andere distributies, bekend om zijn betrouwbaarheid en uitgebreide softwarerepository.",
+    "pl": "Darmowy, stabilny i bezpieczny system operacyjny Linux. Podstawa wielu innych dystrybucji, znana ze swojej niezawodności i obszernego repozytorium oprogramowania.",
+    "tr": "Özgür, kararlı ve güvenli Linux işletim sistemi. Birçok diğer dağıtımın temeli, güvenilirliği ve geniş yazılım deposu ile tanınır.",
+    "hv": "Mele, sytedhy, se tubys Linux gundytyr. Tubir lī ñuhomy urnen, tubys lī sydivity se tubys aōghar sikagossi."
+  }
+}

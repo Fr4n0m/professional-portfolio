@@ -1,0 +1,26 @@
+{
+  "name": "Astro",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://astro.build/",
+  "translations": {
+    "es": "Framework web para crear sitios rápidos con menor JavaScript. Permite usar componentes de múltiples frameworks y renderizado híbrido.",
+    "en": "Web framework for building fast sites with less JavaScript. Allows using components from multiple frameworks and hybrid rendering.",
+    "en-us": "Web framework for building fast sites with less JavaScript. Allows using components from multiple frameworks and hybrid rendering.",
+    "es-mx": "Framework web para crear sitios rápidos con menor JavaScript. Permite usar componentes de múltiples frameworks y renderizado híbrido.",
+    "pt": "Framework web para criar sites rápidos com menos JavaScript. Permite usar componentes de múltiplos frameworks e renderização híbrida.",
+    "fr": "Framework web pour créer des sites rapides avec moins de JavaScript. Permet d'utiliser des composants de plusieurs frameworks et un rendu hybride.",
+    "de": "Web-Framework zum Erstellen schneller Websites mit weniger JavaScript. Ermöglicht die Verwendung von Komponenten aus mehreren Frameworks und hybrides Rendering.",
+    "it": "Framework web per creare siti veloci con meno JavaScript. Consente l'utilizzo di componenti da più framework e rendering ibrido.",
+    "zh": "用于构建使用更少JavaScript的快速网站的Web框架。允许使用来自多个框架的组件和混合渲染。",
+    "ja": "より少ないJavaScriptで高速サイトを構築するためのWebフレームワーク。複数のフレームワークからのコンポーネントとハイブリッドレンダリングの使用が可能。",
+    "ru": "Веб-фреймворк для создания быстрых сайтов с меньшим количеством JavaScript. Позволяет использовать компоненты из нескольких фреймворков и гибридный рендеринг.",
+    "ar": "إطار عمل للويب لإنشاء مواقع سريعة مع استخدام JavaScript أقل. يسمح باستخدام مكونات من أطر عمل متعددة وعرض هجين.",
+    "hi": "कम जावास्क्रिप्ट के साथ तेज साइट्स बनाने के लिए वेब फ्रेमवर्क। कई फ्रेमवर्क से कॉम्पोनेंट्स का उपयोग और हाइब्रिड रेंडरिंग की अनुमति देता है।",
+    "ko": "적은 JavaScript로 빠른 사이트를 구축하기 위한 웹 프레임워크. 여러 프레임워크의 구성 요소 사용과 하이브리드 렌더링을 허용합니다.",
+    "nl": "Webframework voor het bouwen van snelle sites met minder JavaScript. Maakt het gebruik van componenten uit meerdere frameworks en hybride rendering mogelijk.",
+    "pl": "Framework internetowy do tworzenia szybkich stron przy użyciu mniejszej ilości JavaScriptu. Umożliwia używanie komponentów z wielu frameworków i hybrydowe renderowanie.",
+    "tr": "Daha az JavaScript ile hızlı siteler oluşturmak için web framework'ü. Birden fazla framework'ten bileşen kullanımına ve hibrit işlemeye olanak tanır.",
+    "hv": "Gaomagon tubys lī sikagon karos vestragon Javaskrytyr. Udra iksan zȳhe iderenigon zȳhon tolmiotyr."
+  }
+}

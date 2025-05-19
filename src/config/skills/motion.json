@@ -1,0 +1,26 @@
+{
+  "name": "Motion",
+  "category": "frontend",
+  "experience": 5,
+  "link": "https://www.framer.com/motion/",
+  "translations": {
+    "es": "Biblioteca de animaciones de React que simplifica la creación de transiciones fluidas e interacciones. Proporciona una API declarativa para animaciones complejas.",
+    "en": "React animation library that simplifies creating fluid transitions and interactions. Provides a declarative API for complex animations.",
+    "en-us": "React animation library that simplifies creating fluid transitions and interactions. Provides a declarative API for complex animations.",
+    "es-mx": "Biblioteca de animaciones de React que simplifica la creación de transiciones fluidas e interacciones. Proporciona una API declarativa para animaciones complejas.",
+    "pt": "Biblioteca de animação React que simplifica a criação de transições e interações fluidas. Fornece uma API declarativa para animações complexas.",
+    "fr": "Bibliothèque d'animation React qui simplifie la création de transitions et d'interactions fluides. Fournit une API déclarative pour des animations complexes.",
+    "de": "React-Animationsbibliothek, die die Erstellung flüssiger Übergänge und Interaktionen vereinfacht. Bietet eine deklarative API für komplexe Animationen.",
+    "it": "Libreria di animazione React che semplifica la creazione di transizioni e interazioni fluide. Fornisce un'API dichiarativa per animazioni complesse.",
+    "zh": "React动画库，简化了流畅过渡和交互的创建。为复杂动画提供声明式API。",
+    "ja": "流体的な遷移とインタラクションの作成を簡素化するReactアニメーションライブラリ。複雑なアニメーションのための宣言的なAPIを提供します。",
+    "ru": "Библиотека анимаций React, упрощающая создание плавных переходов и взаимодействий. Предоставляет декларативный API для сложных анимаций.",
+    "ar": "مكتبة رسوم متحركة React تبسط إنشاء انتقالات وتفاعلات سلسة. توفر واجهة برمجة تطبيقات تصريحية للرسوم المتحركة المعقدة.",
+    "hi": "React एनिमेशन लाइब्रेरी जो तरल ट्रांज़िशन और इंटरैक्शन बनाना सरल बनाती है। जटिल एनिमेशन के लिए घोषणात्मक API प्रदान करती है।",
+    "ko": "유동적인 전환 및 상호 작용을 쉽게 만들 수 있는 React 애니메이션 라이브러리. 복잡한 애니메이션을 위한 선언적 API를 제공합니다.",
+    "nl": "React-animatiebibliotheek die het maken van vloeiende overgangen en interacties vereenvoudigt. Biedt een declaratieve API voor complexe animaties.",
+    "pl": "Biblioteka animacji React, która upraszcza tworzenie płynnych przejść i interakcji. Zapewnia deklaratywne API dla złożonych animacji.",
+    "tr": "Akıcı geçişler ve etkileşimler oluşturmayı basitleştiren React animasyon kütüphanesi. Karmaşık animasyonlar için bildirimsel bir API sağlar.",
+    "hv": "React tubys hae sikagon vaoreznuni uvegon se iderbagon. Sikagon tubys lī kostōbi vaoreznuni."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "MySQL",
+  "category": "database",
+  "experience": 5,
+  "link": "https://www.mysql.com/",
+  "translations": {
+    "es": "Sistema de gestión de bases de datos relacional de código abierto más popular del mundo. Conocido por su fiabilidad, rendimiento y facilidad de uso.",
+    "en": "World's most popular open-source relational database management system. Known for its reliability, performance, and ease of use.",
+    "en-us": "World's most popular open-source relational database management system. Known for its reliability, performance, and ease of use.",
+    "es-mx": "Sistema de gestión de bases de datos relacional de código abierto más popular del mundo. Conocido por su fiabilidad, rendimiento y facilidad de uso.",
+    "pt": "Sistema de gerenciamento de banco de dados relacional de código aberto mais popular do mundo. Conhecido por sua confiabilidade, desempenho e facilidade de uso.",
+    "fr": "Système de gestion de base de données relationnelle open source le plus populaire au monde. Connu pour sa fiabilité, ses performances et sa facilité d'utilisation.",
+    "de": "Das weltweit beliebteste Open-Source-Relationale Datenbankmanagementsystem. Bekannt für seine Zuverlässigkeit, Leistung und Benutzerfreundlichkeit.",
+    "it": "Il sistema di gestione di database relazionali open source più popolare al mondo. Noto per la sua affidabilità, prestazioni e facilità d'uso.",
+    "zh": "世界上最流行的开源关系数据库管理系统。以其可靠性、性能和易用性而闻名。",
+    "ja": "世界で最も人気のあるオープンソースのリレーショナルデータベース管理システム。その信頼性、パフォーマンス、使いやすさで知られています。",
+    "ru": "Самая популярная в мире система управления реляционными базами данных с открытым исходным кодом. Известна своей надежностью, производительностью и простотой использования.",
+    "ar": "نظام إدارة قواعد البيانات العلائقية مفتوح المصدر الأكثر شعبية في العالم. معروف بموثوقيته وأدائه وسهولة استخدامه.",
+    "hi": "दुनिया की सबसे लोकप्रिय ओपन-सोर्स रिलेशनल डेटाबेस मैनेजमेंट सिस्टम। अपनी विश्वसनीयता, प्रदर्शन और उपयोग में आसानी के लिए जाना जाता है।",
+    "ko": "세계에서 가장 인기 있는 오픈 소스 관계형 데이터베이스 관리 시스템. 신뢰성, 성능 및 사용 편의성으로 알려져 있습니다.",
+    "nl": "Meest populaire open-source relationeel databasebeheersysteem ter wereld. Bekend om zijn betrouwbaarheid, prestaties en gebruiksgemak.",
+    "pl": "Najpopularniejszy na świecie system zarządzania relacyjnymi bazami danych open source. Znany ze swojej niezawodności, wydajności i łatwości użytkowania.",
+    "tr": "Dünyanın en popüler açık kaynaklı ilişkisel veritabanı yönetim sistemi. Güvenilirliği, performansı ve kullanım kolaylığı ile tanınır.",
+    "hv": "Tubis sytilīby aōghar vykun mīsāri. Tubys lī sydivity, tolmio, se māzilare."
+  }
+}

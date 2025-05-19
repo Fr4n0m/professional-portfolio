@@ -1,0 +1,26 @@
+{
+  "name": "C++",
+  "category": "tools",
+  "experience": 5,
+  "link": "https://isocpp.org/",
+  "translations": {
+    "es": "Lenguaje de programación de propósito general con control a nivel de sistema. Ideal para aplicaciones de alto rendimiento, sistemas embebidos y videojuegos.",
+    "en": "General-purpose programming language with system-level control. Ideal for high-performance applications, embedded systems, and video games.",
+    "en-us": "General-purpose programming language with system-level control. Ideal for high-performance applications, embedded systems, and video games.",
+    "es-mx": "Lenguaje de programación de propósito general con control a nivel de sistema. Ideal para aplicaciones de alto rendimiento, sistemas embebidos y videojuegos.",
+    "pt": "Linguagem de programação de propósito geral com controle em nível de sistema. Ideal para aplicações de alto desempenho, sistemas embarcados e jogos de vídeo.",
+    "fr": "Langage de programmation à usage général avec contrôle au niveau du système. Idéal pour les applications haute performance, les systèmes embarqués et les jeux vidéo.",
+    "de": "Allzweck-Programmiersprache mit Systemkontrolle. Ideal für leistungsstarke Anwendungen, eingebettete Systeme und Videospiele.",
+    "it": "Linguaggio di programmazione general-purpose con controllo a livello di sistema. Ideale per applicazioni ad alte prestazioni, sistemi embedded e videogiochi.",
+    "zh": "具有系统级控制的通用编程语言。适用于高性能应用程序、嵌入式系统和视频游戏。",
+    "ja": "システムレベルの制御を備えた汎用プログラミング言語。高性能アプリケーション、組み込みシステム、ビデオゲームに最適。",
+    "ru": "Язык программирования общего назначения с системным уровнем контроля. Идеален для высокопроизводительных приложений, встраиваемых систем и видеоигр.",
+    "ar": "لغة برمجة متعددة الأغراض مع التحكم على مستوى النظام. مثالية للتطبيقات عالية الأداء والأنظمة المدمجة وألعاب الفيديو.",
+    "hi": "सिस्टम-लेवल कंट्रोल के साथ जनरल-परपस प्रोग्रामिंग भाषा। हाई-परफॉर्मेंस एप्लिकेशन, एम्बेडेड सिस्टम और वीडियो गेम के लिए आदर्श।",
+    "ko": "시스템 수준 제어가 가능한 범용 프로그래밍 언어. 고성능 애플리케이션, 임베디드 시스템 및 비디오 게임에 이상적입니다.",
+    "nl": "General-purpose programmeertaal met controle op systeemniveau. Ideaal voor high-performance applicaties, embedded systemen en videogames.",
+    "pl": "Język programowania ogólnego przeznaczenia z kontrolą na poziomie systemu. Idealny do aplikacji o wysokiej wydajności, systemów wbudowanych i gier wideo.",
+    "tr": "Sistem düzeyinde kontrol ile genel amaçlı programlama dili. Yüksek performanslı uygulamalar, gömülü sistemler ve video oyunları için idealdir.",
+    "hv": "Rhaenyō kodātyr vestragon sikudeptor tubys lī kostōbi. Mazōrety lī tolmio sikagossi, qelis tubys, se saerin."
+  }
+}

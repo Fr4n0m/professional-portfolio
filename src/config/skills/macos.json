@@ -1,0 +1,26 @@
+{
+  "name": "MacOS",
+  "category": "os",
+  "experience": 5,
+  "link": "https://www.apple.com/es/macos/macos-sequoia/",
+  "translations": {
+    "es": "Sistema operativo de Apple para ordenadores Mac. Conocido por su estabilidad, seguridad y experiencia de usuario pulida.",
+    "en": "Apple operating system for Mac computers. Known for its stability, security, and polished user experience.",
+    "en-us": "Apple operating system for Mac computers. Known for its stability, security, and polished user experience.",
+    "es-mx": "Sistema operativo de Apple para ordenadores Mac. Conocido por su estabilidad, seguridad y experiencia de usuario pulida.",
+    "pt": "Sistema operacional da Apple para computadores Mac. Conhecido por sua estabilidade, segurança e experiência de usuário refinada.",
+    "fr": "Système d'exploitation Apple pour ordinateurs Mac. Connu pour sa stabilité, sa sécurité et son expérience utilisateur soignée.",
+    "de": "Apple-Betriebssystem für Mac-Computer. Bekannt für seine Stabilität, Sicherheit und polierte Benutzererfahrung.",
+    "it": "Sistema operativo Apple per computer Mac. Noto per la sua stabilità, sicurezza ed esperienza utente raffinata.",
+    "zh": "Apple为Mac电脑开发的操作系统。以其稳定性、安全性和精致的用户体验而闻名。",
+    "ja": "Macコンピューター向けのAppleオペレーティングシステム。その安定性、セキュリティ、洗練されたユーザー体験で知られています。",
+    "ru": "Операционная система Apple для компьютеров Mac. Известна своей стабильностью, безопасностью и отточенным пользовательским опытом.",
+    "ar": "نظام تشغيل Apple لأجهزة كمبيوتر Mac. معروف باستقراره وأمانه وتجربة المستخدم المصقولة.",
+    "hi": "मैक कंप्यूटर के लिए एप्पल ऑपरेटिंग सिस्टम। अपनी स्थिरता, सुरक्षा और परिष्कृत उपयोगकर्ता अनुभव के लिए जाना जाता है।",
+    "ko": "Mac 컴퓨터용 Apple 운영 체제. 안정성, 보안 및 세련된 사용자 경험으로 유명합니다.",
+    "nl": "Apple-besturingssysteem voor Mac-computers. Bekend om zijn stabiliteit, veiligheid en gepolijste gebruikerservaring.",
+    "pl": "System operacyjny Apple dla komputerów Mac. Znany ze stabilności, bezpieczeństwa i dopracowanego doświadczenia użytkownika.",
+    "tr": "Mac bilgisayarlar için Apple işletim sistemi. Kararlılığı, güvenliği ve cilalı kullanıcı deneyimi ile tanınır.",
+    "hv": "Apple gundytyr lī Mac dohaerza. Sikagon sytedhy se syndrōñoty."
+  }
+}

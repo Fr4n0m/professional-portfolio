@@ -1,0 +1,63 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#13151a" rx="10" ry="10"/>
+  
+  <!-- Astro Logo -->
+  <g transform="translate(80, 100)">
+    <svg width="128" height="128" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <path d="M198.594 78.947a78.911 78.911 0 0 0-19.998-28.654 80.905 80.905 0 0 0-55.412-21.48c-36.865 0-69.133 24.812-78.853 60.244a81.521 81.521 0 0 0 17.117 76.418l2.2 2.59a81.224 81.224 0 0 0 51.946 28.911 80.373 80.373 0 0 0 55.17-9.782 79.937 79.937 0 0 0 33.978-41.104 81.2 81.2 0 0 0-6.148-67.143Z" fill="#fff" fill-opacity=".2"/>
+      <path d="m67.587 223.206 41.436-41.436a13.543 13.543 0 0 0 8.684 3.125c7.492 0 13.569-6.077 13.569-13.569 0-7.493-6.077-13.57-13.57-13.57s-13.569 6.077-13.569 13.57c0 3.025.994 5.817 2.66 8.073L66.12 220.076a1.591 1.591 0 0 0 .43 2.613c.31.172.667.262 1.038.262a1.59 1.59 0 0 0 0-3.181.423.423 0 0 1-.424-.424c0-.36.198-.68.423-.865Z" fill="#FF5D01"/>
+      <path d="M187.309 114.038c-1.48-4.53-6.357-7.019-10.888-5.538-4.53 1.48-7.019 6.358-5.538 10.889L193.56 189.38a8.885 8.885 0 0 0 8.414 6.01c.82 0 1.64-.115 2.448-.347 4.53-1.48 7.019-6.357 5.538-10.888l-22.652-70.119h.001Zm-28.476-9.169a8.316 8.316 0 0 0-2.47-3.218 8.337 8.337 0 0 0-11.497 2.467l-42.8 73.683a8.343 8.343 0 0 0 2.467 11.498 8.313 8.313 0 0 0 4.518 1.332 8.35 8.35 0 0 0 6.979-3.8l42.8-73.683a8.337 8.337 0 0 0 .003-8.279Z" fill="#FF5D01"/>
+    </svg>
+  </g>
+  
+  <!-- Código Astro -->
+  <g transform="translate(240, 60)">
+    <rect width="500" height="280" rx="5" fill="#1e1e1e" />
+    
+    <!-- Código Astro -->
+    <text x="20" y="30" font-family="monospace" font-size="14" fill="#c586c0">---</text>
+    <text x="20" y="60" font-family="monospace" font-size="14" fill="#9cdcfe">import</text>
+    <text x="80" y="60" font-family="monospace" font-size="14" fill="#dcdcaa">Layout</text>
+    <text x="130" y="60" font-family="monospace" font-size="14" fill="#9cdcfe">from</text>
+    <text x="165" y="60" font-family="monospace" font-size="14" fill="#ce9178">'../layouts/Layout.astro'</text>
+    <text x="345" y="60" font-family="monospace" font-size="14" fill="#d4d4d4">;</text>
+    
+    <text x="20" y="90" font-family="monospace" font-size="14" fill="#9cdcfe">import</text>
+    <text x="80" y="90" font-family="monospace" font-size="14" fill="#dcdcaa">Card</text>
+    <text x="115" y="90" font-family="monospace" font-size="14" fill="#9cdcfe">from</text>
+    <text x="150" y="90" font-family="monospace" font-size="14" fill="#ce9178">'../components/Card.astro'</text>
+    <text x="335" y="90" font-family="monospace" font-size="14" fill="#d4d4d4">;</text>
+    
+    <text x="20" y="120" font-family="monospace" font-size="14" fill="#569cd6">const</text>
+    <text x="60" y="120" font-family="monospace" font-size="14" fill="#4fc1ff">pageTitle</text>
+    <text x="125" y="120" font-family="monospace" font-size="14" fill="#d4d4d4">=</text>
+    <text x="135" y="120" font-family="monospace" font-size="14" fill="#ce9178">'Welcome to Astro'</text>
+    <text x="280" y="120" font-family="monospace" font-size="14" fill="#d4d4d4">;</text>
+    <text x="20" y="150" font-family="monospace" font-size="14" fill="#c586c0">---</text>
+    
+    <text x="20" y="180" font-family="monospace" font-size="14" fill="#808080">&lt;Layout</text>
+    <text x="80" y="180" font-family="monospace" font-size="14" fill="#9cdcfe">title</text>
+    <text x="115" y="180" font-family="monospace" font-size="14" fill="#d4d4d4">=</text>
+    <text x="125" y="180" font-family="monospace" font-size="14" fill="#ce9178">{pageTitle}</text>
+    <text x="185" y="180" font-family="monospace" font-size="14" fill="#808080">&gt;</text>
+    
+    <text x="40" y="210" font-family="monospace" font-size="14" fill="#808080">&lt;main&gt;</text>
+    <text x="60" y="240" font-family="monospace" font-size="14" fill="#808080">&lt;h1&gt;</text>
+    <text x="90" y="240" font-family="monospace" font-size="14" fill="#d4d4d4">{pageTitle}</text>
+    <text x="165" y="240" font-family="monospace" font-size="14" fill="#808080">&lt;/h1&gt;</text>
+    
+    <text x="60" y="270" font-family="monospace" font-size="14" fill="#808080">&lt;Card</text>
+    <text x="100" y="270" font-family="monospace" font-size="14" fill="#9cdcfe">title</text>
+    <text x="135" y="270" font-family="monospace" font-size="14" fill="#d4d4d4">=</text>
+    <text x="145" y="270" font-family="monospace" font-size="14" fill="#ce9178">"Getting Started"</text>
+    <text x="280" y="270" font-family="monospace" font-size="14" fill="#808080">/&gt;</text>
+    
+    <text x="40" y="300" font-family="monospace" font-size="14" fill="#808080">&lt;/main&gt;</text>
+    <text x="20" y="330" font-family="monospace" font-size="14" fill="#808080">&lt;/Layout&gt;</text>
+  </g>
+  
+  <!-- Texto Explicativo -->
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="#ffffff">Astro</text>
+  <text x="400" y="395" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#FF5D01">Build faster websites with less client-side JavaScript</text>
+</svg>

@@ -1,10 +1,33 @@
-<!-- Esta será una imagen SVG de placeholder que se usará cuando no hay una captura de pantalla específica -->
-<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="400" fill="#f0f2f5" />
-  <text x="400" y="200" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#666">
-    Vista previa de la tecnología
-  </text>
-  <text x="400" y="230" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#999">
-    Imagen de ejemplo
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#f8f9fa" rx="10" ry="10"/>
+  
+  <!-- Imagen genérica por defecto -->
+  <g fill="#64748b" opacity="0.7">
+    <!-- Marco principal -->
+    <rect x="100" y="80" width="600" height="240" rx="8" opacity="0.2"/>
+    
+    <!-- Elementos gráficos genéricos -->
+    <rect x="150" y="120" width="200" height="160" rx="5" opacity="0.4"/>
+    <rect x="400" y="120" width="250" height="80" rx="5" opacity="0.5"/>
+    <rect x="400" y="220" width="250" height="60" rx="5" opacity="0.3"/>
+    
+    <!-- Símbolos de código/tecnología -->
+    <rect x="170" y="140" width="160" height="15" rx="2" opacity="0.7"/>
+    <rect x="170" y="165" width="120" height="15" rx="2" opacity="0.6"/>
+    <rect x="170" y="190" width="140" height="15" rx="2" opacity="0.7"/>
+    <rect x="170" y="215" width="100" height="15" rx="2" opacity="0.6"/>
+    <rect x="170" y="240" width="130" height="15" rx="2" opacity="0.7"/>
+    
+    <rect x="420" y="140" width="210" height="15" rx="2" opacity="0.7"/>
+    <rect x="420" y="165" width="180" height="15" rx="2" opacity="0.6"/>
+    
+    <rect x="420" y="235" width="210" height="15" rx="2" opacity="0.6"/>
+    <rect x="420" y="260" width="160" height="15" rx="2" opacity="0.7"/>
+  </g>
+  
+  <!-- Elemento de código/tecnoloía -->
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#64748b">
+    Technology
   </text>
 </svg>
