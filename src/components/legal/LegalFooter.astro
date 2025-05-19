@@ -13,7 +13,19 @@ const translations = {
     termsOfUse: "Términos de Uso",
     managePreferences: "Gestionar preferencias"
   },
+  "es-mx": {
+    privacyPolicy: "Política de Privacidad",
+    cookiesPolicy: "Política de Cookies",
+    termsOfUse: "Términos de Uso",
+    managePreferences: "Administrar preferencias"
+  },
   en: {
+    privacyPolicy: "Privacy Policy",
+    cookiesPolicy: "Cookies Policy",
+    termsOfUse: "Terms of Use",
+    managePreferences: "Manage preferences"
+  },
+  "en-us": {
     privacyPolicy: "Privacy Policy",
     cookiesPolicy: "Cookies Policy",
     termsOfUse: "Terms of Use",
@@ -24,11 +36,89 @@ const translations = {
     cookiesPolicy: "Política de Cookies",
     termsOfUse: "Termos de Uso",
     managePreferences: "Gerenciar preferências"
+  },
+  fr: {
+    privacyPolicy: "Politique de Confidentialité",
+    cookiesPolicy: "Politique de Cookies",
+    termsOfUse: "Conditions d'Utilisation",
+    managePreferences: "Gérer les préférences"
+  },
+  de: {
+    privacyPolicy: "Datenschutzrichtlinie",
+    cookiesPolicy: "Cookie-Richtlinie",
+    termsOfUse: "Nutzungsbedingungen",
+    managePreferences: "Einstellungen verwalten"
+  },
+  it: {
+    privacyPolicy: "Politica sulla Privacy",
+    cookiesPolicy: "Politica sui Cookie",
+    termsOfUse: "Termini di Utilizzo",
+    managePreferences: "Gestire le preferenze"
+  },
+  zh: {
+    privacyPolicy: "隐私政策",
+    cookiesPolicy: "Cookie 政策",
+    termsOfUse: "使用条款",
+    managePreferences: "管理偏好设置"
+  },
+  ja: {
+    privacyPolicy: "プライバシーポリシー",
+    cookiesPolicy: "Cookie ポリシー",
+    termsOfUse: "利用規約",
+    managePreferences: "設定を管理する"
+  },
+  ru: {
+    privacyPolicy: "Политика конфиденциальности",
+    cookiesPolicy: "Политика в отношении файлов cookie",
+    termsOfUse: "Условия использования",
+    managePreferences: "Управление настройками"
+  },
+  ar: {
+    privacyPolicy: "سياسة الخصوصية",
+    cookiesPolicy: "سياسة ملفات تعريف الارتباط",
+    termsOfUse: "شروط الاستخدام",
+    managePreferences: "إدارة التفضيلات"
+  },
+  hi: {
+    privacyPolicy: "निजता नीति",
+    cookiesPolicy: "कुकीज़ नीति",
+    termsOfUse: "उपयोग की शर्तें",
+    managePreferences: "प्राथमिकताएँ प्रबंधित करें"
+  },
+  ko: {
+    privacyPolicy: "개인정보 보호정책",
+    cookiesPolicy: "쿠키 정책",
+    termsOfUse: "이용 약관",
+    managePreferences: "기본 설정 관리"
+  },
+  nl: {
+    privacyPolicy: "Privacybeleid",
+    cookiesPolicy: "Cookiebeleid",
+    termsOfUse: "Gebruiksvoorwaarden",
+    managePreferences: "Voorkeuren beheren"
+  },
+  pl: {
+    privacyPolicy: "Polityka prywatności",
+    cookiesPolicy: "Polityka cookies",
+    termsOfUse: "Warunki użytkowania",
+    managePreferences: "Zarządzaj preferencjami"
+  },
+  tr: {
+    privacyPolicy: "Gizlilik Politikası",
+    cookiesPolicy: "Çerez Politikası",
+    termsOfUse: "Kullanım Koşulları",
+    managePreferences: "Tercihleri yönet"
+  },
+  hv: {
+    privacyPolicy: "Vala Hilas",
+    cookiesPolicy: "Vala Tyros",
+    termsOfUse: "Vala Tyghatta",
+    managePreferences: "Vala Tyvylly"
   }
 };
 
 // Seleccionar el conjunto de traducciones según el idioma actual
-type SupportedLanguage = 'es' | 'en' | 'pt';
+type SupportedLanguage = 'es' | 'es-mx' | 'en' | 'en-us' | 'pt' | 'fr' | 'de' | 'it' | 'zh' | 'ja' | 'ru' | 'ar' | 'hi' | 'ko' | 'nl' | 'pl' | 'tr' | 'hv';
 const typedLang = (currentLang as SupportedLanguage) || 'es';
 const t = translations[typedLang] || translations.es;
 ---
