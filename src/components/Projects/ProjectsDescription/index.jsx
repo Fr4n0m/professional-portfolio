@@ -14,10 +14,10 @@ const ProjectsDescription = ({ description }) => {
 					expanded ? 'line-clamp-none' : 'line-clamp-3'
 				} overflow-hidden text-pretty text-gray-500/90 dark:text-white`}
 			>
-				{description}
+				{description || ''}
 			</div>
 			<div className='flex w-full justify-end'>
-				{description.length > 220 && (
+				{description && description.length > 220 && (
 					<button
 						className='text-blue-500 underline text-sm'
 						onClick={toggleExpand}

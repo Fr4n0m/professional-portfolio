@@ -37,12 +37,16 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
   
   // Navegación del carrusel
   const nextImage = () => {
+    if (!project.images || project.images.length <= 1) return;
+    
     setCurrentImageIndex((prev) => 
       prev === project.images.length - 1 ? 0 : prev + 1
     );
   };
   
   const prevImage = () => {
+    if (!project.images || project.images.length <= 1) return;
+    
     setCurrentImageIndex((prev) => 
       prev === 0 ? project.images.length - 1 : prev - 1
     );
@@ -70,7 +74,7 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
         
         {/* Carrusel de imágenes */}
         <div className="relative h-[40vh] md:h-[50vh] bg-gray-100 dark:bg-gray-900">
-          {project.images.length > 0 && (
+          {project.images && project.images.length > 0 && (
             <>
               <img 
                 src={project.images[currentImageIndex]} 
@@ -79,7 +83,7 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
               />
               
               {/* Controles del carrusel */}
-              {project.images.length > 1 && (
+              {project.images && project.images.length > 1 && (
                 <>
                   <button 
                     className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 rounded-full p-2 hover:bg-white dark:hover:bg-gray-700 transition-colors"
@@ -101,7 +105,7 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
                   
                   {/* Indicadores */}
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    {project.images.map((_, index) => (
+                    {project.images && project.images.map((_, index) => (
                       <button
                         key={index}
                         className={`w-2 h-2 rounded-full transition-colors ${
@@ -126,7 +130,7 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
           
           {/* Tags */}
           <div className="mb-4 flex flex-wrap gap-3">
-            {project.tags.map((tag, index) => {
+            {project.tags && project.tags.map((tag, index) => {
               return TAGS[tag] ? (
                 <div key={index} className="skill-tooltip-container relative inline-block">
                   <a
@@ -152,7 +156,7 @@ const ProjectModal: React.FC<ModalProps> = ({ project, isOpen, onClose, buttons 
           
           {/* Descripción */}
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            {project.description}
+            {project.description || ''}
           </p>
           
           {/* Enlaces */}
