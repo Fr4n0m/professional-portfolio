@@ -115,60 +115,61 @@ const TechIcon = technologyIcons[name] || null;
 // Mapa de screenshots de ejemplo para cada tecnología
 const technologyScreenshots = {
   // Frontend
-  'HTML': '/assets/skills/html.webp',
-  'CSS': '/assets/skills/css.webp',
-  'Tailwind CSS': '/assets/skills/tailwind.webp',
-  'JavaScript': '/assets/skills/javascript.webp',
-  'TypeScript': '/assets/skills/typescript.webp',
-  'React': '/assets/skills/react.webp',
-  'NextJS': '/assets/skills/nextjs.webp',
-  'Astro': '/assets/skills/astro.webp',
-  'Vite': '/assets/skills/vite.webp',
-  'Motion': '/assets/skills/motion.webp',
-  'GSAP': '/assets/skills/gsap.webp',
+  'HTML': 'https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2018/11/what-is-html-3.jpg',
+  'CSS': 'https://blog.hubspot.com/hs-fs/hubfs/css-grid.jpg?width=893&height=600&name=css-grid.jpg',
+  'Tailwind CSS': 'https://repository-images.githubusercontent.com/130268121/b4fd5300-b585-11ea-8718-1e141e78842e',
+  'JavaScript': 'https://geekflare.com/wp-content/uploads/2022/10/javascript-532x276.png',
+  'TypeScript': 'https://miro.medium.com/v2/resize:fit:1400/1*Jq-pue8dVEGHXE4UfD3SUA.png',
+  'React': 'https://repository-images.githubusercontent.com/37153337/9d0a6780-394a-11eb-9fd1-6296a684b124',
+  'NextJS': 'https://miro.medium.com/v2/resize:fit:1358/1*ceHirGpI_RyI83_tKMwj0A.png',
+  'Astro': 'https://cdn.sanity.io/images/2iiw7c0n/production/c2ad16b22fa46e96b0c3b76dc39dab77e6caf04d-1920x1080.png',
+  'Vite': 'https://refine.ams3.cdn.digitaloceanspaces.com/blog/2022-10-12-vite-react/social.png',
+  'Motion': 'https://uploads-ssl.webflow.com/611580035ad59b20437eb024/616f21ce14bedd3ee11111c2_framer%20motion%20card%20component%20image.jpg',
+  'GSAP': 'https://www.iamrohit.tech/wp-content/uploads/2023/10/gsap-scrolltrigger-web.png',
   
   // Backend
-  'NodeJS': '/assets/skills/nodejs.webp',
-  'Deno': '/assets/skills/deno.webp',
-  'ExpressJS': '/assets/skills/expressjs.webp',
-  'Bun': '/assets/skills/bun.webp',
+  'NodeJS': 'https://morioh.com/images/featured-images/3e4a6b1d56f1ac54bcdaf727.png',
+  'Deno': 'https://cdn.prod.website-files.com/62d4fe2e6d69d44deb8a86fd/62de1040e4d6a36c4887fcb8_deno-is-a-new-way-to-javascript-p-1600.jpeg',
+  'ExpressJS': 'https://miro.medium.com/v2/resize:fit:1400/1*Crt5XA5u9VHLRGqRQw0wUg.png',
+  'Bun': 'https://www.freecodecamp.org/news/content/images/2023/08/bun.png',
   
   // Database
   'MongoDB': 'https://webimages.mongodb.com/_com_assets/cms/kuzt9r42or1fxvlq2-Meta_Generic.png',
-  'Supabase': '/assets/skills/supabase.webp',
-  'MySQL': '/assets/skills/mysql.webp',
-  'Stripe': '/assets/skills/stripe.webp',
+  'Supabase': 'https://miro.medium.com/v2/resize:fit:666/1*PhDsWga3IjGMcVfAemVQMw.png',
+  'MySQL': 'https://www.simplilearn.com/ice9/free_resources_article_thumb/difference_between_sql_and_mysql.jpg',
+  'Stripe': 'https://techcrunch.com/wp-content/uploads/2022/09/Stripe-Fall-22-Product-Updates-Screenshot-1-1.png',
   'GraphQL': 'https://graphql.org/img/og-image.png',
-  'Strapi': '/assets/skills/strapi.webp',
+  'Strapi': 'https://strapi.io/assets/strapi-website-v2-default-11291df830.png',
   
   // Tools
-  'Docker': '/assets/skills/docker.webp',
-  'Git': '/assets/skills/git.webp',
-  'GitHub': '/assets/skills/github.webp',
-  'NPM': '/assets/skills/npm.webp',
-  'PNPM': '/assets/skills/pnpm.webp',
-  'Vercel': '/assets/skills/vercel.webp',
-  'C++': '/assets/skills/cpp.webp',
-  'Phaser': '/assets/skills/phaser.webp',
+  'Docker': 'https://kinsta.com/wp-content/uploads/2021/12/kubernetes-vs-docker.jpg',
+  'Git': 'https://www.git-tower.com/blog/media/pages/posts/git-cheat-sheet/96ea71a125-1652683293/git-cheat-sheet-large01.png',
+  'GitHub': 'https://github.blog/wp-content/uploads/2023/03/1200x640.png',
+  'NPM': 'https://blog.logrocket.com/wp-content/uploads/2022/10/Basic-NPM-commands-workspace-using-NPM.png',
+  'PNPM': 'https://miro.medium.com/v2/resize:fit:1400/1*ZYyMvU4AyJxg5bRIzBTw5w.png',
+  'Vercel': 'https://vercel.com/_next/image?url=%2Fstatic%2Fmedia%2Fdeployments-card-dark.93df8345.jpg&w=1200&q=75',
+  'C++': 'https://dev-to-uploads.s3.amazonaws.com/uploads/articles/g5m2q3v7oly98qp93t39.png',
+  'Phaser': 'https://phaser.io/content/news/2018/04/phaser-3-mailing-list-phaser-3-4-0-part-1.jpg',
   
   // OS
-  'Windows': '/assets/skills/windows.webp',
-  'MacOS': '/assets/skills/macos.webp',
-  'Debian': '/assets/skills/debian.webp',
-  'Kali': '/assets/skills/kali.webp',
+  'Windows': 'https://cdn.mos.cms.futurecdn.net/C5QcVib9tTKioQkFAHG2LE-970-80.jpg.webp',
+  'MacOS': 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/macos/Catalina/macos-catalina-system-preferences.jpg',
+  'Debian': 'https://www.tecmint.com/wp-content/uploads/2017/07/Debian-9-MATE-Desktop.png',
+  'Kali': 'https://www.kali.org/blog/kali-linux-2022-1-release/images/kali-linux-2022.1-desktop.jpg',
 };
 
 // Imagen por defecto para tecnologías sin screenshot específico
 const defaultScreenshot = '/assets/screenshots/default-tech.svg';
 
 // Función auxiliar para manejar errores de carga de imagen
-const handleImageError = () => {
-  console.error('Error al cargar la imagen, usando imagen predeterminada');
+const handleImageError = (name) => {
+  console.error(`Error al cargar la imagen para ${name}, usando imagen predeterminada`);
   return defaultScreenshot;
 };
 
 // Obtener el screenshot adecuado o usar el predeterminado por categoría
 const techScreenshot = technologyScreenshots[name] || (finalCategory ? `/assets/screenshots/${finalCategory}-screenshot.svg` : defaultScreenshot);
+
 
 // Obtener la descripción desde el archivo de configuración centralizado
 const finalDescription = description || getSkillDescription(name, currentLang);
