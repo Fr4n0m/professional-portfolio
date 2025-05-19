@@ -18,7 +18,7 @@ const { lang, languages } = Astro.props;
               href={langUrl}
               class='flex items-center gap-3'
             >
-              <span class='text-xl'>{langInfo.flag}</span>
+              <span class='text-xl flex items-center justify-center leading-none'>{langInfo.flag}</span>
               <span class='flex-1 font-medium text-gray-700 dark:text-gray-200'>{langInfo.nativeName}</span>
               {isActive && (
                 <span class='text-blue-600 dark:text-blue-400'>✓</span>

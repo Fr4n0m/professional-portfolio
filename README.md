@@ -36,6 +36,23 @@ Este proyecto utiliza un sistema de diseño inspirado en el estilo Apple/macOS. 
 - **TypeScript**: Tipado estático
 - **Vercel**: Deployment y SSR
 - **Bun**: Gestor de paquetes y runtime (más rápido que npm)
+- **Google Fonts (Noto Sans)**: Para soporte de idiomas internacionales
+
+## Soporte Multilingüe
+
+El proyecto tiene soporte completo para 19 idiomas, incluyendo idiomas con escrituras complejas:
+
+- **Idiomas LTR**: Español, Inglés (UK/US), Chino, Hindi, Portugués, Francés, Alemán, Japonés, Ruso, Italiano, Coreano, Holandés, Polaco, Turco
+- **Idiomas RTL**: Árabe
+- **Idiomas de fantasía**: Alto Valyrio
+
+### Características del soporte multilingüe:
+
+- **Carga de fuentes optimizada**: Fuentes específicas para cada idioma (Noto Sans familia)
+- **Selección inteligente de layout**: Soporte para RTL (derecha a izquierda) y LTR (izquierda a derecha)
+- **Sistema de traducciones modular**: Archivos JSON separados por funcionalidad
+- **Renderizado eficiente**: Solo carga las fuentes necesarias para el idioma seleccionado
+- **Adaptación de estilos**: Ajustes automáticos para diferentes sistemas de escritura
 
 ## Componetización
 
@@ -51,6 +68,7 @@ El proyecto utiliza un enfoque modular para la creación de componentes, dividie
 - **Hero**: Dividido en ProfileImage, HeroTitle, HeroDescription y SocialLinks.
 - **HeroAnimation**: Dividido en TitleAnimation, ButtonsAnimation y DecorationElement.
 - **Projects**: Dividido en ProjectHeader, ProjectTags y ProjectFooter.
+- **LanguageSelector**: Dividido en LanguageToggleButton y LanguageMenu.
 
 ## Gestión de Cookies y Privacidad
 
@@ -63,6 +81,16 @@ Este proyecto incluye un sistema completo de gestión de cookies y consentimient
 - **Documentación detallada** sobre implementación en `/docs/COOKIE-COMPLIANCE.md`
 
 Para más información, consulta la documentación específica en la carpeta `/docs`.
+
+## Accesibilidad
+
+El proyecto implementa características de accesibilidad avanzadas:
+
+- **Tamaño de fuente ajustable**: 8 niveles de tamaño (85% - 120%)
+- **Contraste configurable**: Modos alto contraste y estándar
+- **Soporte para lectores de pantalla**: Etiquetas ARIA y texto alternativo
+- **Navegación por teclado**: Atajos de teclado y navegación completa sin ratón
+- **Prefers-reduced-motion**: Detección de preferencias de reducción de movimiento
 
 ## Scripts disponibles
 
@@ -85,10 +113,11 @@ src/
 │   ├── Projects/        # Componentes de proyectos
 │   │   └── ProjectComponents/ # Subcomponentes de proyectos
 │   ├── header/          # Componentes de navegación
-│   │   └── mobile/      # Componentes específicos para móvil
+│   │   └── components/    # Subcomponentes del header (menús, idiomas)
 ├── layouts/             # Layouts de página
 ├── pages/               # Páginas de la aplicación
-├── translations/        # Archivos de traducción
+├── translations/        # Archivos de traducción por idioma
 ├── utils/               # Utilidades y constantes
-└── styles/              # Estilos globales
+├── i18n/                # Configuración de internacionalización
+└── icons/               # Iconos SVG y componentes de iconos
 ```
